@@ -100,27 +100,17 @@ bool board::isClear()
   return true;
 }
 
-
-/*
-void board::init()
+drawing::drawing(board * b,
+                 graphics * g)
+: m_board(b), g(g)
 {
-  setLivingCell(18,26);
-  setLivingCell(19,27);
-  setLivingCell(20,25);
-  setLivingCell(20,26);
-  setLivingCell(20,27);
-}
-*/
-
-drawing::drawing(board * b) : m_board(b)
-{
-  g.initscr();
-  g.move(board::ROW_SIZE,0);
+  g->_initscr();
+  g->_move(board::ROW_SIZE,0);
 }
 
 drawing::~drawing()
 {
-  g.endwin();
+  g->_endwin();
 }
 
 void drawing::refreshDrawing()
@@ -135,9 +125,9 @@ void drawing::refreshDrawing()
         s.append(" ");
       }
     }
-    g.addstr((s + '\n').c_str());
+    g->_addstr((s + '\n').c_str());
   }
-  g.refresh();
+  g->_refresh();
 }
 
 bool drawing::isInitialized()
@@ -147,14 +137,14 @@ bool drawing::isInitialized()
 
 void drawing::play(int iterations)
 {
-  g.getch();
-  g.move(0,0);
+  g->_getch();
+  g->_move(0,0);
   initializeBoard();
   for (int i=0; i<iterations; i+=1) {
     m_board->refreshBoard();
     refreshDrawing();
     usleep(500000);
-    g.clear();
+    g->_clear();
   }
 }
 

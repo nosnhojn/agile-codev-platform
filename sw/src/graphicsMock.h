@@ -33,13 +33,13 @@ class graphicsMock : public graphics
     void ncursesReset(void);
 
     // inherited from graphics
-    void initscr();
-    void clear();
-    void endwin();
-    void refresh();
-    void getch();
-    void addstr(const char *);
-    void move(int,int);
+    void _initscr();
+    void _clear();
+    void _endwin();
+    void _refresh();
+    void _getch();
+    void _addstr(const char *);
+    void _move(int,int);
 };
 
 #endif

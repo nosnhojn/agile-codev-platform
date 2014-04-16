@@ -7,7 +7,8 @@ LDFLAGS+=${GTEST_DIR}/libgtest.a
 
 TESTOBJS=${OBJDIR}/life-unittest.o \
 		     ${OBJDIR}/life.o \
-		     ${OBJDIR}/graphics.o
+		     ${OBJDIR}/graphics.o \
+		     ${OBJDIR}/graphicsMock.o
 
 UNITTESTS=test/life-cell-unittest.cpp \
           test/life-board-unittest.cpp \
@@ -22,13 +23,15 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
-${OBJDIR}/life-unittest.o : ${UNITTESTS} ${OBJDIR}/graphics.o
+${OBJDIR}/life-unittest.o : ${UNITTESTS} ${OBJDIR}/graphics.o ${OBJDIR}/graphicsMock.o
 
 life-unittest : ${TESTOBJS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o life-unittest
 
 
 GAMEOBJS=${OBJDIR}/life.o \
+		     ${OBJDIR}/graphicsNCurses.o \
+		     ${OBJDIR}/graphics.o \
 				 ${OBJDIR}/game.o
 
 game : LDFLAGS+=-lncurses

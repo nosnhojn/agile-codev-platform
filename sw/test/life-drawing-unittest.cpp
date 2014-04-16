@@ -9,14 +9,16 @@ class LifeDrawingTest : public testing::Test
     board myBoard;
     drawing * myDrawing;
     string checkRow;
+    graphicsMock grMock;
 
-    LifeDrawingTest() : myDrawing(new drawing(&myBoard)), checkRow(string(board::COLUMN_SIZE, ' ') + '\n')
+    LifeDrawingTest() : checkRow(string(board::COLUMN_SIZE, ' ') + '\n')
     {
+      myDrawing = new drawing(&myBoard, &grMock);
     }
 
     ~LifeDrawingTest()
     {
-      myDrawing->g.ncursesReset();
+      grMock.ncursesReset();
     }
 
     void newLivingCell(int row, int column)
@@ -27,23 +29,23 @@ class LifeDrawingTest : public testing::Test
 };
 
 TEST_F(LifeDrawingTest, ScreenInit) {
-  EXPECT_TRUE(myDrawing->g.initScrFlag());
+  EXPECT_TRUE(grMock.initScrFlag());
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshed) {
   myDrawing->refreshDrawing();
-  EXPECT_TRUE(myDrawing->g.refreshFlag());
+  EXPECT_TRUE(grMock.refreshFlag());
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0) {
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, grMock.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
   newLivingCell(0,0);
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, grMock.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
@@ -51,12 +53,12 @@ TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
     newLivingCell(0,c);
   }
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, grMock.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRowN) {
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(board::ROW_SIZE-1));
+  EXPECT_EQ(checkRow, grMock.getScreenRowNumber(board::ROW_SIZE-1));
 }
 
 TEST_F(LifeDrawingTest, ScreenStartsUnInitialized) {
@@ -64,12 +66,12 @@ TEST_F(LifeDrawingTest, ScreenStartsUnInitialized) {
 }
 
 TEST_F(LifeDrawingTest, ScreenWaitForPromptAtPos) {
-  EXPECT_TRUE(myDrawing->g.moveRowCoord() == board::ROW_SIZE);
+  EXPECT_TRUE(grMock.moveRowCoord() == board::ROW_SIZE);
 }
 
 TEST_F(LifeDrawingTest, ScreenWaitForPrompt) {
   myDrawing->play(1);
-  EXPECT_TRUE(myDrawing->g.getchFlag());
+  EXPECT_TRUE(grMock.getchFlag());
 }
 
 TEST_F(LifeDrawingTest, InitializeBoard) {
@@ -102,7 +104,7 @@ TEST_F(LifeDrawingTest, PlayFirstBoardRefresh) {
 
 TEST_F(LifeDrawingTest, ScreenCleared) {
   myDrawing->play(1);
-  EXPECT_TRUE(myDrawing->g.clearFlag());
+  EXPECT_TRUE(grMock.clearFlag());
 }
 
 TEST_F(LifeDrawingTest, PlaySecondBoardRefresh) {
@@ -128,5 +130,5 @@ TEST_F(LifeDrawingTest, PlaySecondBoardRefresh) {
 
 TEST_F(LifeDrawingTest, PlayDrawingRefresh) {
   myDrawing->play(1);
-  EXPECT_TRUE(myDrawing->g.refreshFlag());
+  EXPECT_TRUE(grMock.refreshFlag());
 }

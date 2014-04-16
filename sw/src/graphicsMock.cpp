@@ -39,29 +39,29 @@ bool graphicsMock::getchFlag()
 }
 
 
-void graphicsMock::initscr()
+void graphicsMock::_initscr()
 {
   m_initScrFlag = true;
 }
 
-void graphicsMock::clear()
+void graphicsMock::_clear()
 {
   m_clearFlag = true;
 }
 
-void graphicsMock::endwin()
+void graphicsMock::_endwin()
 {
   m_endWinFlag = true;
 }
 
 
-void graphicsMock::refresh()
+void graphicsMock::_refresh()
 {
   m_refreshFlag = true;
   m_rowNumber = 0;
 }
 
-void graphicsMock::getch()
+void graphicsMock::_getch()
 {
   m_getchFlag = true;
 }
@@ -71,12 +71,12 @@ string graphicsMock::getScreenRowNumber(int row)
   return m_row[row];
 }
 
-void graphicsMock::addstr(const char * s)
+void graphicsMock::_addstr(const char * s)
 {
   m_row[m_rowNumber++] = string(s);
 }
 
-void graphicsMock::move(int row, int column)
+void graphicsMock::_move(int row, int column)
 {
   m_moveRowCoord = row;
 }

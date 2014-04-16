@@ -51,9 +51,8 @@ class drawing
   };
 
   public:
-    graphics g;
-
-    drawing(board * b);
+    drawing(board * b,
+            graphics * g);
     ~drawing();
 
     bool isInitialized(void);
@@ -63,6 +62,7 @@ class drawing
     void initializeBoard(void);
 
   private:
+    graphics * g;
     board * m_board;
     list<cellCoord_t> m_initialCells;
 };
