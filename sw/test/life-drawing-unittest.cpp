@@ -16,7 +16,7 @@ class LifeDrawingTest : public testing::Test
 
     ~LifeDrawingTest()
     {
-      ncursesReset();
+      myDrawing->g.ncursesReset();
     }
 
     void newLivingCell(int row, int column)
@@ -27,28 +27,23 @@ class LifeDrawingTest : public testing::Test
 };
 
 TEST_F(LifeDrawingTest, ScreenInit) {
-  EXPECT_TRUE(initScrFlag());
-}
-
-TEST_F(LifeDrawingTest, ScreenEnded) {
-  delete myDrawing;
-  EXPECT_TRUE(endWinFlag());
+  EXPECT_TRUE(myDrawing->g.initScrFlag());
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshed) {
   myDrawing->refreshDrawing();
-  EXPECT_TRUE(refreshFlag());
+  EXPECT_TRUE(myDrawing->g.refreshFlag());
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0) {
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
   newLivingCell(0,0);
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
@@ -56,12 +51,12 @@ TEST_F(LifeDrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
     newLivingCell(0,c);
   }
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, getScreenRowNumber(0));
+  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(0));
 }
 
 TEST_F(LifeDrawingTest, ScreenRefreshedRowN) {
   myDrawing->refreshDrawing();
-  EXPECT_EQ(checkRow, getScreenRowNumber(board::ROW_SIZE-1));
+  EXPECT_EQ(checkRow, myDrawing->g.getScreenRowNumber(board::ROW_SIZE-1));
 }
 
 TEST_F(LifeDrawingTest, ScreenStartsUnInitialized) {
@@ -69,12 +64,12 @@ TEST_F(LifeDrawingTest, ScreenStartsUnInitialized) {
 }
 
 TEST_F(LifeDrawingTest, ScreenWaitForPromptAtPos) {
-  EXPECT_TRUE(moveRowCoord() == board::ROW_SIZE);
+  EXPECT_TRUE(myDrawing->g.moveRowCoord() == board::ROW_SIZE);
 }
 
 TEST_F(LifeDrawingTest, ScreenWaitForPrompt) {
   myDrawing->play(1);
-  EXPECT_TRUE(getchFlag());
+  EXPECT_TRUE(myDrawing->g.getchFlag());
 }
 
 TEST_F(LifeDrawingTest, InitializeBoard) {
@@ -107,7 +102,7 @@ TEST_F(LifeDrawingTest, PlayFirstBoardRefresh) {
 
 TEST_F(LifeDrawingTest, ScreenCleared) {
   myDrawing->play(1);
-  EXPECT_TRUE(clearFlag());
+  EXPECT_TRUE(myDrawing->g.clearFlag());
 }
 
 TEST_F(LifeDrawingTest, PlaySecondBoardRefresh) {
@@ -133,5 +128,5 @@ TEST_F(LifeDrawingTest, PlaySecondBoardRefresh) {
 
 TEST_F(LifeDrawingTest, PlayDrawingRefresh) {
   myDrawing->play(1);
-  EXPECT_TRUE(refreshFlag());
+  EXPECT_TRUE(myDrawing->g.refreshFlag());
 }

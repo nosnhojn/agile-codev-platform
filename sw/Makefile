@@ -6,7 +6,8 @@ CXXFLAGS+=-I${GTEST_DIR}/include -I./test -I./src -I.
 LDFLAGS+=${GTEST_DIR}/libgtest.a
 
 TESTOBJS=${OBJDIR}/life-unittest.o \
-		     ${OBJDIR}/life.o
+		     ${OBJDIR}/life.o \
+		     ${OBJDIR}/graphics.o
 
 UNITTESTS=test/life-cell-unittest.cpp \
           test/life-board-unittest.cpp \
@@ -21,9 +22,8 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
-${OBJDIR}/life-unittest.o : ${UNITTESTS} ${OBJDIR}/ncursesMock.o
+${OBJDIR}/life-unittest.o : ${UNITTESTS} ${OBJDIR}/graphics.o
 
-life-unittest : TESTOBJS+=${OBJDIR}/ncursesMock.o
 life-unittest : ${TESTOBJS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o life-unittest
 

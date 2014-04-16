@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "life.h"
+#include "graphics.h"
 
 #include "life-cell-unittest.cpp"
 #include "life-board-unittest.cpp"

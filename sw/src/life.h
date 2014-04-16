@@ -1,8 +1,4 @@
-#ifdef UTEST
-#include "ncursesMock.h"
-#else
-#include "ncurses.h"
-#endif
+#include "graphics.h"
 
 #include <iostream>
 #include <string>
@@ -55,6 +51,8 @@ class drawing
   };
 
   public:
+    graphics g;
+
     drawing(board * b);
     ~drawing();
 

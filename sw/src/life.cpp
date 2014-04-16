@@ -114,13 +114,13 @@ void board::init()
 
 drawing::drawing(board * b) : m_board(b)
 {
-  initscr();
-  move(board::ROW_SIZE,0);
+  g.initscr();
+  g.move(board::ROW_SIZE,0);
 }
 
 drawing::~drawing()
 {
-  endwin();
+  g.endwin();
 }
 
 void drawing::refreshDrawing()
@@ -135,9 +135,9 @@ void drawing::refreshDrawing()
         s.append(" ");
       }
     }
-    addstr((s + '\n').c_str());
+    g.addstr((s + '\n').c_str());
   }
-  refresh();
+  g.refresh();
 }
 
 bool drawing::isInitialized()
@@ -147,14 +147,14 @@ bool drawing::isInitialized()
 
 void drawing::play(int iterations)
 {
-  getch();
-  move(0,0);
+  g.getch();
+  g.move(0,0);
   initializeBoard();
   for (int i=0; i<iterations; i+=1) {
     m_board->refreshBoard();
     refreshDrawing();
     usleep(500000);
-    clear();
+    g.clear();
   }
 }
 
