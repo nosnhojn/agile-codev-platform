@@ -1,5 +1,5 @@
 #include "life.h"
-#include "displayNCurses.h"
+#include "DisplayNCurses.h"
 
 int main()
 {

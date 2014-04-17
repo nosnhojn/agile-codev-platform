@@ -1,4 +1,4 @@
-#include "displayNCurses.h"
+#include "DisplayNCurses.h"
 
 DisplayNCurses::DisplayNCurses()
 {

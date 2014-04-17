@@ -1,7 +1,7 @@
 #ifndef __DISPLAY_MOCK_CPP__
 #define __DISPLAY_MOCK_CPP__
 
-#include "display.h"
+#include "Display.h"
 
 #include <iostream>
 

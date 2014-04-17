@@ -1,7 +1,7 @@
 #ifndef __DISPLAY_NCURSES_CPP__
 #define __DISPLAY_NCURSES_CPP__
 
-#include "display.h"
+#include "Display.h"
 
 #include <string>
 #include <iostream>

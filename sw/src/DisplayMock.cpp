@@ -1,4 +1,4 @@
-#include "displayMock.h"
+#include "DisplayMock.h"
 
 using namespace std;
 
