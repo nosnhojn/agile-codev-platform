@@ -10,9 +10,9 @@ TESTOBJS=${OBJDIR}/allTests.o \
 		     ${OBJDIR}/display.o \
 		     ${OBJDIR}/displayMock.o
 
-UNITTESTS=test/cellTest.cpp \
-          test/boardTest.cpp \
-          test/drawingTest.cpp
+UNITTESTS=test/CellTest.cpp \
+          test/BoardTest.cpp \
+          test/DrawingTest.cpp
 
 test : CXXFLAGS+=-DUTEST
 test : ${OBJDIR} allTests

@@ -1,4 +1,4 @@
-#include "display.h"
+#include "Display.h"
 
 #include <iostream>
 #include <string>
@@ -6,19 +6,19 @@
 
 using namespace std;
 
-class cell
+class Cell
 {
   bool m_aliveState;
 
   public:
-    cell();
+    Cell();
 
     void setState(bool);
     bool getState(void);
     bool isAlive(int);
 };
 
-class board
+class Board
 {
   public:
     static const int ROW_SIZE = 50;
@@ -34,10 +34,10 @@ class board
     bool isClear(void);
 
   private:
-    cell m_cells[ROW_SIZE][COLUMN_SIZE];
+    Cell m_cells[ROW_SIZE][COLUMN_SIZE];
 };
 
-class drawing
+class Drawing
 {
   struct cellCoord_t
   {
@@ -51,9 +51,9 @@ class drawing
   };
 
   public:
-    drawing(board * b,
-            display * g);
-    ~drawing();
+    Drawing(Board * b,
+            Display * g);
+    ~Drawing();
 
     bool isInitialized(void);
     void refreshDrawing(void);
@@ -62,7 +62,7 @@ class drawing
     void initializeBoard(void);
 
   private:
-    display * g;
-    board * m_board;
+    Display * g;
+    Board * m_board;
     list<cellCoord_t> m_initialCells;
 };

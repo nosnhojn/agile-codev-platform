@@ -1,11 +1,11 @@
 #include "gtest/gtest.h"
 
 #include "life.h"
-#include "displayMock.h"
+#include "DisplayMock.h"
 
-#include "cellTest.cpp"
-#include "boardTest.cpp"
-#include "drawingTest.cpp"
+#include "CellTest.cpp"
+#include "BoardTest.cpp"
+#include "DrawingTest.cpp"
 
 /////////////////////////////////////////
 /////////////////////////////////////////

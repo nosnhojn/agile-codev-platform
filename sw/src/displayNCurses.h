@@ -9,10 +9,10 @@
 
 using namespace std;
 
-class displayNCurses : public display
+class DisplayNCurses : public Display
 {
   public:
-    displayNCurses();
+    DisplayNCurses();
 
     void _initscr();
     void _clear();

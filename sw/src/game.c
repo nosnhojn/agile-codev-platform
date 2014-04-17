@@ -3,10 +3,9 @@
 
 int main()
 {
-  board b;
-  displayNCurses g;
-
-  drawing d(&b, &g);
+  Board b;
+  DisplayNCurses g;
+  Drawing d(&b, &g);
  
   for (int i=20; i<51; i+=1) {
     d.initialCell(10,i);

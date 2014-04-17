@@ -1,5 +1,5 @@
 #include "display.h"
 
-display::display()
+Display::Display()
 {
 }

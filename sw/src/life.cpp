@@ -1,20 +1,20 @@
 #include "life.h"
 
-cell::cell() : m_aliveState(false)
+Cell::Cell() : m_aliveState(false)
 {
 }
 
-void cell::setState(bool s)
+void Cell::setState(bool s)
 {
   m_aliveState = s;
 }
 
-bool cell::getState()
+bool Cell::getState()
 {
   return m_aliveState;
 }
 
-bool cell::isAlive(int numNeighbours)
+bool Cell::isAlive(int numNeighbours)
 {
   if (numNeighbours == 2)
     return m_aliveState;
@@ -26,22 +26,22 @@ bool cell::isAlive(int numNeighbours)
     return m_aliveState = false;
 }
 
-bool board::getState(int row, int column)
+bool Board::getState(int row, int column)
 {
   return m_cells[row][column].getState();
 }
 
-void board::setLivingCell(int row, int column)
+void Board::setLivingCell(int row, int column)
 {
   m_cells[row][column].setState(true);
 }
 
-void board::setDeadCell(int row, int column)
+void Board::setDeadCell(int row, int column)
 {
   m_cells[row][column].setState(false);
 }
 
-int board::numLivingNeighbours(int row, int column)
+int Board::numLivingNeighbours(int row, int column)
 {
   int r = 0;
 
@@ -66,31 +66,31 @@ int board::numLivingNeighbours(int row, int column)
   return r;
 }
 
-bool board::legalColumn(int column)
+bool Board::legalColumn(int column)
 {
   return (column >= 0) && (column <= COLUMN_SIZE-1);
 }
 
-void board::refreshCell(int row, int column)
+void Board::refreshCell(int row, int column)
 {
   m_cells[row][column].isAlive(numLivingNeighbours(row,column));
 }
 
-void board::refreshBoard()
+void Board::refreshBoard()
 {
-  board tmpBoard(*this);
+  Board tmpBoard(*this);
 
-  for (int row=0; row<board::ROW_SIZE; row+=1) {
-    for (int column=0; column<board::COLUMN_SIZE; column+=1) {
+  for (int row=0; row<Board::ROW_SIZE; row+=1) {
+    for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       m_cells[row][column].isAlive(tmpBoard.numLivingNeighbours(row,column));
     }
   }
 }
 
-bool board::isClear()
+bool Board::isClear()
 {
-  for (int row=0; row<board::ROW_SIZE; row+=1) {
-    for (int column=0; column<board::COLUMN_SIZE; column+=1) {
+  for (int row=0; row<Board::ROW_SIZE; row+=1) {
+    for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       if (m_cells[row][column].getState() == true) {
         return false;
       }
@@ -100,24 +100,24 @@ bool board::isClear()
   return true;
 }
 
-drawing::drawing(board * b,
-                 display * g)
+Drawing::Drawing(Board * b,
+                 Display * g)
 : m_board(b), g(g)
 {
   g->_initscr();
-  g->_move(board::ROW_SIZE,0);
+  g->_move(Board::ROW_SIZE,0);
 }
 
-drawing::~drawing()
+Drawing::~Drawing()
 {
   g->_endwin();
 }
 
-void drawing::refreshDrawing()
+void Drawing::refreshDrawing()
 {
-  for (int row=0; row<board::ROW_SIZE; row+=1) {
+  for (int row=0; row<Board::ROW_SIZE; row+=1) {
     string s;
-    for (int column=0; column<board::COLUMN_SIZE; column+=1) {
+    for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       if (m_board->getState(row,column)) {
         s.append("X");
       }
@@ -130,12 +130,12 @@ void drawing::refreshDrawing()
   g->_refresh();
 }
 
-bool drawing::isInitialized()
+bool Drawing::isInitialized()
 {
   return (m_board->isClear() == false);
 }
 
-void drawing::play(int iterations)
+void Drawing::play(int iterations)
 {
   g->_getch();
   g->_move(0,0);
@@ -148,12 +148,12 @@ void drawing::play(int iterations)
   }
 }
 
-void drawing::initialCell(int row, int column)
+void Drawing::initialCell(int row, int column)
 {
   m_initialCells.push_back(cellCoord_t(row,column));
 }
 
-void drawing::initializeBoard()
+void Drawing::initializeBoard()
 {
  if (m_initialCells.size() > 0) {
    list<cellCoord_t>::iterator i = m_initialCells.begin();

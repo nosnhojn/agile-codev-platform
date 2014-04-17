@@ -2,7 +2,7 @@
 
 using namespace std;
 
-displayMock::displayMock() :
+DisplayMock::DisplayMock() :
     m_initScrFlag(false),
     m_clearFlag(false),
     m_endWinFlag(false),
@@ -13,80 +13,80 @@ displayMock::displayMock() :
 { }
 
 
-bool displayMock::initScrFlag()
+bool DisplayMock::initScrFlag()
 {
   return m_initScrFlag;
 }
 
-bool displayMock::clearFlag()
+bool DisplayMock::clearFlag()
 {
   return m_clearFlag;
 }
 
-bool displayMock::endWinFlag()
+bool DisplayMock::endWinFlag()
 {
   return m_endWinFlag;
 }
 
-bool displayMock::refreshFlag()
+bool DisplayMock::refreshFlag()
 {
   return m_refreshFlag;
 }
 
-bool displayMock::getchFlag()
+bool DisplayMock::getchFlag()
 {
   return m_getchFlag;
 }
 
 
-void displayMock::_initscr()
+void DisplayMock::_initscr()
 {
   m_initScrFlag = true;
 }
 
-void displayMock::_clear()
+void DisplayMock::_clear()
 {
   m_clearFlag = true;
 }
 
-void displayMock::_endwin()
+void DisplayMock::_endwin()
 {
   m_endWinFlag = true;
 }
 
 
-void displayMock::_refresh()
+void DisplayMock::_refresh()
 {
   m_refreshFlag = true;
   m_rowNumber = 0;
 }
 
-void displayMock::_getch()
+void DisplayMock::_getch()
 {
   m_getchFlag = true;
 }
 
-string displayMock::getScreenRowNumber(int row)
+string DisplayMock::getScreenRowNumber(int row)
 {
   return m_row[row];
 }
 
-void displayMock::_addstr(const char * s)
+void DisplayMock::_addstr(const char * s)
 {
   m_row[m_rowNumber++] = string(s);
 }
 
-void displayMock::_move(int row, int column)
+void DisplayMock::_move(int row, int column)
 {
   m_moveRowCoord = row;
 }
 
-int displayMock::moveRowCoord(void)
+int DisplayMock::moveRowCoord(void)
 {
   return m_moveRowCoord;
 }
 
-void displayMock::ncursesReset()
+void DisplayMock::ncursesReset()
 {
  m_initScrFlag = false;
  m_clearFlag = false;

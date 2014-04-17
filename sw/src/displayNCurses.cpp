@@ -1,41 +1,41 @@
 #include "displayNCurses.h"
 
-displayNCurses::displayNCurses()
+DisplayNCurses::DisplayNCurses()
 {
 }
 
-void displayNCurses::_initscr()
+void DisplayNCurses::_initscr()
 {
   initscr();
 }
 
-void displayNCurses::_clear()
+void DisplayNCurses::_clear()
 {
   clear();
 }
 
-void displayNCurses::_endwin()
+void DisplayNCurses::_endwin()
 {
   endwin();
 }
 
 
-void displayNCurses::_refresh()
+void DisplayNCurses::_refresh()
 {
   refresh();
 }
 
-void displayNCurses::_getch()
+void DisplayNCurses::_getch()
 {
   getch();
 }
 
-void displayNCurses::_addstr(const char * s)
+void DisplayNCurses::_addstr(const char * s)
 {
   addstr(s);
 }
 
-void displayNCurses::_move(int row, int column)
+void DisplayNCurses::_move(int row, int column)
 {
   move(row, column);
 }

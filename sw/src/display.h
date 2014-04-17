@@ -6,10 +6,10 @@
 
 using namespace std;
 
-class display
+class Display
 {
   public:
-    display();
+    Display();
 
     virtual void _initscr() =0;
     virtual void _clear() =0;

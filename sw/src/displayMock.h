@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class displayMock : public display
+class DisplayMock : public Display
 {
   private:
     bool m_initScrFlag;
@@ -21,7 +21,7 @@ class displayMock : public display
     string m_row[50];
 
   public:
-    displayMock();
+    DisplayMock();
 
     bool initScrFlag();
     bool clearFlag();
@@ -32,7 +32,7 @@ class displayMock : public display
     int moveRowCoord(void);
     void ncursesReset(void);
 
-    // inherited from display
+    // inherited from Display
     void _initscr();
     void _clear();
     void _endwin();
