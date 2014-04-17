@@ -55,11 +55,11 @@ void Drawing::initialCell(int row, int column)
 
 void Drawing::initializeBoard()
 {
- if (m_initialCells.size() > 0) {
-   list<cellCoord_t>::iterator i = m_initialCells.begin();
-   while (i != m_initialCells.end()) {
-     m_board->setLivingCell(i->row, i->column);
-     i++;
-   }
- }
+  if (m_initialCells.size() > 0) {
+    list<cellCoord_t>::iterator i = m_initialCells.begin();
+    while (i != m_initialCells.end()) {
+      m_board->setLivingCell(i->row, i->column);
+      i++;
+    }
+  }
 }
