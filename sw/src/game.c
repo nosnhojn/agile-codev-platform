@@ -1,10 +1,10 @@
 #include "life.h"
-#include "graphicsNCurses.h"
+#include "displayNCurses.h"
 
 int main()
 {
   board b;
-  graphicsNCurses g;
+  displayNCurses g;
 
   drawing d(&b, &g);
  

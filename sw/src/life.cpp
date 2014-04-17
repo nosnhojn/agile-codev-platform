@@ -101,7 +101,7 @@ bool board::isClear()
 }
 
 drawing::drawing(board * b,
-                 graphics * g)
+                 display * g)
 : m_board(b), g(g)
 {
   g->_initscr();

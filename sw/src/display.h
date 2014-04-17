@@ -1,15 +1,15 @@
-#ifndef __GRAPHICS_CPP__
-#define __GRAPHICS_CPP__
+#ifndef __DISPLAY_CPP__
+#define __DISPLAY_CPP__
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-class graphics
+class display
 {
   public:
-    graphics();
+    display();
 
     virtual void _initscr() =0;
     virtual void _clear() =0;

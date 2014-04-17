@@ -1,7 +1,7 @@
-#ifndef __GRAPHICS_NCURSES_CPP__
-#define __GRAPHICS_NCURSES_CPP__
+#ifndef __DISPLAY_NCURSES_CPP__
+#define __DISPLAY_NCURSES_CPP__
 
-#include "graphics.h"
+#include "display.h"
 
 #include <string>
 #include <iostream>
@@ -9,10 +9,10 @@
 
 using namespace std;
 
-class graphicsNCurses : public graphics
+class displayNCurses : public display
 {
   public:
-    graphicsNCurses();
+    displayNCurses();
 
     void _initscr();
     void _clear();

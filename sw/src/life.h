@@ -1,4 +1,4 @@
-#include "graphics.h"
+#include "display.h"
 
 #include <iostream>
 #include <string>
@@ -52,7 +52,7 @@ class drawing
 
   public:
     drawing(board * b,
-            graphics * g);
+            display * g);
     ~drawing();
 
     bool isInitialized(void);
@@ -62,7 +62,7 @@ class drawing
     void initializeBoard(void);
 
   private:
-    graphics * g;
+    display * g;
     board * m_board;
     list<cellCoord_t> m_initialCells;
 };

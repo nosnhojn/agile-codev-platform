@@ -1,13 +1,13 @@
-#ifndef __GRAPHICS_MOCK_CPP__
-#define __GRAPHICS_MOCK_CPP__
+#ifndef __DISPLAY_MOCK_CPP__
+#define __DISPLAY_MOCK_CPP__
 
-#include "graphics.h"
+#include "display.h"
 
 #include <iostream>
 
 using namespace std;
 
-class graphicsMock : public graphics
+class displayMock : public display
 {
   private:
     bool m_initScrFlag;
@@ -21,7 +21,7 @@ class graphicsMock : public graphics
     string m_row[50];
 
   public:
-    graphicsMock();
+    displayMock();
 
     bool initScrFlag();
     bool clearFlag();
@@ -32,7 +32,7 @@ class graphicsMock : public graphics
     int moveRowCoord(void);
     void ncursesReset(void);
 
-    // inherited from graphics
+    // inherited from display
     void _initscr();
     void _clear();
     void _endwin();

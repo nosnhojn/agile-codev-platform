@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "life.h"
-#include "graphicsMock.h"
+#include "displayMock.h"
 
 #include "cellTest.cpp"
 #include "boardTest.cpp"
