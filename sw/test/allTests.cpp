@@ -1,6 +1,11 @@
-#include "gtest/gtest.h"
+using namespace std;
 
-#include "life.h"
+#include "gtest/gtest.h"
+#include <string>
+
+#include "Cell.h"
+#include "Board.h"
+#include "Drawing.h"
 #include "DisplayMock.h"
 
 #include "CellTest.cpp"

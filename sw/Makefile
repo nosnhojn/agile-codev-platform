@@ -6,7 +6,9 @@ CXXFLAGS+=-I${GTEST_DIR}/include -I./test -I./src -I.
 LDFLAGS+=${GTEST_DIR}/libgtest.a
 
 TESTOBJS=${OBJDIR}/allTests.o \
-		     ${OBJDIR}/life.o \
+		     ${OBJDIR}/Cell.o \
+		     ${OBJDIR}/Board.o \
+		     ${OBJDIR}/Drawing.o \
 		     ${OBJDIR}/Display.o \
 		     ${OBJDIR}/DisplayMock.o
 
@@ -29,7 +31,9 @@ allTests : ${TESTOBJS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
 
-GAMEOBJS=${OBJDIR}/life.o \
+GAMEOBJS=${OBJDIR}/Cell.o \
+         ${OBJDIR}/Board.o \
+         ${OBJDIR}/Drawing.o \
 		     ${OBJDIR}/DisplayNCurses.o \
 		     ${OBJDIR}/Display.o \
 				 ${OBJDIR}/game.o

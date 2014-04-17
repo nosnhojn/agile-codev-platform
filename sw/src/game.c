@@ -1,4 +1,5 @@
-#include "life.h"
+#include "Board.h"
+#include "Drawing.h"
 #include "DisplayNCurses.h"
 
 int main()

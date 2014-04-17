@@ -1,7 +1,4 @@
-#include <string>
-
 using namespace testing;
-using namespace std;
 
 class DrawingTest : public testing::Test
 {
