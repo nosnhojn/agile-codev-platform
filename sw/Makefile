@@ -19,6 +19,10 @@ TESTOBJS=${OBJDIR}/Cell.o \
 				 ${OBJDIR}/DisplayMock.o \
 		     ${OBJDIR}/allTests.o
 
+UNITTESTS=test/boardTest.cpp \
+				  test/cellTest.cpp \
+				  test/drawingTest.cpp
+
 
 test : ${OBJDIR} allTests
 
@@ -28,7 +32,7 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
-allTests : ${TESTOBJS}
+allTests : ${TESTOBJS} ${UNITTESTS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
 

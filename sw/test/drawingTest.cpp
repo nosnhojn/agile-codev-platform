@@ -19,12 +19,19 @@ class DrawingTest : public testing::Test
 
     ~DrawingTest()
     {
+      if (drawing != 0) delete drawing;
     }
 
     void newLivingCell(int row, int column)
     {
       checkRow[column+1] = 'X';
       board.setLivingCell(row, column);
+    }
+
+    void killDrawing()
+    {
+      delete drawing;
+      drawing = 0;
     }
 };
 
@@ -71,9 +78,16 @@ TEST_F(DrawingTest, ScreenStartsUnInitialized) {
 }
 
 TEST_F(DrawingTest, ScreenWaitForPromptAtPos) {
-  EXPECT_CALL(display, _move(50,0)).Times(1);
+  req = EXPECT_CALL(display, _initscr()).Times(1);
+  EXPECT_CALL(display, _move(50,0)).Times(1).After(req);
 
   Drawing d(&board, &display);
+}
+
+TEST_F(DrawingTest, endWithDestructor) {
+  EXPECT_CALL(display, _endwin()).Times(1);
+
+  killDrawing();
 }
 
 TEST_F(DrawingTest, ScreenWaitForPrompt) {
