@@ -3,9 +3,9 @@
 #include "life.h"
 #include "graphicsMock.h"
 
-#include "life-cell-unittest.cpp"
-#include "life-board-unittest.cpp"
-#include "life-drawing-unittest.cpp"
+#include "cellTest.cpp"
+#include "boardTest.cpp"
+#include "drawingTest.cpp"
 
 /////////////////////////////////////////
 /////////////////////////////////////////

@@ -5,17 +5,17 @@ CC=g++
 CXXFLAGS+=-I${GTEST_DIR}/include -I./test -I./src -I.
 LDFLAGS+=${GTEST_DIR}/libgtest.a
 
-TESTOBJS=${OBJDIR}/life-unittest.o \
+TESTOBJS=${OBJDIR}/allTests.o \
 		     ${OBJDIR}/life.o \
 		     ${OBJDIR}/graphics.o \
 		     ${OBJDIR}/graphicsMock.o
 
-UNITTESTS=test/life-cell-unittest.cpp \
-          test/life-board-unittest.cpp \
-          test/life-drawing-unittest.cpp
+UNITTESTS=test/cellTest.cpp \
+          test/boardTest.cpp \
+          test/drawingTest.cpp
 
 test : CXXFLAGS+=-DUTEST
-test : ${OBJDIR} life-unittest
+test : ${OBJDIR} allTests
 
 ${OBJDIR}/%.o: %.c
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
@@ -23,10 +23,10 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
-${OBJDIR}/life-unittest.o : ${UNITTESTS} ${OBJDIR}/graphics.o ${OBJDIR}/graphicsMock.o
+${OBJDIR}/allTests.o : ${UNITTESTS} ${OBJDIR}/graphics.o ${OBJDIR}/graphicsMock.o
 
-life-unittest : ${TESTOBJS}
-	$(CC) ${LDFLAGS} ${TESTOBJS} -o life-unittest
+allTests : ${TESTOBJS}
+	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
 
 GAMEOBJS=${OBJDIR}/life.o \
@@ -43,5 +43,5 @@ ${OBJDIR} :
 
 clean :
 	rm -rf obj
-	rm -rf life-unittest
+	rm -rf allTests
 	rm -rf game

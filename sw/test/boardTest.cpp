@@ -1,6 +1,6 @@
 using namespace testing;
 
-class BoardTest : public testing::Test
+class boardTest : public testing::Test
 {
   public:
     board myBoard;
@@ -9,11 +9,11 @@ class BoardTest : public testing::Test
 /////////////////////////////////////////
 /////////////////////////////////////////
 
-TEST_F(BoardTest, BoardInitializedWithOneDeadCell) {
+TEST_F(boardTest, BoardInitializedWithOneDeadCell) {
   EXPECT_FALSE(myBoard.getState(0,0));
 }
 
-TEST_F(BoardTest, BoardInitializedWithAllDeadCells) {
+TEST_F(boardTest, BoardInitializedWithAllDeadCells) {
   for (int column=0; column<board::COLUMN_SIZE; column+=1) {
     for (int row=0; row<board::ROW_SIZE; row+=1) {
       EXPECT_FALSE(myBoard.getState(row,column));
@@ -21,34 +21,34 @@ TEST_F(BoardTest, BoardInitializedWithAllDeadCells) {
   }
 }
 
-TEST_F(BoardTest, BoardWithLivingCell) {
+TEST_F(boardTest, BoardWithLivingCell) {
   myBoard.setLivingCell(0,0);
   EXPECT_TRUE(myBoard.getState(0,0));
 }
 
-TEST_F(BoardTest, KillALivingCell) {
+TEST_F(boardTest, KillALivingCell) {
   myBoard.setLivingCell(0,0);
   myBoard.setDeadCell(0,0);
   EXPECT_FALSE(myBoard.getState(0,0));
 }
 
-TEST_F(BoardTest, BoardWithAnotherLivingCell) {
+TEST_F(boardTest, BoardWithAnotherLivingCell) {
   myBoard.setLivingCell(1,1);
   EXPECT_FALSE(myBoard.getState(0,0));
 }
 
-TEST_F(BoardTest, CornerCellHasThreeDeadNeighbours) {
+TEST_F(boardTest, CornerCellHasThreeDeadNeighbours) {
   EXPECT_EQ(0, myBoard.numLivingNeighbours(0,0));
 }
 
-TEST_F(BoardTest, CornerCellHasThreeLivingNeighbours) {
+TEST_F(boardTest, CornerCellHasThreeLivingNeighbours) {
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(1,0);
   myBoard.setLivingCell(1,1);
   EXPECT_EQ(3, myBoard.numLivingNeighbours(0,0));
 }
 
-TEST_F(BoardTest, TopCellHasFiveLivingNeighbours) {
+TEST_F(boardTest, TopCellHasFiveLivingNeighbours) {
   myBoard.setLivingCell(0,0);
   myBoard.setLivingCell(0,2);
   myBoard.setLivingCell(1,0);
@@ -57,7 +57,7 @@ TEST_F(BoardTest, TopCellHasFiveLivingNeighbours) {
   EXPECT_EQ(5, myBoard.numLivingNeighbours(0,1));
 }
 
-TEST_F(BoardTest, BottomCellHasFiveLivingNeighbours) {
+TEST_F(boardTest, BottomCellHasFiveLivingNeighbours) {
   myBoard.setLivingCell(board::ROW_SIZE-2,0);
   myBoard.setLivingCell(board::ROW_SIZE-2,1);
   myBoard.setLivingCell(board::ROW_SIZE-2,2);
@@ -66,7 +66,7 @@ TEST_F(BoardTest, BottomCellHasFiveLivingNeighbours) {
   EXPECT_EQ(5, myBoard.numLivingNeighbours(board::ROW_SIZE-1,1));
 }
 
-TEST_F(BoardTest, MiddleCellHasEightLivingNeighbours) {
+TEST_F(boardTest, MiddleCellHasEightLivingNeighbours) {
   myBoard.setLivingCell(1,2);
   myBoard.setLivingCell(1,3);
   myBoard.setLivingCell(1,4);
@@ -78,16 +78,16 @@ TEST_F(BoardTest, MiddleCellHasEightLivingNeighbours) {
   EXPECT_EQ(8, myBoard.numLivingNeighbours(2,3));
 }
 
-TEST_F(BoardTest, MiddleCellHasNoLivingNeighbours) {
+TEST_F(boardTest, MiddleCellHasNoLivingNeighbours) {
   EXPECT_EQ(0, myBoard.numLivingNeighbours(2,3));
 }
 
-TEST_F(BoardTest, RefreshedCellWithZeroNeighboursStaysDead) {
+TEST_F(boardTest, RefreshedCellWithZeroNeighboursStaysDead) {
   myBoard.refreshCell(1,1);
   EXPECT_FALSE(myBoard.getState(1,1));
 }
 
-TEST_F(BoardTest, RefreshedCellWithThreeNeighboursIsBorn) {
+TEST_F(boardTest, RefreshedCellWithThreeNeighboursIsBorn) {
   myBoard.setLivingCell(2,2);
   myBoard.setLivingCell(2,3);
   myBoard.setLivingCell(2,4);
@@ -95,14 +95,14 @@ TEST_F(BoardTest, RefreshedCellWithThreeNeighboursIsBorn) {
   EXPECT_FALSE(myBoard.getState(1,1));
 }
 
-TEST_F(BoardTest, RefreshedCellWithOneNeighboursDies) {
+TEST_F(boardTest, RefreshedCellWithOneNeighboursDies) {
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(1,1);
   myBoard.refreshCell(1,1);
   EXPECT_FALSE(myBoard.getState(1,1));
 }
 
-TEST_F(BoardTest, RefreshedCellWithTwoNeighboursLives) {
+TEST_F(boardTest, RefreshedCellWithTwoNeighboursLives) {
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(1,1);
   myBoard.setLivingCell(2,1);
@@ -110,7 +110,7 @@ TEST_F(BoardTest, RefreshedCellWithTwoNeighboursLives) {
   EXPECT_TRUE(myBoard.getState(1,1));
 }
 
-TEST_F(BoardTest, RefreshedCellWithFourNeighboursDies) {
+TEST_F(boardTest, RefreshedCellWithFourNeighboursDies) {
   myBoard.setLivingCell(0,0);
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(0,2);
@@ -120,7 +120,7 @@ TEST_F(BoardTest, RefreshedCellWithFourNeighboursDies) {
   EXPECT_FALSE(myBoard.getState(1,1));
 }
 
-TEST_F(BoardTest, RefreshTestScenario0) {
+TEST_F(boardTest, RefreshTestScenario0) {
   myBoard.setLivingCell(0,0);
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(0,3);
@@ -136,7 +136,7 @@ TEST_F(BoardTest, RefreshTestScenario0) {
   EXPECT_TRUE(myBoard.getState(1,2));
 }
 
-TEST_F(BoardTest, RefreshTestScenario1) {
+TEST_F(boardTest, RefreshTestScenario1) {
   myBoard.setLivingCell(0,0);
   myBoard.setLivingCell(0,1);
   myBoard.setLivingCell(0,2);
@@ -150,7 +150,7 @@ TEST_F(BoardTest, RefreshTestScenario1) {
   EXPECT_FALSE(myBoard.getState(1,2));
 }
 
-TEST_F(BoardTest, RefreshTestScenario2) {
+TEST_F(boardTest, RefreshTestScenario2) {
   myBoard.setLivingCell(1,0);
   myBoard.setLivingCell(1,1);
   myBoard.setLivingCell(1,2);
@@ -160,38 +160,38 @@ TEST_F(BoardTest, RefreshTestScenario2) {
   EXPECT_TRUE(myBoard.getState(2,1));
 }
 
-TEST_F(BoardTest, ZeroIsLegalColumn) {
+TEST_F(boardTest, ZeroIsLegalColumn) {
   EXPECT_TRUE(myBoard.legalColumn(0));
 }
 
-TEST_F(BoardTest, COLUMNSIZEMinusOneIsLegalColumn) {
+TEST_F(boardTest, COLUMNSIZEMinusOneIsLegalColumn) {
   EXPECT_TRUE(myBoard.legalColumn(board::COLUMN_SIZE-1));
 }
 
-TEST_F(BoardTest, MinusOneIsIllegalColumn) {
+TEST_F(boardTest, MinusOneIsIllegalColumn) {
   EXPECT_FALSE(myBoard.legalColumn(-1));
 }
 
-TEST_F(BoardTest, COLUMNSIZEIsIllegalColumn) {
+TEST_F(boardTest, COLUMNSIZEIsIllegalColumn) {
   EXPECT_FALSE(myBoard.legalColumn(board::COLUMN_SIZE));
 }
 
-TEST_F(BoardTest, BoardIsClear) {
+TEST_F(boardTest, BoardIsClear) {
   EXPECT_TRUE(myBoard.isClear());
 }
 
-TEST_F(BoardTest, BoardIsNotClear) {
+TEST_F(boardTest, BoardIsNotClear) {
   myBoard.setLivingCell(1,2);
   EXPECT_FALSE(myBoard.isClear());
 }
 
-TEST_F(BoardTest, CopyConstructor) {
+TEST_F(boardTest, CopyConstructor) {
   myBoard.setLivingCell(1,2);
   board aCopy(myBoard);
   EXPECT_EQ(myBoard.getState(1,2), aCopy.getState(1,2));
 }
 
-TEST_F(BoardTest, CopyConstructorDeepCopy) {
+TEST_F(boardTest, CopyConstructorDeepCopy) {
   myBoard.setLivingCell(1,2);
   board aCopy(myBoard);
   myBoard.setDeadCell(1,2);

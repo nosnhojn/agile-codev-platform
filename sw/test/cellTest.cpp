@@ -1,6 +1,6 @@
 using namespace testing;
 
-class CellLivesOrDiesTest : public testing::Test
+class cellTest : public testing::Test
 {
   public:
     cell myCell;
@@ -10,57 +10,57 @@ class CellLivesOrDiesTest : public testing::Test
     }
 };
 
-TEST_F(CellLivesOrDiesTest, CellIsDead) {
+TEST_F(cellTest, CellIsDead) {
   EXPECT_FALSE(myCell.getState());
 }
 
-TEST_F(CellLivesOrDiesTest, NoNeighboursStaysDead) {
+TEST_F(cellTest, NoNeighboursStaysDead) {
   EXPECT_FALSE(myCell.isAlive(0));
 }
 
-TEST_F(CellLivesOrDiesTest, OneNeighbourStaysDead) {
+TEST_F(cellTest, OneNeighbourStaysDead) {
   EXPECT_FALSE(myCell.isAlive(1));
 }
 
-TEST_F(CellLivesOrDiesTest, TwoNeighbourStaysDead) {
+TEST_F(cellTest, TwoNeighbourStaysDead) {
   EXPECT_FALSE(myCell.isAlive(2));
 }
 
-TEST_F(CellLivesOrDiesTest, ThreeNeighbourIsBorn) {
+TEST_F(cellTest, ThreeNeighbourIsBorn) {
   EXPECT_TRUE(myCell.isAlive(3));
 }
 
-TEST_F(CellLivesOrDiesTest, FourNeighbourIsDead) {
+TEST_F(cellTest, FourNeighbourIsDead) {
   EXPECT_FALSE(myCell.isAlive(4));
 }
 
-TEST_F(CellLivesOrDiesTest, OneNeighbourDies) {
+TEST_F(cellTest, OneNeighbourDies) {
   makeLiveCell();
   EXPECT_FALSE(myCell.isAlive(1));
 }
 
-TEST_F(CellLivesOrDiesTest, TwoNeighbourStaysAlive) {
+TEST_F(cellTest, TwoNeighbourStaysAlive) {
   makeLiveCell();
   EXPECT_TRUE(myCell.isAlive(2));
 }
 
-TEST_F(CellLivesOrDiesTest, ThreeNeighbourStaysAlive) {
+TEST_F(cellTest, ThreeNeighbourStaysAlive) {
   makeLiveCell();
   EXPECT_TRUE(myCell.isAlive(3));
 }
 
-TEST_F(CellLivesOrDiesTest, FourNeighbourStaysDies) {
+TEST_F(cellTest, FourNeighbourStaysDies) {
   makeLiveCell();
   EXPECT_FALSE(myCell.isAlive(4));
 }
 
-TEST_F(CellLivesOrDiesTest, CopyConstructor) {
+TEST_F(cellTest, CopyConstructor) {
   myCell.setState(true);
   cell aCopy(myCell);
   EXPECT_EQ(aCopy.getState(), myCell.getState());
 }
 
-TEST_F(CellLivesOrDiesTest, CopyConstructorNewObject) {
+TEST_F(cellTest, CopyConstructorNewObject) {
   cell aCopy(myCell);
   myCell.setState(true);
   EXPECT_TRUE(aCopy.getState() != myCell.getState());
