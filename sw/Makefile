@@ -2,21 +2,24 @@ OBJDIR = obj
 VPATH = ./src:./test
 
 CC=g++
-CXXFLAGS+=-I${GTEST_DIR}/include -I./test -I./src -I.
-LDFLAGS+=${GTEST_DIR}/libgtest.a
+CXXFLAGS+=-I${GTEST_DIR}/include \
+          -I${GMOCK_DIR}/include \
+					-I./test \
+					-I./src \
+					-I.
+					
+LDFLAGS+=${GTEST_DIR}/libgtest.a \
+				 ${GMOCK_DIR}/libgmock.a
 
-TESTOBJS=${OBJDIR}/allTests.o \
-		     ${OBJDIR}/Cell.o \
+
+TESTOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/Board.o \
 		     ${OBJDIR}/Drawing.o \
 		     ${OBJDIR}/Display.o \
-		     ${OBJDIR}/DisplayMock.o
+				 ${OBJDIR}/DisplayMock.o \
+		     ${OBJDIR}/allTests.o
 
-UNITTESTS=test/CellTest.cpp \
-          test/BoardTest.cpp \
-          test/DrawingTest.cpp
 
-test : CXXFLAGS+=-DUTEST
 test : ${OBJDIR} allTests
 
 ${OBJDIR}/%.o: %.c
@@ -25,8 +28,6 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
-${OBJDIR}/allTests.o : ${UNITTESTS} ${OBJDIR}/Display.o ${OBJDIR}/DisplayMock.o
-
 allTests : ${TESTOBJS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
@@ -34,8 +35,8 @@ allTests : ${TESTOBJS}
 GAMEOBJS=${OBJDIR}/Cell.o \
          ${OBJDIR}/Board.o \
          ${OBJDIR}/Drawing.o \
-		     ${OBJDIR}/DisplayNCurses.o \
 		     ${OBJDIR}/Display.o \
+		     ${OBJDIR}/DisplayNCurses.o \
 				 ${OBJDIR}/game.o
 
 game : LDFLAGS+=-lncurses

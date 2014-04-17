@@ -6,56 +6,64 @@ class DrawingTest : public testing::Test
     Board board;
     Drawing * drawing;
     string checkRow;
-    DisplayMock displayMock;
+    string emptyRow;
+    DisplayMock display;
 
-    DrawingTest() : checkRow(string(Board::COLUMN_SIZE, ' ') + '\n')
+    ExpectationSet req;
+
+    DrawingTest() : checkRow("^" + string(Board::COLUMN_SIZE, ' ') + "\n"),
+                    emptyRow("^" + string(Board::COLUMN_SIZE, ' ') + "\n")
     {
-      drawing = new Drawing(&board, &displayMock);
+      drawing = new Drawing(&board, &display);
     }
 
     ~DrawingTest()
     {
-      displayMock.ncursesReset();
     }
 
     void newLivingCell(int row, int column)
     {
-      checkRow[column] = 'X';
+      checkRow[column+1] = 'X';
       board.setLivingCell(row, column);
     }
 };
 
 TEST_F(DrawingTest, ScreenInit) {
-  EXPECT_TRUE(displayMock.initScrFlag());
+  EXPECT_CALL(display, _initscr()).Times(1);
+
+  Drawing d(&board, &display);
 }
 
 TEST_F(DrawingTest, ScreenRefreshed) {
+  EXPECT_CALL(display, _refresh()).Times(1);
+
   drawing->refreshDrawing();
-  EXPECT_TRUE(displayMock.refreshFlag());
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0) {
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(50);
+
   drawing->refreshDrawing();
-  EXPECT_EQ(checkRow, displayMock.getScreenRowNumber(0));
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
   newLivingCell(0,0);
+
+  req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(49).After(req);
+
   drawing->refreshDrawing();
-  EXPECT_EQ(checkRow, displayMock.getScreenRowNumber(0));
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
   for (int c=0; c<Board::COLUMN_SIZE; c+=1) {
     newLivingCell(0,c);
   }
-  drawing->refreshDrawing();
-  EXPECT_EQ(checkRow, displayMock.getScreenRowNumber(0));
-}
 
-TEST_F(DrawingTest, ScreenRefreshedRowN) {
+  req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(49).After(req);
+
   drawing->refreshDrawing();
-  EXPECT_EQ(checkRow, displayMock.getScreenRowNumber(Board::ROW_SIZE-1));
 }
 
 TEST_F(DrawingTest, ScreenStartsUnInitialized) {
@@ -63,12 +71,15 @@ TEST_F(DrawingTest, ScreenStartsUnInitialized) {
 }
 
 TEST_F(DrawingTest, ScreenWaitForPromptAtPos) {
-  EXPECT_TRUE(displayMock.moveRowCoord() == Board::ROW_SIZE);
+  EXPECT_CALL(display, _move(50,0)).Times(1);
+
+  Drawing d(&board, &display);
 }
 
 TEST_F(DrawingTest, ScreenWaitForPrompt) {
+  EXPECT_CALL(display, _getch()).Times(1);
+
   drawing->play(1);
-  EXPECT_TRUE(displayMock.getchFlag());
 }
 
 TEST_F(DrawingTest, InitializeBoard) {
@@ -100,8 +111,9 @@ TEST_F(DrawingTest, PlayFirstBoardRefresh) {
 }
 
 TEST_F(DrawingTest, ScreenCleared) {
+  EXPECT_CALL(display, _clear()).Times(1);
+
   drawing->play(1);
-  EXPECT_TRUE(displayMock.clearFlag());
 }
 
 TEST_F(DrawingTest, PlaySecondBoardRefresh) {
@@ -126,6 +138,7 @@ TEST_F(DrawingTest, PlaySecondBoardRefresh) {
 }
 
 TEST_F(DrawingTest, PlayDrawingRefresh) {
+  EXPECT_CALL(display, _refresh()).Times(1);
+
   drawing->play(1);
-  EXPECT_TRUE(displayMock.refreshFlag());
 }
