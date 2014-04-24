@@ -68,6 +68,9 @@ class DisplayXil
     // Don't do anything with _move
     //------------------------------
     virtual void _move(int,int);
+
+  private:
+    DisplayXilDriver * m_driver;
 };
 
 #endif

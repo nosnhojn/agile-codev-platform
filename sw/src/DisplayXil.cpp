@@ -4,12 +4,13 @@ DisplayXil::DisplayXil()
 {
 }
 
-DisplayXil::DisplayXil(DisplayXilDriver * d)
+DisplayXil::DisplayXil(DisplayXilDriver * d) : m_driver(d)
 {
 }
 
 void DisplayXil::_initscr()
 {
+  m_driver->initHw();
 }
 
 void DisplayXil::_clear()

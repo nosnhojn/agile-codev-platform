@@ -3,10 +3,11 @@ using namespace testing;
 class DisplayXilDriverTest : public testing::Test
 {
   public:
-    DisplayXilDriver display;
+    DisplayXilDriver * driver;
 
     DisplayXilDriverTest()
     {
+      driver = new DisplayXilDriver();
     }
 
     ~DisplayXilDriverTest()
@@ -14,8 +15,14 @@ class DisplayXilDriverTest : public testing::Test
     }
 };
 
-//TEST_F(DisplayXilDriverTest, ScreenInit) {
-  //EXPECT_CALL(display, _initscr()).Times(1);
+TEST_F(DisplayXilDriverTest, getWidth) {
+  EXPECT_EQ(driver->getWidth(), 1920);
+}
 
-  //Drawing d(&board, &display);
-//}
+TEST_F(DisplayXilDriverTest, getHeight) {
+  EXPECT_EQ(driver->getHeight(), 1080);
+}
+
+TEST_F(DisplayXilDriverTest, getResolution) {
+  EXPECT_EQ(driver->getResolution(), VIDEO_RESOLUTION_1080P);
+}

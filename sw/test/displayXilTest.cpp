@@ -13,11 +13,12 @@ class DisplayXilTest : public testing::Test
 
     ~DisplayXilTest()
     {
+      delete display;
     }
 };
 
-//TEST_F(DisplayXilTest, ScreenInit) {
-  //EXPECT_CALL(display, _initscr()).Times(1);
+TEST_F(DisplayXilTest, HwInit) {
+  EXPECT_CALL(driverMock, initHw()).Times(1);
 
-  //Drawing d(&board, &display);
-//}
+  display->_initscr();
+}
