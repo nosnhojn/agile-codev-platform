@@ -3,10 +3,10 @@
 
 using namespace std;
 
-class Display
+class DisplayXil
 {
   public:
-    Display();
+    DisplayXil();
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208

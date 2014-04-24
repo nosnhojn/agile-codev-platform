@@ -17,11 +17,13 @@ TESTOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/Drawing.o \
 		     ${OBJDIR}/Display.o \
 				 ${OBJDIR}/DisplayMock.o \
+				 ${OBJDIR}/DisplayXil.o \
 		     ${OBJDIR}/allTests.o
 
 UNITTESTS=test/boardTest.cpp \
 				  test/cellTest.cpp \
-				  test/drawingTest.cpp
+				  test/drawingTest.cpp \
+				  test/displayXilTest.cpp
 
 
 test : ${OBJDIR} allTests
