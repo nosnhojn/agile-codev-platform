@@ -14,8 +14,8 @@ class DisplayXilTest : public testing::Test
     }
 };
 
-TEST_F(DisplayXilTest, ScreenInit) {
+//TEST_F(DisplayXilTest, ScreenInit) {
   //EXPECT_CALL(display, _initscr()).Times(1);
 
   //Drawing d(&board, &display);
-}
+//}
