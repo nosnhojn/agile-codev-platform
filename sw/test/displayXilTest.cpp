@@ -3,10 +3,12 @@ using namespace testing;
 class DisplayXilTest : public testing::Test
 {
   public:
-    DisplayXil display;
+    DisplayXilDriverMock driverMock;
+    DisplayXil * display;
 
     DisplayXilTest()
     {
+      display = new DisplayXil(&driverMock);
     }
 
     ~DisplayXilTest()

@@ -1,12 +1,15 @@
 #ifndef __DISPLAY_XIL_CPP__
 #define __DISPLAY_XIL_CPP__
 
+#include "DisplayXilDriver.h"
+
 using namespace std;
 
 class DisplayXil
 {
   public:
     DisplayXil();
+    DisplayXil(DisplayXilDriver *);
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208

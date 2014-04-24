@@ -11,6 +11,7 @@ using namespace std;
 #include "DisplayMock.h"
 #include "DisplayXil.h"
 #include "DisplayXilDriver.h"
+#include "DisplayXilDriverMock.h"
 
 #include "cellTest.cpp"
 #include "boardTest.cpp"
