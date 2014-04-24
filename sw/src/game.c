@@ -8,12 +8,19 @@ int main()
   DisplayNCurses g;
   Drawing d(&b, &g);
  
-  for (int i=20; i<51; i+=1) {
-    d.initialCell(10,i);
-  }
-  for (int i=5; i<=25; i+=1) {
-    d.initialCell(i,25);
-  }
+  d.initialCell(20,20);
+  d.initialCell(20,21);
+  d.initialCell(20,22);
+  d.initialCell(20,24);
+  d.initialCell(21,20);
+  d.initialCell(22,23);
+  d.initialCell(22,24);
+  d.initialCell(23,21);
+  d.initialCell(23,22);
+  d.initialCell(23,24);
+  d.initialCell(24,20);
+  d.initialCell(24,22);
+  d.initialCell(24,24);
  
   d.play(200);
 }

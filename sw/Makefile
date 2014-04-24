@@ -1,11 +1,12 @@
 OBJDIR = obj
-VPATH = ./src:./test
+VPATH = ./src:./test:./mock
 
 CC=g++
 CXXFLAGS+=-I${GTEST_DIR}/include \
           -I${GMOCK_DIR}/include \
 					-I./test \
 					-I./src \
+					-I./mock \
 					-I.
 					
 LDFLAGS+=${GTEST_DIR}/libgtest.a \
