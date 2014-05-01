@@ -3,7 +3,9 @@ VPATH = ./src:./test:./mock
 XIL_INC = ./include
 
 CC=g++
-CXXFLAGS+=-isystem ../gtest/include -isystem ../include -g -Wall -Wextra -pthread \
+CXXFLAGS+=-isystem ${GTEST_DIR}/include \
+					-isystem ${GMOCK_DIR}/include \
+					-g -Wall -Wextra -pthread \
 					-I${GTEST_DIR}/include \
           -I${GMOCK_DIR}/include \
 					-I./test \
@@ -12,7 +14,9 @@ CXXFLAGS+=-isystem ../gtest/include -isystem ../include -g -Wall -Wextra -pthrea
 					-I./${XIL_INC} \
 					-I.
 					
-LDFLAGS+=${GTEST_DIR}/libgtest.a \
+LDFLAGS+=-isystem ${GTEST_DIR}/include \
+  			 -isystem ${GMOCK_DIR}/include \
+         ${GTEST_DIR}/libgtest.a \
 				 ${GMOCK_DIR}/libgmock.a
 
 
