@@ -3,10 +3,7 @@ VPATH = ./src:./test:./mock
 XIL_INC = ./include
 
 CC=g++
-CXXFLAGS+=-isystem ${GTEST_DIR}/include \
-					-isystem ${GMOCK_DIR}/include \
-					-g -Wall -Wextra -pthread \
-					-I${GTEST_DIR}/include \
+CXXFLAGS+=-I${GTEST_DIR}/include \
           -I${GMOCK_DIR}/include \
 					-I./test \
 					-I./src \
@@ -14,9 +11,7 @@ CXXFLAGS+=-isystem ${GTEST_DIR}/include \
 					-I./${XIL_INC} \
 					-I.
 					
-LDFLAGS+=-isystem ${GTEST_DIR}/include \
-  			 -isystem ${GMOCK_DIR}/include \
-         ${GTEST_DIR}/libgtest.a \
+LDFLAGS+=${GTEST_DIR}/libgtest.a \
 				 ${GMOCK_DIR}/libgmock.a
 
 
@@ -60,10 +55,21 @@ game : LDFLAGS+=-lncurses
 game : ${OBJDIR} ${GAMEOBJS}
 	$(CC) ${LDFLAGS} ${GAMEOBJS} -o game
 
+
+XILGAMEOBJS=${OBJDIR}/Cell.o \
+        		${OBJDIR}/Board.o \
+        		${OBJDIR}/Drawing.o \
+		    		${OBJDIR}/Display.o \
+		    		${OBJDIR}/DisplayDummy.o \
+						${OBJDIR}/xilgame.o
+
+xilgame : ${OBJDIR} ${XILGAMEOBJS}
+	$(CC) ${XILGAMEOBJS} -o xilgame
+
 ${OBJDIR} :
 	mkdir ${OBJDIR}
 
 clean :
 	rm -rf obj
 	rm -rf allTests
-	rm -rf game
+	rm -rf game xilgame
