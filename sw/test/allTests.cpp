@@ -10,14 +10,11 @@ using namespace std;
 #include "Drawing.h"
 #include "DisplayMock.h"
 #include "DisplayXil.h"
-#include "DisplayXilDriver.h"
-#include "DisplayXilDriverMock.h"
 
 #include "cellTest.cpp"
 #include "boardTest.cpp"
 #include "drawingTest.cpp"
 #include "displayXilTest.cpp"
-#include "displayXilDriverTest.cpp"
 
 /////////////////////////////////////////
 /////////////////////////////////////////
