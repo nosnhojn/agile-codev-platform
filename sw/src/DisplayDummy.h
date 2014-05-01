@@ -13,7 +13,7 @@ class DisplayDummy : public Display
   public:
     DisplayDummy();
 
-    void _initscr();
+    int  _initscr();
     void _clear();
     void _endwin();
     void _refresh();

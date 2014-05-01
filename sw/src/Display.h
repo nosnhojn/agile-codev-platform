@@ -11,7 +11,7 @@ class Display
   public:
     Display();
 
-    virtual void _initscr() =0;
+    virtual int  _initscr() =0;
     virtual void _clear() =0;
     virtual void _endwin() =0;
     virtual void _refresh() =0;

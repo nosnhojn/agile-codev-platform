@@ -9,7 +9,7 @@ using namespace std;
 class IicCtrlMock : public IicCtrl
 {
   public:
-    MOCK_METHOD0(init, void());
+    MOCK_METHOD0(init, int());
 };
 
 #endif

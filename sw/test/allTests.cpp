@@ -16,6 +16,7 @@ using namespace std;
 #include "boardTest.cpp"
 #include "drawingTest.cpp"
 #include "displayXilTest.cpp"
+#include "iicCtrlTest.cpp"
 
 /////////////////////////////////////////
 /////////////////////////////////////////

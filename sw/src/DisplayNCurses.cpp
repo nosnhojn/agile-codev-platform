@@ -4,7 +4,7 @@ DisplayNCurses::DisplayNCurses()
 {
 }
 
-void DisplayNCurses::_initscr()
+int DisplayNCurses::_initscr()
 {
   initscr();
 }

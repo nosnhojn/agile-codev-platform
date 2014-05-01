@@ -14,7 +14,7 @@ class DisplayNCurses : public Display
   public:
     DisplayNCurses();
 
-    void _initscr();
+    int  _initscr();
     void _clear();
     void _endwin();
     void _refresh();

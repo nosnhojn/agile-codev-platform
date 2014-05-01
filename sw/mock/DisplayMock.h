@@ -11,7 +11,7 @@ using namespace std;
 class DisplayMock : public Display
 {
   public:
-    MOCK_METHOD0(_initscr, void());
+    MOCK_METHOD0(_initscr, int());
     MOCK_METHOD0(_clear, void());
     MOCK_METHOD0(_endwin, void());
     MOCK_METHOD0(_refresh, void());

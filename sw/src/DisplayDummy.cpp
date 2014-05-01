@@ -4,7 +4,7 @@ DisplayDummy::DisplayDummy()
 {
 }
 
-void DisplayDummy::_initscr()
+int DisplayDummy::_initscr()
 {
 }
 
