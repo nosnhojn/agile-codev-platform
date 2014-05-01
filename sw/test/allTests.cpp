@@ -10,6 +10,7 @@ using namespace std;
 #include "Drawing.h"
 #include "DisplayMock.h"
 #include "DisplayXil.h"
+#include "IicCtrlMock.h"
 
 #include "cellTest.cpp"
 #include "boardTest.cpp"

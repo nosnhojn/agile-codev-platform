@@ -1,6 +1,7 @@
 #ifndef __DISPLAY_XIL_CPP__
 #define __DISPLAY_XIL_CPP__
 
+#include "IicCtrl.h"
 #include "xbasic_types.h"
 
 #define VIDEO_RESOLUTION_1080P 7
@@ -22,9 +23,12 @@ class DisplayXil
     const Xuint32 m_HdmiVdmaDeviceId;
     const Xuint32 m_HdmiDisplayMemBaseAddr;
 
+    IicCtrl * m_iicCtrl;
+
 
   public:
     DisplayXil();
+    DisplayXil( IicCtrl * );
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208

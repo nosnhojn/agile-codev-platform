@@ -21,6 +21,8 @@ TESTOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/Display.o \
 				 ${OBJDIR}/DisplayMock.o \
 				 ${OBJDIR}/DisplayXil.o \
+				 ${OBJDIR}/IicCtrl.o \
+				 ${OBJDIR}/IicCtrlMock.o \
 		     ${OBJDIR}/allTests.o
 
 UNITTESTS=test/boardTest.cpp \
