@@ -11,7 +11,7 @@ class IicCtrlTest : public testing::Test
       iicCtrl = new IicCtrl();
       xdMock = initXdriverMock();
       ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET))
-          .WillByDefault(Return(XIIC_SR_RX_FIFO_EMPTY_MASK));
+          .WillByDefault(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
     }
 
     ~IicCtrlTest()
@@ -39,11 +39,29 @@ TEST_F(IicCtrlTest, dynamicInitFailure) {
 }
 
 TEST_F(IicCtrlTest, InitWithRxStatusFifosNonEmpty) {
-  InSequence dummy;
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(XIIC_SR_TX_FIFO_EMPTY_MASK))
+                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
 
-  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(0))
-                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK));
+  iicCtrl->init();
+}
 
+TEST_F(IicCtrlTest, InitWithTxStatusFifosNonEmpty) {
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK))
+                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
+
+  iicCtrl->init();
+}
+
+TEST_F(IicCtrlTest, InitWithFifoStatusPolling) {
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK))
+                                                                                   .WillOnce(Return(XIIC_SR_TX_FIFO_EMPTY_MASK))
+                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
+  iicCtrl->init();
+}
+
+TEST_F(IicCtrlTest, InitWithBusy) {
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK | XIIC_SR_BUS_BUSY_MASK))
+                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
   iicCtrl->init();
 }
 
