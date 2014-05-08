@@ -19,7 +19,7 @@ class IicCtrlTest : public testing::Test
 };
 
 TEST_F(IicCtrlTest, dynamicInit) {
-  EXPECT_CALL(*xdMock, XIic_DynInit(20)).Times(1);
+  EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).Times(1);
 
   iicCtrl->init();
 }

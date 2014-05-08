@@ -194,6 +194,5 @@ unsigned XIic_DynSend(u32 BaseAddress, u16 Address, u8 *BufferPtr, u8 ByteCount,
 
 int XIic_DynInit(u32 BaseAddress)
 {
-  cout << "BIG JOKES" << endl;
   return xdMock->XIic_DynInit(BaseAddress);
 }

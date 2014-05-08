@@ -2,6 +2,8 @@
 #define __IIC_CTRL_CPP__
 
 #include "xbasic_types.h"
+#include "xstatus.h"
+#include "xiic_l.h"
 
 #define VIDEO_RESOLUTION_1080P 7
 #define HDMI_I2C_BASE_ADDR 0

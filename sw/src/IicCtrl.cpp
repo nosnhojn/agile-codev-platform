@@ -13,6 +13,9 @@ IicCtrl::IicCtrl() :
 
 int IicCtrl::init()
 {
+  XStatus Status;
+
+  Status = XIic_DynInit(getHdmiI2cBaseAddr());
 }
 
 Xuint32 IicCtrl::getWidth()
