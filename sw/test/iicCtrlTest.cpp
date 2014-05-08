@@ -24,6 +24,18 @@ TEST_F(IicCtrlTest, dynamicInit) {
   iicCtrl->init();
 }
 
+TEST_F(IicCtrlTest, dynamicInitSuccess) {
+  EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).WillOnce(Return(XST_SUCCESS));
+
+  EXPECT_FALSE(iicCtrl->init());
+}
+
+TEST_F(IicCtrlTest, dynamicInitFailure) {
+  EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).WillOnce(Return(-1));
+
+  EXPECT_FALSE(iicCtrl->init());
+}
+
 TEST_F(IicCtrlTest, getWidth) {
   EXPECT_EQ(iicCtrl->getWidth(), 1920);
 }

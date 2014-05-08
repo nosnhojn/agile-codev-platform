@@ -1,4 +1,5 @@
 #include "IicCtrl.h"
+#include <iostream>
 
 IicCtrl::IicCtrl() :
   m_width(1920),
@@ -16,6 +17,10 @@ int IicCtrl::init()
   XStatus Status;
 
   Status = XIic_DynInit(getHdmiI2cBaseAddr());
+  if(Status != XST_SUCCESS) {
+    return 0;
+  }
+
 }
 
 Xuint32 IicCtrl::getWidth()
