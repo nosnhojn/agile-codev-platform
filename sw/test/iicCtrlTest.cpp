@@ -10,6 +10,8 @@ class IicCtrlTest : public testing::Test
     {
       iicCtrl = new IicCtrl();
       xdMock = initXdriverMock();
+      ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET))
+          .WillByDefault(Return(XIIC_SR_RX_FIFO_EMPTY_MASK));
     }
 
     ~IicCtrlTest()
@@ -27,13 +29,22 @@ TEST_F(IicCtrlTest, dynamicInit) {
 TEST_F(IicCtrlTest, dynamicInitSuccess) {
   EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).WillOnce(Return(XST_SUCCESS));
 
-  EXPECT_FALSE(iicCtrl->init());
+  EXPECT_TRUE(iicCtrl->init());
 }
 
 TEST_F(IicCtrlTest, dynamicInitFailure) {
-  EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).WillOnce(Return(-1));
+  EXPECT_CALL(*xdMock, XIic_DynInit(iicCtrl->getHdmiI2cBaseAddr())).WillOnce(Return(XST_FAILURE));
 
   EXPECT_FALSE(iicCtrl->init());
+}
+
+TEST_F(IicCtrlTest, InitWithRxStatusFifosNonEmpty) {
+  InSequence dummy;
+
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(0))
+                                                                                   .WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK));
+
+  iicCtrl->init();
 }
 
 TEST_F(IicCtrlTest, getWidth) {

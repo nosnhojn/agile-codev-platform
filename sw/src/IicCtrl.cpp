@@ -21,6 +21,21 @@ int IicCtrl::init()
     return 0;
   }
 
+// do {
+//   StatusReg = Xil_In8(getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET) & XIIC_SR_RX_FIFO_EMPTY_MASK;
+// } while (StatusReg != XIIC_SR_RX_FIFO_EMPTY_MASK);
+  while (!iicReady());
+
+  return 1;
+}
+
+bool IicCtrl::iicReady()
+{
+  u8 StatusReg;
+
+  StatusReg = Xil_In8(getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET) & XIIC_SR_RX_FIFO_EMPTY_MASK;
+
+  return (StatusReg == XIIC_SR_RX_FIFO_EMPTY_MASK);
 }
 
 Xuint32 IicCtrl::getWidth()
@@ -38,7 +53,7 @@ int IicCtrl::getResolution()
   return m_resolution;
 }
 
-Xuint32 IicCtrl::getHdmiI2cBaseAddr()
+u32 IicCtrl::getHdmiI2cBaseAddr()
 {
   return m_HdmiI2cBaseAddr;
 }

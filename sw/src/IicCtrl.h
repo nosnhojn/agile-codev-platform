@@ -19,10 +19,12 @@ class IicCtrl
     const Xuint32 m_width;
     const Xuint32 m_height;
     int           m_resolution;
-    const Xuint32 m_HdmiI2cBaseAddr;
+    const u32 m_HdmiI2cBaseAddr;
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
     const Xuint32 m_HdmiDisplayMemBaseAddr;
+
+    bool iicReady(void);
 
   public:
     IicCtrl();
@@ -32,7 +34,7 @@ class IicCtrl
     Xuint32 getWidth();
     Xuint32 getHeight();
     int     getResolution();
-    Xuint32 getHdmiI2cBaseAddr();
+    u32 getHdmiI2cBaseAddr();
     Xuint32 getHdmiVtcDeviceId();
     Xuint32 getHdmiVdmaDeviceId();
     Xuint32 getHdmiDisplayMemBaseAddr();

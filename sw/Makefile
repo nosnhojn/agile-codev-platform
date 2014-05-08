@@ -29,8 +29,8 @@ TESTOBJS=${OBJDIR}/Cell.o \
 UNITTESTS=test/boardTest.cpp \
 				  test/cellTest.cpp \
 				  test/drawingTest.cpp \
-				  test/displayXilTest.cpp
-
+				  test/displayXilTest.cpp \
+				  test/allTests.cpp
 
 test : ${OBJDIR} allTests
 

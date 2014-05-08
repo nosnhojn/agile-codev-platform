@@ -196,3 +196,53 @@ int XIic_DynInit(u32 BaseAddress)
 {
   return xdMock->XIic_DynInit(BaseAddress);
 }
+
+u8 Xil_In8(u32 InAddress)
+{
+  return xdMock->Xil_In8(InAddress);
+}
+
+u16 Xil_In16(u32 InAddress)
+{
+  return xdMock->Xil_In16(InAddress);
+}
+
+u32 Xil_In32(u32 InAddress)
+{
+  return xdMock->Xil_In32(InAddress);
+}
+
+void Xil_Out8(u32 OutAddress, u8 Value)
+{
+  xdMock->Xil_Out8(OutAddress,Value);
+}
+
+void Xil_Out16(u32 OutAddress, u16 Value)
+{
+  xdMock->Xil_Out16(OutAddress,Value);
+}
+
+void Xil_Out32(u32 OutAddress, u32 Value)
+{
+  xdMock->Xil_Out32(OutAddress,Value);
+}
+
+u16 Xil_In16LE(u32 Addr)
+{
+  return xdMock->Xil_In16LE(Addr);
+}
+
+u32 Xil_In32LE(u32 Addr)
+{
+  return xdMock->Xil_In32LE(Addr);
+}
+
+void Xil_Out16LE(u32 Addr, u16 Value)
+{
+  xdMock->Xil_Out16LE(Addr, Value);
+}
+
+void Xil_Out32LE(u32 Addr, u32 Value)
+{
+  xdMock->Xil_Out32LE(Addr, Value);
+}

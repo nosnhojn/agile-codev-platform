@@ -49,8 +49,16 @@ class xdriverMock
     MOCK_METHOD4(XIic_DynRecv, unsigned(u32, u8, u8 *, u8));
     MOCK_METHOD5(XIic_DynSend, unsigned(u32, u16, u8 *, u8, u8));
     MOCK_METHOD1(XIic_DynInit, int(u32));
-
-    void gumbo() { cout << "BOZO" << endl; }
+    MOCK_METHOD1(Xil_In8, u8(u32));
+    MOCK_METHOD1(Xil_In16, u16(u32));
+    MOCK_METHOD1(Xil_In32, u32(u32));
+    MOCK_METHOD2(Xil_Out8, void(u32, u8));
+    MOCK_METHOD2(Xil_Out16, void(u32, u16));
+    MOCK_METHOD2(Xil_Out32, void(u32, u32));
+    MOCK_METHOD1(Xil_In16LE, u16(u32));
+    MOCK_METHOD1(Xil_In32LE, u32(u32));
+    MOCK_METHOD2(Xil_Out16LE, void(u32, u16));
+    MOCK_METHOD2(Xil_Out32LE, void(u32, u32));
 };
 
 extern xdriverMock * initXdriverMock();
