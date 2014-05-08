@@ -20,6 +20,9 @@ TESTOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/Drawing.o \
 		     ${OBJDIR}/Display.o \
 				 ${OBJDIR}/DisplayMock.o \
+			   ${OBJDIR}/xbasic_types.o \
+			   ${OBJDIR}/xiic.o \
+			   ${OBJDIR}/xiic_l.o \
 				 ${OBJDIR}/DisplayXil.o \
 				 ${OBJDIR}/IicCtrl.o \
 				 ${OBJDIR}/IicCtrlMock.o \
