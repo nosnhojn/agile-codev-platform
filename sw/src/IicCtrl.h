@@ -11,6 +11,8 @@
 #define HDMI_VDMA_DEVICE_ID 2
 #define HDMI_DISPLAY_MEM_BASE_ADDR 3
 
+#define IIC_STATUS_TIMEOUT 10000
+
 using namespace std;
 
 class IicCtrl

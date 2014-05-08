@@ -21,7 +21,9 @@ int IicCtrl::init()
     return 0;
   }
 
-  while (!iicReady());
+  if (!iicReady()) {
+    return 0;
+  }
 
   return 1;
 }
@@ -30,10 +32,15 @@ int IicCtrl::init()
 bool IicCtrl::iicReady()
 {
   u8 StatusReg;
+  int timeout = IIC_STATUS_TIMEOUT;
 
-  StatusReg = Xil_In8(getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET) & (XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK | XIIC_SR_BUS_BUSY_MASK);
+  do {
+    StatusReg = Xil_In8(getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET) & (XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK | XIIC_SR_BUS_BUSY_MASK);
+  }
+  while (StatusReg != (XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK) && --timeout > 0);
 
-  return (StatusReg == (XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
+  if (timeout <= 0) return 0;
+  else return 1;
 }
 
 Xuint32 IicCtrl::getWidth()

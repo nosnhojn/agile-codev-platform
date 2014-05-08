@@ -65,6 +65,31 @@ TEST_F(IicCtrlTest, InitWithBusy) {
   iicCtrl->init();
 }
 
+TEST_F(IicCtrlTest, InitTimeout) {
+  ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillByDefault(Return(0));
+
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).Times(IIC_STATUS_TIMEOUT);
+
+  iicCtrl->init();
+}
+
+TEST_F(IicCtrlTest, InitFailOnTimeout) {
+  ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillByDefault(Return(0));
+
+  EXPECT_FALSE(iicCtrl->init());
+}
+
+TEST_F(IicCtrlTest, InitSuccessOnNearTimeout) {
+  InSequence dummy;
+
+  ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillByDefault(Return(0));
+
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).Times(IIC_STATUS_TIMEOUT-1);
+  EXPECT_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
+
+  EXPECT_TRUE(iicCtrl->init());
+}
+
 TEST_F(IicCtrlTest, getWidth) {
   EXPECT_EQ(iicCtrl->getWidth(), 1920);
 }
