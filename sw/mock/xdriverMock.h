@@ -1,10 +1,13 @@
 #ifndef __XDRIVER_MOCK_H__
 #define __XDRIVER_MOCK_H__
 
+#include <iostream>
 #include "xbasic_types.h"
 #include "xiic.h"
 #include "xiic_l.h"
 #include "gmock/gmock.h"
+
+using namespace std;
 
 class xdriverMock
 {
@@ -46,8 +49,11 @@ class xdriverMock
     MOCK_METHOD4(XIic_DynRecv, unsigned(u32, u8, u8 *, u8));
     MOCK_METHOD5(XIic_DynSend, unsigned(u32, u16, u8 *, u8, u8));
     MOCK_METHOD1(XIic_DynInit, int(u32));
+
+    void gumbo() { cout << "BOZO" << endl; }
 };
 
-xdriverMock xdMock;
+extern xdriverMock * initXdriverMock();
+extern xdriverMock * destroyXdriverMock();
 
 #endif

@@ -4,16 +4,25 @@ class IicCtrlTest : public testing::Test
 {
   public:
     IicCtrl * iicCtrl;
+    xdriverMock * xdMock;
 
     IicCtrlTest()
     {
       iicCtrl = new IicCtrl();
+      xdMock = initXdriverMock();
     }
 
     ~IicCtrlTest()
     {
+      destroyXdriverMock();
     }
 };
+
+TEST_F(IicCtrlTest, dynamicInit) {
+  EXPECT_CALL(*xdMock, XIic_DynInit(20)).Times(1);
+
+  iicCtrl->init();
+}
 
 TEST_F(IicCtrlTest, getWidth) {
   EXPECT_EQ(iicCtrl->getWidth(), 1920);
