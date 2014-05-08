@@ -40,6 +40,7 @@ ${OBJDIR}/%.o: %.c
 ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
+allTests : CXXFLAGS+=-DREFRESH_RATE=1
 allTests : ${TESTOBJS} ${UNITTESTS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
@@ -51,6 +52,7 @@ GAMEOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/DisplayNCurses.o \
 				 ${OBJDIR}/game.o
 
+game : CXXFLAGS+=-DREFRESH_RATE=500000
 game : LDFLAGS+=-lncurses
 game : ${OBJDIR} ${GAMEOBJS}
 	$(CC) ${LDFLAGS} ${GAMEOBJS} -o game
