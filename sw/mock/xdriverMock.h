@@ -61,7 +61,7 @@ class xdriverMock
     MOCK_METHOD2(Xil_Out32LE, void(u32, u32));
 };
 
-extern xdriverMock * initXdriverMock();
+extern xdriverMock * getXdriverMock();
 extern xdriverMock * destroyXdriverMock();
 
 #endif

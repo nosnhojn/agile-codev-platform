@@ -9,7 +9,7 @@ class IicCtrlTest : public testing::Test
     IicCtrlTest()
     {
       iicCtrl = new IicCtrl();
-      xdMock = initXdriverMock();
+      xdMock = getXdriverMock();
       ON_CALL(*xdMock, Xil_In8(iicCtrl->getHdmiI2cBaseAddr() + XIIC_SR_REG_OFFSET))
           .WillByDefault(Return(XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK));
     }
