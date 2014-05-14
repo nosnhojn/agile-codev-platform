@@ -1,3 +1,9 @@
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+
+#include "Cell.h"
+#include "Board.h"
+
 using namespace testing;
 
 class BoardTest : public testing::Test

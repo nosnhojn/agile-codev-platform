@@ -1,3 +1,6 @@
+#include "IicCtrlMock.h"
+#include "xdriverMock.h"
+
 using namespace testing;
 
 class IicCtrlTest : public testing::Test

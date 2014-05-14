@@ -1,3 +1,9 @@
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+
+#include "DisplayXil.h"
+#include "IicCtrlMock.h"
+
 using namespace testing;
 
 class DisplayXilTest : public testing::Test

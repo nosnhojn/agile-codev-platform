@@ -1,3 +1,8 @@
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+
+#include "Cell.h"
+
 using namespace testing;
 
 class CellTest : public testing::Test

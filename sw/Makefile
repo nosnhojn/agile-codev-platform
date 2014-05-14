@@ -24,13 +24,12 @@ TESTOBJS=${OBJDIR}/Cell.o \
 				 ${OBJDIR}/DisplayXil.o \
 				 ${OBJDIR}/IicCtrl.o \
 				 ${OBJDIR}/IicCtrlMock.o \
+				 ${OBJDIR}/boardTest.o \
+				 ${OBJDIR}/cellTest.o \
+				 ${OBJDIR}/drawingTest.o \
+				 ${OBJDIR}/displayXilTest.o \
+				 ${OBJDIR}/iicCtrlTest.o \
 		     ${OBJDIR}/allTests.o
-
-UNITTESTS=test/boardTest.cpp \
-				  test/cellTest.cpp \
-				  test/drawingTest.cpp \
-				  test/displayXilTest.cpp \
-				  test/allTests.cpp
 
 test : ${OBJDIR} allTests
 
@@ -41,7 +40,7 @@ ${OBJDIR}/%.o: %.cpp
 	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
 allTests : CXXFLAGS+=-DREFRESH_RATE=1
-allTests : ${TESTOBJS} ${UNITTESTS}
+allTests : ${TESTOBJS}
 	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
 
 

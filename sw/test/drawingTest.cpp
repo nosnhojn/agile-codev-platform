@@ -1,3 +1,11 @@
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+
+#include "Cell.h"
+#include "Board.h"
+#include "Drawing.h"
+#include "DisplayMock.h"
+
 using namespace testing;
 
 class DrawingTest : public testing::Test
