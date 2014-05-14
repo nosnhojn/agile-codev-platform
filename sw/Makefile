@@ -10,7 +10,7 @@ CXXFLAGS+=-I${GTEST_DIR}/include \
 					-I./mock \
 					-I./${XIL_INC} \
 					-I.
-					
+
 LDFLAGS+=${GTEST_DIR}/libgtest.a \
 				 ${GMOCK_DIR}/libgmock.a
 
@@ -54,7 +54,7 @@ GAMEOBJS=${OBJDIR}/Cell.o \
 game : CXXFLAGS+=-DREFRESH_RATE=500000
 game : LDFLAGS+=-lncurses
 game : ${OBJDIR} ${GAMEOBJS}
-	$(CC) ${LDFLAGS} ${GAMEOBJS} -o game
+	$(CC) ${GAMEOBJS} -o game ${LDFLAGS} -pthread
 
 
 XILGAMEOBJS=${OBJDIR}/Cell.o \
