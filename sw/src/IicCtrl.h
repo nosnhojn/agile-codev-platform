@@ -32,6 +32,7 @@ class IicCtrl
     IicCtrl();
 
     virtual int init();
+    virtual int iicWrite();
 
     Xuint32 getWidth();
     Xuint32 getHeight();

@@ -28,6 +28,13 @@ int IicCtrl::init()
   return 1;
 }
 
+int IicCtrl::iicWrite()
+{
+  if (!iicReady()) {
+    return 0;
+  }
+}
+
 // the fifos are empty and the device isn't busy
 bool IicCtrl::iicReady()
 {

@@ -102,6 +102,14 @@ TEST_F(IicCtrlTest, InitSuccessOnNearTimeout) {
   EXPECT_TRUE(iicCtrl->init());
 }
 
+TEST_F(IicCtrlTest, writeTimeout) {
+  ON_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillByDefault(Return(0));
+
+  EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).Times(IIC_STATUS_TIMEOUT);
+
+  EXPECT_EQ(iicCtrl->iicWrite(), 0);
+}
+
 TEST_F(IicCtrlTest, getWidth) {
   EXPECT_EQ(iicCtrl->getWidth(), 1920);
 }
