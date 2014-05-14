@@ -41,7 +41,7 @@ ${OBJDIR}/%.o: %.cpp
 
 allTests : CXXFLAGS+=-DREFRESH_RATE=1
 allTests : ${TESTOBJS}
-	$(CC) ${LDFLAGS} ${TESTOBJS} -o allTests
+	$(CC) ${TESTOBJS} -o allTests ${LDFLAGS} -pthread
 
 
 GAMEOBJS=${OBJDIR}/Cell.o \
