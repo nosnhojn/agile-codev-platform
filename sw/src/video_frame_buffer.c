@@ -4,6 +4,7 @@
 #include "video_frame_buffer.h"
 
 #include "xaxivdma.h"
+#include <iostream>
 
 int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
 {

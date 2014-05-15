@@ -2,16 +2,10 @@
 #include "gmock/gmock.h"
 
 #include "IicCtrlMock.h"
+#include "testDefs.h"
 #include "xdriverMock.h"
 
 using namespace testing;
-
-#define XIIC_FIFOS_EMPTY          XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK
-#define XIIC_FIFOS_EMPTY_AND_BUSY XIIC_SR_RX_FIFO_EMPTY_MASK | XIIC_SR_TX_FIFO_EMPTY_MASK | XIIC_SR_BUS_BUSY_MASK
-#define XIIC_BASE_ADDR            iicCtrl->getHdmiI2cBaseAddr()
-#define XIIC_SR_REG               XIIC_BASE_ADDR + XIIC_SR_REG_OFFSET
-
-#define HDMI_I2C_BASE_ADDR 99
 
 class IicCtrlTest : public testing::Test
 {

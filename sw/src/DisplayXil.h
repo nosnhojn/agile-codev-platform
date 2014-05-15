@@ -2,6 +2,7 @@
 #define __DISPLAY_XIL_CPP__
 
 #include "IicCtrl.h"
+#include "video_frame_buffer.h"
 
 #define HDMI_DISPLAY_MEM_BASE_ADDR 3
 #define VIDEO_RESOLUTION_1080P 7
@@ -20,7 +21,8 @@ class DisplayXil
     const Xuint32 m_HdmiVdmaDeviceId;
     Xuint32       m_HdmiDisplayMemBaseAddr;
 
-    IicCtrl * m_iicCtrl;
+    XAxiVdma *    m_axiVdma;
+    IicCtrl *     m_iicCtrl;
 
   public:
     DisplayXil();
@@ -86,6 +88,8 @@ class DisplayXil
 
     Xuint32 setHdmiDisplayMemBaseAddr(Xuint32 addr);
     Xuint32 getHdmiDisplayMemBaseAddr();
+
+    XAxiVdma * getAxiVdma();
 };
 
 #endif

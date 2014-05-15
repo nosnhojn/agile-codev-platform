@@ -3,6 +3,8 @@
 
 #include "DisplayXil.h"
 #include "IicCtrlMock.h"
+#include "xdriverMock.h"
+#include "testDefs.h"
 
 using namespace testing;
 
@@ -12,6 +14,8 @@ class DisplayXilTest : public testing::Test
     DisplayXil  * display;
     IicCtrlMock iicCtrl;
     Xuint32 HdmiDisplayMemory [1080] [1920];
+    xdriverMock * xdMock;
+    XAxiVdma_Config defaultConfig;
 
     DisplayXilTest()
     {
@@ -24,10 +28,17 @@ class DisplayXilTest : public testing::Test
         for (int j=0; j<1920; j++)
           HdmiDisplayMemory [i] [j] = 0x44883311;
       display->setHdmiDisplayMemBaseAddr(Xuint32(HdmiDisplayMemory));
+
+      xdMock = getXdriverMock();
+
+      defaultConfig.BaseAddress = 99;
+      ON_CALL(*xdMock, XAxiVdma_LookupConfig(_))
+          .WillByDefault(Return(&defaultConfig));
     }
 
     ~DisplayXilTest()
     {
+      destroyXdriverMock();
     }
 };
 
@@ -67,6 +78,44 @@ TEST_F(DisplayXilTest, initDoesClear) {
   display->_initscr();
 
   EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
+}
+
+TEST_F(DisplayXilTest, initCallsLookupConfig) {
+  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(display->getHdmiVdmaDeviceId())).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, lookupConfigCanPass) {
+  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).Times(1);
+
+  EXPECT_TRUE(display->_initscr());
+}
+
+TEST_F(DisplayXilTest, lookupConfigCanFailAndExit) {
+  XAxiVdma_Config * Config = 0;
+
+  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).WillOnce(Return(Config));
+
+  EXPECT_FALSE(display->_initscr());
+}
+
+TEST_F(DisplayXilTest, initCallsCfgInitialize) {
+  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(display->getAxiVdma(),&defaultConfig,99)).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, cfgInitializeCanPass) {
+  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_SUCCESS));
+
+  EXPECT_TRUE(display->_initscr());
+}
+
+TEST_F(DisplayXilTest, cfgInitializeCanFailAndExit) {
+  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
+
+  EXPECT_FALSE(display->_initscr());
 }
 
 TEST_F(DisplayXilTest, getWidth) {

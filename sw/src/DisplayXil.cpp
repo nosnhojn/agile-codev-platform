@@ -18,6 +18,8 @@ int DisplayXil::_initscr()
 
   _clear();
 
+  if (vfb_common_init(getHdmiVdmaDeviceId(), getAxiVdma()) == 1) return 0;
+
   return 1;
 }
 
@@ -85,4 +87,9 @@ Xuint32 DisplayXil::setHdmiDisplayMemBaseAddr(Xuint32 addr)
 Xuint32 DisplayXil::getHdmiDisplayMemBaseAddr()
 {
   return m_HdmiDisplayMemBaseAddr;
+}
+
+XAxiVdma * DisplayXil::getAxiVdma()
+{
+  return m_axiVdma;
 }
