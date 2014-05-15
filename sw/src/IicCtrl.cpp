@@ -28,19 +28,24 @@ int IicCtrl::init()
   return 1;
 }
 
-unsigned IicCtrl::iicWrite(u32 baseAddress, u16 offset, u8 * bufferPtr, u8 size)
+unsigned IicCtrl::iicWrite(u32 baseAddress, Xuint8 offset, Xuint8 * bufferPtr, Xuint8 size)
 {
+  Xuint8 writeBuffer[3];
+
   if (!iicReady()) {
     return 0;
   }
 
-  XIic_DynSend(baseAddress, offset, bufferPtr, size, XIIC_STOP);
+  writeBuffer[0] = offset;
+  for (int i=0; i<size; i++) writeBuffer[i+1] = bufferPtr[i];
+
+  return XIic_DynSend(baseAddress, offset, writeBuffer, size+1, XIIC_STOP) - 1;
 }
 
 // the fifos are empty and the device isn't busy
 bool IicCtrl::iicReady()
 {
-  u8 StatusReg;
+  Xuint8 StatusReg;
   int timeout = IIC_STATUS_TIMEOUT;
 
   do {

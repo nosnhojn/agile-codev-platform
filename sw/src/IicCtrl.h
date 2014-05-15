@@ -32,7 +32,7 @@ class IicCtrl
     IicCtrl();
 
     virtual int init();
-    virtual unsigned iicWrite(u32 , u16 , u8 * , u8);
+    virtual unsigned iicWrite(Xuint32 , Xuint8 , Xuint8 * , Xuint8);
 
     Xuint32 getWidth();
     Xuint32 getHeight();
