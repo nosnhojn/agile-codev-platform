@@ -12,13 +12,7 @@ using namespace std;
 class IicCtrl
 {
   private:
-    const Xuint32 m_width;
-    const Xuint32 m_height;
-    int           m_resolution;
     const u32 m_HdmiI2cBaseAddr;
-    const Xuint32 m_HdmiVtcDeviceId;
-    const Xuint32 m_HdmiVdmaDeviceId;
-    const Xuint32 m_HdmiDisplayMemBaseAddr;
 
     bool iicReady(void);
 
@@ -30,13 +24,7 @@ class IicCtrl
     virtual int init();
     virtual unsigned iicWrite(Xuint32 , Xuint8 , Xuint8 * , Xuint8);
 
-    Xuint32 getWidth();
-    Xuint32 getHeight();
-    int     getResolution();
     u32 getHdmiI2cBaseAddr();
-    Xuint32 getHdmiVtcDeviceId();
-    Xuint32 getHdmiVdmaDeviceId();
-    Xuint32 getHdmiDisplayMemBaseAddr();
 };
 
 #endif

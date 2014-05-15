@@ -8,6 +8,13 @@ using namespace std;
 class DisplayXil
 {
   private:
+    const Xuint32 m_width;
+    const Xuint32 m_height;
+    int           m_resolution;
+    const Xuint32 m_HdmiVtcDeviceId;
+    const Xuint32 m_HdmiVdmaDeviceId;
+    const Xuint32 m_HdmiDisplayMemBaseAddr;
+
     IicCtrl * m_iicCtrl;
 
   public:
@@ -65,6 +72,13 @@ class DisplayXil
     // Don't do anything with _move
     //------------------------------
     virtual void _move(int,int);
+
+    Xuint32 getWidth();
+    Xuint32 getHeight();
+    int     getResolution();
+    Xuint32 getHdmiVtcDeviceId();
+    Xuint32 getHdmiVdmaDeviceId();
+    Xuint32 getHdmiDisplayMemBaseAddr();
 };
 
 #endif
