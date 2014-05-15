@@ -18,7 +18,7 @@ class DisplayXil
     int           m_resolution;
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
-    const Xuint32 m_HdmiDisplayMemBaseAddr;
+    Xuint32       m_HdmiDisplayMemBaseAddr;
 
     IicCtrl * m_iicCtrl;
 
@@ -83,6 +83,8 @@ class DisplayXil
     int     getResolution();
     Xuint32 getHdmiVtcDeviceId();
     Xuint32 getHdmiVdmaDeviceId();
+
+    Xuint32 setHdmiDisplayMemBaseAddr(Xuint32 addr);
     Xuint32 getHdmiDisplayMemBaseAddr();
 };
 

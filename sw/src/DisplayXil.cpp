@@ -1,4 +1,5 @@
 #include "DisplayXil.h"
+#include <iostream>
 
 DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
   m_iicCtrl(iicCtrl),
@@ -11,14 +12,24 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
 {
 }
 
-
 int DisplayXil::_initscr()
 {
-  return m_iicCtrl->init();
+  if (m_iicCtrl->init() == 0) return 0;
+
+  _clear();
+
+  return 1;
 }
 
 void DisplayXil::_clear()
 {
+  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
+
+  for (int r=0; r<getHeight(); r++) {
+    for (int c=0; c<getWidth(); c++) {
+      *mem++ = 0x00000000;
+    }
+  }
 }
 
 void DisplayXil::_endwin()
@@ -66,8 +77,12 @@ Xuint32 DisplayXil::getHdmiVdmaDeviceId()
   return m_HdmiVdmaDeviceId;
 }
 
+Xuint32 DisplayXil::setHdmiDisplayMemBaseAddr(Xuint32 addr)
+{
+  m_HdmiDisplayMemBaseAddr = addr;
+}
+
 Xuint32 DisplayXil::getHdmiDisplayMemBaseAddr()
 {
   return m_HdmiDisplayMemBaseAddr;
 }
-

@@ -11,10 +11,19 @@ class DisplayXilTest : public testing::Test
   public:
     DisplayXil  * display;
     IicCtrlMock iicCtrl;
+    Xuint32 HdmiDisplayMemory [1080] [1920];
 
     DisplayXilTest()
     {
+      ON_CALL(iicCtrl, init())
+          .WillByDefault(Return(1));
+
       display = new DisplayXil(&iicCtrl);
+
+      for (int i=0; i<1080; i++)
+        for (int j=0; j<1920; j++)
+          HdmiDisplayMemory [i] [j] = 0x44883311;
+      display->setHdmiDisplayMemBaseAddr(Xuint32(HdmiDisplayMemory));
     }
 
     ~DisplayXilTest()
@@ -29,8 +38,6 @@ TEST_F(DisplayXilTest, initScreenInitializesIic) {
 }
 
 TEST_F(DisplayXilTest, initScreenPasses) {
-  EXPECT_CALL(iicCtrl, init()).WillOnce(Return(1));
-  
   EXPECT_EQ(display->_initscr(), 1);
 }
 
@@ -38,6 +45,28 @@ TEST_F(DisplayXilTest, initScreenFails) {
   EXPECT_CALL(iicCtrl, init()).WillOnce(Return(0));
   
   EXPECT_EQ(display->_initscr(), 0);
+}
+
+TEST_F(DisplayXilTest, clearBufferToBlack0) {
+  display->_clear();
+
+  EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
+}
+
+TEST_F(DisplayXilTest, clearBufferToBlackAll) {
+  display->_clear();
+
+  for (int i=0; i<1080; i++) {
+    for (int j=0; j<1920; j++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], 0x00000000);
+    }
+  }
+}
+
+TEST_F(DisplayXilTest, initDoesClear) {
+  display->_initscr();
+
+  EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
 }
 
 TEST_F(DisplayXilTest, getWidth) {
@@ -61,5 +90,10 @@ TEST_F(DisplayXilTest, getHdmiVdmaDeviceId) {
 }
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
-  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), HDMI_DISPLAY_MEM_BASE_ADDR);
+  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
+}
+
+TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
+  display->setHdmiDisplayMemBaseAddr(6699);
+  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
 }
