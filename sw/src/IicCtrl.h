@@ -5,13 +5,7 @@
 #include "xstatus.h"
 #include "xiic_l.h"
 
-#define VIDEO_RESOLUTION_1080P 7
-#define HDMI_I2C_BASE_ADDR 0
-#define HDMI_VTC_DEVICE_ID 1
-#define HDMI_VDMA_DEVICE_ID 2
-#define HDMI_DISPLAY_MEM_BASE_ADDR 3
-
-#define IIC_STATUS_TIMEOUT 10000
+#include "IicCtrlDefs.h"
 
 using namespace std;
 
@@ -30,6 +24,8 @@ class IicCtrl
 
   public:
     IicCtrl();
+
+    static Xuint8 carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3];
 
     virtual int init();
     virtual unsigned iicWrite(Xuint32 , Xuint8 , Xuint8 * , Xuint8);

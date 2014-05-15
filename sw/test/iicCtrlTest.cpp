@@ -54,14 +54,16 @@ TEST_F(IicCtrlTest, dynamicInitFailure) {
 
 TEST_F(IicCtrlTest, InitWithRxStatusFifosNonEmpty) {
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillOnce(Return(XIIC_SR_TX_FIFO_EMPTY_MASK))
-                                            .WillOnce(Return(XIIC_FIFOS_EMPTY));
+                                            .WillOnce(Return(XIIC_FIFOS_EMPTY))
+                                            .WillRepeatedly(Return(XIIC_FIFOS_EMPTY));
 
   iicCtrl->init();
 }
 
 TEST_F(IicCtrlTest, InitWithTxStatusFifosNonEmpty) {
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK))
-                                            .WillOnce(Return(XIIC_FIFOS_EMPTY));
+                                            .WillOnce(Return(XIIC_FIFOS_EMPTY))
+                                            .WillRepeatedly(Return(XIIC_FIFOS_EMPTY));
 
   iicCtrl->init();
 }
@@ -69,13 +71,13 @@ TEST_F(IicCtrlTest, InitWithTxStatusFifosNonEmpty) {
 TEST_F(IicCtrlTest, InitWithFifoStatusPolling) {
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillOnce(Return(XIIC_SR_RX_FIFO_EMPTY_MASK))
                                             .WillOnce(Return(XIIC_SR_TX_FIFO_EMPTY_MASK))
-                                            .WillOnce(Return(XIIC_FIFOS_EMPTY));
+                                            .WillRepeatedly(Return(XIIC_FIFOS_EMPTY));
   iicCtrl->init();
 }
 
 TEST_F(IicCtrlTest, InitWithBusy) {
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillOnce(Return(XIIC_FIFOS_EMPTY_AND_BUSY))
-                                            .WillOnce(Return(XIIC_FIFOS_EMPTY));
+                                            .WillRepeatedly(Return(XIIC_FIFOS_EMPTY));
   iicCtrl->init();
 }
 
@@ -99,7 +101,7 @@ TEST_F(IicCtrlTest, InitSuccessOnNearTimeout) {
   ON_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillByDefault(Return(0));
 
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).Times(IIC_STATUS_TIMEOUT-1);
-  EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillOnce(Return(XIIC_FIFOS_EMPTY));
+  EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillRepeatedly(Return(XIIC_FIFOS_EMPTY));
 
   EXPECT_TRUE(iicCtrl->init());
 }
@@ -136,6 +138,15 @@ TEST_F(IicCtrlTest, writeBufferEndsWithBufferPtr) {
   EXPECT_CALL(*xdMock, XIic_DynSend(0, 1, _, 3, XIIC_STOP)).With(Args<2,3>(ElementsAre(1,2,3)));
 
   iicCtrl->iicWrite(0, 1, writeBuffer, 2);
+}
+
+TEST_F(IicCtrlTest, initHdmiCfgAll) {
+  for (int i=0; i<CARRIER_HDMI_OUT_CONFIG_LEN; i++) {
+    EXPECT_CALL(*xdMock, XIic_DynSend(0x39, IicCtrl::carrier_hdmi_out_config[i][1], _, 2, XIIC_STOP)).With(Args<2,3>(ElementsAre(IicCtrl::carrier_hdmi_out_config[i][1],
+                                                                                                                                 IicCtrl::carrier_hdmi_out_config[i][2])));
+  }
+
+  iicCtrl->init();
 }
 
 TEST_F(IicCtrlTest, getWidth) {
