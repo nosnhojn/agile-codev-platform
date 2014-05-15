@@ -21,6 +21,8 @@ TESTOBJS=${OBJDIR}/Cell.o \
 		     ${OBJDIR}/Display.o \
 				 ${OBJDIR}/DisplayMock.o \
 				 ${OBJDIR}/xdriverMock.o \
+				 ${OBJDIR}/video_resolution.o \
+				 ${OBJDIR}/video_frame_buffer.o \
 				 ${OBJDIR}/DisplayXil.o \
 				 ${OBJDIR}/IicCtrl.o \
 				 ${OBJDIR}/IicCtrlMock.o \

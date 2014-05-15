@@ -247,3 +247,116 @@ void Xil_Out32LE(u32 Addr, u32 Value)
 {
   getXdriverMock()->Xil_Out32LE(Addr, Value);
 }
+
+XAxiVdma_Config *XAxiVdma_LookupConfig(u16 DeviceId)
+{
+  return XAxiVdma_LookupConfig(DeviceId);
+}
+int XAxiVdma_CfgInitialize(XAxiVdma *InstancePtr, XAxiVdma_Config *CfgPtr,u32 EffectiveAddr)
+{
+  return XAxiVdma_CfgInitialize(InstancePtr, CfgPtr, EffectiveAddr);
+}
+void XAxiVdma_Reset(XAxiVdma *InstancePtr, u16 Direction)
+{
+   XAxiVdma_Reset(InstancePtr, Direction);
+}
+int XAxiVdma_ResetNotDone(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_ResetNotDone(InstancePtr, Direction);
+}
+int XAxiVdma_IsBusy(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_IsBusy(InstancePtr, Direction);
+}
+u32 XAxiVdma_CurrFrameStore(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_CurrFrameStore(InstancePtr, Direction);
+}
+u32 XAxiVdma_GetVersion(XAxiVdma *InstancePtr)
+{
+  return XAxiVdma_GetVersion(InstancePtr);
+}
+u32 XAxiVdma_GetStatus(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_GetStatus(InstancePtr, Direction);
+}
+int XAxiVdma_StartParking(XAxiVdma *InstancePtr, int FrameIndex,u16 Direction)
+{
+  return XAxiVdma_StartParking(InstancePtr, FrameIndex, Direction);
+}
+void XAxiVdma_StopParking(XAxiVdma *InstancePtr, u16 Direction)
+{
+   XAxiVdma_StopParking(InstancePtr, Direction);
+}
+void XAxiVdma_StartFrmCntEnable(XAxiVdma *InstancePtr, u16 Direction)
+{
+  XAxiVdma_StartFrmCntEnable(InstancePtr, Direction);
+}
+void XAxiVdma_IntrEnable(XAxiVdma *InstancePtr, u32 IntrType, u16 Direction)
+{
+  XAxiVdma_IntrEnable(InstancePtr, IntrType, Direction);
+}
+void XAxiVdma_IntrDisable(XAxiVdma *InstancePtr, u32 IntrType ,u16 Direction)
+{
+  XAxiVdma_IntrDisable(InstancePtr, IntrType, Direction);
+}
+u32 XAxiVdma_IntrGetPending(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_IntrGetPending(InstancePtr, Direction);
+}
+void XAxiVdma_IntrClear(XAxiVdma *InstancePtr, u32 IntrType ,u16 Direction)
+{
+  XAxiVdma_IntrClear(InstancePtr, IntrType, Direction);
+}
+XAxiVdma_Channel *XAxiVdma_GetChannel(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_GetChannel(InstancePtr, Direction);
+}
+int XAxiVdma_StartWriteFrame(XAxiVdma *InstancePtr,XAxiVdma_DmaSetup *DmaConfigPtr)
+{
+  return XAxiVdma_StartWriteFrame(InstancePtr, DmaConfigPtr);
+}
+int XAxiVdma_StartReadFrame(XAxiVdma *InstancePtr,XAxiVdma_DmaSetup *DmaConfigPtr)
+{
+  return XAxiVdma_StartReadFrame(InstancePtr, DmaConfigPtr);
+}
+int XAxiVdma_DmaConfig(XAxiVdma *InstancePtr, u16 Direction,XAxiVdma_DmaSetup *DmaConfigPtr)
+{
+  return XAxiVdma_DmaConfig(InstancePtr, Direction, DmaConfigPtr);
+}
+int XAxiVdma_DmaSetBufferAddr(XAxiVdma *InstancePtr, u16 Direction,u32 *BufferAddrSet)
+{
+  return XAxiVdma_DmaSetBufferAddr(InstancePtr, Direction, BufferAddrSet);
+}
+int XAxiVdma_DmaStart(XAxiVdma *InstancePtr, u16 Direction)
+{
+  return XAxiVdma_DmaStart(InstancePtr, Direction);
+}
+void XAxiVdma_DmaStop(XAxiVdma *InstancePtr, u16 Direction)
+{
+  XAxiVdma_DmaStop(InstancePtr, Direction);
+}
+void XAxiVdma_DmaRegisterDump(XAxiVdma *InstancePtr, u16 Direction)
+{
+  XAxiVdma_DmaRegisterDump(InstancePtr, Direction);
+}
+int XAxiVdma_SetFrameCounter(XAxiVdma *InstancePtr,XAxiVdma_FrameCounter *FrameCounterCfgPtr)
+{
+  return XAxiVdma_SetFrameCounter(InstancePtr, FrameCounterCfgPtr);
+}
+void XAxiVdma_GetFrameCounter(XAxiVdma *InstancePtr,XAxiVdma_FrameCounter *FrameCounterCfgPtr)
+{
+  XAxiVdma_GetFrameCounter(InstancePtr, FrameCounterCfgPtr);
+}
+void XAxiVdma_ReadIntrHandler(void * InstancePtr)
+{
+  XAxiVdma_ReadIntrHandler(InstancePtr);
+}
+void XAxiVdma_WriteIntrHandler(void * InstancePtr)
+{
+  XAxiVdma_WriteIntrHandler(InstancePtr);
+}
+int XAxiVdma_SetCallBack(XAxiVdma * InstancePtr, u32 HandlerType,void *CallBackFunc, void *CallBackRef, u16 Direction)
+{
+  return XAxiVdma_SetCallBack(InstancePtr, HandlerType, CallBackFunc, CallBackRef, Direction);
+}
