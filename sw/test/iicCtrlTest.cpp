@@ -18,6 +18,8 @@ class IicCtrlTest : public testing::Test
     IicCtrl * iicCtrl;
     xdriverMock * xdMock;
 
+    u8 *bufferPtr;
+
     IicCtrlTest()
     {
       iicCtrl = new IicCtrl();
@@ -102,12 +104,18 @@ TEST_F(IicCtrlTest, InitSuccessOnNearTimeout) {
   EXPECT_TRUE(iicCtrl->init());
 }
 
-TEST_F(IicCtrlTest, writeTimeout) {
+TEST_F(IicCtrlTest, writeCanTimeout) {
   ON_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).WillByDefault(Return(0));
 
   EXPECT_CALL(*xdMock, Xil_In8(XIIC_SR_REG)).Times(IIC_STATUS_TIMEOUT);
 
-  EXPECT_EQ(iicCtrl->iicWrite(), 0);
+  EXPECT_EQ(iicCtrl->iicWrite(0, 0, bufferPtr, 0), 0);
+}
+
+TEST_F(IicCtrlTest, writeDoesDynSend) {
+  EXPECT_CALL(*xdMock, XIic_DynSend(0, 0, bufferPtr, 0, XIIC_STOP)).Times(1);
+
+  iicCtrl->iicWrite(0, 0, bufferPtr, 0);
 }
 
 TEST_F(IicCtrlTest, getWidth) {
