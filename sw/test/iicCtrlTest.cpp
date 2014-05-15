@@ -11,6 +11,7 @@ using namespace testing;
 #define XIIC_BASE_ADDR            iicCtrl->getHdmiI2cBaseAddr()
 #define XIIC_SR_REG               XIIC_BASE_ADDR + XIIC_SR_REG_OFFSET
 
+#define HDMI_I2C_BASE_ADDR 99
 
 class IicCtrlTest : public testing::Test
 {
@@ -22,7 +23,7 @@ class IicCtrlTest : public testing::Test
 
     IicCtrlTest()
     {
-      iicCtrl = new IicCtrl();
+      iicCtrl = new IicCtrl(HDMI_I2C_BASE_ADDR);
       xdMock = getXdriverMock();
       ON_CALL(*xdMock, Xil_In8(XIIC_SR_REG))
           .WillByDefault(Return(XIIC_FIFOS_EMPTY));

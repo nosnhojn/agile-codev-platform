@@ -17,7 +17,7 @@ class IicCtrl
     bool iicReady(void);
 
   public:
-    IicCtrl();
+    IicCtrl(u32 HdmiI2cBaseAddr=0);
 
     static Xuint8 carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3];
 

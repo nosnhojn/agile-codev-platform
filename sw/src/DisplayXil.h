@@ -3,6 +3,11 @@
 
 #include "IicCtrl.h"
 
+#define HDMI_DISPLAY_MEM_BASE_ADDR 3
+#define VIDEO_RESOLUTION_1080P 7
+#define HDMI_VTC_DEVICE_ID 1
+#define HDMI_VDMA_DEVICE_ID 2
+
 using namespace std;
 
 class DisplayXil

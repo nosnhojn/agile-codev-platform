@@ -44,8 +44,8 @@ Xuint8 IicCtrl::carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3] = {
   {ADV7511_ADDR>>1, 0xF9, 0x00}
 };
 
-IicCtrl::IicCtrl() :
-  m_HdmiI2cBaseAddr(HDMI_I2C_BASE_ADDR)
+IicCtrl::IicCtrl(u32 HdmiI2cBaseAddr) :
+  m_HdmiI2cBaseAddr(HdmiI2cBaseAddr)
 {}
 
 int IicCtrl::init()
