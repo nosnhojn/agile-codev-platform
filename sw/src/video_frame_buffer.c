@@ -44,12 +44,13 @@ int vfb_tx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
    }
 
    /* Start the DMA engine to transfer
-	*/
+   */
    Status = vfb_tx_start(pAxiVdma);
    if (Status != XST_SUCCESS) {
-		   return 1;
+  	   return 1;
    }
 
+   return 0;
 }
 
 int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames )

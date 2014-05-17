@@ -19,13 +19,13 @@ int DisplayXil::_initscr()
   _clear();
 
   if (vfb_common_init(getHdmiVdmaDeviceId(), getAxiVdma()) == 1) return 0;
-  vfb_tx_init(getAxiVdma(),
-              getAxiVdmaCfg(),
-              VIDEO_RESOLUTION_1080P,
-              VIDEO_RESOLUTION_1080P,
-              getHdmiDisplayMemBaseAddr(),
-              1 // numFrames(?)
-             );
+
+  if (vfb_tx_init(getAxiVdma(),
+                  getAxiVdmaCfg(),
+                  VIDEO_RESOLUTION_1080P,
+                  VIDEO_RESOLUTION_1080P,
+                  getHdmiDisplayMemBaseAddr(),
+                  1)) return 0;
 
   return 1;
 }

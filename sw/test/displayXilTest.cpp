@@ -34,12 +34,20 @@ class DisplayXilTest : public testing::Test
       defaultConfig.BaseAddress = 99;
       ON_CALL(*xdMock, XAxiVdma_LookupConfig(_))
           .WillByDefault(Return(&defaultConfig));
+      ON_CALL(*xdMock, XAxiVdma_DmaConfig(_,_,_))
+          .WillByDefault(Return(XST_SUCCESS));
+      ON_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(_,_,_))
+          .WillByDefault(Return(XST_SUCCESS));
+      ON_CALL(*xdMock, XAxiVdma_DmaStart(_, _))
+          .WillByDefault(Return(XST_SUCCESS));
     }
 
     ~DisplayXilTest()
     {
       destroyXdriverMock();
     }
+
+    XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -86,12 +94,6 @@ TEST_F(DisplayXilTest, initCallsVfbLookupConfig) {
   display->_initscr();
 }
 
-TEST_F(DisplayXilTest, vfbLookupConfigCanPass) {
-  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).Times(1);
-
-  EXPECT_TRUE(display->_initscr());
-}
-
 TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
   XAxiVdma_Config * Config = 0;
 
@@ -106,12 +108,6 @@ TEST_F(DisplayXilTest, initCallsVfbCfgInitialize) {
   display->_initscr();
 }
 
-TEST_F(DisplayXilTest, vfbCfgInitializeCanPass) {
-  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_SUCCESS));
-
-  EXPECT_TRUE(display->_initscr());
-}
-
 TEST_F(DisplayXilTest, vfbCfgInitializeCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
 
@@ -119,23 +115,59 @@ TEST_F(DisplayXilTest, vfbCfgInitializeCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsDmaConfig) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(display->getAxiVdma(), XAXIVDMA_READ, display->getAxiVdmaCfg())).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(display->getAxiVdma(), XAXIVDMA_READ, vdmaCfg())).Times(1);
 
   display->_initscr();
+}
+
+TEST_F(DisplayXilTest, vfbDmaConfigCanFailAndExit) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(_,_,_)).WillOnce(Return(XST_FAILURE));
+
+  EXPECT_FALSE(display->_initscr());
 }
 
 TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
   display->_initscr();
 
-  EXPECT_EQ(display->getAxiVdmaCfg()->VertSizeInput, display->getHeight());
-  EXPECT_EQ(display->getAxiVdmaCfg()->HoriSizeInput, display->getWidth()<<2);
-  EXPECT_EQ(display->getAxiVdmaCfg()->Stride, display->getWidth()<<2);
-  EXPECT_EQ(display->getAxiVdmaCfg()->FrameDelay, 0);
-  EXPECT_EQ(display->getAxiVdmaCfg()->EnableCircularBuf, 1);
-  EXPECT_EQ(display->getAxiVdmaCfg()->EnableSync, 1);
-  EXPECT_EQ(display->getAxiVdmaCfg()->PointNum, 1);
-  EXPECT_EQ(display->getAxiVdmaCfg()->EnableFrameCounter, 0);
-  EXPECT_EQ(display->getAxiVdmaCfg()->FixedFrameStoreAddr, 0);
+  EXPECT_EQ(vdmaCfg()->VertSizeInput, display->getHeight());
+  EXPECT_EQ(vdmaCfg()->HoriSizeInput, display->getWidth()<<2);
+  EXPECT_EQ(vdmaCfg()->Stride, display->getWidth()<<2);
+  EXPECT_EQ(vdmaCfg()->FrameDelay, 0);
+  EXPECT_EQ(vdmaCfg()->EnableCircularBuf, 1);
+  EXPECT_EQ(vdmaCfg()->EnableSync, 1);
+  EXPECT_EQ(vdmaCfg()->PointNum, 1);
+  EXPECT_EQ(vdmaCfg()->EnableFrameCounter, 0);
+  EXPECT_EQ(vdmaCfg()->FixedFrameStoreAddr, 0);
+}
+
+TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
+  display->_initscr();
+
+  EXPECT_EQ(vdmaCfg()->FrameStoreStartAddr[0], display->getHdmiDisplayMemBaseAddr());
+}
+
+TEST_F(DisplayXilTest, initCallsDmaSetBufferAddr) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(display->getAxiVdma(), XAXIVDMA_READ, vdmaCfg()->FrameStoreStartAddr)).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, initCallsDmaStart) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, dmaStartCanFailAndExit) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).WillOnce(Return(XST_FAILURE));
+
+  EXPECT_FALSE(display->_initscr());
+}
+
+TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(_, _, _)).WillOnce(Return(XST_FAILURE));
+
+  EXPECT_FALSE(display->_initscr());
 }
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
