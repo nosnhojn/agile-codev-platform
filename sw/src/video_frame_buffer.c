@@ -57,7 +57,6 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 	int i;
 	u32 Addr;
 	int Status;
-
 	Xuint32 video_width, video_height;
 	Xuint32 storage_width, storage_height, storage_stride, storage_size, storage_offset;
 
@@ -109,12 +108,9 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 	/* Set the buffer addresses for transfer in the DMA engine
 	 * The buffer addresses are physical addresses
 	 */
-	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, XAXIVDMA_READ,
-			pReadCfg->FrameStoreStartAddr);
-	if (Status != XST_SUCCESS) {
-			xdbg_printf(XDBG_DEBUG_ERROR,
-				"Read channel set buffer address failed %d\n\r", Status);
+	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, XAXIVDMA_READ, pReadCfg->FrameStoreStartAddr);
 
+	if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 	}
 

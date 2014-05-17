@@ -1,5 +1,7 @@
 #include "video_resolution.h"
 
+#include <iostream>
+
 #include "xbasic_types.h"
 
 vres_timing_t vres_resolutions[1] = {

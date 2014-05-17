@@ -80,19 +80,19 @@ TEST_F(DisplayXilTest, initDoesClear) {
   EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
 }
 
-TEST_F(DisplayXilTest, initCallsLookupConfig) {
+TEST_F(DisplayXilTest, initCallsVfbLookupConfig) {
   EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(display->getHdmiVdmaDeviceId())).Times(1);
 
   display->_initscr();
 }
 
-TEST_F(DisplayXilTest, lookupConfigCanPass) {
+TEST_F(DisplayXilTest, vfbLookupConfigCanPass) {
   EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).Times(1);
 
   EXPECT_TRUE(display->_initscr());
 }
 
-TEST_F(DisplayXilTest, lookupConfigCanFailAndExit) {
+TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
   XAxiVdma_Config * Config = 0;
 
   EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).WillOnce(Return(Config));
@@ -100,42 +100,42 @@ TEST_F(DisplayXilTest, lookupConfigCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
-TEST_F(DisplayXilTest, initCallsCfgInitialize) {
+TEST_F(DisplayXilTest, initCallsVfbCfgInitialize) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(display->getAxiVdma(),&defaultConfig,99)).Times(1);
 
   display->_initscr();
 }
 
-TEST_F(DisplayXilTest, cfgInitializeCanPass) {
+TEST_F(DisplayXilTest, vfbCfgInitializeCanPass) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_SUCCESS));
 
   EXPECT_TRUE(display->_initscr());
 }
 
-TEST_F(DisplayXilTest, cfgInitializeCanFailAndExit) {
+TEST_F(DisplayXilTest, vfbCfgInitializeCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
 
   EXPECT_FALSE(display->_initscr());
 }
 
-TEST_F(DisplayXilTest, getWidth) {
-  EXPECT_EQ(display->getWidth(), 1920);
+TEST_F(DisplayXilTest, initCallsDmaConfig) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(display->getAxiVdma(), XAXIVDMA_READ, display->getAxiVdmaCfg())).Times(1);
+
+  display->_initscr();
 }
 
-TEST_F(DisplayXilTest, getHeight) {
-  EXPECT_EQ(display->getHeight(), 1080);
-}
+TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
+  display->_initscr();
 
-TEST_F(DisplayXilTest, getResolution) {
-  EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
-}
-
-TEST_F(DisplayXilTest, getHdmiVtcDeviceId) {
-  EXPECT_EQ(display->getHdmiVtcDeviceId(), HDMI_VTC_DEVICE_ID);
-}
-
-TEST_F(DisplayXilTest, getHdmiVdmaDeviceId) {
-  EXPECT_EQ(display->getHdmiVdmaDeviceId(), HDMI_VDMA_DEVICE_ID);
+  EXPECT_EQ(display->getAxiVdmaCfg()->VertSizeInput, display->getHeight());
+  EXPECT_EQ(display->getAxiVdmaCfg()->HoriSizeInput, display->getWidth()<<2);
+  EXPECT_EQ(display->getAxiVdmaCfg()->Stride, display->getWidth()<<2);
+  EXPECT_EQ(display->getAxiVdmaCfg()->FrameDelay, 0);
+  EXPECT_EQ(display->getAxiVdmaCfg()->EnableCircularBuf, 1);
+  EXPECT_EQ(display->getAxiVdmaCfg()->EnableSync, 1);
+  EXPECT_EQ(display->getAxiVdmaCfg()->PointNum, 1);
+  EXPECT_EQ(display->getAxiVdmaCfg()->EnableFrameCounter, 0);
+  EXPECT_EQ(display->getAxiVdmaCfg()->FixedFrameStoreAddr, 0);
 }
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
@@ -145,4 +145,12 @@ TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
 TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
   display->setHdmiDisplayMemBaseAddr(6699);
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
+}
+
+TEST_F(DisplayXilTest, getConstants) {
+  EXPECT_EQ(display->getWidth(), 1920);
+  EXPECT_EQ(display->getHeight(), 1080);
+  EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
+  EXPECT_EQ(display->getHdmiVtcDeviceId(), HDMI_VTC_DEVICE_ID);
+  EXPECT_EQ(display->getHdmiVdmaDeviceId(), HDMI_VDMA_DEVICE_ID);
 }
