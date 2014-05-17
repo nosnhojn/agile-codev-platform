@@ -32,6 +32,7 @@ TESTOBJS=${OBJDIR}/Cell.o \
 				 ${OBJDIR}/displayXilTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
 		     ${OBJDIR}/allTests.o
+				 #${OBJDIR}/video_generator.o
 
 test : ${OBJDIR} allTests
 
