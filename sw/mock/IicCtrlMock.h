@@ -10,6 +10,7 @@ class IicCtrlMock : public IicCtrl
 {
   public:
     MOCK_METHOD0(init, int());
+    MOCK_METHOD0(carrierInit, void());
 };
 
 #endif

@@ -211,3 +211,28 @@ TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getHdmiVtcDeviceId(), HDMI_VTC_DEVICE_ID);
   EXPECT_EQ(display->getHdmiVdmaDeviceId(), HDMI_VDMA_DEVICE_ID);
 }
+
+TEST_F(DisplayXilTest, refreshCallsVfbStop) {
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+
+  display->_refresh();
+}
+
+TEST_F(DisplayXilTest, refreshCallsVfbStopThenStart) {
+  InSequence s;
+
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+
+  display->_refresh();
+}
+
+TEST_F(DisplayXilTest, refreshCallsEndsWithCarrierInit) {
+  InSequence s;
+
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(iicCtrl, carrierInit()).Times(1);
+
+  display->_refresh();
+}

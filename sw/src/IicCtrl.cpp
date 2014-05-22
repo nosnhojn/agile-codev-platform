@@ -61,11 +61,15 @@ int IicCtrl::init()
     return 0;
   }
 
+  carrierInit();
+
+  return 1;
+}
+
+void IicCtrl::carrierInit() {
   for (int i = 0; i < CARRIER_HDMI_OUT_CONFIG_LEN; i++) {
     iicWrite(carrier_hdmi_out_config[i][0], carrier_hdmi_out_config[i][1], &(carrier_hdmi_out_config[i][2]), 1 );
   }
-
-  return 1;
 }
 
 unsigned IicCtrl::iicWrite(u32 address, Xuint8 offset, Xuint8 * bufferPtr, Xuint8 size)

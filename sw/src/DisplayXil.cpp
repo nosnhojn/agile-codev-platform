@@ -47,6 +47,13 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
+  vfb_tx_stop(getAxiVdma());
+
+  // in here is where we drive frames
+
+  vfb_tx_start(getAxiVdma());
+
+  m_iicCtrl->carrierInit();
 }
 
 void DisplayXil::_getch()
