@@ -25,7 +25,7 @@ void Drawing::refreshDrawing()
         s.append(" ");
       }
     }
-    m_display->_addstr((s + '\n').c_str());
+    m_display->_addstr((s).c_str());
   }
   m_display->_refresh();
 }

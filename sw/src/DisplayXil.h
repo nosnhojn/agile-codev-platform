@@ -60,6 +60,10 @@ class DisplayXil : public Display
     //     don't now what that's for
     //-----------------------------------------
     virtual void _refresh();
+    unsigned getLivePixelAtIndex(int,int);
+    unsigned getFgColour(void);
+
+
 
     //------------------------------------------
     // zed_hdmi_display.c : line 215

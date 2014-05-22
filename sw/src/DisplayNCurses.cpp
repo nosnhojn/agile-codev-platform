@@ -32,7 +32,9 @@ void DisplayNCurses::_getch()
 
 void DisplayNCurses::_addstr(const char * s)
 {
-  addstr(s);
+  string str(s);
+  str += '\n';
+  addstr(str.c_str());
 }
 
 void DisplayNCurses::_move(int row, int column)

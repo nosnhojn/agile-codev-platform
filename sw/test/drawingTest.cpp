@@ -19,8 +19,8 @@ class DrawingTest : public testing::Test
 
     ExpectationSet req;
 
-    DrawingTest() : checkRow("^" + string(Board::COLUMN_SIZE, ' ') + "\n"),
-                    emptyRow("^" + string(Board::COLUMN_SIZE, ' ') + "\n")
+    DrawingTest() : checkRow("^" + string(Board::COLUMN_SIZE, ' ')),
+                    emptyRow("^" + string(Board::COLUMN_SIZE, ' '))
     {
       drawing = new Drawing(&board, &display);
     }

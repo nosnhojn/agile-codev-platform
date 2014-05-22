@@ -236,3 +236,14 @@ TEST_F(DisplayXilTest, refreshCallsEndsWithCarrierInit) {
 
   display->_refresh();
 }
+
+TEST_F(DisplayXilTest, getFgColourIsWhite) {
+  EXPECT_EQ(0xffffff, display->getFgColour());
+}
+
+TEST_F(DisplayXilTest, getLivePixelAtIndexAlwaysReturnsFgColourForRectangle) {
+  EXPECT_EQ(display->getFgColour(), display->getLivePixelAtIndex(22,50000));
+}
+
+//TEST_F(DisplayXilTest, addstrToGrid) {
+//}

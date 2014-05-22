@@ -56,6 +56,14 @@ void DisplayXil::_refresh()
   m_iicCtrl->carrierInit();
 }
 
+unsigned DisplayXil::getLivePixelAtIndex(int x, int y) {
+  return getFgColour();
+}
+
+unsigned DisplayXil::getFgColour() {
+  return 0xffffff;
+}
+
 void DisplayXil::_getch()
 {
 }
