@@ -170,6 +170,26 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
+//---------------------------------------------------------------------------
+// Soheil: Next 4 tests have to do with the vgen_init() in video_generator.c
+//---------------------------------------------------------------------------
+/*
+TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
+  EXPECT_TRUE(0);
+}
+
+TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
+  EXPECT_TRUE(0);
+}
+
+TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
+  EXPECT_TRUE(0);
+}
+
+TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
+  EXPECT_TRUE(0);
+}
+
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
 }
@@ -178,6 +198,11 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
   display->setHdmiDisplayMemBaseAddr(6699);
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
 }
+*/
+//--------------------------------------------------------------
+// Soheil: Add similar Calls" tests for the functions called in
+//         vgen_config function in video_generator.c
+//--------------------------------------------------------------
 
 TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
