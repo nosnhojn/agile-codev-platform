@@ -1,15 +1,14 @@
 OBJDIR = obj
 VPATH = ./src:./test:./mock
-XIL_INC = ./include
 
 CC=g++
-CXXFLAGS+=-I${GTEST_DIR}/include \
-          -I${GMOCK_DIR}/include \
-					-I./test \
-					-I./src \
-					-I./mock \
-					-I./${XIL_INC} \
-					-I.
+allTests : CXXFLAGS+=-I${GTEST_DIR}/include \
+        						 -I${GMOCK_DIR}/include \
+										 -I./test \
+										 -I./src \
+										 -I./mock \
+										 -I./include \
+										 -I.
 
 LDFLAGS+=${GTEST_DIR}/libgtest.a \
 				 ${GMOCK_DIR}/libgmock.a
@@ -64,11 +63,24 @@ XILGAMEOBJS=${OBJDIR}/Cell.o \
         		${OBJDIR}/Board.o \
         		${OBJDIR}/Drawing.o \
 		    		${OBJDIR}/Display.o \
-		    		${OBJDIR}/DisplayDummy.o \
+		    		${OBJDIR}/DisplayXil.o \
 						${OBJDIR}/xilgame.o
 
-xilgame : ${OBJDIR} ${XILGAMEOBJS}
+xilgame : CXXFLAGS+=-DREFRESH_RATE=500000 \
+                    -I${XIL_INC} \
+xilgame : LDFLAGS+=-l${XIL_LIB}
+xilgame : xil_temp_target ${OBJDIR} ${XILGAMEOBJS}
 	$(CC) ${XILGAMEOBJS} -o xilgame
+
+xil_temp_target :
+	@if [ "${XIL_INC}" == "" ]; then \
+		echo ERROR: we need a real path to XIL_INC \(i.e. for the include file headers\); \
+		exit 1; \
+	fi
+	@if [ "${XIL_LIB}" == "" ]; then \
+		echo ERROR: we need a real path to XIL_LIB \(i.e. a compiled xil library\); \
+		exit 1; \
+	fi
 
 ${OBJDIR} :
 	mkdir ${OBJDIR}
