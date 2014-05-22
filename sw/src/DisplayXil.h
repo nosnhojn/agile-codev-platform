@@ -1,6 +1,7 @@
 #ifndef __DISPLAY_XIL_CPP__
 #define __DISPLAY_XIL_CPP__
 
+#include "Display.h"
 #include "IicCtrl.h"
 #include "video_frame_buffer.h"
 
@@ -11,7 +12,7 @@
 
 using namespace std;
 
-class DisplayXil
+class DisplayXil : public Display
 {
   private:
     const Xuint32 m_width;
