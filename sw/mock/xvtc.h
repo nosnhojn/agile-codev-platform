@@ -164,6 +164,9 @@ extern "C" {
 #include "xvtc_hw.h"
 #include "xstatus.h"
 
+// [ssalehia]: Mock insertions
+//#define XPAR_XVTC_NUM_INSTANCES 1
+
 /************************** Constant Definitions *****************************/
 
 /** @name Interrupt Types for setting up Callbacks

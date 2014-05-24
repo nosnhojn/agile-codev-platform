@@ -14,10 +14,11 @@ LDFLAGS+=${GTEST_DIR}/libgtest.a \
 				 ${GMOCK_DIR}/libgmock.a
 
 
-TESTOBJS=${OBJDIR}/Cell.o \
-		     ${OBJDIR}/Board.o \
-		     ${OBJDIR}/Drawing.o \
-		     ${OBJDIR}/Display.o \
+TESTOBJS=                        ${OBJDIR}/video_generator.o \
+                                 ${OBJDIR}/Cell.o \
+		                 ${OBJDIR}/Board.o \
+		                 ${OBJDIR}/Drawing.o \
+		                 ${OBJDIR}/Display.o \
 				 ${OBJDIR}/DisplayMock.o \
 				 ${OBJDIR}/xdriverMock.o \
 				 ${OBJDIR}/video_resolution.o \
@@ -30,8 +31,9 @@ TESTOBJS=${OBJDIR}/Cell.o \
 				 ${OBJDIR}/drawingTest.o \
 				 ${OBJDIR}/displayXilTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
+                                 # ${OBJDIR}/xvtcMock.o \
 		     ${OBJDIR}/allTests.o
-				 #${OBJDIR}/video_generator.o
+				 
 
 test : ${OBJDIR} allTests
 
