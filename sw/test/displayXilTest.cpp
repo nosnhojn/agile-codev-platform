@@ -170,6 +170,10 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
+TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
+  EXPECT_TRUE(0);
+}
+
 //---------------------------------------------------------------------------
 // Soheil: Next 4 tests have to do with the vgen_init() in video_generator.c
 //---------------------------------------------------------------------------

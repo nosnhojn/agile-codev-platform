@@ -165,7 +165,9 @@ extern "C" {
 #include "xstatus.h"
 
 // [ssalehia]: Mock insertions
-//#define XPAR_XVTC_NUM_INSTANCES 1
+#define XPAR_XVTC_NUM_INSTANCES 1
+#define XPAR_VTC_0_DEVICE_ID 7
+#define XPAR_VTC_0_BASEADDR 0x70000000
 
 /************************** Constant Definitions *****************************/
 
