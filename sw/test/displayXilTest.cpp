@@ -46,11 +46,15 @@ class DisplayXilTest : public testing::Test
       ON_CALL(*xdMock, XAxiVdma_DmaStart(_, _))
           .WillByDefault(Return(XST_SUCCESS));
 
+      // Video Timing Correction (VTC) mock object constructor call
       xvMock = getXvtcMock();
+      // Mock configurations for the video timing correction ip block
       vtcDefaultConfig.DeviceId= 7;
       vtcDefaultConfig.BaseAddress = 0x70000000;
       ON_CALL(*xvMock, XVtc_LookupConfig(_))
           .WillByDefault(Return(&vtcDefaultConfig));
+      ON_CALL(*xvMock, XVtc_CfgInitialize(_,_,_))
+          .WillByDefault(Return(XST_SUCCESS));
       
 
     }
@@ -58,6 +62,7 @@ class DisplayXilTest : public testing::Test
     ~DisplayXilTest()
     {
       destroyXdriverMock();
+// TODO: why this destructor calls before the test is executed?
 //      destroyXvtcMock();
     }
 
@@ -186,30 +191,25 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
-TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
-
-//  EXPECT_TRUE(0);
-  EXPECT_CALL(*xvMock, XVtc_LookupConfig(7)).Times(1);
-}
-
 //---------------------------------------------------------------------------
 // Soheil: Next 4 tests have to do with the vgen_init() in video_generator.c
 //---------------------------------------------------------------------------
-/*
+
 TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
-  EXPECT_TRUE(0);
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).Times(1);
 }
 
 TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
-  EXPECT_TRUE(0);
+  XVtc_Config * Config = 0;
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).WillOnce(Return(Config));
 }
 
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
-  EXPECT_TRUE(0);
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
 }
 
 TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
-  EXPECT_TRUE(0);
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
 }
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
@@ -220,6 +220,7 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
   display->setHdmiDisplayMemBaseAddr(6699);
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
 }
+/*
 */
 //--------------------------------------------------------------
 // Soheil: Add similar Calls" tests for the functions called in

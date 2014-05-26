@@ -31,11 +31,11 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID)
 
 	/* Initialize the Video Timing Controller instance */
 
-/*	Status = XVtc_CfgInitialize(pVtc, VtcCfgPtr,*/
-/*		VtcCfgPtr->BaseAddress);*/
-/*	if (Status != XST_SUCCESS) {*/
-/*		return 1;*/
-/*	}*/
+	Status = XVtc_CfgInitialize(pVtc, VtcCfgPtr,
+		VtcCfgPtr->BaseAddress);
+	if (Status != XST_SUCCESS) {
+		return 1;
+	}
 
 	return 0;
 }
