@@ -4,9 +4,11 @@
 #include "DisplayXil.h"
 #include "IicCtrlMock.h"
 #include "xdriverMock.h"
+#include "xvtcMock.h"
 #include "testDefs.h"
 
 using namespace testing;
+
 
 class DisplayXilTest : public testing::Test
 {
@@ -15,8 +17,10 @@ class DisplayXilTest : public testing::Test
     IicCtrlMock iicCtrl;
     Xuint32 HdmiDisplayMemory [1080] [1920];
     xdriverMock * xdMock;
+    XvtcMock * xvMock;
     XAxiVdma_Config defaultConfig;
-
+            
+    
     DisplayXilTest()
     {
       ON_CALL(iicCtrl, init())
@@ -29,8 +33,8 @@ class DisplayXilTest : public testing::Test
           HdmiDisplayMemory [i] [j] = 0x44883311;
       display->setHdmiDisplayMemBaseAddr(Xuint32(HdmiDisplayMemory));
 
-      xdMock = getXdriverMock();
-
+      xdMock = getXdriverMock();   
+        
       defaultConfig.BaseAddress = 99;
       ON_CALL(*xdMock, XAxiVdma_LookupConfig(_))
           .WillByDefault(Return(&defaultConfig));
@@ -40,12 +44,20 @@ class DisplayXilTest : public testing::Test
           .WillByDefault(Return(XST_SUCCESS));
       ON_CALL(*xdMock, XAxiVdma_DmaStart(_, _))
           .WillByDefault(Return(XST_SUCCESS));
+
+      xvMock = getXvtcMock();
+//      ON_CALL(*xvMock, XVtc_LookupConfig(_))
+//          .WillByDefault(Return(7));
+
     }
 
     ~DisplayXilTest()
     {
       destroyXdriverMock();
+      destroyXvtcMock();
     }
+
+
 
     XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
 };
@@ -171,7 +183,9 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
-  EXPECT_TRUE(0);
+
+//  EXPECT_TRUE(0);
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(7)).Times(1);
 }
 
 //---------------------------------------------------------------------------

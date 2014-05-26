@@ -1,5 +1,5 @@
-#ifndef __XDRIVER_MOCK_H__
-#define __XDRIVER_MOCK_H__
+#ifndef __XDRIVER_MOCK_C__
+#define __XDRIVER_MOCK_C__
 
 #include <iostream>
 #include "xbasic_types.h"
