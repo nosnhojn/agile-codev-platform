@@ -19,6 +19,7 @@ class DisplayXilTest : public testing::Test
     xdriverMock * xdMock;
     XvtcMock * xvMock;
     XAxiVdma_Config defaultConfig;
+    XVtc_Config vtcDefaultConfig;
             
     
     DisplayXilTest()
@@ -46,15 +47,18 @@ class DisplayXilTest : public testing::Test
           .WillByDefault(Return(XST_SUCCESS));
 
       xvMock = getXvtcMock();
-//      ON_CALL(*xvMock, XVtc_LookupConfig(_))
-//          .WillByDefault(Return(7));
+      vtcDefaultConfig.DeviceId= 7;
+      vtcDefaultConfig.BaseAddress = 0x70000000;
+      ON_CALL(*xvMock, XVtc_LookupConfig(_))
+          .WillByDefault(Return(&vtcDefaultConfig));
+      
 
     }
 
     ~DisplayXilTest()
     {
       destroyXdriverMock();
-      destroyXvtcMock();
+//      destroyXvtcMock();
     }
 
 
