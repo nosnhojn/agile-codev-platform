@@ -4,6 +4,7 @@
 #include <string>
 #include "xbasic_types.h"
 
+
 using namespace std;
 
 // Video Pattern Generator - Video Resolution values

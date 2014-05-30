@@ -67,6 +67,81 @@
 * 1.01a	xd	07/23/10	Added GIER; Added more h/w generic info into
 *				xparameters.h; Feed callbacks with pending
 *				interrupt info. Added Doxygen & Version support
+* 2.00a cm   05/25/11 Renamed XVTC_CTL_GACS_MASK to XVTC_CTL_GACLS_MASK
+*                     Added XVTC_CTL_GACPS_MASK
+*				
+* 3.00a cjm  08/01/12 Converted from xio.h to xil_io.h, translating
+*                     basic types, MB cache functions, exceptions and
+*                     assertions to xil_io format. 
+*                     Replaced the following 
+*                     "XExc_Init" -> "Xil_ExceptionInit"
+*                     "XExc_RegisterHandler" -> "Xil_ExceptionRegisterHandler"
+*                     "XEXC_ID_NON_CRITICAL_INT" -> "XIL_EXCEPTION_ID_INT"
+*                     "XExceptionHandler" -> "Xil_ExceptionHandler"
+*                     "XExc_mEnableExceptions" -> "Xil_ExceptionEnable"
+*                     "XEXC_NON_CRITICAL" -> "XIL_EXCEPTION_NON_CRITICAL"
+*                     "XExc_DisableExceptions" -> "Xil_ExceptionDisable"
+*                     "XExc_RemoveHandler" -> "Xil_ExceptionRemoveHandler"
+*                     "microblaze_enable_interrupts" -> "Xil_ExceptionEnable"
+*                     "microblaze_disable_interrupts" -> "Xil_ExceptionDisable"
+*                     
+*                     "XCOMPONENT_IS_STARTED" -> "XIL_COMPONENT_IS_STARTED"
+*                     "XCOMPONENT_IS_READY" -> "XIL_COMPONENT_IS_READY"
+*                     
+*                     "XASSERT_NONVOID" -> "Xil_AssertNonvoid"
+*                     "XASSERT_VOID_ALWAYS" -> "Xil_AssertVoidAlways"
+*                     "XASSERT_VOID" -> "Xil_AssertVoid"
+*                     "Xil_AssertVoid_ALWAYS" -> "Xil_AssertVoidAlways" 
+*                     "XAssertStatus" -> "Xil_AssertStatus"
+*                     "XAssertSetCallback" -> "Xil_AssertCallback"
+*                     
+*                     "XASSERT_OCCURRED" -> "XIL_ASSERT_OCCURRED"
+*                     "XASSERT_NONE" -> "XIL_ASSERT_NONE"
+*                     
+*                     "microblaze_disable_dcache" -> "Xil_DCacheDisable"
+*                     "microblaze_enable_dcache" -> "Xil_DCacheEnable"
+*                     "microblaze_enable_icache" -> "Xil_ICacheEnable"
+*                     "microblaze_disable_icache" -> "Xil_ICacheDisable"
+*                     "microblaze_init_dcache_range" -> "Xil_DCacheInvalidateRange"
+*                     
+*                     "XCache_DisableDCache" -> "Xil_DCacheDisable"
+*                     "XCache_DisableICache" -> "Xil_ICacheDisable"
+*                     "XCache_EnableDCache" -> "Xil_DCacheEnableRegion"
+*                     "XCache_EnableICache" -> "Xil_ICacheEnableRegion"
+*                     "XCache_InvalidateDCacheLine" -> "Xil_DCacheInvalidateRange"
+*                     
+*                     "XUtil_MemoryTest32" -> "Xil_TestMem32"
+*                     "XUtil_MemoryTest16" -> "Xil_TestMem16"
+*                     "XUtil_MemoryTest8" -> "Xil_TestMem8"
+*                     
+*                     "xutil.h" -> "xil_testmem.h"
+*                     
+*                     "xbasic_types.h" -> "xil_types.h"
+*                     "xio.h" -> "xil_io.h"
+*                     
+*                     "XIo_In32" -> "Xil_In32"
+*                     "XIo_Out32" -> "Xil_Out32"
+*                     
+*                     "XTRUE" -> "TRUE"
+*                     "XFALSE" -> "FALSE"
+*                     "XNULL" -> "NULL"
+*                     
+*                     "Xuint8" -> "u8"
+*                     "Xuint16" -> "u16"
+*                     "Xuint32" -> "u32"
+*                     "Xint8" -> "char"
+*                     "Xint16" -> "short"
+*                     "Xint32" -> "long"
+*                     "Xfloat32" -> "float"
+*                     "Xfloat64" -> "double"
+*                     "Xboolean" -> "int"
+*                     "XTEST_FAILED" -> "XST_FAILURE"
+*                     "XTEST_PASSED" -> "XST_SUCCESS"
+* 3.00a cjm  08/02/12 Changed XVTC_RESET_RESET_MASK from 0x0000_000a to 0x8000_0000
+* 4.00a cjm  02/07/13 Remove Unused defines:
+*                     XVTC_GIER
+*                     XVTC_GIER_GIE_MASK
+* 4.00a cjm  02/08/13 Removed XVTC_CTL_HASS_MASK
 * </pre>
 *
 ******************************************************************************/
@@ -80,55 +155,80 @@ extern "C" {
 
 /***************************** Include Files *********************************/
 
-#include "xio.h"
+#include "xil_io.h"
 
 /************************** Constant Definitions *****************************/
 
 /** @name Device Register Offsets
  *  @{
  */
-#define XVTC_CTL	0x000	/**< Control */
+#define XVTC_CTL	  0x000	/**< Control */
+#define XVTC_STATS	0x004	/**< Status */
+#define XVTC_ERROR	0x008	/**< Error */
 
-#define XVTC_GH0	0x004	/**< Generator Horizontal Register 0 */
-#define XVTC_GH1	0x008	/**< Generator Horizontal Register 1 */
-#define XVTC_GH2	0x00C	/**< Generator Horizontal Register 2 */
-#define XVTC_GV0	0x010	/**< Generator Vertical Register 0 */
-#define XVTC_GV1	0x014	/**< Generator Vertical Register 1 */
-#define XVTC_GV2	0x018	/**< Generator Vertical Register 2 */
-#define XVTC_GV3	0x01C	/**< Generator Vertical Register 3 */
-#define XVTC_GV4	0x020	/**< Generator Vertical Register 4 */
-#define XVTC_GV5	0x024	/**< Generator Vertical Register 5 */
+//#define XVTC_GH0	0x004	/**< Generator Horizontal Register 0 */
+//#define XVTC_GH1	0x008	/**< Generator Horizontal Register 1 */
+//#define XVTC_GH2	0x00C	/**< Generator Horizontal Register 2 */
+//#define XVTC_GV0	0x010	/**< Generator Vertical Register 0 */
+//#define XVTC_GV1	0x014	/**< Generator Vertical Register 1 */
+//#define XVTC_GV2	0x018	/**< Generator Vertical Register 2 */
+//#define XVTC_GV3	0x01C	/**< Generator Vertical Register 3 */
+//#define XVTC_GV4	0x020	/**< Generator Vertical Register 4 */
+//#define XVTC_GV5	0x024	/**< Generator Vertical Register 5 */
+//
+//#define XVTC_DS		0x028	/**< Detector Status Register */
+//
+//#define XVTC_DH0	0x02C	/**< Detector Horizontal Register 0 */
+//#define XVTC_DH1	0x030	/**< Detector Horizontal Register 1 */
+//#define XVTC_DH2	0x034	/**< Detector Horizontal Register 2 */
+//#define XVTC_DV0	0x038	/**< Detector Vertical Register 0 */
+//#define XVTC_DV1	0x03C	/**< Detector Vertical Register 1 */
+//#define XVTC_DV2	0x040	/**< Detector Vertical Register 2 */
+//#define XVTC_DV3	0x044	/**< Detector Vertical Register 3 */
+//#define XVTC_DV4	0x048	/**< Detector Vertical Register 4 */
+//#define XVTC_DV5	0x04C	/**< Detector Vertical Register 5 */
 
-#define XVTC_DS		0x028	/**< Detector Status Register */
+#define XVTC_DASIZE  0x020 /**< Detector Active Size */
+#define XVTC_DTSTAT  0x024 /**< Detector Timing Status */
+#define XVTC_DFENC   0x028 /**< Detector Encoding */
+#define XVTC_DPOL    0x02c /**< Detector Polarity */
+#define XVTC_DHSIZE  0x030 /**< Detector Frame Horizontal Size */
+#define XVTC_DVSIZE  0x034 /**< Detector Frame Vertical Size */
+#define XVTC_DHSYNC  0x038 /**< Detector Horizontal sync */
+#define XVTC_DVBHOFF 0x03c /**< Detector Vblank Horizontal Offset */
+#define XVTC_DVSYNC  0x040 /**< Detector Vertical Sync */
+#define XVTC_DVSHOFF 0x044 /**< Detector Vsync Horizontal Offset */
 
-#define XVTC_DH0	0x02C	/**< Detector Horizontal Register 0 */
-#define XVTC_DH1	0x030	/**< Detector Horizontal Register 1 */
-#define XVTC_DH2	0x034	/**< Detector Horizontal Register 2 */
-#define XVTC_DV0	0x038	/**< Detector Vertical Register 0 */
-#define XVTC_DV1	0x03C	/**< Detector Vertical Register 1 */
-#define XVTC_DV2	0x040	/**< Detector Vertical Register 2 */
-#define XVTC_DV3	0x044	/**< Detector Vertical Register 3 */
-#define XVTC_DV4	0x048	/**< Detector Vertical Register 4 */
-#define XVTC_DV5	0x04C	/**< Detector Vertical Register 5 */
+#define XVTC_GASIZE  0x060 /**< Generator Active Size */
+#define XVTC_GTSTAT  0x064 /**< Generator Timing Status */
+#define XVTC_GFENC   0x068 /**< Generator Encoding */
+#define XVTC_GPOL    0x06c /**< Generator Polarity */
+#define XVTC_GHSIZE  0x070 /**< Generator Frame Horizontal Size */
+#define XVTC_GVSIZE  0x074 /**< Generator Frame Vertical Size */
+#define XVTC_GHSYNC  0x078 /**< Generator Horizontal Sync */
+#define XVTC_GVBHOFF 0x07c /**< Generator Vblank Horizontal Offset */
+#define XVTC_GVSYNC  0x080 /**< Generator Vertical Sync */
+#define XVTC_GVSHOFF 0x084 /**< Generator Vsync horizontal Offset */
 
-#define XVTC_FS00	0x050	/**< Frame Sync 00 Config Register */
-#define XVTC_FS01	0x054	/**< Frame Sync 01 Config Register */
-#define XVTC_FS02	0x058	/**< Frame Sync 02 Config Register */
-#define XVTC_FS03	0x05C	/**< Frame Sync 03 Config Register */
-#define XVTC_FS04	0x060	/**< Frame Sync 04 Config Register */
-#define XVTC_FS05	0x064	/**< Frame Sync 05 Config Register */
-#define XVTC_FS06	0x068	/**< Frame Sync 06 Config Register */
-#define XVTC_FS07	0x06C	/**< Frame Sync 07 Config Register */
-#define XVTC_FS08	0x070	/**< Frame Sync 08 Config Register */
-#define XVTC_FS09	0x074	/**< Frame Sync 09 Config Register */
-#define XVTC_FS10	0x078	/**< Frame Sync 10 Config Register */
-#define XVTC_FS11	0x07C	/**< Frame Sync 11 Config Register */
-#define XVTC_FS12	0x080	/**< Frame Sync 12 Config Register */
-#define XVTC_FS13	0x084	/**< Frame Sync 13 Config Register */
-#define XVTC_FS14	0x088	/**< Frame Sync 14 Config Register */
-#define XVTC_FS15	0x08C	/**< Frame Sync 15 Config Register */
 
-#define XVTC_GGD	0x090	/**< Generator Global Delay register */
+#define XVTC_FS00	0x100	/**< Frame Sync 00 Config Register */
+#define XVTC_FS01	0x104	/**< Frame Sync 01 Config Register */
+#define XVTC_FS02	0x108	/**< Frame Sync 02 Config Register */
+#define XVTC_FS03	0x10C	/**< Frame Sync 03 Config Register */
+#define XVTC_FS04	0x110	/**< Frame Sync 04 Config Register */
+#define XVTC_FS05	0x114	/**< Frame Sync 05 Config Register */
+#define XVTC_FS06	0x118	/**< Frame Sync 06 Config Register */
+#define XVTC_FS07	0x11C	/**< Frame Sync 07 Config Register */
+#define XVTC_FS08	0x120	/**< Frame Sync 08 Config Register */
+#define XVTC_FS09	0x124	/**< Frame Sync 09 Config Register */
+#define XVTC_FS10	0x128	/**< Frame Sync 10 Config Register */
+#define XVTC_FS11	0x12C	/**< Frame Sync 11 Config Register */
+#define XVTC_FS12	0x130	/**< Frame Sync 12 Config Register */
+#define XVTC_FS13	0x134	/**< Frame Sync 13 Config Register */
+#define XVTC_FS14	0x138	/**< Frame Sync 14 Config Register */
+#define XVTC_FS15	0x13C	/**< Frame Sync 15 Config Register */
+
+#define XVTC_GGD	0x140	/**< Generator Global Delay register */
 
 #define XVTC_GVBHO0	0x0A0	/**< Generator VBlank Hori Offset 0 register */
 #define XVTC_GVSHO0	0x0A4	/**< Generator VSync  Hori Offset 0 register */
@@ -140,61 +240,80 @@ extern "C" {
 #define XVTC_DVBHO1	0x0B8	/**< Detector VBlank Hori Offset 1 register */
 #define XVTC_DVSHO1	0x0BC	/**< Detector VSync  Hori Offset 1 register */
 
-#define XVTC_VER	0x0F0	/**< Version Register */
-#define XVTC_RESET	0x100	/**< Reset Register */
-#define XVTC_GIER	0x21C	/**< Global Interrupt Enable Register */
-#define XVTC_ISR	0x220	/**< Interrupt Status Register */
-#define XVTC_IER	0x228	/**< Interrupt Enable Register */
+#define XVTC_VER	0x010	/**< Version Register */
+#define XVTC_RESET	0x000	/**< Reset Register */
+#define XVTC_ISR	0x004	/**< Interrupt Status Register */
+#define XVTC_IER	0x00c	/**< Interrupt Enable Register */
 /*@}*/
 
 /** @name Control Register bit definition
  *  @{
  */
-#define XVTC_CTL_ACP_MASK	0x04000000 /**< Active Chroma Output Polarity*/
-#define XVTC_CTL_AVP_MASK	0x02000000 /**< Active Video Output Polarity */
-#define XVTC_CTL_FIP_MASK	0x01000000 /**< Field ID Output Polarity */
-#define XVTC_CTL_VBP_MASK	0x00800000 /**< Vertical Blank Output Polarity
+#define XVTC_CTL_FIP_MASK	0x00000040 /**< Field ID Output Polarity */
+#define XVTC_CTL_ACP_MASK	0x00000020 /**< Active Chroma Output Polarity*/
+#define XVTC_CTL_AVP_MASK	0x00000010 /**< Active Video Output Polarity */
+#define XVTC_CTL_HSP_MASK	0x00000008 /**< Horizontal Sync Output Polarity
 					     */
-#define XVTC_CTL_VSP_MASK	0x00400000 /**< Vertical Sync Output Polarity
+#define XVTC_CTL_VSP_MASK	0x00000004 /**< Vertical Sync Output Polarity
 					     */
-#define XVTC_CTL_HBP_MASK	0x00200000 /**< Horizontal Blank Output
+#define XVTC_CTL_HBP_MASK	0x00000002 /**< Horizontal Blank Output
 					     *  Polarity */
-#define XVTC_CTL_HSP_MASK	0x00100000 /**< Horizontal Sync Output Polarity
+#define XVTC_CTL_VBP_MASK	0x00000001 /**< Vertical Blank Output Polarity
 					     */
-#define XVTC_CTL_ALLP_MASK	0x07F00000 /**< Bit mask for all polarity bits
+#define XVTC_CTL_ALLP_MASK	0x0000007F /**< Bit mask for all polarity bits
 					     */
+
+
+#define XVTC_CTL_FIPSS_MASK	0x04000000 /**< Field ID Output Polarity Source */
+#define XVTC_CTL_ACPSS_MASK	0x02000000 /**< Active Chroma Output Polarity Source */
+#define XVTC_CTL_AVPSS_MASK	0x01000000 /**< Active Video Output Polarity Source */
+#define XVTC_CTL_HSPSS_MASK	0x00800000 /**< Horizontal Sync Output Polarity
+					     Source */
+#define XVTC_CTL_VSPSS_MASK	0x00400000 /**< Vertical Sync Output Polarity
+					     Source */
+#define XVTC_CTL_HBPSS_MASK	0x00200000 /**< Horizontal Blank Output
+					     *  Polarity Source */
+#define XVTC_CTL_VBPSS_MASK	0x00100000 /**< Vertical Blank Output Polarity
+					     Source */
+
+
+
 #define XVTC_CTL_VCSS_MASK	0x00040000 /**< Start of Active Chroma Register
 					     *  Source Select */
 #define XVTC_CTL_VASS_MASK	0x00020000 /**< Vertical Active Video Start
 					     *  Register Source Select */
 #define XVTC_CTL_VBSS_MASK	0x00010000 /**< Vertical Back Porch Start
-					     *  Register Source Select */
+					     *  Register Source Select (Sync End) */
 #define XVTC_CTL_VSSS_MASK	0x00008000 /**< Vertical Sync Start Register
 					     *  Source Select */
 #define XVTC_CTL_VFSS_MASK	0x00004000 /**< Vertical Front Porch Start
-					     *  Register Source Select */
+					     *  Register Source Select (Active Size) */
 #define XVTC_CTL_VTSS_MASK	0x00002000 /**< Vertical Total Register Source
-					     *  Select */
-#define XVTC_CTL_HASS_MASK	0x00001000 /**< Horizontal Active Video Start
-					     *  Register Source Select */
+					     *  Select (Frame Size) */
+
+
 #define XVTC_CTL_HBSS_MASK	0x00000800 /**< Horizontal Back Porch Start
-					     *  Register Source Select */
+					     *  Register Source Select (Sync End) */
 #define XVTC_CTL_HSSS_MASK	0x00000400 /**< Horizontal Sync Start Register
 					     *  Source Select */
 #define XVTC_CTL_HFSS_MASK	0x00000200 /**< Horizontal Front Porch Start
-					     *  Register Source Select */
+					     *  Register Source Select (Active Size) */
 #define XVTC_CTL_HTSS_MASK	0x00000100 /**< Horizontal Total Register
-					     *  Source Select */
-#define XVTC_CTL_ALLSS_MASK	0x0007FF00 /**< Bit mask for all source select
+					     *  Source Select (Frame Size) */
+
+
+#define XVTC_CTL_ALLSS_MASK	0x03F7EF00 /**< Bit mask for all source select
 					     */
-#define XVTC_CTL_GACPS_MASK	0x00000020 /**< Generator Active Chroma Pixel
+#define XVTC_CTL_GACPS_MASK	0x00000200 /**< Generator Active Chroma Pixel
 					     *  Skip */
-#define XVTC_CTL_GACLS_MASK	0x00000010 /**< Generator Active Chroma Line
+#define XVTC_CTL_GACLS_MASK	0x00000001 /**< Generator Active Chroma Line
 					     *  Skip */
-#define XVTC_CTL_LP_MASK	0x00000008 /**< Lock Polarity */
-#define XVTC_CTL_SE_MASK	0x00000004 /**< Enable Sync with Detector */
-#define XVTC_CTL_DE_MASK	0x00000002 /**< VTC Detector Enable */
-#define XVTC_CTL_GE_MASK	0x00000001 /**< VTC Generator Enable */
+//#define XVTC_CTL_LP_MASK	0x00000008 /**< Lock Polarity */
+#define XVTC_CTL_SE_MASK	0x00000020 /**< Enable Sync with Detector */
+#define XVTC_CTL_DE_MASK	0x00000008 /**< VTC Detector Enable */
+#define XVTC_CTL_GE_MASK	0x00000004 /**< VTC Generator Enable */
+#define XVTC_CTL_RU_MASK	0x00000002 /**< VTC Register Update */
+#define XVTC_CTL_SW_MASK	0x00000001 /**< VTC Core Enable */
 /*@}*/
 
 /** @name VTC Generator Horizontal 0
@@ -251,9 +370,9 @@ extern "C" {
 /** @name VTC Generator Vertical 2 (Field 0)
  *  @{
  */
-#define XVTC_GV2_CHROMASTART_MASK  0x1FFF0000 /**< Active Chroma Start Line
+#define XVTC_GV2_CHROMASTART_MASK  0x00000100 /**< Active Chroma Start Line
 					       *  Count */
-#define XVTC_GV2_CHROMASTART_SHIFT 16	     /**< Bit shift for Active Chroma
+#define XVTC_GV2_CHROMASTART_SHIFT 8	     /**< Bit shift for Active Chroma
 					       *  Start Line Count */
 #define XVTC_GV2_ACTIVESTART_MASK  0x00001FFF /**< Vertical Active Video Start
 					       *  Cycle Count */
@@ -447,24 +566,19 @@ extern "C" {
 /** @name Reset Register bit definition
  *  @{
  */
-#define XVTC_RESET_RESET_MASK	0x0000000A /**< Software Reset */
+#define XVTC_RESET_RESET_MASK	0x80000000 /**< Software Reset */
+#define XVTC_SYNC_RESET_MASK	0x40000000 /**< Frame Sync'ed Software Reset */
 /*@}*/
 
 /** @name Version Register bit definition
  *  @{
  */
-#define XVTC_VER_MAJOR_MASK	0xF0000000	/**< Major Version*/
-#define XVTC_VER_MAJOR_SHIFT	28		/**< Major Version Bit Shift*/
-#define XVTC_VER_MINOR_MASK	0x0FF00000	/**< Minor Version */
-#define XVTC_VER_MINOR_SHIFT	20		/**< Minor Version Bit Shift*/
-#define XVTC_VER_REV_MASK	0x000F0000	/**< Revision Version */
-#define XVTC_VER_REV_SHIFT	16		/**< Revision Bit Shift*/
-/*@}*/
-
-/** @name Global Interrupt Enable Register bit definition
- *  @{
- */
-#define XVTC_GIER_GIE_MASK	0x80000000 /**< Global interrupt enable */
+#define XVTC_VER_MAJOR_MASK	0xFF000000	/**< Major Version*/
+#define XVTC_VER_MAJOR_SHIFT	24		/**< Major Version Bit Shift*/
+#define XVTC_VER_MINOR_MASK	0x00FF0000	/**< Minor Version */
+#define XVTC_VER_MINOR_SHIFT	16		/**< Minor Version Bit Shift*/
+#define XVTC_VER_REV_MASK	0x0000F000	/**< Revision Version */
+#define XVTC_VER_REV_SHIFT	12		/**< Revision Bit Shift*/
 /*@}*/
 
 /** @name Interrupt Status/Enable Register bit definition
@@ -492,19 +606,21 @@ extern "C" {
 #define XVTC_IXR_G_VBLANK_MASK	0x00001000 /**< Generator VBLANK Interrupt */
 #define XVTC_IXR_G_ALL_MASK	0x00003000 /**< All Generator interrupts */
 
-#define XVTC_IXR_D_AV_MASK	0x00000200 /**< Detector Active Video Intr */
-#define XVTC_IXR_D_VBLANK_MASK	0x00000100 /**< Detector VBLANK Interrupt */
-#define XVTC_IXR_D_ALL_MASK	0x00000300 /**< All Detector interrupts */
+#define XVTC_IXR_D_AV_MASK	0x00000800 /**< Detector Active Video Intr */
+#define XVTC_IXR_D_VBLANK_MASK	0x00000400 /**< Detector VBLANK Interrupt */
+#define XVTC_IXR_D_ALL_MASK	0x00000C00 /**< All Detector interrupts */
 
-#define XVTC_IXR_AL_MASK	0x00000080 /**< All lock */
-#define XVTC_IXR_ACL_MASK	0x00000040 /**< Active Chroma signal lock */
-#define XVTC_IXR_AVL_MASK	0x00000020 /**< Active Video Signal Lock */
-#define XVTC_IXR_FIL_MASK	0x00000010 /**< Field ID Signal Lock */
-#define XVTC_IXR_VBL_MASK	0x00000008 /**< Vertical Blank Signal Lock */
-#define XVTC_IXR_VSL_MASK	0x00000004 /**< Vertical Sync Signal Lock */
-#define XVTC_IXR_HBL_MASK	0x00000002 /**< Horizontal Blank Signal Lock */
-#define XVTC_IXR_HSL_MASK	0x00000001 /**< Horizontal Sync Signal Lock */
-#define XVTC_IXR_LOCKALL_MASK	0x000000FF /**< All Signal Lock interrupt */
+#define XVTC_IXR_LOL_MASK	0x00000200 /**< Lock Loss */
+#define XVTC_IXR_LO_MASK	0x00000100 /**< Lock  */
+#define XVTC_IXR_LOCKALL_MASK	0x00000300 /**< All Signal Lock interrupt */
+
+#define XVTC_IXR_ACL_MASK	0x00200000 /**< Active Chroma signal lock */
+#define XVTC_IXR_AVL_MASK	0x00100000 /**< Active Video Signal Lock */
+#define XVTC_IXR_HSL_MASK	0x00080000 /**< Horizontal Sync Signal Lock */
+#define XVTC_IXR_VSL_MASK	0x00040000 /**< Vertical Sync Signal Lock */
+#define XVTC_IXR_HBL_MASK	0x00020000 /**< Horizontal Blank Signal Lock */
+#define XVTC_IXR_VBL_MASK	0x00010000 /**< Vertical Blank Signal Lock */
+
 #define XVTC_IXR_ALLINTR_MASK	(XVTC_IXR_FSYNCALL_MASK | \
 					XVTC_IXR_G_ALL_MASK | \
 					XVTC_IXR_D_ALL_MASK | \
@@ -522,8 +638,8 @@ extern "C" {
 /** @name Register Access Macro Definition
  *  @{
  */
-#define XVtc_In32		XIo_In32
-#define XVtc_Out32		XIo_Out32
+#define XVtc_In32		Xil_In32
+#define XVtc_Out32		Xil_Out32
 
 /*****************************************************************************/
 /**

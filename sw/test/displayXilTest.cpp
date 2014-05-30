@@ -227,6 +227,32 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
 //         vgen_config function in video_generator.c
 //--------------------------------------------------------------
 
+TEST_F(DisplayXilTest, vgenConfigVresGetTiming) {
+  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
+}
+/*
+TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
+  XVtc_Config * Config = 0;
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).WillOnce(Return(Config));
+}
+
+TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
+}
+
+TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
+}
+
+TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
+  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
+}
+
+TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
+  display->setHdmiDisplayMemBaseAddr(6699);
+  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
+}
+*/
 TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
   EXPECT_EQ(display->getHeight(), 1080);

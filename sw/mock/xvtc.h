@@ -58,12 +58,12 @@
 *
 * The device has the following main features:
 * - Detect video signals:
-*       - horizontal sync
-*       - horizontal blank
-*       - vertical sync
-*       - vertical blank
-*       - active video
-*       - field id
+*	- horizontal sync
+*	- horizontal blank
+*	- vertical sync
+*	- vertical blank
+*	- active video
+*	- field id
 * - Independently override any one signal.
 * - Re-generate video signals with +/- delay and with polarity inversion.
 * - Generate up to 16 one cycle Frame Sync outputs.
@@ -76,19 +76,19 @@
 * The interrupt types supported are:
 * - Frame Sync Interrupts 0 - 15
 * - Generator interrupt
-*       - Generator Active Video Interrupt
-*       - Generator VBLANK Interrupt
+*	- Generator Active Video Interrupt
+*	- Generator VBLANK Interrupt
 * - Detector interrupt:
-*       - Detector Active Video Interrupt
-*       - Detector VBLANK Interrupt
+*	- Detector Active Video Interrupt
+*	- Detector VBLANK Interrupt
 * - Signal Lock interrupt
-*       - Active Chroma signal lock
-*       - Active Video Signal Lock
-*       - Field ID Signal Lock
-*       - Vertical Blank Signal Lock
-*       - Vertical Sync Signal Lock
-*       - Horizontal Blank Signal Lock
-*       - Horizontal Sync Signal Lock
+*	- Active Chroma signal lock
+*	- Active Video Signal Lock
+*	- Field ID Signal Lock
+*	- Vertical Blank Signal Lock
+*	- Vertical Sync Signal Lock
+*	- Horizontal Blank Signal Lock
+*	- Horizontal Sync Signal Lock
 *
 * <b>Software Initialization </b>
 *
@@ -134,7 +134,9 @@
 *                        2. Added Generator/Detector VBlank/VSync
 *                           Horizontal offset setup/fetch support;
 *                        3. Renamed the IP to support to be axi_vtc;
-*                        4. Supported sync between generator and detector;
+*                        4. Supported sync between generator and detector
+*                           with addition of new XVtc_EnableSync() and
+*                           XVtc_DisableSync() functions;
 *                        5. Renamed XVtc_SetSync() to XVtc_SetFSync();
 *                        6. Renamed XVtc_GetSync() to XVtc_GetFSync();
 *                        7. Removed unnecessary register write in
@@ -148,50 +150,120 @@
 *                        4. Added XVtc_GetSkipPixel();
 *                        5. Renamed XVTC_CTL_GACS_MASK to XVTC_CTL_GACLS_MASK
 *                        6. Added XVTC_CTL_GACPS_MASK
+* 2.00a cm   06/16/12    1. Added missing xil_assert.h include
+* 2.00a cm   07/25/12    1. Removed unused XVtc_IntrSetLockPolarity() function
+* 3.00a cm   08/02/12    1. Changed RESET_MASK from 0x0000_000a to 0x8000_0000
+*                        2. Added the XVtc_Sync_Reset() frame sync'ed SW 
+*                           reset function.
+* 3.00a cjm  08/02/12 Converted from xio.h to xil_io.h, translating
+*                     basic types, MB cache functions, exceptions and
+*                     assertions to xil_io format. 
+*                     Replaced the following 
+*                     "XExc_Init" -> "Xil_ExceptionInit"
+*                     "XExc_RegisterHandler" -> "Xil_ExceptionRegisterHandler"
+*                     "XEXC_ID_NON_CRITICAL_INT" -> "XIL_EXCEPTION_ID_INT"
+*                     "XExceptionHandler" -> "Xil_ExceptionHandler"
+*                     "XExc_mEnableExceptions" -> "Xil_ExceptionEnable"
+*                     "XEXC_NON_CRITICAL" -> "XIL_EXCEPTION_NON_CRITICAL"
+*                     "XExc_DisableExceptions" -> "Xil_ExceptionDisable"
+*                     "XExc_RemoveHandler" -> "Xil_ExceptionRemoveHandler"
+*                     "microblaze_enable_interrupts" -> "Xil_ExceptionEnable"
+*                     "microblaze_disable_interrupts" -> "Xil_ExceptionDisable"
+*                     
+*                     "XCOMPONENT_IS_STARTED" -> "XIL_COMPONENT_IS_STARTED"
+*                     "XCOMPONENT_IS_READY" -> "XIL_COMPONENT_IS_READY"
+*                     
+*                     "XASSERT_NONVOID" -> "Xil_AssertNonvoid"
+*                     "XASSERT_VOID_ALWAYS" -> "Xil_AssertVoidAlways"
+*                     "XASSERT_VOID" -> "Xil_AssertVoid"
+*                     "Xil_AssertVoid_ALWAYS" -> "Xil_AssertVoidAlways" 
+*                     "XAssertStatus" -> "Xil_AssertStatus"
+*                     "XAssertSetCallback" -> "Xil_AssertCallback"
+*                     
+*                     "XASSERT_OCCURRED" -> "XIL_ASSERT_OCCURRED"
+*                     "XASSERT_NONE" -> "XIL_ASSERT_NONE"
+*                     
+*                     "microblaze_disable_dcache" -> "Xil_DCacheDisable"
+*                     "microblaze_enable_dcache" -> "Xil_DCacheEnable"
+*                     "microblaze_enable_icache" -> "Xil_ICacheEnable"
+*                     "microblaze_disable_icache" -> "Xil_ICacheDisable"
+*                     "microblaze_init_dcache_range" -> "Xil_DCacheInvalidateRange"
+*                     
+*                     "XCache_DisableDCache" -> "Xil_DCacheDisable"
+*                     "XCache_DisableICache" -> "Xil_ICacheDisable"
+*                     "XCache_EnableDCache" -> "Xil_DCacheEnableRegion"
+*                     "XCache_EnableICache" -> "Xil_ICacheEnableRegion"
+*                     "XCache_InvalidateDCacheLine" -> "Xil_DCacheInvalidateRange"
+*                     
+*                     "XUtil_MemoryTest32" -> "Xil_TestMem32"
+*                     "XUtil_MemoryTest16" -> "Xil_TestMem16"
+*                     "XUtil_MemoryTest8" -> "Xil_TestMem8"
+*                     
+*                     "xutil.h" -> "xil_testmem.h"
+*                     
+*                     "xbasic_types.h" -> "xil_types.h"
+*                     "xio.h" -> "xil_io.h"
+*                     
+*                     "XIo_In32" -> "Xil_In32"
+*                     "XIo_Out32" -> "Xil_Out32"
+*                     
+*                     "XTRUE" -> "TRUE"
+*                     "XFALSE" -> "FALSE"
+*                     "XNULL" -> "NULL"
+*                     
+*                     "Xuint8" -> "u8"
+*                     "Xuint16" -> "u16"
+*                     "Xuint32" -> "u32"
+*                     "Xint8" -> "char"
+*                     "Xint16" -> "short"
+*                     "Xint32" -> "long"
+*                     "Xfloat32" -> "float"
+*                     "Xfloat64" -> "double"
+*                     "Xboolean" -> "int"
+*                     "XTEST_FAILED" -> "XST_FAILURE"
+*                     "XTEST_PASSED" -> "XST_SUCCESS"
 * </pre>
 *
 ******************************************************************************/
 
-#ifndef XVTC_H            /* prevent circular inclusions */
-#define XVTC_H            /* by using protection macros */
+#ifndef XVTC_H		  /* prevent circular inclusions */
+#define XVTC_H		  /* by using protection macros */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /***************************** Include Files *********************************/
-
+#include "xbasic_types.h"
 #include "xvtc_hw.h"
+#include "xil_assert.h"
 #include "xstatus.h"
 
-// [ssalehia]: Mock insertions
-#define XPAR_XVTC_NUM_INSTANCES 1
-#define XPAR_VTC_0_DEVICE_ID 7
-#define XPAR_VTC_0_BASEADDR 0x70000000
+
 
 /************************** Constant Definitions *****************************/
 
 /** @name Interrupt Types for setting up Callbacks
  *  @{
  */
-#define XVTC_HANDLER_FRAMESYNC  1 /**< A frame sync event interrupt type */
-#define XVTC_HANDLER_LOCK       2 /**< A signal lock event interrupt type */
-#define XVTC_HANDLER_DETECTOR   3 /**< A detector event interrupt type */
-#define XVTC_HANDLER_GENERATOR  4 /**< A generator event interrupt type */
-#define XVTC_HANDLER_ERROR      5 /**< An error condition interrupt type */
+#define XVTC_HANDLER_FRAMESYNC	1 /**< A frame sync event interrupt type */
+#define XVTC_HANDLER_LOCK	2 /**< A signal lock event interrupt type */
+#define XVTC_HANDLER_DETECTOR	3 /**< A detector event interrupt type */
+#define XVTC_HANDLER_GENERATOR	4 /**< A generator event interrupt type */
+#define XVTC_HANDLER_ERROR	5 /**< An error condition interrupt type */
 /*@}*/
 
 /** @name Options for enabling VTC modules
  *  @{
  */
-#define XVTC_EN_GENERATOR       1       /**< To enable generator */
-#define XVTC_EN_DETECTOR        2       /**< To enable detector */
+#define XVTC_EN_GENERATOR	1	/**< To enable generator */
+#define XVTC_EN_DETECTOR	2	/**< To enable detector */
 /*@}*/
 
 /** @name Address gap between two register next to each other
  *  @{
  */
-#define XVTC_REG_ADDRGAP        4
+#define XVTC_REG_ADDRGAP	4
 /*@}*/
 
 /**************************** Type Definitions *******************************/
@@ -201,9 +273,9 @@ extern "C" {
  * Each VTC device should have a configuration structure associated
  */
 typedef struct {
-        u16 DeviceId;      /**< DeviceId is the unique ID  of the device */
-        u32 BaseAddress;   /**< BaseAddress is the physical base address of the
-                             *  device's registers */
+	u16 DeviceId;	   /**< DeviceId is the unique ID  of the device */
+	u32 BaseAddress;   /**< BaseAddress is the physical base address of the
+			     *	device's registers */
 } XVtc_Config;
 
 /**
@@ -211,14 +283,17 @@ typedef struct {
  * device.
  */
 typedef struct {
-        u8 ActiveChromaPol;     /**< Active Chroma Output Polarity */
-        u8 ActiveVideoPol;      /**< Active Video Output Polarity */
-        u8 FieldIdPol;          /**< Field ID Output Polarity */
-        u8 VBlankPol;           /**< Vertical Blank Output Polarity */
-        u8 VSyncPol;            /**< Vertical Sync Output Polarity */
-        u8 HBlankPol;           /**< Horizontal Blank Output Polarity */
-        u8 HSyncPol;            /**< Horizontal Sync Output Polarity */
+	u8 ActiveChromaPol;	/**< Active Chroma Output Polarity */
+	u8 ActiveVideoPol;	/**< Active Video Output Polarity */
+	u8 FieldIdPol;		/**< Field ID Output Polarity */
+	u8 VBlankPol;		/**< Vertical Blank Output Polarity */
+	u8 VSyncPol;		/**< Vertical Sync Output Polarity */
+	u8 HBlankPol;		/**< Horizontal Blank Output Polarity */
+	u8 HSyncPol;		/**< Horizontal Sync Output Polarity */
 } XVtc_Polarity;
+
+
+
 
 /**
  * This typedef contains Source Selection configuration information for a
@@ -226,27 +301,36 @@ typedef struct {
  */
 typedef struct {
 
-        u8 VChromaSrc;          /**< Start of Active Chroma Register Source
-                                  *  Select */
-        u8 VActiveSrc;          /**< Vertical Active Video Start Register
-                                  *  Source Select */
-        u8 VBackPorchSrc;       /**< Vertical Back Porch Start Register Source
-                                  *  Select */
-        u8 VSyncSrc;            /**< Vertical Sync Start Register Source Select
-                                  */
-        u8 VFrontPorchSrc;      /**< Vertical Front Porch Start Register Source
-                                  *  Select */
-        u8 VTotalSrc;           /**< Vertical Total Register Source Select */
+	u8 FieldIdPolSrc;		/**< Field ID Output Polarity Source */
+	u8 ActiveChromaPolSrc;	/**< Active Chroma Output Polarity Source */
+	u8 ActiveVideoPolSrc;	/**< Active Video Output Polarity Source */
+	u8 HSyncPolSrc;		/**< Horizontal Sync Output Polarity Source */
+	u8 VSyncPolSrc;		/**< Vertical Sync Output Polarity Source */
+	u8 HBlankPolSrc;		/**< Horizontal Blank Output Polarity Source */
+	u8 VBlankPolSrc;		/**< Vertical Blank Output Polarity Source */
 
-        u8 HActiveSrc;          /**< Horizontal Active Video Start Register
-                                  *  Source Select */
-        u8 HBackPorchSrc;       /**< Horizontal Back Porch Start Register
-                                  *  Source Select */
-        u8 HSyncSrc;            /**< Horizontal Sync Start Register Source
-                                  *  Select */
-        u8 HFrontPorchSrc;      /**< Horizontal Front Porch Start Register
-                                  *  Source Select */
-        u8 HTotalSrc;           /**< Horizontal Total Register Source Select */
+
+	u8 VChromaSrc;		/**< Start of Active Chroma Register Source
+				  *  Select */
+	u8 VActiveSrc;		/**< Vertical Active Video Start Register
+				  *  Source Select */
+	u8 VBackPorchSrc;	/**< Vertical Back Porch Start Register Source
+				  *  Select */
+	u8 VSyncSrc;		/**< Vertical Sync Start Register Source Select
+				  */
+	u8 VFrontPorchSrc;	/**< Vertical Front Porch Start Register Source
+				  *  Select */
+	u8 VTotalSrc;		/**< Vertical Total Register Source Select */
+
+	u8 HActiveSrc;		/**< Horizontal Active Video Start Register
+				  *  Source Select */
+	u8 HBackPorchSrc;	/**< Horizontal Back Porch Start Register
+				  *  Source Select */
+	u8 HSyncSrc;		/**< Horizontal Sync Start Register Source
+				  *  Select */
+	u8 HFrontPorchSrc;	/**< Horizontal Front Porch Start Register
+				  *  Source Select */
+	u8 HTotalSrc;		/**< Horizontal Total Register Source Select */
 
 } XVtc_SourceSelect;
 
@@ -255,35 +339,29 @@ typedef struct {
  * Generator/Detector modules in a VTC device.
  */
 typedef struct {
+  u16 OriginMode; 
 
-        u16 HFrontPorchStart;   /**< Horizontal Front Porch Start Cycle Count*/
-        u16 HTotal;             /**< Horizontal total clock cycles per Line */
-        u16 HBackPorchStart;    /**< Horizontal Back Porch Start Cycle Count */
-        u16 HSyncStart;         /**< Horizontal Sync Start Cycle Count */
-        u16 HActiveStart;       /**< Horizontal Active Video Start Cycle Count
-                                  */
+	u16 HTotal;		/**< Horizontal total clock cycles per Line */
+	u16 HFrontPorchStart;	/**< Horizontal Front Porch Start Cycle Count*/
+	u16 HSyncStart;		/**< Horizontal Sync Start Cycle Count */
+	u16 HBackPorchStart;	/**< Horizontal Back Porch Start Cycle Count */
+	u16 HActiveStart;	/**< Horizontal Active Video Start Cycle Count */
 
-        u16 V0FrontPorchStart;  /**< Vertical Front Porch Start Line Count
-                                  *  (Field 0) */
-        u16 V0Total;            /**< Total lines per Frame (Field 0) */
-        u16 V0BackPorchStart;   /**< Vertical Back Porch Start Line Count
-                                  *  (Field 0) */
-        u16 V0SyncStart;        /**< Vertical Sync Start Line Count (Field 0)*/
-        u16 V0ChromaStart;      /**< Active Chroma Start Line Count (Field 0)*/
-        u16 V0ActiveStart;      /**< Vertical Active Video Start Line Count
-                                  *  (Field 0) */
+	u16 V0Total;		/**< Total lines per Frame (Field 0) */
+	u16 V0FrontPorchStart;	/**< Vertical Front Porch Start Line Count *  (Field 0) */
+	u16 V0SyncStart;	/**< Vertical Sync Start Line Count (Field 0)*/
+	u16 V0BackPorchStart;	/**< Vertical Back Porch Start Line Count *  (Field 0) */
+	u16 V0ActiveStart;	/**< Vertical Active Video Start Line Count *  (Field 0) */
+	u16 V0ChromaStart;	/**< Active Chroma Start Line Count (Field 0)*/
 
-        u16 V1FrontPorchStart;  /**< Vertical Front Porch Start Line Count
-                                  *  (Field 1) */
-        u16 V1Total;            /**< Total lines per Frame (Field 1) */
-        u16 V1BackPorchStart;   /**< Vertical Back Porch Start Line Count
-                                  *  (Field 1)  */
-        u16 V1SyncStart;        /**< Vertical Sync Start Line Count (Field 1)*/
-        u16 V1ChromaStart;      /**< Active Chroma Start Line Count (Field 1)*/
-        u16 V1ActiveStart;      /**< Vertical Active Video Start Line Count
-                                  * (Field 1) */
+	u16 V1Total;		/**< Total lines per Frame (Field 1) */
+	u16 V1FrontPorchStart;	/**< Vertical Front Porch Start Line Count *  (Field 1) */
+	u16 V1SyncStart;	/**< Vertical Sync Start Line Count (Field 1)*/
+	u16 V1BackPorchStart;	/**< Vertical Back Porch Start Line Count *  (Field 1)  */
+	u16 V1ActiveStart;	/**< Vertical Active Video Start Line Count * (Field 1) */
+	u16 V1ChromaStart;	/**< Active Chroma Start Line Count (Field 1)*/
 
-} XVtc_VtcSignal;
+} XVtc_Signal;
 
 
 /**
@@ -291,25 +369,25 @@ typedef struct {
  * configuration information for a VTC device.
  */
 typedef struct {
-        u16 V0BlankHoriStart;/**< Vertical Blank Hori Offset Start (field 0) */
-        u16 V0BlankHoriEnd;  /**< Vertical Blank Hori Offset End   (field 0) */
-        u16 V0SyncHoriStart; /**< Vertical Sync  Hori Offset Start (field 0) */
-        u16 V0SyncHoriEnd;   /**< Vertical Sync  Hori Offset End   (field 0) */
-        u16 V1BlankHoriStart;/**< Vertical Blank Hori Offset Start (field 1) */
-        u16 V1BlankHoriEnd;  /**< Vertical Blank Hori Offset End   (field 1) */
-        u16 V1SyncHoriStart; /**< Vertical Sync  Hori Offset Start (field 1) */
-        u16 V1SyncHoriEnd;   /**< Vertical Sync  Hori Offset End   (field 1) */
+	u16 V0BlankHoriStart;/**< Vertical Blank Hori Offset Start (field 0) */
+	u16 V0BlankHoriEnd;  /**< Vertical Blank Hori Offset End   (field 0) */
+	u16 V0SyncHoriStart; /**< Vertical Sync  Hori Offset Start (field 0) */
+	u16 V0SyncHoriEnd;   /**< Vertical Sync  Hori Offset End   (field 0) */
+	u16 V1BlankHoriStart;/**< Vertical Blank Hori Offset Start (field 1) */
+	u16 V1BlankHoriEnd;  /**< Vertical Blank Hori Offset End   (field 1) */
+	u16 V1SyncHoriStart; /**< Vertical Sync  Hori Offset Start (field 1) */
+	u16 V1SyncHoriEnd;   /**< Vertical Sync  Hori Offset End   (field 1) */
 } XVtc_HoriOffsets;
 
 /**
  * Callback type for all interrupts except error interrupt.
  *
  * @param CallBackRef is a callback reference passed in by the upper layer
- *        when setting the callback functions, and passed back to the
- *        upper layer when the callback is invoked.
+ *	  when setting the callback functions, and passed back to the
+ *	  upper layer when the callback is invoked.
  * @param Mask is a bit mask indicating the cause of the event. For
- *        current device version, this parameter is "OR" of 0 or more
- *        XVTC_IXR_* constants defined in xvtc_hw.h
+ *	  current device version, this parameter is "OR" of 0 or more
+ *	  XVTC_IXR_* constants defined in xvtc_hw.h
  */
 typedef void (*XVtc_CallBack) (void *CallBackRef, u32 Mask);
 
@@ -317,11 +395,11 @@ typedef void (*XVtc_CallBack) (void *CallBackRef, u32 Mask);
  * Callback type for Error interrupt.
  *
  * @param CallBackRef is a callback reference passed in by the upper layer
- *        when setting the callback functions, and passed back to the
- *        upper layer when the callback is invoked.
+ *	  when setting the callback functions, and passed back to the
+ *	  upper layer when the callback is invoked.
  * @param ErrorMask is a bit mask indicating the cause of the error. For
- *        current device version, this parameter always have value 0 and
- *        could be ignored.
+ *	  current device version, this parameter always have value 0 and
+ *	  could be ignored.
  */
 typedef void (*XVtc_ErrorCallBack) (void *CallBackRef, u32 ErrorMask);
 
@@ -330,35 +408,35 @@ typedef void (*XVtc_ErrorCallBack) (void *CallBackRef, u32 ErrorMask);
  * VTC device in use.
  */
 typedef struct {
-        XVtc_Config Config;              /**< hardware configuration */
-        u32 IsReady;                     /**< Device and the driver instance
-                                           *  are initialized */
+	XVtc_Config Config;		 /**< hardware configuration */
+	u32 IsReady;			 /**< Device and the driver instance
+					   *  are initialized */
 
-        XVtc_CallBack FrameSyncCallBack; /**< Call back for Frame Sync
-                                           *  interrupt */
-        void *FrameSyncRef;              /**< To be passed to the Frame
-                                           *  Sync interrupt callback */
+	XVtc_CallBack FrameSyncCallBack; /**< Call back for Frame Sync
+					   *  interrupt */
+	void *FrameSyncRef;		 /**< To be passed to the Frame
+					   *  Sync interrupt callback */
 
-        XVtc_CallBack LockCallBack;      /**< Call back for Signal Lock
-                                           *  interrupt */
-        void *LockRef;                   /**< To be passed to the Signal
-                                           *  Lock interrupt callback */
+	XVtc_CallBack LockCallBack;      /**< Call back for Signal Lock
+					   *  interrupt */
+	void *LockRef;			 /**< To be passed to the Signal
+					   *  Lock interrupt callback */
 
-        XVtc_CallBack DetectorCallBack;  /**< Call back for Detector
-                                           *  interrupt */
-        void *DetectorRef;               /**< To be passed to the Detector
-                                           *  interrupt callback */
+	XVtc_CallBack DetectorCallBack;  /**< Call back for Detector
+					   *  interrupt */
+	void *DetectorRef;		 /**< To be passed to the Detector
+					   *  interrupt callback */
 
-        XVtc_CallBack GeneratorCallBack; /**< Call back for Generator
-                                           *  interrupt */
-        void *GeneratorRef;              /**< To be passed to the
-                                           *  Generator interrupt
-                                           *  callback */
+	XVtc_CallBack GeneratorCallBack; /**< Call back for Generator
+					   *  interrupt */
+	void *GeneratorRef;		 /**< To be passed to the
+					   *  Generator interrupt
+					   *  callback */
 
-        XVtc_ErrorCallBack ErrCallBack;  /**< Call back for Error
-                                           *  interrupt */
-        void *ErrRef;                    /**< To be passed to the Error
-                                           *  interrupt callback */
+	XVtc_ErrorCallBack ErrCallBack;  /**< Call back for Error
+					   *  interrupt */
+	void *ErrRef;			 /**< To be passed to the Error
+					   *  interrupt callback */
 
 } XVtc;
 
@@ -370,20 +448,42 @@ typedef struct {
 * This macro resets a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @return None
 *
 * @note
 * C-style signature:
-*        void XVtc_Reset(XVtc *InstancePtr)
+*	 void XVtc_Reset(XVtc *InstancePtr)
 *
 ******************************************************************************/
 #define XVtc_Reset(InstancePtr) \
 { \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_RESET, \
-                           XVTC_RESET_RESET_MASK); \
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_RESET, \
+			   XVTC_RESET_RESET_MASK); \
 }
+
+/*****************************************************************************/
+/**
+*
+* This macro resets a VTC device after the next input frame is complete.
+*
+* @param  InstancePtr is a pointer to the VTC device instance to be worked
+*	  on.
+*
+* @return None
+*
+* @note
+* C-style signature:
+*	 void XVtc_Sync_Reset(XVtc *InstancePtr)
+*
+******************************************************************************/
+#define XVtc_Sync_Reset(InstancePtr) \
+{ \
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_RESET, \
+			   XVTC_SYNC_RESET_MASK); \
+}
+
 
 /*****************************************************************************/
 /**
@@ -392,20 +492,42 @@ typedef struct {
 * the given VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @return None
 *
 * @note
 * C-style signature:
-*        void XVtc_EnableSync(XVtc *InstancePtr)
+*	 void XVtc_EnableSync(XVtc *InstancePtr)
 *
 ******************************************************************************/
 #define XVtc_EnableSync(InstancePtr) \
 { \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_CTL, \
-                XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_CTL) | \
-                        XVTC_CTL_SE_MASK); \
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_CTL, \
+		XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_CTL) | \
+			XVTC_CTL_SE_MASK); \
+}
+/*****************************************************************************/
+/**
+*
+* This macro enables updating timing registers at the end of each Generator
+* frame.                    
+*
+* @param  InstancePtr is a pointer to the VTC device instance to be worked
+*	  on.
+*
+* @return None
+*
+* @note
+* C-style signature:
+*	 void XVtc_RegUpdate(XVtc *InstancePtr)
+*
+******************************************************************************/
+#define XVtc_RegUpdate(InstancePtr) \
+{ \
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_CTL, \
+			XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_CTL) | \
+			XVTC_CTL_RU_MASK); \
 }
 
 /*****************************************************************************/
@@ -415,20 +537,20 @@ typedef struct {
 * the given VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @return None
 *
 * @note
 * C-style signature:
-*        void XVtc_DisableSync(XVtc *InstancePtr)
+*	 void XVtc_DisableSync(XVtc *InstancePtr)
 *
 ******************************************************************************/
 #define XVtc_DisableSync(InstancePtr) \
 { \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_CTL, \
-                XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_CTL) & \
-                        ~XVTC_CTL_SE_MASK); \
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_CTL, \
+		XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_CTL) & \
+			~XVTC_CTL_SE_MASK); \
 }
 
 /*****************************************************************************/
@@ -436,18 +558,18 @@ typedef struct {
 * This function gets the status of the Detector in a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be
-*         worked on.
+*	  worked on.
 *
 * @return The Detector Status. Use XVTC_DS_* in xvtc_hw.h to interpret
-*         the returned value.
+*	  the returned value.
 *
 * @note
 * C-style signature:
-*         u32 XVtc_GetDetectionStatus(XVtc *InstancePtr)
+*	  u32 XVtc_GetDetectionStatus(XVtc *InstancePtr)
 *
 ******************************************************************************/
 #define XVtc_GetDetectionStatus(InstancePtr) \
-        XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_DS)
+	XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_DTSTAT)
 
 /*****************************************************************************/
 /**
@@ -455,18 +577,18 @@ typedef struct {
 * This macro enables the global interrupt on a VTC device.
 *
 * @param InstancePtr is a pointer to the VTC device instance to be
-*        worked on.
+*	 worked on.
 *
 * @return None.
 *
 * @note
 * C-style signature:
-*         void XVtc_IntrEnableGlobal(XVtc *InstancePtr);
+*	  void XVtc_IntrEnableGlobal(XVtc *InstancePtr);
 *
 ******************************************************************************/
 #define XVtc_IntrEnableGlobal(InstancePtr) \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_GIER,\
-                XVTC_GIER_GIE_MASK)
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_GIER,\
+		XVTC_GIER_GIE_MASK)
 
 /*****************************************************************************/
 /**
@@ -474,17 +596,17 @@ typedef struct {
 * This macro disables the global interrupt on a VTC device.
 *
 * @param InstancePtr is a pointer to the VTC device instance to be
-*        worked on.
+*	 worked on.
 *
 * @return None.
 *
 * @note
 * C-style signature:
-*         void XVtc_IntrDisableGlobal(XVtc *InstancePtr);
+*	  void XVtc_IntrDisableGlobal(XVtc *InstancePtr);
 *
 ******************************************************************************/
 #define XVtc_IntrDisableGlobal(InstancePtr) \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_GIER, 0)
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_GIER, 0)
 
 /*****************************************************************************/
 /**
@@ -492,11 +614,11 @@ typedef struct {
 * This macro enables individual interrupts of a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @param  IntrType is the type of the interrupts to enable. Use OR'ing of
-*         XVTC_IXR_* constants defined in xvtc_hw.h to create this
-*         parameter value.
+*	  XVTC_IXR_* constants defined in xvtc_hw.h to create this
+*	  parameter value.
 *
 * @return None
 *
@@ -505,13 +627,13 @@ typedef struct {
 * The existing enabled interrupt(s) will remain enabled.
 *
 * C-style signature:
-*        void XVtc_IntrEnable(XVtc *InstancePtr, u32 IntrType)
+*	 void XVtc_IntrEnable(XVtc *InstancePtr, u32 IntrType)
 *
 ******************************************************************************/
 #define XVtc_IntrEnable(InstancePtr, IntrType) \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_IER, \
-                ((IntrType) & XVTC_IXR_ALLINTR_MASK) | \
-                 XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER))
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_IER, \
+		((IntrType) & XVTC_IXR_ALLINTR_MASK) | \
+		 XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER))
 
 /*****************************************************************************/
 /**
@@ -519,11 +641,11 @@ typedef struct {
 * This macro disables individual interrupts of a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @param  IntrType is the type of the interrupts to disable. Use OR'ing of
-*         XVTC_IXR_* constants defined in xvtc_hw.h to create this
-*         parameter value.
+*	  XVTC_IXR_* constants defined in xvtc_hw.h to create this
+*	  parameter value.
 *
 * @return None
 *
@@ -533,13 +655,37 @@ typedef struct {
 * this macro is called, will remain enabled.
 *
 * C-style signature:
-*        void XVtc_IntrDisable(XVtc *InstancePtr, u32 IntrType)
+*	 void XVtc_IntrDisable(XVtc *InstancePtr, u32 IntrType)
 *
 ******************************************************************************/
 #define XVtc_IntrDisable(InstancePtr, IntrType) \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_IER, \
-                XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER) \
-                & ((~(IntrType)) & XVTC_IXR_ALLINTR_MASK))
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_IER, \
+		XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER) \
+		& ((~(IntrType)) & XVTC_IXR_ALLINTR_MASK))
+
+
+/*****************************************************************************/
+/**
+*
+* This macro returns the pending status of a VTC device.
+*
+* @param  InstancePtr is a pointer to the VTC device instance to be worked
+*	  on.
+*
+* @return The pending interrupts of the VTC. Use XVTC_IXR_* constants
+*	  defined in xvtc_hw.h to interpret this value.
+*
+* @note
+*
+* C-style signature:
+*	 u32 XVtc_StatusGePending(XVtc *InstancePtr)
+*
+******************************************************************************/
+#define XVtc_StatusGetPending(InstancePtr) \
+	(XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_ISR) & \
+	 XVTC_IXR_ALLINTR_MASK)
+
+
 
 /*****************************************************************************/
 /**
@@ -547,21 +693,21 @@ typedef struct {
 * This macro returns the pending interrupts of a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @return The pending interrupts of the VTC. Use XVTC_IXR_* constants
-*         defined in xvtc_hw.h to interpret this value.
+*	  defined in xvtc_hw.h to interpret this value.
 *
 * @note
 *
 * C-style signature:
-*        u32 XVtc_IntrGetPending(XVtc *InstancePtr)
+*	 u32 XVtc_IntrGetPending(XVtc *InstancePtr)
 *
 ******************************************************************************/
 #define XVtc_IntrGetPending(InstancePtr) \
-        (XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER) & \
-         XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_ISR) & \
-         XVTC_IXR_ALLINTR_MASK)
+	(XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_IER) & \
+	 XVtc_ReadReg((InstancePtr)->Config.BaseAddress, XVTC_ISR) & \
+	 XVTC_IXR_ALLINTR_MASK)
 
 /*****************************************************************************/
 /**
@@ -569,67 +715,23 @@ typedef struct {
 * This macro clears/acknowledges pending interrupts of a VTC device.
 *
 * @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
+*	  on.
 *
 * @param  IntrType is the pending interrupts to clear/acknowledge. Use OR'ing
-*         of XVTC_IXR_* constants defined in xvtc_hw.h to create this
-*         parameter value.
+*	  of XVTC_IXR_* constants defined in xvtc_hw.h to create this
+*	  parameter value.
 *
 * @return None
 *
 * @note
 *
 * C-style signature:
-*        void XVtc_IntrClear(XVtc *InstancePtr, u32 IntrType)
+*	 void XVtc_IntrClear(XVtc *InstancePtr, u32 IntrType)
 *
 ******************************************************************************/
 #define XVtc_IntrClear(InstancePtr, IntrType) \
-        XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_ISR, \
-                (IntrType) & XVTC_IXR_ALLINTR_MASK)
-
-/*****************************************************************************/
-/**
-*
-* This macro sets the edge at which the following interrupts trigger:
-*       - XVTC_IXR_ACL_MASK
-*       - XVTC_IXR_AVL_MASK
-*       - XVTC_IXR_FIL_MASK
-*       - XVTC_IXR_VBL_MASK
-*       - XVTC_IXR_VSL_MASK
-*       - XVTC_IXR_HBL_MASK
-*       - XVTC_IXR_HSL_MASK
-*
-* @param  InstancePtr is a pointer to the VTC device instance to be worked
-*         on.
-*
-* @param  LockPolarity indicates the edge at which the interrupts above
-*         trigger. Use any non-0 for triggering on rising edge of lock. Use 0
-*         for triggering on falling edge of lock.
-*
-* @return None
-*
-* @note
-*
-* C-style signature:
-*        void XVtc_IntrSetLockPolarity(XVtc *InstancePtr,
-*                                               u32 LockPolarity)
-*
-******************************************************************************/
-#define XVtc_IntrSetLockPolarity(InstancePtr, LockPolarity) \
-{ \
-        if (LockPolarity) { \
-                XVtc_WriteReg((InstancePtr)->Config.BaseAddress, \
-                        XVTC_CTL, \
-                        XVtc_ReadReg((InstancePtr)->Config.BaseAddress, \
-                                XVTC_CTL) | XVTC_CTL_LP_MASK); \
-        } \
-        else { \
-                XVtc_WriteReg((InstancePtr)->Config.BaseAddress, \
-                        XVTC_CTL, \
-                        XVtc_ReadReg((InstancePtr)->Config.BaseAddress, \
-                                XVTC_CTL) & (~XVTC_CTL_LP_MASK)); \
-        } \
-}
+	XVtc_WriteReg((InstancePtr)->Config.BaseAddress, XVTC_ISR, \
+		(IntrType) & XVTC_IXR_ALLINTR_MASK)
 
 /************************** Function Prototypes ******************************/
 
@@ -639,7 +741,7 @@ typedef struct {
 
 /* Initialization */
 int XVtc_CfgInitialize(XVtc *InstancePtr, XVtc_Config *CfgPtr,
-                        u32 EffectiveAddr);
+			u32 EffectiveAddr);
 
 /* Enabling and Disabling */
 void XVtc_Enable(XVtc *InstancePtr, u32 Type);
@@ -648,10 +750,12 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type);
 /* Polarity setting */
 void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr);
 void XVtc_GetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr);
+void XVtc_GetDetectorPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr);
 
 /* Source selection */
 void XVtc_SetSource(XVtc *InstancePtr, XVtc_SourceSelect *SourcePtr);
 void XVtc_GetSource(XVtc *InstancePtr, XVtc_SourceSelect *SourcePtr);
+
 
 /* Skipping setting */
 void XVtc_SetSkipLine(XVtc *InstancePtr, int GeneratorChromaSkip);
@@ -660,9 +764,9 @@ void XVtc_SetSkipPixel(XVtc *InstancePtr, int GeneratorChromaSkip);
 void XVtc_GetSkipPixel(XVtc *InstancePtr, int *GeneratorChromaSkipPtr);
 
 /* VTC generator/detector setting/fetching */
-void XVtc_SetGenerator(XVtc *InstancePtr, XVtc_VtcSignal *SignalCfgPtr);
-void XVtc_GetGenerator(XVtc *InstancePtr, XVtc_VtcSignal *SignalCfgPtr);
-void XVtc_GetDetector(XVtc *InstancePtr, XVtc_VtcSignal *SignalCfgPtr);
+void XVtc_SetGenerator(XVtc *InstancePtr, XVtc_Signal *SignalCfgPtr);
+void XVtc_GetGenerator(XVtc *InstancePtr, XVtc_Signal *SignalCfgPtr);
+void XVtc_GetDetector(XVtc *InstancePtr, XVtc_Signal *SignalCfgPtr);
 
 /* Delay setting */
 void XVtc_SetDelay(XVtc *InstancePtr, int VertDelay, int HoriDelay);
@@ -670,17 +774,17 @@ void XVtc_GetDelay(XVtc *InstancePtr, int *VertDelayPtr, int *HoriDelayPtr);
 
 /* Frame Sync setting */
 void XVtc_SetFSync(XVtc *InstancePtr, u16 FrameSyncIndex,
-                           u16 VertStart, u16 HoriStart);
+			   u16 VertStart, u16 HoriStart);
 void XVtc_GetFSync(XVtc *InstancePtr, u16 FrameSyncIndex,
-                           u16 *VertStartPtr, u16 *HoriStartPtr);
+			   u16 *VertStartPtr, u16 *HoriStartPtr);
 
 /* Horizontal Offset Setting */
 void XVtc_SetGeneratorHoriOffset(XVtc *InstancePtr,
-                           XVtc_HoriOffsets *HoriOffset);
+			   XVtc_HoriOffsets *HoriOffset);
 void XVtc_GetGeneratorHoriOffset(XVtc *InstancePtr,
-                           XVtc_HoriOffsets *HoriOffset);
+			   XVtc_HoriOffsets *HoriOffset);
 void XVtc_GetDetectorHoriOffset(XVtc *InstancePtr,
-                           XVtc_HoriOffsets *HoriOffset);
+			   XVtc_HoriOffsets *HoriOffset);
 
 
 /* Version functions */
@@ -696,7 +800,7 @@ XVtc_Config *XVtc_LookupConfig(u16 DeviceId);
  */
 void XVtc_IntrHandler(void *InstancePtr);
 int XVtc_SetCallBack(XVtc *InstancePtr, u32 IntrType,
-                        void *CallBackFunc, void *CallBackRef);
+			void *CallBackFunc, void *CallBackRef);
 
 
 #ifdef __cplusplus
