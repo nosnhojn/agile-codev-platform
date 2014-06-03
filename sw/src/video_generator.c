@@ -93,7 +93,7 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	FrameHeight = VideoTiming.VActiveVideo;
 	
 	/* Disable/Reset VTC */
-	//XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
+	XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
 	//XVtc_Reset(pVtc);	
 
     /* Set up Polarity of all outputs */ 
