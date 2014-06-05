@@ -94,7 +94,7 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	
 	/* Disable/Reset VTC */
 	XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
-	XVtc_Reset(pVtc);	
+/*	XVtc_Reset(pVtc);	*/
 
     /* Set up Polarity of all outputs */ 
 	memset((void *)&Polarity, 0, sizeof(Polarity));
@@ -159,9 +159,9 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	}
 
 	/* Write configuration to hardware */
-	//XVtc_SetPolarity(pVtc, &Polarity);
-	//XVtc_SetGenerator(pVtc, &Signal);
-	//XVtc_SetSource(pVtc, &SourceSelect);
+/*	XVtc_SetPolarity(pVtc, &Polarity);*/
+/*	XVtc_SetGenerator(pVtc, &Signal);*/
+/*	XVtc_SetSource(pVtc, &SourceSelect);*/
 
 	/* Enable the generator module */
 	//XVtc_DisableSync(pVtc);

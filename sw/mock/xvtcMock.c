@@ -34,3 +34,5 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type)
 {
   getXvtcMock()->XVtc_Disable(InstancePtr, Type);    
 }
+
+

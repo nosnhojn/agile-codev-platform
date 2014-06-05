@@ -230,6 +230,7 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
 TEST_F(DisplayXilTest, vgenConfigVresGetTiming) {
   EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
 }
+
 TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
   EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
 }
@@ -237,6 +238,13 @@ TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
 TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
 }
+/*
+TEST_F(DisplayXilTest, xvtcResetCanFailAndExit) {
+  EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
+}
+*/
+
+
 /*
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
