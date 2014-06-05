@@ -41,7 +41,7 @@ void DisplayXil::_clear()
 
   for (int r=0; r<getHeight(); r++) {
     for (int c=0; c<getWidth(); c++) {
-      *mem++ = 0x00000000;
+      *mem++ = getBgColour();
     }
   }
 }
@@ -52,6 +52,14 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
+  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
+
+  // write the charGrid to the frame buffer
+  for (int i=0; i<getWidth(); i++) {
+    if (charGrid[(int) (getWidth()/256)] != ' ') *mem++ = getFgColour();
+    else  *mem++ = getBgColour();
+  }
+
   vfb_tx_stop(getAxiVdma());
 
   // in here is where we drive frames
@@ -69,12 +77,17 @@ unsigned DisplayXil::getFgColour() {
   return 0xffffff;
 }
 
+unsigned DisplayXil::getBgColour() {
+  return 0x000000;
+}
+
 void DisplayXil::_getch()
 {
 }
 
 void DisplayXil::_addstr(const char * str)
 {
+  strcpy(charGrid, str);
 }
 
 void DisplayXil::_move(int x, int y)

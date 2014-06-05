@@ -7,6 +7,9 @@
 #include "xvtcMock.h"
 #include "testDefs.h"
 
+#define BLANK_ROW_OF_10 "          "
+#define FULL_ROW_OF_10  "XXXXXXXXXX"
+
 using namespace testing;
 
 
@@ -90,7 +93,7 @@ TEST_F(DisplayXilTest, initScreenFails) {
 TEST_F(DisplayXilTest, clearBufferToBlack0) {
   display->_clear();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
 }
 
 TEST_F(DisplayXilTest, clearBufferToBlackAll) {
@@ -98,7 +101,7 @@ TEST_F(DisplayXilTest, clearBufferToBlackAll) {
 
   for (int i=0; i<1080; i++) {
     for (int j=0; j<1920; j++) {
-      EXPECT_EQ(HdmiDisplayMemory[i][j], 0x00000000);
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getBgColour());
     }
   }
 }
@@ -106,7 +109,7 @@ TEST_F(DisplayXilTest, clearBufferToBlackAll) {
 TEST_F(DisplayXilTest, initDoesClear) {
   display->_initscr();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], 0x00000000);
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
 }
 
 TEST_F(DisplayXilTest, initCallsVfbLookupConfig) {
@@ -302,9 +305,28 @@ TEST_F(DisplayXilTest, getFgColourIsWhite) {
   EXPECT_EQ(0xffffff, display->getFgColour());
 }
 
+TEST_F(DisplayXilTest, getBgColourIsBlack) {
+  EXPECT_EQ(0x000000, display->getBgColour());
+}
+
 TEST_F(DisplayXilTest, getLivePixelAtIndexAlwaysReturnsFgColourForRectangle) {
   EXPECT_EQ(display->getFgColour(), display->getLivePixelAtIndex(22,50000));
 }
 
-//TEST_F(DisplayXilTest, addstrToGrid) {
-//}
+TEST_F(DisplayXilTest, addBlankRowToGrid) {
+  display->_initscr();
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_refresh();
+
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getBgColour());
+}
+
+TEST_F(DisplayXilTest, addFullRowToGrid) {
+  display->_initscr();
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getFgColour());
+}

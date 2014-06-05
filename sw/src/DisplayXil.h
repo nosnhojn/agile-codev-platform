@@ -27,6 +27,8 @@ class DisplayXil : public Display
     XAxiVdma_DmaSetup m_axiVdmaCfg;
     IicCtrl *         m_iicCtrl;
 
+    char charGrid [256];
+
   public:
     DisplayXil();
     DisplayXil( IicCtrl * );
@@ -63,6 +65,7 @@ class DisplayXil : public Display
     virtual void _refresh();
     unsigned getLivePixelAtIndex(int,int);
     unsigned getFgColour(void);
+    unsigned getBgColour(void);
 
 
 
