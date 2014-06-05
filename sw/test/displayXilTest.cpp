@@ -53,8 +53,8 @@ class DisplayXilTest : public testing::Test
       vtcDefaultConfig.BaseAddress = 0x70000000;
       ON_CALL(*xvMock, XVtc_LookupConfig(_))
           .WillByDefault(Return(&vtcDefaultConfig));
-      ON_CALL(*xvMock, XVtc_CfgInitialize(_,_,_))
-          .WillByDefault(Return(XST_SUCCESS));
+    // ON_CALL(*xvMock, XVtc_CfgInitialize(_,_,_))
+    //     .WillByDefault(Return(XST_SUCCESS));
       
 
     }
@@ -63,7 +63,7 @@ class DisplayXilTest : public testing::Test
     {
       destroyXdriverMock();
 // TODO: why this destructor calls before the test is executed?
-//      destroyXvtcMock();
+      destroyXvtcMock();
     }
 
 
@@ -197,13 +197,17 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).Times(1);
+
+  display->_initscr();
 }
 
 TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
-  XVtc_Config * Config = 0;
-  EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).WillOnce(Return(Config));
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).WillOnce(Return((XVtc_Config *) 0));
+
+  EXPECT_FALSE(display->_initscr());
 }
 
+/*
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
 }
@@ -220,8 +224,8 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
   display->setHdmiDisplayMemBaseAddr(6699);
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
 }
-/*
-*/
+
+
 //--------------------------------------------------------------
 // Soheil: Add similar Calls" tests for the functions called in
 //         vgen_config function in video_generator.c
@@ -238,14 +242,11 @@ TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
 TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
 }
-/*
+
 TEST_F(DisplayXilTest, xvtcResetCanFailAndExit) {
   EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
 }
-*/
 
-
-/*
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
 }
@@ -263,6 +264,7 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
 }
 */
+
 TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
   EXPECT_EQ(display->getHeight(), 1080);

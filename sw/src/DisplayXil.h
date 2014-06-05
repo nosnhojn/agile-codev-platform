@@ -4,6 +4,7 @@
 #include "Display.h"
 #include "IicCtrl.h"
 #include "video_frame_buffer.h"
+#include "video_generator.h"
 
 #define HDMI_DISPLAY_MEM_BASE_ADDR 3
 #define VIDEO_RESOLUTION_1080P 0
