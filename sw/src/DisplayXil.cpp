@@ -8,7 +8,8 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
   m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
-  m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR)
+  m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
+  m_linePtr(0)
 {
 }
 
@@ -55,9 +56,11 @@ void DisplayXil::_refresh()
   volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
 
   // write the charGrid to the frame buffer
-  for (int i=0; i<getWidth(); i++) {
-    if (charGrid[(int) (getWidth()/256)] != ' ') *mem++ = getFgColour();
-    else  *mem++ = getBgColour();
+  for (int i=0; i<getHeight(); i++) {
+    for (int j=0; j<getWidth(); j++) {
+      if (charGrid[(int) (i/(getHeight()/2))][(int) (j/(getWidth()/10))] != ' ') *mem++ = getFgColour();
+      else  *mem++ = getBgColour();
+    }
   }
 
   vfb_tx_stop(getAxiVdma());
@@ -87,7 +90,8 @@ void DisplayXil::_getch()
 
 void DisplayXil::_addstr(const char * str)
 {
-  strcpy(charGrid, str);
+  strcpy(charGrid[m_linePtr], str);
+  m_linePtr++;
 }
 
 void DisplayXil::_move(int x, int y)

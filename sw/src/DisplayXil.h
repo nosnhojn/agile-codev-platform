@@ -27,7 +27,8 @@ class DisplayXil : public Display
     XAxiVdma_DmaSetup m_axiVdmaCfg;
     IicCtrl *         m_iicCtrl;
 
-    char charGrid [256];
+    char charGrid [2][256];
+    int m_linePtr;
 
   public:
     DisplayXil();

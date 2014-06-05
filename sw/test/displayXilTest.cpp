@@ -330,3 +330,26 @@ TEST_F(DisplayXilTest, addFullRowToGrid) {
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
   EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getFgColour());
 }
+
+TEST_F(DisplayXilTest, addFullAndBlankRowToGrid) {
+  display->_initscr();
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  // top of row 0
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getBgColour());
+
+  // bottom of row 0
+  EXPECT_EQ(HdmiDisplayMemory[539][0], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[539][1919], display->getBgColour());
+
+  // top of row 1
+  EXPECT_EQ(HdmiDisplayMemory[540][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[540][1919], display->getFgColour());
+
+  // bottom of row 1
+  EXPECT_EQ(HdmiDisplayMemory[1079][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[1079][1919], display->getFgColour());
+}
