@@ -7,8 +7,9 @@
 #include "xvtcMock.h"
 #include "testDefs.h"
 
-#define BLANK_ROW_OF_10 "          "
-#define FULL_ROW_OF_10  "XXXXXXXXXX"
+#define BLANK_ROW_OF_10     "          "
+#define FULL_ROW_OF_10      "XXXXXXXXXX"
+#define ALTERNATE_ROW_OF_10 " X X X X X"
 
 using namespace testing;
 
@@ -319,7 +320,7 @@ TEST_F(DisplayXilTest, addBlankRowToGrid) {
   display->_refresh();
 
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getBgColour());
 }
 
 TEST_F(DisplayXilTest, addFullRowToGrid) {
@@ -328,10 +329,24 @@ TEST_F(DisplayXilTest, addFullRowToGrid) {
   display->_refresh();
 
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
 }
 
-TEST_F(DisplayXilTest, addFullAndBlankRowToGrid) {
+TEST_F(DisplayXilTest, cellWidthIsGetWidthByNumColumns) {
+  display->_initscr();
+  display->_addstr(ALTERNATE_ROW_OF_10);
+  display->_refresh();
+
+  // cell 0
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10-1], display->getBgColour());
+
+  // cell 1
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][(2*display->getWidth()/10)-1], display->getFgColour());
+}
+
+TEST_F(DisplayXilTest, cellHeightIsGetHeightByNumRows) {
   display->_initscr();
   display->_addstr(BLANK_ROW_OF_10);
   display->_addstr(FULL_ROW_OF_10);
@@ -339,17 +354,30 @@ TEST_F(DisplayXilTest, addFullAndBlankRowToGrid) {
 
   // top of row 0
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][1919], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getBgColour());
 
   // bottom of row 0
-  EXPECT_EQ(HdmiDisplayMemory[539][0], display->getBgColour());
-  EXPECT_EQ(HdmiDisplayMemory[539][1919], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2-2][0], display->getBgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2-2][display->getWidth()-1], display->getBgColour());
 
   // top of row 1
-  EXPECT_EQ(HdmiDisplayMemory[540][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[540][1919], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][display->getWidth()-1], display->getFgColour());
 
   // bottom of row 1
-  EXPECT_EQ(HdmiDisplayMemory[1079][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[1079][1919], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][display->getWidth()-1], display->getFgColour());
+}
+
+TEST_F(DisplayXilTest, refreshResetGrid) {
+  display->_initscr();
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_refresh();
+
+  display->_initscr();
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
 }

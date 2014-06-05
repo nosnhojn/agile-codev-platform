@@ -9,7 +9,8 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
   m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
   m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
   m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
-  m_linePtr(0)
+  m_gridHeight(0),
+  m_gridWidth(0)
 {
 }
 
@@ -53,15 +54,8 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
-  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
-
-  // write the charGrid to the frame buffer
-  for (int i=0; i<getHeight(); i++) {
-    for (int j=0; j<getWidth(); j++) {
-      if (charGrid[(int) (i/(getHeight()/2))][(int) (j/(getWidth()/10))] != ' ') *mem++ = getFgColour();
-      else  *mem++ = getBgColour();
-    }
-  }
+  if (m_gridWidth > 0) m_writeGridToFrameBuffer();
+  m_resetGrid();
 
   vfb_tx_stop(getAxiVdma());
 
@@ -90,8 +84,9 @@ void DisplayXil::_getch()
 
 void DisplayXil::_addstr(const char * str)
 {
-  strcpy(charGrid[m_linePtr], str);
-  m_linePtr++;
+  m_gridWidth = strlen(str);
+  strcpy(m_charGrid[m_gridHeight], str);
+  m_gridHeight++;
 }
 
 void DisplayXil::_move(int x, int y)
@@ -141,4 +136,37 @@ XAxiVdma * DisplayXil::getAxiVdma()
 XAxiVdma_DmaSetup * DisplayXil::getAxiVdmaCfg()
 {
   return &m_axiVdmaCfg;
+}
+
+int DisplayXil::m_rowIndexFromYPixelCoord(int y_coord)
+{
+  return (int) (y_coord/(getHeight()/m_gridHeight));
+}
+
+int DisplayXil::m_columnIndexFromXPixelCoord(int x_coord)
+{
+  return (int) (x_coord/(getWidth()/m_gridWidth));
+}
+
+char DisplayXil::m_charAtCoord(int x_coord, int y_coord)
+{
+  return m_charGrid[m_rowIndexFromYPixelCoord(y_coord)][m_columnIndexFromXPixelCoord(x_coord)];
+}
+
+void DisplayXil::m_writeGridToFrameBuffer()
+{
+  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
+
+  for (int y=0; y<getHeight(); y++) {
+    for (int x=0; x<getWidth(); x++) {
+      if (m_charAtCoord(x, y) != ' ') *mem++ = getFgColour();
+      else  *mem++ = getBgColour();
+    }
+  }
+}
+
+void DisplayXil::m_resetGrid()
+{
+  m_gridHeight = 0;
+  m_gridWidth = 0;
 }
