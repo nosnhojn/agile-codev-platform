@@ -70,7 +70,9 @@ class DisplayXil : public Display
     //     don't now what that's for
     //-----------------------------------------
     virtual void _refresh();
-    unsigned getLivePixelAtIndex(int,int);
+    unsigned getLiveCellPixelWithCoords(int,int);
+    int getCellXCoord(int,int);
+    int getCellYCoord(int,int);
     unsigned getFgColour(void);
     unsigned getBgColour(void);
 

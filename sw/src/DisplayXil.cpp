@@ -66,7 +66,7 @@ void DisplayXil::_refresh()
   m_iicCtrl->carrierInit();
 }
 
-unsigned DisplayXil::getLivePixelAtIndex(int x, int y) {
+unsigned DisplayXil::getLiveCellPixelWithCoords(int x, int y) {
   return getFgColour();
 }
 
@@ -159,7 +159,7 @@ void DisplayXil::m_writeGridToFrameBuffer()
 
   for (int y=0; y<getHeight(); y++) {
     for (int x=0; x<getWidth(); x++) {
-      if (m_charAtCoord(x, y) != ' ') *mem++ = getFgColour();
+      if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
       else  *mem++ = getBgColour();
     }
   }
@@ -169,4 +169,14 @@ void DisplayXil::m_resetGrid()
 {
   m_gridHeight = 0;
   m_gridWidth = 0;
+}
+
+int DisplayXil::getCellXCoord(int x, int gridWidth)
+{
+  return x % (getWidth()/gridWidth);
+}
+
+int DisplayXil::getCellYCoord(int y, int gridHeight)
+{
+  return y % (getHeight()/gridHeight);
 }

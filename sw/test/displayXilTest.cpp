@@ -310,8 +310,8 @@ TEST_F(DisplayXilTest, getBgColourIsBlack) {
   EXPECT_EQ(0x000000, display->getBgColour());
 }
 
-TEST_F(DisplayXilTest, getLivePixelAtIndexAlwaysReturnsFgColourForRectangle) {
-  EXPECT_EQ(display->getFgColour(), display->getLivePixelAtIndex(22,50000));
+TEST_F(DisplayXilTest, getCellPixelAlwaysReturnsFgColourForRectangle) {
+  EXPECT_EQ(display->getFgColour(), display->getLiveCellPixelWithCoords(22,50000));
 }
 
 TEST_F(DisplayXilTest, addBlankRowToGrid) {
@@ -380,4 +380,12 @@ TEST_F(DisplayXilTest, refreshResetGrid) {
 
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
   EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
+}
+
+TEST_F(DisplayXilTest, getCellXCoord) {
+  EXPECT_EQ(10, display->getCellXCoord(394, 20));
+}
+
+TEST_F(DisplayXilTest, getCellYCoord) {
+  EXPECT_EQ(8, display->getCellYCoord(62, 20));
 }
