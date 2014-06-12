@@ -4,23 +4,27 @@
 
 int main()
 {
-  Board b;
-  DisplayXil g;
-  Drawing d(&b, &g);
+  Board board;
+  IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR);
+  DisplayXil display(&iicCtrl,
+                     XPAR_DDR_MEM_BASEADDR + 0x10000000,
+                     XPAR_ZED_HDMI_DISPLAY_V_TC_0_DEVICE_ID,
+                     XPAR_ZED_HDMI_DISPLAY_AXI_VDMA_0_DEVICE_ID);
+  Drawing drawing(&board, &display);
  
-  d.initialCell(20,20);
-  d.initialCell(20,21);
-  d.initialCell(20,22);
-  d.initialCell(20,24);
-  d.initialCell(21,20);
-  d.initialCell(22,23);
-  d.initialCell(22,24);
-  d.initialCell(23,21);
-  d.initialCell(23,22);
-  d.initialCell(23,24);
-  d.initialCell(24,20);
-  d.initialCell(24,22);
-  d.initialCell(24,24);
+  drawing.initialCell(20,20);
+  drawing.initialCell(20,21);
+  drawing.initialCell(20,22);
+  drawing.initialCell(20,24);
+  drawing.initialCell(21,20);
+  drawing.initialCell(22,23);
+  drawing.initialCell(22,24);
+  drawing.initialCell(23,21);
+  drawing.initialCell(23,22);
+  drawing.initialCell(23,24);
+  drawing.initialCell(24,20);
+  drawing.initialCell(24,22);
+  drawing.initialCell(24,24);
  
-  d.play(200);
+  drawing.play(200);
 }
