@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "Drawing.h"
 #include "DisplayXil.h"
+#include "platform.h"
 
 #define XPAR_ZED_HDMI_IIC_0_BASEADDR 0
 #define XPAR_DDR_MEM_BASEADDR 0
@@ -9,6 +10,8 @@
 
 int main()
 {
+  init_platform();
+
   Board board;
   IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR);
   DisplayXil display(&iicCtrl,
