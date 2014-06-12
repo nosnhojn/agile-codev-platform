@@ -51,9 +51,9 @@ allTests : ${TESTOBJS}
 GAMEOBJS=${OBJDIR}/Cell.o \
          ${OBJDIR}/Board.o \
          ${OBJDIR}/Drawing.o \
-		     ${OBJDIR}/Display.o \
-		     ${OBJDIR}/DisplayNCurses.o \
-				 ${OBJDIR}/game.o
+	 ${OBJDIR}/Display.o \
+	 ${OBJDIR}/DisplayNCurses.o \
+	 ${OBJDIR}/game.o
 
 game : CXXFLAGS+=-DREFRESH_RATE=500000
 game : LDFLAGS+=-lncurses

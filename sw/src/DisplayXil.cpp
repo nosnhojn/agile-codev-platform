@@ -1,5 +1,6 @@
 #include "DisplayXil.h"
 #include <iostream>
+#include <cstring>
 
 DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
   m_iicCtrl(iicCtrl),
