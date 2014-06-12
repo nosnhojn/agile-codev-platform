@@ -248,6 +248,11 @@ void Xil_Out32LE(u32 Addr, u32 Value)
   getXdriverMock()->Xil_Out32LE(Addr, Value);
 }
 
+void Xil_DCacheFlush(void)
+{
+  getXdriverMock()->Xil_DCacheFlush();
+}
+
 XAxiVdma_Config *XAxiVdma_LookupConfig(u16 DeviceId)
 {
   return getXdriverMock()->XAxiVdma_LookupConfig(DeviceId);

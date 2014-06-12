@@ -54,12 +54,10 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
-  if (m_gridWidth > 0) m_writeGridToFrameBuffer();
-  m_resetGrid();
-
   vfb_tx_stop(getAxiVdma());
 
-  // in here is where we drive frames
+  if (m_gridWidth > 0) m_writeGridToFrameBuffer();
+  m_resetGrid();
 
   vfb_tx_start(getAxiVdma());
 
@@ -163,6 +161,8 @@ void DisplayXil::m_writeGridToFrameBuffer()
       else  *mem++ = getBgColour();
     }
   }
+
+  //Xil_DCacheFlush();
 }
 
 void DisplayXil::m_resetGrid()

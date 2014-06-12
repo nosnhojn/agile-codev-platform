@@ -61,6 +61,7 @@ class xdriverMock
     MOCK_METHOD1(Xil_In32LE, u32(u32));
     MOCK_METHOD2(Xil_Out16LE, void(u32, u16));
     MOCK_METHOD2(Xil_Out32LE, void(u32, u32));
+    MOCK_METHOD0(Xil_DCacheFlush, void());
 
     MOCK_METHOD1(XAxiVdma_LookupConfig, XAxiVdma_Config*(u16));
     MOCK_METHOD3(XAxiVdma_CfgInitialize, int(XAxiVdma*, XAxiVdma_Config*, u32));
@@ -90,6 +91,7 @@ class xdriverMock
     MOCK_METHOD1(XAxiVdma_ReadIntrHandler, void(void *));
     MOCK_METHOD1(XAxiVdma_WriteIntrHandler, void(void *));
     MOCK_METHOD5(XAxiVdma_SetCallBack, int(XAxiVdma *, u32 HandlerType,void *CallBackFunc, void *CallBackRef, u16));
+
 };
 
 extern xdriverMock * getXdriverMock();

@@ -382,6 +382,12 @@ TEST_F(DisplayXilTest, refreshResetGrid) {
   EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
 }
 
+TEST_F(DisplayXilTest, refreshWaitsForDCacheFlush) {
+  EXPECT_CALL(*xdMock, Xil_DCacheFlush()).Times(1);
+
+  display->_refresh();
+}
+
 TEST_F(DisplayXilTest, getCellXCoord) {
   EXPECT_EQ(10, display->getCellXCoord(394, 20));
 }
