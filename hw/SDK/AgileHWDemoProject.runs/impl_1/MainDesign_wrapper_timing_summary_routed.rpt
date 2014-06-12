@@ -1,0 +1,1032 @@
+Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
+| Date         : Mon Jun  9 11:01:15 2014
+| Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
+| Command      : report_timing_summary -file MainDesign_wrapper_timing_summary_routed.rpt -pb MainDesign_wrapper_timing_summary_routed.pb
+| Design       : MainDesign_wrapper
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.08 2013-09-28
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Check Timing
+| ------------
+------------------------------------------------------------------------------------------------
+
+
+Checking 'no_clock'.
+ There are 0 register/latch pins with no clock.
+ There are 0 register/latch pins with constant_clock.
+
+Checking 'unconstrained_internal_endpoints'.
+ There are 2 pins that are not constrained for maximum delay.
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+Checking 'no_input_delay'.
+ There are 2 input ports with no input delay specified.
+
+Checking 'no_output_delay'.
+ There are 22 ports with no output delay specified.
+
+Checking 'multiple_clock'.
+ There are 0 register/latch pins with related clocks.
+ There are 0 register/latch pins with exclusive clocks.
+
+Checking 'generated_clocks'.
+ There are 0 generated clocks that are not connected to a clock source.
+
+Checking 'loops'.
+ There are 0 combinational loops in the design.
+
+Checking 'partial_input_delay'.
+ There are 0 input ports with partial input delay specified.
+
+Checking 'partial_output_delay'.
+ There are 0 ports with partial output delay specified.
+
+Checking 'unexpandable_clocks'.
+ There are 6 related clock pairs.
+ There are 0 User Ignored clock pairs.
+
+Checking 'latch_loops'.
+ There are 0 combinational latch loops in the design through latch input
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     -5.062     -108.684                    125                12244        0.018        0.000                      0                12098        2.250        0.000                       0                  5920  
+
+
+Timing constraints are not met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock                                Waveform(ns)         Period(ns)      Frequency(MHz)
+-----                                ------------         ----------      --------------
+MainDesign_i/clk_wiz_0/inst/clk_in1  {0.000 5.000}        10.000          100.000         
+  clk_out1_MainDesign_clk_wiz_0_0    {0.000 3.367}        6.734           148.500         
+  clkfbout_MainDesign_clk_wiz_0_0    {0.000 20.000}       40.000          25.000          
+clk_fpga_0                           {0.000 6.499}        12.999          76.929          
+clk_fpga_1                           {0.000 3.500}        7.000           142.857         
+clk_fpga_2                           {0.000 5.000}        10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock                                    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----                                    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+MainDesign_i/clk_wiz_0/inst/clk_in1                                                                                                                                                    8.751        0.000                       0                     3  
+  clk_out1_MainDesign_clk_wiz_0_0         -1.001      -27.409                    108                 2756        0.018        0.000                      0                 2744        2.387        0.000                       0                  1859  
+  clkfbout_MainDesign_clk_wiz_0_0                                                                                                                                                     37.845        0.000                       0                     2  
+clk_fpga_0                                 5.029        0.000                      0                 2829        0.025        0.000                      0                 2829        5.519        0.000                       0                  1491  
+clk_fpga_1                                 0.667        0.000                      0                 6511        0.054        0.000                      0                 6481        2.250        0.000                       0                  2566  
+clk_fpga_2                                                                                                                                                                             7.845        0.000                       0                     1  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock                       To Clock                             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------                       --------                             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+clk_fpga_0                       clk_out1_MainDesign_clk_wiz_0_0       11.658        0.000                      0                   42                                                                        
+clk_fpga_1                       clk_out1_MainDesign_clk_wiz_0_0       -5.062      -81.275                     17                   31        0.738        0.000                      0                   17  
+clk_out1_MainDesign_clk_wiz_0_0  clk_fpga_0                             4.575        0.000                      0                   34                                                                        
+clk_out1_MainDesign_clk_wiz_0_0  clk_fpga_1                             4.512        0.000                      0                   14                                                                        
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------         ----------         --------               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+**async_default**  clk_fpga_1         clk_fpga_1               2.828        0.000                      0                   33        0.390        0.000                      0                   33  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  MainDesign_i/clk_wiz_0/inst/clk_in1
+  To Clock:  MainDesign_i/clk_wiz_0/inst/clk_in1
+
+Setup :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+PW    :            0  Failing Endpoints,  Worst Slack        8.751ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         MainDesign_i/clk_wiz_0/inst/clk_in1
+Waveform:           { 0 5 }
+Period:             10.000
+Sources:            { MainDesign_i/clk_wiz_0/inst/clk_in1 }
+
+Check Type  Corner  Lib Pin              Reference Pin  Required  Actual  Slack   Location         Pin
+Min Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            1.249     10.000  8.751   MMCME2_ADV_X1Y0  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKFBOUT
+Max Period  n/a     MMCME2_ADV/CLKIN1    n/a            100.000   10.000  90.000  MMCME2_ADV_X1Y0  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKIN1
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_out1_MainDesign_clk_wiz_0_0
+  To Clock:  clk_out1_MainDesign_clk_wiz_0_0
+
+Setup :          108  Failing Endpoints,  Worst Slack       -1.001ns,  Total Violation      -27.409ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.018ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        2.387ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -1.001ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum25rjd4fdhl14fea/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp2rcbx2kgog52ki5rizxd5rja/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Path Group:             clk_out1_MainDesign_clk_wiz_0_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.734ns  (clk_out1_MainDesign_clk_wiz_0_0 rise@6.734ns - clk_out1_MainDesign_clk_wiz_0_0 rise@0.000ns)
+  Data Path Delay:        7.582ns  (logic 0.839ns (11.066%)  route 6.743ns (88.934%))
+  Logic Levels:           2  (LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.071ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 8.201 - 6.734 ) 
+    Source Clock Delay      (SCD):    1.652ns
+    Clock Pessimism Removal (CPR):    0.114ns
+  Clock Uncertainty:      0.114ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.218ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                      0.000     0.000 r  
+    BUFGCTRL_X0Y18       BUFG                         0.000     0.000 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           1.806     1.806    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.793    -1.987 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.889    -0.098    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101     0.003 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        1.649     1.652    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X49Y87                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum25rjd4fdhl14fea/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X49Y87         FDRE (Prop_fdre_C_Q)         0.419     2.071 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum25rjd4fdhl14fea/Q
+                         net (fo=327, routed)         4.121     6.192    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152ioedzal4saynb[2]
+    SLICE_X56Y77         LUT6 (Prop_lut6_I2_O)        0.296     6.488 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsiso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp4fdhdp4fepyum2rpyur4epte/O
+                         net (fo=26, routed)          2.622     9.110    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsig5tl3e31d13pwn3d3my33dljsjvd4eguzaye5ary0titrp2rcbsl2igu52kgog52ki5rizzc5rjd2i5ha
+    SLICE_X44Y74         LUT5 (Prop_lut5_I2_O)        0.124     9.234 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsfso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp4fdhdp4fepyum1r5yur4eptd/O
+                         net (fo=1, routed)           0.000     9.234    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsfg5tl3e31d13pwn3d3my33dljsjvd4eguzaye5ary0titrp2rcbsl2igu52kgog52ki5rizxd5rjd2i5gd
+    SLICE_X44Y74         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp2rcbx2kgog52ki5rizxd5rja/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                      6.734     6.734 r  
+    BUFGCTRL_X0Y18                                    0.000     6.734 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           1.612     8.346    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.425     4.921 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.725     6.646    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     6.737 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        1.464     8.201    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X44Y74                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp2rcbx2kgog52ki5rizxd5rja/C
+                         clock pessimism              0.114     8.315    
+                         clock uncertainty           -0.114     8.201    
+    SLICE_X44Y74         FDRE (Setup_fdre_C_D)        0.032     8.233    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4irazf4edkp2rcbx2kgog52ki5rizxd5rja
+  -------------------------------------------------------------------
+                         required time                          8.233    
+                         arrival time                          -9.234    
+  -------------------------------------------------------------------
+                         slack                                 -1.001    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.018ns  (arrival time - required time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4iraze25cbvh4ira14fdhdx4fepyum35rja/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pw4n412wp4ehkvdd4vkggrvsn4ll5cdpd3xtpvkrr5rbzk0ct5zetaekp2hhejd2rcbx2kgo5yui/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Path Group:             clk_out1_MainDesign_clk_wiz_0_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_MainDesign_clk_wiz_0_0 rise@0.000ns - clk_out1_MainDesign_clk_wiz_0_0 rise@0.000ns)
+  Data Path Delay:        0.348ns  (logic 0.141ns (40.523%)  route 0.207ns (59.477%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.260ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.818ns
+    Source Clock Delay      (SCD):    0.553ns
+    Clock Pessimism Removal (CPR):    0.005ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                      0.000     0.000 r  
+    BUFGCTRL_X0Y18       BUFG                         0.000     0.000 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           0.597     0.597    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -1.149    -0.553 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.529    -0.024    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.002 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        0.551     0.553    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X49Y67                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4iraze25cbvh4ira14fdhdx4fepyum35rja/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X49Y67         FDRE (Prop_fdre_C_Q)         0.141     0.694 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkmqmcpqi2njujyx4iraze25cbvh4ira14fdhdx4fepyum35rja/Q
+                         net (fo=1, routed)           0.207     0.901    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsag5tl3y5onspizpu1pvx5yq3e31d13pwn3d3my33dljsjvd4eguzaye5ary0titrp2rcbsjz4edkp2rcbx2kgohp2ki5riz15csa
+    SLICE_X51Y65         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pw4n412wp4ehkvdd4vkggrvsn4ll5cdpd3xtpvkrr5rbzk0ct5zetaekp2hhejd2rcbx2kgo5yui/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                      0.000     0.000 r  
+    BUFGCTRL_X0Y18                                    0.000     0.000 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           0.864     0.864    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -1.467    -0.603 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.576    -0.027    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     0.002 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        0.816     0.818    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X51Y65                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pw4n412wp4ehkvdd4vkggrvsn4ll5cdpd3xtpvkrr5rbzk0ct5zetaekp2hhejd2rcbx2kgo5yui/C
+                         clock pessimism             -0.005     0.813    
+    SLICE_X51Y65         FDRE (Hold_fdre_C_D)         0.070     0.883    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pw4n412wp4ehkvdd4vkggrvsn4ll5cdpd3xtpvkrr5rbzk0ct5zetaekp2hhejd2rcbx2kgo5yui
+  -------------------------------------------------------------------
+                         required time                         -0.883    
+                         arrival time                           0.901    
+  -------------------------------------------------------------------
+                         slack                                  0.018    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_out1_MainDesign_clk_wiz_0_0
+Waveform:           { 0 3.367 }
+Period:             6.734
+Sources:            { MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0 }
+
+Check Type        Corner  Lib Pin             Reference Pin  Required  Actual  Slack    Location         Pin
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576     6.734   4.158    RAMB36_X4Y22     MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/fifo_ram_reg/CLKBWRCLK
+Max Period        n/a     MMCME2_ADV/CLKOUT0  n/a            213.360   6.734   206.626  MMCME2_ADV_X1Y0  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980     3.367   2.387    SLICE_X50Y77     MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pw4n412wp4ehayrgebe5yin5a5zcedpyum25rjd2sis1x345oh1pg5n4lh4brcmicj5qq14b5seig5epzl/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980     3.367   2.387    SLICE_X54Y80     MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdm1fvupwdr1npyq3kump1nix5u4rpsph2kgo5yur5cdkiil5cbvh4ira14fdhp2ki5rizx5cshzerfxa/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clkfbout_MainDesign_clk_wiz_0_0
+  To Clock:  clkfbout_MainDesign_clk_wiz_0_0
+
+Setup :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+PW    :            0  Failing Endpoints,  Worst Slack       37.845ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clkfbout_MainDesign_clk_wiz_0_0
+Waveform:           { 0 20 }
+Period:             40.000
+Sources:            { MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKFBOUT }
+
+Check Type  Corner  Lib Pin              Reference Pin  Required  Actual  Slack    Location         Pin
+Min Period  n/a     BUFG/I               n/a            2.155     40.000  37.845   BUFGCTRL_X0Y1    MainDesign_i/clk_wiz_0/inst/clkf_buf/I
+Max Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            213.360   40.000  173.360  MMCME2_ADV_X1Y0  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKFBOUT
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_0
+  To Clock:  clk_fpga_0
+
+Setup :            0  Failing Endpoints,  Worst Slack        5.029ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.025ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        5.519ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             5.029ns  (required time - arrival time)
+  Source:                 MainDesign_i/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@6.499ns period=12.999ns})
+  Destination:            MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[3].FDRE_I/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@6.499ns period=12.999ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            12.999ns  (clk_fpga_0 rise@12.999ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        7.695ns  (logic 1.744ns (22.664%)  route 5.951ns (77.336%))
+  Logic Levels:           5  (CARRY4=1 LUT2=1 LUT4=1 LUT5=2)
+  Clock Path Skew:        -0.139ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.176ns = ( 17.175 - 12.999 ) 
+    Source Clock Delay      (SCD):    4.761ns
+    Clock Pessimism Removal (CPR):    0.446ns
+  Clock Uncertainty:      0.198ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.390ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           2.780     2.780    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.101     2.881 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1491, routed)        1.880     4.761    MainDesign_i/proc_sys_reset/U0/slowest_sync_clk
+    SLICE_X30Y118                                                     r  MainDesign_i/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X30Y118        FDRE (Prop_fdre_C_Q)         0.518     5.279 f  MainDesign_i/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/Q
+                         net (fo=9, routed)           2.472     7.751    MainDesign_i/zed_hdmi_iic_0/U0/s_axi_aresetn
+    SLICE_X48Y102        LUT2 (Prop_lut2_I1_O)        0.124     7.875 r  MainDesign_i/zed_hdmi_iic_0/U0/ip_irpt_enable_reg[7]_i_1/O
+                         net (fo=156, routed)         1.899     9.774    MainDesign_i/zed_hdmi_iic_0/U0/n_0_ip_irpt_enable_reg[7]_i_1
+    SLICE_X54Y105        LUT4 (Prop_lut4_I3_O)        0.124     9.898 r  MainDesign_i/zed_hdmi_iic_0/U0/Data_Exists_DFF_i_2__1/O
+                         net (fo=3, routed)           0.425    10.323    MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/ctrl_fifo_wr_i
+    SLICE_X55Y106        LUT5 (Prop_lut5_I0_O)        0.124    10.447 r  MainDesign_i/zed_hdmi_iic_0/U0/Addr_Counters[0].MUXCY_L_I_i_3__1/O
+                         net (fo=4, routed)           0.454    10.901    MainDesign_i/zed_hdmi_iic_0/U0/n_0_Addr_Counters[0].MUXCY_L_I_i_3__1
+    SLICE_X54Y107        LUT5 (Prop_lut5_I0_O)        0.124    11.025 r  MainDesign_i/zed_hdmi_iic_0/U0/Addr_Counters[0].MUXCY_L_I_i_1/O
+                         net (fo=1, routed)           0.701    11.726    MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/S6_out
+    SLICE_X55Y107        CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.730    12.456 r  MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[0].MUXCY_L_I_CARRY4/O[3]
+                         net (fo=1, routed)           0.000    12.456    MainDesign_i/zed_hdmi_iic_0/U0/n_0_X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[3].XORCY_I
+    SLICE_X55Y107        FDRE                                         r  MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[3].FDRE_I/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     12.999    12.999 r  
+    PS7_X0Y0                                          0.000    12.999 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           2.376    15.375    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091    15.466 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1491, routed)        1.709    17.175    MainDesign_i/zed_hdmi_iic_0/U0/s_axi_aclk
+    SLICE_X55Y107                                                     r  MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[3].FDRE_I/C
+                         clock pessimism              0.446    17.621    
+                         clock uncertainty           -0.198    17.423    
+    SLICE_X55Y107        FDRE (Setup_fdre_C_D)        0.062    17.485    MainDesign_i/zed_hdmi_iic_0/U0/X_IIC/WRITE_FIFO_CTRL_I/Addr_Counters[3].FDRE_I
+  -------------------------------------------------------------------
+                         required time                         17.485    
+                         arrival time                         -12.456    
+  -------------------------------------------------------------------
+                         slack                                  5.029    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.025ns  (arrival time - required time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgopyur5crtp4fea/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@6.499ns period=12.999ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdmtxm5l3tpi5lgozj5lh2iowpw05e20h0jx1ze0xqumo54ehexyaxepsegajqhyr4ira14fdg52ki/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@6.499ns period=12.999ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.363ns  (logic 0.141ns (38.842%)  route 0.222ns (61.158%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.268ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.196ns
+    Source Clock Delay      (SCD):    1.745ns
+    Clock Pessimism Removal (CPR):    0.183ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.169     1.169    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.195 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1491, routed)        0.550     1.745    MainDesign_i/zed_hdmi_display/v_tc_0/U0/s_axi_aclk
+    SLICE_X52Y89                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgopyur5crtp4fea/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X52Y89         FDRE (Prop_fdre_C_Q)         0.141     1.886 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgopyur5crtp4fea/Q
+                         net (fo=1, routed)           0.222     2.108    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioh5tn215dsrd[1]
+    SLICE_X47Y90         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdmtxm5l3tpi5lgozj5lh2iowpw05e20h0jx1ze0xqumo54ehexyaxepsegajqhyr4ira14fdg52ki/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0                                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.344     1.344    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.373 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1491, routed)        0.823     2.196    MainDesign_i/zed_hdmi_display/v_tc_0/U0/s_axi_aclk
+    SLICE_X47Y90                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdmtxm5l3tpi5lgozj5lh2iowpw05e20h0jx1ze0xqumo54ehexyaxepsegajqhyr4ira14fdg52ki/C
+                         clock pessimism             -0.183     2.013    
+    SLICE_X47Y90         FDRE (Hold_fdre_C_D)         0.070     2.083    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdmtxm5l3tpi5lgozj5lh2iowpw05e20h0jx1ze0xqumo54ehexyaxepsegajqhyr4ira14fdg52ki
+  -------------------------------------------------------------------
+                         required time                         -2.083    
+                         arrival time                           2.108    
+  -------------------------------------------------------------------
+                         slack                                  0.025    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_fpga_0
+Waveform:           { 0 6.4995 }
+Period:             12.999
+Sources:            { MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[0] }
+
+Check Type        Corner  Lib Pin      Reference Pin  Required  Actual  Slack   Location        Pin
+Min Period        n/a     BUFG/I       n/a            2.155     12.999  10.844  BUFGCTRL_X0Y17  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/I
+Low Pulse Width   Slow    SRLC32E/CLK  n/a            0.980     6.499   5.519   SLICE_X54Y92    MainDesign_i/processing_system7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][0]_srl32/CLK
+High Pulse Width  Fast    SRL16E/CLK   n/a            0.980     6.499   5.519   SLICE_X26Y124   MainDesign_i/proc_sys_reset/U0/EXT_LPF/POR_SRL_I/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_1
+  To Clock:  clk_fpga_1
+
+Setup :            0  Failing Endpoints,  Worst Slack        0.667ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.054ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        2.250ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.667ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/GEN_SPRT_FOR_MM2S.MM2S_LINEBUFFER_I/GEN_LINEBUF_NO_SOF.GEN_LINEBUFFER.GEN_ASYNC_FIFO.LB_BUILT_IN.I_LINEBUFFER_FIFO/fg_builtin_fifo_inst/inst_fifo_gen/gconvfifo.rf/gbi.bi/v7_bi_fifo.fblk/gextw[5].gnll_fifo.inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1/WRCLK
+                            (rising edge-triggered cell FIFO36E1 clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_DRE.I_DRE_16_to_64/GEN_INPUT_REG[3].sig_input_data_reg_reg[3][1]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Path Group:             clk_fpga_1
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            7.000ns  (clk_fpga_1 rise@7.000ns - clk_fpga_1 rise@0.000ns)
+  Data Path Delay:        5.903ns  (logic 1.936ns (32.795%)  route 3.967ns (67.205%))
+  Logic Levels:           4  (LUT2=1 LUT4=2 LUT6=1)
+  Clock Path Skew:        -0.113ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    3.841ns = ( 10.841 - 7.000 ) 
+    Source Clock Delay      (SCD):    4.463ns
+    Clock Pessimism Removal (CPR):    0.508ns
+  Clock Uncertainty:      0.111ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.210ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           2.668     2.668    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     2.769 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        1.694     4.463    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/m_axi_mm2s_aclk
+    RAMB36_X2Y19                                                      r  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/GEN_SPRT_FOR_MM2S.MM2S_LINEBUFFER_I/GEN_LINEBUF_NO_SOF.GEN_LINEBUFFER.GEN_ASYNC_FIFO.LB_BUILT_IN.I_LINEBUFFER_FIFO/fg_builtin_fifo_inst/inst_fifo_gen/gconvfifo.rf/gbi.bi/v7_bi_fifo.fblk/gextw[5].gnll_fifo.inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1/WRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y19         FIFO36E1 (Prop_fifo36e1_WRCLK_FULL)
+                                                      1.041     5.504 f  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/GEN_SPRT_FOR_MM2S.MM2S_LINEBUFFER_I/GEN_LINEBUF_NO_SOF.GEN_LINEBUFFER.GEN_ASYNC_FIFO.LB_BUILT_IN.I_LINEBUFFER_FIFO/fg_builtin_fifo_inst/inst_fifo_gen/gconvfifo.rf/gbi.bi/v7_bi_fifo.fblk/gextw[5].gnll_fifo.inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1/FULL
+                         net (fo=1, routed)           1.161     6.665    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/n_4_GEN_SPRT_FOR_MM2S.MM2S_LINEBUFFER_I/GEN_LINEBUF_NO_SOF.GEN_LINEBUFFER.GEN_ASYNC_FIFO.LB_BUILT_IN.I_LINEBUFFER_FIFO/fg_builtin_fifo_inst/inst_fifo_gen/gconvfifo.rf/gbi.bi/v7_bi_fifo.fblk/gextw[5].gnll_fifo.inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1
+    SLICE_X32Y88         LUT6 (Prop_lut6_I4_O)        0.124     6.789 r  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/STRUCTURAL_A_GEN.Addr_Counters[2].XORCY_I_i_5/O
+                         net (fo=3, routed)           0.830     7.619    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/n_0_STRUCTURAL_A_GEN.Addr_Counters[2].XORCY_I_i_5
+    SLICE_X33Y75         LUT4 (Prop_lut4_I1_O)        0.119     7.738 f  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/gpregsm1.curr_fwft_state[1]_i_2/O
+                         net (fo=7, routed)           0.766     8.504    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/n_0_gpregsm1.curr_fwft_state[1]_i_2
+    SLICE_X34Y74         LUT2 (Prop_lut2_I0_O)        0.324     8.828 f  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/INCLUDE_DRE_CNTL.sig_dre_src_align_reg[1]_i_3/O
+                         net (fo=10, routed)          0.562     9.390    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/n_0_INCLUDE_DRE_CNTL.sig_dre_src_align_reg[1]_i_3
+    SLICE_X32Y73         LUT4 (Prop_lut4_I3_O)        0.328     9.718 r  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/GEN_INPUT_REG[3].sig_input_data_reg[3][9]_i_2/O
+                         net (fo=10, routed)          0.649    10.367    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_DRE.I_DRE_16_to_64/p_44_out
+    SLICE_X33Y71         FDRE                                         r  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_DRE.I_DRE_16_to_64/GEN_INPUT_REG[3].sig_input_data_reg_reg[3][1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_1 rise edge)
+                                                      7.000     7.000 r  
+    PS7_X0Y0                                          0.000     7.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           2.284     9.284    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     9.375 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        1.467    10.841    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/m_axi_mm2s_aclk
+    SLICE_X33Y71                                                      r  MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_DRE.I_DRE_16_to_64/GEN_INPUT_REG[3].sig_input_data_reg_reg[3][1]/C
+                         clock pessimism              0.508    11.350    
+                         clock uncertainty           -0.111    11.239    
+    SLICE_X33Y71         FDRE (Setup_fdre_C_CE)      -0.205    11.034    MainDesign_i/zed_hdmi_display/axi_vdma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_DRE.I_DRE_16_to_64/GEN_INPUT_REG[3].sig_input_data_reg_reg[3][1]
+  -------------------------------------------------------------------
+                         required time                         11.034    
+                         arrival time                         -10.367    
+  -------------------------------------------------------------------
+                         slack                                  0.667    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.054ns  (arrival time - required time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsabeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq3gazshedb5seig5riz15csa/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsibeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq2ujbhykifuyrd5cdjygd5aq3cogahyopedyt4ehdza4e5eq2qfj5yum05rjd4egrbuabfrap2pedyqwigrhywobacmqogux2kgn5yur5cdi24ihrhzcedpyum25rjd4fdhp2ki5esew2/D
+                            (rising edge-triggered cell SRL16E clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Path Group:             clk_fpga_1
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_1 rise@0.000ns - clk_fpga_1 rise@0.000ns)
+  Data Path Delay:        0.252ns  (logic 0.141ns (55.979%)  route 0.111ns (44.021%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.217ns
+    Source Clock Delay      (SCD):    1.778ns
+    Clock Pessimism Removal (CPR):    0.424ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           1.124     1.124    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     1.150 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        0.628     1.778    MainDesign_i/zed_hdmi_display/v_cresample_0/U0/aclk
+    SLICE_X41Y121                                                     r  MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsabeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq3gazshedb5seig5riz15csa/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y121        FDRE (Prop_fdre_C_Q)         0.141     1.919 r  MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsabeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq3gazshedb5seig5riz15csa/Q
+                         net (fo=2, routed)           0.111     2.030    MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsitamzdsbqd[3]
+    SLICE_X42Y120        SRL16E                                       r  MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsibeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq2ujbhykifuyrd5cdjygd5aq3cogahyopedyt4ehdza4e5eq2qfj5yum05rjd4egrbuabfrap2pedyqwigrhywobacmqogux2kgn5yur5cdi24ihrhzcedpyum25rjd4fdhp2ki5esew2/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0                                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           1.289     1.289    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.318 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        0.899     2.217    MainDesign_i/zed_hdmi_display/v_cresample_0/U0/aclk
+    SLICE_X42Y120                                                     r  MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsibeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq2ujbhykifuyrd5cdjygd5aq3cogahyopedyt4ehdza4e5eq2qfj5yum05rjd4egrbuabfrap2pedyqwigrhywobacmqogux2kgn5yur5cdi24ihrhzcedpyum25rjd4fdhp2ki5esew2/CLK
+                         clock pessimism             -0.424     1.793    
+    SLICE_X42Y120        SRL16E (Hold_srl16e_CLK_D)
+                                                      0.183     1.976    MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsibeireagdzmj4jtr52igusp4ehcbvgcheit4ehbke2m5htz34jtxz22opyq0chdkuirj5yq2ujbhykifuyrd5cdjygd5aq3cogahyopedyt4ehdza4e5eq2qfj5yum05rjd4egrbuabfrap2pedyqwigrhywobacmqogux2kgn5yur5cdi24ihrhzcedpyum25rjd4fdhp2ki5esew2
+  -------------------------------------------------------------------
+                         required time                         -1.976    
+                         arrival time                           2.030    
+  -------------------------------------------------------------------
+                         slack                                  0.054    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_fpga_1
+Waveform:           { 0 3.5 }
+Period:             7.000
+Sources:            { MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1] }
+
+Check Type        Corner  Lib Pin      Reference Pin  Required  Actual  Slack  Location       Pin
+Min Period        n/a     DSP48E1/CLK  n/a            3.884     7.000   3.116  DSP48_X2Y44    MainDesign_i/zed_hdmi_display/v_rgb2ycrcb_0/U0/obsairqfyybeiid4jtr52igusp4ehcbvgcheit4ehfl12maatr15cdjqac5auxm/obsahupzceda/CLK
+Low Pulse Width   Fast    RAMD32/CLK   n/a            1.250     3.500   2.250  SLICE_X36Y99   MainDesign_i/zed_hdmi_display/v_rgb2ycrcb_0/U0/obsairqfyybeiid4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54nxhzxb/RAMA/CLK
+High Pulse Width  Slow    RAMD32/CLK   n/a            1.250     3.500   2.250  SLICE_X42Y119  MainDesign_i/zed_hdmi_display/v_cresample_0/U0/obsnbeireagdzmj4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54ohxzy5/RAMA/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_2
+  To Clock:  clk_fpga_2
+
+Setup :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+PW    :            0  Failing Endpoints,  Worst Slack        7.845ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_fpga_2
+Waveform:           { 0 5 }
+Period:             10.000
+Sources:            { MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[2] }
+
+Check Type  Corner  Lib Pin  Reference Pin  Required  Actual  Slack  Location        Pin
+Min Period  n/a     BUFG/I   n/a            2.155     10.000  7.845  BUFGCTRL_X0Y18  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/I
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_0
+  To Clock:  clk_out1_MainDesign_clk_wiz_0_0
+
+Setup :            0  Failing Endpoints,  Worst Slack       11.658ns,  Total Violation        0.000ns
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             11.658ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdj3cobpsjqnbg5zcedpyum2rpyui/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0)
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum05rjd4fdhel4fea/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0)
+  Path Group:             clk_out1_MainDesign_clk_wiz_0_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            12.999ns  (MaxDelay Path 12.999ns)
+  Data Path Delay:        1.154ns  (logic 0.478ns (41.426%)  route 0.676ns (58.574%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 12.999ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X26Y78                                      0.000     0.000 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdj3cobpsjqnbg5zcedpyum2rpyui/C
+    SLICE_X26Y78         FDRE (Prop_fdre_C_Q)         0.478     0.478 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsf2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdj3cobpsjqnbg5zcedpyum2rpyui/Q
+                         net (fo=1, routed)           0.676     1.154    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152iohujyf4jgbue1[28]
+    SLICE_X26Y79         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum05rjd4fdhel4fea/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   12.999    12.999    
+    SLICE_X26Y79         FDRE (Setup_fdre_C_D)       -0.187    12.812    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthhgzhtl313m5rbygajqhzeygqxzcedpyum05rjd4fdhel4fea
+  -------------------------------------------------------------------
+                         required time                         12.812    
+                         arrival time                          -1.154    
+  -------------------------------------------------------------------
+                         slack                                 11.658    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_1
+  To Clock:  clk_out1_MainDesign_clk_wiz_0_0
+
+Setup :           17  Failing Endpoints,  Worst Slack       -5.062ns,  Total Violation      -81.275ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.738ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -5.062ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkeiab5qaek5a5zcedpyum25rja/R
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Path Group:             clk_out1_MainDesign_clk_wiz_0_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            0.003ns  (clk_out1_MainDesign_clk_wiz_0_0 rise@3367.003ns - clk_fpga_1 rise@3367.000ns)
+  Data Path Delay:        1.241ns  (logic 0.580ns (46.739%)  route 0.661ns (53.261%))
+  Logic Levels:           1  (LUT1=1)
+  Clock Path Skew:        -2.941ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.524ns = ( 3368.527 - 3367.003 ) 
+    Source Clock Delay      (SCD):    4.465ns = ( 3371.464 - 3367.000 ) 
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.360ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.218ns
+    Phase Error              (PE):    0.245ns
+  Clock Domain Crossing:  Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                   3367.000  3367.000 r  
+    PS7_X0Y0             PS7                          0.000  3367.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           2.668  3369.667    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101  3369.769 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        1.696  3371.465    MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/slowest_sync_clk
+    SLICE_X31Y88                                                      r  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y88         FDRE (Prop_fdre_C_Q)         0.456  3371.921 f  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/Q
+                         net (fo=13, routed)          0.306  3372.227    MainDesign_i/zed_hdmi_display/v_tc_0/U0/resetn
+    SLICE_X29Y88         LUT1 (Prop_lut1_I0_O)        0.124  3372.351 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsfso3r34x1g4r4wmo4rvuze0r5cdkzcijrhyacfpqrx4eptd/O
+                         net (fo=11, routed)          0.355  3372.706    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsng5tl3e31d13pwn3d3my33dljsjvd4egvseqtcpqaek5bdp2i5gd
+    SLICE_X26Y88         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkeiab5qaek5a5zcedpyum25rja/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                   3367.003  3367.003 r  
+    BUFGCTRL_X0Y18                                    0.000  3367.003 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           1.612  3368.615    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.425  3365.190 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.725  3366.915    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091  3367.006 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        1.521  3368.527    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X26Y88                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkeiab5qaek5a5zcedpyum25rja/C
+                         clock pessimism              0.000  3368.527    
+                         clock uncertainty           -0.360  3368.167    
+    SLICE_X26Y88         FDRE (Setup_fdre_C_R)       -0.524  3367.643    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkeiab5qaek5a5zcedpyum25rja
+  -------------------------------------------------------------------
+                         required time                       3367.643    
+                         arrival time                       -3372.706    
+  -------------------------------------------------------------------
+                         slack                                 -5.062    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.738ns  (arrival time - required time)
+  Source:                 MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdki2fj5seiscezx2rcbxzcehb/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0  {rise@0.000ns fall@3.367ns period=6.734ns})
+  Path Group:             clk_out1_MainDesign_clk_wiz_0_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_MainDesign_clk_wiz_0_0 rise@0.000ns - clk_fpga_1 rise@0.000ns)
+  Data Path Delay:        0.327ns  (logic 0.189ns (57.744%)  route 0.138ns (42.256%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        -0.877ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.846ns
+    Source Clock Delay      (SCD):    1.723ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.360ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.218ns
+    Phase Error              (PE):    0.245ns
+  Clock Domain Crossing:  Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           1.124     1.124    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     1.150 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        0.574     1.723    MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/slowest_sync_clk
+    SLICE_X31Y88                                                      r  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y88         FDRE (Prop_fdre_C_Q)         0.141     1.864 r  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/Q
+                         net (fo=13, routed)          0.138     2.003    MainDesign_i/zed_hdmi_display/v_tc_0/U0/resetn
+    SLICE_X29Y88         LUT5 (Prop_lut5_I4_O)        0.048     2.051 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsaso3r34x1g4r4wmo4rvuze0r5cdki2fj5seiscezx2rcd5yr4nb/O
+                         net (fo=1, routed)           0.000     2.051    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsig5tl3e31d13pwn3d3my33dljsjvd4egurykt5eireejtpzceh5rd21
+    SLICE_X29Y88         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdki2fj5seiscezx2rcbxzcehb/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_MainDesign_clk_wiz_0_0 rise edge)
+                                                      0.000     0.000 r  
+    BUFGCTRL_X0Y18                                    0.000     0.000 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG/O
+                         net (fo=1, routed)           0.864     0.864    MainDesign_i/clk_wiz_0/inst/clk_in1
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -1.467    -0.603 r  MainDesign_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.576    -0.027    MainDesign_i/clk_wiz_0/inst/clk_out1_MainDesign_clk_wiz_0_0
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     0.002 r  MainDesign_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=1858, routed)        0.844     0.846    MainDesign_i/zed_hdmi_display/v_tc_0/U0/clk
+    SLICE_X29Y88                                                      r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdki2fj5seiscezx2rcbxzcehb/C
+                         clock pessimism              0.000     0.846    
+                         clock uncertainty            0.360     1.206    
+    SLICE_X29Y88         FDRE (Hold_fdre_C_D)         0.107     1.313    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsn2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdki2fj5seiscezx2rcbxzcehb
+  -------------------------------------------------------------------
+                         required time                         -1.313    
+                         arrival time                           2.051    
+  -------------------------------------------------------------------
+                         slack                                  0.738    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_out1_MainDesign_clk_wiz_0_0
+  To Clock:  clk_fpga_0
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.575ns,  Total Violation        0.000ns
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.575ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkzcijrhyacfpseig/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0)
+  Destination:            MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgnpyur5crtv15csa/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0)
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.734ns  (MaxDelay Path 6.734ns)
+  Data Path Delay:        2.143ns  (logic 0.456ns (21.278%)  route 1.687ns (78.722%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.734ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X27Y88                                      0.000     0.000 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkzcijrhyacfpseig/C
+    SLICE_X27Y88         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdkzcijrhyacfpseig/Q
+                         net (fo=2, routed)           1.687     2.143    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsi2pxgzhumx0nx0152iolejbge5aaik
+    SLICE_X62Y89         FDRE                                         r  MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgnpyur5crtv15csa/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.734     6.734    
+    SLICE_X62Y89         FDRE (Setup_fdre_C_D)       -0.016     6.718    MainDesign_i/zed_hdmi_display/v_tc_0/U0/obsa2pxgzhumx0nx0152ioso3r34x1g4r4wmo4rvuze0r5cdo1zrthgplstjv434wpyq2daeyd2smdil2rcbx2kgnpyur5crtv15csa
+  -------------------------------------------------------------------
+                         required time                          6.718    
+                         arrival time                          -2.143    
+  -------------------------------------------------------------------
+                         slack                                  4.575    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_out1_MainDesign_clk_wiz_0_0
+  To Clock:  clk_fpga_1
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.512ns,  Total Violation        0.000ns
+Hold  :               Failing Endpoints,  Worst Slack               ,  Total Violation             
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.512ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/ack_rd_dom_3_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_MainDesign_clk_wiz_0_0)
+  Destination:            MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/req_wr_dom_1_reg/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1)
+  Path Group:             clk_fpga_1
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.734ns  (MaxDelay Path 6.734ns)
+  Data Path Delay:        2.175ns  (logic 0.715ns (32.873%)  route 1.460ns (67.127%))
+  Logic Levels:           1  (LUT1=1)
+  Timing Exception:       MaxDelay Path 6.734ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y112                                     0.000     0.000 r  MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/ack_rd_dom_3_reg/C
+    SLICE_X61Y112        FDRE (Prop_fdre_C_Q)         0.419     0.419 f  MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/ack_rd_dom_3_reg/Q
+                         net (fo=2, routed)           0.826     1.245    MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/ack_rd_dom_3
+    SLICE_X61Y111        LUT1 (Prop_lut1_I0_O)        0.296     1.541 r  MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/req_wr_dom_1_i_1/O
+                         net (fo=1, routed)           0.634     2.175    MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/rd_to_wr_req
+    SLICE_X61Y111        FDRE                                         r  MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/req_wr_dom_1_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.734     6.734    
+    SLICE_X61Y111        FDRE (Setup_fdre_C_D)       -0.047     6.687    MainDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst/out_coupler_i/bridge_async_fifo_2_i/req_wr_dom_1_reg
+  -------------------------------------------------------------------
+                         required time                          6.687    
+                         arrival time                          -2.175    
+  -------------------------------------------------------------------
+                         slack                                  4.512    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **async_default**
+From Clock:  clk_fpga_1
+  To Clock:  clk_fpga_1
+
+Setup :            0  Failing Endpoints,  Worst Slack        2.828ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.390ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             2.828ns  (required time - arrival time)
+  Source:                 MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_asreg_reg/PRE
+                            (recovery check against rising-edge clock clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            7.000ns  (clk_fpga_1 rise@7.000ns - clk_fpga_1 rise@0.000ns)
+  Data Path Delay:        3.587ns  (logic 0.580ns (16.168%)  route 3.007ns (83.832%))
+  Logic Levels:           1  (LUT1=1)
+  Clock Path Skew:        -0.115ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    3.956ns = ( 10.956 - 7.000 ) 
+    Source Clock Delay      (SCD):    4.465ns
+    Clock Pessimism Removal (CPR):    0.394ns
+  Clock Uncertainty:      0.111ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.210ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           2.668     2.668    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     2.769 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        1.696     4.465    MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/slowest_sync_clk
+    SLICE_X31Y88                                                      r  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y88         FDRE (Prop_fdre_C_Q)         0.456     4.921 r  MainDesign_i/zed_hdmi_display/proc_sys_reset/U0/ACTIVE_LOW_PR_OUT_DFF[0].peripheral_aresetn_reg[0]/Q
+                         net (fo=13, routed)          1.844     6.765    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/aresetn
+    SLICE_X27Y54         LUT1 (Prop_lut1_I0_O)        0.124     6.889 f  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/S_AXI_ASIZE_Q[2]_i_1/O
+                         net (fo=136, routed)         1.163     8.052    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/n_0_S_AXI_ASIZE_Q[2]_i_1
+    SLICE_X13Y48         FDPE                                         f  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_asreg_reg/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_1 rise edge)
+                                                      7.000     7.000 r  
+    PS7_X0Y0                                          0.000     7.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           2.284     9.284    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     9.375 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        1.581    10.956    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/aclk
+    SLICE_X13Y48                                                      r  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_asreg_reg/C
+                         clock pessimism              0.394    11.350    
+                         clock uncertainty           -0.111    11.239    
+    SLICE_X13Y48         FDPE (Recov_fdpe_C_PRE)     -0.359    10.880    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_asreg_reg
+  -------------------------------------------------------------------
+                         required time                         10.880    
+                         arrival time                          -8.052    
+  -------------------------------------------------------------------
+                         slack                                  2.828    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.390ns  (arrival time - required time)
+  Source:                 MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_reg[2]/C
+                            (rising edge-triggered cell FDPE clocked by clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Destination:            MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[4]/CLR
+                            (removal check against rising-edge clock clk_fpga_1  {rise@0.000ns fall@3.500ns period=7.000ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_1 rise@0.000ns - clk_fpga_1 rise@0.000ns)
+  Data Path Delay:        0.335ns  (logic 0.141ns (42.044%)  route 0.194ns (57.956%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.037ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.184ns
+    Source Clock Delay      (SCD):    1.745ns
+    Clock Pessimism Removal (CPR):    0.401ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           1.124     1.124    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     1.150 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        0.596     1.745    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/aclk
+    SLICE_X21Y49                                                      r  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X21Y49         FDPE (Prop_fdpe_C_Q)         0.141     1.886 f  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_reg[2]/Q
+                         net (fo=15, routed)          0.194     2.081    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/RD_RST
+    SLICE_X19Y49         FDCE                                         f  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[4]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_1 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0                                          0.000     0.000 r  MainDesign_i/processing_system7_0/inst/PS7_i/FCLKCLK[1]
+                         net (fo=1, routed)           1.289     1.289    MainDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.318 r  MainDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG/O
+                         net (fo=2570, routed)        0.866     2.184    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/aclk
+    SLICE_X19Y49                                                      r  MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[4]/C
+                         clock pessimism             -0.401     1.782    
+    SLICE_X19Y49         FDCE (Remov_fdce_C_CLR)     -0.092     1.690    MainDesign_i/zed_hdmi_display/axi_mem_intercon/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[4]
+  -------------------------------------------------------------------
+                         required time                         -1.690    
+                         arrival time                           2.081    
+  -------------------------------------------------------------------
+                         slack                                  0.390    
+
+
+
+
+

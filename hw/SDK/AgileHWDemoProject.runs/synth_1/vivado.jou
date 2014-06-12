@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Mon Jun  9 10:46:48 2014
+# Process ID: 8808
+# Log file: /home/agilehw/AgileHWDemoProject/AgileHWDemoProject.runs/synth_1/MainDesign_wrapper.rds
+# Journal file: /home/agilehw/AgileHWDemoProject/AgileHWDemoProject.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source MainDesign_wrapper.tcl

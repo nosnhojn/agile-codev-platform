@@ -1,0 +1,71 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.3.3  2013-08-16 bk=1.2871 VDI=33 GEI=35
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -y 280 -defaultsOSRD
+preplace port hdmio_io -pg 1 -y 140 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 300 -defaultsOSRD
+preplace port zed_hdmi_iic -pg 1 -y 460 -defaultsOSRD
+preplace inst zed_hdmi_display|vcc -pg 1 -lvl 1 -y 300 -defaultsOSRD
+preplace inst zed_hdmi_display|gnd -pg 1 -lvl 5 -y 690 -defaultsOSRD
+preplace inst zed_hdmi_display|proc_sys_reset -pg 1 -lvl 4 -y 350 -defaultsOSRD
+preplace inst zed_hdmi_display|axi_mem_intercon -pg 1 -lvl 7 -y 240 -defaultsOSRD
+preplace inst zed_hdmi_display|zed_hdmi_out_0 -pg 1 -lvl 7 -y 620 -defaultsOSRD
+preplace inst zed_hdmi_display|v_cresample_0 -pg 1 -lvl 5 -y 570 -defaultsOSRD
+preplace inst zed_hdmi_display|v_tc_0 -pg 1 -lvl 5 -y 310 -defaultsOSRD
+preplace inst zed_hdmi_iic_0 -pg 1 -lvl 1 -y 510 -defaultsOSRD
+preplace inst zed_hdmi_display|v_axi4s_vid_out_0 -pg 1 -lvl 6 -y 630 -defaultsOSRD
+preplace inst zed_hdmi_display|v_rgb2ycrcb_0 -pg 1 -lvl 4 -y 540 -defaultsOSRD
+preplace inst zed_hdmi_display|axi_vdma_0 -pg 1 -lvl 2 -y 210 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -y 50 -defaultsOSRD
+preplace inst zed_hdmi_display -pg 1 -lvl 3 -y 160 -regy -80 -defaultsOSRD
+preplace inst zed_hdmi_display|axis_subset_converter_0 -pg 1 -lvl 3 -y 310 -defaultsOSRD
+preplace inst proc_sys_reset -pg 1 -lvl 3 -y 990 -defaultsOSRD
+preplace inst processing_system7_0_axi_periph -pg 1 -lvl 4 -y 520 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -y 310 -defaultsOSRD
+preplace netloc processing_system7_0_ddr 1 2 3 890 780 NJ 280 NJ
+preplace netloc proc_sys_reset_interconnect_aresetn 1 3 1 3230
+preplace netloc zed_hdmi_display|v_rgb2ycrcb_0_video_out 1 4 1 N
+preplace netloc hdmio_clk_1 1 2 1 910
+preplace netloc proc_sys_reset_peripheral_aresetn 1 0 4 20 340 NJ 120 900 870 3240
+preplace netloc zed_hdmi_display|v_tc_0_vtiming_out 1 5 1 2500
+preplace netloc zed_hdmi_display|vcc_const 1 1 5 1240 330 1580 400 1790 630 2180 750 2500
+preplace netloc axi4s_resetn_1 1 2 1 N
+preplace netloc zed_hdmi_display|clk_1 1 0 7 NJ 450 NJ 450 NJ 450 NJ 450 2200 490 2470 480 NJ
+preplace netloc axi4s_clk_1 1 1 2 300 140 850
+preplace netloc zed_hdmi_display|proc_sys_reset_peripheral_aresetn 1 4 3 2210 470 NJ 470 2770
+preplace netloc zed_hdmi_display_m00_axi 1 1 3 310 810 NJ 810 3150
+preplace netloc zed_hdmi_display|processing_system7_0_fclk_clk1 1 0 7 NJ 380 1230 320 1590 410 1820 460 2160 480 2460 500 2760
+preplace netloc processing_system7_0_axi_periph_m01_axi 1 2 3 930 840 NJ 840 3510
+preplace netloc zed_hdmi_display|s_axi_aclk_1 1 0 5 NJ 360 1220 310 NJ 240 NJ 240 NJ
+preplace netloc processing_system7_0_axi_periph_m02_axi 1 2 3 920 850 NJ 850 3500
+preplace netloc zed_hdmi_display|v_axi4s_vid_out_0_vid_io_out 1 6 1 N
+preplace netloc zed_hdmi_display|aresetn_1 1 4 3 NJ 460 NJ 460 NJ
+preplace netloc zed_hdmi_display_hdmio_io 1 3 2 3160 140 NJ
+preplace netloc processing_system7_0_fclk_reset0_n 1 2 1 840
+preplace netloc zed_hdmi_display|axis_subset_converter_0_m_axis 1 3 1 1800
+preplace netloc zed_hdmi_display|Conn1 1 0 5 NJ 120 NJ 120 NJ 120 NJ 120 2220
+preplace netloc zed_hdmi_iic_0_iic 1 1 4 280 830 NJ 830 NJ 360 NJ
+preplace netloc processing_system7_0_fixed_io 1 2 3 880 790 NJ 300 NJ
+preplace netloc processing_system7_0_fclk_clk0 1 0 4 30 350 290 150 870 860 3220
+preplace netloc zed_hdmi_display|zed_hdmi_out_0_io_hdmio 1 7 1 N
+preplace netloc zed_hdmi_display|axi_vdma_0_m_axi_mm2s 1 2 5 NJ 180 NJ 180 NJ 180 NJ 180 N
+preplace netloc zed_hdmi_display|Conn2 1 7 1 N
+preplace netloc zed_hdmi_display|ext_reset_in_1 1 0 4 NJ 420 NJ 420 NJ 420 1810
+preplace netloc zed_hdmi_display|Conn3 1 0 2 NJ 100 1220
+preplace netloc zed_hdmi_display|gnd_const 1 5 2 2480 490 2750
+preplace netloc processing_system7_0_axi_periph_m00_axi 1 0 5 40 440 NJ 820 NJ 820 NJ 350 3500
+preplace netloc processing_system7_0_fclk_clk2 1 1 2 310 130 840
+preplace netloc zed_hdmi_display|v_cresample_0_video_out 1 5 1 2490
+preplace netloc zed_hdmi_display|axi_vdma_0_m_axis_mm2s 1 2 1 1590
+preplace netloc zed_hdmi_display|v_axi4s_vid_out_0_vtg_ce 1 4 3 2220 450 NJ 450 2740
+preplace netloc zed_hdmi_display|s_axi_aresetn_1 1 0 5 NJ 390 NJ 390 NJ 390 NJ 260 2190
+preplace netloc processing_system7_0_m_axi_gp0 1 2 2 NJ 800 3200
+levelinfo -pg 1 0 160 620 2060 3370 3530
+levelinfo -hier zed_hdmi_display 1060 1150 1410 1690 1990 2340 2620 2900 3060
+",
+}
+{
+   da_axi4_cnt: "3",
+   da_board_cnt: "1",
+   da_ps7_cnt: "1",
+}
