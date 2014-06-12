@@ -368,6 +368,8 @@ typedef struct {
 
 	
 /************************** Function Prototypes ******************************/
+extern void Xil_DCacheFlush(void);
+
 /* Initialization */
 XAxiVdma_Config *XAxiVdma_LookupConfig(u16 DeviceId);
 

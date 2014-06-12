@@ -162,7 +162,7 @@ void DisplayXil::m_writeGridToFrameBuffer()
     }
   }
 
-  //Xil_DCacheFlush();
+  Xil_DCacheFlush();
 }
 
 void DisplayXil::m_resetGrid()

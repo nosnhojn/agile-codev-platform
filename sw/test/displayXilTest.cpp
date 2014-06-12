@@ -385,6 +385,7 @@ TEST_F(DisplayXilTest, refreshResetGrid) {
 TEST_F(DisplayXilTest, refreshWaitsForDCacheFlush) {
   EXPECT_CALL(*xdMock, Xil_DCacheFlush()).Times(1);
 
+  display->_addstr(BLANK_ROW_OF_10);
   display->_refresh();
 }
 

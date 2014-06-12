@@ -82,7 +82,7 @@ extern "C" {
 extern void Xil_DCacheInvalidate(void);
 extern void Xil_DCacheInvalidateRange(u32 Addr, unsigned Len);
 extern void Xil_DCacheFlushRange(u32 Addr, unsigned Len);
-extern void Xil_DCacheFlush(void);
+//extern void Xil_DCacheFlush(void);
 extern void Xil_DCacheEnable(void);
 extern void Xil_DCacheDisable(void);
 
