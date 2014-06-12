@@ -31,7 +31,10 @@ class DisplayXilTest : public testing::Test
       ON_CALL(iicCtrl, init())
           .WillByDefault(Return(1));
 
-      display = new DisplayXil(&iicCtrl);
+      display = new DisplayXil(&iicCtrl,
+                               0x10000000,
+                               1,
+                               2);
 
       for (int i=0; i<1080; i++)
         for (int j=0; j<1920; j++)
@@ -273,8 +276,8 @@ TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
   EXPECT_EQ(display->getHeight(), 1080);
   EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
-  EXPECT_EQ(display->getHdmiVtcDeviceId(), HDMI_VTC_DEVICE_ID);
-  EXPECT_EQ(display->getHdmiVdmaDeviceId(), HDMI_VDMA_DEVICE_ID);
+  EXPECT_EQ(display->getHdmiVtcDeviceId(), 1);
+  EXPECT_EQ(display->getHdmiVdmaDeviceId(), 2);
 }
 
 TEST_F(DisplayXilTest, refreshCallsVfbStop) {

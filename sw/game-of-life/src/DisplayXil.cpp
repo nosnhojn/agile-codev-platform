@@ -1,14 +1,17 @@
 #include "DisplayXil.h"
 #include <iostream>
 
-DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0 ) :
+DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
+                        int HDMI_DISPLAY_MEM_BASE_ADDR = 0,
+                        int HDMI_VTC_DEVICE_ID = 0,
+                        int HDMI_VDMA_DEVICE_ID = 0) :
   m_iicCtrl(iicCtrl),
+  m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
+  m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
+  m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
   m_width(1920),
   m_height(1080),
   m_resolution(VIDEO_RESOLUTION_1080P),
-  m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
-  m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
-  m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
   m_gridHeight(0),
   m_gridWidth(0)
 {

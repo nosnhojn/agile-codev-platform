@@ -6,10 +6,7 @@
 #include "video_frame_buffer.h"
 #include "video_generator.h"
 
-#define HDMI_DISPLAY_MEM_BASE_ADDR 3
 #define VIDEO_RESOLUTION_1080P 0
-#define HDMI_VTC_DEVICE_ID 1
-#define HDMI_VDMA_DEVICE_ID 2
 
 using namespace std;
 
@@ -38,7 +35,10 @@ class DisplayXil : public Display
 
   public:
     DisplayXil();
-    DisplayXil( IicCtrl * );
+    DisplayXil( IicCtrl * iicCtrl,
+                int HDMI_VTC_DEVICE_ID,
+                int HDMI_VDMA_DEVICE_ID,
+                int HDMI_DISPLAY_MEM_BASE_ADDR );
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208
