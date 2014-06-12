@@ -2,6 +2,11 @@
 #include "Drawing.h"
 #include "DisplayXil.h"
 
+#define XPAR_ZED_HDMI_IIC_0_BASEADDR 0
+#define XPAR_DDR_MEM_BASEADDR 0
+#define XPAR_ZED_HDMI_DISPLAY_V_TC_0_DEVICE_ID 0
+#define XPAR_ZED_HDMI_DISPLAY_AXI_VDMA_0_DEVICE_ID 0
+
 int main()
 {
   Board board;

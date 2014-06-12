@@ -65,7 +65,11 @@ XILGAMEOBJS=${OBJDIR}/Cell.o \
         		${OBJDIR}/Board.o \
         		${OBJDIR}/Drawing.o \
 		    		${OBJDIR}/Display.o \
+					  ${OBJDIR}/IicCtrl.o \
 		    		${OBJDIR}/DisplayXil.o \
+				 		${OBJDIR}/video_resolution.o \
+				 		${OBJDIR}/video_frame_buffer.o \
+            ${OBJDIR}/video_generator.o \
 						${OBJDIR}/xilgame.o
 
 xilgame : CXXFLAGS+=-DREFRESH_RATE=500000 \
