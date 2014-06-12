@@ -1,11 +1,11 @@
 #include "Board.h"
 #include "Drawing.h"
-#include "DisplayDummy.h"
+#include "DisplayXil.h"
 
 int main()
 {
   Board b;
-  DisplayDummy g;
+  DisplayXil g;
   Drawing d(&b, &g);
  
   d.initialCell(20,20);
