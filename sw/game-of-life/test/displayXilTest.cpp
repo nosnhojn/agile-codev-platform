@@ -214,15 +214,30 @@ TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
 }
 
 
-TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
+TEST_F(DisplayXilTest, initCallsVtcLookupConfigWithRightParameters) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(display->getHdmiVtcDeviceId())).Times(1);
 
   display->_initscr();
 }
-/*
-TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
+
+TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).Times(1);
+
+  display->_initscr();
 }
+
+TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(0));
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, vtcCfgInitializeWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_, &vtcDefaultConfig, 0x70000000)).Times(1);
+
+  display->_initscr();
+}
+/*
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
