@@ -30,10 +30,10 @@ int DisplayXil::_initscr()
                   getHdmiDisplayMemBaseAddr(),
                   1)) return 0;
 
-  {
-    XVtc *pVtc;
-    if (vgen_init(pVtc, 0) != 0) return 0;
-  }
+
+  XVtc *pVtc;
+  if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
+
 
   return 1;
 }

@@ -53,7 +53,7 @@ class DisplayXilTest : public testing::Test
       // Video Timing Correction (VTC) mock object constructor call
       xvMock = getXvtcMock();
       // Mock configurations for the video timing correction ip block
-      vtcDefaultConfig.DeviceId= 7;
+      vtcDefaultConfig.DeviceId= 1;
       vtcDefaultConfig.BaseAddress = 0x70000000;
       ON_CALL(*xvMock, XVtc_LookupConfig(_))
           .WillByDefault(Return(&vtcDefaultConfig));
@@ -66,7 +66,6 @@ class DisplayXilTest : public testing::Test
     ~DisplayXilTest()
     {
       destroyXdriverMock();
-// TODO: why this destructor calls before the test is executed?
       destroyXvtcMock();
     }
 
@@ -211,11 +210,13 @@ TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
-/*
-TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
-}
 
+TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(display->getHdmiVtcDeviceId())).Times(1);
+
+  display->_initscr();
+}
+/*
 TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
 }
