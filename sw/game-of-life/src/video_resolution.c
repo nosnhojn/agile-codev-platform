@@ -23,7 +23,8 @@ Xuint32 vres_get_height(Xuint32 resolutionId)
    return vres_resolutions[resolutionId].VActiveVideo; // vertical active
 }
 
-Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming )
+//FIXME: Fix "inline" workaround here, as for some reason it is having a "multiple defintion" error at link time.
+inline Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming )
 {
 	pTiming->pName         = vres_resolutions[ResolutionId].pName;
 	pTiming->HActiveVideo  = vres_resolutions[ResolutionId].HActiveVideo;

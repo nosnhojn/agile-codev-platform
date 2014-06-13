@@ -237,6 +237,13 @@ TEST_F(DisplayXilTest, vtcCfgInitializeWithRightParameters) {
 
   display->_initscr();
 }
+
+TEST_F(DisplayXilTest, vgenConfigCallsVresGetTiming) {
+  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
+  display->_initscr();
+}
+
+
 /*
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {

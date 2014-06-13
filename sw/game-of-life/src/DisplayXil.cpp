@@ -13,6 +13,7 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
   m_width(1920),
   m_height(1080),
   m_resolution(VIDEO_RESOLUTION_1080P),
+  m_resolutionId(NUM_VIDEO_RESOLUTIONS),
   m_gridHeight(0),
   m_gridWidth(0)
 {
@@ -36,6 +37,7 @@ int DisplayXil::_initscr()
 
   XVtc *pVtc;
   if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
+  vgen_config(pVtc, getResolutionId(), 0);
 
 
   return 1;
@@ -108,6 +110,11 @@ Xuint32 DisplayXil::getHeight()
 int DisplayXil::getResolution()
 {
   return m_resolution;
+}
+
+int DisplayXil::getResolutionId()
+{
+  return m_resolutionId;
 }
 
 Xuint32 DisplayXil::getHdmiVtcDeviceId()
@@ -184,3 +191,4 @@ int DisplayXil::getCellYCoord(int y, int gridHeight)
 {
   return y % (getHeight()/gridHeight);
 }
+

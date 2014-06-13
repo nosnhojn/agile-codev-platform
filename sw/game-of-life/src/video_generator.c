@@ -1,5 +1,6 @@
 #include "video_generator.h"
 #include "xil_printf.h"
+#include <iostream>
 
 /*****************************************************************************/
 /**
