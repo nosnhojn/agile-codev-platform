@@ -11,6 +11,7 @@
 #define FULL_ROW_OF_10      "XXXXXXXXXX"
 #define ALTERNATE_ROW_OF_10 " X X X X X"
 
+
 using namespace testing;
 
 
@@ -243,6 +244,21 @@ TEST_F(DisplayXilTest, vgenConfigCallsVresGetTiming) {
   display->_initscr();
 }
 
+TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
+  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
+  display->_initscr();
+}
+
+// FIXME: &vres_resolutions[1] argument is not working, kept it with a 'don't care' for now.
+TEST_F(DisplayXilTest, VresGetTimingWithRightParameters) {
+  EXPECT_CALL(*xvMock, vres_get_timing(display->getResolutionId(), _)).Times(1);
+
+  display->_initscr();
+}
+
+//TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
+//  EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
+//}
 
 /*
 
@@ -261,13 +277,7 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
 //         vgen_config function in video_generator.c
 //--------------------------------------------------------------
 
-TEST_F(DisplayXilTest, vgenConfigVresGetTiming) {
-  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
-}
 
-TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
-  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
-}
 
 TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);

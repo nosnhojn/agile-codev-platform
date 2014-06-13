@@ -37,6 +37,7 @@ inline Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming )
 	pTiming->VSyncWidth    = vres_resolutions[ResolutionId].VSyncWidth;
 	pTiming->VBackPorch    = vres_resolutions[ResolutionId].VBackPorch;
 	pTiming->VSyncPolarity = vres_resolutions[ResolutionId].VSyncPolarity;
+        
 
 	return 0;
 }

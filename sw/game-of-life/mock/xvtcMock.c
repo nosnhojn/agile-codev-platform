@@ -25,7 +25,7 @@ int XVtc_CfgInitialize(XVtc *InstancePtr, XVtc_Config *CfgPtr, u32 EffectiveAddr
   return getXvtcMock()->XVtc_CfgInitialize(InstancePtr, CfgPtr, EffectiveAddr);
 }
 
-//FIXME: Fix "inline" workaround here, as for some reason it is having a "multiple defintion" error at link time.
+
 Xuint32 vres_get_timing(Xuint32 resolutionId, vres_timing_t *pTiming )
 {
   return getXvtcMock()->vres_get_timing(resolutionId, pTiming);
