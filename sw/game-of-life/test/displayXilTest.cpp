@@ -76,6 +76,7 @@ class DisplayXilTest : public testing::Test
 
 
     XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
+    XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -280,8 +281,15 @@ TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetPolarity) {
 }
 
 TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
-  EXPECT_CALL(*xvMock, XVtc_SetPolarity(_,display->getXvtcPolarity())).Times(1);
   display->_initscr();
+
+  EXPECT_EQ(xvtcPolarity()->ActiveChromaPol, 1);
+  EXPECT_EQ(xvtcPolarity()->ActiveVideoPol, 1);
+  EXPECT_EQ(xvtcPolarity()->FieldIdPol, 0);
+  EXPECT_EQ(xvtcPolarity()->VBlankPol, 1);
+  EXPECT_EQ(xvtcPolarity()->VSyncPol, 1);
+  EXPECT_EQ(xvtcPolarity()->HBlankPol,1);
+  EXPECT_EQ(xvtcPolarity()->HSyncPol, 1);
 }
 
 

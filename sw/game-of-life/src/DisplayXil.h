@@ -24,7 +24,9 @@ class DisplayXil : public Display
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
     Xuint32       m_HdmiDisplayMemBaseAddr;
+    
     int           m_xvtcEnGenerator;
+    XVtc_Polarity m_polarity;
 
     
     XAxiVdma          m_axiVdma;
