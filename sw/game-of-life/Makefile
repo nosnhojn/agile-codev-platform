@@ -30,7 +30,6 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 				 ${OBJDIR}/drawingTest.o \
 				 ${OBJDIR}/displayXilTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
-                                 ${OBJDIR}/xvtc.o\
                                  ${OBJDIR}/xvtcMock.o \
                                  ${OBJDIR}/video_generator.o \
 		                 ${OBJDIR}/allTests.o
@@ -39,14 +38,14 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 test : ${OBJDIR} allTests
 
 ${OBJDIR}/%.o: %.c
-	${CC} -w ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
+	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
 ${OBJDIR}/%.o: %.cpp
-	${CC} -w ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
+	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
 allTests : CXXFLAGS+=-DREFRESH_RATE=1
 allTests : ${TESTOBJS}
-	$(CC) ${TESTOBJS} -o allTests ${LDFLAGS} -pthread
+	$(CC) ${TESTOBJS} -o allTests ${LDFLAGS} -pthread 
 
 
 GAMEOBJS=${OBJDIR}/Cell.o \

@@ -37,8 +37,22 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type)
   getXvtcMock()->XVtc_Disable(InstancePtr, Type);    
 }
 
-/*void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr)*/
-/*{*/
-/*  getXvtcMock()->XVtc_SetPolarity(*InstancePtr, *PolarityPtr);*/
-/*}*/
+void XVtc_Enable(XVtc *InstancePtr, u32 Type)
+{
+  getXvtcMock()->XVtc_Enable(InstancePtr, Type);    
+}
 
+void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr)
+{
+  getXvtcMock()->XVtc_SetPolarity(InstancePtr, PolarityPtr);
+}
+
+void XVtc_SetGenerator(XVtc *InstancePtr, XVtc_Signal *SignalCfgPtr)
+{
+  getXvtcMock()->XVtc_SetGenerator(InstancePtr, SignalCfgPtr);
+}
+
+void XVtc_SetSource(XVtc *InstancePtr, XVtc_SourceSelect *SourcePtr)
+{
+  getXvtcMock()->XVtc_SetSource(InstancePtr, SourcePtr);
+}

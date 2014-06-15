@@ -235,8 +235,6 @@ extern "C" {
 
 /***************************** Include Files *********************************/
 #include "xbasic_types.h"
-#include "xil_types.h"
-#include "string.h"
 #include "xvtc_hw.h"
 #include "xil_assert.h"
 #include "xstatus.h"

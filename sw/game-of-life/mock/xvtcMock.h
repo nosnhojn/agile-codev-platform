@@ -17,7 +17,10 @@ class XvtcMock
     MOCK_METHOD3(XVtc_CfgInitialize, int(XVtc *, XVtc_Config *, u32));
     MOCK_METHOD2(vres_get_timing, Xuint32(Xuint32, vres_timing_t*));
     MOCK_METHOD2(XVtc_Disable, void(XVtc *, u32));
-//    MOCK_METHOD2(XVtc_SetPolarity, void(XVtc *, XVtc_Polarity *));
+    MOCK_METHOD2(XVtc_Enable, void(XVtc *, u32));
+    MOCK_METHOD2(XVtc_SetPolarity, void(XVtc *, XVtc_Polarity *));
+    MOCK_METHOD2(XVtc_SetGenerator, void(XVtc *, XVtc_Signal *));
+    MOCK_METHOD2(XVtc_SetSource, void(XVtc *, XVtc_SourceSelect *));
     
 
 };
