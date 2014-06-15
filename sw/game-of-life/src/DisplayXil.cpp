@@ -198,3 +198,21 @@ int DisplayXil::getXvtcEnableGenerator()
   return m_xvtcEnGenerator;
 }
 
+XVtc_Polarity* DisplayXil::getXvtcPolarity()
+{
+  XVtc_Polarity m_polarity;
+  m_polarity.ActiveChromaPol = 1;
+  m_polarity.ActiveVideoPol = 1; 
+  m_polarity.FieldIdPol = 0;
+  m_polarity.VBlankPol = 1;
+  // Based on vres_resolutions[1]
+  m_polarity.VSyncPol = 1;
+  m_polarity.HBlankPol = 1;
+  // Based on vres_resolutions[1]
+  m_polarity.HSyncPol = 1;
+  
+  return &m_polarity;
+}
+
+
+

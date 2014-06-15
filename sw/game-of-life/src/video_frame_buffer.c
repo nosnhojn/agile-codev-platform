@@ -2,7 +2,6 @@
 
 #include "video_resolution.h"
 #include "video_frame_buffer.h"
-
 #include "xaxivdma.h"
 #include <iostream>
 

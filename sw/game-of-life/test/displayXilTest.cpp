@@ -266,6 +266,24 @@ TEST_F(DisplayXilTest, xvtcDisableWithRightParameters) {
   display->_initscr();
 }
 
+//FIXME: Test removed due to funcion-like macros not working with gTest at this point.
+/*
+TEST_F(DisplayXilTest, vgenConfigCallsXvtcReset) { 
+  EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
+  display->_initscr();
+}
+*/
+
+TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetPolarity) {
+  EXPECT_CALL(*xvMock, XVtc_SetPolarity(_,_)).Times(1);
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_SetPolarity(_,display->getXvtcPolarity())).Times(1);
+  display->_initscr();
+}
+
 
 /*
 

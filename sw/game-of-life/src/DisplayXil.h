@@ -3,6 +3,7 @@
 
 #include "Display.h"
 #include "IicCtrl.h"
+
 #include "video_frame_buffer.h"
 #include "video_generator.h"
 #define VIDEO_RESOLUTION_1080P 0
@@ -121,6 +122,7 @@ class DisplayXil : public Display
     XAxiVdma_DmaSetup * getAxiVdmaCfg();
    
     int getXvtcEnableGenerator();
+    XVtc_Polarity * getXvtcPolarity();
 
 };
 

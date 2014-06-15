@@ -37,6 +37,14 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type)
   getXvtcMock()->XVtc_Disable(InstancePtr, Type);    
 }
 
+//FIXME: Function-like macro, gTest doesn't like this this, have to revist to figure out. [ssalehia]
+/*
+void XVtc_Reset(XVtc *InstancePtr)
+{
+  getXvtcMock()->XVtc_Reset(InstancePtr);    
+}
+*/
+
 void XVtc_Enable(XVtc *InstancePtr, u32 Type)
 {
   getXvtcMock()->XVtc_Enable(InstancePtr, Type);    
