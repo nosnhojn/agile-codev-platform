@@ -30,6 +30,7 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 				 ${OBJDIR}/drawingTest.o \
 				 ${OBJDIR}/displayXilTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
+                                 ${OBJDIR}/xvtc.o\
                                  ${OBJDIR}/xvtcMock.o \
                                  ${OBJDIR}/video_generator.o \
 		                 ${OBJDIR}/allTests.o
@@ -38,10 +39,10 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 test : ${OBJDIR} allTests
 
 ${OBJDIR}/%.o: %.c
-	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
+	${CC} -w ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
 ${OBJDIR}/%.o: %.cpp
-	${CC} ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
+	${CC} -w ${CFLAGS} ${CXXFLAGS} -c -o $@ $<
 
 allTests : CXXFLAGS+=-DREFRESH_RATE=1
 allTests : ${TESTOBJS}

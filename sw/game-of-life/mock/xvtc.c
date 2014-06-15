@@ -155,7 +155,46 @@ static void StubCallBack(void *CallBackRef);
 static void StubErrCallBack(void *CallBackRef, u32 ErrorMask);
 
 /************************** Function Definition ******************************/
+void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr)
+{
+	u32 CtrlRegValue;
 
+	/* Assert bad arguments and conditions */
+	Xil_AssertVoid(InstancePtr != NULL);
+	Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+	Xil_AssertVoid(PolarityPtr != NULL);
+
+	/* Read Control register value back and clear all polarity bits first*/
+	CtrlRegValue = XVtc_ReadReg(InstancePtr->Config.BaseAddress,
+						XVTC_GPOL);
+	CtrlRegValue &= ~XVTC_CTL_ALLP_MASK;
+
+	/* Change the register value according to the setting in the Polarity
+	 * configuration structure
+	 */
+	if (PolarityPtr->ActiveChromaPol)
+		CtrlRegValue |= XVTC_CTL_ACP_MASK;
+
+	if (PolarityPtr->ActiveVideoPol)
+		CtrlRegValue |= XVTC_CTL_AVP_MASK;
+
+	if (PolarityPtr->FieldIdPol)
+		CtrlRegValue |= XVTC_CTL_FIP_MASK;
+
+	if (PolarityPtr->VBlankPol)
+		CtrlRegValue |= XVTC_CTL_VBP_MASK;
+
+	if (PolarityPtr->VSyncPol)
+		CtrlRegValue |= XVTC_CTL_VSP_MASK;
+
+	if (PolarityPtr->HBlankPol)
+		CtrlRegValue |= XVTC_CTL_HBP_MASK;
+
+	if (PolarityPtr->HSyncPol)
+		CtrlRegValue |= XVTC_CTL_HSP_MASK;
+
+	XVtc_WriteReg(InstancePtr->Config.BaseAddress, XVTC_GPOL, CtrlRegValue);
+}
 /*****************************************************************************/
 /**
  * This function initializes a VTC device. This function must be called
@@ -285,46 +324,7 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type)
  * @return NONE.
  *
  *****************************************************************************/
-void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr)
-{
-	u32 CtrlRegValue;
 
-	/* Assert bad arguments and conditions */
-	Xil_AssertVoid(InstancePtr != NULL);
-	Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-	Xil_AssertVoid(PolarityPtr != NULL);
-
-	/* Read Control register value back and clear all polarity bits first*/
-	CtrlRegValue = XVtc_ReadReg(InstancePtr->Config.BaseAddress,
-						XVTC_GPOL);
-	CtrlRegValue &= ~XVTC_CTL_ALLP_MASK;
-
-	/* Change the register value according to the setting in the Polarity
-	 * configuration structure
-	 */
-	if (PolarityPtr->ActiveChromaPol)
-		CtrlRegValue |= XVTC_CTL_ACP_MASK;
-
-	if (PolarityPtr->ActiveVideoPol)
-		CtrlRegValue |= XVTC_CTL_AVP_MASK;
-
-	if (PolarityPtr->FieldIdPol)
-		CtrlRegValue |= XVTC_CTL_FIP_MASK;
-
-	if (PolarityPtr->VBlankPol)
-		CtrlRegValue |= XVTC_CTL_VBP_MASK;
-
-	if (PolarityPtr->VSyncPol)
-		CtrlRegValue |= XVTC_CTL_VSP_MASK;
-
-	if (PolarityPtr->HBlankPol)
-		CtrlRegValue |= XVTC_CTL_HBP_MASK;
-
-	if (PolarityPtr->HSyncPol)
-		CtrlRegValue |= XVTC_CTL_HSP_MASK;
-
-	XVtc_WriteReg(InstancePtr->Config.BaseAddress, XVTC_GPOL, CtrlRegValue);
-}
 
 /*****************************************************************************/
 /**

@@ -23,6 +23,7 @@ class DisplayXil : public Display
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
     Xuint32       m_HdmiDisplayMemBaseAddr;
+    int           m_xvtcEnGenerator;
 
     
     XAxiVdma          m_axiVdma;
@@ -118,6 +119,8 @@ class DisplayXil : public Display
 
     XAxiVdma * getAxiVdma();
     XAxiVdma_DmaSetup * getAxiVdmaCfg();
+   
+    int getXvtcEnableGenerator();
 
 };
 

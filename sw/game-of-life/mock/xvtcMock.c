@@ -37,4 +37,8 @@ void XVtc_Disable(XVtc *InstancePtr, u32 Type)
   getXvtcMock()->XVtc_Disable(InstancePtr, Type);    
 }
 
+/*void XVtc_SetPolarity(XVtc *InstancePtr, XVtc_Polarity *PolarityPtr)*/
+/*{*/
+/*  getXvtcMock()->XVtc_SetPolarity(*InstancePtr, *PolarityPtr);*/
+/*}*/
 

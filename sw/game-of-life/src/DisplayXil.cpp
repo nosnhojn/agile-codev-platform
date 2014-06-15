@@ -15,7 +15,8 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_resolutionId(NUM_VIDEO_RESOLUTIONS),
   m_gridHeight(0),
-  m_gridWidth(0)
+  m_gridWidth(0),
+  m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
 }
 
@@ -190,5 +191,10 @@ int DisplayXil::getCellXCoord(int x, int gridWidth)
 int DisplayXil::getCellYCoord(int y, int gridHeight)
 {
   return y % (getHeight()/gridHeight);
+}
+
+int DisplayXil::getXvtcEnableGenerator()
+{
+  return m_xvtcEnGenerator;
 }
 

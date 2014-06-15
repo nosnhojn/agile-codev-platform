@@ -256,9 +256,16 @@ TEST_F(DisplayXilTest, VresGetTimingWithRightParameters) {
   display->_initscr();
 }
 
-//TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
-//  EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
-//}
+TEST_F(DisplayXilTest, vgenConfigCallsXvtcDisable) { 
+  EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, xvtcDisableWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_Disable(_,display->getXvtcEnableGenerator())).Times(1);
+  display->_initscr();
+}
+
 
 /*
 
