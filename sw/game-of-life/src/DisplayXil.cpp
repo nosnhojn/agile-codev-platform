@@ -208,4 +208,7 @@ XVtc_Signal * DisplayXil::getXvtcSignal()
   return &m_signal;
 }
 
-
+XVtc_SourceSelect * DisplayXil::getXvtcSourceSelect()
+{
+  return &m_sourceSelect;
+}

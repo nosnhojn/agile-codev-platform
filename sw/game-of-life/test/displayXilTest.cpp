@@ -78,6 +78,7 @@ class DisplayXilTest : public testing::Test
     XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
     XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
     XVtc_Signal * xvtcSignal() { return display->getXvtcSignal(); }
+    XVtc_SourceSelect * xvtcSourceSelect() { return display->getXvtcSourceSelect(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -330,7 +331,36 @@ TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolution)
   EXPECT_EQ(xvtcSignal()->V0BackPorchStart, 2052); // FrameHeight + VFrontPorch + VSyncWidth = 1920 + 88 + 44 = 2052
 }
 
+TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetSource) {
+  EXPECT_CALL(*xvMock, XVtc_SetSource(_,_)).Times(1);
+  display->_initscr();
+}
 
+TEST_F(DisplayXilTest, XvtcSetSourceWithRightParameters) {
+  display->_initscr(); 
+
+  EXPECT_EQ(xvtcSourceSelect()->VBlankPolSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->VSyncPolSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->HBlankPolSrc, 1);
+  
+  EXPECT_EQ(xvtcSourceSelect()->HSyncPolSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->ActiveVideoPolSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->ActiveChromaPolSrc, 1);
+  
+  EXPECT_EQ(xvtcSourceSelect()->VChromaSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->VActiveSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->VBackPorchSrc, 1);
+    
+  EXPECT_EQ(xvtcSourceSelect()->VSyncSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->VFrontPorchSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->VTotalSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->HActiveSrc, 1);
+
+  EXPECT_EQ(xvtcSourceSelect()->HBackPorchSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->HSyncSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->HFrontPorchSrc, 1);
+  EXPECT_EQ(xvtcSourceSelect()->HTotalSrc, 1);
+}
 
 /*
 
