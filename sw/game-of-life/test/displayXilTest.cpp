@@ -362,50 +362,7 @@ TEST_F(DisplayXilTest, XvtcSetSourceWithRightParameters) {
   EXPECT_EQ(xvtcSourceSelect()->HTotalSrc, 1);
 }
 
-/*
-
-TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
-  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
-}
-
-TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
-  display->setHdmiDisplayMemBaseAddr(6699);
-  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
-}
-
-
-//--------------------------------------------------------------
-// Soheil: Add similar Calls" tests for the functions called in
-//         vgen_config function in video_generator.c
-//--------------------------------------------------------------
-
-
-
-TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
-  EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
-}
-
-TEST_F(DisplayXilTest, xvtcResetCanFailAndExit) {
-  EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
-}
-
-TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
-}
-
-TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
-}
-
-TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
-  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
-}
-
-TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
-  display->setHdmiDisplayMemBaseAddr(6699);
-  EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), 6699);
-}
-*/
+// TODO: XVtc_DisableSync & XVtc_RegUpdate are function-like macros, probably need testing of these at some point also.
 
 TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
