@@ -77,6 +77,7 @@ class DisplayXilTest : public testing::Test
 
     XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
     XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
+    XVtc_Signal * xvtcSignal() { return display->getXvtcSignal(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -291,6 +292,44 @@ TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
   EXPECT_EQ(xvtcPolarity()->HBlankPol,1);
   EXPECT_EQ(xvtcPolarity()->HSyncPol, 1);
 }
+
+TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetGenerator) {
+  EXPECT_CALL(*xvMock, XVtc_SetGenerator(_,_)).Times(1);
+  display->_initscr();
+}
+
+/*************************************************
+vres_timing_t vres_resolutions[1] = {
+   { const_cast<char*>("1080P"),  // pName
+                             1080,  // LineWidth
+                                4,  // HFrontPorch
+                                5,  // HSyncWidth
+                               36,  // HBackPorch
+                                1,  // HSyncPol
+                             1920,  // FrameHeight
+                               88,  // VFrontPorch
+                               44,  // VSyncWidth
+                              148,  // VBackPorch
+                               1 }  // VSyncPolarity
+};
+***************************************************/
+TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolution) {
+  display->_initscr();
+
+  EXPECT_EQ(xvtcSignal()->OriginMode, 1);
+  EXPECT_EQ(xvtcSignal()->HTotal, 1125); // HFrontPorch + HSyncWidth + HBackPorch + LineWidth = 4 + 5 + 36 +1080 = 1125
+  EXPECT_EQ(xvtcSignal()->HActiveStart, 0);
+  EXPECT_EQ(xvtcSignal()->HFrontPorchStart, 1080); // LineWidth
+  EXPECT_EQ(xvtcSignal()->HSyncStart, 1084); // LineWidth + HFrontPorch = 1080 + 4 = 1084
+  EXPECT_EQ(xvtcSignal()->HBackPorchStart, 1128); // LineWidth + HFrontPorch + HSyncWidth = 1080 + 4 + 44 = 1128
+  EXPECT_EQ(xvtcSignal()->V0Total, 2200); // FrameHeight + VFrontPorch + VSyncWidth + VBackPorch = 1920 + 88 + 44 + 148 = 2200
+  EXPECT_EQ(xvtcSignal()->V0ChromaStart, 0);
+  EXPECT_EQ(xvtcSignal()->V0ActiveStart, 0);
+  EXPECT_EQ(xvtcSignal()->V0FrontPorchStart, 1920); // FrameHeight
+  EXPECT_EQ(xvtcSignal()->V0SyncStart, 2008); // FrameHeight + VFrontPorch = 1920 + 88 = 2008
+  EXPECT_EQ(xvtcSignal()->V0BackPorchStart, 2052); // FrameHeight + VFrontPorch + VSyncWidth = 1920 + 88 + 44 = 2052
+}
+
 
 
 /*

@@ -203,5 +203,9 @@ XVtc_Polarity * DisplayXil::getXvtcPolarity()
   return &m_polarity;
 }
 
+XVtc_Signal * DisplayXil::getXvtcSignal()
+{
+  return &m_signal;
+}
 
 

@@ -27,6 +27,7 @@ class DisplayXil : public Display
     
     int           m_xvtcEnGenerator;
     XVtc_Polarity m_polarity;
+    XVtc_Signal   m_signal;
 
     
     XAxiVdma          m_axiVdma;
@@ -125,6 +126,7 @@ class DisplayXil : public Display
    
     int getXvtcEnableGenerator();
     XVtc_Polarity * getXvtcPolarity();
+    XVtc_Signal * getXvtcSignal();
 
 };
 
