@@ -3,10 +3,14 @@
 
 #include "Display.h"
 #include "IicCtrl.h"
+
 #include "video_frame_buffer.h"
 #include "video_generator.h"
-
 #define VIDEO_RESOLUTION_1080P 0
+
+
+// Defined already in video_resolution.c
+extern vres_timing_t vres_resolutions[1];
 
 using namespace std;
 
@@ -16,14 +20,20 @@ class DisplayXil : public Display
     const Xuint32 m_width;
     const Xuint32 m_height;
     int           m_resolution;
+    int           m_resolutionId;
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
     Xuint32       m_HdmiDisplayMemBaseAddr;
+    
+    int           m_xvtcEnGenerator;
+    XVtc_Polarity m_polarity;
 
+    
     XAxiVdma          m_axiVdma;
     XAxiVdma_DmaSetup m_axiVdmaCfg;
     IicCtrl *         m_iicCtrl;
 
+        
     char m_charGrid [256][256];
     int m_gridWidth;
     int m_gridHeight;
@@ -102,14 +112,20 @@ class DisplayXil : public Display
     Xuint32 getWidth();
     Xuint32 getHeight();
     int     getResolution();
+    int    getResolutionId();
     Xuint32 getHdmiVtcDeviceId();
     Xuint32 getHdmiVdmaDeviceId();
+
 
     Xuint32 setHdmiDisplayMemBaseAddr(Xuint32 addr);
     Xuint32 getHdmiDisplayMemBaseAddr();
 
     XAxiVdma * getAxiVdma();
     XAxiVdma_DmaSetup * getAxiVdmaCfg();
+   
+    int getXvtcEnableGenerator();
+    XVtc_Polarity * getXvtcPolarity();
+
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "DisplayXil.h"
 #include <iostream>
+#include <cstring>
 
 DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
                         int HDMI_DISPLAY_MEM_BASE_ADDR = 0,
@@ -12,8 +13,10 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
   m_width(1920),
   m_height(1080),
   m_resolution(VIDEO_RESOLUTION_1080P),
+  m_resolutionId(NUM_VIDEO_RESOLUTIONS),
   m_gridHeight(0),
-  m_gridWidth(0)
+  m_gridWidth(0),
+  m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
 }
 
@@ -32,10 +35,11 @@ int DisplayXil::_initscr()
                   getHdmiDisplayMemBaseAddr(),
                   1)) return 0;
 
-  {
-    XVtc *pVtc;
-    if (vgen_init(pVtc, 0) != 0) return 0;
-  }
+
+  XVtc *pVtc;
+  if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
+  vgen_config(pVtc, getResolutionId(), 0);
+
 
   return 1;
 }
@@ -107,6 +111,11 @@ Xuint32 DisplayXil::getHeight()
 int DisplayXil::getResolution()
 {
   return m_resolution;
+}
+
+int DisplayXil::getResolutionId()
+{
+  return m_resolutionId;
 }
 
 Xuint32 DisplayXil::getHdmiVtcDeviceId()
@@ -183,3 +192,16 @@ int DisplayXil::getCellYCoord(int y, int gridHeight)
 {
   return y % (getHeight()/gridHeight);
 }
+
+int DisplayXil::getXvtcEnableGenerator()
+{
+  return m_xvtcEnGenerator;
+}
+
+XVtc_Polarity * DisplayXil::getXvtcPolarity()
+{
+  return &m_polarity;
+}
+
+
+

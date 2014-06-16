@@ -131,6 +131,7 @@
 *                     "Xboolean" -> "int"
 *                     "XTEST_FAILED" -> "XST_FAILURE"
 *                     "XTEST_PASSED" -> "XST_SUCCESS"
+* 4.00a cjm  02/08/13 Removed XVTC_CTL_HASS_MASK
 * </pre>
 *
 ******************************************************************************/
@@ -500,9 +501,6 @@ void XVtc_SetSource(XVtc *InstancePtr, XVtc_SourceSelect *SourcePtr)
 	if (SourcePtr->VTotalSrc)
 		CtrlRegValue |= XVTC_CTL_VTSS_MASK;
 
-	if (SourcePtr->HActiveSrc)
-		CtrlRegValue |= XVTC_CTL_HASS_MASK;
-
 	if (SourcePtr->HBackPorchSrc)
 		CtrlRegValue |= XVTC_CTL_HBSS_MASK;
 
@@ -574,8 +572,6 @@ void XVtc_GetSource(XVtc *InstancePtr, XVtc_SourceSelect *SourcePtr)
 		SourcePtr->VFrontPorchSrc = 1;
 	if (CtrlRegValue & XVTC_CTL_VTSS_MASK)
 		SourcePtr->VTotalSrc = 1;
-	if (CtrlRegValue & XVTC_CTL_HASS_MASK)
-		SourcePtr->HActiveSrc = 1;
 	if (CtrlRegValue & XVTC_CTL_HBSS_MASK)
 		SourcePtr->HBackPorchSrc = 1;
 	if (CtrlRegValue & XVTC_CTL_HSSS_MASK)

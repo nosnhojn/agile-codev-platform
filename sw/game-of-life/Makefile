@@ -46,15 +46,15 @@ ${OBJDIR}/%.o: %.cpp
 
 allTests : CXXFLAGS+=-DREFRESH_RATE=1
 allTests : ${TESTOBJS}
-	$(CC) ${TESTOBJS} -o allTests ${LDFLAGS} -pthread
+	$(CC) ${TESTOBJS} -o allTests ${LDFLAGS} -pthread 
 
 
 GAMEOBJS=${OBJDIR}/Cell.o \
          ${OBJDIR}/Board.o \
          ${OBJDIR}/Drawing.o \
-		     ${OBJDIR}/Display.o \
-		     ${OBJDIR}/DisplayNCurses.o \
-				 ${OBJDIR}/game.o
+	 ${OBJDIR}/Display.o \
+	 ${OBJDIR}/DisplayNCurses.o \
+	 ${OBJDIR}/game.o
 
 game : CXXFLAGS+=-DREFRESH_RATE=500000
 game : LDFLAGS+=-lncurses

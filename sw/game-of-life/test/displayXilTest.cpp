@@ -11,6 +11,7 @@
 #define FULL_ROW_OF_10      "XXXXXXXXXX"
 #define ALTERNATE_ROW_OF_10 " X X X X X"
 
+
 using namespace testing;
 
 
@@ -56,7 +57,7 @@ class DisplayXilTest : public testing::Test
       // Video Timing Correction (VTC) mock object constructor call
       xvMock = getXvtcMock();
       // Mock configurations for the video timing correction ip block
-      vtcDefaultConfig.DeviceId= 7;
+      vtcDefaultConfig.DeviceId= 1;
       vtcDefaultConfig.BaseAddress = 0x70000000;
       ON_CALL(*xvMock, XVtc_LookupConfig(_))
           .WillByDefault(Return(&vtcDefaultConfig));
@@ -69,13 +70,13 @@ class DisplayXilTest : public testing::Test
     ~DisplayXilTest()
     {
       destroyXdriverMock();
-// TODO: why this destructor calls before the test is executed?
       destroyXvtcMock();
     }
 
 
 
     XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
+    XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -214,14 +215,85 @@ TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
-/*
+
+TEST_F(DisplayXilTest, initCallsVtcLookupConfigWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(display->getHdmiVtcDeviceId())).Times(1);
+
+  display->_initscr();
+}
+
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,&vtcDefaultConfig,0x70000000)).Times(1);
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).Times(1);
+
+  display->_initscr();
 }
 
 TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
-  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(0));
+
+  display->_initscr();
 }
+
+TEST_F(DisplayXilTest, vtcCfgInitializeWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_, &vtcDefaultConfig, 0x70000000)).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, vgenConfigCallsVresGetTiming) {
+  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
+  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
+  display->_initscr();
+}
+
+// FIXME: &vres_resolutions[1] argument is not working, kept it with a 'don't care' for now.
+TEST_F(DisplayXilTest, VresGetTimingWithRightParameters) {
+  EXPECT_CALL(*xvMock, vres_get_timing(display->getResolutionId(), _)).Times(1);
+
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, vgenConfigCallsXvtcDisable) { 
+  EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, xvtcDisableWithRightParameters) {
+  EXPECT_CALL(*xvMock, XVtc_Disable(_,display->getXvtcEnableGenerator())).Times(1);
+  display->_initscr();
+}
+
+//FIXME: Test removed due to funcion-like macros not working with gTest at this point.
+/*
+TEST_F(DisplayXilTest, vgenConfigCallsXvtcReset) { 
+  EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
+  display->_initscr();
+}
+*/
+
+TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetPolarity) {
+  EXPECT_CALL(*xvMock, XVtc_SetPolarity(_,_)).Times(1);
+  display->_initscr();
+}
+
+TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
+  display->_initscr();
+
+  EXPECT_EQ(xvtcPolarity()->ActiveChromaPol, 1);
+  EXPECT_EQ(xvtcPolarity()->ActiveVideoPol, 1);
+  EXPECT_EQ(xvtcPolarity()->FieldIdPol, 0);
+  EXPECT_EQ(xvtcPolarity()->VBlankPol, 1);
+  EXPECT_EQ(xvtcPolarity()->VSyncPol, 1);
+  EXPECT_EQ(xvtcPolarity()->HBlankPol,1);
+  EXPECT_EQ(xvtcPolarity()->HSyncPol, 1);
+}
+
+
+/*
 
 TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
   EXPECT_EQ(display->getHdmiDisplayMemBaseAddr(), Xuint32(HdmiDisplayMemory));
@@ -238,13 +310,7 @@ TEST_F(DisplayXilTest, setHdmiDisplayMemBaseAddr) {
 //         vgen_config function in video_generator.c
 //--------------------------------------------------------------
 
-TEST_F(DisplayXilTest, vgenConfigVresGetTiming) {
-  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
-}
 
-TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
-  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
-}
 
 TEST_F(DisplayXilTest, xvtcDisableCanFailAndExit) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
