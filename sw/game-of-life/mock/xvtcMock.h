@@ -21,7 +21,7 @@ class XvtcMock
     MOCK_METHOD2(XVtc_SetGenerator, void(XVtc *, XVtc_Signal *));
     MOCK_METHOD2(XVtc_SetSource, void(XVtc *, XVtc_SourceSelect *));
 
-    MOCK_METHOD2(vres_get_timing, Xuint32(Xuint32, vres_timing_t *));
+//    MOCK_METHOD2(vres_get_timing, Xuint32(Xuint32, vres_timing_t *));
     
 
 };

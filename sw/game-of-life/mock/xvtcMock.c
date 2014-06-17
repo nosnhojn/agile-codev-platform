@@ -26,10 +26,10 @@ int XVtc_CfgInitialize(XVtc *InstancePtr, XVtc_Config *CfgPtr, u32 EffectiveAddr
 }
 
 
-Xuint32 vres_get_timing(Xuint32 resolutionId, vres_timing_t *pTiming )
-{
-  return getXvtcMock()->vres_get_timing(resolutionId, pTiming);
-}
+/*Xuint32 vres_get_timing(Xuint32 resolutionId, vres_timing_t *pTiming )*/
+/*{*/
+/*  return getXvtcMock()->vres_get_timing(resolutionId, pTiming);*/
+/*}*/
 
 
 void XVtc_Disable(XVtc *InstancePtr, u32 Type)

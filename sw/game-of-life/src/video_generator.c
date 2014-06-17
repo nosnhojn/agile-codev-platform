@@ -92,6 +92,8 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	VBackPorch  = VideoTiming.VBackPorch;
 	LineWidth   = VideoTiming.HActiveVideo;
 	FrameHeight = VideoTiming.VActiveVideo;
+  
+/*        std::cout << HFrontPorch << std::endl << HSyncPol << std::endl;*/
 	
 	/* Disable/Reset VTC */
 	XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
