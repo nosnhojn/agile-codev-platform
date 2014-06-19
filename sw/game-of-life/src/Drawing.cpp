@@ -1,4 +1,7 @@
 #include "Drawing.h"
+#include <sleep.h>
+
+#define REFRESH_RATE 1
 
 Drawing::Drawing(Board * board,
                  Display * display)
