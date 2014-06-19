@@ -48,8 +48,8 @@ class DisplayXil : public Display
     DisplayXil();
     DisplayXil( IicCtrl * iicCtrl,
                 Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR,
-                int HDMI_VTC_DEVICE_ID,
-                int HDMI_VDMA_DEVICE_ID);
+                Xuint32 HDMI_VTC_DEVICE_ID,
+                Xuint32 HDMI_VDMA_DEVICE_ID);
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208

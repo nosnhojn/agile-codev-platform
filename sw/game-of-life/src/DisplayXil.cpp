@@ -4,8 +4,8 @@
 
 DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
                         Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR = 0,
-                        int HDMI_VTC_DEVICE_ID = 0,
-                        int HDMI_VDMA_DEVICE_ID = 0) :
+                        Xuint32 HDMI_VTC_DEVICE_ID = 0,
+                        Xuint32 HDMI_VDMA_DEVICE_ID = 0) :
   m_iicCtrl(iicCtrl),
   m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
   m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
@@ -38,7 +38,6 @@ int DisplayXil::_initscr()
   XVtc *pVtc;
   if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
   vgen_config(pVtc, getResolution(), 0);
-
 
   return 1;
 }

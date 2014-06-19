@@ -76,11 +76,6 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	XVtc_SourceSelect SourceSelect;	/* Source Selection configuration */
 
 
-	/* Get Video Resolution timing */
-    if ( bVerbose )
-    {
-		//xil_printf( "\tVideo Resolution = %s\n\r", vres_get_name(ResolutionId) );
-	}
 	vres_get_timing(ResolutionId, &VideoTiming);
 	HFrontPorch = VideoTiming.HFrontPorch;
 	HSyncWidth  = VideoTiming.HSyncWidth;
@@ -97,7 +92,7 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
 	XVtc_Reset(pVtc);	
 
-    /* Set up Polarity of all outputs */ 
+  /* Set up Polarity of all outputs */ 
 	memset((void *)&Polarity, 0, sizeof(Polarity));
 	Polarity.ActiveChromaPol = 1;
 	Polarity.ActiveVideoPol = 1;
@@ -106,7 +101,6 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	Polarity.VSyncPol = VSyncPol;
 	Polarity.HBlankPol = 1;
 	Polarity.HSyncPol = HSyncPol;
-
 
 	/* Set up Generator */
 	memset((void *)&Signal, 0, sizeof(XVtc_Signal));
