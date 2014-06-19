@@ -33,14 +33,13 @@ class DisplayXilTest : public testing::Test
           .WillByDefault(Return(1));
 
       display = new DisplayXil(&iicCtrl,
-                               0x10000000,
+                               Xuint32(HdmiDisplayMemory),
                                1,
                                2);
 
       for (int i=0; i<1080; i++)
         for (int j=0; j<1920; j++)
           HdmiDisplayMemory [i] [j] = 0x44883311;
-      display->setHdmiDisplayMemBaseAddr(Xuint32(HdmiDisplayMemory));
 
       xdMock = getXdriverMock();   
         
@@ -167,6 +166,10 @@ TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
   EXPECT_EQ(vdmaCfg()->PointNum, 1);
   EXPECT_EQ(vdmaCfg()->EnableFrameCounter, 0);
   EXPECT_EQ(vdmaCfg()->FixedFrameStoreAddr, 0);
+}
+
+TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
+  EXPECT_EQ(Xuint32(HdmiDisplayMemory), display->getHdmiDisplayMemBaseAddr());
 }
 
 TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
