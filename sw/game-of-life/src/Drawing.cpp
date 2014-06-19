@@ -1,7 +1,4 @@
 #include "Drawing.h"
-#include <unistd.h>
-
-#define REFRESH_RATE 1
 
 Drawing::Drawing(Board * board,
                  Display * display)

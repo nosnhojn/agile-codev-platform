@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <unistd.h>
 
 using namespace std;
 

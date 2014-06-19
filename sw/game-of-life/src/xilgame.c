@@ -16,6 +16,8 @@
   #define XPAR_ZED_HDMI_DISPLAY_AXI_VDMA_0_DEVICE_ID 0
 #endif
 
+#define REFRESH_RATE 1_000_000
+
 int main()
 {
   init_platform();
