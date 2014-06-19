@@ -61,8 +61,6 @@ class DisplayXilTest : public testing::Test
       vtcDefaultConfig.BaseAddress = 0x70000000;
       ON_CALL(*xvMock, XVtc_LookupConfig(_))
           .WillByDefault(Return(&vtcDefaultConfig));
-    // ON_CALL(*xvMock, XVtc_CfgInitialize(_,_,_))
-    //     .WillByDefault(Return(XST_SUCCESS));
       
 
     }
@@ -201,10 +199,6 @@ TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
   EXPECT_FALSE(display->_initscr());
 }
 
-//---------------------------------------------------------------------------
-// Soheil: Next 4 tests have to do with the vgen_init() in video_generator.c
-//---------------------------------------------------------------------------
-
 TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).Times(1);
 
@@ -216,7 +210,6 @@ TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
 
   EXPECT_FALSE(display->_initscr());
 }
-
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfigWithRightParameters) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(display->getHdmiVtcDeviceId())).Times(1);
@@ -241,23 +234,6 @@ TEST_F(DisplayXilTest, vtcCfgInitializeWithRightParameters) {
 
   display->_initscr();
 }
-
-//TEST_F(DisplayXilTest, vgenConfigCallsVresGetTiming) {
-//  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).Times(1);
-//  display->_initscr();
-//}
-
-//TEST_F(DisplayXilTest, VresGetTimingCanFailAndExit) {
-//  EXPECT_CALL(*xvMock, vres_get_timing(_,_)).WillOnce(Return(XST_FAILURE));
-//  display->_initscr();
-//}
-
-// FIXME: &vres_resolutions[1] argument is not working, kept it with a 'don't care' for now.
-//TEST_F(DisplayXilTest, VresGetTimingWithRightParameters) {
-//  EXPECT_CALL(*xvMock, vres_get_timing(display->getResolutionId(), _)).Times(1);
-
-//  display->_initscr();
-//}
 
 TEST_F(DisplayXilTest, vgenConfigCallsXvtcDisable) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
@@ -289,78 +265,48 @@ TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
               Field(&XVtc_Polarity::ActiveVideoPol, Eq(1)),
               Field(&XVtc_Polarity::FieldIdPol, Eq(0)),
               Field(&XVtc_Polarity::VBlankPol, Eq(1)),
-              Field(&XVtc_Polarity::VSyncPol, Eq(0x39)), // 0x39 makes the test pass
+              Field(&XVtc_Polarity::VSyncPol, Eq(1)),
               Field(&XVtc_Polarity::HBlankPol, Eq(1)),
-              Field(&XVtc_Polarity::HSyncPol, Eq(0))  //0 make the test pass, FIXME: need to look into this some more.
+              Field(&XVtc_Polarity::HSyncPol, Eq(1))
           ))
   ));
+
   display->_initscr();
 }
 
 TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetGenerator) {
   EXPECT_CALL(*xvMock, XVtc_SetGenerator(_,_)).Times(1);
+
   display->_initscr();
 }
 
-/*************************************************
-vres_timing_t vres_resolutions[1] = {
-   { const_cast<char*>("1080P"),  // pName
-                             1080,  // LineWidth
-                                4,  // HFrontPorch
-                                5,  // HSyncWidth
-                               36,  // HBackPorch
-                                1,  // HSyncPol
-                             1920,  // FrameHeight
-                               88,  // VFrontPorch
-                               44,  // VSyncWidth
-                              148,  // VBackPorch
-                               1 }  // VSyncPolarity
-};
-***************************************************/
-
-//  EXPECT_EQ(xvtcSignal()->OriginMode, 1);
-//  EXPECT_EQ(xvtcSignal()->HTotal, 1125); // HFrontPorch + HSyncWidth + HBackPorch + LineWidth = 4 + 5 + 36 +1080 = 1125
-//  EXPECT_EQ(xvtcSignal()->HActiveStart, 0);
-//  EXPECT_EQ(xvtcSignal()->HFrontPorchStart, 1080); // LineWidth
-//  EXPECT_EQ(xvtcSignal()->HSyncStart, 1084); // LineWidth + HFrontPorch = 1080 + 4 = 1084
-//  EXPECT_EQ(xvtcSignal()->HBackPorchStart, 1128); // LineWidth + HFrontPorch + HSyncWidth = 1080 + 4 + 44 = 1128
-//  EXPECT_EQ(xvtcSignal()->V0Total, 2200); // FrameHeight + VFrontPorch + VSyncWidth + VBackPorch = 1920 + 88 + 44 + 148 = 2200
-//  EXPECT_EQ(xvtcSignal()->V0ChromaStart, 0);
-//  EXPECT_EQ(xvtcSignal()->V0ActiveStart, 0);
-//  EXPECT_EQ(xvtcSignal()->V0FrontPorchStart, 1920); // FrameHeight
-//  EXPECT_EQ(xvtcSignal()->V0SyncStart, 2008); // FrameHeight + VFrontPorch = 1920 + 88 = 2008
-//  EXPECT_EQ(xvtcSignal()->V0BackPorchStart, 2052); // FrameHeight + VFrontPorch + VSyncWidth = 1920 + 88 + 44 = 2052
-
-TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionFirstPart) {
+TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionHorizontal) {
   EXPECT_CALL(*xvMock, XVtc_SetGenerator(_,
           Pointee(AllOf(
               Field(&XVtc_Signal::OriginMode, Eq(1)),
-              Field(&XVtc_Signal::HTotal, Eq(1)),
-              Field(&XVtc_Signal::HActiveStart, Eq(0)),
-              Field(&XVtc_Signal::HFrontPorchStart, Eq(1)),
-              Field(&XVtc_Signal::HSyncStart, Eq(1)), 
-              Field(&XVtc_Signal::HBackPorchStart, Eq(1)),  
-              Field(&XVtc_Signal::V0Total, Eq(1)),
-              Field(&XVtc_Signal::V0ChromaStart, Eq(1)),
-              Field(&XVtc_Signal::V0ActiveStart, Eq(1)), 
-              Field(&XVtc_Signal::V0FrontPorchStart, Eq(1))
+              Field(&XVtc_Signal::HTotal, Eq(2200)),
+              Field(&XVtc_Signal::HFrontPorchStart, Eq(1920)),
+              Field(&XVtc_Signal::HSyncStart, Eq(2008)),
+              Field(&XVtc_Signal::HBackPorchStart, Eq(2052)),
+              Field(&XVtc_Signal::HActiveStart, Eq(0))
           ))
   ));
-
 
   display->_initscr();
 }
 
-
-TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionSecondPart) {
+TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionVertical) {
 
   EXPECT_CALL(*xvMock, XVtc_SetGenerator(_,
           Pointee(AllOf(
-              Field(&XVtc_Signal::V0SyncStart, Eq(1)),  
-              Field(&XVtc_Signal::V0BackPorchStart, Eq(1))
+              Field(&XVtc_Signal::V0Total, Eq(1125)),
+              Field(&XVtc_Signal::V0FrontPorchStart, Eq(1080)),
+              Field(&XVtc_Signal::V0SyncStart, Eq(1084)),
+              Field(&XVtc_Signal::V0BackPorchStart, Eq(1089)),
+              Field(&XVtc_Signal::V0SyncStart, Eq(1084)),  
+              Field(&XVtc_Signal::V0BackPorchStart, Eq(1089))
           ))
   ));
-
 
   display->_initscr();
 }
@@ -368,36 +314,45 @@ TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionS
 
 TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetSource) {
   EXPECT_CALL(*xvMock, XVtc_SetSource(_,_)).Times(1);
+
   display->_initscr();
 }
 
-TEST_F(DisplayXilTest, DISABLED_XvtcSetSourceWithRightParameters) {
+TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersActiveAndVertical) {
+  EXPECT_CALL(*xvMock, XVtc_SetSource(_,
+          Pointee(AllOf(
+              Field(&XVtc_SourceSelect::ActiveVideoPolSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::ActiveChromaPolSrc, Eq(1)),
+
+              Field(&XVtc_SourceSelect::VBlankPolSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VSyncPolSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VChromaSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VActiveSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VBackPorchSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VSyncSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VFrontPorchSrc, Eq(1)),
+              Field(&XVtc_SourceSelect::VTotalSrc, Eq(1))
+          ))
+  ));
+
   display->_initscr(); 
-
-  EXPECT_EQ(xvtcSourceSelect()->VBlankPolSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->VSyncPolSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->HBlankPolSrc, 1);
-  
-  EXPECT_EQ(xvtcSourceSelect()->HSyncPolSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->ActiveVideoPolSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->ActiveChromaPolSrc, 1);
-  
-  EXPECT_EQ(xvtcSourceSelect()->VChromaSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->VActiveSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->VBackPorchSrc, 1);
-    
-  EXPECT_EQ(xvtcSourceSelect()->VSyncSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->VFrontPorchSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->VTotalSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->HActiveSrc, 1);
-
-  EXPECT_EQ(xvtcSourceSelect()->HBackPorchSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->HSyncSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->HFrontPorchSrc, 1);
-  EXPECT_EQ(xvtcSourceSelect()->HTotalSrc, 1);
 }
 
-// TODO: XVtc_DisableSync & XVtc_RegUpdate are function-like macros, probably need testing of these at some point also.
+TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersHorizontal) {
+  EXPECT_CALL(*xvMock, XVtc_SetSource(_,
+          Pointee(AllOf(
+             Field(&XVtc_SourceSelect::HBlankPolSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HSyncPolSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HActiveSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HBackPorchSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HSyncSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HFrontPorchSrc, Eq(1)),
+             Field(&XVtc_SourceSelect::HTotalSrc, Eq(1))
+          ))
+  ));
+
+  display->_initscr(); 
+}
 
 TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);

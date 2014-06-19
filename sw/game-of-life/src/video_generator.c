@@ -93,8 +93,6 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	LineWidth   = VideoTiming.HActiveVideo;
 	FrameHeight = VideoTiming.VActiveVideo;
   
-/*        std::cout << HFrontPorch << std::endl << HSyncPol << std::endl;*/
-	
 	/* Disable/Reset VTC */
 	XVtc_Disable(pVtc, XVTC_EN_GENERATOR);
 	XVtc_Reset(pVtc);	
@@ -144,23 +142,6 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	SourceSelect.HSyncSrc = 1;
 	SourceSelect.HFrontPorchSrc = 1;
 	SourceSelect.HTotalSrc = 1;
-
-	if ( bVerbose == 2 )
-	{
-		//xil_printf("\tVTC Generator Configuration\n\r" );
-		//xil_printf("\t\tHorizontal Timing:\n\r" );
-		//xil_printf("\t\t\tHActiveStart = %d\r\n", Signal.HActiveStart);
-		//xil_printf("\t\t\tHFrontPorchStart %d\r\n", Signal.HFrontPorchStart);
-		//xil_printf("\t\t\tHSyncStart %d\r\n", Signal.HSyncStart);
-		//xil_printf("\t\t\tHBackPorchStart %d\r\n", Signal.HBackPorchStart);
-		//xil_printf("\t\t\tHTotal = %d\r\n", Signal.HTotal);
-		//xil_printf("\t\tVertical Timing:\n\r" );
-		//xil_printf("\t\t\tV0ActiveStart %d\r\n", Signal.V0ActiveStart);
-		//xil_printf("\t\t\tV0FrontPorchStart %d\r\n", Signal.V0FrontPorchStart);
-		//xil_printf("\t\t\tV0SyncStart %d\r\n", Signal.V0SyncStart);
-		//xil_printf("\t\t\tV0BackPorchStart %d\r\n", Signal.V0BackPorchStart);
-		//xil_printf("\t\t\tV0Total %d\r\n", Signal.V0Total);
-	}
 
 	/* Write configuration to hardware */
 	XVtc_SetPolarity(pVtc, &Polarity);

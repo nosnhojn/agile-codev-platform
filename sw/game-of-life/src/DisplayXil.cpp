@@ -38,7 +38,7 @@ int DisplayXil::_initscr()
 
   XVtc *pVtc;
   if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
-  vgen_config(pVtc, getResolutionId(), 0);
+  vgen_config(pVtc, getResolution(), 0);
 
 
   return 1;
@@ -111,11 +111,6 @@ Xuint32 DisplayXil::getHeight()
 int DisplayXil::getResolution()
 {
   return m_resolution;
-}
-
-int DisplayXil::getResolutionId()
-{
-  return m_resolutionId;
 }
 
 Xuint32 DisplayXil::getHdmiVtcDeviceId()

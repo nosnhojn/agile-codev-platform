@@ -114,7 +114,6 @@ class DisplayXil : public Display
     Xuint32 getWidth();
     Xuint32 getHeight();
     int     getResolution();
-    int    getResolutionId();
     Xuint32 getHdmiVtcDeviceId();
     Xuint32 getHdmiVdmaDeviceId();
 
