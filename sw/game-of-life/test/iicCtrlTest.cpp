@@ -110,19 +110,19 @@ TEST_F(IicCtrlTest, writeCanTimeout) {
 }
 
 TEST_F(IicCtrlTest, writeDoesDynSend) {
-  EXPECT_CALL(*xdMock, XIic_DynSend(1, 41, _, 3, XIIC_STOP)).Times(1);
+  EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 1, _, 3, XIIC_STOP)).Times(1);
 
   iicCtrl->iicWrite(1, 41, bufferPtr, 2);
 }
 
 TEST_F(IicCtrlTest, writeReturnsNumBytesSent) {
-  EXPECT_CALL(*xdMock, XIic_DynSend(0, 0, _, 3, XIIC_STOP)).WillOnce(Return(3));
+  EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0, _, 3, XIIC_STOP)).WillOnce(Return(3));
 
   EXPECT_EQ(iicCtrl->iicWrite(0, 0, bufferPtr, 2), 2);
 }
 
 TEST_F(IicCtrlTest, writeBufferStartsWithOffset) {
-  EXPECT_CALL(*xdMock, XIic_DynSend(0, 1, Pointee(1), 3, XIIC_STOP)).Times(1);
+  EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0, Pointee(1), 3, XIIC_STOP)).Times(1);
 
   iicCtrl->iicWrite(0, 1, bufferPtr, 2);
 }
@@ -130,14 +130,14 @@ TEST_F(IicCtrlTest, writeBufferStartsWithOffset) {
 TEST_F(IicCtrlTest, writeBufferEndsWithBufferPtr) {
   Xuint8 writeBuffer [2] = { 2 , 3 };
 
-  EXPECT_CALL(*xdMock, XIic_DynSend(0, 1, _, 3, XIIC_STOP)).With(Args<2,3>(ElementsAre(1,2,3)));
+  EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0, _, 3, XIIC_STOP)).With(Args<2,3>(ElementsAre(1,2,3)));
 
   iicCtrl->iicWrite(0, 1, writeBuffer, 2);
 }
 
 TEST_F(IicCtrlTest, initHdmiCfgAll) {
   for (int i=0; i<CARRIER_HDMI_OUT_CONFIG_LEN; i++) {
-    EXPECT_CALL(*xdMock, XIic_DynSend(0x39, IicCtrl::carrier_hdmi_out_config[i][1], _, 2, XIIC_STOP)).With(Args<2,3>(ElementsAre(IicCtrl::carrier_hdmi_out_config[i][1],
+    EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0x39, _, 2, XIIC_STOP)).With(Args<2,3>(ElementsAre(IicCtrl::carrier_hdmi_out_config[i][1],
                                                                                                                                  IicCtrl::carrier_hdmi_out_config[i][2])));
   }
 

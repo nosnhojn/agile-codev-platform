@@ -1,5 +1,5 @@
 #include "Drawing.h"
-#include <sleep.h>
+#include <unistd.h>
 
 #define REFRESH_RATE 1
 
