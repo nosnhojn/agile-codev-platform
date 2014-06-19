@@ -20,7 +20,6 @@ class DisplayXil : public Display
     const Xuint32 m_width;
     const Xuint32 m_height;
     int           m_resolution;
-    int           m_resolutionId;
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
     Xuint32       m_HdmiDisplayMemBaseAddr;
@@ -37,20 +36,20 @@ class DisplayXil : public Display
 
         
     char m_charGrid [256][256];
-    int m_gridWidth;
-    int m_gridHeight;
-    int m_rowIndexFromYPixelCoord(int);
-    int m_columnIndexFromXPixelCoord(int);
-    char m_charAtCoord(int, int);
+    Xuint32 m_gridWidth;
+    Xuint32 m_gridHeight;
+    Xuint32 m_rowIndexFromYPixelCoord(Xuint32);
+    Xuint32 m_columnIndexFromXPixelCoord(Xuint32);
+    char m_charAtCoord(Xuint32, Xuint32);
     void m_writeGridToFrameBuffer();
     void m_resetGrid();
 
   public:
     DisplayXil();
     DisplayXil( IicCtrl * iicCtrl,
+                Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR,
                 int HDMI_VTC_DEVICE_ID,
-                int HDMI_VDMA_DEVICE_ID,
-                int HDMI_DISPLAY_MEM_BASE_ADDR );
+                int HDMI_VDMA_DEVICE_ID);
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208
@@ -82,11 +81,11 @@ class DisplayXil : public Display
     //     don't now what that's for
     //-----------------------------------------
     virtual void _refresh();
-    unsigned getLiveCellPixelWithCoords(int,int);
-    int getCellXCoord(int,int);
-    int getCellYCoord(int,int);
-    unsigned getFgColour(void);
-    unsigned getBgColour(void);
+    Xuint32 getLiveCellPixelWithCoords(Xuint32,Xuint32);
+    Xuint32 getCellXCoord(Xuint32,Xuint32);
+    Xuint32 getCellYCoord(Xuint32,Xuint32);
+    Xuint32 getFgColour(void);
+    Xuint32 getBgColour(void);
 
 
 

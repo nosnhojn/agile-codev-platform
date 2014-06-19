@@ -3,7 +3,7 @@
 #include <cstring>
 
 DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
-                        int HDMI_DISPLAY_MEM_BASE_ADDR = 0,
+                        Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR = 0,
                         int HDMI_VTC_DEVICE_ID = 0,
                         int HDMI_VDMA_DEVICE_ID = 0) :
   m_iicCtrl(iicCtrl),
@@ -13,7 +13,6 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
   m_width(1920),
   m_height(1080),
   m_resolution(VIDEO_RESOLUTION_1080P),
-  m_resolutionId(NUM_VIDEO_RESOLUTIONS),
   m_gridHeight(0),
   m_gridWidth(0),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
@@ -48,8 +47,8 @@ void DisplayXil::_clear()
 {
   volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
 
-  for (int r=0; r<getHeight(); r++) {
-    for (int c=0; c<getWidth(); c++) {
+  for (Xuint32 r=0; r<getHeight(); r++) {
+    for (Xuint32 c=0; c<getWidth(); c++) {
       *mem++ = getBgColour();
     }
   }
@@ -71,15 +70,15 @@ void DisplayXil::_refresh()
   m_iicCtrl->carrierInit();
 }
 
-unsigned DisplayXil::getLiveCellPixelWithCoords(int x, int y) {
+Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
   return getFgColour();
 }
 
-unsigned DisplayXil::getFgColour() {
+Xuint32 DisplayXil::getFgColour() {
   return 0xffffff;
 }
 
-unsigned DisplayXil::getBgColour() {
+Xuint32 DisplayXil::getBgColour() {
   return 0x000000;
 }
 
@@ -143,17 +142,17 @@ XAxiVdma_DmaSetup * DisplayXil::getAxiVdmaCfg()
   return &m_axiVdmaCfg;
 }
 
-int DisplayXil::m_rowIndexFromYPixelCoord(int y_coord)
+Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)
 {
-  return (int) (y_coord/(getHeight()/m_gridHeight));
+  return (Xuint32) (y_coord/(getHeight()/m_gridHeight));
 }
 
-int DisplayXil::m_columnIndexFromXPixelCoord(int x_coord)
+Xuint32 DisplayXil::m_columnIndexFromXPixelCoord(Xuint32 x_coord)
 {
-  return (int) (x_coord/(getWidth()/m_gridWidth));
+  return (Xuint32) (x_coord/(getWidth()/m_gridWidth));
 }
 
-char DisplayXil::m_charAtCoord(int x_coord, int y_coord)
+char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 {
   return m_charGrid[m_rowIndexFromYPixelCoord(y_coord)][m_columnIndexFromXPixelCoord(x_coord)];
 }
@@ -162,8 +161,8 @@ void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
 
-  for (int y=0; y<getHeight(); y++) {
-    for (int x=0; x<getWidth(); x++) {
+  for (Xuint32 y=0; y<getHeight(); y++) {
+    for (Xuint32 x=0; x<getWidth(); x++) {
       if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
       else  *mem++ = getBgColour();
     }
@@ -178,12 +177,12 @@ void DisplayXil::m_resetGrid()
   m_gridWidth = 0;
 }
 
-int DisplayXil::getCellXCoord(int x, int gridWidth)
+Xuint32 DisplayXil::getCellXCoord(Xuint32 x, Xuint32 gridWidth)
 {
   return x % (getWidth()/gridWidth);
 }
 
-int DisplayXil::getCellYCoord(int y, int gridHeight)
+Xuint32 DisplayXil::getCellYCoord(Xuint32 y, Xuint32 gridHeight)
 {
   return y % (getHeight()/gridHeight);
 }
