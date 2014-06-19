@@ -75,11 +75,11 @@ Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
 }
 
 Xuint32 DisplayXil::getFgColour() {
-  return 0xffffff;
+  return 0x000000;
 }
 
 Xuint32 DisplayXil::getBgColour() {
-  return 0x000000;
+  return 0xffffff;
 }
 
 void DisplayXil::_getch()

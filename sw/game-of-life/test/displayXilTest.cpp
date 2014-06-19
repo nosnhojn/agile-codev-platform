@@ -95,13 +95,13 @@ TEST_F(DisplayXilTest, initScreenFails) {
   EXPECT_EQ(display->_initscr(), 0);
 }
 
-TEST_F(DisplayXilTest, clearBufferToBlack0) {
+TEST_F(DisplayXilTest, clearBufferToWhite0) {
   display->_clear();
 
   EXPECT_EQ(HdmiDisplayMemory[0][0], display->getBgColour());
 }
 
-TEST_F(DisplayXilTest, clearBufferToBlackAll) {
+TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
   display->_clear();
 
   for (int i=0; i<1080; i++) {
@@ -387,12 +387,12 @@ TEST_F(DisplayXilTest, refreshCallsEndsWithCarrierInit) {
   display->_refresh();
 }
 
-TEST_F(DisplayXilTest, getFgColourIsWhite) {
-  EXPECT_EQ(0xffffff, display->getFgColour());
+TEST_F(DisplayXilTest, getFgColourIsBlack) {
+  EXPECT_EQ(0x000000, display->getFgColour());
 }
 
-TEST_F(DisplayXilTest, getBgColourIsBlack) {
-  EXPECT_EQ(0x000000, display->getBgColour());
+TEST_F(DisplayXilTest, getBgColourIsWhite) {
+  EXPECT_EQ(0xffffff, display->getBgColour());
 }
 
 TEST_F(DisplayXilTest, getCellPixelAlwaysReturnsFgColourForRectangle) {
