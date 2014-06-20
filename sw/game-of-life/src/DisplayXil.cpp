@@ -160,12 +160,19 @@ void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
 
+
+  // HEY SOHEIL! Comment this out and uncomment the stuff below for a solid colour screen
   for (Xuint32 y=0; y<getHeight(); y++) {
     for (Xuint32 x=0; x<getWidth(); x++) {
       if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
       else  *mem++ = getBgColour();
     }
   }
+// for (Xuint32 y=0; y<getHeight(); y++) {
+//   for (Xuint32 x=0; x<getWidth(); x++) {
+//     *mem++ = 0x333333;
+//   }
+// }
 
   Xil_DCacheFlush();
 }
