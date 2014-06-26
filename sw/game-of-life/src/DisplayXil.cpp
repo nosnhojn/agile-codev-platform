@@ -3,11 +3,9 @@
 #include <cstring>
 
 DisplayXil::DisplayXil( DisplayXilCfg * cfg,
-                        Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR = 0,
                         Xuint32 HDMI_VTC_DEVICE_ID = 0,
                         Xuint32 HDMI_VDMA_DEVICE_ID = 0) :
   m_cfg(cfg),
-  m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
   m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
   m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
   m_width(1920),
@@ -31,7 +29,7 @@ int DisplayXil::_initscr()
                   &(m_cfg->axiVdmaCfg),
                   VIDEO_RESOLUTION_1080P,
                   VIDEO_RESOLUTION_1080P,
-                  getHdmiDisplayMemBaseAddr(),
+                  m_cfg->hdmiDisplayMemBaseAddr,
                   1)) return 0;
 
   XVtc pVtc;
@@ -43,7 +41,7 @@ int DisplayXil::_initscr()
 
 void DisplayXil::_clear()
 {
-  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
+  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->hdmiDisplayMemBaseAddr);
 
   for (Xuint32 r=0; r<getHeight(); r++) {
     for (Xuint32 c=0; c<getWidth(); c++) {
@@ -120,16 +118,6 @@ Xuint32 DisplayXil::getHdmiVdmaDeviceId()
   return m_HdmiVdmaDeviceId;
 }
 
-Xuint32 DisplayXil::setHdmiDisplayMemBaseAddr(Xuint32 addr)
-{
-  m_HdmiDisplayMemBaseAddr = addr;
-}
-
-Xuint32 DisplayXil::getHdmiDisplayMemBaseAddr()
-{
-  return m_HdmiDisplayMemBaseAddr;
-}
-
 Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)
 {
   return (Xuint32) (y_coord/(getHeight()/m_gridHeight));
@@ -147,7 +135,7 @@ char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 
 void DisplayXil::m_writeGridToFrameBuffer()
 {
-  volatile Xuint32 *mem = (Xuint32 *)getHdmiDisplayMemBaseAddr();
+  volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr;
 
 
   // HEY SOHEIL! Comment this out and uncomment the stuff below for a solid colour screen

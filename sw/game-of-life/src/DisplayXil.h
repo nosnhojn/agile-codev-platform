@@ -18,6 +18,7 @@ struct DisplayXilCfg {
     IicCtrl *         iicCtrl;
     XAxiVdma          axiVdma;
     XAxiVdma_DmaSetup axiVdmaCfg;
+    Xuint32           hdmiDisplayMemBaseAddr;
 };
 
 class DisplayXil : public Display
@@ -30,7 +31,6 @@ class DisplayXil : public Display
     int           m_resolution;
     const Xuint32 m_HdmiVtcDeviceId;
     const Xuint32 m_HdmiVdmaDeviceId;
-    Xuint32       m_HdmiDisplayMemBaseAddr;
     
     int           m_xvtcEnGenerator;
     XVtc_Polarity m_polarity;
@@ -49,7 +49,6 @@ class DisplayXil : public Display
   public:
     DisplayXil();
     DisplayXil( DisplayXilCfg * cfg,
-                Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR,
                 Xuint32 HDMI_VTC_DEVICE_ID,
                 Xuint32 HDMI_VDMA_DEVICE_ID);
 
@@ -117,10 +116,6 @@ class DisplayXil : public Display
     int     getResolution();
     Xuint32 getHdmiVtcDeviceId();
     Xuint32 getHdmiVdmaDeviceId();
-
-
-    Xuint32 setHdmiDisplayMemBaseAddr(Xuint32 addr);
-    Xuint32 getHdmiDisplayMemBaseAddr();
 
     XAxiVdma * getAxiVdma();
     XAxiVdma_DmaSetup * getAxiVdmaCfg();

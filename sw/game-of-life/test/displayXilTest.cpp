@@ -31,12 +31,12 @@ class DisplayXilTest : public testing::Test
     DisplayXilTest()
     {
       cfg.iicCtrl = &(iicCtrl);
+      cfg.hdmiDisplayMemBaseAddr = (Xuint32)HdmiDisplayMemory;
 
       ON_CALL(iicCtrl, init())
           .WillByDefault(Return(1));
 
       display = new DisplayXil(&cfg,
-                               Xuint32(HdmiDisplayMemory),
                                1,
                                2);
 
@@ -170,14 +170,10 @@ TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
   EXPECT_EQ(vdmaCfg()->FixedFrameStoreAddr, 0);
 }
 
-TEST_F(DisplayXilTest, getHdmiDisplayMemBaseAddr) {
-  EXPECT_EQ(Xuint32(HdmiDisplayMemory), display->getHdmiDisplayMemBaseAddr());
-}
-
 TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
   display->_initscr();
 
-  EXPECT_EQ(vdmaCfg()->FrameStoreStartAddr[0], display->getHdmiDisplayMemBaseAddr());
+  EXPECT_EQ(vdmaCfg()->FrameStoreStartAddr[0], cfg.hdmiDisplayMemBaseAddr);
 }
 
 TEST_F(DisplayXilTest, initCallsDmaSetBufferAddr) {
