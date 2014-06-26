@@ -80,6 +80,11 @@ ${OBJDIR}/xilgame.o : CFLAGS+=-I./src \
 		      							 -I./mock \
 		      							 -I./include
 
+${OBJDIR}/nogame.o : ${OBJDIR}
+${OBJDIR}/nogame.o : CFLAGS+=-I./src \
+		      							 -I./mock \
+		      							 -I./include
+
 ${OBJDIR} :
 	mkdir ${OBJDIR}
 

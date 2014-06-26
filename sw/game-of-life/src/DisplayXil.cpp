@@ -21,6 +21,8 @@ int DisplayXil::_initscr()
 
   if (vfb_common_init(m_cfg->vdmaId, &(m_cfg->axiVdma)) == 1) return 0;
 
+  printAxiVdma();
+
   if (vfb_tx_init(&(m_cfg->axiVdma),
                   &(m_cfg->axiVdmaCfg),
                   VIDEO_RESOLUTION_1080P,
@@ -28,9 +30,10 @@ int DisplayXil::_initscr()
                   m_cfg->hdmiDisplayMemBaseAddr,
                   1)) return 0;
 
-  XVtc pVtc;
-  if (vgen_init(&pVtc, m_cfg->vtcId) != 0) return 0;
-  vgen_config(&pVtc, getResolution(), 0);
+  printAxiVdma();
+
+  if (vgen_init(&(m_cfg->vtc), m_cfg->vtcId) != 0) return 0;
+  vgen_config(&(m_cfg->vtc), getResolution(), 0);
 
   return 1;
 }
@@ -174,4 +177,29 @@ XVtc_Signal * DisplayXil::getXvtcSignal()
 XVtc_SourceSelect * DisplayXil::getXvtcSourceSelect()
 {
   return &m_sourceSelect;
+}
+
+void DisplayXil::printAxiVdma() {
+  xil_printf(
+      "\n\nfull getAxiVdma()->BaseAddr: %0x\n, \
+      EnableVIDParamRead: %0x\n, HasMm2S: %0x\n, \
+      HasMm2SDRE: %0x\n, \
+      HasS2MmDRE: %0x\n, \
+      IsReady: %0x\n\n, \
+      HasS2Mm: 0x%0x\n \
+      HasSG: 0x%0x\n \
+      InternalGenLock: 0x%0x\n \
+      MaxNumFrames: 0x%0x\n \
+      UseFsync: 0x%0x\n",
+      m_cfg->axiVdma.BaseAddr, \
+      m_cfg->axiVdma.EnableVIDParamRead,
+      m_cfg->axiVdma.HasMm2S, \
+      m_cfg->axiVdma.HasMm2SDRE,
+      m_cfg->axiVdma.HasS2MmDRE, \
+      m_cfg->axiVdma.IsReady,
+      m_cfg->axiVdma.HasS2Mm, \
+      m_cfg->axiVdma.HasSG, \
+      m_cfg->axiVdma.InternalGenLock, \
+      m_cfg->axiVdma.MaxNumFrames, \
+      m_cfg->axiVdma.UseFsync);
 }

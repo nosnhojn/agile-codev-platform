@@ -19,6 +19,7 @@ struct DisplayXilCfg {
 
     XAxiVdma          axiVdma;
     XAxiVdma_DmaSetup axiVdmaCfg;
+    XVtc              vtc;
 
     Xuint32           hdmiDisplayMemBaseAddr;
     Xuint32           vtcId;
@@ -47,6 +48,8 @@ class DisplayXil : public Display
     char m_charAtCoord(Xuint32, Xuint32);
     void m_writeGridToFrameBuffer();
     void m_resetGrid();
+
+    void printAxiVdma();
 
   public:
     DisplayXil();
