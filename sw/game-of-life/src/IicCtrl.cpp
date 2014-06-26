@@ -1,7 +1,7 @@
 #include "IicCtrl.h"
 #include <iostream>
 
-Xuint8 IicCtrl::carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3] = {
+Xuint8 carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3] = {
   {ADV7511_ADDR>>1, 0x15, 0x01},
   {ADV7511_ADDR>>1, 0x16, 0x38},
   {ADV7511_ADDR>>1, 0x18, 0xAC},

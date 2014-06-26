@@ -19,8 +19,6 @@ class IicCtrl
   public:
     IicCtrl(u32 HdmiI2cBaseAddr=0);
 
-    static Xuint8 carrier_hdmi_out_config[CARRIER_HDMI_OUT_CONFIG_LEN][3];
-
     virtual int init();
     virtual void carrierInit();
     virtual unsigned iicWrite(Xuint32 , Xuint8 , Xuint8 * , Xuint8);
