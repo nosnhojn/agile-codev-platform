@@ -13,6 +13,9 @@ xdriverMock * destroyXdriverMock()
   xdMock = 0;
 }
 
+int XAxiVdma_FsyncSrcSelect(XAxiVdma *InstancePtr, u32 Source,
+                                u16 Direction) {}
+
 void XAssertSetCallback(XAssertCallback Routine)
 {
   getXdriverMock()->XAssertSetCallback(Routine);
