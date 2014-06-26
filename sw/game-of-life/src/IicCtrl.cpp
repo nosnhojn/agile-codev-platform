@@ -5,7 +5,8 @@ IicCtrl::IicCtrl(u32 HdmiI2cBaseAddr,
                  Xuint8 * carrier_hdmi_out_config) :
   m_HdmiI2cBaseAddr(HdmiI2cBaseAddr),
   m_carrier_hdmi_out_config(carrier_hdmi_out_config)
-{}
+{
+}
 
 int IicCtrl::init()
 {

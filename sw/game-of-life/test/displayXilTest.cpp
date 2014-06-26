@@ -20,6 +20,7 @@ class DisplayXilTest : public testing::Test
   public:
     DisplayXilCfg cfg;
     DisplayXil * display;
+    Xuint8 * bungle;
     IicCtrlMock iicCtrl;
     Xuint32 HdmiDisplayMemory [1080] [1920];
     xdriverMock * xdMock;

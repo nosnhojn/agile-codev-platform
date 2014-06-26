@@ -18,8 +18,8 @@ class IicCtrl
     bool iicReady(void);
 
   public:
-    IicCtrl(u32 HdmiI2cBaseAddr=0,
-            Xuint8 * carrier_hdmi_out_config=0);
+    IicCtrl(u32 HdmiI2cBaseAddr,
+            Xuint8 * carrier_hdmi_out_config);
 
     virtual int init();
     virtual void carrierInit();
