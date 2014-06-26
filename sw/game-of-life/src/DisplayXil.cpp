@@ -35,9 +35,9 @@ int DisplayXil::_initscr()
                   1)) return 0;
 
 
-  XVtc *pVtc;
-  if (vgen_init(pVtc, getHdmiVtcDeviceId()) != 0) return 0;
-  vgen_config(pVtc, getResolution(), 0);
+  XVtc pVtc;
+  if (vgen_init(&pVtc, getHdmiVtcDeviceId()) != 0) return 0;
+  vgen_config(&pVtc, getResolution(), 0);
 
   return 1;
 }
