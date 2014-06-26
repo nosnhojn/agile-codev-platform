@@ -2,12 +2,8 @@
 #include <iostream>
 #include <cstring>
 
-DisplayXil::DisplayXil( DisplayXilCfg * cfg,
-                        Xuint32 HDMI_VTC_DEVICE_ID = 0,
-                        Xuint32 HDMI_VDMA_DEVICE_ID = 0) :
+DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_cfg(cfg),
-  m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
-  m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
   m_width(1920),
   m_height(1080),
   m_resolution(VIDEO_RESOLUTION_1080P),
@@ -23,7 +19,7 @@ int DisplayXil::_initscr()
 
   _clear();
 
-  if (vfb_common_init(getHdmiVdmaDeviceId(), &(m_cfg->axiVdma)) == 1) return 0;
+  if (vfb_common_init(m_cfg->vdmaId, &(m_cfg->axiVdma)) == 1) return 0;
 
   if (vfb_tx_init(&(m_cfg->axiVdma),
                   &(m_cfg->axiVdmaCfg),
@@ -33,7 +29,7 @@ int DisplayXil::_initscr()
                   1)) return 0;
 
   XVtc pVtc;
-  if (vgen_init(&pVtc, getHdmiVtcDeviceId()) != 0) return 0;
+  if (vgen_init(&pVtc, m_cfg->vtcId) != 0) return 0;
   vgen_config(&pVtc, getResolution(), 0);
 
   return 1;
@@ -106,16 +102,6 @@ Xuint32 DisplayXil::getHeight()
 int DisplayXil::getResolution()
 {
   return m_resolution;
-}
-
-Xuint32 DisplayXil::getHdmiVtcDeviceId()
-{
-  return m_HdmiVtcDeviceId;
-}
-
-Xuint32 DisplayXil::getHdmiVdmaDeviceId()
-{
-  return m_HdmiVdmaDeviceId;
 }
 
 Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)

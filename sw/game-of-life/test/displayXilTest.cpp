@@ -32,13 +32,13 @@ class DisplayXilTest : public testing::Test
     {
       cfg.iicCtrl = &(iicCtrl);
       cfg.hdmiDisplayMemBaseAddr = (Xuint32)HdmiDisplayMemory;
+      cfg.vtcId = 1;
+      cfg.vdmaId = 2;
 
       ON_CALL(iicCtrl, init())
           .WillByDefault(Return(1));
 
-      display = new DisplayXil(&cfg,
-                               1,
-                               2);
+      display = new DisplayXil(&cfg);
 
       for (int i=0; i<1080; i++)
         for (int j=0; j<1920; j++)
@@ -119,7 +119,7 @@ TEST_F(DisplayXilTest, initDoesClear) {
 }
 
 TEST_F(DisplayXilTest, initCallsVfbLookupConfig) {
-  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(display->getHdmiVdmaDeviceId())).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(cfg.vdmaId)).Times(1);
 
   display->_initscr();
 }
@@ -213,7 +213,7 @@ TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfigWithRightParameters) {
-  EXPECT_CALL(*xvMock, XVtc_LookupConfig(display->getHdmiVtcDeviceId())).Times(1);
+  EXPECT_CALL(*xvMock, XVtc_LookupConfig(cfg.vtcId)).Times(1);
 
   display->_initscr();
 }
@@ -359,8 +359,8 @@ TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getWidth(), 1920);
   EXPECT_EQ(display->getHeight(), 1080);
   EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
-  EXPECT_EQ(display->getHdmiVtcDeviceId(), 1);
-  EXPECT_EQ(display->getHdmiVdmaDeviceId(), 2);
+  EXPECT_EQ(cfg.vtcId, 1);
+  EXPECT_EQ(cfg.vdmaId, 2);
 }
 
 TEST_F(DisplayXilTest, refreshCallsVfbStop) {

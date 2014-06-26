@@ -16,9 +16,13 @@ using namespace std;
 
 struct DisplayXilCfg {
     IicCtrl *         iicCtrl;
+
     XAxiVdma          axiVdma;
     XAxiVdma_DmaSetup axiVdmaCfg;
+
     Xuint32           hdmiDisplayMemBaseAddr;
+    Xuint32           vtcId;
+    Xuint32           vdmaId;
 };
 
 class DisplayXil : public Display
@@ -29,8 +33,6 @@ class DisplayXil : public Display
     const Xuint32 m_width;
     const Xuint32 m_height;
     int           m_resolution;
-    const Xuint32 m_HdmiVtcDeviceId;
-    const Xuint32 m_HdmiVdmaDeviceId;
     
     int           m_xvtcEnGenerator;
     XVtc_Polarity m_polarity;
@@ -48,9 +50,7 @@ class DisplayXil : public Display
 
   public:
     DisplayXil();
-    DisplayXil( DisplayXilCfg * cfg,
-                Xuint32 HDMI_VTC_DEVICE_ID,
-                Xuint32 HDMI_VDMA_DEVICE_ID);
+    DisplayXil( DisplayXilCfg * cfg );
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208
@@ -114,8 +114,6 @@ class DisplayXil : public Display
     Xuint32 getWidth();
     Xuint32 getHeight();
     int     getResolution();
-    Xuint32 getHdmiVtcDeviceId();
-    Xuint32 getHdmiVdmaDeviceId();
 
     XAxiVdma * getAxiVdma();
     XAxiVdma_DmaSetup * getAxiVdmaCfg();
