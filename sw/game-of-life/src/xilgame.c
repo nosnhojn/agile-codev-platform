@@ -2,6 +2,7 @@
 #include "Drawing.h"
 #include "DisplayXil.h"
 #include "platform.h"
+#include "CarrierConfig.h"
 
 #ifndef XPAR_ZED_HDMI_IIC_0_BASEADDR
   #define XPAR_ZED_HDMI_IIC_0_BASEADDR 0
@@ -19,7 +20,8 @@
 #define REFRESH_RATE 1_000_000
 
 DisplayXilCfg cfg;
-IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR);
+IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR,
+                carrier_hdmi_out_config);
 
 int main()
 {
