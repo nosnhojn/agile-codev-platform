@@ -32,9 +32,9 @@ class DisplayXil : public Display
 
     const Xuint32 m_width;
     const Xuint32 m_height;
-    int           m_resolution;
-    
-    int           m_xvtcEnGenerator;
+    const int     m_resolution;
+    const int     m_xvtcEnGenerator;
+
     XVtc_Polarity m_polarity;
     XVtc_Signal   m_signal;
     XVtc_SourceSelect m_sourceSelect;

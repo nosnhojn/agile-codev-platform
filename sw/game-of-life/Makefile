@@ -74,21 +74,10 @@ XILGAMEOBJS=${OBJDIR}/Cell.o \
             ${OBJDIR}/platform.o \
 						${OBJDIR}/xilgame.o
 
-xilgame : CXXFLAGS+=-DREFRESH_RATE=500000 \
-                    -I${XIL_INC} \
-xilgame : LDFLAGS+=-l${XIL_LIB}
-xilgame : xil_temp_target ${OBJDIR} ${XILGAMEOBJS}
-	$(CC) ${XILGAMEOBJS} -o xilgame
-
-xil_temp_target :
-	@if [ "${XIL_INC}" == "" ]; then \
-		echo ERROR: we need a real path to XIL_INC \(i.e. for the include file headers\); \
-		exit 1; \
-	fi
-	@if [ "${XIL_LIB}" == "" ]; then \
-		echo ERROR: we need a real path to XIL_LIB \(i.e. a compiled xil library\); \
-		exit 1; \
-	fi
+${OBJDIR}/xilgame.o : ${OBJDIR}
+${OBJDIR}/xilgame.o : CFLAGS+=-I./src \
+		      							 -I./mock \
+		      							 -I./include
 
 ${OBJDIR} :
 	mkdir ${OBJDIR}

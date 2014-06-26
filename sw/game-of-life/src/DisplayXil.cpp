@@ -6,9 +6,9 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_cfg(cfg),
   m_width(1920),
   m_height(1080),
-  m_resolution(VIDEO_RESOLUTION_1080P),
   m_gridHeight(0),
   m_gridWidth(0),
+  m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
 }
