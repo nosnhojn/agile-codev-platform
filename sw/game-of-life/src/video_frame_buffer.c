@@ -58,6 +58,17 @@
 #define NUMBER_OF_READ_FRAMES    XPAR_AXIVDMA_0_NUM_FSTORES
 #define NUMBER_OF_WRITE_FRAMES   XPAR_AXIVDMA_0_NUM_FSTORES
 
+void poundAxiVdmaRegisters(XAxiVdma* pAxiVdma) {
+  *((volatile int *) (pAxiVdma->BaseAddr + XAXIVDMA_MM2S_ADDR_OFFSET
+      + XAXIVDMA_START_ADDR_OFFSET + 4)) = 0x107E9000;
+  *((volatile int *) (pAxiVdma->BaseAddr + XAXIVDMA_MM2S_ADDR_OFFSET
+      + XAXIVDMA_START_ADDR_OFFSET + 8)) = 0x10FD2000;
+  *((volatile int *) (pAxiVdma->BaseAddr + XAXIVDMA_RX_OFFSET
+      + XAXIVDMA_CR_OFFSET)) = 0x00010003;
+  *((volatile int *) (pAxiVdma->BaseAddr + XAXIVDMA_RX_OFFSET
+      + XAXIVDMA_SR_OFFSET)) = 0x00000000;
+}
+
 int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
 {
    int Status;
@@ -66,7 +77,7 @@ int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
    Config = XAxiVdma_LookupConfig( uDeviceId );
    if (!Config)
    {
-      //xil_printf( "No video DMA found for ID %d\n\r", uDeviceId);
+      xil_printf( "No video DMA found for ID %d\n\r", uDeviceId);
       return 1;
    }
 
@@ -74,7 +85,7 @@ int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
    Status = XAxiVdma_CfgInitialize(pAxiVdma, Config, Config->BaseAddress);
    if (Status != XST_SUCCESS)
    {
-      //xil_printf( "Initialization failed %d\n\r", Status);
+      xil_printf( "Initialization failed %d\n\r", Status);
       return 1;
    }
 
@@ -158,7 +169,7 @@ int vfb_rx_start(XAxiVdma *pAxiVdma)
    Status = XAxiVdma_DmaStart(pAxiVdma, XAXIVDMA_WRITE);
    if (Status != XST_SUCCESS)
    {
-      //xil_printf( "Start Write transfer failed %d\r\n", Status);
+      xil_printf( "Start Write transfer failed %d\r\n", Status);
       return XST_FAILURE;
    }
 
@@ -257,7 +268,7 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 
 			return XST_FAILURE;
 	}
-
+  poundAxiVdmaRegisters(pAxiVdma);
 	return XST_SUCCESS;
 }
 
@@ -269,7 +280,7 @@ int vfb_tx_start(XAxiVdma *pAxiVdma)
    Status = XAxiVdma_DmaStart(pAxiVdma, XAXIVDMA_READ);
    if (Status != XST_SUCCESS)
    {
-      //xil_printf("Start read transfer failed %d\n\r", Status);
+      xil_printf("Start read transfer failed %d\n\r", Status);
       return XST_FAILURE;
    }
 
@@ -308,11 +319,11 @@ int vfb_tx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 	XAxiVdma_GenLockSourceSelect(pAxiVdma, XAXIVDMA_INTERNAL_GENLOCK, XAXIVDMA_READ);
 #else
 	uBaseAddr = pAxiVdma->BaseAddr;
-	////xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
+	//xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
 	uDMACR = *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET ));
 	uDMACR |= 0x00000080;
 	*((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) = uDMACR;
-	////xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
+	//xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
 #endif
 #endif
 }
@@ -338,30 +349,30 @@ int vfb_dump_registers(XAxiVdma *pAxiVdma)
    u32 uBaseAddr = pAxiVdma->BaseAddr;
 
    // Partial Register Dump
-   //xil_printf( "AXI_VDMA - Partial Register Dump (uBaseAddr = 0x%08X):\n\r", uBaseAddr );
-   //xil_printf( "\t PARKPTR          = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_PARKPTR_OFFSET )) );
-   //xil_printf( "\t ----------------\n\r" );
-   //xil_printf( "\t S2MM_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET )) );
-   //xil_printf( "\t S2MM_DMASR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_SR_OFFSET )) );
-   //xil_printf( "\t S2MM_STRD_FRMDLY = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_STRD_FRMDLY_OFFSET)) );
-   //xil_printf( "\t S2MM_START_ADDR0 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+0)) );
-   //xil_printf( "\t S2MM_START_ADDR1 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4)) );
-   //xil_printf( "\t S2MM_START_ADDR2 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8)) );
-   //xil_printf( "\t S2MM_HSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_HSIZE_OFFSET)) );
-   //xil_printf( "\t S2MM_VSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_VSIZE_OFFSET)) );
-   //xil_printf( "\t ----------------\n\r" );
-   //xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
-   //xil_printf( "\t MM2S_DMASR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_SR_OFFSET )) );
-   //xil_printf( "\t MM2S_STRD_FRMDLY = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_STRD_FRMDLY_OFFSET)) );
-   //xil_printf( "\t MM2S_START_ADDR0 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+0)) );
-   //xil_printf( "\t MM2S_START_ADDR1 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4)) );
-   //xil_printf( "\t MM2S_START_ADDR2 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8)) );
-   //xil_printf( "\t MM2S_HSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_HSIZE_OFFSET)) );
-   //xil_printf( "\t MM2S_VSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_VSIZE_OFFSET)) );
-   //xil_printf( "\t ----------------\n\r" );
-   //xil_printf( "\t S2MM_HSIZE_STATUS= 0x%08X\n\r", *((volatile int *)(uBaseAddr+0xF0 )) );
-   //xil_printf( "\t S2MM_VSIZE_STATUS= 0x%08X\n\r", *((volatile int *)(uBaseAddr+0xF4 )) );
-   //xil_printf( "\t ----------------\n\r" );
+   xil_printf( "AXI_VDMA - Partial Register Dump (uBaseAddr = 0x%08X):\n\r", uBaseAddr );
+   xil_printf( "\t PARKPTR          = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_PARKPTR_OFFSET )) );
+   xil_printf( "\t ----------------\n\r" );
+   xil_printf( "\t S2MM_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET )) );
+   xil_printf( "\t S2MM_DMASR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_SR_OFFSET )) );
+   xil_printf( "\t S2MM_STRD_FRMDLY = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_STRD_FRMDLY_OFFSET)) );
+   xil_printf( "\t S2MM_START_ADDR0 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+0)) );
+   xil_printf( "\t S2MM_START_ADDR1 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4)) );
+   xil_printf( "\t S2MM_START_ADDR2 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8)) );
+   xil_printf( "\t S2MM_HSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_HSIZE_OFFSET)) );
+   xil_printf( "\t S2MM_VSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_VSIZE_OFFSET)) );
+   xil_printf( "\t ----------------\n\r" );
+   xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
+   xil_printf( "\t MM2S_DMASR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_SR_OFFSET )) );
+   xil_printf( "\t MM2S_STRD_FRMDLY = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_STRD_FRMDLY_OFFSET)) );
+   xil_printf( "\t MM2S_START_ADDR0 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+0)) );
+   xil_printf( "\t MM2S_START_ADDR1 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4)) );
+   xil_printf( "\t MM2S_START_ADDR2 = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8)) );
+   xil_printf( "\t MM2S_HSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_HSIZE_OFFSET)) );
+   xil_printf( "\t MM2S_VSIZE       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_VSIZE_OFFSET)) );
+   xil_printf( "\t ----------------\n\r" );
+   xil_printf( "\t S2MM_HSIZE_STATUS= 0x%08X\n\r", *((volatile int *)(uBaseAddr+0xF0 )) );
+   xil_printf( "\t S2MM_VSIZE_STATUS= 0x%08X\n\r", *((volatile int *)(uBaseAddr+0xF4 )) );
+   xil_printf( "\t ----------------\n\r" );
 
    return 0;
 }
@@ -379,7 +390,7 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors )
    //outErrors = XAxiVdma_GetStatus(pAxiVdma, XAXIVDMA_READ) & XAXIVDMA_SR_ERR_ALL_MASK;
    inErrors  = *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_SR_OFFSET )) & 0x0000CFF0;
    outErrors = *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_SR_OFFSET )) & 0x000046F0;
-   //xil_printf( "AXI_VDMA - Checking Error Flags\n\r" );
+   xil_printf( "AXI_VDMA - Checking Error Flags\n\r" );
 
    Errors = (inErrors << 16) | (outErrors);
 
@@ -387,76 +398,76 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors )
    {
 	   if ( inErrors & 0x00004000 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - ErrIrq\n\r" );
+          xil_printf( "\tS2MM_DMASR - ErrIrq\n\r" );
 	   }
 	   if ( inErrors & 0x00008000 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - EOLLateErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - EOLLateErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000800 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - SOFLateErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - SOFLateErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000400 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - SGDecErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - SGDecErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000200 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - SGSlvErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - SGSlvErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000100 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - EOLEarlyErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - EOLEarlyErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000080 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - SOFEarlyErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - SOFEarlyErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000040 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - DMADecErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - DMADecErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000020 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - DMASlvErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - DMASlvErr\n\r" );
 	   }
 	   if ( inErrors & 0x00000010 )
 	   {
-          //xil_printf( "\tS2MM_DMASR - DMAIntErr\n\r" );
+          xil_printf( "\tS2MM_DMASR - DMAIntErr\n\r" );
 	   }
 
 	   if ( outErrors & 0x00004000 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - ErrIrq\n\r" );
+          xil_printf( "\tMM2S_DMASR - ErrIrq\n\r" );
 	   }
 	   if ( outErrors & 0x00000400 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - SGDecErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - SGDecErr\n\r" );
 	   }
 	   if ( outErrors & 0x00000200 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - SGSlvErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - SGSlvErr\n\r" );
 	   }
 	   if ( outErrors & 0x00000080 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - SOFEarlyErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - SOFEarlyErr\n\r" );
 	   }
 	   if ( outErrors & 0x00000040 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - DMADecErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - DMADecErr\n\r" );
 	   }
 	   if ( outErrors & 0x00000020 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - DMASlvErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - DMASlvErr\n\r" );
 	   }
 	   if ( outErrors & 0x00000010 )
 	   {
-          //xil_printf( "\tMM2S_DMASR - DMAIntErr\n\r" );
+          xil_printf( "\tMM2S_DMASR - DMAIntErr\n\r" );
 	   }
 
 	   // Clear error flags
-	   //xil_printf( "AXI_VDMA - Clearing Error Flags\n\r" );
+	   xil_printf( "AXI_VDMA - Clearing Error Flags\n\r" );
 	   *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_SR_OFFSET )) = 0x0000CFF0; //XAXIVDMA_SR_ERR_ALL_MASK;
 	   *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_SR_OFFSET )) = 0x000046F0; //XAXIVDMA_SR_ERR_ALL_MASK;
    }

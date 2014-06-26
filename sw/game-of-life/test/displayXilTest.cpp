@@ -27,6 +27,8 @@ class DisplayXilTest : public testing::Test
     XvtcMock * xvMock;
     XAxiVdma_Config defaultConfig;
     XVtc_Config vtcDefaultConfig;
+
+    int vdmaConfigSpace [256];
             
     
     DisplayXilTest()
@@ -47,7 +49,8 @@ class DisplayXilTest : public testing::Test
 
       xdMock = getXdriverMock();   
         
-      defaultConfig.BaseAddress = 99;
+      defaultConfig.BaseAddress = (u32)vdmaConfigSpace;
+      cfg.axiVdma.BaseAddr = (u32)vdmaConfigSpace;
       ON_CALL(*xdMock, XAxiVdma_LookupConfig(_))
           .WillByDefault(Return(&defaultConfig));
       ON_CALL(*xdMock, XAxiVdma_DmaConfig(_,_,_))
@@ -134,7 +137,7 @@ TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsVfbCfgInitialize) {
-  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(vdma(),&defaultConfig,99)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(vdma(),&defaultConfig,Xuint32(vdmaConfigSpace))).Times(1);
 
   display->_initscr();
 }

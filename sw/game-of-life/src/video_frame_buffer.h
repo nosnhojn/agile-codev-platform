@@ -48,6 +48,8 @@
 
 #include "xaxivdma.h"
 
+void poundAxiVdmaRegisters(XAxiVdma* pAxiVdma);
+
 int vfb_common_init( u16 uDeviceId, XAxiVdma * InstancePtr );
 
 int vfb_rx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );
