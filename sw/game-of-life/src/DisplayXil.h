@@ -14,9 +14,17 @@ extern vres_timing_t vres_resolutions[1];
 
 using namespace std;
 
+struct DisplayXilCfg {
+    IicCtrl *         iicCtrl;
+    XAxiVdma          axiVdma;
+    XAxiVdma_DmaSetup axiVdmaCfg;
+};
+
 class DisplayXil : public Display
 {
   private:
+    DisplayXilCfg * m_cfg;
+
     const Xuint32 m_width;
     const Xuint32 m_height;
     int           m_resolution;
@@ -29,12 +37,6 @@ class DisplayXil : public Display
     XVtc_Signal   m_signal;
     XVtc_SourceSelect m_sourceSelect;
 
-    
-    XAxiVdma          m_axiVdma;
-    XAxiVdma_DmaSetup m_axiVdmaCfg;
-    IicCtrl *         m_iicCtrl;
-
-        
     char m_charGrid [256][256];
     Xuint32 m_gridWidth;
     Xuint32 m_gridHeight;
@@ -46,7 +48,7 @@ class DisplayXil : public Display
 
   public:
     DisplayXil();
-    DisplayXil( IicCtrl * iicCtrl,
+    DisplayXil( DisplayXilCfg * cfg,
                 Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR,
                 Xuint32 HDMI_VTC_DEVICE_ID,
                 Xuint32 HDMI_VDMA_DEVICE_ID);

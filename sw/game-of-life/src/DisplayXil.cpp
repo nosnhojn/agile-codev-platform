@@ -2,11 +2,11 @@
 #include <iostream>
 #include <cstring>
 
-DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
+DisplayXil::DisplayXil( DisplayXilCfg * cfg,
                         Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR = 0,
                         Xuint32 HDMI_VTC_DEVICE_ID = 0,
                         Xuint32 HDMI_VDMA_DEVICE_ID = 0) :
-  m_iicCtrl(iicCtrl),
+  m_cfg(cfg),
   m_HdmiDisplayMemBaseAddr(HDMI_DISPLAY_MEM_BASE_ADDR),
   m_HdmiVtcDeviceId(HDMI_VTC_DEVICE_ID),
   m_HdmiVdmaDeviceId(HDMI_VDMA_DEVICE_ID),
@@ -21,14 +21,14 @@ DisplayXil::DisplayXil( IicCtrl * iicCtrl = 0,
 
 int DisplayXil::_initscr()
 {
-  if (m_iicCtrl->init() == 0) return 0;
+  if (m_cfg->iicCtrl->init() == 0) return 0;
 
   _clear();
 
-  if (vfb_common_init(getHdmiVdmaDeviceId(), getAxiVdma()) == 1) return 0;
+  if (vfb_common_init(getHdmiVdmaDeviceId(), &(m_cfg->axiVdma)) == 1) return 0;
 
-  if (vfb_tx_init(getAxiVdma(),
-                  getAxiVdmaCfg(),
+  if (vfb_tx_init(&(m_cfg->axiVdma),
+                  &(m_cfg->axiVdmaCfg),
                   VIDEO_RESOLUTION_1080P,
                   VIDEO_RESOLUTION_1080P,
                   getHdmiDisplayMemBaseAddr(),
@@ -58,14 +58,14 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
-  vfb_tx_stop(getAxiVdma());
+  vfb_tx_stop(&(m_cfg->axiVdma));
 
   if (m_gridWidth > 0) m_writeGridToFrameBuffer();
   m_resetGrid();
 
-  vfb_tx_start(getAxiVdma());
+  vfb_tx_start(&(m_cfg->axiVdma));
 
-  m_iicCtrl->carrierInit();
+  m_cfg->iicCtrl->carrierInit();
 }
 
 Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
@@ -128,16 +128,6 @@ Xuint32 DisplayXil::setHdmiDisplayMemBaseAddr(Xuint32 addr)
 Xuint32 DisplayXil::getHdmiDisplayMemBaseAddr()
 {
   return m_HdmiDisplayMemBaseAddr;
-}
-
-XAxiVdma * DisplayXil::getAxiVdma()
-{
-  return &m_axiVdma;
-}
-
-XAxiVdma_DmaSetup * DisplayXil::getAxiVdmaCfg()
-{
-  return &m_axiVdmaCfg;
 }
 
 Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)

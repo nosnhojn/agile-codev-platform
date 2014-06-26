@@ -18,7 +18,8 @@ using namespace testing;
 class DisplayXilTest : public testing::Test
 {
   public:
-    DisplayXil  * display;
+    DisplayXilCfg cfg;
+    DisplayXil * display;
     IicCtrlMock iicCtrl;
     Xuint32 HdmiDisplayMemory [1080] [1920];
     xdriverMock * xdMock;
@@ -29,10 +30,12 @@ class DisplayXilTest : public testing::Test
     
     DisplayXilTest()
     {
+      cfg.iicCtrl = &(iicCtrl);
+
       ON_CALL(iicCtrl, init())
           .WillByDefault(Return(1));
 
-      display = new DisplayXil(&iicCtrl,
+      display = new DisplayXil(&cfg,
                                Xuint32(HdmiDisplayMemory),
                                1,
                                2);
@@ -70,9 +73,8 @@ class DisplayXilTest : public testing::Test
       destroyXvtcMock();
     }
 
-
-
-    XAxiVdma_DmaSetup * vdmaCfg() { return display->getAxiVdmaCfg(); }
+    XAxiVdma          * vdma() { return &(cfg.axiVdma); }
+    XAxiVdma_DmaSetup * vdmaCfg() { return &(cfg.axiVdmaCfg); }
     XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
     XVtc_Signal * xvtcSignal() { return display->getXvtcSignal(); }
     XVtc_SourceSelect * xvtcSourceSelect() { return display->getXvtcSourceSelect(); }
@@ -131,7 +133,7 @@ TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsVfbCfgInitialize) {
-  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(display->getAxiVdma(),&defaultConfig,99)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(vdma(),&defaultConfig,99)).Times(1);
 
   display->_initscr();
 }
@@ -143,7 +145,7 @@ TEST_F(DisplayXilTest, vfbCfgInitializeCanFailAndExit) {
 }
 
 TEST_F(DisplayXilTest, initCallsDmaConfig) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(display->getAxiVdma(), XAXIVDMA_READ, vdmaCfg())).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(vdma(), XAXIVDMA_READ, vdmaCfg())).Times(1);
 
   display->_initscr();
 }
@@ -179,19 +181,19 @@ TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
 }
 
 TEST_F(DisplayXilTest, initCallsDmaSetBufferAddr) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(display->getAxiVdma(), XAXIVDMA_READ, vdmaCfg()->FrameStoreStartAddr)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(vdma(), XAXIVDMA_READ, vdmaCfg()->FrameStoreStartAddr)).Times(1);
 
   display->_initscr();
 }
 
 TEST_F(DisplayXilTest, initCallsDmaStart) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
 
   display->_initscr();
 }
 
 TEST_F(DisplayXilTest, dmaStartCanFailAndExit) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).WillOnce(Return(XST_FAILURE));
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).WillOnce(Return(XST_FAILURE));
 
   EXPECT_FALSE(display->_initscr());
 }
@@ -366,7 +368,7 @@ TEST_F(DisplayXilTest, getConstants) {
 }
 
 TEST_F(DisplayXilTest, refreshCallsVfbStop) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
 
   display->_refresh();
 }
@@ -374,8 +376,8 @@ TEST_F(DisplayXilTest, refreshCallsVfbStop) {
 TEST_F(DisplayXilTest, refreshCallsVfbStopThenStart) {
   InSequence s;
 
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
 
   display->_refresh();
 }
@@ -383,8 +385,8 @@ TEST_F(DisplayXilTest, refreshCallsVfbStopThenStart) {
 TEST_F(DisplayXilTest, refreshCallsEndsWithCarrierInit) {
   InSequence s;
 
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(display->getAxiVdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
   EXPECT_CALL(iicCtrl, carrierInit()).Times(1);
 
   display->_refresh();
