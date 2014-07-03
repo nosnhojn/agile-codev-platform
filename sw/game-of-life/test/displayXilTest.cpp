@@ -22,7 +22,7 @@ class DisplayXilTest : public testing::Test
     DisplayXil * display;
     Xuint8 * bungle;
     IicCtrlMock iicCtrl;
-    Xuint32 HdmiDisplayMemory [1080] [1920];
+    Xuint32 HdmiDisplayMemory [1080*3] [1920];
     xdriverMock * xdMock;
     XvtcMock * xvMock;
     XAxiVdma_Config defaultConfig;
@@ -365,31 +365,6 @@ TEST_F(DisplayXilTest, getConstants) {
   EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
   EXPECT_EQ(cfg.vtcId, 1);
   EXPECT_EQ(cfg.vdmaId, 2);
-}
-
-TEST_F(DisplayXilTest, refreshCallsVfbStop) {
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
-
-  display->_refresh();
-}
-
-TEST_F(DisplayXilTest, refreshCallsVfbStopThenStart) {
-  InSequence s;
-
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
-
-  display->_refresh();
-}
-
-TEST_F(DisplayXilTest, refreshCallsEndsWithCarrierInit) {
-  InSequence s;
-
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStop(vdma(), XAXIVDMA_READ)).Times(1);
-  EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
-  EXPECT_CALL(iicCtrl, carrierInit()).Times(1);
-
-  display->_refresh();
 }
 
 TEST_F(DisplayXilTest, getFgColourIsBlack) {

@@ -4,13 +4,17 @@ Drawing::Drawing(Board * board,
                  Display * display)
 : m_board(board), m_display(display)
 {
-  m_display->_initscr();
-  m_display->_move(Board::ROW_SIZE,0);
 }
 
 Drawing::~Drawing()
 {
   m_display->_endwin();
+}
+
+void Drawing::init()
+{
+  m_display->_initscr();
+  m_display->_move(Board::ROW_SIZE,0);
 }
 
 void Drawing::refreshDrawing()

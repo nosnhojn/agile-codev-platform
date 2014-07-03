@@ -22,12 +22,11 @@
 DisplayXilCfg cfg;
 IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR,
                 carrier_hdmi_out_config);
+Board board;
 
 int main()
 {
   init_platform();
-
-  Board board;
 
   cfg.iicCtrl = &iicCtrl;
   cfg.hdmiDisplayMemBaseAddr = XPAR_DDR_MEM_BASEADDR + 0x10000000;
@@ -36,6 +35,8 @@ int main()
 
   DisplayXil display(&cfg);
   Drawing drawing(&board, &display);
+
+  drawing.init();
  
   drawing.initialCell(20,20);
   drawing.initialCell(20,21);

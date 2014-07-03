@@ -46,7 +46,7 @@ class DrawingTest : public testing::Test
 TEST_F(DrawingTest, ScreenInit) {
   EXPECT_CALL(display, _initscr()).Times(1);
 
-  Drawing d(&board, &display);
+  drawing->init();
 }
 
 TEST_F(DrawingTest, ScreenRefreshed) {
@@ -89,7 +89,7 @@ TEST_F(DrawingTest, ScreenWaitForPromptAtPos) {
   req = EXPECT_CALL(display, _initscr()).Times(1);
   EXPECT_CALL(display, _move(50,0)).Times(1).After(req);
 
-  Drawing d(&board, &display);
+  drawing->init();
 }
 
 TEST_F(DrawingTest, endWithDestructor) {

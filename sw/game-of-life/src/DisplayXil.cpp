@@ -3,8 +3,6 @@
 #include <cstring>
 
 
-Xuint32 color;
-//test
 DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_cfg(cfg),
   m_width(1920),
@@ -14,7 +12,6 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
-	color = 0x00000000;
 }
 
 int DisplayXil::_initscr()
@@ -55,14 +52,8 @@ void DisplayXil::_endwin()
 
 void DisplayXil::_refresh()
 {
-//  vfb_tx_stop(&(m_cfg->axiVdma));
-
   m_writeGridToFrameBuffer();
   m_resetGrid();
-
-//  vfb_tx_start(&(m_cfg->axiVdma));
-
-//  m_cfg->iicCtrl->carrierInit();
 }
 
 Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
@@ -127,15 +118,14 @@ void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr;
 
-  // HEY SOHEIL! Comment this out and uncomment the stuff below for a solid colour screen
-for (int j=0; j<3; j+=1) {
-	for (Xuint32 y=0; y<getHeight(); y++) {
+  for (int j=0; j<3; j+=1) {
+    for (Xuint32 y=0; y<getHeight(); y++) {
       for (Xuint32 x=0; x<getWidth(); x++) {
-         if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
-         else  *mem++ = getBgColour();
+        if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
+        else  *mem++ = getBgColour();
       }
     }
-}
+  }
 
   Xil_DCacheFlush();
 }

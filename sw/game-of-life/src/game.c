@@ -7,6 +7,8 @@ int main()
   Board b;
   DisplayNCurses g;
   Drawing d(&b, &g);
+
+  d.init();
  
   d.initialCell(20,20);
   d.initialCell(20,21);

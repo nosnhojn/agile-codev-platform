@@ -29,6 +29,7 @@ class Drawing
             Display * display);
     ~Drawing();
 
+    void init(void);
     bool isInitialized(void);
     void refreshDrawing(void);
     void play(int);
