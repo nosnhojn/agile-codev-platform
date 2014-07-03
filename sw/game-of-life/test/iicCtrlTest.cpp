@@ -1,9 +1,10 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-#include "IicCtrlMock.h"
+#include "IicCtrl.h"
 #include "testDefs.h"
 #include "xdriverMock.h"
+#include "CarrierConfig.h"
 
 using namespace testing;
 
@@ -17,7 +18,8 @@ class IicCtrlTest : public testing::Test
 
     IicCtrlTest()
     {
-      iicCtrl = new IicCtrl(HDMI_I2C_BASE_ADDR);
+      iicCtrl = new IicCtrl(HDMI_I2C_BASE_ADDR,
+                            carrier_hdmi_out_config);
       xdMock = getXdriverMock();
       ON_CALL(*xdMock, Xil_In8(XIIC_SR_REG))
           .WillByDefault(Return(XIIC_FIFOS_EMPTY));
@@ -137,8 +139,8 @@ TEST_F(IicCtrlTest, writeBufferEndsWithBufferPtr) {
 
 TEST_F(IicCtrlTest, initHdmiCfgAll) {
   for (int i=0; i<CARRIER_HDMI_OUT_CONFIG_LEN; i++) {
-    EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0x39, _, 2, XIIC_STOP)).With(Args<2,3>(ElementsAre(IicCtrl::carrier_hdmi_out_config[i][1],
-                                                                                                                                 IicCtrl::carrier_hdmi_out_config[i][2])));
+    EXPECT_CALL(*xdMock, XIic_DynSend(HDMI_I2C_BASE_ADDR, 0x39, _, 2, XIIC_STOP)).With(Args<2,3>(ElementsAre(carrier_hdmi_out_config[i*3+1],
+                                                                                                             carrier_hdmi_out_config[i*3+2])));
   }
 
   iicCtrl->init();

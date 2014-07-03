@@ -13,11 +13,13 @@ class IicCtrl
 {
   private:
     const u32 m_HdmiI2cBaseAddr;
+    Xuint8 *  m_carrier_hdmi_out_config;
 
     bool iicReady(void);
 
   public:
-    IicCtrl(u32 HdmiI2cBaseAddr=0);
+    IicCtrl(u32 HdmiI2cBaseAddr,
+            Xuint8 * carrier_hdmi_out_config);
 
     virtual int init();
     virtual void carrierInit();

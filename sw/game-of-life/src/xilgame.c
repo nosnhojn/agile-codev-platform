@@ -2,6 +2,7 @@
 #include "Drawing.h"
 #include "DisplayXil.h"
 #include "platform.h"
+#include "CarrierConfig.h"
 
 #ifndef XPAR_ZED_HDMI_IIC_0_BASEADDR
   #define XPAR_ZED_HDMI_IIC_0_BASEADDR 0
@@ -18,16 +19,22 @@
 
 #define REFRESH_RATE 1_000_000
 
+DisplayXilCfg cfg;
+IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR,
+                carrier_hdmi_out_config);
+
 int main()
 {
   init_platform();
 
   Board board;
-  IicCtrl iicCtrl(XPAR_ZED_HDMI_IIC_0_BASEADDR);
-  DisplayXil display(&iicCtrl,
-                     XPAR_DDR_MEM_BASEADDR + 0x10000000,
-                     XPAR_ZED_HDMI_DISPLAY_V_TC_0_DEVICE_ID,
-                     XPAR_ZED_HDMI_DISPLAY_AXI_VDMA_0_DEVICE_ID);
+
+  cfg.iicCtrl = &iicCtrl;
+  cfg.hdmiDisplayMemBaseAddr = XPAR_DDR_MEM_BASEADDR + 0x10000000;
+  cfg.vtcId = XPAR_ZED_HDMI_DISPLAY_V_TC_0_DEVICE_ID;
+  cfg.vdmaId = XPAR_ZED_HDMI_DISPLAY_AXI_VDMA_0_DEVICE_ID;
+
+  DisplayXil display(&cfg);
   Drawing drawing(&board, &display);
  
   drawing.initialCell(20,20);

@@ -1,6 +1,8 @@
 #ifndef __XIL_IO_H__
 #define __XIL_IO_H__
 
+#include "xil_printf.h"
+
 u8 Xil_In8(u32 InAddress);
 u16 Xil_In16(u32 InAddress);
 u32 Xil_In32(u32 InAddress);

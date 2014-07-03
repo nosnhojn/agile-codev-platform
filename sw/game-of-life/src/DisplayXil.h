@@ -14,27 +14,32 @@ extern vres_timing_t vres_resolutions[1];
 
 using namespace std;
 
+struct DisplayXilCfg {
+    IicCtrl *         iicCtrl;
+
+    XAxiVdma          axiVdma;
+    XAxiVdma_DmaSetup axiVdmaCfg;
+    XVtc              vtc;
+
+    Xuint32           hdmiDisplayMemBaseAddr;
+    Xuint32           vtcId;
+    Xuint32           vdmaId;
+};
+
 class DisplayXil : public Display
 {
   private:
+    DisplayXilCfg * m_cfg;
+
     const Xuint32 m_width;
     const Xuint32 m_height;
-    int           m_resolution;
-    const Xuint32 m_HdmiVtcDeviceId;
-    const Xuint32 m_HdmiVdmaDeviceId;
-    Xuint32       m_HdmiDisplayMemBaseAddr;
-    
-    int           m_xvtcEnGenerator;
+    const int     m_resolution;
+    const int     m_xvtcEnGenerator;
+
     XVtc_Polarity m_polarity;
     XVtc_Signal   m_signal;
     XVtc_SourceSelect m_sourceSelect;
 
-    
-    XAxiVdma          m_axiVdma;
-    XAxiVdma_DmaSetup m_axiVdmaCfg;
-    IicCtrl *         m_iicCtrl;
-
-        
     char m_charGrid [256][256];
     Xuint32 m_gridWidth;
     Xuint32 m_gridHeight;
@@ -44,12 +49,11 @@ class DisplayXil : public Display
     void m_writeGridToFrameBuffer();
     void m_resetGrid();
 
+    void printAxiVdma();
+
   public:
     DisplayXil();
-    DisplayXil( IicCtrl * iicCtrl,
-                Xuint32 HDMI_DISPLAY_MEM_BASE_ADDR,
-                Xuint32 HDMI_VTC_DEVICE_ID,
-                Xuint32 HDMI_VDMA_DEVICE_ID);
+    DisplayXil( DisplayXilCfg * cfg );
 
     //--------------------------------------------
     // zed_hdmi_display.c : line 162-184, 190-208
@@ -113,12 +117,6 @@ class DisplayXil : public Display
     Xuint32 getWidth();
     Xuint32 getHeight();
     int     getResolution();
-    Xuint32 getHdmiVtcDeviceId();
-    Xuint32 getHdmiVdmaDeviceId();
-
-
-    Xuint32 setHdmiDisplayMemBaseAddr(Xuint32 addr);
-    Xuint32 getHdmiDisplayMemBaseAddr();
 
     XAxiVdma * getAxiVdma();
     XAxiVdma_DmaSetup * getAxiVdmaCfg();
