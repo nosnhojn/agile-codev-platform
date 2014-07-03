@@ -41,10 +41,36 @@ class DisplayLiveCellTest : public testing::Test
     }
 };
 
-TEST_F(DisplayLiveCellTest, livingCellShapeIsRectangle) {
+//-------------------------------------------------------
+// For a triangle, anything under the y = m * x + b line
+// should be Fg colour and everything above should be Bg
+// colour.
+//
+// For the full triangle... /\
+//
+// For the upslope...       /
+//   y > H - ((H/(W/2)) * x)
+//
+// For the downslope...      \
+//   y > (H/(W/2)) * x - 100
+//
+//-------------------------------------------------------
+TEST_F(DisplayLiveCellTest, livingCellShapeIsATriangle) {
+  Xuint32 exp;
   for (int x=0; x<50; x+=1) {
     for (int y=0; y<100; y+=1) {
-      EXPECT_EQ(display->getFgColour(), display->getLiveCellPixelWithCoords(x, 50, y, 100));
+      // upslope
+      if (x < 25) {
+        if (y > 100 - (4 * x)) exp = display->getFgColour();
+        else                   exp = display->getBgColour();
+      }
+
+      // downslope
+      else {
+        if (y > (4 * x) - 100) exp = display->getFgColour();
+        else                   exp = display->getBgColour();
+      }
+      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 50, y, 100));
     }
   }
 }

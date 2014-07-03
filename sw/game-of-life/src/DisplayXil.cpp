@@ -14,6 +14,22 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 {
 }
 
+//--------------------------------------------------------------------------
+// Default is to make triangles for live cells. You can change the shape to
+// be whatever you want... just be sure to go change the test first :)
+//--------------------------------------------------------------------------
+Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
+  if (x < width/2) {
+    if (y > height - (height/(width/2))*x) return getFgColour();
+    else                                   return getBgColour();
+  }
+
+  else {
+    if (y > (height/(width/2))*x - height) return getFgColour();
+    else                                   return getBgColour();
+  }
+}
+
 int DisplayXil::_initscr()
 {
   if (m_cfg->iicCtrl->init() == 0) return 0;
@@ -54,10 +70,6 @@ void DisplayXil::_refresh()
 {
   m_writeGridToFrameBuffer();
   m_resetGrid();
-}
-
-Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
-  return getFgColour();
 }
 
 Xuint32 DisplayXil::getFgColour() {
