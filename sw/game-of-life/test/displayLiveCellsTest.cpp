@@ -41,6 +41,15 @@ class DisplayLiveCellTest : public testing::Test
     }
 };
 
+
+TEST_F(DisplayLiveCellTest, getCellWidth) {
+  EXPECT_EQ(1920/13, display->getCellWidth(13));
+}
+
+TEST_F(DisplayLiveCellTest, getCellHeight) {
+  EXPECT_EQ(1080/17, display->getCellHeight(17));
+}
+
 TEST_F(DisplayLiveCellTest, getFgColourIsBlack) {
   EXPECT_EQ(0x000000, display->getFgColour());
 }
@@ -49,8 +58,12 @@ TEST_F(DisplayLiveCellTest, getBgColourIsWhite) {
   EXPECT_EQ(0xffffff, display->getBgColour());
 }
 
-TEST_F(DisplayLiveCellTest, getCellPixelAlwaysReturnsFgColourForRectangle) {
-  EXPECT_EQ(display->getFgColour(), display->getLiveCellPixelWithCoords(22,50000));
+TEST_F(DisplayLiveCellTest, livingCellShapeIsRectangle) {
+  for (int x=0; x<50; x+=1) {
+    for (int y=0; y<100; y+=1) {
+      EXPECT_EQ(display->getFgColour(), display->getLiveCellPixelWithCoords(x, 50, y, 100));
+    }
+  }
 }
 
 TEST_F(DisplayLiveCellTest, addBlankRowToGrid) {

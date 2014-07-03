@@ -85,7 +85,7 @@ class DisplayXil : public Display
     //     don't now what that's for
     //-----------------------------------------
     virtual void _refresh();
-    Xuint32 getLiveCellPixelWithCoords(Xuint32,Xuint32);
+    Xuint32 getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height);
     Xuint32 getCellXCoord(Xuint32,Xuint32);
     Xuint32 getCellYCoord(Xuint32,Xuint32);
     Xuint32 getFgColour(void);
@@ -113,6 +113,9 @@ class DisplayXil : public Display
     // Don't do anything with _move
     //------------------------------
     virtual void _move(int,int);
+
+    Xuint32 getCellHeight(Xuint32);
+    Xuint32 getCellWidth(Xuint32);
 
     Xuint32 getWidth();
     Xuint32 getHeight();
