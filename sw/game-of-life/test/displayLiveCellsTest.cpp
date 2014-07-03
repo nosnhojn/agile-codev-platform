@@ -20,13 +20,13 @@ class DisplayLiveCellTest : public testing::Test
   public:
     DisplayXilCfg cfg;
     DisplayXil * display;
-    Xuint8 * bungle;
     IicCtrlMock iicCtrl;
     Xuint32 HdmiDisplayMemory [1080*3] [1920];
 
     DisplayLiveCellTest()
     {
       cfg.hdmiDisplayMemBaseAddr = (Xuint32)HdmiDisplayMemory;
+      cfg.iicCtrl = &iicCtrl;
 
       display = new DisplayXil(&cfg);
 
@@ -40,23 +40,6 @@ class DisplayLiveCellTest : public testing::Test
     {
     }
 };
-
-
-TEST_F(DisplayLiveCellTest, getCellWidth) {
-  EXPECT_EQ(1920/13, display->getCellWidth(13));
-}
-
-TEST_F(DisplayLiveCellTest, getCellHeight) {
-  EXPECT_EQ(1080/17, display->getCellHeight(17));
-}
-
-TEST_F(DisplayLiveCellTest, getFgColourIsBlack) {
-  EXPECT_EQ(0x000000, display->getFgColour());
-}
-
-TEST_F(DisplayLiveCellTest, getBgColourIsWhite) {
-  EXPECT_EQ(0xffffff, display->getBgColour());
-}
 
 TEST_F(DisplayLiveCellTest, livingCellShapeIsRectangle) {
   for (int x=0; x<50; x+=1) {
@@ -80,8 +63,8 @@ TEST_F(DisplayLiveCellTest, addFullRowToGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
 }
 
 TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
@@ -94,8 +77,8 @@ TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
   EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10-1], display->getBgColour());
 
   // cell 1
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][(2*display->getWidth()/10)-1], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][(2*display->getWidth()/10)-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
 }
 
 TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
@@ -113,12 +96,12 @@ TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
   EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2-1][display->getWidth()-1], display->getBgColour());
 
   // top of row 1
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][display->getWidth()-1], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][0], display->getLiveCellPixelWithCoords(0, 108, 0, 910));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 910));
 
   // bottom of row 1
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][display->getWidth()-1], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][0], display->getLiveCellPixelWithCoords(0, 108, 909, 910));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 909, 910));
 }
 
 TEST_F(DisplayLiveCellTest, refreshResetGrid) {
@@ -130,8 +113,8 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getFgColour());
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getFgColour());
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {
@@ -140,4 +123,20 @@ TEST_F(DisplayLiveCellTest, getCellXCoord) {
 
 TEST_F(DisplayLiveCellTest, getCellYCoord) {
   EXPECT_EQ(8, display->getCellYCoord(62, 20));
+}
+
+TEST_F(DisplayLiveCellTest, getCellWidth) {
+  EXPECT_EQ(1920/13, display->getCellWidth(13));
+}
+
+TEST_F(DisplayLiveCellTest, getCellHeight) {
+  EXPECT_EQ(1080/17, display->getCellHeight(17));
+}
+
+TEST_F(DisplayLiveCellTest, getFgColourIsBlack) {
+  EXPECT_EQ(0x000000, display->getFgColour());
+}
+
+TEST_F(DisplayLiveCellTest, getBgColourIsWhite) {
+  EXPECT_EQ(0xffffff, display->getBgColour());
 }
