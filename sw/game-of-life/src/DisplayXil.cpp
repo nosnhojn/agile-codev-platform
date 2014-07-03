@@ -121,7 +121,7 @@ void DisplayXil::m_writeGridToFrameBuffer()
   for (int j=0; j<3; j+=1) {
     for (Xuint32 y=0; y<getHeight(); y++) {
       for (Xuint32 x=0; x<getWidth(); x++) {
-        if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellXCoord(y, m_gridHeight));
+        if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth), getCellYCoord(y, m_gridHeight));
         else  *mem++ = getBgColour();
       }
     }

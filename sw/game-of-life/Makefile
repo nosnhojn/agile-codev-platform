@@ -31,6 +31,7 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 				 ${OBJDIR}/cellTest.o \
 				 ${OBJDIR}/drawingTest.o \
 				 ${OBJDIR}/displayXilTest.o \
+				 ${OBJDIR}/displayLiveCellsTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
                                  ${OBJDIR}/xvtcMock.o \
                                  ${OBJDIR}/video_generator.o \
