@@ -18,16 +18,31 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // Default is to make triangles for live cells. You can change the shape to
 // be whatever you want... just be sure to go change the test first :)
 //--------------------------------------------------------------------------
-Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
-  if (x < width/2) {
-    if (y > height - (height/(width/2))*x) return getFgColour();
-    else                                   return getBgColour();
-  }
+inline Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
 
-  else {
-    if (y > (height/(width/2))*x - height) return getFgColour();
-    else                                   return getBgColour();
-  }
+//if (x < width/2) {
+//
+//    if (y > height - (height/(width/2))*x){
+////    	xil_printf("hello there..");
+////    	xil_printf("naaah");
+//    	return 0x000000;
+//    }
+//    else {
+//
+//    	return 0xffffff;
+//    }
+//
+//  }
+//
+//  else {
+//
+//    if (y > (height/(width/2))*x - height) return 0x000000;
+//    else                                   return 0xffffff;
+//  }
+//	xil_printf("end/ of it...");
+	if(x<width/2 && y > height - (height/(width/2))*x) return 0x0000ff;
+	else return 0x888888;
+//	return 0xff0000;
 }
 
 int DisplayXil::_initscr()
@@ -128,17 +143,18 @@ char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 
 void DisplayXil::m_writeGridToFrameBuffer()
 {
-  volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr;
-
+  Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr;
+  Xuint32 pixel;
   for (int j=0; j<3; j+=1) {
     for (Xuint32 y=0; y<getHeight(); y++) {
       for (Xuint32 x=0; x<getWidth(); x++) {
-        if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
-                                                                            getCellWidth(m_gridWidth),
-                                                                            getCellYCoord(y, m_gridHeight),
-                                                                            getCellHeight(m_gridHeight)
-                                                                           );
-        else  *mem++ = getBgColour();
+        if (m_charAtCoord(x, y) != ' ')              	pixel = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
+        			                                                                            13,
+        			                                                                            getCellYCoord(y, m_gridHeight),
+        			                                                                            15
+        			                                                                           );
+        else  pixel = 0x888888;
+        *mem++ = pixel;
       }
     }
   }
