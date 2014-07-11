@@ -9,6 +9,7 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_height(1080),
   m_gridHeight(0),
   m_gridWidth(0),
+  m_activeFrame(0),
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
@@ -128,22 +129,25 @@ char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 
 void DisplayXil::m_writeGridToFrameBuffer()
 {
-  volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr;
+  volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr + m_activeFrame * getHeight() * getWidth();
 
-  for (int j=0; j<3; j+=1) {
-    for (Xuint32 y=0; y<getHeight(); y++) {
-      for (Xuint32 x=0; x<getWidth(); x++) {
-        if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
-                                                                            getCellWidth(m_gridWidth),
-                                                                            getCellYCoord(y, m_gridHeight),
-                                                                            getCellHeight(m_gridHeight)
-                                                                           );
-        else  *mem++ = getBgColour();
-      }
+  for (Xuint32 y=0; y<getHeight(); y++) {
+    for (Xuint32 x=0; x<getWidth(); x++) {
+      if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
+                                                                          getCellWidth(m_gridWidth),
+                                                                          getCellYCoord(y, m_gridHeight),
+                                                                          getCellHeight(m_gridHeight)
+                                                                         );
+      else  *mem++ = getBgColour();
     }
   }
 
   Xil_DCacheFlush();
+
+  XAxiVdma_StartParking(&(m_cfg->axiVdma), m_activeFrame,  XAXIVDMA_READ);
+
+  m_activeFrame += 1;
+  if (m_activeFrame > 1) m_activeFrame = 0;
 }
 
 void DisplayXil::m_resetGrid()
