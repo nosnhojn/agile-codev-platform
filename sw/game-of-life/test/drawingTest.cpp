@@ -15,6 +15,7 @@ class DrawingTest : public testing::Test
     Drawing * drawing;
     string checkRow;
     string emptyRow;
+    Cell cell;
     DisplayMock display;
 
     ExpectationSet req;
@@ -124,39 +125,28 @@ TEST_F(DrawingTest, InitializeAllCells) {
 
 TEST_F(DrawingTest, PlayFirstBoardRefresh) {
   drawing->initialCell(0,0);
-  drawing->initialCell(0,1);
   drawing->initialCell(0,2);
+  drawing->initialCell(0,3);
+  drawing->initialCell(0,4);
+  drawing->initialCell(1,3);
+  drawing->initialCell(2,4);
+  drawing->initialCell(3,2);
+  drawing->initialCell(3,3);
+  drawing->initialCell(3,4);
 
   drawing->play(1);
 
-  EXPECT_TRUE(board.getState(1,1));
+  EXPECT_EQ(board.getState(1,0), cell.isAlive(1)); // 1 neighbour...
+  EXPECT_EQ(board.getState(1,1), cell.isAlive(2)); // 2 neighbours...
+  EXPECT_EQ(board.getState(1,2), cell.isAlive(3)); // etc...
+  EXPECT_EQ(board.getState(1,4), cell.isAlive(4)); // etc...
+  EXPECT_EQ(board.getState(2,3), cell.isAlive(5)); // etc
 }
 
 TEST_F(DrawingTest, ScreenCleared) {
   EXPECT_CALL(display, _clear()).Times(1);
 
   drawing->play(1);
-}
-
-TEST_F(DrawingTest, PlaySecondBoardRefresh) {
-  drawing->initialCell(0,0);
-  drawing->initialCell(0,1);
-  drawing->initialCell(0,2);
-  drawing->initialCell(0,3);
-  drawing->initialCell(0,4);
-
-  drawing->play(2);
-
-  EXPECT_FALSE(board.getState(0,0));
-  EXPECT_TRUE(board.getState(0,1));
-  EXPECT_FALSE(board.getState(0,2));
-  EXPECT_TRUE(board.getState(0,3));
-  EXPECT_FALSE(board.getState(0,4));
-  EXPECT_FALSE(board.getState(1,0));
-  EXPECT_TRUE(board.getState(1,1));
-  EXPECT_FALSE(board.getState(1,2));
-  EXPECT_TRUE(board.getState(1,3));
-  EXPECT_FALSE(board.getState(1,4));
 }
 
 TEST_F(DrawingTest, PlayDrawingRefresh) {
