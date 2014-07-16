@@ -15,7 +15,7 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 }
 
 //--------------------------------------------------------------------------
-// Default is to make triangles for live cells. You can change the shape to
+// sDefault is to make triangles for live cells. You can change the shape to
 // be whatever you want... just be sure to go change the test first :)
 //--------------------------------------------------------------------------
 inline Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
