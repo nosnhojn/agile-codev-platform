@@ -19,7 +19,7 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // be whatever you want... just be sure to go change the test first :)
 //--------------------------------------------------------------------------
 inline Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
-	if ((x>=width/2 && y > ((height/(width/2))*x - height))) return 0x0000ff;
+	if ((x>=width/2 && y > ((height/(width/2))*x - height))) return 0x000000;
 //	if (x<width/2 && y > (height - (height/(width/2))*x)) return 0x0000ff;
 	else return 0x999999;
 }
