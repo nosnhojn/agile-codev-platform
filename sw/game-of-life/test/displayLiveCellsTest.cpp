@@ -52,25 +52,25 @@ class DisplayLiveCellTest : public testing::Test
 //   y > H - ((H/(W/2)) * x)
 //
 // For the downslope...      \
-//   y > (H/(W/2)) * x - 100
+//   y > (H/(W/2)) * x - H
 //
 //-------------------------------------------------------
 TEST_F(DisplayLiveCellTest, livingCellShapeIsATriangle) {
   Xuint32 exp;
-  for (int x=0; x<50; x+=1) {
-    for (int y=0; y<100; y+=1) {
+  for (int x=0; x<20; x+=1) {
+    for (int y=0; y<20; y+=1) {
       // upslope
-      if (x < 25) {
-        if (y > 100 - (4 * x)) exp = display->getFgColour();
-        else                   exp = display->getBgColour();
+      if (x < 10) {
+        if (y > 20 - (2 * x)) exp = display->getFgColour();
+        else                  exp = display->getBgColour();
       }
 
       // downslope
       else {
-        if (y > (4 * x) - 100) exp = display->getFgColour();
-        else                   exp = display->getBgColour();
+        if (y > (2 * x) - 20) exp = display->getFgColour();
+        else                  exp = display->getBgColour();
       }
-      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 50, y, 100));
+      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 20, y, 20));
     }
   }
 }
