@@ -143,12 +143,6 @@ TEST_F(DrawingTest, PlayFirstBoardRefresh) {
   EXPECT_EQ(board.getState(2,3), cell.isAlive(5)); // etc
 }
 
-TEST_F(DrawingTest, ScreenCleared) {
-  EXPECT_CALL(display, _clear()).Times(1);
-
-  drawing->play(1);
-}
-
 TEST_F(DrawingTest, PlayDrawingRefresh) {
   EXPECT_CALL(display, _refresh()).Times(1);
 
