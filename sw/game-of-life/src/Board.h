@@ -12,8 +12,8 @@ using namespace std;
 class Board
 {
   public:
-    static const int ROW_SIZE = 50;
-    static const int COLUMN_SIZE = 100;
+    static const int ROW_SIZE = 54;
+    static const int COLUMN_SIZE = 96;
 
     bool getState(int,int);
     void setLivingCell(int,int);

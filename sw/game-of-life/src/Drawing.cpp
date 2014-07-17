@@ -48,7 +48,6 @@ void Drawing::play(int iterations)
     m_board->refreshBoard();
     refreshDrawing();
     usleep(REFRESH_RATE);
-    //m_display->_clear();
   }
 }
 

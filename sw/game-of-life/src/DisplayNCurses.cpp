@@ -23,6 +23,7 @@ void DisplayNCurses::_endwin()
 void DisplayNCurses::_refresh()
 {
   refresh();
+  clear();
 }
 
 void DisplayNCurses::_getch()

@@ -57,7 +57,7 @@ TEST_F(DrawingTest, ScreenRefreshed) {
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0) {
-  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(50);
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(54);
 
   drawing->refreshDrawing();
 }
@@ -66,7 +66,7 @@ TEST_F(DrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
   newLivingCell(0,0);
 
   req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
-  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(49).After(req);
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(53).After(req);
 
   drawing->refreshDrawing();
 }
@@ -77,7 +77,7 @@ TEST_F(DrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
   }
 
   req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
-  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(49).After(req);
+  EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(53).After(req);
 
   drawing->refreshDrawing();
 }
@@ -88,7 +88,7 @@ TEST_F(DrawingTest, ScreenStartsUnInitialized) {
 
 TEST_F(DrawingTest, ScreenWaitForPromptAtPos) {
   req = EXPECT_CALL(display, _initscr()).Times(1);
-  EXPECT_CALL(display, _move(50,0)).Times(1).After(req);
+  EXPECT_CALL(display, _move(54,0)).Times(1).After(req);
 
   drawing->init();
 }
