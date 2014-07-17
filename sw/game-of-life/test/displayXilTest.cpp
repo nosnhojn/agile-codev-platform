@@ -43,8 +43,8 @@ class DisplayXilTest : public testing::Test
 
       display = new DisplayXil(&cfg);
 
-      for (int i=0; i<1080; i++)
-        for (int j=0; j<1920; j++)
+      for (int i=0; i<height(); i++)
+        for (int j=0; j<width(); j++)
           HdmiDisplayMemory [i] [j] = 0x44883311;
 
       xdMock = getXdriverMock();   
@@ -82,6 +82,9 @@ class DisplayXilTest : public testing::Test
     XVtc_Polarity * xvtcPolarity() { return display->getXvtcPolarity(); }
     XVtc_Signal * xvtcSignal() { return display->getXvtcSignal(); }
     XVtc_SourceSelect * xvtcSourceSelect() { return display->getXvtcSourceSelect(); }
+
+    int width() { return display->getWidth(); }
+    int height() { return display->getHeight(); }
 };
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -109,8 +112,8 @@ TEST_F(DisplayXilTest, clearBufferToWhite0) {
 TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
   display->_clear();
 
-  for (int i=0; i<1080; i++) {
-    for (int j=0; j<1920; j++) {
+  for (int i=0; i<height(); i++) {
+    for (int j=0; j<width(); j++) {
       EXPECT_EQ(HdmiDisplayMemory[i][j], display->getBgColour());
     }
   }
@@ -163,9 +166,9 @@ TEST_F(DisplayXilTest, vfbDmaConfigCanFailAndExit) {
 TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
   display->_initscr();
 
-  EXPECT_EQ(vdmaCfg()->VertSizeInput, display->getHeight());
-  EXPECT_EQ(vdmaCfg()->HoriSizeInput, display->getWidth()<<2);
-  EXPECT_EQ(vdmaCfg()->Stride, display->getWidth()<<2);
+  EXPECT_EQ(vdmaCfg()->VertSizeInput, height());
+  EXPECT_EQ(vdmaCfg()->HoriSizeInput, width()<<2);
+  EXPECT_EQ(vdmaCfg()->Stride, width()<<2);
   EXPECT_EQ(vdmaCfg()->FrameDelay, 0);
   EXPECT_EQ(vdmaCfg()->EnableCircularBuf, 1);
   EXPECT_EQ(vdmaCfg()->EnableSync, 1);
@@ -290,7 +293,7 @@ TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionH
           Pointee(AllOf(
               Field(&XVtc_Signal::OriginMode, Eq(1)),
               Field(&XVtc_Signal::HTotal, Eq(2200)),
-              Field(&XVtc_Signal::HFrontPorchStart, Eq(1920)),
+              Field(&XVtc_Signal::HFrontPorchStart, Eq(width())),
               Field(&XVtc_Signal::HSyncStart, Eq(2008)),
               Field(&XVtc_Signal::HBackPorchStart, Eq(2052)),
               Field(&XVtc_Signal::HActiveStart, Eq(0))
@@ -360,11 +363,113 @@ TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersHorizontal) {
 }
 
 TEST_F(DisplayXilTest, getConstants) {
-  EXPECT_EQ(display->getWidth(), 1920);
-  EXPECT_EQ(display->getHeight(), 1080);
+  EXPECT_EQ(width(), 1920);
+  EXPECT_EQ(height(), 1080);
   EXPECT_EQ(display->getResolution(), VIDEO_RESOLUTION_1080P);
   EXPECT_EQ(cfg.vtcId, 1);
   EXPECT_EQ(cfg.vdmaId, 2);
+}
+
+TEST_F(DisplayXilTest, refreshParksOnFirstFrame) {
+  EXPECT_CALL(*xdMock, XAxiVdma_StartParking(vdma(), 0, XAXIVDMA_READ)).Times(1);
+
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+}
+
+TEST_F(DisplayXilTest, refreshDMAsFirstFrame) {
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
+    }
+  }
+}
+
+TEST_F(DisplayXilTest, refreshDMAsOnlyFirstFrame) {
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  for (int j=0; j<width(); j++) {
+    for (int i=height(); i<2*height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getBgColour());
+    }
+  }
+}
+
+TEST_F(DisplayXilTest, refreshParksOnSecondFrame) {
+  EXPECT_CALL(*xdMock, XAxiVdma_StartParking(vdma(), 0, XAXIVDMA_READ)).Times(1);
+  EXPECT_CALL(*xdMock, XAxiVdma_StartParking(vdma(), 1, XAXIVDMA_READ)).Times(1);
+
+  for (int i=0; i<2; i+=1) {
+    display->_addstr(FULL_ROW_OF_10);
+    display->_refresh();
+  }
+}
+
+TEST_F(DisplayXilTest, refreshDMAsSecondFrame) {
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
+    }
+  }
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i+height()][j], display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
+    }
+  }
+}
+
+TEST_F(DisplayXilTest, refreshDMAsThirdFrame) {
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_refresh();
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getBgColour());
+    }
+  }
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i+height()][j], display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
+    }
+  }
+}
+
+TEST_F(DisplayXilTest, refreshDMAsFourthFrame) {
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(FULL_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_refresh();
+
+  display->_addstr(BLANK_ROW_OF_10);
+  display->_refresh();
+
+  for (int j=0; j<width(); j++) {
+    for (int i=0; i<1*height(); i++) {
+      EXPECT_EQ(HdmiDisplayMemory[i][j], display->getBgColour());
+    }
+  }
 }
 
 TEST_F(DisplayXilTest, refreshWaitsForDCacheFlush) {

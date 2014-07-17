@@ -89,8 +89,8 @@ TEST_F(DisplayLiveCellTest, addFullRowToGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
@@ -103,8 +103,8 @@ TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
   EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10-1], display->getBgColour());
 
   // cell 1
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
-  EXPECT_EQ(HdmiDisplayMemory[0][(2*display->getWidth()/10)-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()/10], display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
+  EXPECT_EQ(HdmiDisplayMemory[0][(2*display->getWidth()/10)-1], display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
@@ -122,12 +122,12 @@ TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
   EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2-1][display->getWidth()-1], display->getBgColour());
 
   // top of row 1
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][0], display->getLiveCellPixelWithCoords(0, 108, 0, 910));
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 910));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][0], display->getLiveCellPixelWithCoords(0, 192, 0, 540));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()/2][display->getWidth()-1], display->getLiveCellPixelWithCoords(0, 192, 539, 540));
 
   // bottom of row 1
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][0], display->getLiveCellPixelWithCoords(0, 108, 909, 910));
-  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 909, 910));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][0], display->getLiveCellPixelWithCoords(191, 192, 0, 540));
+  EXPECT_EQ(HdmiDisplayMemory[display->getHeight()-1][display->getWidth()-1], display->getLiveCellPixelWithCoords(191, 192, 539, 540));
 }
 
 TEST_F(DisplayLiveCellTest, refreshResetGrid) {
@@ -139,8 +139,8 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 108, 0, 1920));
-  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(107, 108, 0, 1920));
+  EXPECT_EQ(HdmiDisplayMemory[0][0], display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
+  EXPECT_EQ(HdmiDisplayMemory[0][display->getWidth()-1], display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {
