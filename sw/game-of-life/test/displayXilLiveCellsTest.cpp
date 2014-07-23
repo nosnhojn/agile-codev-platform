@@ -12,6 +12,7 @@ class DisplayLiveCellTest : public DisplayXilTest
     DisplayLiveCellTest() : DisplayXilTest() {}
 };
 
+
 TEST_F(DisplayLiveCellTest, livingCellShapeIsASquare) {
   Xuint32 exp;
   for (int x=0; x<20; x+=1) {
@@ -24,10 +25,11 @@ TEST_F(DisplayLiveCellTest, livingCellShapeIsASquare) {
       else
         exp = display->getBgColour();
 
-      EXPECT_EQ(exp, expectedPixelAt(x, 20, y, 20));
+      EXPECT_EQ(expectedPixelAt(x, y), exp);
     }
   }
 }
+
 //-------------------------------------------------------
 // For a triangle, anything under the y = m * x + b line
 // should be Fg colour and everything above should be Bg
@@ -58,77 +60,60 @@ TEST_F(DisplayLiveCellTest, DISABLED_livingCellShapeIsATriangle) {
         if (y > (2 * x) - 20) exp = display->getFgColour();
         else                  exp = display->getBgColour();
       }
-      EXPECT_EQ(exp, expectedPixelAt(x, 20, y, 20));
+      EXPECT_EQ(exp, expectedPixelAt(x, y));
     }
   }
 }
 
 TEST_F(DisplayLiveCellTest, addBlankRowToGrid) {
-  display->_initscr();
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_refresh();
+  initDisplay();
+  loadEmptyGrid();
 
   EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
   EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getBgColour());
 }
 
 TEST_F(DisplayLiveCellTest, addFullRowToGrid) {
-  display->_initscr();
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
+  initDisplay();
+  loadFullGrid();
 
-  EXPECT_EQ(pixelAt(0, 0), expectedPixelAt(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, 192, 1079, 1080));
+  EXPECT_EQ(pixelAt(0, 0), expectedPixelAt(0, 0));
+  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, display->getWidth()-1));
 }
 
-TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
-  display->_initscr();
-  display->_addstr(ALTERNATE_ROW_OF_10);
-  display->_refresh();
+TEST_F(DisplayLiveCellTest, cellWidthIs20Pixels) {
+  initDisplay();
+  loadAlternatingVerticalGrid();
 
-  // cell 0
-  EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
-  EXPECT_EQ(pixelAt(0, display->getWidth()/10-1), display->getBgColour());
+  // empty cell 0,0
+  EXPECT_EQ(pixelAt(0, 0),  display->getBgColour());
+  EXPECT_EQ(pixelAt(0, 19), display->getBgColour());
 
-  // cell 1
-  EXPECT_EQ(pixelAt(0, display->getWidth()/10), expectedPixelAt(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, (2*display->getWidth()/10)-1), expectedPixelAt(0, 192, 1079, 1080));
+  // full cell 0,1
+  EXPECT_EQ(pixelAt(0, 20), expectedPixelAt(0, 0));
+  EXPECT_EQ(pixelAt(0, 39), expectedPixelAt(0, 19));
 }
 
-TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
-  display->_initscr();
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
+TEST_F(DisplayLiveCellTest, cellHeightIs20Pixels) {
+  initDisplay();
+  loadAlternatingHorizontalGrid();
 
-  // top of row 0
-  EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getBgColour());
+  // cell 0,0
+  EXPECT_EQ(pixelAt(0, 0),  display->getBgColour());
+  EXPECT_EQ(pixelAt(19, 0), display->getBgColour());
 
-  // bottom of row 0
-  EXPECT_EQ(pixelAt(display->getHeight()/2-1, 0), display->getBgColour());
-  EXPECT_EQ(pixelAt(display->getHeight()/2-1, display->getWidth()-1), display->getBgColour());
-
-  // top of row 1
-  EXPECT_EQ(pixelAt(display->getHeight()/2, 0), expectedPixelAt(0, 192, 0, 540));
-  EXPECT_EQ(pixelAt(display->getHeight()/2, display->getWidth()-1), expectedPixelAt(0, 192, 539, 540));
-
-  // bottom of row 1
-  EXPECT_EQ(pixelAt(display->getHeight()-1, 0), expectedPixelAt(191, 192, 0, 540));
-  EXPECT_EQ(pixelAt(display->getHeight()-1, display->getWidth()-1), expectedPixelAt(191, 192, 539, 540));
+  // cell 1,0
+  EXPECT_EQ(pixelAt(20, 0), expectedPixelAt(0, 0));
+  EXPECT_EQ(pixelAt(39, 0), expectedPixelAt(19, 0));
 }
 
 TEST_F(DisplayLiveCellTest, refreshResetGrid) {
-  display->_initscr();
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_refresh();
- 
-  display->_initscr();
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
+  initDisplay();
+  loadFullGrid();
+  loadEmptyGrid();
 
-  EXPECT_EQ(pixelAt(0, 0),                     expectedPixelAt(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, 192, 1079, 1080));
+  EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
+  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getBgColour());
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {

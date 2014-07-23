@@ -9,17 +9,17 @@ using namespace testing;
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
   EXPECT_CALL(iicCtrl, init()).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, initScreenPasses) {
-  EXPECT_EQ(display->_initscr(), 1);
+  EXPECT_EQ(initDisplay(), 1);
 }
 
 TEST_F(DisplayXilTest, initScreenFails) {
   EXPECT_CALL(iicCtrl, init()).WillOnce(Return(0));
   
-  EXPECT_EQ(display->_initscr(), 0);
+  EXPECT_EQ(initDisplay(), 0);
 }
 
 TEST_F(DisplayXilTest, clearBufferToWhite0) {
@@ -39,7 +39,7 @@ TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
 }
 
 TEST_F(DisplayXilTest, initDoesClear) {
-  display->_initscr();
+  initDisplay();
 
   EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
 }
@@ -47,7 +47,7 @@ TEST_F(DisplayXilTest, initDoesClear) {
 TEST_F(DisplayXilTest, initCallsVfbLookupConfig) {
   EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(cfg.vdmaId)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
@@ -55,35 +55,35 @@ TEST_F(DisplayXilTest, vfbLookupConfigCanFailAndExit) {
 
   EXPECT_CALL(*xdMock, XAxiVdma_LookupConfig(_)).WillOnce(Return(Config));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, initCallsVfbCfgInitialize) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(vdma(),&defaultConfig,Xuint32(vdmaConfigSpace))).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vfbCfgInitializeCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_CfgInitialize(_,_,_)).WillOnce(Return(XST_FAILURE));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, initCallsDmaConfig) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(vdma(), XAXIVDMA_READ, vdmaCfg())).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vfbDmaConfigCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaConfig(_,_,_)).WillOnce(Return(XST_FAILURE));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
-  display->_initscr();
+  initDisplay();
 
   EXPECT_EQ(vdmaCfg()->VertSizeInput, height());
   EXPECT_EQ(vdmaCfg()->HoriSizeInput, width()<<2);
@@ -97,7 +97,7 @@ TEST_F(DisplayXilTest, dmaCfgParametersSetOnInit) {
 }
 
 TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
-  display->_initscr();
+  initDisplay();
 
   EXPECT_EQ(vdmaCfg()->FrameStoreStartAddr[0], cfg.hdmiDisplayMemBaseAddr);
 }
@@ -105,82 +105,82 @@ TEST_F(DisplayXilTest, dmaCfgFrameAddrSetOnInit) {
 TEST_F(DisplayXilTest, initCallsDmaSetBufferAddr) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(vdma(), XAXIVDMA_READ, vdmaCfg()->FrameStoreStartAddr)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, initCallsDmaStart) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, dmaStartCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaStart(vdma(), XAXIVDMA_READ)).WillOnce(Return(XST_FAILURE));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, vfbDmaSetBufferAddrCanFailAndExit) {
   EXPECT_CALL(*xdMock, XAxiVdma_DmaSetBufferAddr(_, _, _)).WillOnce(Return(XST_FAILURE));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfig) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vtcLookupConfigCanFailAndExit) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(_)).WillOnce(Return((XVtc_Config *) 0));
 
-  EXPECT_FALSE(display->_initscr());
+  EXPECT_FALSE(initDisplay());
 }
 
 TEST_F(DisplayXilTest, initCallsVtcLookupConfigWithRightParameters) {
   EXPECT_CALL(*xvMock, XVtc_LookupConfig(cfg.vtcId)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, initCallsVtcCfgInitialize) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vtcCfgInitializeCanFailAndExit) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_,_,_)).WillOnce(Return(0));
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vtcCfgInitializeWithRightParameters) {
   EXPECT_CALL(*xvMock, XVtc_CfgInitialize(_, &vtcDefaultConfig, 0x70000000)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, vgenConfigCallsXvtcDisable) { 
   EXPECT_CALL(*xvMock, XVtc_Disable(_,_)).Times(1);
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, xvtcDisableWithRightParameters) {
   EXPECT_CALL(*xvMock, XVtc_Disable(_,display->getXvtcEnableGenerator())).Times(1);
-  display->_initscr();
+  initDisplay();
 }
 
 //FIXME: Test removed due to funcion-like macros not working with gTest at this point.
 //TEST_F(DisplayXilTest, vgenConfigCallsXvtcReset) { 
  // EXPECT_CALL(*xvMock, XVtc_Reset(_)).Times(1);
-  //display->_initscr();
+  //initDisplay();
 //}
 
 TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetPolarity) {
   EXPECT_CALL(*xvMock, XVtc_SetPolarity(_,_)).Times(1);
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
@@ -196,13 +196,13 @@ TEST_F(DisplayXilTest, xvtcSetPolarityWithRightParameters) {
           ))
   ));
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetGenerator) {
   EXPECT_CALL(*xvMock, XVtc_SetGenerator(_,_)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionHorizontal) {
@@ -217,7 +217,7 @@ TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionH
           ))
   ));
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionVertical) {
@@ -233,14 +233,14 @@ TEST_F(DisplayXilTest, XvtcSetGeneratorWithRightParametersForSingleHDResolutionV
           ))
   ));
 
-  display->_initscr();
+  initDisplay();
 }
 
 
 TEST_F(DisplayXilTest, xvgenConfigCallsXvtcSetSource) {
   EXPECT_CALL(*xvMock, XVtc_SetSource(_,_)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersActiveAndVertical) {
@@ -260,7 +260,7 @@ TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersActiveAndVertical) {
           ))
   ));
 
-  display->_initscr(); 
+  initDisplay(); 
 }
 
 TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersHorizontal) {
@@ -276,7 +276,7 @@ TEST_F(DisplayXilTest, XvtcSetSourceWithRightParametersHorizontal) {
           ))
   ));
 
-  display->_initscr(); 
+  initDisplay(); 
 }
 
 TEST_F(DisplayXilTest, getConstants) {
@@ -290,11 +290,11 @@ TEST_F(DisplayXilTest, getConstants) {
 TEST_F(DisplayXilTest, refreshParksOnFirstFrame) {
   EXPECT_CALL(*xdMock, XAxiVdma_StartParking(vdma(), 0, XAXIVDMA_READ)).Times(1);
 
-  display->_initscr();
+  initDisplay();
 }
 
 TEST_F(DisplayXilTest, refreshDMAsFirstFrame) {
-  display->_initscr();
+  initDisplay();
 
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
@@ -307,7 +307,7 @@ TEST_F(DisplayXilTest, refreshDMAsFirstFrame) {
 }
 
 TEST_F(DisplayXilTest, refreshDMAsSecondFrame) {
-  display->_initscr();
+  initDisplay();
 
   display->_addstr(BLANK_ROW_OF_10);
   display->_refresh();
@@ -323,7 +323,7 @@ TEST_F(DisplayXilTest, refreshDMAsSecondFrame) {
 }
 
 TEST_F(DisplayXilTest, refreshDMAsThirdFrame) {
-  display->_initscr();
+  initDisplay();
 
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
@@ -344,7 +344,7 @@ TEST_F(DisplayXilTest, refreshDMAsThirdFrame) {
 TEST_F(DisplayXilTest, refreshWaitsForDCacheFlush) {
   EXPECT_CALL(*xdMock, Xil_DCacheFlush()).Times(1);
 
-  display->_initscr();
+  initDisplay();
   display->_addstr(BLANK_ROW_OF_10);
   display->_refresh();
 }

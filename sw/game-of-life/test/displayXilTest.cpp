@@ -84,7 +84,39 @@ Xuint32 DisplayXilTest::pixelAt(int row, int column)
   return *(HdmiDisplayMemory + row*1920 + column);
 }
 
-Xuint32 DisplayXilTest::expectedPixelAt(int row, int rowSize, int column, int columnSize)
+Xuint32 DisplayXilTest::expectedPixelAt(int row,int column)
 {
-  return display->getLiveCellPixelWithCoords(row, rowSize, column, columnSize);
+  return display->getLiveCellPixelWithCoords(row, 20, column, 20);
+}
+
+void DisplayXilTest::loadFullGrid()
+{
+  for (int r=0; r<Board::ROW_SIZE; r+=1) display->_addstr(FULL_ROW);
+  display->_refresh();
+}
+
+void DisplayXilTest::loadEmptyGrid()
+{
+  for (int r=0; r<Board::ROW_SIZE; r+=1) display->_addstr(EMPTY_ROW);
+  display->_refresh();
+}
+
+void DisplayXilTest::loadAlternatingVerticalGrid()
+{
+  for (int r=0; r<Board::ROW_SIZE; r+=1) display->_addstr(ALTERNATING_ROW);
+  display->_refresh();
+}
+
+void DisplayXilTest::loadAlternatingHorizontalGrid()
+{
+  for (int r=0; r<Board::ROW_SIZE/2; r+=1) {
+    display->_addstr(FULL_ROW);
+    display->_addstr(EMPTY_ROW);
+  }
+  display->_refresh();
+}
+
+int DisplayXilTest::initDisplay()
+{
+  return display->_initscr();
 }

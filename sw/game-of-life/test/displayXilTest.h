@@ -6,6 +6,11 @@
 #include "xdriverMock.h"
 #include "xvtcMock.h"
 #include "testDefs.h"
+#include "Board.h"
+
+#define FULL_ROW        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+#define EMPTY_ROW       "                                                                                                "
+#define ALTERNATING_ROW " X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X"
 
 class DisplayXilTest : public testing::Test
 {
@@ -37,5 +42,11 @@ class DisplayXilTest : public testing::Test
     int height();
 
     Xuint32 pixelAt(int row, int column);
-    Xuint32 expectedPixelAt(int row, int rowSize, int column, int columnSize);
+    Xuint32 expectedPixelAt(int row, int column);
+
+    int initDisplay();
+    void loadFullGrid();
+    void loadEmptyGrid();
+    void loadAlternatingVerticalGrid();
+    void loadAlternatingHorizontalGrid();
 };
