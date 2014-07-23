@@ -19,11 +19,11 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // change the shape to be whatever you want... just be sure to go change
 // the test first :)
 //---------------------------------------------------------------------------
-Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
+Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
   if (x >= 5 &&
-      x <= width-5 &&
+      x <= 20-5 &&
       y >= 5 &&
-      y <= height-5)
+      y <= 20-5)
   {
     return getFgColour();
   }
@@ -150,9 +150,7 @@ void DisplayXil::m_writeGridToFrameBuffer()
   for (Xuint32 y=0; y<getHeight(); y++) {
     for (Xuint32 x=0; x<getWidth(); x++) {
       if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
-                                                                          getCellWidth(m_gridWidth),
-                                                                          getCellYCoord(y, m_gridHeight),
-                                                                          getCellHeight(m_gridHeight)
+                                                                          getCellYCoord(y, m_gridHeight)
                                                                          );
       else  *mem++ = getBgColour();
     }

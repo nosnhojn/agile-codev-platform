@@ -86,7 +86,7 @@ Xuint32 DisplayXilTest::pixelAt(int row, int column)
 
 Xuint32 DisplayXilTest::expectedPixelAt(int row,int column)
 {
-  return display->getLiveCellPixelWithCoords(row, 20, column, 20);
+  return display->getLiveCellPixelWithCoords(row, column);
 }
 
 void DisplayXilTest::loadFullGrid()
