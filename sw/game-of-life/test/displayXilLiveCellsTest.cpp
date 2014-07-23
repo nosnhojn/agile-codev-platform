@@ -24,7 +24,7 @@ TEST_F(DisplayLiveCellTest, livingCellShapeIsASquare) {
       else
         exp = display->getBgColour();
 
-      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 20, y, 20));
+      EXPECT_EQ(exp, expectedPixelAt(x, 20, y, 20));
     }
   }
 }
@@ -58,7 +58,7 @@ TEST_F(DisplayLiveCellTest, DISABLED_livingCellShapeIsATriangle) {
         if (y > (2 * x) - 20) exp = display->getFgColour();
         else                  exp = display->getBgColour();
       }
-      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 20, y, 20));
+      EXPECT_EQ(exp, expectedPixelAt(x, 20, y, 20));
     }
   }
 }
@@ -77,8 +77,8 @@ TEST_F(DisplayLiveCellTest, addFullRowToGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(pixelAt(0, 0), display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
+  EXPECT_EQ(pixelAt(0, 0), expectedPixelAt(0, 192, 0, 1080));
+  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
@@ -91,8 +91,8 @@ TEST_F(DisplayLiveCellTest, cellWidthIsGetWidthByNumColumns) {
   EXPECT_EQ(pixelAt(0, display->getWidth()/10-1), display->getBgColour());
 
   // cell 1
-  EXPECT_EQ(pixelAt(0, display->getWidth()/10), display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, (2*display->getWidth()/10)-1), display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
+  EXPECT_EQ(pixelAt(0, display->getWidth()/10), expectedPixelAt(0, 192, 0, 1080));
+  EXPECT_EQ(pixelAt(0, (2*display->getWidth()/10)-1), expectedPixelAt(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
@@ -110,12 +110,12 @@ TEST_F(DisplayLiveCellTest, cellHeightIsGetHeightByNumRows) {
   EXPECT_EQ(pixelAt(display->getHeight()/2-1, display->getWidth()-1), display->getBgColour());
 
   // top of row 1
-  EXPECT_EQ(pixelAt(display->getHeight()/2, 0), display->getLiveCellPixelWithCoords(0, 192, 0, 540));
-  EXPECT_EQ(pixelAt(display->getHeight()/2, display->getWidth()-1), display->getLiveCellPixelWithCoords(0, 192, 539, 540));
+  EXPECT_EQ(pixelAt(display->getHeight()/2, 0), expectedPixelAt(0, 192, 0, 540));
+  EXPECT_EQ(pixelAt(display->getHeight()/2, display->getWidth()-1), expectedPixelAt(0, 192, 539, 540));
 
   // bottom of row 1
-  EXPECT_EQ(pixelAt(display->getHeight()-1, 0), display->getLiveCellPixelWithCoords(191, 192, 0, 540));
-  EXPECT_EQ(pixelAt(display->getHeight()-1, display->getWidth()-1), display->getLiveCellPixelWithCoords(191, 192, 539, 540));
+  EXPECT_EQ(pixelAt(display->getHeight()-1, 0), expectedPixelAt(191, 192, 0, 540));
+  EXPECT_EQ(pixelAt(display->getHeight()-1, display->getWidth()-1), expectedPixelAt(191, 192, 539, 540));
 }
 
 TEST_F(DisplayLiveCellTest, refreshResetGrid) {
@@ -127,8 +127,8 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
   display->_addstr(FULL_ROW_OF_10);
   display->_refresh();
 
-  EXPECT_EQ(pixelAt(0, 0),                     display->getLiveCellPixelWithCoords(0, 192, 0, 1080));
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getLiveCellPixelWithCoords(0, 192, 1079, 1080));
+  EXPECT_EQ(pixelAt(0, 0),                     expectedPixelAt(0, 192, 0, 1080));
+  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, 192, 1079, 1080));
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {

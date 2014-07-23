@@ -37,4 +37,5 @@ class DisplayXilTest : public testing::Test
     int height();
 
     Xuint32 pixelAt(int row, int column);
+    Xuint32 expectedPixelAt(int row, int rowSize, int column, int columnSize);
 };

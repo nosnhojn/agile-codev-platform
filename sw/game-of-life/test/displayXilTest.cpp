@@ -77,8 +77,14 @@ int DisplayXilTest::height()
   return display->getHeight();
 }
 
-Xuint32 DisplayXilTest::pixelAt(int row, int column) {
+Xuint32 DisplayXilTest::pixelAt(int row, int column)
+{
   Xuint32 * HdmiDisplayMemory = (Xuint32 *)HdmiDisplayByteMemory;
 
   return *(HdmiDisplayMemory + row*1920 + column);
+}
+
+Xuint32 DisplayXilTest::expectedPixelAt(int row, int rowSize, int column, int columnSize)
+{
+  return display->getLiveCellPixelWithCoords(row, rowSize, column, columnSize);
 }

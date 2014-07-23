@@ -30,6 +30,7 @@ TESTOBJS=                        ${OBJDIR}/Cell.o \
 				 ${OBJDIR}/boardTest.o \
 				 ${OBJDIR}/cellTest.o \
 				 ${OBJDIR}/drawingTest.o \
+				 ${OBJDIR}/displayXilTest.o \
 				 ${OBJDIR}/displayXilMainTest.o \
 				 ${OBJDIR}/displayXilLiveCellsTest.o \
 				 ${OBJDIR}/iicCtrlTest.o \
