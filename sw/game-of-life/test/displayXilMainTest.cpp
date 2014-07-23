@@ -1,9 +1,5 @@
 #include "displayXilTest.h"
 
-#define BLANK_ROW_OF_10     "          "
-#define FULL_ROW_OF_10      "XXXXXXXXXX"
-#define ALTERNATE_ROW_OF_10 " X X X X X"
-
 using namespace testing;
 
 TEST_F(DisplayXilTest, initScreenInitializesIic) {
@@ -293,50 +289,25 @@ TEST_F(DisplayXilTest, refreshParksOnFirstFrame) {
   initDisplay();
 }
 
-TEST_F(DisplayXilTest, refreshDMAsFirstFrame) {
+TEST_F(DisplayXilTest, refreshDMAsInitialFrame) {
   initDisplay();
-
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
+  loadFullGrid();
 
   for (int i=0; i<height(); i++) {
     for (int j=0; j<width(); j++) {
-      EXPECT_EQ(pixelAt(i, j), display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
+      EXPECT_EQ(pixelAt(i, j), expectedPixelAt(i%20, j%20));
     }
   }
 }
 
-TEST_F(DisplayXilTest, refreshDMAsSecondFrame) {
+TEST_F(DisplayXilTest, refreshDMAsAnotherFrame) {
   initDisplay();
-
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_refresh();
-
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
+  loadEmptyGrid();
+  loadFullGrid();
 
   for (int i=0; i<height(); i++) {
     for (int j=0; j<width(); j++) {
-      EXPECT_EQ(pixelAt(i, j), display->getLiveCellPixelWithCoords(j%(width()/10), width()/10, i, height()));
-    }
-  }
-}
-
-TEST_F(DisplayXilTest, refreshDMAsThirdFrame) {
-  initDisplay();
-
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
-
-  display->_addstr(FULL_ROW_OF_10);
-  display->_refresh();
-
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_refresh();
-
-  for (int j=0; j<width(); j++) {
-    for (int i=0; i<height(); i++) {
-      EXPECT_EQ(pixelAt(i, j), display->getBgColour());
+      EXPECT_EQ(pixelAt(i, j), expectedPixelAt(i%20, j%20));
     }
   }
 }
@@ -345,6 +316,5 @@ TEST_F(DisplayXilTest, refreshWaitsForDCacheFlush) {
   EXPECT_CALL(*xdMock, Xil_DCacheFlush()).Times(1);
 
   initDisplay();
-  display->_addstr(BLANK_ROW_OF_10);
-  display->_refresh();
+  loadFullGrid();
 }
