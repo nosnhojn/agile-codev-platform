@@ -117,19 +117,19 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {
-  EXPECT_EQ(10, display->getCellXCoord(394, 20));
+  EXPECT_EQ(14, display->getCellXCoord(394));
 }
 
 TEST_F(DisplayLiveCellTest, getCellYCoord) {
-  EXPECT_EQ(8, display->getCellYCoord(62, 20));
+  EXPECT_EQ(2, display->getCellYCoord(62));
 }
 
 TEST_F(DisplayLiveCellTest, getCellWidth) {
-  EXPECT_EQ(1920/13, display->getCellWidth(13));
+  EXPECT_EQ(20, display->getCellWidth());
 }
 
 TEST_F(DisplayLiveCellTest, getCellHeight) {
-  EXPECT_EQ(1080/17, display->getCellHeight(17));
+  EXPECT_EQ(20, display->getCellHeight());
 }
 
 TEST_F(DisplayLiveCellTest, getFgColourIsBlack) {

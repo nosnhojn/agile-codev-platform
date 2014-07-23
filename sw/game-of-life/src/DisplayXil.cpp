@@ -7,8 +7,9 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_cfg(cfg),
   m_width(1920),
   m_height(1080),
-  m_gridHeight(0),
-  m_gridWidth(0),
+  m_gridPtr(0),
+  m_gridHeight(54),
+  m_gridWidth(96),
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
@@ -21,9 +22,9 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 //---------------------------------------------------------------------------
 Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
   if (x >= 5 &&
-      x <= 20-5 &&
+      x <= getCellWidth()-5 &&
       y >= 5 &&
-      y <= 20-5)
+      y <= getCellHeight()-5)
   {
     return getFgColour();
   }
@@ -104,9 +105,8 @@ void DisplayXil::_getch()
 
 void DisplayXil::_addstr(const char * str)
 {
-  m_gridWidth = strlen(str);
-  strcpy(m_charGrid[m_gridHeight], str);
-  m_gridHeight++;
+  strcpy(m_charGrid[m_gridPtr], str);
+  m_gridPtr++;
 }
 
 void DisplayXil::_move(int x, int y)
@@ -130,12 +130,12 @@ int DisplayXil::getResolution()
 
 Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)
 {
-  return (Xuint32) (y_coord/(getHeight()/m_gridHeight));
+  return (Xuint32) (y_coord/(getCellHeight()));
 }
 
 Xuint32 DisplayXil::m_columnIndexFromXPixelCoord(Xuint32 x_coord)
 {
-  return (Xuint32) (x_coord/(getWidth()/m_gridWidth));
+  return (Xuint32) (x_coord/(getCellWidth()));
 }
 
 char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
@@ -146,12 +146,15 @@ char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
+  char gridChar;
+  Xuint32 livePixel;
 
-  for (Xuint32 y=0; y<getHeight(); y++) {
-    for (Xuint32 x=0; x<getWidth(); x++) {
-      if (m_charAtCoord(x, y) != ' ') *mem++ = getLiveCellPixelWithCoords(getCellXCoord(x, m_gridWidth),
-                                                                          getCellYCoord(y, m_gridHeight)
-                                                                         );
+  for (Xuint32 y=0; y<m_height; y++) {
+    for (Xuint32 x=0; x<m_width; x++) {
+      gridChar = m_charAtCoord(x, y);
+      livePixel = getLiveCellPixelWithCoords(getCellXCoord(x), getCellYCoord(y));
+
+      if (gridChar != ' ') *mem++ = livePixel;
       else  *mem++ = getBgColour();
     }
   }
@@ -161,28 +164,27 @@ void DisplayXil::m_writeGridToFrameBuffer()
 
 void DisplayXil::m_resetGrid()
 {
-  m_gridHeight = 0;
-  m_gridWidth = 0;
+  m_gridPtr = 0;
 }
 
-Xuint32 DisplayXil::getCellXCoord(Xuint32 x, Xuint32 gridWidth)
+Xuint32 DisplayXil::getCellXCoord(Xuint32 x)
 {
-  return x % (getWidth()/gridWidth);
+  return x % getCellWidth();
 }
 
-Xuint32 DisplayXil::getCellYCoord(Xuint32 y, Xuint32 gridHeight)
+Xuint32 DisplayXil::getCellYCoord(Xuint32 y)
 {
-  return y % (getHeight()/gridHeight);
+  return y % getCellHeight();
 }
 
-Xuint32 DisplayXil::getCellWidth(Xuint32 gridWidth)
+Xuint32 DisplayXil::getCellWidth()
 {
-  return getWidth()/gridWidth;
+  return 20;
 }
 
-Xuint32 DisplayXil::getCellHeight(Xuint32 gridHeight)
+Xuint32 DisplayXil::getCellHeight()
 {
-  return getHeight()/gridHeight;
+  return 20;
 }
 
 int DisplayXil::getXvtcEnableGenerator()
