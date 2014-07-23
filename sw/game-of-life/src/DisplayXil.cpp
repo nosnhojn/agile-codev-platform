@@ -14,20 +14,36 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 {
 }
 
-//--------------------------------------------------------------------------
-// Default is to make triangles for live cells. You can change the shape to
-// be whatever you want... just be sure to go change the test first :)
-//--------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Default is to make squares for live cells with 5pixel of padding. You can
+// change the shape to be whatever you want... just be sure to go change
+// the test first :)
+//---------------------------------------------------------------------------
 Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 width, Xuint32 y, Xuint32 height) {
-  if (x < width/2) {
-    if (y > height - (height/(width/2))*x) return getFgColour();
-    else                                   return getBgColour();
+  if (x >= 5 &&
+      x <= width-5 &&
+      y >= 5 &&
+      y <= height-5)
+  {
+    return getFgColour();
+  }
+  else
+  {
+    return getBgColour();
   }
 
-  else {
-    if (y > (height/(width/2))*x - height) return getFgColour();
-    else                                   return getBgColour();
-  }
+  //------------------------------
+  // HERE'S code for triangles...
+  //------------------------------
+  // if (x < width/2) {
+  //   if (y > height - (height/(width/2))*x) return getFgColour();
+  //   else                                   return getBgColour();
+  // }
+  //
+  // else {
+  //   if (y > (height/(width/2))*x - height) return getFgColour();
+  //   else                                   return getBgColour();
+  // }
 }
 
 int DisplayXil::_initscr()

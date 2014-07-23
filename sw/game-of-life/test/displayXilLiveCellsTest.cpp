@@ -12,6 +12,22 @@ class DisplayLiveCellTest : public DisplayXilTest
     DisplayLiveCellTest() : DisplayXilTest() {}
 };
 
+TEST_F(DisplayLiveCellTest, livingCellShapeIsASquare) {
+  Xuint32 exp;
+  for (int x=0; x<20; x+=1) {
+    for (int y=0; y<20; y+=1) {
+      if (x >= 5 &&       // left margin
+          x <= 15 &&      // right margin
+          y >= 5 &&       // top margin
+          y <= 15)        // bottom margin
+        exp = display->getFgColour();
+      else
+        exp = display->getBgColour();
+
+      EXPECT_EQ(exp, display->getLiveCellPixelWithCoords(x, 20, y, 20));
+    }
+  }
+}
 //-------------------------------------------------------
 // For a triangle, anything under the y = m * x + b line
 // should be Fg colour and everything above should be Bg
@@ -26,7 +42,8 @@ class DisplayLiveCellTest : public DisplayXilTest
 //   y > (H/(W/2)) * x - H
 //
 //-------------------------------------------------------
-TEST_F(DisplayLiveCellTest, livingCellShapeIsATriangle) {
+
+TEST_F(DisplayLiveCellTest, DISABLED_livingCellShapeIsATriangle) {
   Xuint32 exp;
   for (int x=0; x<20; x+=1) {
     for (int y=0; y<20; y+=1) {
