@@ -51,8 +51,6 @@ class DisplayXil : public Display
 
     void printAxiVdma();
 
-    int m_activeFrame;
-
   public:
     DisplayXil();
     DisplayXil( DisplayXilCfg * cfg );

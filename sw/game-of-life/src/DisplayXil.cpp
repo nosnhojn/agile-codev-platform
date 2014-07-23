@@ -9,7 +9,6 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_height(1080),
   m_gridHeight(0),
   m_gridWidth(0),
-  m_activeFrame(0),
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
@@ -35,8 +34,6 @@ int DisplayXil::_initscr()
 {
   if (m_cfg->iicCtrl->init() == 0) return 0;
 
-  _clear();
-
   if (vfb_common_init(m_cfg->vdmaId, &(m_cfg->axiVdma)) == 1) return 0;
 
   if (vfb_tx_init(&(m_cfg->axiVdma),
@@ -49,14 +46,18 @@ int DisplayXil::_initscr()
   if (vgen_init(&(m_cfg->vtc), m_cfg->vtcId) != 0) return 0;
   vgen_config(&(m_cfg->vtc), getResolution(), 0);
 
+  _clear();
+
+  XAxiVdma_StartParking(&(m_cfg->axiVdma), 0,  XAXIVDMA_READ);
+
   return 1;
 }
 
 void DisplayXil::_clear()
 {
-  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->hdmiDisplayMemBaseAddr);
+  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
 
-  for (Xuint32 r=0; r<getHeight()*3; r++) {
+  for (Xuint32 r=0; r<getHeight(); r++) {
     for (Xuint32 c=0; c<getWidth(); c++) {
       *mem++ = getBgColour();
     }
@@ -126,10 +127,9 @@ char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
   return m_charGrid[m_rowIndexFromYPixelCoord(y_coord)][m_columnIndexFromXPixelCoord(x_coord)];
 }
 
-
 void DisplayXil::m_writeGridToFrameBuffer()
 {
-  volatile Xuint32 *mem = (Xuint32 *)m_cfg->hdmiDisplayMemBaseAddr + m_activeFrame * getHeight() * getWidth();
+  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
 
   for (Xuint32 y=0; y<getHeight(); y++) {
     for (Xuint32 x=0; x<getWidth(); x++) {
@@ -143,11 +143,6 @@ void DisplayXil::m_writeGridToFrameBuffer()
   }
 
   Xil_DCacheFlush();
-
-  XAxiVdma_StartParking(&(m_cfg->axiVdma), m_activeFrame,  XAXIVDMA_READ);
-
-  m_activeFrame += 1;
-  if (m_activeFrame > 1) m_activeFrame = 0;
 }
 
 void DisplayXil::m_resetGrid()
