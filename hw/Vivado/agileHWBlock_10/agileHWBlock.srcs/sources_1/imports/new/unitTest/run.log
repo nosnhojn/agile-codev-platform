@@ -15,13 +15,11 @@
 # INFO:  [0][__ts]: RUNNING
 # INFO:  [0][agileHWBlock_ut]: RUNNING
 # INFO:  [0][agileHWBlock_ut]: iotest::RUNNING
-# ERROR: [1000][agileHWBlock_ut]: fail_unless: oTDATA === iTDATA (at agileHWBlock_unit_test.sv line:92)
-# INFO:  [1000][agileHWBlock_ut]: iotest::FAILED
+# INFO:  [1000][agileHWBlock_ut]: iotest::PASSED
 # INFO:  [1000][agileHWBlock_ut]: colortest::RUNNING
-# ERROR: [3000][agileHWBlock_ut]: fail_unless: oTDATA === 'h000055ff (at agileHWBlock_unit_test.sv line:109)
-# INFO:  [3000][agileHWBlock_ut]: colortest::FAILED
-# INFO:  [3000][agileHWBlock_ut]: FAILED (0 of 2 tests passing)
+# INFO:  [3000][agileHWBlock_ut]: colortest::PASSED
+# INFO:  [3000][agileHWBlock_ut]: PASSED (2 of 2 tests passing)
 # 
-# INFO:  [3000][__ts]: FAILED (0 of 1 testcases passing)
+# INFO:  [3000][__ts]: PASSED (1 of 1 testcases passing)
 # 
-# INFO:  [3000][testrunner]: FAILED (0 of 1 suites passing) [SVUnit v2.12]
+# INFO:  [3000][testrunner]: PASSED (1 of 1 suites passing) [SVUnit v2.12]

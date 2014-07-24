@@ -39,9 +39,7 @@
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="MainDesign_wrapper"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
-      <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_10"/>
-      <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_9"/>
-      <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core"/>
+      <Option Name="IPRepoPath" Val="$PPRDIR/../agileHWBlock_10"/>
     </Config>
   </FileSet>
 </DARoots>
