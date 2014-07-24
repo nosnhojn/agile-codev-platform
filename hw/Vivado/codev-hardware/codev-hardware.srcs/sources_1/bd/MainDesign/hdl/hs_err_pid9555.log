@@ -1,0 +1,9 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(+0x5dc955) [0xa633d955]
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(JVM_handle_linux_signal+0x572) [0xa6342a12]
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(+0x5d9e06) [0xa633ae06]
+[0xd71410]
+/opt/Xilinx/Vivado/2013.3/lib/lnx32.o/libboost_program_options.so(boost::exception_detail::copy_boost_exception(boost::exception*, boost::exception const*)+0xb7) [0x420054]

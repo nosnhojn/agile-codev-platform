@@ -1,0 +1,9 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(+0x5dc955) [0xa7506955]
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(JVM_handle_linux_signal+0x572) [0xa750ba12]
+/opt/Xilinx/Vivado/2013.3/tps/lnx32/jre/lib/i386/server/libjvm.so(+0x5d9e06) [0xa7503e06]
+[0xb93410]
+/opt/Xilinx/Vivado/2013.3/lib/lnx32.o/libstdc++.so.6(_ZN10__cxxabiv117__pbase_type_infoD0Ev+0x4) [0x420054]
