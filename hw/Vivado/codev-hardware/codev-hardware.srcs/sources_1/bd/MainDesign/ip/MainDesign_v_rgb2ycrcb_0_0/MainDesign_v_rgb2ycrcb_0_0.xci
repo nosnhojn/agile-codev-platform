@@ -73,7 +73,7 @@
         <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SIMULATOR_LANGUAGE">MIXED</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_CUSTOMIZATION">TRUE</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_GENERATION">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USER_REPO_PATHS">/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_10;/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_9;/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USER_REPO_PATHS">/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock;/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_10;/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_9;/home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.BOARD">em.avnet.com:zynq:zed:d</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.MANAGED">TRUE</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SWVERSION">2013.3</spirit:configurableElementValue>

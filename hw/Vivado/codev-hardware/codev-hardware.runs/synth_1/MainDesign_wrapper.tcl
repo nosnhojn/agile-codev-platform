@@ -9,7 +9,12 @@ create_project -in_memory -part xc7z020clg484-1
 set_property target_language Verilog [current_project]
 set_property board em.avnet.com:zynq:zed:d [current_project]
 set_param project.compositeFile.enableAutoGeneration 0
-set_property ip_repo_paths /home/agilehw/agile-codev-platform/hw/Vivado/agileHWBlock_10 [current_fileset]
+set_property ip_repo_paths {
+  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock
+  /home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_10
+  /home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core/agileHWBlock_9
+  /home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core
+} [current_fileset]
 
 add_files /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/MainDesign.bd
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_processing_system7_0_0/MainDesign_processing_system7_0_0.xdc]
@@ -37,6 +42,8 @@ set_property used_in_implementation false [get_files -all /home/agilehw/agile-co
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_v_tc_0_0/MainDesign_v_tc_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_v_tc_0_0/MainDesign_v_tc_0_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_xbar_2/MainDesign_xbar_2_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_auto_pc_87/MainDesign_auto_pc_87_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/ip/MainDesign_auto_pc_88/MainDesign_auto_pc_88_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/MainDesign_ooc.xdc]
 set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.srcs/sources_1/bd/MainDesign/MainDesign.bd]

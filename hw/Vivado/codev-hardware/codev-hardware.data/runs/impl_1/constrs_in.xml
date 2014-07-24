@@ -2,7 +2,7 @@
 <DARoots Version="1" Minor="30">
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PPRDIR/../../../../MainDesignProject/MainDesignProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc">
+    <File Path="$PSRCDIR/constrs_1/imports/constraints/zedboard_hdmi_display.xdc">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/constraints/zedboard_hdmi_display.xdc"/>
         <Attr Name="ImportTime" Val="1395588800"/>
@@ -13,7 +13,7 @@
       </FileInfo>
     </File>
     <Config>
-      <Option Name="TargetConstrsFile" Val="$PPRDIR/../../../../MainDesignProject/MainDesignProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc"/>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/constraints/zedboard_hdmi_display.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

@@ -388,9 +388,9 @@
       </spirit:componentInstance>
       <spirit:componentInstance>
         <spirit:instanceName>agileHWBlock_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="agileHWBlock" spirit:vendor="neil_and_soheil" spirit:version="1.0"/>
+        <spirit:componentRef spirit:library="user" spirit:name="agileHWBlock" spirit:vendor="agilesoc.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_agileHWBlock_0_9</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_agileHWBlock_0_1</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -511,6 +511,11 @@
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTDATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
+        <spirit:name>axi_vdma_0_m_axis_mm2s_tuser</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tuser"/>
+        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTUSER"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
         <spirit:name>axi_vdma_0_m_axis_mm2s_tkeep</spirit:name>
         <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tkeep"/>
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTKEEP"/>
@@ -521,19 +526,34 @@
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTVALID"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
+        <spirit:name>agilehwblock_0_otready</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTREADY"/>
+        <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tready"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
         <spirit:name>axi_vdma_0_m_axis_mm2s_tlast</spirit:name>
         <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tlast"/>
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTLAST"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>axi_vdma_0_m_axis_mm2s_tuser</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tuser"/>
-        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTUSER"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>agilehwblock_0_otdata</spirit:name>
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTDATA"/>
         <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tdata"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>agilehwblock_0_otkeep</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTKEEP"/>
+        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tkeep"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>agilehwblock_0_otlast</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTLAST"/>
+        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tlast"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>axis_subset_converter_0_s_axis_tready</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tready"/>
+        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTREADY"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>agilehwblock_0_otuser</spirit:name>
@@ -544,26 +564,6 @@
         <spirit:name>agilehwblock_0_otvalid</spirit:name>
         <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTVALID"/>
         <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tvalid"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>agilehwblock_0_otlast</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTLAST"/>
-        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tlast"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>agilehwblock_0_otkeep</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTKEEP"/>
-        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tkeep"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>axis_subset_converter_0_s_axis_tready</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="axis_subset_converter_0" spirit:portRef="s_axis_tready"/>
-        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="iTREADY"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>agilehwblock_0_otready</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="agileHWBlock_0" spirit:portRef="oTREADY"/>
-        <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_tready"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
@@ -997,7 +997,7 @@
         <spirit:instanceName>auto_pc</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_protocol_converter" spirit:vendor="xilinx.com" spirit:version="2.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_85</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_88</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="SI_PROTOCOL">AXI4</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="MI_PROTOCOL">AXI3</spirit:configurableElementValue>
         </spirit:configurableElementValues>
@@ -2175,7 +2175,7 @@
         <spirit:instanceName>auto_pc</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_protocol_converter" spirit:vendor="xilinx.com" spirit:version="2.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_86</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_87</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="SI_PROTOCOL">AXI3</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="MI_PROTOCOL">AXI4LITE</spirit:configurableElementValue>
         </spirit:configurableElementValues>

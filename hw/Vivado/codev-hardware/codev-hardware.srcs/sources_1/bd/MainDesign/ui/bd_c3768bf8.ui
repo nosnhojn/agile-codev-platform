@@ -2,7 +2,6 @@
    guistr: "# # String gsaved with Nlview version 6.3.3  2013-08-16 bk=1.2871 VDI=33 GEI=35
 #  -string -flagsOSRD
 preplace port hdmio_clk -pg 1 -y 520 -defaultsOSRD
-preplace port hdmio_io -pg 1 -y 590 -defaultsOSRD
 preplace port axi4s_resetn -pg 1 -y 30 -defaultsOSRD
 preplace port axi4s_clk -pg 1 -y 130 -defaultsOSRD
 preplace port vtc_ctrl -pg 1 -y 500 -defaultsOSRD
@@ -10,51 +9,50 @@ preplace port vdma_ctrl -pg 1 -y 90 -defaultsOSRD
 preplace port axi4lite_clk -pg 1 -y 110 -defaultsOSRD
 preplace port M00_AXI -pg 1 -y 110 -defaultsOSRD
 preplace portBus axi4lite_aresetn -pg 1 -y 740 -defaultsOSRD
-preplace inst v_axi4s_vid_out_0 -pg 1 -lvl 6 -y 600 -defaultsOSRD
+preplace inst v_axi4s_vid_out_0 -pg 1 -lvl 7 -y 610 -defaultsOSRD
 preplace inst vcc -pg 1 -lvl 1 -y 200 -defaultsOSRD
-preplace inst v_tc_0 -pg 1 -lvl 5 -y 560 -defaultsOSRD
-preplace inst axi_vdma_0 -pg 1 -lvl 2 -y 340 -defaultsOSRD
-preplace inst gnd -pg 1 -lvl 5 -y 780 -defaultsOSRD
-preplace inst v_cresample_0 -pg 1 -lvl 5 -y 330 -defaultsOSRD
-preplace inst axis_subset_converter_0 -pg 1 -lvl 3 -y 680 -defaultsOSRD
-preplace inst v_rgb2ycrcb_0 -pg 1 -lvl 4 -y 300 -defaultsOSRD
-preplace inst agileHWBlock_0 -pg 1 -lvl 3 -y 200 -defaultsOSRD
-preplace inst zed_hdmi_out_0 -pg 1 -lvl 7 -y 590 -defaultsOSRD
-preplace inst axi_mem_intercon -pg 1 -lvl 7 -y 110 -defaultsOSRD
-preplace inst proc_sys_reset -pg 1 -lvl 4 -y 100 -defaultsOSRD
-preplace netloc Conn1 1 0 5 NJ 530 NJ 530 NJ 510 NJ 510 2140
-preplace netloc Conn2 1 7 1 N
-preplace netloc s_axi_aclk_1 1 0 5 NJ 260 350 540 NJ 520 NJ 540 NJ
-preplace netloc proc_sys_reset_peripheral_aresetn 1 4 3 2120 140 NJ 140 2720
-preplace netloc gnd_const 1 5 2 2450 470 2700
-preplace netloc Conn3 1 0 2 NJ 300 N
-preplace netloc s_axi_aresetn_1 1 0 5 NJ 740 NJ 740 NJ 530 NJ 620 N
-preplace netloc v_axi4s_vid_out_0_vid_io_out 1 6 1 N
-preplace netloc v_cresample_0_video_out 1 5 1 2430
-preplace netloc agilehwblock_0_otdata 1 2 2 980 540 1730
-preplace netloc axi_vdma_0_m_axis_mm2s_tvalid 1 2 1 910
-preplace netloc axi_vdma_0_m_axis_mm2s_tdata 1 2 1 860
-preplace netloc agilehwblock_0_otkeep 1 2 2 950 380 1700
-preplace netloc axi_vdma_0_m_axis_mm2s_tkeep 1 2 1 880
-preplace netloc axi_vdma_0_m_axis_mm2s_tuser 1 2 1 870
-preplace netloc v_axi4s_vid_out_0_vtg_ce 1 4 3 2140 720 NJ 450 2690
-preplace netloc clk_1 1 0 7 NJ 520 NJ 520 NJ 500 NJ 500 2110 700 2410 460 NJ
-preplace netloc agilehwblock_0_otvalid 1 2 2 940 390 1690
-preplace netloc ext_reset_in_1 1 0 4 NJ 30 NJ 30 NJ 30 1770
-preplace netloc agilehwblock_0_otready 1 2 2 N 370 1710
-preplace netloc agilehwblock_0_otuser 1 2 2 970 550 1720
-preplace netloc aresetn_1 1 4 3 NJ 120 NJ 120 2700
-preplace netloc v_rgb2ycrcb_0_video_out 1 4 1 N
-preplace netloc axi_vdma_0_m_axi_mm2s 1 2 5 850 80 NJ 200 NJ 150 NJ 150 NJ
-preplace netloc processing_system7_0_fclk_clk1 1 0 7 NJ 130 360 190 900 410 1750 220 2110 250 2440 160 2710
-preplace netloc v_tc_0_vtiming_out 1 5 1 N
-preplace netloc axis_subset_converter_0_m_axis 1 3 1 1760
-preplace netloc agilehwblock_0_otlast 1 2 2 960 400 1680
-preplace netloc axi_vdma_0_m_axis_mm2s_tlast 1 2 1 920
-preplace netloc vcc_const 1 1 5 370 200 890 420 1770 390 2130 710 2430
-preplace netloc zed_hdmi_out_0_io_hdmio 1 7 1 N
-preplace netloc axis_subset_converter_0_s_axis_tready 1 2 1 930
-levelinfo -pg 1 180 280 680 1550 1950 2290 2570 2850 3000
+preplace inst v_tc_0 -pg 1 -lvl 6 -y 570 -defaultsOSRD
+preplace inst axi_vdma_0 -pg 1 -lvl 2 -y 300 -defaultsOSRD
+preplace inst gnd -pg 1 -lvl 6 -y 780 -defaultsOSRD
+preplace inst v_cresample_0 -pg 1 -lvl 6 -y 330 -defaultsOSRD
+preplace inst axis_subset_converter_0 -pg 1 -lvl 4 -y 270 -defaultsOSRD
+preplace inst v_rgb2ycrcb_0 -pg 1 -lvl 5 -y 300 -defaultsOSRD
+preplace inst agileHWBlock_0 -pg 1 -lvl 3 -y 320 -defaultsOSRD
+preplace inst zed_hdmi_out_0 -pg 1 -lvl 8 -y 600 -defaultsOSRD
+preplace inst axi_mem_intercon -pg 1 -lvl 8 -y 110 -defaultsOSRD
+preplace inst proc_sys_reset -pg 1 -lvl 5 -y 100 -defaultsOSRD
+preplace netloc Conn1 1 0 6 NJ 530 NJ 530 NJ 530 NJ 530 NJ 530 2230
+preplace netloc Conn2 1 8 1 N
+preplace netloc s_axi_aclk_1 1 0 6 NJ 260 350 550 NJ 550 NJ 550 NJ 550 NJ
+preplace netloc proc_sys_reset_peripheral_aresetn 1 5 3 2240 140 NJ 140 2820
+preplace netloc gnd_const 1 6 2 2530 770 2820
+preplace netloc Conn3 1 0 2 NJ 270 360
+preplace netloc s_axi_aresetn_1 1 0 6 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 2260
+preplace netloc v_axi4s_vid_out_0_vid_io_out 1 7 1 N
+preplace netloc v_cresample_0_video_out 1 6 1 2530
+preplace netloc agilehwblock_0_otdata 1 3 1 1340
+preplace netloc axi_vdma_0_m_axis_mm2s_tvalid 1 2 1 N
+preplace netloc axi_vdma_0_m_axis_mm2s_tdata 1 2 1 N
+preplace netloc agilehwblock_0_otkeep 1 3 1 1360
+preplace netloc axi_vdma_0_m_axis_mm2s_tkeep 1 2 1 N
+preplace netloc axi_vdma_0_m_axis_mm2s_tuser 1 2 1 N
+preplace netloc v_axi4s_vid_out_0_vtg_ce 1 5 3 2270 720 NJ 760 2800
+preplace netloc clk_1 1 0 8 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 2220 440 2520 750 NJ
+preplace netloc agilehwblock_0_otvalid 1 3 1 1370
+preplace netloc ext_reset_in_1 1 0 5 NJ 30 NJ 30 NJ 30 NJ 80 N
+preplace netloc agilehwblock_0_otuser 1 3 1 1350
+preplace netloc agilehwblock_0_otready 1 2 2 NJ 200 1330
+preplace netloc aresetn_1 1 5 3 NJ 120 NJ 120 2800
+preplace netloc v_rgb2ycrcb_0_video_out 1 5 1 N
+preplace netloc axi_vdma_0_m_axi_mm2s 1 2 6 930 10 NJ 10 NJ 10 NJ 50 NJ 50 NJ
+preplace netloc processing_system7_0_fclk_clk1 1 0 8 NJ 130 370 160 940 180 1380 70 1760 390 2220 250 2540 150 2810
+preplace netloc v_tc_0_vtiming_out 1 6 1 N
+preplace netloc axis_subset_converter_0_m_axis 1 4 1 N
+preplace netloc agilehwblock_0_otlast 1 3 1 1400
+preplace netloc axi_vdma_0_m_axis_mm2s_tlast 1 2 1 970
+preplace netloc vcc_const 1 1 6 380 150 950 190 1390 140 1750 400 2250 710 2540
+preplace netloc axis_subset_converter_0_s_axis_tready 1 2 2 980 170 NJ
+levelinfo -pg 1 180 280 740 1210 1620 2050 2390 2680 2950 3110
 ",
 }
 0

@@ -57,14 +57,14 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_zed_
 # IP: bd/MainDesign/ip/MainDesign_xbar_2/MainDesign_xbar_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_xbar_2 || ORIG_REF_NAME==MainDesign_xbar_2}]
 
-# IP: bd/MainDesign/ip/MainDesign_agileHWBlock_0_9/MainDesign_agileHWBlock_0_9.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_agileHWBlock_0_9 || ORIG_REF_NAME==MainDesign_agileHWBlock_0_9}]
+# IP: bd/MainDesign/ip/MainDesign_agileHWBlock_0_1/MainDesign_agileHWBlock_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_agileHWBlock_0_1 || ORIG_REF_NAME==MainDesign_agileHWBlock_0_1}]
 
-# IP: bd/MainDesign/ip/MainDesign_auto_pc_83/MainDesign_auto_pc_83.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_auto_pc_83 || ORIG_REF_NAME==MainDesign_auto_pc_83}]
+# IP: bd/MainDesign/ip/MainDesign_auto_pc_87/MainDesign_auto_pc_87.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_auto_pc_87 || ORIG_REF_NAME==MainDesign_auto_pc_87}]
 
-# IP: bd/MainDesign/ip/MainDesign_auto_pc_84/MainDesign_auto_pc_84.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_auto_pc_84 || ORIG_REF_NAME==MainDesign_auto_pc_84}]
+# IP: bd/MainDesign/ip/MainDesign_auto_pc_88/MainDesign_auto_pc_88.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MainDesign_auto_pc_88 || ORIG_REF_NAME==MainDesign_auto_pc_88}]
 
 # XDC: bd/MainDesign/ip/MainDesign_processing_system7_0_0/MainDesign_processing_system7_0_0.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==MainDesign_processing_system7_0_0 || ORIG_REF_NAME==MainDesign_processing_system7_0_0}] {/inst }]/inst ]]
@@ -129,5 +129,9 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==MainDesign_v_tc_0_0 || ORIG_REF_NAME==MainDesign_v_tc_0_0}] {/U0 }]/U0 ]]
 
 # XDC: bd/MainDesign/ip/MainDesign_xbar_2/MainDesign_xbar_2_ooc.xdc
+
+# XDC: bd/MainDesign/ip/MainDesign_auto_pc_87/MainDesign_auto_pc_87_ooc.xdc
+
+# XDC: bd/MainDesign/ip/MainDesign_auto_pc_88/MainDesign_auto_pc_88_ooc.xdc
 
 # XDC: bd/MainDesign/MainDesign_ooc.xdc

@@ -23,12 +23,6 @@ module MainDesign
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    hdmio_io_clk,
-    hdmio_io_data,
-    hdmio_io_de,
-    hdmio_io_hsync,
-    hdmio_io_spdif,
-    hdmio_io_vsync,
     zed_hdmi_iic_scl_i,
     zed_hdmi_iic_scl_o,
     zed_hdmi_iic_scl_t,
@@ -56,12 +50,6 @@ module MainDesign
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  output hdmio_io_clk;
-  output [15:0]hdmio_io_data;
-  output hdmio_io_de;
-  output hdmio_io_hsync;
-  output hdmio_io_spdif;
-  output hdmio_io_vsync;
   input zed_hdmi_iic_scl_i;
   output zed_hdmi_iic_scl_o;
   output zed_hdmi_iic_scl_t;
@@ -188,12 +176,6 @@ module MainDesign
   wire processing_system7_0_m_axi_gp0_WREADY;
   wire [3:0]processing_system7_0_m_axi_gp0_WSTRB;
   wire processing_system7_0_m_axi_gp0_WVALID;
-  wire zed_hdmi_display_hdmio_io_CLK;
-  wire [15:0]zed_hdmi_display_hdmio_io_DATA;
-  wire zed_hdmi_display_hdmio_io_DE;
-  wire zed_hdmi_display_hdmio_io_HSYNC;
-  wire zed_hdmi_display_hdmio_io_SPDIF;
-  wire zed_hdmi_display_hdmio_io_VSYNC;
   wire [31:0]zed_hdmi_display_m00_axi_ARADDR;
   wire [1:0]zed_hdmi_display_m00_axi_ARBURST;
   wire [3:0]zed_hdmi_display_m00_axi_ARCACHE;
@@ -216,12 +198,6 @@ module MainDesign
   wire zed_hdmi_iic_0_iic_SDA_O;
   wire zed_hdmi_iic_0_iic_SDA_T;
 
-  assign hdmio_io_clk = zed_hdmi_display_hdmio_io_CLK;
-  assign hdmio_io_data[15:0] = zed_hdmi_display_hdmio_io_DATA;
-  assign hdmio_io_de = zed_hdmi_display_hdmio_io_DE;
-  assign hdmio_io_hsync = zed_hdmi_display_hdmio_io_HSYNC;
-  assign hdmio_io_spdif = zed_hdmi_display_hdmio_io_SPDIF;
-  assign hdmio_io_vsync = zed_hdmi_display_hdmio_io_VSYNC;
   assign zed_hdmi_iic_0_iic_SCL_I = zed_hdmi_iic_scl_i;
   assign zed_hdmi_iic_0_iic_SDA_I = zed_hdmi_iic_sda_i;
   assign zed_hdmi_iic_scl_o = zed_hdmi_iic_0_iic_SCL_O;
@@ -468,12 +444,6 @@ zed_hdmi_display_imp_1J8Q7B1 zed_hdmi_display
         .axi4s_clk(axi4s_clk_1),
         .axi4s_resetn(axi4s_resetn_1),
         .hdmio_clk(hdmio_clk_1),
-        .hdmio_io_clk(zed_hdmi_display_hdmio_io_CLK),
-        .hdmio_io_data(zed_hdmi_display_hdmio_io_DATA),
-        .hdmio_io_de(zed_hdmi_display_hdmio_io_DE),
-        .hdmio_io_hsync(zed_hdmi_display_hdmio_io_HSYNC),
-        .hdmio_io_spdif(zed_hdmi_display_hdmio_io_SPDIF),
-        .hdmio_io_vsync(zed_hdmi_display_hdmio_io_VSYNC),
         .vdma_ctrl_araddr(processing_system7_0_axi_periph_m02_axi_ARADDR),
         .vdma_ctrl_arready(processing_system7_0_axi_periph_m02_axi_ARREADY),
         .vdma_ctrl_arvalid(processing_system7_0_axi_periph_m02_axi_ARVALID),
@@ -2019,7 +1989,7 @@ module s00_couplers_imp_156Q4UY
   assign s00_couplers_to_auto_pc_WVALID = S_AXI_wvalid;
   assign s_aclk_1 = S_ACLK;
   assign s_aresetn_1 = S_ARESETN[0];
-MainDesign_auto_pc_81 auto_pc
+MainDesign_auto_pc_87 auto_pc
        (.aclk(s_aclk_1),
         .aresetn(s_aresetn_1),
         .m_axi_araddr(auto_pc_to_s00_couplers_ARADDR),
@@ -2211,7 +2181,7 @@ module s00_couplers_imp_1NO65A2
   assign s_aresetn_1 = S_ARESETN[0];
 GND GND
        (.G(GND_1));
-MainDesign_auto_pc_82 auto_pc
+MainDesign_auto_pc_88 auto_pc
        (.aclk(s_aclk_1),
         .aresetn(s_aresetn_1),
         .m_axi_araddr(auto_pc_to_s00_couplers_ARADDR),
@@ -2268,12 +2238,6 @@ module zed_hdmi_display_imp_1J8Q7B1
     axi4s_clk,
     axi4s_resetn,
     hdmio_clk,
-    hdmio_io_clk,
-    hdmio_io_data,
-    hdmio_io_de,
-    hdmio_io_hsync,
-    hdmio_io_spdif,
-    hdmio_io_vsync,
     vdma_ctrl_araddr,
     vdma_ctrl_arready,
     vdma_ctrl_arvalid,
@@ -2327,12 +2291,6 @@ module zed_hdmi_display_imp_1J8Q7B1
   input axi4s_clk;
   input axi4s_resetn;
   input hdmio_clk;
-  output hdmio_io_clk;
-  output [15:0]hdmio_io_data;
-  output hdmio_io_de;
-  output hdmio_io_hsync;
-  output hdmio_io_spdif;
-  output hdmio_io_vsync;
   input [8:0]vdma_ctrl_araddr;
   output vdma_ctrl_arready;
   input vdma_ctrl_arvalid;
@@ -2476,12 +2434,6 @@ module zed_hdmi_display_imp_1J8Q7B1
   wire v_tc_0_vtiming_out_VBLANK;
   wire v_tc_0_vtiming_out_VSYNC;
   wire [0:0]vcc_const;
-  wire zed_hdmi_out_0_io_hdmio_CLK;
-  wire [15:0]zed_hdmi_out_0_io_hdmio_DATA;
-  wire zed_hdmi_out_0_io_hdmio_DE;
-  wire zed_hdmi_out_0_io_hdmio_HSYNC;
-  wire zed_hdmi_out_0_io_hdmio_SPDIF;
-  wire zed_hdmi_out_0_io_hdmio_VSYNC;
 
   assign Conn1_ARADDR = vtc_ctrl_araddr[8:0];
   assign Conn1_ARVALID = vtc_ctrl_arvalid;
@@ -2517,12 +2469,6 @@ module zed_hdmi_display_imp_1J8Q7B1
   assign M00_AXI_rready = Conn2_RREADY;
   assign clk_1 = hdmio_clk;
   assign ext_reset_in_1 = axi4s_resetn;
-  assign hdmio_io_clk = zed_hdmi_out_0_io_hdmio_CLK;
-  assign hdmio_io_data[15:0] = zed_hdmi_out_0_io_hdmio_DATA;
-  assign hdmio_io_de = zed_hdmi_out_0_io_hdmio_DE;
-  assign hdmio_io_hsync = zed_hdmi_out_0_io_hdmio_HSYNC;
-  assign hdmio_io_spdif = zed_hdmi_out_0_io_hdmio_SPDIF;
-  assign hdmio_io_vsync = zed_hdmi_out_0_io_hdmio_VSYNC;
   assign processing_system7_0_fclk_clk1 = axi4s_clk;
   assign s_axi_aclk_1 = axi4lite_clk;
   assign s_axi_aresetn_1 = axi4lite_aresetn[0];
@@ -2546,7 +2492,7 @@ GND GND_1
        (.G(GND_2));
 VCC VCC_1
        (.P(VCC_2));
-MainDesign_agileHWBlock_0_9 agileHWBlock_0
+MainDesign_agileHWBlock_0_1 agileHWBlock_0
        (.clk(processing_system7_0_fclk_clk1),
         .iTDATA(axi_vdma_0_m_axis_mm2s_tdata),
         .iTKEEP(axi_vdma_0_m_axis_mm2s_tkeep),
@@ -2748,12 +2694,6 @@ MainDesign_vcc_1 vcc
 MainDesign_zed_hdmi_out_0_0 zed_hdmi_out_0
        (.audio_spdif(gnd_const),
         .clk(clk_1),
-        .io_hdmio_clk(zed_hdmi_out_0_io_hdmio_CLK),
-        .io_hdmio_de(zed_hdmi_out_0_io_hdmio_DE),
-        .io_hdmio_hsync(zed_hdmi_out_0_io_hdmio_HSYNC),
-        .io_hdmio_spdif(zed_hdmi_out_0_io_hdmio_SPDIF),
-        .io_hdmio_video(zed_hdmi_out_0_io_hdmio_DATA),
-        .io_hdmio_vsync(zed_hdmi_out_0_io_hdmio_VSYNC),
         .reset(gnd_const),
         .video_data(v_axi4s_vid_out_0_vid_io_out_DATA),
         .video_de(v_axi4s_vid_out_0_vid_io_out_ACTIVE_VIDEO),

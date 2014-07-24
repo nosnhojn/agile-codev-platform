@@ -22,12 +22,6 @@ module MainDesign_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    hdmio_io_clk,
-    hdmio_io_data,
-    hdmio_io_de,
-    hdmio_io_hsync,
-    hdmio_io_spdif,
-    hdmio_io_vsync,
     zed_hdmi_iic_scl_io,
     zed_hdmi_iic_sda_io);
   inout [14:0]DDR_addr;
@@ -51,12 +45,6 @@ module MainDesign_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  output hdmio_io_clk;
-  output [15:0]hdmio_io_data;
-  output hdmio_io_de;
-  output hdmio_io_hsync;
-  output hdmio_io_spdif;
-  output hdmio_io_vsync;
   inout zed_hdmi_iic_scl_io;
   inout zed_hdmi_iic_sda_io;
 
@@ -81,12 +69,6 @@ module MainDesign_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire hdmio_io_clk;
-  wire [15:0]hdmio_io_data;
-  wire hdmio_io_de;
-  wire hdmio_io_hsync;
-  wire hdmio_io_spdif;
-  wire hdmio_io_vsync;
   wire zed_hdmi_iic_scl_i;
   wire zed_hdmi_iic_scl_io;
   wire zed_hdmi_iic_scl_o;
@@ -118,12 +100,6 @@ MainDesign MainDesign_i
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
-        .hdmio_io_clk(hdmio_io_clk),
-        .hdmio_io_data(hdmio_io_data),
-        .hdmio_io_de(hdmio_io_de),
-        .hdmio_io_hsync(hdmio_io_hsync),
-        .hdmio_io_spdif(hdmio_io_spdif),
-        .hdmio_io_vsync(hdmio_io_vsync),
         .zed_hdmi_iic_scl_i(zed_hdmi_iic_scl_i),
         .zed_hdmi_iic_scl_o(zed_hdmi_iic_scl_o),
         .zed_hdmi_iic_scl_t(zed_hdmi_iic_scl_t),
