@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Wed Jul 23 21:46:28 2014
+# Process ID: 8038
+# Log file: /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.runs/impl_1/MainDesign_wrapper.rdi
+# Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/codev-hardware/codev-hardware.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source MainDesign_wrapper.tcl -notrace
