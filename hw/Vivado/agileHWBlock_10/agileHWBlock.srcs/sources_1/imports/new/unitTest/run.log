@@ -1,0 +1,27 @@
+# vsim -do {run -all; quit} -l run.log -c testrunner 
+# Loading sv_std.std
+# Loading work.svunit_pkg
+# Loading work.testrunner
+# Loading work.__testsuite
+# Loading work.agileHWBlock_unit_test
+# Loading work.agileHWBlock
+# ** Warning: (vsim-3017) agileHWBlock_unit_test.sv(39): [TFMPC] - Too few port connections. Expected 14, found 12.
+#         Region: /testrunner/__ts/agileHWBlock_ut/my_agileHWBlock
+# ** Warning: (vsim-3722) agileHWBlock_unit_test.sv(39): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) agileHWBlock_unit_test.sv(39): [TFMPC] - Missing connection for port 'rst'.
+# run -all 
+# INFO:  [0][__ts]: Registering Unit Test Case agileHWBlock_ut
+# INFO:  [0][testrunner]: Registering Test Suite __ts
+# INFO:  [0][__ts]: RUNNING
+# INFO:  [0][agileHWBlock_ut]: RUNNING
+# INFO:  [0][agileHWBlock_ut]: iotest::RUNNING
+# ERROR: [1000][agileHWBlock_ut]: fail_unless: oTDATA === iTDATA (at agileHWBlock_unit_test.sv line:92)
+# INFO:  [1000][agileHWBlock_ut]: iotest::FAILED
+# INFO:  [1000][agileHWBlock_ut]: colortest::RUNNING
+# ERROR: [3000][agileHWBlock_ut]: fail_unless: oTDATA === 'h000055ff (at agileHWBlock_unit_test.sv line:109)
+# INFO:  [3000][agileHWBlock_ut]: colortest::FAILED
+# INFO:  [3000][agileHWBlock_ut]: FAILED (0 of 2 tests passing)
+# 
+# INFO:  [3000][__ts]: FAILED (0 of 1 testcases passing)
+# 
+# INFO:  [3000][testrunner]: FAILED (0 of 1 suites passing) [SVUnit v2.12]
