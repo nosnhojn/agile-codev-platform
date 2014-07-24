@@ -21,6 +21,7 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // the test first :)
 //---------------------------------------------------------------------------
 Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
+//	return getFgColour();
   if (x >= 5 &&
       x <= getCellWidth()-5 &&
       y >= 5 &&
@@ -36,15 +37,15 @@ Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
   //------------------------------
   // HERE'S code for triangles...
   //------------------------------
-  // if (x < width/2) {
-  //   if (y > height - (height/(width/2))*x) return getFgColour();
-  //   else                                   return getBgColour();
-  // }
-  //
-  // else {
-  //   if (y > (height/(width/2))*x - height) return getFgColour();
-  //   else                                   return getBgColour();
-  // }
+//   if (x < 10) {
+//     if (y > 	20 - (2)*x) return getFgColour();
+//     else                                   return getBgColour();
+//   }
+//
+//   else {
+//     if (y > (2)*x - 20) return getFgColour();
+//     else                                   return getBgColour();
+//   }
 }
 
 int DisplayXil::_initscr()
