@@ -148,7 +148,6 @@ void DisplayXil::m_writeGridToFrameBuffer()
   volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
   char gridChar;
   Xuint32 livePixel;
-
   for (Xuint32 y=0; y<m_height; y++) {
     for (Xuint32 x=0; x<m_width; x++) {
       gridChar = m_charAtCoord(x, y);

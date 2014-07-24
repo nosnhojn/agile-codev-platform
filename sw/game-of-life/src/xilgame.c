@@ -51,6 +51,6 @@ int main()
   drawing.initialCell(24,20);
   drawing.initialCell(24,22);
   drawing.initialCell(24,24);
- 
+
   drawing.play(200);
 }

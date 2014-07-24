@@ -1,4 +1,5 @@
 #include "Drawing.h"
+#include "xil_printf.h"
 
 Drawing::Drawing(Board * board,
                  Display * display)
@@ -31,6 +32,7 @@ void Drawing::refreshDrawing()
     }
     m_display->_addstr((s).c_str());
   }
+
   m_display->_refresh();
 }
 
