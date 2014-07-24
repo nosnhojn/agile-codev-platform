@@ -31,12 +31,6 @@
         <spirit:busType spirit:library="interface" spirit:name="iic" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:abstractionType spirit:library="interface" spirit:name="iic_rtl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
       </spirit:busInterface>
-      <spirit:busInterface>
-        <spirit:name>hdmio_io</spirit:name>
-        <spirit:master/>
-        <spirit:busType spirit:library="interface" spirit:name="avnet_hdmi" spirit:vendor="avnet.com" spirit:version="1.0"/>
-        <spirit:abstractionType spirit:library="interface" spirit:name="avnet_hdmi_rtl" spirit:vendor="avnet.com" spirit:version="1.0"/>
-      </spirit:busInterface>
     </spirit:busInterfaces>
     <spirit:model>
       <spirit:views>
@@ -201,9 +195,6 @@
       <spirit:hierConnection spirit:interfaceRef="zed_hdmi_iic/zed_hdmi_iic_0_iic">
         <spirit:activeInterface spirit:busRef="IIC" spirit:componentRef="zed_hdmi_iic_0"/>
       </spirit:hierConnection>
-      <spirit:hierConnection spirit:interfaceRef="hdmio_io/zed_hdmi_display_hdmio_io">
-        <spirit:activeInterface spirit:busRef="hdmio_io" spirit:componentRef="zed_hdmi_display"/>
-      </spirit:hierConnection>
     </spirit:hierConnections>
   </spirit:design>
 
@@ -218,12 +209,6 @@
         <spirit:master/>
         <spirit:busType spirit:library="interface" spirit:name="aximm" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:abstractionType spirit:library="interface" spirit:name="aximm_rtl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-      </spirit:busInterface>
-      <spirit:busInterface>
-        <spirit:name>hdmio_io</spirit:name>
-        <spirit:master/>
-        <spirit:busType spirit:library="interface" spirit:name="avnet_hdmi" spirit:vendor="avnet.com" spirit:version="1.0"/>
-        <spirit:abstractionType spirit:library="interface" spirit:name="avnet_hdmi_rtl" spirit:vendor="avnet.com" spirit:version="1.0"/>
       </spirit:busInterface>
       <spirit:busInterface>
         <spirit:name>vdma_ctrl</spirit:name>
@@ -584,9 +569,6 @@
     <spirit:hierConnections>
       <spirit:hierConnection spirit:interfaceRef="M00_AXI/Conn2">
         <spirit:activeInterface spirit:busRef="M00_AXI" spirit:componentRef="axi_mem_intercon"/>
-      </spirit:hierConnection>
-      <spirit:hierConnection spirit:interfaceRef="hdmio_io/zed_hdmi_out_0_io_hdmio">
-        <spirit:activeInterface spirit:busRef="IO_HDMIO" spirit:componentRef="zed_hdmi_out_0"/>
       </spirit:hierConnection>
       <spirit:hierConnection spirit:interfaceRef="vdma_ctrl/Conn3">
         <spirit:activeInterface spirit:busRef="S_AXI_LITE" spirit:componentRef="axi_vdma_0"/>
@@ -1015,7 +997,7 @@
         <spirit:instanceName>auto_pc</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_protocol_converter" spirit:vendor="xilinx.com" spirit:version="2.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_82</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_85</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="SI_PROTOCOL">AXI4</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="MI_PROTOCOL">AXI3</spirit:configurableElementValue>
         </spirit:configurableElementValues>
@@ -2193,7 +2175,7 @@
         <spirit:instanceName>auto_pc</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_protocol_converter" spirit:vendor="xilinx.com" spirit:version="2.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_81</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">MainDesign_auto_pc_86</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="SI_PROTOCOL">AXI3</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="MI_PROTOCOL">AXI4LITE</spirit:configurableElementValue>
         </spirit:configurableElementValues>
