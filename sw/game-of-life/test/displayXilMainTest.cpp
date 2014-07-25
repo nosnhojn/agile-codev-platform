@@ -19,6 +19,8 @@ TEST_F(DisplayXilTest, initScreenFails) {
 }
 
 TEST_F(DisplayXilTest, clearBufferToWhite0) {
+  initDisplay();
+
   display->_clear();
 
   EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
@@ -26,6 +28,8 @@ TEST_F(DisplayXilTest, clearBufferToWhite0) {
 
 /*
 TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
+  initDisplay();
+
   display->_clear();
 
   for (int i=0; i<height(); i+=10) {
