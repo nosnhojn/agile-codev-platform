@@ -120,3 +120,13 @@ int DisplayXilTest::initDisplay()
 {
   return display->_initscr();
 }
+
+void DisplayXilTest::EXPECT_BgPixelAt(int x, int y)
+{
+  EXPECT_EQ(pixelAt(x, y), display->getBgColour());
+}
+
+void DisplayXilTest::EXPECT_LivePixelAt(int x, int y)
+{
+  EXPECT_EQ(pixelAt(x, y), expectedPixelAt(x%20, y%20));
+}

@@ -49,4 +49,7 @@ class DisplayXilTest : public testing::Test
     void loadEmptyGrid();
     void loadAlternatingVerticalGrid();
     void loadAlternatingHorizontalGrid();
+
+    void EXPECT_BgPixelAt(int x, int y);
+    void EXPECT_LivePixelAt(int x, int y);
 };

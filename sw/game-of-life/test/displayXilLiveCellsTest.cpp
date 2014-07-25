@@ -2,10 +2,6 @@
 
 using namespace testing;
 
-#define BLANK_ROW_OF_10     "          "
-#define FULL_ROW_OF_10      "XXXXXXXXXX"
-#define ALTERNATE_ROW_OF_10 " X X X X X"
-
 class DisplayLiveCellTest : public DisplayXilTest
 {
   public :
@@ -69,16 +65,16 @@ TEST_F(DisplayLiveCellTest, addBlankRowToGrid) {
   initDisplay();
   loadEmptyGrid();
 
-  EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getBgColour());
+  EXPECT_BgPixelAt(0,0);
+  EXPECT_BgPixelAt(0, width()-1);
 }
 
 TEST_F(DisplayLiveCellTest, addFullRowToGrid) {
   initDisplay();
   loadFullGrid();
 
-  EXPECT_EQ(pixelAt(0, 0), expectedPixelAt(0, 0));
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), expectedPixelAt(0, display->getWidth()-1));
+  EXPECT_LivePixelAt(0, 0);
+  EXPECT_LivePixelAt(0, width()-1);
 }
 
 TEST_F(DisplayLiveCellTest, cellWidthIs20Pixels) {
@@ -86,12 +82,12 @@ TEST_F(DisplayLiveCellTest, cellWidthIs20Pixels) {
   loadAlternatingVerticalGrid();
 
   // empty cell 0,0
-  EXPECT_EQ(pixelAt(0, 0),  display->getBgColour());
-  EXPECT_EQ(pixelAt(0, 19), display->getBgColour());
+  EXPECT_BgPixelAt(0, 0);
+  EXPECT_BgPixelAt(0, 19);
 
   // full cell 0,1
-  EXPECT_EQ(pixelAt(0, 20), expectedPixelAt(0, 0));
-  EXPECT_EQ(pixelAt(0, 39), expectedPixelAt(0, 19));
+  EXPECT_LivePixelAt(0, 20);
+  EXPECT_LivePixelAt(0, 39);
 }
 
 TEST_F(DisplayLiveCellTest, cellHeightIs20Pixels) {
@@ -99,12 +95,12 @@ TEST_F(DisplayLiveCellTest, cellHeightIs20Pixels) {
   loadAlternatingHorizontalGrid();
 
   // cell 0,0
-  EXPECT_EQ(pixelAt(0, 0),  display->getBgColour());
-  EXPECT_EQ(pixelAt(19, 0), display->getBgColour());
+  EXPECT_BgPixelAt(0, 0);
+  EXPECT_BgPixelAt(19, 0);
 
   // cell 1,0
-  EXPECT_EQ(pixelAt(20, 0), expectedPixelAt(0, 0));
-  EXPECT_EQ(pixelAt(39, 0), expectedPixelAt(19, 0));
+  EXPECT_LivePixelAt(20, 0);
+  EXPECT_LivePixelAt(39, 0);
 }
 
 TEST_F(DisplayLiveCellTest, refreshResetGrid) {
@@ -112,8 +108,8 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
   loadFullGrid();
   loadEmptyGrid();
 
-  EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
-  EXPECT_EQ(pixelAt(0, display->getWidth()-1), display->getBgColour());
+  EXPECT_BgPixelAt(0, 0);
+  EXPECT_LivePixelAt(0, width()-1);
 }
 
 TEST_F(DisplayLiveCellTest, getCellXCoord) {
