@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date         : Thu Jul 24 17:57:02 2014
+| Date         : Thu Jul 24 19:19:27 2014
 | Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command      : report_utilization -file FinalDesign_wrapper_utilization_synth.rpt -pb FinalDesign_wrapper_utilization_synth.pb
 | Design       : FinalDesign_wrapper
@@ -29,8 +29,8 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Loced | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 4844 |     0 |     53200 |  9.10 |
-|   LUT as Logic             | 4469 |     0 |     53200 |  8.40 |
+| Slice LUTs*                | 4827 |     0 |     53200 |  9.07 |
+|   LUT as Logic             | 4452 |     0 |     53200 |  8.36 |
 |   LUT as Memory            |  375 |     0 |     17400 |  2.15 |
 |     LUT as Distributed RAM |   75 |     0 |           |       |
 |     LUT as Shift Register  |  300 |     0 |           |       |
@@ -136,11 +136,11 @@ Table of Contents
 |  Ref Name  | Used |
 +------------+------+
 | FDRE       | 5362 |
-| LUT6       | 1705 |
-| LUT5       |  965 |
-| LUT3       |  943 |
-| LUT2       |  696 |
-| LUT4       |  514 |
+| LUT6       | 1693 |
+| LUT5       |  967 |
+| LUT3       |  941 |
+| LUT2       |  694 |
+| LUT4       |  508 |
 | LUT1       |  412 |
 | SRL16E     |  253 |
 | FDSE       |  227 |

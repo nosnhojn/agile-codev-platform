@@ -1,0 +1,16 @@
+Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------
+| Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
+| Date         : Thu Jul 24 19:05:59 2014
+| Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+-----------------------------------------------------------------------------------
+
+Upgrade Log for IP 'FinalDesign_agileHWBlock_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of FinalDesign_agileHWBlock_0_1 (agilesoc.com:user:agileHWBlock:1.0) from (Rev. 2) to (Rev. 3)
+

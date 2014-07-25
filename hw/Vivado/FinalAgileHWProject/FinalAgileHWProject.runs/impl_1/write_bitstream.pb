@@ -52,12 +52,9 @@ a
 j
 QWebTalk data collection is enabled (User setting is ON. Install Setting is ON.).
 118*projectZ1-118
-¯
-†'%s' has been successfully sent to Xilinx on %s. For additional details about this file, please refer to the Webtalk help file at %s.
-186*common2‘
-}/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/usage_statistics_webtalk.xml2default:default2,
-Thu Jul 24 18:03:06 20142default:default2K
-7/opt/Xilinx/Vivado/2013.3/doc/webtalk_introduction.html2default:defaultZ17-186
+s
+ZWebTalk report has not been sent to Xilinx. Please check your network and proxy settings.
+185*commonZ17-185
 Q
 Releasing license: %s
 83*common2"
@@ -66,10 +63,10 @@ Q
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2%
 write_bitstream: 2default:default2
-00:00:522default:default2
-00:00:542default:default2
-1265.6602default:default2
-178.1952default:defaultZ17-268
+00:00:572default:default2
+00:01:062default:default2
+1264.0432default:default2
+174.9142default:defaultZ17-268
 
 
 End Record

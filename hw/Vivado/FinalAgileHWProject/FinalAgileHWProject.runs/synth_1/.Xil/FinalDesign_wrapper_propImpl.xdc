@@ -4,11 +4,11 @@ set_property SRC_FILE_INFO {cfile:/home/agilehw/agile-codev-platform/hw/Vivado/F
 set_property SRC_FILE_INFO {cfile:/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/FinalDesign_v_axi4s_vid_out_0_0_clocks.xdc rfile:../../../FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/FinalDesign_v_axi4s_vid_out_0_0_clocks.xdc id:4 order:LATE scoped_inst:FinalDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst} [current_design]
 set_property SRC_FILE_INFO {cfile:/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc rfile:../../../FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc id:5 order:LATE scoped_inst:FinalDesign_i/zed_hdmi_display/v_tc_0/U0} [current_design]
 set_property src_info {type:SCOPED_XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
-set_input_jitter clk_fpga_2 0.3
-set_property src_info {type:SCOPED_XDC file:1 line:24 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter clk_fpga_1 0.21
-set_property src_info {type:SCOPED_XDC file:1 line:27 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:SCOPED_XDC file:1 line:24 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter clk_fpga_0 0.38997
+set_property src_info {type:SCOPED_XDC file:1 line:27 export:INPUT save:INPUT read:READ} [current_design]
+set_input_jitter clk_fpga_2 0.3
 set_property src_info {type:SCOPED_XDC file:1 line:36 export:INPUT save:INPUT read:READ} [current_design]
 set_property iostandard "LVCMOS18" [get_ports "MIO[53]"]
 set_property src_info {type:SCOPED_XDC file:1 line:37 export:INPUT save:INPUT read:READ} [current_design]

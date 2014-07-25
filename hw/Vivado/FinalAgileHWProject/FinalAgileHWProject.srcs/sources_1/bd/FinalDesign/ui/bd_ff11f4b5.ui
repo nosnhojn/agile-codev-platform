@@ -23,8 +23,8 @@ preplace inst zed_hdmi_out_0 -pg 1 -lvl 8 -y 790 -defaultsOSRD
 preplace inst axi_mem_intercon -pg 1 -lvl 8 -y 110 -defaultsOSRD
 preplace inst proc_sys_reset -pg 1 -lvl 5 -y 130 -defaultsOSRD
 preplace netloc Conn1 1 0 6 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 1680
-preplace netloc axi_vdma_0_m_axis_mm2s 1 2 2 760 450 NJ
 preplace netloc Conn2 1 8 2 NJ 110 N
+preplace netloc axi_vdma_0_m_axis_mm2s 1 2 2 760 450 NJ
 preplace netloc s_axi_aclk_1 1 0 6 NJ 100 380 200 NJ 200 NJ 110 NJ 240 NJ
 preplace netloc proc_sys_reset_peripheral_aresetn 1 5 3 1700 170 NJ 170 2270
 preplace netloc gnd_const 1 6 2 2010 670 2260
@@ -55,6 +55,7 @@ preplace netloc axi_vdma_0_m_axis_mm2s_tlast 1 2 2 N 400 NJ
 preplace netloc vcc_const 1 1 6 350 610 NJ 610 940 370 1310 420 1710 900 1990
 preplace netloc zed_hdmi_out_0_io_hdmio 1 8 2 NJ 790 N
 preplace netloc axis_subset_converter_0_s_axis_tready 1 3 1 950
-levelinfo -pg 1 180 280 570 850 1130 1510 1850 2130 2400 2550 2600
+levelinfo -pg 1 180 280 570 850 1130 1510 1850 2130 2410 2570 2620
 ",
 }
+0

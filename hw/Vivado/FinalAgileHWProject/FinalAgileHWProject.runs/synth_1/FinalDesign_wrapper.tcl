@@ -40,8 +40,8 @@ set_property used_in_implementation false [get_files -all /home/agilehw/agile-co
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/FinalDesign_xbar_3_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_7/FinalDesign_auto_pc_7_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_8/FinalDesign_auto_pc_8_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign_ooc.xdc]
 set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign.bd]

@@ -37,7 +37,7 @@ module agileHWBlock(
     input rst
     );
     
-    assign oTDATA = (iTDATA == 'h00000000) ? 'h000055ff : iTDATA;
+    assign oTDATA = (iTDATA == 'h00000000) ? 'h000f003 : iTDATA;
     assign oTUSER = iTUSER;
     assign oTKEEP = iTKEEP;
     assign oTVALID = iTVALID;

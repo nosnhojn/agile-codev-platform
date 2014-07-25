@@ -48,7 +48,7 @@
 
 
 // IP VLNV: agilesoc.com:user:agileHWBlock:1.0
-// IP Revision: 2
+// IP Revision: 3
 
 (* X_CORE_INFO = "agileHWBlock,Vivado 2013.3" *)
 (* CHECK_LICENSE_TYPE = "FinalDesign_agileHWBlock_0_1,agileHWBlock,{}" *)
