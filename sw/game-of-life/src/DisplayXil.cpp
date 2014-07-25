@@ -12,8 +12,8 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_gridWidth(96),
   m_cellWidth(20),
   m_cellHeight(20),
-  m_fgColour(0x000000),
-  m_bgColour(0xffffff),
+  m_fgColour(0x00000000),
+  m_bgColour(0x00ffffff),
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
@@ -28,6 +28,9 @@ Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 c, Xuint32 r) {
   int row = r%20;
   int column = c%20;
 
+  //----------------------------
+  // HERE'S code for squares...
+  //----------------------------
   if (row >= 5 &&
       row <= 15 &&
       column >= 5 &&
@@ -43,13 +46,13 @@ Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 c, Xuint32 r) {
   //------------------------------
   // HERE'S code for triangles...
   //------------------------------
-  // if (x < width/2) {
-  //   if (y > height - (height/(width/2))*x) return m_fgColour;
+  // if (column < 10) {
+  //   if (row > 20 - 2*column) return m_fgColour;
   //   else                                   return m_bgColour;
   // }
-  //
+  // 
   // else {
-  //   if (y > (height/(width/2))*x - height) return m_fgColour;
+  //   if (row > 2*column - 20) return m_fgColour;
   //   else                                   return m_bgColour;
   // }
 }
@@ -79,7 +82,7 @@ int DisplayXil::_initscr()
 
 void DisplayXil::_clear()
 {
-  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
+  Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
 
   for (Xuint32 r=0; r<getHeight(); r++) {
     for (Xuint32 c=0; c<getWidth(); c++) {

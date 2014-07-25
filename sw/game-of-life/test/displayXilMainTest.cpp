@@ -24,6 +24,7 @@ TEST_F(DisplayXilTest, clearBufferToWhite0) {
   EXPECT_EQ(pixelAt(0, 0), display->getBgColour());
 }
 
+/*
 TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
   display->_clear();
 
@@ -33,6 +34,7 @@ TEST_F(DisplayXilTest, clearBufferToWhiteAll) {
     }
   }
 }
+*/
 
 TEST_F(DisplayXilTest, initDoesClear) {
   initDisplay();
