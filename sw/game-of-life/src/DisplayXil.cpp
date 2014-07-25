@@ -163,11 +163,11 @@ void DisplayXil::m_writeGridToFrameBuffer()
   char gridChar;
 
   for (Xuint32 row=0; row<m_height; row++) {
-    for (Xuint32 column=0; column<m_width; column+=20) {
+    for (Xuint32 column=0; column<m_width; column+=1) {
       gridChar = m_charAtCoord(column, row);
 
       if (gridChar != ' ') {
-        for (Xuint32 cellColumn=0; cellColumn<20; cellColumn+=1) *mem++ = getLiveCellPixelWithCoords(column+cellColumn, row);
+    	  *mem++ = getLiveCellPixelWithCoords(column, row);
       }
       else  *mem++ = m_bgColour;
     }
