@@ -112,14 +112,6 @@ TEST_F(DisplayLiveCellTest, refreshResetGrid) {
   EXPECT_LivePixelAt(0, width()-1);
 }
 
-TEST_F(DisplayLiveCellTest, getCellXCoord) {
-  EXPECT_EQ(14, display->getCellXCoord(394));
-}
-
-TEST_F(DisplayLiveCellTest, getCellYCoord) {
-  EXPECT_EQ(2, display->getCellYCoord(62));
-}
-
 TEST_F(DisplayLiveCellTest, getCellWidth) {
   EXPECT_EQ(20, display->getCellWidth());
 }

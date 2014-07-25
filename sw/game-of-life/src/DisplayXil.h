@@ -44,6 +44,11 @@ class DisplayXil : public Display
     Xuint32 m_gridWidth;
     Xuint32 m_gridHeight;
     Xuint32 m_gridPtr;
+    Xuint32 m_cellWidth;
+    Xuint32 m_cellHeight;
+    Xuint32 m_fgColour;
+    Xuint32 m_bgColour;
+
     Xuint32 m_rowIndexFromYPixelCoord(Xuint32);
     Xuint32 m_columnIndexFromXPixelCoord(Xuint32);
     char m_charAtCoord(Xuint32, Xuint32);
@@ -87,8 +92,6 @@ class DisplayXil : public Display
     //-----------------------------------------
     virtual void _refresh();
     Xuint32 getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y);
-    Xuint32 getCellXCoord(Xuint32);
-    Xuint32 getCellYCoord(Xuint32);
     Xuint32 getFgColour(void);
     Xuint32 getBgColour(void);
 
