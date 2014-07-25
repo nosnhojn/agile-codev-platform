@@ -5,7 +5,7 @@ delete_bd_objs [get_bd_nets zed_hdmi_display/agilehwblock_0_otvalid] [get_bd_net
 
 # Import the new ip
 startgroup
-create_bd_cell -type ip -vlnv neil_and_soheil:user:agileHWBlock:1.0 zed_hdmi_display/agileHWBlock_0
+create_bd_cell -type ip -vlnv agilesoc.com:user:agileHWBlock:1.0 zed_hdmi_display/agileHWBlock_0
 endgroup
 
 # Make the connections
