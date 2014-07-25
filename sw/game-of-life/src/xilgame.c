@@ -52,5 +52,22 @@ int main()
   drawing.initialCell(34,42);
   drawing.initialCell(34,44);
 
-  drawing.play(200);
+  drawing.initialCell(44,44);
+  drawing.initialCell(44,45);
+  drawing.initialCell(43,44);
+  drawing.initialCell(43,45);
+
+  drawing.initialCell(14,44);
+  drawing.initialCell(14,45);
+  drawing.initialCell(13,44);
+  drawing.initialCell(13,45);
+
+  drawing.initialCell(14,24);
+  drawing.initialCell(14,25);
+  drawing.initialCell(13,24);
+  drawing.initialCell(13,25);
+
+  drawing.play(50000);
+
+  cleanup_platform();
 }

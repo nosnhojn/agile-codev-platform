@@ -16,20 +16,25 @@ void Drawing::init()
   m_display->_initscr();
   m_display->_move(Board::ROW_SIZE,0);
 }
+#include "xil_printf.h"
 
+char s[96];
 void Drawing::refreshDrawing()
 {
   for (int row=0; row<Board::ROW_SIZE; row+=1) {
-    string s;
+//    string s;
     for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       if (m_board->getState(row,column)) {
-        s.append("X");
+        s[column] = 'X';
       }
       else {
-        s.append(" ");
+        s[column] = ' ';
       }
     }
-    m_display->_addstr((s).c_str());
+//    m_display->_addstr((s).c_str());
+    m_display->_addstr(s);
+
+//	xil_printf("grid row %d = %s\n", row, s);
   }
 
   m_display->_refresh();
@@ -54,6 +59,8 @@ void Drawing::play(int iterations)
 
 void Drawing::initialCell(int row, int column)
 {
+	xil_printf("WHAT THE HECK at %d %d\n", row, column);
+
   m_initialCells.push_back(cellCoord_t(row,column));
 }
 

@@ -40,6 +40,8 @@ class Drawing
     Display * m_display;
     Board * m_board;
     list<cellCoord_t> m_initialCells;
+    char m_newLine[96];
+
 };
 
 #endif
