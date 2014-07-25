@@ -38,19 +38,19 @@ int main()
 
   drawing.init();
  
-  drawing.initialCell(20,20);
-  drawing.initialCell(20,21);
-  drawing.initialCell(20,22);
-  drawing.initialCell(20,24);
-  drawing.initialCell(21,20);
-  drawing.initialCell(22,23);
-  drawing.initialCell(22,24);
-  drawing.initialCell(23,21);
-  drawing.initialCell(23,22);
-  drawing.initialCell(23,24);
-  drawing.initialCell(24,20);
-  drawing.initialCell(24,22);
-  drawing.initialCell(24,24);
+  drawing.initialCell(30,40);
+  drawing.initialCell(30,41);
+  drawing.initialCell(30,42);
+  drawing.initialCell(30,44);
+  drawing.initialCell(31,40);
+  drawing.initialCell(32,43);
+  drawing.initialCell(32,44);
+  drawing.initialCell(33,41);
+  drawing.initialCell(33,42);
+  drawing.initialCell(33,44);
+  drawing.initialCell(34,40);
+  drawing.initialCell(34,42);
+  drawing.initialCell(34,44);
 
   drawing.play(200);
 }
