@@ -10,6 +10,10 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
   m_gridPtr(0),
   m_gridHeight(54),
   m_gridWidth(96),
+  m_cellWidth(20),
+  m_cellHeight(20),
+  m_fgColour(0x00000000),
+  m_bgColour(0x00ffffff),
   m_resolution(VIDEO_RESOLUTION_1080P),
   m_xvtcEnGenerator(XVTC_EN_GENERATOR)
 {
@@ -20,32 +24,37 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // change the shape to be whatever you want... just be sure to go change
 // the test first :)
 //---------------------------------------------------------------------------
-Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
-//	return getFgColour();
-  if (x >= 5 &&
-      x <= getCellWidth()-5 &&
-      y >= 5 &&
-      y <= getCellHeight()-5)
+Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 c, Xuint32 r) {
+  int row = r%20;
+  int column = c%20;
+
+  //----------------------------
+  // HERE'S code for squares...
+  //----------------------------
+  if (row >= 5 &&
+      row <= 15 &&
+      column >= 5 &&
+      column <= 15)
   {
-    return getFgColour();
+    return m_fgColour;
   }
   else
   {
-    return getBgColour();
+    return m_bgColour;
   }
 
   //------------------------------
   // HERE'S code for triangles...
   //------------------------------
-//   if (x < 10) {
-//     if (y > 	20 - (2)*x) return getFgColour();
-//     else                                   return getBgColour();
-//   }
-//
-//   else {
-//     if (y > (2)*x - 20) return getFgColour();
-//     else                                   return getBgColour();
-//   }
+  // if (column < 10) {
+  //   if (row > 20 - 2*column) return m_fgColour;
+  //   else                                   return m_bgColour;
+  // }
+  // 
+  // else {
+  //   if (row > 2*column - 20) return m_fgColour;
+  //   else                                   return m_bgColour;
+  // }
 }
 
 int DisplayXil::_initscr()
@@ -73,11 +82,11 @@ int DisplayXil::_initscr()
 
 void DisplayXil::_clear()
 {
-  volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
+  Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
 
   for (Xuint32 r=0; r<getHeight(); r++) {
     for (Xuint32 c=0; c<getWidth(); c++) {
-      *mem++ = getBgColour();
+      *mem++ = m_bgColour;
     }
   }
 }
@@ -93,11 +102,11 @@ void DisplayXil::_refresh()
 }
 
 Xuint32 DisplayXil::getFgColour() {
-  return 0x000000;
+  return m_fgColour;
 }
 
 Xuint32 DisplayXil::getBgColour() {
-  return 0xffffff;
+  return m_bgColour;
 }
 
 void DisplayXil::_getch()
@@ -131,31 +140,36 @@ int DisplayXil::getResolution()
 
 Xuint32 DisplayXil::m_rowIndexFromYPixelCoord(Xuint32 y_coord)
 {
-  return (Xuint32) (y_coord/(getCellHeight()));
+  return (Xuint32) (y_coord/m_cellHeight);
 }
 
 Xuint32 DisplayXil::m_columnIndexFromXPixelCoord(Xuint32 x_coord)
 {
-  return (Xuint32) (x_coord/(getCellWidth()));
+  return (Xuint32) (x_coord/m_cellWidth);
 }
 
 char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 {
-  return m_charGrid[m_rowIndexFromYPixelCoord(y_coord)][m_columnIndexFromXPixelCoord(x_coord)];
+  return m_charGrid[
+                      y_coord/m_cellHeight  // row index
+                   ][
+                      x_coord/m_cellWidth   // column index
+                   ];
 }
 
 void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
   char gridChar;
-  Xuint32 livePixel;
-  for (Xuint32 y=0; y<m_height; y++) {
-    for (Xuint32 x=0; x<m_width; x++) {
-      gridChar = m_charAtCoord(x, y);
-      livePixel = getLiveCellPixelWithCoords(getCellXCoord(x), getCellYCoord(y));
 
-      if (gridChar != ' ') *mem++ = livePixel;
-      else  *mem++ = getBgColour();
+  for (Xuint32 row=0; row<m_height; row++) {
+    for (Xuint32 column=0; column<m_width; column+=20) {
+      gridChar = m_charAtCoord(column, row);
+
+      if (gridChar != ' ') {
+        for (Xuint32 cellColumn=0; cellColumn<20; cellColumn+=1) *mem++ = getLiveCellPixelWithCoords(column+cellColumn, row);
+      }
+      else  *mem++ = m_bgColour;
     }
   }
 
@@ -167,24 +181,14 @@ void DisplayXil::m_resetGrid()
   m_gridPtr = 0;
 }
 
-Xuint32 DisplayXil::getCellXCoord(Xuint32 x)
-{
-  return x % getCellWidth();
-}
-
-Xuint32 DisplayXil::getCellYCoord(Xuint32 y)
-{
-  return y % getCellHeight();
-}
-
 Xuint32 DisplayXil::getCellWidth()
 {
-  return 20;
+  return m_cellWidth;
 }
 
 Xuint32 DisplayXil::getCellHeight()
 {
-  return 20;
+  return m_cellHeight;
 }
 
 int DisplayXil::getXvtcEnableGenerator()

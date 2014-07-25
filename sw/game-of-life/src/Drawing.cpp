@@ -1,5 +1,4 @@
 #include "Drawing.h"
-#include "xil_printf.h"
 
 Drawing::Drawing(Board * board,
                  Display * display)
