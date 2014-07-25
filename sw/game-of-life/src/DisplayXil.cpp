@@ -24,9 +24,9 @@ DisplayXil::DisplayXil( DisplayXilCfg * cfg ) :
 // change the shape to be whatever you want... just be sure to go change
 // the test first :)
 //---------------------------------------------------------------------------
-Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y) {
-  int row = x%20;
-  int column = y%20;
+Xuint32 DisplayXil::getLiveCellPixelWithCoords(Xuint32 c, Xuint32 r) {
+  int row = r%20;
+  int column = c%20;
 
   if (row >= 5 &&
       row <= 15 &&
@@ -147,21 +147,25 @@ Xuint32 DisplayXil::m_columnIndexFromXPixelCoord(Xuint32 x_coord)
 
 char DisplayXil::m_charAtCoord(Xuint32 x_coord, Xuint32 y_coord)
 {
-  return m_charGrid[m_rowIndexFromYPixelCoord(y_coord)][m_columnIndexFromXPixelCoord(x_coord)];
+  return m_charGrid[
+                      y_coord/m_cellHeight  // row index
+                   ][
+                      x_coord/m_cellWidth   // column index
+                   ];
 }
 
 void DisplayXil::m_writeGridToFrameBuffer()
 {
   volatile Xuint32 *mem = (Xuint32 *)(m_cfg->axiVdmaCfg.FrameStoreStartAddr[0]);
   char gridChar;
-  Xuint32 livePixel;
 
-  for (Xuint32 y=0; y<m_height; y++) {
-    for (Xuint32 x=0; x<m_width; x++) {
-      gridChar = m_charAtCoord(x, y);
-      livePixel = getLiveCellPixelWithCoords(x, y);
+  for (Xuint32 row=0; row<m_height; row++) {
+    for (Xuint32 column=0; column<m_width; column+=20) {
+      gridChar = m_charAtCoord(column, row);
 
-      if (gridChar != ' ') *mem++ = livePixel;
+      if (gridChar != ' ') {
+        for (Xuint32 cellColumn=0; cellColumn<20; cellColumn+=1) *mem++ = getLiveCellPixelWithCoords(column+cellColumn, row);
+      }
       else  *mem++ = m_bgColour;
     }
   }
