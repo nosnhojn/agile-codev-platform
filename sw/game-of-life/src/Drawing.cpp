@@ -18,23 +18,19 @@ void Drawing::init()
 }
 #include "xil_printf.h"
 
-char s[96];
 void Drawing::refreshDrawing()
 {
   for (int row=0; row<Board::ROW_SIZE; row+=1) {
-//    string s;
     for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       if (m_board->getState(row,column)) {
-        s[column] = 'X';
+        m_newLine[column] = 'X';
       }
       else {
-        s[column] = ' ';
+        m_newLine[column] = ' ';
       }
     }
-//    m_display->_addstr((s).c_str());
-    m_display->_addstr(s);
+    m_display->_addstr(m_newLine);
 
-//	xil_printf("grid row %d = %s\n", row, s);
   }
 
   m_display->_refresh();
