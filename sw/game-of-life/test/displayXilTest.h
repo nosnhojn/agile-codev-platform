@@ -42,7 +42,7 @@ class DisplayXilTest : public testing::Test
     int height();
 
     Xuint32 pixelAt(int row, int column);
-    Xuint32 expectedPixelAt(int row, int column);
+    bool    expectedPixelAt(int row, int column);
 
     int initDisplay();
     void loadFullGrid();

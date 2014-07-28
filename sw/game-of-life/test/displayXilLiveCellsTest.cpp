@@ -17,9 +17,9 @@ TEST_F(DisplayLiveCellTest, livingCellShapeIsASquare) {
           x <= 15 &&      // right margin
           y >= 5 &&       // top margin
           y <= 15)        // bottom margin
-        exp = display->getFgColour();
+        exp = true; //display->getFgColour();
       else
-        exp = display->getBgColour();
+        exp = false; //display->getBgColour();
 
       EXPECT_EQ(expectedPixelAt(x, y), exp);
     }

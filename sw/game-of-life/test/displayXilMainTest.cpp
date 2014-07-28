@@ -301,7 +301,7 @@ TEST_F(DisplayXilTest, refreshDMAsInitialFrame) {
 
   for (int i=11; i<height(); i+=10) {
     for (int j=11; j<width(); j+=10) {
-      EXPECT_EQ(pixelAt(i, j), expectedPixelAt(i%20, j%20));
+      EXPECT_LivePixelAt(i, j);
     }
   }
 }
@@ -313,7 +313,7 @@ TEST_F(DisplayXilTest, refreshDMAsAnotherFrame) {
 
   for (int i=1; i<height(); i+=10) {
     for (int j=1; j<width(); j+=10) {
-      EXPECT_EQ(pixelAt(i, j), expectedPixelAt(i%20, j%20));
+      EXPECT_LivePixelAt(i, j);
     }
   }
 }

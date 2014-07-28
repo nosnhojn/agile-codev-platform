@@ -84,7 +84,7 @@ Xuint32 DisplayXilTest::pixelAt(int row, int column)
   return *(HdmiDisplayMemory + row*1920 + column);
 }
 
-Xuint32 DisplayXilTest::expectedPixelAt(int row,int column)
+bool DisplayXilTest::expectedPixelAt(int row,int column)
 {
   return display->getLiveCellPixelWithCoords(row, column);
 }
@@ -128,5 +128,6 @@ void DisplayXilTest::EXPECT_BgPixelAt(int x, int y)
 
 void DisplayXilTest::EXPECT_LivePixelAt(int x, int y)
 {
-  EXPECT_EQ(pixelAt(x, y), expectedPixelAt(x%20, y%20));
+  if (expectedPixelAt(x%20, y%20)) EXPECT_NE(pixelAt(x,y), display->getBgColour());
+  else                             EXPECT_EQ(pixelAt(x,y), display->getBgColour());
 }

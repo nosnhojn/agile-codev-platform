@@ -91,7 +91,7 @@ class DisplayXil : public Display
     //     don't now what that's for
     //-----------------------------------------
     virtual void _refresh();
-    Xuint32 getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y);
+    bool    getLiveCellPixelWithCoords(Xuint32 x, Xuint32 y);
     Xuint32 getFgColour(void);
     Xuint32 getBgColour(void);
 
