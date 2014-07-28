@@ -115,7 +115,7 @@ void DisplayXil::_getch()
 
 void DisplayXil::_addstr(const char * str)
 {
-  strcpy(m_charGrid[m_gridPtr], str);
+  strncpy(m_charGrid[m_gridPtr], str, 96);
   m_gridPtr++;
 }
 

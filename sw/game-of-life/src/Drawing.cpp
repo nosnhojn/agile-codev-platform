@@ -30,7 +30,6 @@ void Drawing::refreshDrawing()
       }
     }
     m_display->_addstr(m_newLine);
-
   }
 
   m_display->_refresh();

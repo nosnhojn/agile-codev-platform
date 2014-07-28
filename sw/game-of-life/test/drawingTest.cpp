@@ -20,8 +20,10 @@ class DrawingTest : public testing::Test
 
     ExpectationSet req;
 
-    DrawingTest() : checkRow("^" + string(Board::COLUMN_SIZE, ' ')),
-                    emptyRow("^" + string(Board::COLUMN_SIZE, ' '))
+    // not terminated with a null char so do a "who cares" off the end of the array
+    // to ignore any garbage
+    DrawingTest() : checkRow("^" + string(Board::COLUMN_SIZE, ' ') + ".*"),
+                    emptyRow("^" + string(Board::COLUMN_SIZE, ' ') + ".*")
     {
       drawing = new Drawing(&board, &display);
     }
