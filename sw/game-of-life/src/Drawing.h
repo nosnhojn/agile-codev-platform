@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "Display.h"
 
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <list>

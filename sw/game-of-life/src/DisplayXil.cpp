@@ -168,14 +168,16 @@ void DisplayXil::m_writeGridToFrameBuffer()
 
       switch (gridChar)
       {
-        case 'X' :
+
+      case ' ' :
+          *mem = m_bgColour;
+          break;
+
+      default :
           if (getLiveCellPixelWithCoords(column, row)) *mem = m_fgColour;
           else                                         *mem = m_bgColour;
           break;
 
-        default :
-          *mem = m_bgColour;
-          break;
       }
       mem++;
     }
