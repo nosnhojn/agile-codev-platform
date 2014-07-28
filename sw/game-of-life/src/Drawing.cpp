@@ -16,14 +16,15 @@ void Drawing::init()
   m_display->_initscr();
   m_display->_move(Board::ROW_SIZE,0);
 }
-#include "xil_printf.h"
 
 void Drawing::refreshDrawing()
 {
+  char t [1];
   for (int row=0; row<Board::ROW_SIZE; row+=1) {
     for (int column=0; column<Board::COLUMN_SIZE; column+=1) {
       if (m_board->getState(row,column)) {
-        m_newLine[column] = 'X';
+        sprintf(t, "%0d", m_board->numLivingNeighbours(row,column));
+        m_newLine[column] = t[0];
       }
       else {
         m_newLine[column] = ' ';
@@ -54,8 +55,6 @@ void Drawing::play(int iterations)
 
 void Drawing::initialCell(int row, int column)
 {
-	xil_printf("WHAT THE HECK at %d %d\n", row, column);
-
   m_initialCells.push_back(cellCoord_t(row,column));
 }
 

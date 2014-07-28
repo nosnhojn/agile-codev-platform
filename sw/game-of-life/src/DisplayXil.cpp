@@ -36,12 +36,10 @@ bool DisplayXil::getLiveCellPixelWithCoords(Xuint32 c, Xuint32 r) {
       column >= 5 &&
       column <= 15)
   {
-    //return m_fgColour;
     return true;
   }
   else
   {
-    //return m_bgColour;
     return false;
   }
 

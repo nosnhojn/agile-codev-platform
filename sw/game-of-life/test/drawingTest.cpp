@@ -33,9 +33,9 @@ class DrawingTest : public testing::Test
       if (drawing != 0) delete drawing;
     }
 
-    void newLivingCell(int row, int column)
+    void newLivingCell(int row, int column, char c)
     {
-      checkRow[column+1] = 'X';
+      checkRow[column+1] = c;
       board.setLivingCell(row, column);
     }
 
@@ -65,7 +65,7 @@ TEST_F(DrawingTest, ScreenRefreshedRow0) {
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
-  newLivingCell(0,0);
+  newLivingCell(0,0,'0');
 
   req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
   EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(53).After(req);
@@ -74,9 +74,11 @@ TEST_F(DrawingTest, ScreenRefreshedRow0WithOneLivingCell) {
 }
 
 TEST_F(DrawingTest, ScreenRefreshedRow0WithAllLivingCells) {
-  for (int c=0; c<Board::COLUMN_SIZE; c+=1) {
-    newLivingCell(0,c);
+  newLivingCell(0,0,'1');
+  for (int c=1; c<Board::COLUMN_SIZE-1; c+=1) {
+    newLivingCell(0,c,'2');
   }
+  newLivingCell(0,Board::COLUMN_SIZE-1,'1');
 
   req = EXPECT_CALL(display, _addstr(MatchesRegex(checkRow.c_str()))).Times(1);
   EXPECT_CALL(display, _addstr(MatchesRegex(emptyRow.c_str()))).Times(53).After(req);
