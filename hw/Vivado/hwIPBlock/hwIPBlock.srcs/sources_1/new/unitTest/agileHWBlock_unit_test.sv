@@ -1,5 +1,5 @@
 `include "svunit_defines.svh"
-`include "../agileHWBlock.v"
+`include "../agileHwBlock.v"
 
 module agileHWBlock_unit_test;
   import svunit_pkg::svunit_testcase;
@@ -7,25 +7,29 @@ module agileHWBlock_unit_test;
   string name = "agileHWBlock_ut";
   svunit_testcase svunit_ut;
 
+  reg reset_n;
+  reg clk;
+
 
   //===================================
   // This is the UUT that we're 
   // running the Unit Tests on
   //===================================
-    reg [31:0]  iTDATA;
-    reg         iTUSER;
-    reg [3:0]   iTKEEP;
-    reg         iTVALID;
-    reg         iTLAST;
-    wire        oTREADY;
-    wire [31:0] oTDATA;
-    wire        oTUSER;
-    wire [3:0]  oTKEEP;
-    wire        oTVALID;
-    wire        oTLAST;
-    reg         iTREADY;    	
+  reg [31:0]  iTDATA;
+  reg         iTUSER;
+  reg [3:0]   iTKEEP;
+  reg         iTVALID;
+  reg         iTLAST;
+  wire        oTREADY;
+  wire [31:0] oTDATA;
+  wire        oTUSER;
+  wire [3:0]  oTKEEP;
+  wire        oTVALID;
+  wire        oTLAST;
+  reg         iTREADY;      
+
   agileHWBlock my_agileHWBlock(.iTDATA(iTDATA),
-			       .iTUSER(iTUSER),
+                               .iTUSER(iTUSER),
                                .iTKEEP(iTKEEP),
                                .iTVALID(iTVALID),
                                .iTLAST(iTLAST),
@@ -35,8 +39,13 @@ module agileHWBlock_unit_test;
                                .oTKEEP(oTKEEP),
                                .oTVALID(oTVALID),
                                .oTLAST(oTLAST),
-                               .iTREADY(iTREADY)				
-  );
+                               .iTREADY(iTREADY)        
+  			      );
+
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+  end
 
 
   //===================================
@@ -52,8 +61,10 @@ module agileHWBlock_unit_test;
   //===================================
   task setup();
     svunit_ut.setup();
-    #1;
-    /* Place Setup Code Here */
+
+    reset_n = 0;
+    repeat (5) @(negedge clk);
+    reset_n = 1;
   endtask
 
 
@@ -81,40 +92,45 @@ module agileHWBlock_unit_test;
   //   `SVTEST_END
   //===================================
   `SVUNIT_TESTS_BEGIN
-	   `SVTEST(iotest)
-		iTDATA = 'hAAFF;
-                iTUSER = 'h0;
-                iTKEEP = 'hF;
-                iTVALID = 'h1;
-                iTLAST = 'h0;
-                iTREADY = 'h1;
-                #0;
-		`FAIL_UNLESS(oTDATA === iTDATA);
-	    	`FAIL_UNLESS(oTUSER === iTUSER);
-	    	`FAIL_UNLESS(oTKEEP === iTKEEP);
-	    	`FAIL_UNLESS(oTVALID === iTVALID);
-	    	`FAIL_UNLESS(oTLAST === iTLAST);
-	    	`FAIL_UNLESS(oTREADY === iTREADY);
-	   `SVTEST_END
+
+     `SVTEST(iotest)
+       iTDATA = 'hAAFF;
+       iTUSER = 'h0;
+       iTKEEP = 'hF;
+       iTVALID = 'h1;
+       iTLAST = 'h0;
+       iTREADY = 'h1;
+
+       #0;
+
+       `FAIL_UNLESS(oTDATA === iTDATA);
+       `FAIL_UNLESS(oTUSER === iTUSER);
+       `FAIL_UNLESS(oTKEEP === iTKEEP);
+       `FAIL_UNLESS(oTVALID === iTVALID);
+       `FAIL_UNLESS(oTLAST === iTLAST);
+        `FAIL_UNLESS(oTREADY === iTREADY);
+     `SVTEST_END
 
 
-	   `SVTEST(colortest)
-		iTDATA = 'h00000000;
-                iTUSER = 'h0;
-                iTKEEP = 'hF;
-                iTVALID = 'h1;
-                iTLAST = 'h0;
-                iTREADY = 'h1;
-                #1;
-		`FAIL_UNLESS(oTDATA === 'h000055ff);
-	    	`FAIL_UNLESS(oTUSER === iTUSER);
-	    	`FAIL_UNLESS(oTKEEP === iTKEEP);
-	    	`FAIL_UNLESS(oTVALID === iTVALID);
-	    	`FAIL_UNLESS(oTLAST === iTLAST);
-	    	`FAIL_UNLESS(oTREADY === iTREADY);
-	   `SVTEST_END
+     `SVTEST(colortest)
+       iTDATA = 'h00000000;
+       iTUSER = 'h0;
+       iTKEEP = 'hF;
+       iTVALID = 'h1;
+       iTLAST = 'h0;
+       iTREADY = 'h1;
 
-	   
+       #1;
+
+       `FAIL_UNLESS(oTDATA === 'h000055ff);
+       `FAIL_UNLESS(oTUSER === iTUSER);
+       `FAIL_UNLESS(oTKEEP === iTKEEP);
+       `FAIL_UNLESS(oTVALID === iTVALID);
+       `FAIL_UNLESS(oTLAST === iTLAST);
+       `FAIL_UNLESS(oTREADY === iTREADY);
+     `SVTEST_END
+
+     
 
 
   `SVUNIT_TESTS_END
