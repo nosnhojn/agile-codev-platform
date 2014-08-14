@@ -33,7 +33,7 @@ void DisplayNCurses::_getch()
 
 void DisplayNCurses::_addstr(const char * s)
 {
-  string str(s);
+  string str(s, 80);
   str += '\n';
   addstr(str.c_str());
 }
