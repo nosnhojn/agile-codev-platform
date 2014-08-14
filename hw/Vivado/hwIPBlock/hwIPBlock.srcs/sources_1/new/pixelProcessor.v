@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module pixelProcessor
 (
   input [31:0]  iTDATA,
