@@ -1,5 +1,5 @@
 `include "svunit_defines.svh"
-`include "../agileHWBlock.v"
+`include "agileHwBlock.v"
 
 module agileHWBlock_unit_test;
   import svunit_pkg::svunit_testcase;
