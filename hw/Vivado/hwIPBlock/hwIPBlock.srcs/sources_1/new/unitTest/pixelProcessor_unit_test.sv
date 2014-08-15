@@ -12,7 +12,39 @@ module pixelProcessor_unit_test;
   // This is the UUT that we're 
   // running the Unit Tests on
   //===================================
-  pixelProcessor my_pixelProcessor();
+  reg [31:0]  iTDATA;
+  reg         iTUSER;
+  reg [3:0]   iTKEEP;
+  reg         iTVALID;
+  reg         iTLAST;
+  wire        oTREADY;
+  wire [31:0] oTDATA;
+  wire        oTUSER;
+  wire [3:0]  oTKEEP;
+  wire        oTVALID;
+  wire        oTLAST;
+  reg         iTREADY;
+
+  reg clk;
+  reg rst_n;
+
+  pixelProcessor uut
+  (
+    .clk(clk),
+    .rst_n(rst_n),
+    .iTDATA(iTDATA),
+    .iTUSER(iTUSER),
+    .iTKEEP(iTKEEP),
+    .iTVALID(iTVALID),
+    .iTLAST(iTLAST),
+    .oTREADY(oTREADY),
+    .oTDATA(oTDATA),
+    .oTUSER(oTUSER),
+    .oTKEEP(oTKEEP),
+    .oTVALID(oTVALID),
+    .oTLAST(oTLAST),
+    .iTREADY(iTREADY)
+  );
 
 
   //===================================
@@ -57,7 +89,8 @@ module pixelProcessor_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
-
+  `SVTEST(ingress_write_to_memory)
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
