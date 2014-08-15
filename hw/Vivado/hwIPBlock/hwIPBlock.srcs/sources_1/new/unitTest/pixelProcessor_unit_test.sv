@@ -25,6 +25,12 @@ module pixelProcessor_unit_test;
   wire        oTLAST;
   reg         iTREADY;
 
+  wire [31:0] wdata [1:0];
+  wire [31:0] waddr [1:0];
+  wire        wr [1:0];
+  wire [31:0] rdata [1:0];
+  wire [31:0] raddr [1:0];
+
   reg clk;
   reg rst_n;
 
@@ -32,18 +38,36 @@ module pixelProcessor_unit_test;
   (
     .clk(clk),
     .rst_n(rst_n),
+
+    // ingress port
     .iTDATA(iTDATA),
     .iTUSER(iTUSER),
     .iTKEEP(iTKEEP),
     .iTVALID(iTVALID),
     .iTLAST(iTLAST),
     .oTREADY(oTREADY),
+
+    // egress port
     .oTDATA(oTDATA),
     .oTUSER(oTUSER),
     .oTKEEP(oTKEEP),
     .oTVALID(oTVALID),
     .oTLAST(oTLAST),
-    .iTREADY(iTREADY)
+    .iTREADY(iTREADY),
+
+    // ram port 0
+    .wdata_0(wdata[0]),
+    .waddr_0(waddr[0]),
+    .wr_0(wr[0]),
+    .rdata_0(rdata[0]),
+    .raddr_0(raddr[0]),
+
+    // ram port 1
+    .wdata_1(wdata[1]),
+    .waddr_1(waddr[1]),
+    .wr_1(wr[1]),
+    .rdata_1(rdata[1]),
+    .raddr_1(raddr[1])
   );
 
 
