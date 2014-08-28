@@ -50,7 +50,7 @@ always @(negedge rst_n or posedge clk) begin
   end
 
   else begin
-    // ingress to the memory
+    // ingress path to the memory
     if (iTVALID) begin
       wr_0 <= 1;
       wdata_0 <= { iTDATA , iTUSER , iTKEEP , iTLAST };
@@ -60,6 +60,11 @@ always @(negedge rst_n or posedge clk) begin
       if (ingress_write_address >= max_ingress_write_address) begin
         ingress_write_address <= 0;
       end
+    end
+
+    // stall the ingress path
+    else begin
+      wr_0 <= 0;
     end
   end
 end

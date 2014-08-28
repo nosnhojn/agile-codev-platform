@@ -10,6 +10,7 @@ module pixelProcessor_unit_test;
   svunit_testcase svunit_ut;
 
   parameter PORT0_ADDR_WIDTH = 8;
+  parameter MEM_DEPTH = 2**PORT0_ADDR_WIDTH;
 
   //===================================
   // This is the UUT that we're 
@@ -119,13 +120,17 @@ module pixelProcessor_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
+  `SVTEST(ingress_write_idle)
+    step();
+
+    expectIdleWritePort0();
+  `SVTEST_END
+
   `SVTEST(ingress_write_memory_format)
-    // drive the bus
     ingressPixel('haa55bb);
 
     step();
 
-    // sample the write memory
     expectWritePort0(0, 'haa55bb);
   `SVTEST_END
 
@@ -135,33 +140,43 @@ module pixelProcessor_unit_test;
       step();
     end
 
-    // sample the write memory
     expectWritePort0(1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_full_mem)
-    repeat (2**PORT0_ADDR_WIDTH) begin
+    repeat (MEM_DEPTH) begin
       ingressPixel('haa55bb);
       step();
     end
 
-    // sample the write memory
-    expectWritePort0((2**PORT0_ADDR_WIDTH)-1, 'haa55bb);
+    expectWritePort0(MEM_DEPTH-1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_wrap_mem)
-    repeat (2**PORT0_ADDR_WIDTH+1) begin
+    repeat (MEM_DEPTH+1) begin
       ingressPixel('haa55bb);
       step();
     end
 
-    // sample the write memory
     expectWritePort0(0, 'haa55bb);
+  `SVTEST_END
+
+  `SVTEST(ingress_write_stall)
+    ingressPixel('haa55bb);
+    step();
+
+    ingressStall();
+    step();
+
+    expectIdleWritePort0();
   `SVTEST_END
 
   `SVUNIT_TESTS_END
 
 
+  //------------------------
+  // helper tasks/functions
+  //------------------------
 
   task ingressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
@@ -172,12 +187,21 @@ module pixelProcessor_unit_test;
     iTVALID = 1;
   endtask
 
+  task ingressStall();
+    nextSamplePoint();
+    iTVALID = 0;
+  endtask
+
   task expectWritePort0(bit[31:0] addr, bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
-//$display("ADDR:0x%0x EXP:0x%0x", waddr[0], addr);
     `FAIL_UNLESS(wdata[0] === { data , user , keep , last });
     `FAIL_UNLESS(waddr[0] == addr);
     `FAIL_UNLESS(wr[0] === 1);
+  endtask
+
+  task expectIdleWritePort0();
+    nextSamplePoint();
+    `FAIL_UNLESS(wr[0] === 0);
   endtask
 
 endmodule
