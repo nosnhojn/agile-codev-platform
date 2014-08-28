@@ -2,18 +2,20 @@ module dpram
 #(
   DPRAM_DEPTH = 1,
   DPRAM_PORT0_WIDTH = 1,
-  DPRAM_PORT1_WIDTH = 1
+  DPRAM_PORT1_WIDTH = 1,
+  DPRAM_PORT0_ADDR_WIDTH = 32,
+  DPRAM_PORT1_ADDR_WIDTH = 32
 )
 (
   input clk,
   input rst_n,
 
   input [DPRAM_PORT0_WIDTH-1:0] wdata_0,
-  input [31:0] waddr_0,
+  input [DPRAM_PORT0_ADDR_WIDTH-1:0] waddr_0,
   input wr_0,
 
   input [DPRAM_PORT1_WIDTH-1:0] wdata_1,
-  input [31:0] waddr_1,
+  input [DPRAM_PORT1_ADDR_WIDTH-1:0] waddr_1,
   input wr_1,
 
   output logic [DPRAM_PORT0_WIDTH-1:0] rdata_0,
