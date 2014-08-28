@@ -6,6 +6,10 @@
 module dpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
+  parameter DEPTH = 256;
+  parameter PORT0_WIDTH = 30;
+  parameter PORT1_WIDTH = 30;
+
   string name = "dpram_ut";
   svunit_testcase svunit_ut;
 
@@ -14,11 +18,11 @@ module dpram_unit_test;
 
   `CLK_RESET_FIXTURE(10,1)
 
-  logic [31:0] wdata [1:0];
+  logic [PORT0_WIDTH-1:0] wdata [1:0];
   logic [31:0] waddr [1:0];
   logic        wr    [1:0];
 
-  wire  [31:0] rdata [1:0];
+  wire  [PORT0_WIDTH-1:0] rdata [1:0];
   logic [31:0] raddr [1:0];
 
   //===================================
@@ -27,7 +31,9 @@ module dpram_unit_test;
   //===================================
   dpram
   #(
-    .SIZE(`TEST_DPRAM_SIZE)
+    .DPRAM_DEPTH(DEPTH),
+    .DPRAM_PORT0_WIDTH(PORT0_WIDTH),
+    .DPRAM_PORT1_WIDTH(PORT1_WIDTH)
   )
   my_dpram
   (
@@ -121,12 +127,12 @@ module dpram_unit_test;
   // helper tasks/functions
   //------------------------
 
-  task expectReadData(int port, logic [31:0] exp);
+  task expectReadData(int port, logic [PORT0_WIDTH-1:0] exp);
     nextSamplePoint();
     `FAIL_UNLESS(rdata[port] === exp);
   endtask
 
-  task writePort(int port, bit [31:0] addr, bit [31:0] data);
+  task writePort(int port, bit [31:0] addr, bit [PORT0_WIDTH-1:0] data);
     nextSamplePoint();
     wr[port] = 1;
     waddr[port] = addr;

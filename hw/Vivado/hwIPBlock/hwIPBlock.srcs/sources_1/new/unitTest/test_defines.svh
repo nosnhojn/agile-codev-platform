@@ -21,5 +21,6 @@ endtask \
 task reset(); \
   rst_n = 0; \
   step(RST_PERIOD); \
+  #1; \
   rst_n = 1; \
 endtask
