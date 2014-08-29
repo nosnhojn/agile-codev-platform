@@ -159,6 +159,10 @@ module pixelProcessor_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
+
+  //--------------------------------------
+  // tests for the write memory interface
+  //--------------------------------------
   `SVTEST(ingress_write_idle)
     step();
 
@@ -235,44 +239,82 @@ module pixelProcessor_unit_test;
     expectWritePort0(1, 'haa55bb);
   `SVTEST_END
 
-  `SVTEST(egress_0_pixels_avail)
+  `SVTEST(egress_pixel_cnt_resets_to_0)
     expectPixelsAvail(0);
   `SVTEST_END
 
-  `SVTEST(egress_1_pixels_avail)
+  `SVTEST(egress_pixel_cnt_inc_by_1)
     ingressPixel('haa55bb);
     step();
 
     expectPixelsAvail(1);
   `SVTEST_END
 
-  `SVTEST(egress_rd_thresh_pixels_avail)
+  `SVTEST(egress_pixel_cnt_inc_to_RD_THRESH)
+    repeat(RD_THRESH-1) begin
+      ingressPixel('haa55bb);
+      step();
+    end
+    ingressStall();
+
+    expectPixelsAvail(RD_THRESH-1);
+    expectNoEgressPixel();
+  `SVTEST_END
+
+  `SVTEST(egress_first_pixel)
     repeat(RD_THRESH) begin
       ingressPixel('haa55bb);
       step();
     end
-
-    expectPixelsAvail(RD_THRESH);
-  `SVTEST_END
-
-  `SVTEST(egress_read_when_rd_thresh_pixels_avail)
-    repeat(RD_THRESH+1) begin
-      ingressPixel('haa55bb);
-      step();
-    end
-
-    expectPixelsAvail(RD_THRESH);
-  `SVTEST_END
-
-  `SVTEST(egress_read_memory_format)
-    repeat(RD_THRESH+1) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    ingressStall();
+    waitForEgressPixel();
 
     expectEgressPixel('haa55bb);
   `SVTEST_END
 
+  `SVTEST(egress_N_pixels)
+    fork
+      begin
+        for (int i=0; i<RD_THRESH+10; i+=1) begin
+          ingressPixel(i);
+          step();
+        end
+      end
+    join_none
+
+    waitForEgressPixel();
+    for (int e=0; e<10; e+=1) begin
+      expectEgressPixel(e);
+      step();
+    end
+  `SVTEST_END
+
+  `SVTEST(egress_no_pixels_when_avail_dips_below_RD_THRESH)
+    repeat(RD_THRESH) begin
+      ingressPixel('haa55bb);
+      step();
+    end
+    ingressStall();
+    waitForEgressPixel();
+
+    step();
+
+    expectNoEgressPixel();
+  `SVTEST_END
+
+  `SVTEST(egress_not_ready)
+    for (int i=0; i<RD_THRESH; i+=1) begin
+      ingressPixel(i);
+      step();
+    end
+    ingressStall();
+    iTREADY = 0;
+
+    jumpForward();
+
+    expectPixelsAvail(RD_THRESH-1);
+    expectEgressPixel(0);
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
@@ -281,6 +323,10 @@ module pixelProcessor_unit_test;
   // helper tasks/functions
   //------------------------
 
+  task jumpForward();
+    step(10);
+  endtask
+
   task ingressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     iTVALID = 1;
@@ -288,6 +334,21 @@ module pixelProcessor_unit_test;
     iTUSER = user;
     iTKEEP = keep;
     iTLAST = last;
+  endtask
+
+  task expectNoEgressPixel();
+    nextSamplePoint();
+    `FAIL_UNLESS(oTVALID === 0);
+  endtask
+
+  // exact synchronization isn't necessary so this is just waiting until
+  // a pixel shows up on the egress
+  task waitForEgressPixel();
+    nextSamplePoint();
+    while (oTVALID !== 1) begin
+      step();
+      nextSamplePoint();
+    end
   endtask
 
   task expectEgressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);

@@ -55,12 +55,16 @@ always @(negedge rst_n or posedge clk) begin
 
     raddr_0 <= 0;
 
+    oTVALID <= 0;
+
     ingress_write_address <= 0;
     egress_read_address <= 0;
   end
 
   else begin
+    //----------------------------
     // ingress path to the memory
+    //----------------------------
     if (iTVALID && oTREADY) begin
       wr_0 <= 1;
       wdata_0 <= { iTDATA , iTUSER , iTKEEP , iTLAST };
@@ -77,11 +81,20 @@ always @(negedge rst_n or posedge clk) begin
       wr_0 <= 0;
     end
 
+
+    //-----------------------------
     // egress path from the memory
-    if (pixel_cnt >= pixel_rd_thresh) begin
+    //-----------------------------
+    if (pixel_cnt >= pixel_rd_thresh && ( !oTVALID || oTVALID && iTREADY) ) begin
       egress_read_address <= egress_read_address + 1;
       oTVALID <= 1;
       { oTDATA , oTUSER , oTKEEP , oTLAST } <= rdata_0;
+      raddr_0 <= raddr_0 + 1;
+    end
+
+    // stall the egress path
+    else begin
+      oTVALID <= oTVALID && ~iTREADY;
     end
   end
 end
