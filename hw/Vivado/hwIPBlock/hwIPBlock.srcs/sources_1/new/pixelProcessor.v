@@ -44,6 +44,18 @@ logic [31:0] ingress_write_address;
 logic [31:0] egress_read_address;
 wire [31:0] max_ingress_write_address = 2**PORT0_ADDR_WIDTH - 1;
 
+wire ingress_pixel_ready;
+wire wrap_ingress_write_address;
+wire [29:0] concatinated_write_data;
+
+logic [29:0] concatenated_read_data;
+
+wire egress_bus_idle;
+wire last_egress_pixel_accepted;
+wire pixel_available;
+wire egress_pixel_ready;
+wire hold_oTVALID_until_iTREADY;
+
 assign oTREADY = iTREADY;
 assign pixel_cnt = ingress_write_address - egress_read_address;
 
@@ -65,13 +77,13 @@ always @(negedge rst_n or posedge clk) begin
     //----------------------------
     // ingress path to the memory
     //----------------------------
-    if (iTVALID && oTREADY) begin
+    if (ingress_pixel_ready) begin
       wr_0 <= 1;
-      wdata_0 <= { iTDATA , iTUSER , iTKEEP , iTLAST };
+      wdata_0 <= concatinated_write_data;
       waddr_0 <= ingress_write_address;
 
       ingress_write_address <= ingress_write_address + 1;
-      if (ingress_write_address >= max_ingress_write_address) begin
+      if (wrap_ingress_write_address) begin
         ingress_write_address <= 0;
       end
     end
@@ -85,18 +97,34 @@ always @(negedge rst_n or posedge clk) begin
     //-----------------------------
     // egress path from the memory
     //-----------------------------
-    if (pixel_cnt >= pixel_rd_thresh && ( !oTVALID || oTVALID && iTREADY) ) begin
+    if (egress_pixel_ready) begin
       egress_read_address <= egress_read_address + 1;
       oTVALID <= 1;
-      { oTDATA , oTUSER , oTKEEP , oTLAST } <= rdata_0;
+      concatenated_read_data <= rdata_0;
       raddr_0 <= raddr_0 + 1;
     end
 
     // stall the egress path
     else begin
-      oTVALID <= oTVALID && ~iTREADY;
+      oTVALID <= hold_oTVALID_until_iTREADY;
     end
   end
 end
+
+
+assign ingress_pixel_ready = iTVALID && oTREADY;
+assign wrap_ingress_write_address = (ingress_write_address >= max_ingress_write_address);
+assign concatinated_write_data = { iTDATA , iTUSER , iTKEEP , iTLAST };
+
+assign oTDATA = concatenated_read_data[29:6];
+assign oTUSER = concatenated_read_data[5];
+assign oTKEEP = concatenated_read_data[4:1];
+assign oTLAST = concatenated_read_data[0];
+
+assign egress_bus_idle = !oTVALID;
+assign last_egress_pixel_accepted = oTVALID && iTREADY;
+assign pixel_available = (pixel_cnt >= pixel_rd_thresh);
+assign egress_pixel_ready = pixel_available && (egress_bus_idle || last_egress_pixel_accepted);
+assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
 
 endmodule
