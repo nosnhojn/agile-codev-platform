@@ -44,6 +44,10 @@ module pixelProcessor_unit_test;
 
   `CLK_RESET_FIXTURE(10,1)
 
+// always @(negedge clk) begin
+//   $display("%t: oTDATA:0x%0x oTVALID:%0x iTREADY:%0x", $time, oTDATA, oTVALID, iTREADY);
+// end
+
   pixelProcessor
   #(
     .PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH)
@@ -267,7 +271,7 @@ module pixelProcessor_unit_test;
       step();
     end
     ingressStall();
-    waitForEgressPixel();
+    goToNextEgressPixel();
 
     expectEgressPixel('haa55bb);
   `SVTEST_END
@@ -279,13 +283,14 @@ module pixelProcessor_unit_test;
           ingressPixel(i);
           step();
         end
+        jumpForward();
       end
     join_none
-
-    waitForEgressPixel();
+  
+    waitForNextEgressPixel();
     for (int e=0; e<10; e+=1) begin
       expectEgressPixel(e);
-      step();
+      waitStep();
     end
   `SVTEST_END
 
@@ -295,10 +300,10 @@ module pixelProcessor_unit_test;
       step();
     end
     ingressStall();
-    waitForEgressPixel();
-
+    goToNextEgressPixel();
+ 
     step();
-
+ 
     expectNoEgressPixel();
   `SVTEST_END
 
@@ -319,21 +324,26 @@ module pixelProcessor_unit_test;
   `SVTEST(egress_N_pixels_w_stall)
     fork
       begin
-        for (int i=0; i<RD_THRESH+10; i+=1) begin
+        for (int i=0; i<RD_THRESH; i+=1) begin
           ingressPixel(i);
           step();
-          waitForIngressReady();
         end
+        for (int i=RD_THRESH; i<RD_THRESH+10; i+=1) begin
+          ingressPixel(i);
+          notReady();
+          step();
+          ready();
+          step();
+        end
+        jumpForward();
       end
     join_none
-
-    waitForEgressPixel();
+ 
+    waitForNextEgressPixel();
     for (int e=0; e<10; e+=1) begin
       expectEgressPixel(e);
-      notReady();
-      step();
-      ready();
-      step();
+      waitStep();
+      waitStep();
     end
   `SVTEST_END
 
@@ -364,7 +374,7 @@ module pixelProcessor_unit_test;
 
   // exact synchronization isn't necessary so this is just waiting until
   // a pixel shows up on the egress
-  task waitForEgressPixel();
+  task goToNextEgressPixel();
     nextSamplePoint();
     while (oTVALID !== 1) begin
       step();
@@ -372,10 +382,18 @@ module pixelProcessor_unit_test;
     end
   endtask
 
+  task waitForNextEgressPixel();
+    nextSamplePoint();
+    while (oTVALID !== 1) begin
+      waitStep();
+      nextSamplePoint();
+    end
+  endtask
+
   task waitForIngressReady();
     nextSamplePoint();
     while (oTREADY !== 1) begin
-      step();
+      waitStep();
       nextSamplePoint();
     end
   endtask

@@ -15,6 +15,9 @@ task automatic step(int size = 1); \
     #(clkPeriod/2) clk = ~clk; \
   end \
 endtask \
+task automatic waitStep(int size = 1); \
+  repeat (size) @(posedge clk); \
+endtask \
 task nextSamplePoint(); \
   if ($time%clkPeriod == 0) #1; \
 endtask \
