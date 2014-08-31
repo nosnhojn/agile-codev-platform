@@ -308,12 +308,33 @@ module pixelProcessor_unit_test;
       step();
     end
     ingressStall();
-    iTREADY = 0;
+    notReady();
 
     jumpForward();
 
     expectPixelsAvail(RD_THRESH-1);
     expectEgressPixel(0);
+  `SVTEST_END
+
+  `SVTEST(egress_N_pixels_w_stall)
+    fork
+      begin
+        for (int i=0; i<RD_THRESH+10; i+=1) begin
+          ingressPixel(i);
+          step();
+          waitForIngressReady();
+        end
+      end
+    join_none
+
+    waitForEgressPixel();
+    for (int e=0; e<10; e+=1) begin
+      expectEgressPixel(e);
+      notReady();
+      step();
+      ready();
+      step();
+    end
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -346,6 +367,14 @@ module pixelProcessor_unit_test;
   task waitForEgressPixel();
     nextSamplePoint();
     while (oTVALID !== 1) begin
+      step();
+      nextSamplePoint();
+    end
+  endtask
+
+  task waitForIngressReady();
+    nextSamplePoint();
+    while (oTREADY !== 1) begin
       step();
       nextSamplePoint();
     end
