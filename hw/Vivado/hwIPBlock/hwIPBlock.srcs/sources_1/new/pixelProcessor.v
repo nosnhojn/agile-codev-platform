@@ -45,7 +45,7 @@ logic [29:0] concatenated_read_data;
 
 logic [31:0] ingress_write_address;
 logic [31:0] egress_read_address;
-wire [31:0] max_ingress_write_address = 2**PORT0_ADDR_WIDTH - 1;
+wire [31:0] max_ram_address = 2**PORT0_ADDR_WIDTH - 1;
 
 wire ingress_pixel_ready;
 wire wrap_ingress_write_address;
@@ -56,7 +56,7 @@ wire pixel_available;
 wire egress_pixel_ready;
 wire hold_oTVALID_until_iTREADY;
 
-assign raddr_0 = egress_read_address + egress_pixel_ready;
+assign raddr_0 = (egress_read_address + egress_pixel_ready <= max_ram_address) ? egress_read_address + egress_pixel_ready : 0;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
@@ -97,8 +97,10 @@ always @(negedge rst_n or posedge clk) begin
     if (egress_pixel_ready) begin
       oTVALID <= 1;
       concatenated_read_data <= rdata_0;
-
       egress_read_address <= egress_read_address + 1;
+      if (egress_read_address >= max_ram_address) begin
+        egress_read_address <= 0;
+      end
     end
 
     // stall the egress path
@@ -110,7 +112,7 @@ end
 
 
 assign ingress_pixel_ready = iTVALID && oTREADY;
-assign wrap_ingress_write_address = (ingress_write_address >= max_ingress_write_address);
+assign wrap_ingress_write_address = (ingress_write_address >= max_ram_address);
 assign concatinated_write_data = { iTDATA , iTUSER , iTKEEP , iTLAST };
 
 assign oTDATA = concatenated_read_data[29:6];

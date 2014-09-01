@@ -199,7 +199,7 @@ module pixelProcessor_unit_test;
     expectWritePort0(MEM_DEPTH-1, 'haa55bb);
   `SVTEST_END
 
-  `SVTEST(ingress_write_wrap_mem)
+  `SVTEST(ingress_write_wrap)
     repeat (MEM_DEPTH+1) begin
       ingressPixel('haa55bb);
       step();
@@ -347,8 +347,34 @@ module pixelProcessor_unit_test;
     end
   `SVTEST_END
 
-  `SVUNIT_TESTS_END
+  `SVTEST(egress_read_wrap)
+    ingressPixel('haa55bb);
+    nextSamplePoint();
+    while (raddr[0] !== MEM_DEPTH-1) begin
+      step();
+      nextSamplePoint();
+    end
 
+    step();
+    nextSamplePoint();
+    `FAIL_UNLESS(raddr[0] === 0);
+  `SVTEST_END
+
+  `SVTEST(egress_read_wrap_continue)
+    ingressPixel('haa55bb);
+    jumpForward();
+    nextSamplePoint();
+    while (raddr[0] !== 0) begin
+      step();
+      nextSamplePoint();
+    end
+
+    step();
+    nextSamplePoint();
+    `FAIL_UNLESS(raddr[0] === 1);
+  `SVTEST_END
+
+  `SVUNIT_TESTS_END
 
   //------------------------
   // helper tasks/functions
