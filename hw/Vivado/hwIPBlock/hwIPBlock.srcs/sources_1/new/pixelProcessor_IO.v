@@ -1,4 +1,4 @@
-module pixelProcessor
+module pixelProcessor_IO
 #(
   PORT0_ADDR_WIDTH = 1
 )
@@ -63,7 +63,7 @@ assign oTUSER = concatenated_read_data[5];
 assign oTKEEP = concatenated_read_data[4:1];
 assign oTLAST = concatenated_read_data[0];
 
-assign oTREADY = (ingress_cnt < ingress_full) || ingress_read;
+assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read);
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin

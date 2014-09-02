@@ -1,12 +1,12 @@
 `include "svunit_defines.svh"
-`include "pixelProcessor.v"
+`include "pixelProcessor_IO.v"
 
 `include "test_defines.svh"
 
-module pixelProcessor_unit_test;
+module pixelProcessor_IO_unit_test;
   import svunit_pkg::svunit_testcase;
 
-  string name = "pixelProcessor_ut";
+  string name = "pixelProcessor_IO_ut";
   svunit_testcase svunit_ut;
 
   // uut params
@@ -52,7 +52,7 @@ module pixelProcessor_unit_test;
 //   $display("%t: oTDATA:0x%0x oTVALID:%0x iTREADY:%0x", $time, oTDATA, oTVALID, iTREADY);
 // end
 
-  pixelProcessor
+  pixelProcessor_IO
   #(
     .PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH)
   )
@@ -132,7 +132,7 @@ module pixelProcessor_unit_test;
 
     iTREADY = 1;
     ingress_read = 0;
-    egressNotRdy();
+    setEgressNotRdy();
 
     reset();
   endtask
@@ -167,46 +167,35 @@ module pixelProcessor_unit_test;
   // tests for the write memory interface
   //--------------------------------------
   `SVTEST(ingress_write_idle)
-    step();
+    stallTheIngressPath();
 
-    expectIdleWritePort0();
+    expectIdleWritePort();
   `SVTEST_END
 
-  `SVTEST(ingress_write_memory_format)
-    ingressPixel('haa55bb);
+  `SVTEST(ingress_write_1_pixel)
+    setIngressPixel('haa55bb);
 
-    step();
-
-    expectWritePort0(0, 'haa55bb);
+    expectRamWrite(0, 'haa55bb);
   `SVTEST_END
 
-  `SVTEST(ingress_write_addr_increments)
-    repeat (2) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+  `SVTEST(ingress_write_2_pixels)
+    repeat (2) setIngressPixel('haa55bb);
 
-    expectWritePort0(1, 'haa55bb);
+    expectRamWrite(1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_full_mem)
-    readIngressPixel();
-    repeat (MEM_DEPTH) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    setReadIngressPixels();
+    repeat (MEM_DEPTH) setIngressPixel('haa55bb);
 
-    expectWritePort0(MEM_DEPTH-1, 'haa55bb);
+    expectRamWrite(MEM_DEPTH-1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_wrap)
-    readIngressPixel();
-    repeat (MEM_DEPTH+1) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    setReadIngressPixels();
+    repeat (MEM_DEPTH+1) setIngressPixel('haa55bb);
  
-    expectWritePort0(0, 'haa55bb);
+    expectRamWrite(0, 'haa55bb);
   `SVTEST_END
  
   `SVTEST(pixel_cnt_resets_to_0)
@@ -214,137 +203,115 @@ module pixelProcessor_unit_test;
   `SVTEST_END
  
   `SVTEST(pixel_cnt_inc_by_1)
-    ingressPixel('haa55bb);
-    step();
+    setIngressPixel('haa55bb);
  
     expectPixelsAvail(1);
   `SVTEST_END
 
   `SVTEST(ingress_ready_below_threshold)
-    repeat (INGRESS_THRESH-1) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_THRESH-1) setIngressPixel('haa55bb);
 
     expectIngressNotReady();
     expectPixelsAvail(INGRESS_THRESH-1);
   `SVTEST_END
 
   `SVTEST(ingress_ready_at_threshold)
-    repeat (INGRESS_THRESH) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
 
     expectIngressReady();
     expectPixelsAvail(INGRESS_THRESH);
   `SVTEST_END
 
   `SVTEST(ingress_ready_stable_when_pixels_consumed)
-    repeat (INGRESS_THRESH) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
 
-    ingressPixel('haa55bb);
-    readIngressPixel();
-    step();
+    setReadIngressPixels();
+    setIngressPixel('haa55bb);
 
     expectIngressReady();
     expectPixelsAvail(INGRESS_THRESH);
   `SVTEST_END
 
   `SVTEST(ingress_not_ready_when_pixels_consumed)
-    repeat (INGRESS_THRESH) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
 
-    ingressStall();
-    readIngressPixel();
-    step();
+    setReadIngressPixels();
+    stallTheIngressPath();
 
     expectIngressNotReady();
     expectPixelsAvail(INGRESS_THRESH-1);
   `SVTEST_END
 
   `SVTEST(ingress_full_cnt)
-    repeat (INGRESS_FULL) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
 
     expectPixelsAvail(INGRESS_FULL);
   `SVTEST_END
 
   `SVTEST(not_otready_when_full)
-    repeat (INGRESS_FULL) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
 
     expectNotoTREADY();
   `SVTEST_END
 
   `SVTEST(ingress_wrap_cnt)
-    repeat (INGRESS_FULL) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
 
-    ingressPixel('haa55bb);
-    readIngressPixel();
-    step();
+    setReadIngressPixels();
+    setIngressPixel('haa55bb);
 
     expectPixelsAvail(INGRESS_FULL);
   `SVTEST_END
 
   `SVTEST(ingress_write_stall)
-    ingressPixel('haa55bb);
-    step();
+    setIngressPixel('haa55bb);
  
-    ingressStall();
-    step();
+    stallTheIngressPath();
  
-    expectIdleWritePort0();
+    expectIdleWritePort();
   `SVTEST_END
  
   `SVTEST(ingress_no_write_when_not_ready)
-    repeat (INGRESS_FULL) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
 
     step();
 
-    expectIdleWritePort0();
+    expectIdleWritePort();
   `SVTEST_END
  
   `SVTEST(ingress_write_resume_when_ready)
-    repeat (INGRESS_FULL) begin
-      ingressPixel('haa55bb);
-      step();
-    end
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
 
     jumpForward();
 
-    readIngressPixel();
+    setReadIngressPixels();
     step();
 
-    expectWritePort0(INGRESS_FULL, 'haa55bb);
+    expectRamWrite(INGRESS_FULL, 'haa55bb);
+  `SVTEST_END
+ 
+  `SVTEST(ingress_read_N_pixels)
+    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+
+    stallTheIngressPath();
+
+    setReadIngressPixels(INGRESS_FULL);
+    step();
+
+    expectPixelsAvail(0);
   `SVTEST_END
  
   `SVTEST(egress_first_pixel)
-    incrementalFill();
-    egressRdy();
+    fillRamWithIncrementalData();
+    setEgressRdy();
     step();
  
     expectEgressPixel(0);
   `SVTEST_END
  
   `SVTEST(egress_N_pixels)
-    incrementalFill();
-    egressRdy();
+    fillRamWithIncrementalData();
+    setEgressRdy();
     step();
   
     for (int e=0; e<10; e+=1) begin
@@ -354,30 +321,30 @@ module pixelProcessor_unit_test;
   `SVTEST_END
  
   `SVTEST(egress_no_pixels_when_not_egress_rdy)
-    egressNotRdy();
+    setEgressNotRdy();
     step();
     expectNoEgressPixel();
   `SVTEST_END
  
   `SVTEST(egress_N_pixels_w_stall)
-    notReady();
-    incrementalFill();
-    egressRdy();
+    deassertoTREADY();
+    fillRamWithIncrementalData();
+    setEgressRdy();
     step();
  
     for (int e=0; e<10; e+=1) begin
-      notReady();
+      deassertoTREADY();
       expectEgressPixel(e);
       step();
 
-      ready();
+      assertoTREADY();
       expectEgressPixel(e);
       step();
     end
   `SVTEST_END
 
   `SVTEST(egress_read_wrap)
-    egressRdy();
+    setEgressRdy();
     while (raddr !== MEM_DEPTH-1) begin
       step();
       nextSamplePoint();
@@ -389,7 +356,7 @@ module pixelProcessor_unit_test;
   `SVTEST_END
  
   `SVTEST(egress_read_wrap_continue)
-    egressRdy();
+    setEgressRdy();
     jumpForward();
     while (raddr !== 0) begin
       step();
@@ -402,27 +369,27 @@ module pixelProcessor_unit_test;
   `SVTEST_END
 
   `SVTEST(egress_to_empty)
-    egressRdy();
+    setEgressRdy();
     step();
 
-    egressNotRdy();
+    setEgressNotRdy();
     step();
 
     expectNoEgressPixel();
   `SVTEST_END
 
   `SVTEST(egress_resumes_after_empty)
-    incrementalFill();
+    fillRamWithIncrementalData();
 
-    egressRdy();
+    setEgressRdy();
     step();
 
     expectEgressPixel(0);
-    egressNotRdy();
+    setEgressNotRdy();
     step();
 
     expectNoEgressPixel();
-    egressRdy();
+    setEgressRdy();
     step();
 
     expectEgressPixel(1);
@@ -434,29 +401,29 @@ module pixelProcessor_unit_test;
   // helper tasks/functions
   //------------------------
 
-  task incrementalFill();
+  task fillRamWithIncrementalData();
     for (int i=0; i<INGRESS_FULL; i+=1) begin
-      ingressPixel(i);
-      step();
+      setIngressPixel(i);
     end
   endtask
 
-  task readIngressPixel();
+  task setReadIngressPixels(int numPixels = 1);
     nextSamplePoint();
-    ingress_read = 1;
+    ingress_read = numPixels;
   endtask
 
   task jumpForward();
     step(10);
   endtask
 
-  task ingressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task setIngressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     iTVALID = 1;
     iTDATA = data;
     iTUSER = user;
     iTKEEP = keep;
     iTLAST = last;
+    step();
   endtask
 
   task expectNoEgressPixel();
@@ -500,12 +467,14 @@ module pixelProcessor_unit_test;
   endtask
 
   task egressPixel();
-    ready();
+    assertoTREADY();
   endtask
 
-  task ingressStall();
+  task stallTheIngressPath();
     nextSamplePoint();
     iTVALID = 0;
+
+    step();
   endtask
 
   task expectIngressReady();
@@ -518,12 +487,12 @@ module pixelProcessor_unit_test;
     `FAIL_UNLESS(ingress_rdy === 0);
   endtask
 
-  task egressNotRdy();
+  task setEgressNotRdy();
     nextSamplePoint();
     egress_rdy = 0;
   endtask
 
-  task egressRdy();
+  task setEgressRdy();
     nextSamplePoint();
     egress_rdy = 1;
   endtask
@@ -538,14 +507,14 @@ module pixelProcessor_unit_test;
     `FAIL_UNLESS(oTREADY === 0);
   endtask
 
-  task expectWritePort0(bit[31:0] addr, bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task expectRamWrite(bit[31:0] addr, bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(wdata === { data , user , keep , last });
     `FAIL_UNLESS(waddr == addr);
     `FAIL_UNLESS(wr === 1);
   endtask
 
-  task expectIdleWritePort0();
+  task expectIdleWritePort();
     nextSamplePoint();
     `FAIL_UNLESS(wr === 0);
   endtask
@@ -555,12 +524,12 @@ module pixelProcessor_unit_test;
     `FAIL_UNLESS(ingress_cnt === numPixels);
   endtask
 
-  task ready();
+  task assertoTREADY();
     nextSamplePoint();
     iTREADY = 1;
   endtask
 
-  task notReady();
+  task deassertoTREADY();
     nextSamplePoint();
     iTREADY = 0;
   endtask
