@@ -35,9 +35,7 @@ module pixelProcessor_IO
   input        [31:0] ingress_full,
   input        [31:0] ingress_read,
 
-  input               egress_rdy,
-
-  input        [31:0] pixel_rd_thresh
+  input               egress_rdy
 );
 
 wire [29:0] concatinated_write_data;
@@ -51,8 +49,7 @@ wire ingress_pixel_ready;
 wire wrap_ingress_write_address;
 
 wire egress_bus_idle;
-wire last_egress_pixel_accepted;
-wire pixel_available;
+wire egress_pixel_accepted;
 wire egress_pixel_ready;
 wire hold_oTVALID_until_iTREADY;
 
@@ -123,9 +120,8 @@ assign concatinated_write_data = { iTDATA , iTUSER , iTKEEP , iTLAST };
 assign ingress_rdy = (ingress_cnt >= ingress_thresh);
 
 assign egress_bus_idle = !oTVALID;
-assign last_egress_pixel_accepted = oTVALID && iTREADY;
-assign pixel_available = (ingress_cnt >= pixel_rd_thresh);
-assign egress_pixel_ready = egress_rdy && (egress_bus_idle || last_egress_pixel_accepted);
+assign egress_pixel_accepted = oTVALID && iTREADY;
+assign egress_pixel_ready = egress_rdy && (egress_bus_idle || egress_pixel_accepted);
 assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
 
 assign wrap_egress_read_address = (egress_read_address + egress_pixel_ready) > max_ram_address;

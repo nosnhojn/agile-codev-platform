@@ -12,7 +12,6 @@ module pixelProcessor_IO_unit_test;
   // uut params
   parameter PORT0_ADDR_WIDTH = 8;
   parameter MEM_DEPTH = 2**PORT0_ADDR_WIDTH;
-  parameter EGRESS_THRESH = 10;
   parameter INGRESS_THRESH = 31; // arbitrary number
   parameter INGRESS_FULL = MEM_DEPTH-5; // arbitrary number
 
@@ -91,8 +90,7 @@ module pixelProcessor_IO_unit_test;
     .ingress_full(INGRESS_FULL),
     .ingress_read(ingress_read),
 
-    .egress_rdy(egress_rdy),
-    .pixel_rd_thresh(EGRESS_THRESH)
+    .egress_rdy(egress_rdy)
   );
 
   dpram
