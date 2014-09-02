@@ -88,7 +88,7 @@ module agileHWBlock_unit_test;
                 iTVALID = 'h1;
                 iTLAST = 'h0;
                 iTREADY = 'h1;
-                #0;
+                #1;
 		`FAIL_UNLESS(oTDATA === iTDATA);
 	    	`FAIL_UNLESS(oTUSER === iTUSER);
 	    	`FAIL_UNLESS(oTKEEP === iTKEEP);
