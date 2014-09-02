@@ -36,11 +36,11 @@ module pixelProcessor_unit_test;
 
   wire [31:0] pixel_cnt;
 
-  wire [29:0] wdata [1:0];
-  wire [PORT0_ADDR_WIDTH-1:0] waddr [1:0];
-  wire        wr [1:0];
-  wire [29:0] rdata [1:0];
-  wire [31:0] raddr [1:0];
+  wire [29:0] wdata;
+  wire [PORT0_ADDR_WIDTH-1:0] waddr;
+  wire        wr;
+  wire [29:0] rdata;
+  wire [31:0] raddr;
 
   `CLK_RESET_FIXTURE(10,1)
 
@@ -74,18 +74,11 @@ module pixelProcessor_unit_test;
     .iTREADY(iTREADY),
 
     // ram port 0
-    .wdata_0(wdata[0]),
-    .waddr_0(waddr[0]),
-    .wr_0(wr[0]),
-    .rdata_0(rdata[0]),
-    .raddr_0(raddr[0]),
-
-    // ram port 1
-    .wdata_1(wdata[1]),
-    .waddr_1(waddr[1]),
-    .wr_1(wr[1]),
-    .rdata_1(rdata[1]),
-    .raddr_1(raddr[1]),
+    .wdata_0(wdata),
+    .waddr_0(waddr),
+    .wr_0(wr),
+    .rdata_0(rdata),
+    .raddr_0(raddr),
 
     .pixel_cnt(pixel_cnt),
     .pixel_rd_thresh(RD_THRESH)
@@ -103,19 +96,12 @@ module pixelProcessor_unit_test;
     .clk(clk),
     .rst_n(rst_n),
 
-    .wdata_0(wdata[0]),
-    .waddr_0(waddr[0]),
-    .wr_0(wr[0]),
+    .wdata_0(wdata),
+    .waddr_0(waddr),
+    .wr_0(wr),
 
-    .rdata_0(rdata[0]),
-    .raddr_0(raddr[0]),
-
-    .wdata_1(wdata[1]),
-    .waddr_1(waddr[1]),
-    .wr_1(wr[1]),
-
-    .rdata_1(rdata[1]),
-    .raddr_1(raddr[1])
+    .rdata_0(rdata),
+    .raddr_0(raddr)
   );
 
 
@@ -350,28 +336,28 @@ module pixelProcessor_unit_test;
   `SVTEST(egress_read_wrap)
     ingressPixel('haa55bb);
     nextSamplePoint();
-    while (raddr[0] !== MEM_DEPTH-1) begin
+    while (raddr !== MEM_DEPTH-1) begin
       step();
       nextSamplePoint();
     end
 
     step();
     nextSamplePoint();
-    `FAIL_UNLESS(raddr[0] === 0);
+    `FAIL_UNLESS(raddr === 0);
   `SVTEST_END
 
   `SVTEST(egress_read_wrap_continue)
     ingressPixel('haa55bb);
     jumpForward();
     nextSamplePoint();
-    while (raddr[0] !== 0) begin
+    while (raddr !== 0) begin
       step();
       nextSamplePoint();
     end
 
     step();
     nextSamplePoint();
-    `FAIL_UNLESS(raddr[0] === 1);
+    `FAIL_UNLESS(raddr === 1);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -444,14 +430,14 @@ module pixelProcessor_unit_test;
 
   task expectWritePort0(bit[31:0] addr, bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
-    `FAIL_UNLESS(wdata[0] === { data , user , keep , last });
-    `FAIL_UNLESS(waddr[0] == addr);
-    `FAIL_UNLESS(wr[0] === 1);
+    `FAIL_UNLESS(wdata === { data , user , keep , last });
+    `FAIL_UNLESS(waddr == addr);
+    `FAIL_UNLESS(wr === 1);
   endtask
 
   task expectIdleWritePort0();
     nextSamplePoint();
-    `FAIL_UNLESS(wr[0] === 0);
+    `FAIL_UNLESS(wr === 0);
   endtask
 
   task expectPixelsAvail(int numPixels);

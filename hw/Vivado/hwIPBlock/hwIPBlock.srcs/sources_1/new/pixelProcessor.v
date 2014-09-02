@@ -56,7 +56,14 @@ wire pixel_available;
 wire egress_pixel_ready;
 wire hold_oTVALID_until_iTREADY;
 
-assign raddr_0 = (egress_read_address + egress_pixel_ready <= max_ram_address) ? egress_read_address + egress_pixel_ready : 0;
+wire wrap_egress_read_address;
+
+assign oTDATA = concatenated_read_data[29:6];
+assign oTUSER = concatenated_read_data[5];
+assign oTKEEP = concatenated_read_data[4:1];
+assign oTLAST = concatenated_read_data[0];
+
+assign oTREADY = iTREADY;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
@@ -97,10 +104,7 @@ always @(negedge rst_n or posedge clk) begin
     if (egress_pixel_ready) begin
       oTVALID <= 1;
       concatenated_read_data <= rdata_0;
-      egress_read_address <= egress_read_address + 1;
-      if (egress_read_address >= max_ram_address) begin
-        egress_read_address <= 0;
-      end
+      egress_read_address <= raddr_0;
     end
 
     // stall the egress path
@@ -115,18 +119,15 @@ assign ingress_pixel_ready = iTVALID && oTREADY;
 assign wrap_ingress_write_address = (ingress_write_address >= max_ram_address);
 assign concatinated_write_data = { iTDATA , iTUSER , iTKEEP , iTLAST };
 
-assign oTDATA = concatenated_read_data[29:6];
-assign oTUSER = concatenated_read_data[5];
-assign oTKEEP = concatenated_read_data[4:1];
-assign oTLAST = concatenated_read_data[0];
-
 assign egress_bus_idle = !oTVALID;
 assign last_egress_pixel_accepted = oTVALID && iTREADY;
 assign pixel_available = (pixel_cnt >= pixel_rd_thresh);
 assign egress_pixel_ready = pixel_available && (egress_bus_idle || last_egress_pixel_accepted);
 assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
 
-assign oTREADY = iTREADY;
 assign pixel_cnt = ingress_write_address - egress_read_address;
+
+assign wrap_egress_read_address = (egress_read_address + egress_pixel_ready) > max_ram_address;
+assign raddr_0 = wrap_egress_read_address ? 0 : egress_read_address + egress_pixel_ready;
 
 endmodule
