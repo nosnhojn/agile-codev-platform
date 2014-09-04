@@ -18,12 +18,19 @@ module dpram_unit_test;
 
   `CLK_RESET_FIXTURE(10,1)
 
-  logic [PORT0_WIDTH-1:0] wdata [1:0];
-  logic [31:0] waddr [1:0];
-  logic        wr    [1:0];
+  logic [PORT0_WIDTH-1:0] wdata_0;
+  logic [31:0] waddr_0;
+  logic        wr_0;
 
-  wire  [PORT0_WIDTH-1:0] rdata [1:0];
-  logic [31:0] raddr [1:0];
+  wire  [PORT0_WIDTH-1:0] rdata_0;
+  logic [31:0] raddr_0;
+
+  logic [PORT0_WIDTH-1:0] wdata_1;
+  logic [31:0] waddr_1;
+  logic        wr_1;
+
+  wire  [PORT0_WIDTH-1:0] rdata_1;
+  logic [31:0] raddr_1;
 
   //===================================
   // This is the UUT that we're 
@@ -40,19 +47,19 @@ module dpram_unit_test;
     .clk(clk),
     .rst_n(rst_n),
 
-    .wdata_0(wdata[0]),
-    .waddr_0(waddr[0]),
-    .wr_0(wr[0]),
+    .wdata_0(wdata_0),
+    .waddr_0(waddr_0),
+    .wr_0(wr_0),
 
-    .rdata_0(rdata[0]),
-    .raddr_0(raddr[0]),
+    .rdata_0(rdata_0),
+    .raddr_0(raddr_0),
 
-    .wdata_1(wdata[1]),
-    .waddr_1(waddr[1]),
-    .wr_1(wr[1]),
+    .wdata_1(wdata_1),
+    .waddr_1(waddr_1),
+    .wr_1(wr_1),
 
-    .rdata_1(rdata[1]),
-    .raddr_1(raddr[1])
+    .rdata_1(rdata_1),
+    .raddr_1(raddr_1)
   );
 
   //===================================
@@ -70,13 +77,17 @@ module dpram_unit_test;
     svunit_ut.setup();
 
     // clear the inputs to the uut
-    for (int port=0; port<2; port+=1) begin
-      wr[port] = 0;
-      wdata[port] = 0;
-      waddr[port] = 0;
+    wr_0 = 0;
+    wdata_0 = 0;
+    waddr_0 = 0;
 
-      raddr[port] = 0;
-    end
+    raddr_0 = 0;
+
+    wr_1 = 0;
+    wdata_1 = 0;
+    waddr_1 = 0;
+
+    raddr_1 = 0;
 
     // flex the reset
     reset();
@@ -127,21 +138,31 @@ module dpram_unit_test;
   // helper tasks/functions
   //------------------------
 
-  task expectReadData(int port, logic [PORT0_WIDTH-1:0] exp);
+  task expectReadData(int port, logic [PORT1_WIDTH-1:0] exp);
     nextSamplePoint();
-    `FAIL_UNLESS(rdata[port] === exp);
+    if (port == 0) `FAIL_UNLESS(rdata_0 === exp[PORT0_WIDTH-1:0]);
+    if (port == 1) `FAIL_UNLESS(rdata_1 === exp[PORT1_WIDTH-1:0]);
   endtask
 
-  task writePort(int port, bit [31:0] addr, bit [PORT0_WIDTH-1:0] data);
+  task writePort(int port, bit [31:0] addr, bit [PORT1_WIDTH-1:0] data);
     nextSamplePoint();
-    wr[port] = 1;
-    waddr[port] = addr;
-    wdata[port] = data;
+    if (port == 0) begin
+      wr_0 = 1;
+      waddr_0 = addr;
+      wdata_0 = data;
+    end
+
+    else begin
+      wr_1 = 1;
+      waddr_1 = addr;
+      wdata_1 = data;
+    end
   endtask
 
   task readPort(int port, bit [31:0] addr);
     nextSamplePoint();
-    raddr[port] = addr;
+    if (port == 0) raddr_0 = addr;
+    else if (port == 1) raddr_1 = addr;
   endtask
 
 endmodule
