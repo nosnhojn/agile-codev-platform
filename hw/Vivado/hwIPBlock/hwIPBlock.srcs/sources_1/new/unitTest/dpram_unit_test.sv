@@ -7,8 +7,8 @@ module dpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
   parameter DEPTH = 256;
-  parameter PORT0_WIDTH = 30;
-  parameter PORT1_WIDTH = 30;
+  parameter PORT0_WIDTH = 32;
+  parameter PORT1_WIDTH = 3 * PORT0_WIDTH;
 
   string name = "dpram_ut";
   svunit_testcase svunit_ut;
@@ -25,12 +25,13 @@ module dpram_unit_test;
   wire  [PORT0_WIDTH-1:0] rdata_0;
   logic [31:0] raddr_0;
 
-  logic [PORT0_WIDTH-1:0] wdata_1;
+  logic [PORT1_WIDTH-1:0] wdata_1;
   logic [31:0] waddr_1;
   logic        wr_1;
 
-  wire  [PORT0_WIDTH-1:0] rdata_1;
+  wire  [PORT1_WIDTH-1:0] rdata_1;
   logic [31:0] raddr_1;
+
 
   //===================================
   // This is the UUT that we're 
@@ -128,8 +129,37 @@ module dpram_unit_test;
     `no_read_N_in_reset(`PORT0)
     `no_read_N_in_reset(`PORT1)
 
-    `write_read_port_N_full_range(`PORT0)
-    `write_read_port_N_full_range(`PORT1)
+    `write_read_full_range(`PORT0)
+
+    // 3 writes to 1 read
+    `SVTEST(port0_to_port1)
+      writePort(0, 0, 'h00112233);
+      step();
+      writePort(0, 1, 'h44556677);
+      step();
+      writePort(0, 2, 'h8899aabb);
+      step();
+
+      readPort(1, 0);
+      step();
+      expectReadData(1, 'h8899aabb_44556677_00112233 );
+    `SVTEST_END
+
+    // 1 write to 3 reads
+    `SVTEST(port1_to_port0)
+      writePort(1, DEPTH-3, 'h8899aabb_44556677_00112233 );
+      step();
+
+      readPort(0, DEPTH-3);
+      step();
+      expectReadData(0, 'h00112233);
+      readPort(0, DEPTH-2);
+      step();
+      expectReadData(0, 'h44556677);
+      readPort(0, DEPTH-1);
+      step();
+      expectReadData(0, 'h8899aabb);
+    `SVTEST_END
 
   `SVUNIT_TESTS_END
  

@@ -4,11 +4,11 @@
 
 `define write_read_port_N_test(PORT) \
 `SVTEST(write_read_port_``PORT) \
-  writePort(PORT, 'hf, 'haabbccdd); \
+  writePort(PORT, 'hf, { 31'h00112233 , 32'h778899aa , 32'hbbccddee }); \
   step(); \
   readPort(PORT, 'hf); \
   step(); \
-  expectReadData(PORT, 'haabbccdd); \
+  expectReadData(PORT, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
 `SVTEST_END
 
 `define rdata_N_is_registered_test(PORT) \
@@ -40,7 +40,7 @@
   expectReadData(PORT, 'hx); \
 `SVTEST_END
 
-`define write_read_port_N_full_range(PORT) \
+`define write_read_full_range(PORT) \
 `SVTEST(write_read_port_``PORT``_full_range) \
   for (int i=0; i<`TEST_DPRAM_SIZE; i++) begin \
     writePort(PORT, i, i); \

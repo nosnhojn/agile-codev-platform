@@ -36,14 +36,18 @@ always @(negedge rst_n or posedge clk) begin
 
   else begin
     rdata_0 <= mem[raddr_0];
-    rdata_1 <= mem[raddr_1];
+    rdata_1[31:0]  <= mem[raddr_1];
+    rdata_1[63:32] <= mem[raddr_1+1];
+    rdata_1[95:64] <= mem[raddr_1+2];
 
     if (wr_0) begin
       mem[waddr_0] <= wdata_0;
     end
 
     if (wr_1) begin
-      mem[waddr_1] <= wdata_1;
+      for (int i=0; i<DPRAM_PORT1_WIDTH/DPRAM_PORT0_WIDTH; i+=1) begin
+        mem[waddr_1+i] <= wdata_1 >> 32*i;
+      end
     end
   end
 end
