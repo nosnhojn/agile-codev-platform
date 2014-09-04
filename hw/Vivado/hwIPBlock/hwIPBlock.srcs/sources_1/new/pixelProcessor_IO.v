@@ -1,6 +1,6 @@
 module pixelProcessor_IO
 #(
-  PORT0_ADDR_WIDTH = 1
+  MEM_DEPTH = 1
 )
 (
   input clk,
@@ -24,7 +24,7 @@ module pixelProcessor_IO
 
   // ram port
   output logic [29:0] wdata,
-  output logic [PORT0_ADDR_WIDTH-1:0] waddr,
+  output logic [31:0] waddr,
   output logic        wr,
   input        [29:0] rdata,
   output wire  [31:0] raddr,
@@ -43,7 +43,7 @@ logic [29:0] concatenated_rdata;
 
 logic [31:0] ingress_ptr;
 logic [31:0] egress_ptr;
-wire  [31:0] max_ram_address = 2**PORT0_ADDR_WIDTH - 1;
+wire  [31:0] max_ram_address = MEM_DEPTH - 1;
 
 wire ingress_pixel_ready;
 wire wrap_ingress_ptr;

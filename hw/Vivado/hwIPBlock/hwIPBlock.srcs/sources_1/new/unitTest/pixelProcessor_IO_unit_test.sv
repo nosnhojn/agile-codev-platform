@@ -10,13 +10,10 @@ module pixelProcessor_IO_unit_test;
   svunit_testcase svunit_ut;
 
   // uut params
-  parameter PORT0_ADDR_WIDTH = 8;
-  parameter MEM_DEPTH = 2**PORT0_ADDR_WIDTH;
+  parameter LINE_WIDTH = 1920;
+  parameter MEM_DEPTH = LINE_WIDTH*6;
   parameter INGRESS_THRESH = 31; // arbitrary number
   parameter INGRESS_FULL = MEM_DEPTH-5; // arbitrary number
-
-  // dpram params
-  parameter DEPTH = 256;
 
   //===================================
   // This is the UUT that we're 
@@ -40,7 +37,7 @@ module pixelProcessor_IO_unit_test;
   logic        egress_rdy;
 
   wire [29:0] wdata;
-  wire [PORT0_ADDR_WIDTH-1:0] waddr;
+  wire [31:0] waddr;
   wire        wr;
   wire [29:0] rdata;
   wire [31:0] raddr;
@@ -53,7 +50,7 @@ module pixelProcessor_IO_unit_test;
 
   pixelProcessor_IO
   #(
-    .PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH)
+    .MEM_DEPTH(MEM_DEPTH)
   )
   uut
   (
@@ -95,10 +92,9 @@ module pixelProcessor_IO_unit_test;
 
   dpram
   #(
-    .DPRAM_DEPTH(DEPTH),
+    .DPRAM_DEPTH(MEM_DEPTH),
     .DPRAM_PORT0_WIDTH(30),
-    .DPRAM_PORT1_WIDTH(30),
-    .DPRAM_PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH)
+    .DPRAM_PORT1_WIDTH(30)
   )
   my_dpram
   (
