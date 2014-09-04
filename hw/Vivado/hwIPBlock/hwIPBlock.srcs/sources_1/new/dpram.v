@@ -29,9 +29,6 @@ logic [31:0] mem [DPRAM_DEPTH-1:0];
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    for (int i=0; i<DPRAM_DEPTH; i++) begin
-      mem[i] <= 'hx;
-    end
   end
 
   else begin

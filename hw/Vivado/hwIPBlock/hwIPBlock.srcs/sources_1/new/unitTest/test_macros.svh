@@ -19,15 +19,17 @@
   expectReadData(PORT, 'hx); \
 `SVTEST_END
 
+// write an arbitrary section of memory that hasn't been accessed
 `define no_write_N_in_reset(PORT) \
 `SVTEST(no_write_``PORT``_in_reset) \
   rst_n = 0; \
-  writePort(PORT, 'hf, 'haabbccdd); \
+  writePort(PORT, 'h34+PORT*3, 'h112233441122334412345678); \
   step(); \
-  readPort(PORT, 'hf); \
+  readPort(PORT, 'h34+PORT*3); \
   rst_n = 1; \
   step(); \
-  expectReadData(PORT, 'hx); \
+  nextSamplePoint(); \
+  `FAIL_IF(rdata_``PORT == 'h12345678); \
 `SVTEST_END
 
 `define no_read_N_in_reset(PORT) \

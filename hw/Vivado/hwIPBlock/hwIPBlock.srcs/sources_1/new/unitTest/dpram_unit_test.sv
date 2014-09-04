@@ -32,6 +32,8 @@ module dpram_unit_test;
   wire  [PORT1_WIDTH-1:0] rdata_1;
   logic [31:0] raddr_1;
 
+  logic [PORT1_WIDTH-1:0] testData;
+
 
   //===================================
   // This is the UUT that we're 
@@ -133,32 +135,28 @@ module dpram_unit_test;
 
     // 3 writes to 1 read
     `SVTEST(port0_to_port1)
-      writePort(0, 0, 'h00112233);
-      step();
-      writePort(0, 1, 'h44556677);
-      step();
-      writePort(0, 2, 'h8899aabb);
-      step();
+      testData = 'h8899aabb_44556677_00112233;
+      for (int i=0; i<3; i+=1) begin
+        writePort(0, i, testData >> 32*i);
+        step();
+      end
 
       readPort(1, 0);
       step();
-      expectReadData(1, 'h8899aabb_44556677_00112233 );
+      expectReadData(1, testData);
     `SVTEST_END
 
     // 1 write to 3 reads
     `SVTEST(port1_to_port0)
-      writePort(1, DEPTH-3, 'h8899aabb_44556677_00112233 );
+      testData = 'h8899aabb_44556677_00112233;
+      writePort(1, DEPTH-3, testData);
       step();
 
-      readPort(0, DEPTH-3);
-      step();
-      expectReadData(0, 'h00112233);
-      readPort(0, DEPTH-2);
-      step();
-      expectReadData(0, 'h44556677);
-      readPort(0, DEPTH-1);
-      step();
-      expectReadData(0, 'h8899aabb);
+      for (int i=0; i<3; i+=1) begin
+        readPort(0, DEPTH-1-i);
+        step();
+        expectReadData(0, testData >> 32*(3-1-i));
+      end
     `SVTEST_END
 
   `SVUNIT_TESTS_END
