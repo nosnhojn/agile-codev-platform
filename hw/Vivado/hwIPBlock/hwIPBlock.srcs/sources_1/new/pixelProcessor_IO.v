@@ -33,20 +33,20 @@ module pixelProcessor_IO
   output logic [31:0] ingress_cnt,
   input        [31:0] ingress_thresh,
   input        [31:0] ingress_full,
-  input        [31:0] ingress_read,
+  input        [31:0] ingress_read_cnt,
 
   input               egress_rdy
 );
 
-wire [29:0] concatinated_write_data;
-logic [29:0] concatenated_read_data;
+wire [29:0] concatenated_wdata;
+logic [29:0] concatenated_rdata;
 
-logic [31:0] ingress_write_address;
-logic [31:0] egress_read_address;
-wire [31:0] max_ram_address = 2**PORT0_ADDR_WIDTH - 1;
+logic [31:0] ingress_ptr;
+logic [31:0] egress_ptr;
+wire  [31:0] max_ram_address = 2**PORT0_ADDR_WIDTH - 1;
 
 wire ingress_pixel_ready;
-wire wrap_ingress_write_address;
+wire wrap_ingress_ptr;
 
 wire egress_bus_idle;
 wire egress_pixel_accepted;
@@ -55,12 +55,12 @@ wire hold_oTVALID_until_iTREADY;
 
 wire wrap_egress_read_address;
 
-assign oTDATA = concatenated_read_data[29:6];
-assign oTUSER = concatenated_read_data[5];
-assign oTKEEP = concatenated_read_data[4:1];
-assign oTLAST = concatenated_read_data[0];
+assign oTDATA = concatenated_rdata[29:6];
+assign oTUSER = concatenated_rdata[5];
+assign oTKEEP = concatenated_rdata[4:1];
+assign oTLAST = concatenated_rdata[0];
 
-assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read);
+assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read_cnt);
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
@@ -70,9 +70,9 @@ always @(negedge rst_n or posedge clk) begin
 
     oTVALID <= 0;
 
-    ingress_write_address <= 0;
+    ingress_ptr <= 0;
     ingress_cnt <= 0;
-    egress_read_address <= 0;
+    egress_ptr <= 0;
   end
 
   else begin
@@ -81,12 +81,12 @@ always @(negedge rst_n or posedge clk) begin
     //----------------------------
     if (ingress_pixel_ready) begin
       wr <= 1;
-      wdata <= concatinated_write_data;
-      waddr <= ingress_write_address;
+      wdata <= concatenated_wdata;
+      waddr <= ingress_ptr;
 
-      ingress_write_address <= ingress_write_address + 1;
-      if (wrap_ingress_write_address) begin
-        ingress_write_address <= 0;
+      ingress_ptr <= ingress_ptr + 1;
+      if (wrap_ingress_ptr) begin
+        ingress_ptr <= 0;
       end
     end
 
@@ -95,15 +95,15 @@ always @(negedge rst_n or posedge clk) begin
       wr <= 0;
     end
 
-    ingress_cnt = ingress_cnt + ingress_pixel_ready - ingress_read;
+    ingress_cnt = ingress_cnt + ingress_pixel_ready - ingress_read_cnt;
 
     //-----------------------------
     // egress path from the memory
     //-----------------------------
     if (egress_pixel_ready) begin
       oTVALID <= 1;
-      concatenated_read_data <= rdata;
-      egress_read_address <= raddr;
+      concatenated_rdata <= rdata;
+      egress_ptr <= raddr;
     end
  
     // stall the egress path
@@ -115,8 +115,8 @@ end
 
 
 assign ingress_pixel_ready = iTVALID && oTREADY;
-assign wrap_ingress_write_address = (ingress_write_address >= max_ram_address);
-assign concatinated_write_data = { iTDATA , iTUSER , iTKEEP , iTLAST };
+assign wrap_ingress_ptr = (ingress_ptr >= max_ram_address);
+assign concatenated_wdata = { iTDATA , iTUSER , iTKEEP , iTLAST };
 assign ingress_rdy = (ingress_cnt >= ingress_thresh);
 
 assign egress_bus_idle = !oTVALID;
@@ -124,7 +124,7 @@ assign egress_pixel_accepted = oTVALID && iTREADY;
 assign egress_pixel_ready = egress_rdy && (egress_bus_idle || egress_pixel_accepted);
 assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
 
-assign wrap_egress_read_address = (egress_read_address + egress_pixel_ready) > max_ram_address;
-assign raddr = wrap_egress_read_address ? 0 : egress_read_address + egress_pixel_ready;
+assign wrap_egress_read_address = (egress_ptr + egress_pixel_ready) > max_ram_address;
+assign raddr = wrap_egress_read_address ? 0 : egress_ptr + egress_pixel_ready;
 
 endmodule

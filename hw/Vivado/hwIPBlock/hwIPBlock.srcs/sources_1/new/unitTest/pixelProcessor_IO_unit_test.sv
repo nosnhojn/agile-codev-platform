@@ -36,7 +36,7 @@ module pixelProcessor_IO_unit_test;
   reg         iTREADY;
 
   wire  [31:0] ingress_cnt;
-  logic [31:0] ingress_read;
+  logic [31:0] ingress_read_cnt;
   logic        egress_rdy;
 
   wire [29:0] wdata;
@@ -88,7 +88,7 @@ module pixelProcessor_IO_unit_test;
     .ingress_cnt(ingress_cnt),
     .ingress_thresh(INGRESS_THRESH),
     .ingress_full(INGRESS_FULL),
-    .ingress_read(ingress_read),
+    .ingress_read_cnt(ingress_read_cnt),
 
     .egress_rdy(egress_rdy)
   );
@@ -129,7 +129,7 @@ module pixelProcessor_IO_unit_test;
     svunit_ut.setup();
 
     iTREADY = 1;
-    ingress_read = 0;
+    ingress_read_cnt = 0;
     setEgressNotRdy();
 
     reset();
@@ -407,7 +407,7 @@ module pixelProcessor_IO_unit_test;
 
   task setReadIngressPixels(int numPixels = 1);
     nextSamplePoint();
-    ingress_read = numPixels;
+    ingress_read_cnt = numPixels;
   endtask
 
   task jumpForward();
