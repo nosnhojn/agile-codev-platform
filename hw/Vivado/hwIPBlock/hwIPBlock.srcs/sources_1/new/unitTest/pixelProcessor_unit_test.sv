@@ -15,6 +15,14 @@ module pixelProcessor_unit_test;
   //===================================
 
   parameter LINE_WIDTH = 1920;
+  parameter FIRST_ROW = 1;
+  parameter FIRST_COLUMN = 1;
+  parameter NOT_FIRST_ROW = 0;
+  parameter NOT_FIRST_COLUMN = 0;
+  parameter LAST_ROW = 1;
+  parameter LAST_COLUMN = 1;
+  parameter NOT_LAST_ROW = 0;
+  parameter NOT_LAST_COLUMN = 0;
 
   wire  [119:0] wdata;
   wire  [31:0] waddr;
@@ -25,22 +33,34 @@ module pixelProcessor_unit_test;
   wire  [31:0] ingress_read_cnt;
   wire         egress_rdy;
 
+  wire calc_strobe;
+  wire first_row;
+  wire first_column;
+  wire last_row;
+  wire last_column;
+
   `CLK_RESET_FIXTURE(10,1)
 
   pixelProcessor uut(
-   .clk(clk),
-   .rst_n(rst_n),
+    .clk(clk),
+    .rst_n(rst_n),
 
-   .wdata(wdata),
-   .waddr(waddr),
-   .wr(wr),
-   .rdata(rdata),
-   .raddr(raddr),
+    .wdata(wdata),
+    .waddr(waddr),
+    .wr(wr),
+    .rdata(rdata),
+    .raddr(raddr),
 
-   .ingress_rdy(ingress_rdy),
-   .ingress_read_cnt(ingress_read_cnt),
+    .ingress_rdy(ingress_rdy),
+    .ingress_read_cnt(ingress_read_cnt),
 
-   .egress_rdy(egress_rdy)
+    .egress_rdy(egress_rdy),
+
+    .calc_strobe(calc_strobe),
+    .first_row(first_row),
+    .first_column(first_column),
+    .last_row(last_row),
+    .last_column(last_column)
   );
 
 
@@ -89,38 +109,74 @@ module pixelProcessor_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
-  `SVTEST(read_start_of_first_line)
-    step();
-
+  // pull the first set of 3 groups of 4 pixels
+  `SVTEST(raddr_start_of_first_line)
     expectRaddr(0);
   `SVTEST_END
 
-  `SVTEST(read_start_of_second_line)
-    setIngressRdy();
+  `SVTEST(raddr_start_of_second_line)
     repeat (1) step();
 
     expectRaddr(LINE_WIDTH);
   `SVTEST_END
 
-  `SVTEST(read_2nd_of_first_line)
-    setIngressRdy();
+  `SVTEST(raddr_start_of_third_line)
     repeat (2) step();
 
-    expectRaddr(3);
+    expectRaddr(2*LINE_WIDTH);
   `SVTEST_END
 
-  `SVTEST(read_2nd_of_second_line)
-    setIngressRdy();
+  `SVTEST(no_strobe_until_end_of_group)
+    repeat (2) step();
+    expectNoStrobe();
+  `SVTEST_END
+
+  `SVTEST(strobe_for_end_of_first_group)
     repeat (3) step();
-
-    expectRaddr(LINE_WIDTH+3);
+    expectStrobe(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
-  `SVTEST(read_3rd_of_first_line)
+  `SVTEST(no_strobe_after_end_of_group)
+    repeat (4) step();
+    expectNoStrobe();
+  `SVTEST_END
+
+  // roll over to the next set of 3 groups of 4 pixels
+  `SVTEST(raddr_2nd_group_of_first_line)
+    repeat (3) step();
+ 
+    expectRaddr(4);
+  `SVTEST_END
+ 
+  `SVTEST(raddr_2nd_group_of_second_line)
     setIngressRdy();
     repeat (4) step();
+ 
+    expectRaddr(4 + LINE_WIDTH);
+  `SVTEST_END
 
-    expectRaddr(6);
+  `SVTEST(strobe_for_end_of_2nd_group)
+    repeat (6) step();
+    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  // fast forward to the 2nd last group of the first line
+  `SVTEST(strobe_before_end_of_first_line)
+    repeat (3*(1920/4)-3) step();
+    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+
+  // fast forward to the last group of the first line
+  `SVTEST(raddr_third_line_of_last_group)
+    setIngressRdy();
+    repeat (3*(1920/4)-1) step();
+ 
+    expectRaddr(1916 + LINE_WIDTH*2);
+  `SVTEST_END
+
+  `SVTEST(strobe_at_end_of_first_line)
+    repeat (3*(1920/4)) step();
+    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -138,6 +194,20 @@ module pixelProcessor_unit_test;
   task expectRaddr(bit [31:0] addr);
     nextSamplePoint();
     `FAIL_UNLESS(raddr === addr);
+  endtask
+
+  task expectNoStrobe();
+    nextSamplePoint();
+    `FAIL_UNLESS(calc_strobe === 0);
+  endtask
+
+  task expectStrobe(bit _first_row, bit _first_column, bit _last_row, bit _last_column);
+    nextSamplePoint();
+    `FAIL_UNLESS(calc_strobe === 1);
+    `FAIL_UNLESS(first_row === _first_row);
+    `FAIL_UNLESS(first_column === _first_column);
+    `FAIL_UNLESS(last_row === _last_row);
+    `FAIL_UNLESS(last_column === _last_column);
   endtask
 
 endmodule
