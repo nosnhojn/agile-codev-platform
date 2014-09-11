@@ -27,16 +27,22 @@ module dpram
 
 logic [31:0] mem [DPRAM_DEPTH-1:0];
 
+logic [DPRAM_PORT1_WIDTH-1:0] next_rdata_1;
+
+always @* begin
+  next_rdata_1 = 0;
+  for (int i=0; i<DPRAM_PORT1_WIDTH/DPRAM_PORT0_WIDTH; i+=1) begin
+    next_rdata_1 = next_rdata_1 | (mem[raddr_1+i] << 32*i);
+  end
+end
+
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
   end
 
   else begin
     rdata_0 <= mem[raddr_0];
-    rdata_1[31:0]  <= mem[raddr_1];
-    rdata_1[63:32] <= mem[raddr_1+1];
-    rdata_1[95:64] <= mem[raddr_1+2];
-    rdata_1[127:96] <= mem[raddr_1+3];
+    rdata_1 <= next_rdata_1;
 
     if (wr_0) begin
       mem[waddr_0] <= wdata_0;
