@@ -44,19 +44,21 @@ always @(negedge rst_n or posedge clk) begin
 
   else begin
     if (calc_strobe) begin
+      calc_strobe <= 0;
       first_column <= 0;
       last_column <= (rptr == 1916);
     end
 
-    if (rptr_line_cnt >= 2) begin
-      rptr <= rptr + 4;
-      rptr_line_cnt <= 0;
-      calc_strobe <= 1;
-    end
+    if (ingress_rdy) begin
+      if (rptr_line_cnt >= 2) begin
+        rptr <= rptr + 4;
+        rptr_line_cnt <= 0;
+        calc_strobe <= 1;
+      end
 
-    else begin
-      rptr_line_cnt <= rptr_line_cnt + 1;
-      calc_strobe <= 0;
+      else begin
+        rptr_line_cnt <= rptr_line_cnt + 1;
+      end
     end
   end
 end

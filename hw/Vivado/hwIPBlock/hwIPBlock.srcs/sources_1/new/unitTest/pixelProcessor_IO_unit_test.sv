@@ -34,6 +34,8 @@ module pixelProcessor_IO_unit_test;
 
   wire  [31:0] ingress_cnt;
   logic [31:0] ingress_read_cnt;
+
+  wire         egress_read_cnt;
   logic        egress_rdy;
 
   wire [29:0] wdata;
@@ -87,7 +89,8 @@ module pixelProcessor_IO_unit_test;
     .ingress_full(INGRESS_FULL),
     .ingress_read_cnt(ingress_read_cnt),
 
-    .egress_rdy(egress_rdy)
+    .egress_rdy(egress_rdy),
+    .egress_read_cnt(egress_read_cnt)
   );
 
   dpram
@@ -301,6 +304,7 @@ module pixelProcessor_IO_unit_test;
     step();
  
     expectEgressPixel(0);
+    expectEgressPixelRead();
   `SVTEST_END
  
   `SVTEST(egress_N_pixels)
@@ -317,7 +321,9 @@ module pixelProcessor_IO_unit_test;
   `SVTEST(egress_no_pixels_when_not_egress_rdy)
     setEgressNotRdy();
     step();
+
     expectNoEgressPixel();
+    expectNoEgressPixelRead();
   `SVTEST_END
  
   `SVTEST(egress_N_pixels_w_stall)
@@ -332,8 +338,11 @@ module pixelProcessor_IO_unit_test;
       step();
 
       assertoTREADY();
+      expectNoEgressPixelRead();
       expectEgressPixel(e);
       step();
+
+      expectEgressPixelRead();
     end
   `SVTEST_END
 
@@ -423,6 +432,7 @@ module pixelProcessor_IO_unit_test;
   task expectNoEgressPixel();
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 0);
+    `FAIL_UNLESS(egress_read_cnt === 0);
   endtask
 
   // exact synchronization isn't necessary so this is just waiting until
@@ -458,6 +468,16 @@ module pixelProcessor_IO_unit_test;
     `FAIL_UNLESS(oTUSER === user);
     `FAIL_UNLESS(oTKEEP === keep);
     `FAIL_UNLESS(oTLAST === last);
+  endtask
+
+  task expectEgressPixelRead();
+    nextSamplePoint();
+    `FAIL_UNLESS(egress_read_cnt === 1);
+  endtask
+
+  task expectNoEgressPixelRead();
+    nextSamplePoint();
+    `FAIL_UNLESS(egress_read_cnt === 0);
   endtask
 
   task egressPixel();

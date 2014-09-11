@@ -35,6 +35,7 @@ module pixelProcessor_IO
   input        [31:0] ingress_full,
   input        [31:0] ingress_read_cnt,
 
+  output wire         egress_read_cnt,
   input               egress_rdy
 );
 
@@ -123,6 +124,7 @@ assign egress_bus_idle = !oTVALID;
 assign egress_pixel_accepted = oTVALID && iTREADY;
 assign egress_pixel_ready = egress_rdy && (egress_bus_idle || egress_pixel_accepted);
 assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
+assign egress_read_cnt = egress_pixel_accepted;
 
 assign wrap_egress_read_address = (egress_ptr + egress_pixel_ready) > max_ram_address;
 assign raddr = wrap_egress_read_address ? 0 : egress_ptr + egress_pixel_ready;

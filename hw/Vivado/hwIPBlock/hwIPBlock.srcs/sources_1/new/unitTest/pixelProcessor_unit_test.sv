@@ -78,7 +78,7 @@ module pixelProcessor_unit_test;
   task setup();
     svunit_ut.setup();
 
-    setIngressNotRdy();
+    setIngressRdy();
 
     reset();
   endtask
@@ -115,68 +115,115 @@ module pixelProcessor_unit_test;
   `SVTEST_END
 
   `SVTEST(raddr_start_of_second_line)
-    repeat (1) step();
+    step();
 
     expectRaddr(LINE_WIDTH);
   `SVTEST_END
 
   `SVTEST(raddr_start_of_third_line)
-    repeat (2) step();
+    step(2);
 
     expectRaddr(2*LINE_WIDTH);
   `SVTEST_END
 
   `SVTEST(no_strobe_until_end_of_group)
-    repeat (2) step();
+    step(2);
+
     expectNoStrobe();
   `SVTEST_END
 
   `SVTEST(strobe_for_end_of_first_group)
-    repeat (3) step();
+    step(3);
     expectStrobe(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
   `SVTEST(no_strobe_after_end_of_group)
-    repeat (4) step();
+    step(4);
     expectNoStrobe();
   `SVTEST_END
 
   // roll over to the next set of 3 groups of 4 pixels
   `SVTEST(raddr_2nd_group_of_first_line)
-    repeat (3) step();
+    step(3);
  
     expectRaddr(4);
   `SVTEST_END
  
   `SVTEST(raddr_2nd_group_of_second_line)
-    setIngressRdy();
-    repeat (4) step();
+    step(4);
  
     expectRaddr(4 + LINE_WIDTH);
   `SVTEST_END
 
   `SVTEST(strobe_for_end_of_2nd_group)
-    repeat (6) step();
+    step(6);
     expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
  
   // fast forward to the 2nd last group of the first line
   `SVTEST(strobe_before_end_of_first_line)
-    repeat (3*(1920/4)-3) step();
+    step(3*(1920/4)-3);
     expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
   // fast forward to the last group of the first line
   `SVTEST(raddr_third_line_of_last_group)
-    setIngressRdy();
-    repeat (3*(1920/4)-1) step();
+    step(3*(1920/4)-1);
  
     expectRaddr(1916 + LINE_WIDTH*2);
   `SVTEST_END
 
   `SVTEST(strobe_at_end_of_first_line)
-    repeat (3*(1920/4)) step();
+    step(3*(1920/4));
     expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+  `SVTEST_END
+
+  // stalling with the ingress not ready
+  `SVTEST(stall_from_reset)
+    setIngressNotRdy();
+    step(41); // arbitrary stall time
+
+    expectRaddr(0);
+  `SVTEST_END
+
+  `SVTEST(ingress_not_rdy_to_rdy)
+    setIngressNotRdy();
+    step(17); // arbitrary stall time
+    setIngressRdy();
+    step(3);
+
+    expectRaddr(4);
+    expectStrobe(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+
+  `SVTEST(ingress_rdy_to_not_rdy)
+    step(3);
+
+    setIngressNotRdy();
+    step();
+
+    expectRaddr(4);
+  `SVTEST_END
+
+  `SVTEST(strobe_is_single_cycle_regardless_of_ingress_rdy)
+    step(3);
+
+    setIngressNotRdy();
+    step();
+
+    expectNoStrobe();
+  `SVTEST_END
+
+  `SVTEST(strobe_row_column_markers_not_affected_by_ingress_rdy)
+    step(3);
+
+    setIngressNotRdy();
+    step(13);
+
+    setIngressRdy();
+    step(3);
+
+    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
