@@ -8,7 +8,7 @@ module dpram_unit_test;
 
   parameter DEPTH = 256;
   parameter PORT0_WIDTH = 32;
-  parameter PORT1_WIDTH = 3 * PORT0_WIDTH;
+  parameter PORT1_WIDTH = 4 * PORT0_WIDTH;
 
   string name = "dpram_ut";
   svunit_testcase svunit_ut;
@@ -133,10 +133,10 @@ module dpram_unit_test;
 
     `write_read_full_range(`PORT0)
 
-    // 3 writes to 1 read
+    // 4 writes to 1 read
     `SVTEST(port0_to_port1)
-      testData = 'h8899aabb_44556677_00112233;
-      for (int i=0; i<3; i+=1) begin
+      testData = 'hccddeeff_8899aabb_44556677_00112233;
+      for (int i=0; i<4; i+=1) begin
         writePort(0, i, testData >> 32*i);
         step();
       end
@@ -146,16 +146,16 @@ module dpram_unit_test;
       expectReadData(1, testData);
     `SVTEST_END
 
-    // 1 write to 3 reads
+    // 1 write to 4 reads
     `SVTEST(port1_to_port0)
-      testData = 'h8899aabb_44556677_00112233;
-      writePort(1, DEPTH-3, testData);
+      testData = 'hccddeeff_8899aabb_44556677_00112233;
+      writePort(1, DEPTH-4, testData);
       step();
-
-      for (int i=0; i<3; i+=1) begin
+ 
+      for (int i=0; i<4; i+=1) begin
         readPort(0, DEPTH-1-i);
         step();
-        expectReadData(0, testData >> 32*(3-1-i));
+        expectReadData(0, testData >> 32*(4-1-i));
       end
     `SVTEST_END
 

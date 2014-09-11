@@ -16,10 +16,10 @@ module pixelProcessor_unit_test;
 
   parameter LINE_WIDTH = 1920;
 
-  wire  [89:0] wdata;
+  wire  [119:0] wdata;
   wire  [31:0] waddr;
   wire         wr;
-  logic [89:0] rdata;
+  logic [119:0] rdata;
   wire  [31:0] raddr;
   logic        ingress_rdy;
   wire  [31:0] ingress_read_cnt;
@@ -119,13 +119,6 @@ module pixelProcessor_unit_test;
   `SVTEST(read_3rd_of_first_line)
     setIngressRdy();
     repeat (4) step();
-
-    expectRaddr(6);
-  `SVTEST_END
-
-  `SVTEST(pause_on_3rd_of_first_line)
-    setIngressRdy();
-    repeat (5) step();
 
     expectRaddr(6);
   `SVTEST_END

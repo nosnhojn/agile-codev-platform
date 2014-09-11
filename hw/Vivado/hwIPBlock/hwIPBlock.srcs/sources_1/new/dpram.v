@@ -36,6 +36,7 @@ always @(negedge rst_n or posedge clk) begin
     rdata_1[31:0]  <= mem[raddr_1];
     rdata_1[63:32] <= mem[raddr_1+1];
     rdata_1[95:64] <= mem[raddr_1+2];
+    rdata_1[127:96] <= mem[raddr_1+3];
 
     if (wr_0) begin
       mem[waddr_0] <= wdata_0;
