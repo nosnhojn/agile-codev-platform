@@ -27,6 +27,7 @@ module pixelProcessor
 
 logic [31:0] rptr;
 logic [1:0] rptr_line_cnt;
+logic calc_strobe_d1;
 
 always @* begin
 end
@@ -36,6 +37,7 @@ always @(negedge rst_n or posedge clk) begin
     rptr <= 0;
     rptr_line_cnt <= 0;
     calc_strobe <= 0;
+    calc_strobe_d1 <= 0;
     first_row <= 1;
     first_column <= 1;
     last_row <= 0;
@@ -43,10 +45,21 @@ always @(negedge rst_n or posedge clk) begin
   end
 
   else begin
+    calc_strobe_d1 <= calc_strobe;
+
     if (calc_strobe) begin
       calc_strobe <= 0;
-      first_column <= 0;
-      last_column <= (rptr == 1916);
+      if (first_row && first_column) ingress_read_cnt <= 3;
+      else ingress_read_cnt <= 4;
+    end
+
+    else if (calc_strobe_d1) begin
+      if (first_row && first_column) ingress_read_cnt <= 3;
+      else ingress_read_cnt <= 4;
+    end
+
+    else begin
+      ingress_read_cnt <= 0;
     end
 
     if (ingress_rdy) begin
@@ -54,6 +67,8 @@ always @(negedge rst_n or posedge clk) begin
         rptr <= rptr + 4;
         rptr_line_cnt <= 0;
         calc_strobe <= 1;
+        first_column <= (rptr == 0);
+        last_column <= (rptr == 1916);
       end
 
       else begin

@@ -226,6 +226,43 @@ module pixelProcessor_unit_test;
     expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
+  `SVTEST(consume_first_3_pixels)
+    stepUntilStrobe();
+    step();
+
+    expectIngressReadCnt(3);
+  `SVTEST_END
+
+  `SVTEST(consume_second_3_pixels)
+    stepUntilStrobe();
+    step(2);
+
+    expectIngressReadCnt(3);
+  `SVTEST_END
+
+  `SVTEST(first_pause_consuming_pixels)
+    stepUntilStrobe();
+    step(3);
+
+    expectIngressReadCnt(0);
+  `SVTEST_END
+
+  `SVTEST(consume_first_4_pixels)
+    stepUntilStrobe();
+    stepUntilStrobe();
+    step();
+
+    expectIngressReadCnt(4);
+  `SVTEST_END
+
+  `SVTEST(consume_second_4_pixels)
+    stepUntilStrobe();
+    stepUntilStrobe();
+    step(2);
+
+    expectIngressReadCnt(4);
+  `SVTEST_END
+
   `SVUNIT_TESTS_END
 
   task setIngressNotRdy();
@@ -255,6 +292,20 @@ module pixelProcessor_unit_test;
     `FAIL_UNLESS(first_column === _first_column);
     `FAIL_UNLESS(last_row === _last_row);
     `FAIL_UNLESS(last_column === _last_column);
+  endtask
+
+  task stepUntilStrobe();
+    step();
+    nextSamplePoint();
+    while (!calc_strobe) begin
+      step();
+      nextSamplePoint();
+    end
+  endtask
+
+  task expectIngressReadCnt(int cnt);
+    nextSamplePoint();
+    `FAIL_UNLESS(ingress_read_cnt === cnt);
   endtask
 
 endmodule
