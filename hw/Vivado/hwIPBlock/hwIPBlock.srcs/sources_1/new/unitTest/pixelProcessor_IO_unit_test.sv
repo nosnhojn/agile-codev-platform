@@ -162,114 +162,182 @@ module pixelProcessor_IO_unit_test;
 
   //--------------------------------------
   // tests for the write memory interface
+  // (i.e. ingress -> write)
   //--------------------------------------
   `SVTEST(ingress_write_idle)
     stallTheIngressPath();
+    step();
 
     expectIdleWritePort();
   `SVTEST_END
 
   `SVTEST(ingress_write_1_pixel)
     setIngressPixel('haa55bb);
+    step();
 
     expectRamWrite(0, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_2_pixels)
-    repeat (2) setIngressPixel('haa55bb);
+    repeat (2) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     expectRamWrite(1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_full_mem)
     setReadIngressPixels();
-    repeat (MEM_DEPTH) setIngressPixel('haa55bb);
+    repeat (MEM_DEPTH) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     expectRamWrite(MEM_DEPTH-1, 'haa55bb);
   `SVTEST_END
 
   `SVTEST(ingress_write_wrap)
     setReadIngressPixels();
-    repeat (MEM_DEPTH+1) setIngressPixel('haa55bb);
+    repeat (MEM_DEPTH+1) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
  
     expectRamWrite(0, 'haa55bb);
   `SVTEST_END
- 
+
+
+  //-----------------------------------------
+  // tests for the oReady, pixel avail count
+  // and ingress ready threshold
+  //-----------------------------------------
   `SVTEST(pixel_cnt_resets_to_0)
     expectPixelsAvail(0);
   `SVTEST_END
  
   `SVTEST(pixel_cnt_inc_by_1)
     setIngressPixel('haa55bb);
+    step();
  
     expectPixelsAvail(1);
   `SVTEST_END
 
   `SVTEST(ingress_ready_below_threshold)
-    repeat (INGRESS_THRESH-1) setIngressPixel('haa55bb);
+    repeat (INGRESS_THRESH-1) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     expectIngressNotReady();
     expectPixelsAvail(INGRESS_THRESH-1);
   `SVTEST_END
 
   `SVTEST(ingress_ready_at_threshold)
-    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
+    repeat (INGRESS_THRESH) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     expectIngressReady();
     expectPixelsAvail(INGRESS_THRESH);
   `SVTEST_END
 
   `SVTEST(ingress_ready_stable_when_pixels_consumed)
-    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
+    repeat (INGRESS_THRESH) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     setReadIngressPixels();
     setIngressPixel('haa55bb);
+    step();
 
     expectIngressReady();
     expectPixelsAvail(INGRESS_THRESH);
   `SVTEST_END
 
   `SVTEST(ingress_not_ready_when_pixels_consumed)
-    repeat (INGRESS_THRESH) setIngressPixel('haa55bb);
+    repeat (INGRESS_THRESH) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     setReadIngressPixels();
     stallTheIngressPath();
+    step();
 
     expectIngressNotReady();
     expectPixelsAvail(INGRESS_THRESH-1);
   `SVTEST_END
 
   `SVTEST(ingress_full_cnt)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     expectPixelsAvail(INGRESS_FULL);
   `SVTEST_END
 
   `SVTEST(not_otready_when_full)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
-    expectNotoTREADY();
+    expectNot_oTREADY();
+  `SVTEST_END
+
+  `SVTEST(otready_when_not_full)
+    repeat (INGRESS_FULL-1) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
+
+    expect_oTREADY();
+  `SVTEST_END
+
+  `SVTEST(otready_reasserted_at_full_to_not_full)
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
+
+    setReadIngressPixels();
+    step();
+
+    expect_oTREADY();
   `SVTEST_END
 
   `SVTEST(ingress_wrap_cnt)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     setReadIngressPixels();
     setIngressPixel('haa55bb);
+    step();
 
     expectPixelsAvail(INGRESS_FULL);
   `SVTEST_END
 
   `SVTEST(ingress_write_stall)
     setIngressPixel('haa55bb);
+    step();
  
     stallTheIngressPath();
+    step();
  
     expectIdleWritePort();
   `SVTEST_END
  
   `SVTEST(ingress_no_write_when_not_ready)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     step();
 
@@ -277,7 +345,10 @@ module pixelProcessor_IO_unit_test;
   `SVTEST_END
  
   `SVTEST(ingress_write_resume_when_ready)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     jumpForward();
 
@@ -288,9 +359,13 @@ module pixelProcessor_IO_unit_test;
   `SVTEST_END
  
   `SVTEST(ingress_read_N_pixels)
-    repeat (INGRESS_FULL) setIngressPixel('haa55bb);
+    repeat (INGRESS_FULL) begin
+      setIngressPixel('haa55bb);
+      step();
+    end
 
     stallTheIngressPath();
+    step();
 
     setReadIngressPixels(INGRESS_FULL);
     step();
@@ -298,6 +373,10 @@ module pixelProcessor_IO_unit_test;
     expectPixelsAvail(0);
   `SVTEST_END
  
+  //--------------------------------------
+  // tests for the read memory interface
+  // (i.e. read -> egress)
+  //--------------------------------------
   `SVTEST(egress_first_pixel)
     fillRamWithIncrementalData();
     setEgressRdy();
@@ -371,7 +450,7 @@ module pixelProcessor_IO_unit_test;
     `FAIL_UNLESS(raddr === 1);
   `SVTEST_END
 
-  `SVTEST(egress_to_empty)
+  `SVTEST(egress_nothing_when_empty)
     setEgressRdy();
     step();
 
@@ -407,6 +486,7 @@ module pixelProcessor_IO_unit_test;
   task fillRamWithIncrementalData();
     for (int i=0; i<INGRESS_FULL; i+=1) begin
       setIngressPixel(i);
+      step();
     end
   endtask
 
@@ -426,39 +506,12 @@ module pixelProcessor_IO_unit_test;
     iTUSER = user;
     iTKEEP = keep;
     iTLAST = last;
-    step();
   endtask
 
   task expectNoEgressPixel();
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 0);
     `FAIL_UNLESS(egress_read_cnt === 0);
-  endtask
-
-  // exact synchronization isn't necessary so this is just waiting until
-  // a pixel shows up on the egress
-  task goToNextEgressPixel();
-    nextSamplePoint();
-    while (oTVALID !== 1) begin
-      step();
-      nextSamplePoint();
-    end
-  endtask
-
-  task waitForNextEgressPixel();
-    nextSamplePoint();
-    while (oTVALID !== 1) begin
-      waitStep();
-      nextSamplePoint();
-    end
-  endtask
-
-  task waitForIngressReady();
-    nextSamplePoint();
-    while (oTREADY !== 1) begin
-      waitStep();
-      nextSamplePoint();
-    end
   endtask
 
   task expectEgressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
@@ -487,8 +540,6 @@ module pixelProcessor_IO_unit_test;
   task stallTheIngressPath();
     nextSamplePoint();
     iTVALID = 0;
-
-    step();
   endtask
 
   task expectIngressReady();
@@ -511,12 +562,12 @@ module pixelProcessor_IO_unit_test;
     egress_rdy = 1;
   endtask
 
-  task expectoTREADY();
+  task expect_oTREADY();
     nextSamplePoint();
     `FAIL_UNLESS(oTREADY === 1);
   endtask
 
-  task expectNotoTREADY();
+  task expectNot_oTREADY();
     nextSamplePoint();
     `FAIL_UNLESS(oTREADY === 0);
   endtask
