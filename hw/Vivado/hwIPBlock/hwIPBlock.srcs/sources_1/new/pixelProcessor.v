@@ -19,12 +19,18 @@ module pixelProcessor
   output logic         egress_rdy,
 
   output logic         calc_strobe,
-  output logic         first_row,
-  output logic         first_column,
-  output logic         last_row,
-  output logic         last_column
+  output logic         first_row_flag,
+  output logic         first_column_flag,
+  output logic         last_row_flag,
+  output logic         last_column_flag
 );
 
+parameter LINE_WIDTH = 1920;
+
+wire at_start_of_line;
+wire at_end_of_line;
+wire on_first_row;
+wire on_last_row;
 logic [31:0] rptr;
 logic [1:0] rptr_line_cnt;
 logic calc_strobe_d1;
@@ -38,10 +44,11 @@ always @(negedge rst_n or posedge clk) begin
     rptr_line_cnt <= 0;
     calc_strobe <= 0;
     calc_strobe_d1 <= 0;
-    first_row <= 1;
-    first_column <= 1;
-    last_row <= 0;
-    last_column <= 0;
+    first_row_flag <= 1;
+    first_column_flag <= 1;
+    last_row_flag <= 0;
+    last_column_flag <= 0;
+    ingress_read_cnt <= 0;
   end
 
   else begin
@@ -49,13 +56,8 @@ always @(negedge rst_n or posedge clk) begin
 
     if (calc_strobe) begin
       calc_strobe <= 0;
-      if (first_row && first_column) ingress_read_cnt <= 3;
-      else ingress_read_cnt <= 4;
-    end
-
-    else if (calc_strobe_d1) begin
-      if (first_row && first_column) ingress_read_cnt <= 3;
-      else ingress_read_cnt <= 4;
+      if (last_row_flag && last_column_flag) ingress_read_cnt <= 3 * LINE_WIDTH;
+      else if (last_column_flag) ingress_read_cnt <= LINE_WIDTH;
     end
 
     else begin
@@ -64,11 +66,16 @@ always @(negedge rst_n or posedge clk) begin
 
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
+        //if (at_end_of_line) rptr <= 0;
+        //else rptr <= rptr + 4;
         rptr <= rptr + 4;
+
         rptr_line_cnt <= 0;
         calc_strobe <= 1;
-        first_column <= (rptr == 0);
-        last_column <= (rptr == 1916);
+        first_column_flag <= at_start_of_line;
+        last_column_flag <= at_end_of_line;
+        first_row_flag <= on_first_row;
+        last_row_flag <= on_last_row;
       end
 
       else begin
@@ -78,6 +85,10 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
-assign raddr = rptr + rptr_line_cnt * 1920;
+assign raddr = rptr + rptr_line_cnt * LINE_WIDTH;
+assign at_end_of_line = (rptr % LINE_WIDTH == LINE_WIDTH-4);
+assign at_start_of_line = (rptr % LINE_WIDTH == 0);
+assign on_first_row = (rptr < LINE_WIDTH);
+assign on_last_row = (rptr >= 1077 * LINE_WIDTH);
 
 endmodule

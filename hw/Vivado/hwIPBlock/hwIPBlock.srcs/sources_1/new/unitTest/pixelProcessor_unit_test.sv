@@ -15,6 +15,8 @@ module pixelProcessor_unit_test;
   //===================================
 
   parameter LINE_WIDTH = 1920;
+  parameter NUM_ROWS = 1080;
+
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;
   parameter NOT_FIRST_ROW = 0;
@@ -34,10 +36,14 @@ module pixelProcessor_unit_test;
   wire         egress_rdy;
 
   wire calc_strobe;
-  wire first_row;
-  wire first_column;
-  wire last_row;
-  wire last_column;
+  wire first_row_flag;
+  wire first_column_flag;
+  wire last_row_flag;
+  wire last_column_flag;
+
+  const int pixels_per_mem_read = 4;
+  const int mem_reads_per_group = 3;
+  const int mem_reads_per_row = mem_reads_per_group * (LINE_WIDTH / pixels_per_mem_read);
 
   `CLK_RESET_FIXTURE(10,1)
 
@@ -57,10 +63,10 @@ module pixelProcessor_unit_test;
     .egress_rdy(egress_rdy),
 
     .calc_strobe(calc_strobe),
-    .first_row(first_row),
-    .first_column(first_column),
-    .last_row(last_row),
-    .last_column(last_column)
+    .first_row_flag(first_row_flag),
+    .first_column_flag(first_column_flag),
+    .last_row_flag(last_row_flag),
+    .last_column_flag(last_column_flag)
   );
 
 
@@ -110,23 +116,23 @@ module pixelProcessor_unit_test;
   `SVUNIT_TESTS_BEGIN
 
   // pull the first set of 3 groups of 4 pixels
-  `SVTEST(raddr_start_of_first_line)
+  `SVTEST(raddr_start_of_first_row)
     expectRaddr(0);
   `SVTEST_END
 
-  `SVTEST(raddr_start_of_second_line)
+  `SVTEST(raddr_start_of_second_row)
     step();
 
     expectRaddr(LINE_WIDTH);
   `SVTEST_END
 
-  `SVTEST(raddr_start_of_third_line)
+  `SVTEST(raddr_start_of_third_row)
     step(2);
 
     expectRaddr(2*LINE_WIDTH);
   `SVTEST_END
 
-  `SVTEST(no_strobe_until_end_of_group)
+  `SVTEST(no_strobe_before_end_of_group)
     step(2);
 
     expectNoStrobe();
@@ -134,7 +140,8 @@ module pixelProcessor_unit_test;
 
   `SVTEST(strobe_for_end_of_first_group)
     step(3);
-    expectStrobe(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
   `SVTEST(no_strobe_after_end_of_group)
@@ -143,39 +150,47 @@ module pixelProcessor_unit_test;
   `SVTEST_END
 
   // roll over to the next set of 3 groups of 4 pixels
-  `SVTEST(raddr_2nd_group_of_first_line)
+  `SVTEST(raddr_2nd_group_of_first_row)
     step(3);
  
     expectRaddr(4);
   `SVTEST_END
  
-  `SVTEST(raddr_2nd_group_of_second_line)
+  `SVTEST(raddr_2nd_group_of_second_row)
     step(4);
  
-    expectRaddr(4 + LINE_WIDTH);
+    expectRaddr(LINE_WIDTH + 4);
   `SVTEST_END
 
   `SVTEST(strobe_for_end_of_2nd_group)
     step(6);
-    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
  
-  // fast forward to the 2nd last group of the first line
-  `SVTEST(strobe_before_end_of_first_line)
-    step(3*(1920/4)-3);
-    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  // fast forward to the 2nd last group of the first row
+  `SVTEST(strobe_before_end_of_first_row)
+    step(mem_reads_per_row - mem_reads_per_group);
+
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
-  // fast forward to the last group of the first line
-  `SVTEST(raddr_third_line_of_last_group)
-    step(3*(1920/4)-1);
+  // fast forward to the last group of the first row
+  `SVTEST(raddr_third_row_of_last_group)
+    step(mem_reads_per_row - 1);
  
-    expectRaddr(1916 + LINE_WIDTH*2);
+    expectRaddr(LINE_WIDTH*2 + LINE_WIDTH-4);
   `SVTEST_END
 
-  `SVTEST(strobe_at_end_of_first_line)
-    step(3*(1920/4));
-    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+  `SVTEST(strobe_at_end_of_first_row)
+    step(mem_reads_per_row);
+
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+  `SVTEST_END
+
+  `SVTEST(strobe_at_last_row_first_column)
+    step((NUM_ROWS-2) * mem_reads_per_row + 3);
+
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
   // stalling with the ingress not ready
@@ -186,17 +201,17 @@ module pixelProcessor_unit_test;
     expectRaddr(0);
   `SVTEST_END
 
-  `SVTEST(ingress_not_rdy_to_rdy)
+  `SVTEST(next_raddr_when_ingress_rdy_asserted)
     setIngressNotRdy();
     step(17); // arbitrary stall time
     setIngressRdy();
     step(3);
 
     expectRaddr(4);
-    expectStrobe(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
-  `SVTEST(ingress_rdy_to_not_rdy)
+  `SVTEST(hold_raddr_when_ingress_rdy_deasserted)
     step(3);
 
     setIngressNotRdy();
@@ -223,45 +238,44 @@ module pixelProcessor_unit_test;
     setIngressRdy();
     step(3);
 
-    expectStrobe(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
 
-  `SVTEST(consume_first_3_pixels)
-    stepUntilStrobe();
-    step();
-
-    expectIngressReadCnt(3);
-  `SVTEST_END
-
-  `SVTEST(consume_second_3_pixels)
-    stepUntilStrobe();
-    step(2);
-
-    expectIngressReadCnt(3);
-  `SVTEST_END
-
-  `SVTEST(first_pause_consuming_pixels)
-    stepUntilStrobe();
-    step(3);
+  `SVTEST(clear_ingress_read_cnt_before_releasing_row_0)
+    step(mem_reads_per_row);
 
     expectIngressReadCnt(0);
   `SVTEST_END
 
-  `SVTEST(consume_first_4_pixels)
-    stepUntilStrobe();
-    stepUntilStrobe();
-    step();
+  `SVTEST(set_ingress_read_cnt_to_release_row_0)
+    step(mem_reads_per_row + 1);
 
-    expectIngressReadCnt(4);
+    expectIngressReadCnt(LINE_WIDTH);
   `SVTEST_END
 
-  `SVTEST(consume_second_4_pixels)
-    stepUntilStrobe();
-    stepUntilStrobe();
-    step(2);
+  `SVTEST(clear_ingress_read_cnt_after_releasing_row_0)
+    step(mem_reads_per_row + 2);
 
-    expectIngressReadCnt(4);
+    expectIngressReadCnt(0);
   `SVTEST_END
+
+  `SVTEST(raddr_after_releasing_row_0)
+    step(mem_reads_per_row);
+ 
+    expectRaddr(LINE_WIDTH);
+  `SVTEST_END
+
+  `SVTEST(set_ingress_read_cnt_to_release_row_1)
+    step(2*mem_reads_per_row + 1);
+
+    expectIngressReadCnt(LINE_WIDTH);
+  `SVTEST_END
+
+// `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
+//   step(NUM_ROWS * mem_reads_per_row + 1);
+//
+//   expectIngressReadCnt(3 * LINE_WIDTH);
+// `SVTEST_END
 
   `SVUNIT_TESTS_END
 
@@ -285,13 +299,13 @@ module pixelProcessor_unit_test;
     `FAIL_UNLESS(calc_strobe === 0);
   endtask
 
-  task expectStrobe(bit _first_row, bit _first_column, bit _last_row, bit _last_column);
+  task expectStrobeWithRowColumnMarkers(bit _first_row, bit _first_column, bit _last_row, bit _last_column);
     nextSamplePoint();
     `FAIL_UNLESS(calc_strobe === 1);
-    `FAIL_UNLESS(first_row === _first_row);
-    `FAIL_UNLESS(first_column === _first_column);
-    `FAIL_UNLESS(last_row === _last_row);
-    `FAIL_UNLESS(last_column === _last_column);
+    `FAIL_UNLESS(first_row_flag === _first_row);
+    `FAIL_UNLESS(first_column_flag === _first_column);
+    `FAIL_UNLESS(last_row_flag === _last_row);
+    `FAIL_UNLESS(last_column_flag === _last_column);
   endtask
 
   task stepUntilStrobe();
