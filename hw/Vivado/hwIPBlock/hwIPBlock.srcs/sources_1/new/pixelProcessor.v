@@ -66,8 +66,6 @@ always @(negedge rst_n or posedge clk) begin
 
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
-        //if (at_end_of_line) rptr <= 0;
-        //else rptr <= rptr + 4;
         rptr <= rptr + 4;
 
         rptr_line_cnt <= 0;
