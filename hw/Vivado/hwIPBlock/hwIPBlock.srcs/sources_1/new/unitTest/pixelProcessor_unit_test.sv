@@ -31,10 +31,10 @@ module pixelProcessor_unit_test;
   wire         wr;
   logic [119:0] rdata;
   wire  [31:0] raddr;
-  logic [31:0] ingress_cnt;
   wire  [31:0] ingress_used_cnt;
   wire  [31:0] ingress_available_cnt;
   logic [31:0] ingress_rdy_thresh;
+  logic        ingress_new_pixel;
   wire         egress_rdy;
 
   wire calc_strobe;
@@ -61,10 +61,10 @@ module pixelProcessor_unit_test;
     .rdata(rdata),
     .raddr(raddr),
 
-    .ingress_cnt(ingress_cnt),
     .ingress_used_cnt(ingress_used_cnt),
     .ingress_available_cnt(ingress_available_cnt),
     .ingress_rdy_thresh(ingress_rdy_thresh),
+    .ingress_new_pixel(ingress_new_pixel),
 
     .egress_rdy(egress_rdy),
 
@@ -91,6 +91,7 @@ module pixelProcessor_unit_test;
     svunit_ut.setup();
 
     setIngressRdy();
+    ingress_new_pixel = 0;
 
     reset();
   endtask
@@ -310,6 +311,65 @@ module pixelProcessor_unit_test;
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
+  
+  `SVTEST(ingress_available_cnt_resets_to_0)
+    expectIngressAvailCnt(0);
+  `SVTEST_END
+  
+  `SVTEST(ingress_available_cnt_inc_by_1)
+    setNewIngressPixel();
+    step();
+
+    expectIngressAvailCnt(1);
+  `SVTEST_END
+  
+  `SVTEST(ingress_available_cnt_inc_by_N)
+    setNewIngressPixel();
+    repeat (50) step();
+
+    expectIngressAvailCnt(50);
+  `SVTEST_END
+
+  `SVTEST(stall_before_ingress_availble_ge_thresh)
+    setIngressRdyThresh(41);
+    setNewIngressPixel();
+    step(41);
+ 
+    expectRaddr(0);
+  `SVTEST_END
+
+  `SVTEST(ready_when_ingress_availble_ge_thresh)
+    setIngressRdyThresh(41);
+    setNewIngressPixel();
+    step(42);
+ 
+    expectRaddr(LINE_WIDTH);
+  `SVTEST_END
+
+  `SVTEST(ingress_available_cnt_dec_at_end_of_line)
+    setIngressRdyThresh(LINE_WIDTH*4);
+    setNewIngressPixel();
+
+    step(LINE_WIDTH*4); // hit the threshold here so the pixelproc starts
+
+    setNoNewIngressPixel();
+    step(full_row+1);
+ 
+    expectIngressAvailCnt(0);
+  `SVTEST_END
+
+  `SVTEST(ingress_available_cnt_dec_at_end_of_frame)
+    setIngressRdyThresh(NUM_ROWS*LINE_WIDTH*4);
+    setNewIngressPixel();
+
+    step(NUM_ROWS*LINE_WIDTH*4); // hit the threshold here so the pixelproc starts
+
+    setIngressRdyThresh(0);
+    setNoNewIngressPixel();
+    step(full_frame+1);
+ 
+    expectIngressAvailCnt(0);
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
@@ -354,6 +414,26 @@ module pixelProcessor_unit_test;
   task expectIngressUsedCnt(int cnt);
     nextSamplePoint();
     `FAIL_UNLESS(ingress_used_cnt === cnt);
+  endtask
+
+  task setNewIngressPixel();
+    nextSamplePoint();
+    ingress_new_pixel = 1;
+  endtask
+
+  task setNoNewIngressPixel();
+    nextSamplePoint();
+    ingress_new_pixel = 0;
+  endtask
+
+  task setIngressRdyThresh(int cnt);
+    nextSamplePoint();
+    ingress_rdy_thresh = cnt;
+  endtask
+
+  task expectIngressAvailCnt(int cnt);
+    nextSamplePoint();
+    `FAIL_UNLESS(ingress_available_cnt === cnt);
   endtask
 
 endmodule

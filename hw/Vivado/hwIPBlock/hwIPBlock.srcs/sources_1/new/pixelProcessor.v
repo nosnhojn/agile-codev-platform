@@ -13,10 +13,10 @@ module pixelProcessor
   input        [119:0] rdata,
   output wire  [31:0]  raddr,
 
-  input        [31:0]  ingress_cnt,
   input        [31:0]  ingress_rdy_thresh,
   output logic [31:0]  ingress_used_cnt,
   output logic [31:0]  ingress_available_cnt,
+  input                ingress_new_pixel,
 
   output logic         egress_rdy,
 
@@ -61,12 +61,22 @@ always @(negedge rst_n or posedge clk) begin
 
     if (calc_strobe) begin
       calc_strobe <= 0;
-      if (last_row_flag && last_column_flag) ingress_used_cnt <= 3 * LINE_WIDTH;
-      else if (last_column_flag) ingress_used_cnt <= LINE_WIDTH;
+      if (last_row_flag && last_column_flag) begin
+        ingress_used_cnt <= 3 * LINE_WIDTH;
+        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - 3*LINE_WIDTH*4;
+      end
+      else if (last_column_flag) begin
+        ingress_used_cnt <= LINE_WIDTH;
+        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - LINE_WIDTH*4;
+      end
+      else begin
+        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
+      end
     end
 
     else begin
       ingress_used_cnt <= 0;
+      ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
     end
 
     if (ingress_rdy) begin
