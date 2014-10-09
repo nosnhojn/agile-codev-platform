@@ -37,6 +37,7 @@ module pixelProcessor_IO
   input        [RAM_ADDR_WIDTH-1:0] ingress_thresh,
   input        [RAM_ADDR_WIDTH-1:0] ingress_full,
   input        [RAM_ADDR_WIDTH-1:0] ingress_read_cnt,
+  output wire                       ingress_new_pixel,
 
   output wire         egress_read_cnt,
   input               egress_rdy
@@ -118,6 +119,7 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_pixel_ready = iTVALID && oTREADY;
+assign ingress_new_pixel = ingress_pixel_ready;
 assign wrap_ingress_ptr = (ingress_ptr >= max_ram_address);
 assign concatenated_wdata = { iTDATA , iTUSER , iTKEEP , iTLAST };
 assign ingress_rdy = (ingress_cnt >= ingress_thresh);

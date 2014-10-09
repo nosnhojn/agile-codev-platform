@@ -92,6 +92,7 @@ module pixelProcessor_IO_unit_test;
     .ingress_thresh(INGRESS_THRESH),
     .ingress_full(INGRESS_FULL),
     .ingress_read_cnt(ingress_read_cnt),
+    .ingress_new_pixel(ingress_new_pixel),
 
     .egress_rdy(egress_rdy),
     .egress_read_cnt(egress_read_cnt)
@@ -221,7 +222,7 @@ module pixelProcessor_IO_unit_test;
   `SVTEST(pixel_cnt_resets_to_0)
     expectPixelsAvail(0);
   `SVTEST_END
- 
+
   `SVTEST(pixel_cnt_inc_by_1)
     setIngressPixel('haa55bb);
     step();
@@ -277,6 +278,16 @@ module pixelProcessor_IO_unit_test;
     expectPixelsAvail(INGRESS_THRESH-1);
   `SVTEST_END
  
+  `SVTEST(no_new_pixel_without_ingress_pixel)
+    expectNoNewPixel();
+  `SVTEST_END
+ 
+  `SVTEST(new_pixel_with_ingress_pixel)
+    setIngressPixel('haa55bb);
+    step();
+    expectNewPixel();
+  `SVTEST_END
+ 
   `SVTEST(ingress_full_cnt)
     repeat (INGRESS_FULL) begin
       setIngressPixel('haa55bb);
@@ -293,6 +304,7 @@ module pixelProcessor_IO_unit_test;
     end
  
     expectNot_oTREADY();
+    expectNoNewPixel();
   `SVTEST_END
  
   `SVTEST(otready_when_not_full)
@@ -301,7 +313,7 @@ module pixelProcessor_IO_unit_test;
       step();
     end
  
-    expect_oTREADY();
+    expectNewPixel();
   `SVTEST_END
  
   `SVTEST(otready_reasserted_at_full_to_not_full)
@@ -593,6 +605,16 @@ module pixelProcessor_IO_unit_test;
   task expectPixelsAvail(int numPixels);
     nextSamplePoint();
     `FAIL_UNLESS(ingress_cnt === numPixels);
+  endtask
+
+  task expectNewPixel();
+    nextSamplePoint();
+    `FAIL_UNLESS(ingress_new_pixel === 1);
+  endtask
+
+  task expectNoNewPixel();
+    nextSamplePoint();
+    `FAIL_UNLESS(ingress_new_pixel === 0);
   endtask
 
   task assertoTREADY();

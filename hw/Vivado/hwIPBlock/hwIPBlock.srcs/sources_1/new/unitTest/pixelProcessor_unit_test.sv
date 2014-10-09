@@ -31,8 +31,10 @@ module pixelProcessor_unit_test;
   wire         wr;
   logic [119:0] rdata;
   wire  [31:0] raddr;
-  logic        ingress_rdy;
-  wire  [31:0] ingress_read_cnt;
+  logic [31:0] ingress_cnt;
+  wire  [31:0] ingress_used_cnt;
+  wire  [31:0] ingress_available_cnt;
+  logic [31:0] ingress_rdy_thresh;
   wire         egress_rdy;
 
   wire calc_strobe;
@@ -59,8 +61,10 @@ module pixelProcessor_unit_test;
     .rdata(rdata),
     .raddr(raddr),
 
-    .ingress_rdy(ingress_rdy),
-    .ingress_read_cnt(ingress_read_cnt),
+    .ingress_cnt(ingress_cnt),
+    .ingress_used_cnt(ingress_used_cnt),
+    .ingress_available_cnt(ingress_available_cnt),
+    .ingress_rdy_thresh(ingress_rdy_thresh),
 
     .egress_rdy(egress_rdy),
 
@@ -227,25 +231,25 @@ module pixelProcessor_unit_test;
   `SVTEST(clear_ingress_read_cnt_before_releasing_row_0)
     step(full_row);
  
-    expectIngressReadCnt(0);
+    expectIngressUsedCnt(0);
   `SVTEST_END
  
   `SVTEST(set_ingress_read_cnt_to_release_row_0)
     step(full_row + 1);
  
-    expectIngressReadCnt(LINE_WIDTH);
+    expectIngressUsedCnt(LINE_WIDTH);
   `SVTEST_END
  
   `SVTEST(clear_ingress_read_cnt_after_releasing_row_0)
     step(full_row + 2);
  
-    expectIngressReadCnt(0);
+    expectIngressUsedCnt(0);
   `SVTEST_END
  
   `SVTEST(set_ingress_read_cnt_to_release_row_1)
     step(2 * full_row + 1);
  
-    expectIngressReadCnt(LINE_WIDTH);
+    expectIngressUsedCnt(LINE_WIDTH);
   `SVTEST_END
  
   `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
@@ -253,7 +257,7 @@ module pixelProcessor_unit_test;
  
     step();
  
-    expectIngressReadCnt(3 * LINE_WIDTH);
+    expectIngressUsedCnt(3 * LINE_WIDTH);
   `SVTEST_END
  
  
@@ -311,12 +315,12 @@ module pixelProcessor_unit_test;
 
   task setIngressNotRdy();
     nextSamplePoint();
-    ingress_rdy = 0;
+    ingress_rdy_thresh = 2**31; // any value the ingress_available_cnt can never reach will do
   endtask
 
   task setIngressRdy();
     nextSamplePoint();
-    ingress_rdy = 1;
+    ingress_rdy_thresh = 0;
   endtask
 
   task expectRaddr(bit [31:0] addr);
@@ -347,9 +351,9 @@ module pixelProcessor_unit_test;
     end
   endtask
 
-  task expectIngressReadCnt(int cnt);
+  task expectIngressUsedCnt(int cnt);
     nextSamplePoint();
-    `FAIL_UNLESS(ingress_read_cnt === cnt);
+    `FAIL_UNLESS(ingress_used_cnt === cnt);
   endtask
 
 endmodule

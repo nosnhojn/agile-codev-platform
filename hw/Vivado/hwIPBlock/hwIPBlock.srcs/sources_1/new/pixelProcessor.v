@@ -13,8 +13,10 @@ module pixelProcessor
   input        [119:0] rdata,
   output wire  [31:0]  raddr,
 
-  input                ingress_rdy,
-  output logic [31:0]  ingress_read_cnt,
+  input        [31:0]  ingress_cnt,
+  input        [31:0]  ingress_rdy_thresh,
+  output logic [31:0]  ingress_used_cnt,
+  output logic [31:0]  ingress_available_cnt,
 
   output logic         egress_rdy,
 
@@ -27,6 +29,7 @@ module pixelProcessor
 
 parameter LINE_WIDTH = 1920/4;
 
+wire ingress_rdy;
 wire at_end_of_frame;
 wire at_start_of_line;
 wire at_end_of_line;
@@ -49,7 +52,8 @@ always @(negedge rst_n or posedge clk) begin
     first_column_flag <= 1;
     last_row_flag <= 0;
     last_column_flag <= 0;
-    ingress_read_cnt <= 0;
+    ingress_used_cnt <= 0;
+    ingress_available_cnt <= 0;
   end
 
   else begin
@@ -57,12 +61,12 @@ always @(negedge rst_n or posedge clk) begin
 
     if (calc_strobe) begin
       calc_strobe <= 0;
-      if (last_row_flag && last_column_flag) ingress_read_cnt <= 3 * LINE_WIDTH;
-      else if (last_column_flag) ingress_read_cnt <= LINE_WIDTH;
+      if (last_row_flag && last_column_flag) ingress_used_cnt <= 3 * LINE_WIDTH;
+      else if (last_column_flag) ingress_used_cnt <= LINE_WIDTH;
     end
 
     else begin
-      ingress_read_cnt <= 0;
+      ingress_used_cnt <= 0;
     end
 
     if (ingress_rdy) begin
@@ -85,6 +89,7 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
+assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
 assign raddr = rptr + rptr_line_cnt * LINE_WIDTH;
 assign at_end_of_line = (rptr % LINE_WIDTH == LINE_WIDTH-1);
 assign at_start_of_line = (rptr % LINE_WIDTH == 0);
