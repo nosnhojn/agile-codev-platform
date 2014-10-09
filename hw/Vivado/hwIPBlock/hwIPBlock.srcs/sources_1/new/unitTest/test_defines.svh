@@ -1,5 +1,3 @@
-`define TEST_DPRAM_SIZE 256
-
 `define CLK_RESET_FIXTURE(CLK_PERIOD,RST_PERIOD) \
 parameter clkPeriod = CLK_PERIOD; \
 logic clk; \

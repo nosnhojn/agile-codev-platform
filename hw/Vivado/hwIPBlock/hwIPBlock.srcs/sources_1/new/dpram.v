@@ -19,20 +19,20 @@ module dpram
   input wr_1,
 
   output logic [DPRAM_PORT0_WIDTH-1:0] rdata_0,
-  input        [31:0] raddr_0,
+  input        [DPRAM_PORT0_ADDR_WIDTH-1:0] raddr_0,
 
   output logic [DPRAM_PORT1_WIDTH-1:0] rdata_1,
-  input        [31:0] raddr_1
+  input        [DPRAM_PORT1_ADDR_WIDTH-1:0] raddr_1
 );
 
-logic [31:0] mem [DPRAM_DEPTH-1:0];
+logic [DPRAM_PORT0_WIDTH-1:0] mem [DPRAM_DEPTH-1:0];
 
 logic [DPRAM_PORT1_WIDTH-1:0] next_rdata_1;
 
 always @* begin
   next_rdata_1 = 0;
   for (int i=0; i<DPRAM_PORT1_WIDTH/DPRAM_PORT0_WIDTH; i+=1) begin
-    next_rdata_1 = next_rdata_1 | (mem[raddr_1+i] << 32*i);
+    next_rdata_1 = next_rdata_1 | (mem[(raddr_1<<2)+i] << 32*i);
   end
 end
 
@@ -50,7 +50,7 @@ always @(negedge rst_n or posedge clk) begin
 
     if (wr_1) begin
       for (int i=0; i<DPRAM_PORT1_WIDTH/DPRAM_PORT0_WIDTH; i+=1) begin
-        mem[waddr_1+i] <= wdata_1 >> 32*i;
+        mem[(waddr_1<<2)+i] <= wdata_1 >> 32*i;
       end
     end
   end

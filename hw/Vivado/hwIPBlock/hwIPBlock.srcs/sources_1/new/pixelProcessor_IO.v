@@ -1,13 +1,16 @@
 module pixelProcessor_IO
 #(
-  MEM_DEPTH = 1
+  MEM_DEPTH = 1,
+  DATA_WIDTH = 24,
+  RAM_DATA_WIDTH = DATA_WIDTH+6,
+  RAM_ADDR_WIDTH = $clog2(MEM_DEPTH)
 )
 (
   input clk,
   input rst_n,
 
   // axi4 ingress
-  input [23:0]  iTDATA,
+  input [DATA_WIDTH-1:0]  iTDATA,
   input         iTUSER,
   input [3:0]   iTKEEP,
   input         iTLAST,
@@ -15,7 +18,7 @@ module pixelProcessor_IO
   output wire   oTREADY,
 
   // axi4 ingress
-  output logic [23:0] oTDATA,
+  output logic [DATA_WIDTH-1:0] oTDATA,
   output logic        oTUSER,
   output logic [3:0]  oTKEEP,
   output logic        oTLAST,
@@ -23,28 +26,28 @@ module pixelProcessor_IO
   input               iTREADY,
 
   // ram port
-  output logic [29:0] wdata,
-  output logic [31:0] waddr,
+  output logic [RAM_DATA_WIDTH-1:0] wdata,
+  output logic [RAM_ADDR_WIDTH-1:0] waddr,
   output logic        wr,
-  input        [29:0] rdata,
-  output wire  [31:0] raddr,
+  input        [RAM_DATA_WIDTH-1:0] rdata,
+  output wire  [RAM_ADDR_WIDTH-1:0] raddr,
 
   output wire         ingress_rdy,
-  output logic [31:0] ingress_cnt,
-  input        [31:0] ingress_thresh,
-  input        [31:0] ingress_full,
-  input        [31:0] ingress_read_cnt,
+  output logic [RAM_ADDR_WIDTH-1:0] ingress_cnt,
+  input        [RAM_ADDR_WIDTH-1:0] ingress_thresh,
+  input        [RAM_ADDR_WIDTH-1:0] ingress_full,
+  input        [RAM_ADDR_WIDTH-1:0] ingress_read_cnt,
 
   output wire         egress_read_cnt,
   input               egress_rdy
 );
 
-wire [29:0] concatenated_wdata;
-logic [29:0] concatenated_rdata;
+wire [RAM_DATA_WIDTH-1:0] concatenated_wdata;
+logic [RAM_DATA_WIDTH-1:0] concatenated_rdata;
 
-logic [31:0] ingress_ptr;
-logic [31:0] egress_ptr;
-wire  [31:0] max_ram_address = MEM_DEPTH - 1;
+logic [RAM_ADDR_WIDTH-1:0] ingress_ptr;
+logic [RAM_ADDR_WIDTH-1:0] egress_ptr;
+wire  [RAM_ADDR_WIDTH-1:0] max_ram_address = MEM_DEPTH - 1;
 
 wire ingress_pixel_ready;
 wire wrap_ingress_ptr;
@@ -56,7 +59,7 @@ wire hold_oTVALID_until_iTREADY;
 
 wire wrap_egress_read_address;
 
-assign oTDATA = concatenated_rdata[29:6];
+assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-1:6];
 assign oTUSER = concatenated_rdata[5];
 assign oTKEEP = concatenated_rdata[4:1];
 assign oTLAST = concatenated_rdata[0];
@@ -113,7 +116,6 @@ always @(negedge rst_n or posedge clk) begin
     end
   end
 end
-
 
 assign ingress_pixel_ready = iTVALID && oTREADY;
 assign wrap_ingress_ptr = (ingress_ptr >= max_ram_address);

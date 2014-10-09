@@ -8,7 +8,9 @@ module dpram_unit_test;
 
   parameter DEPTH = 256;
   parameter PORT0_WIDTH = 32;
+  parameter PORT0_ADDR_WIDTH = 8;
   parameter PORT1_WIDTH = 4 * PORT0_WIDTH;
+  parameter PORT1_ADDR_WIDTH = 6;
 
   string name = "dpram_ut";
   svunit_testcase svunit_ut;
@@ -43,7 +45,9 @@ module dpram_unit_test;
   #(
     .DPRAM_DEPTH(DEPTH),
     .DPRAM_PORT0_WIDTH(PORT0_WIDTH),
-    .DPRAM_PORT1_WIDTH(PORT1_WIDTH)
+    .DPRAM_PORT1_WIDTH(PORT1_WIDTH),
+    .DPRAM_PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH),
+    .DPRAM_PORT1_ADDR_WIDTH(PORT1_ADDR_WIDTH)
   )
   my_dpram
   (
@@ -91,6 +95,11 @@ module dpram_unit_test;
     waddr_1 = 0;
 
     raddr_1 = 0;
+
+    // clear the memory contents
+    for (int i=0; i<DEPTH; i+=1) begin
+      my_dpram.mem[i] = 'hx;
+    end
 
     // flex the reset
     reset();
@@ -149,7 +158,7 @@ module dpram_unit_test;
     // 1 write to 4 reads
     `SVTEST(port1_to_port0)
       testData = 'hccddeeff_8899aabb_44556677_00112233;
-      writePort(1, DEPTH-4, testData);
+      writePort(1, (DEPTH-4)>>2, testData);
       step();
  
       for (int i=0; i<4; i+=1) begin

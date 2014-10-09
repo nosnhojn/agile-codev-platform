@@ -25,8 +25,9 @@ module pixelProcessor
   output logic         last_column_flag
 );
 
-parameter LINE_WIDTH = 1920;
+parameter LINE_WIDTH = 1920/4;
 
+wire at_end_of_frame;
 wire at_start_of_line;
 wire at_end_of_line;
 wire on_first_row;
@@ -66,7 +67,8 @@ always @(negedge rst_n or posedge clk) begin
 
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
-        rptr <= rptr + 4;
+        if (at_end_of_frame) rptr <= 0;
+        else rptr <= rptr + 1;
 
         rptr_line_cnt <= 0;
         calc_strobe <= 1;
@@ -84,9 +86,10 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign raddr = rptr + rptr_line_cnt * LINE_WIDTH;
-assign at_end_of_line = (rptr % LINE_WIDTH == LINE_WIDTH-4);
+assign at_end_of_line = (rptr % LINE_WIDTH == LINE_WIDTH-1);
 assign at_start_of_line = (rptr % LINE_WIDTH == 0);
 assign on_first_row = (rptr < LINE_WIDTH);
-assign on_last_row = (rptr >= 1077 * LINE_WIDTH);
+assign on_last_row = (rptr >= (1077 * LINE_WIDTH));
+assign at_end_of_frame = (on_last_row && at_end_of_line);
 
 endmodule
