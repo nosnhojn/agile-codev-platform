@@ -48,8 +48,8 @@ always @(negedge rst_n or posedge clk) begin
     rptr_line_cnt <= 0;
     calc_strobe <= 0;
     calc_strobe_d1 <= 0;
-    first_row_flag <= 1;
-    first_column_flag <= 1;
+    first_row_flag <= 0;
+    first_column_flag <= 0;
     last_row_flag <= 0;
     last_column_flag <= 0;
     ingress_used_cnt <= 0;
@@ -57,26 +57,24 @@ always @(negedge rst_n or posedge clk) begin
   end
 
   else begin
+    calc_strobe <= 0;
     calc_strobe_d1 <= calc_strobe;
 
-    if (calc_strobe) begin
-      calc_strobe <= 0;
-      if (last_row_flag && last_column_flag) begin
-        ingress_used_cnt <= 3 * LINE_WIDTH;
-        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - 3*LINE_WIDTH*4;
-      end
-      else if (last_column_flag) begin
-        ingress_used_cnt <= LINE_WIDTH;
-        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - LINE_WIDTH*4;
-      end
-      else begin
-        ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
-      end
-    end
+    ingress_used_cnt <= 0;
 
-    else begin
-      ingress_used_cnt <= 0;
-      ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
+    first_row_flag <= 0;
+    first_column_flag <= 0;
+    last_row_flag <= 0;
+    last_column_flag <= 0;
+
+    ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
+    if (last_row_flag && last_column_flag) begin
+      ingress_used_cnt <= 3 * LINE_WIDTH;
+      ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - 3*LINE_WIDTH*4;
+    end
+    else if (last_column_flag) begin
+      ingress_used_cnt <= LINE_WIDTH;
+      ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - LINE_WIDTH*4;
     end
 
     if (ingress_rdy) begin
