@@ -169,143 +169,143 @@ module pixelProcessor_unit_test;
  
  
  
-// // strobes are asserted after every group is pulled from memory
-// `SVTEST(no_strobe_before_end_of_group)
-//   step(2);
-//
-//   expectNoStrobe();
-// `SVTEST_END
-//
-// `SVTEST(strobe_for_end_of_first_group)
-//   step(3);
-//
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// `SVTEST(no_strobe_after_end_of_group)
-//   step(4);
-//   expectNoStrobe();
-// `SVTEST_END
-//
-// `SVTEST(strobe_for_end_of_2nd_group)
-//   step(6);
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// // fast forward to the 2nd last group of the first row
-// `SVTEST(strobe_before_end_of_first_row)
-//   step(full_row - full_group);
-//
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// `SVTEST(strobe_at_end_of_first_row)
-//   step(full_row);
-//
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
-// `SVTEST_END
-//
-//
-//
-// // strobes for beginning and end of last row
-// `SVTEST(strobe_at_last_row_first_column)
-//   step(full_frame - full_row + full_group);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// `SVTEST(strobe_at_last_row_last_column)
-//   step(full_frame);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
-// `SVTEST_END
-//
-//
-//
-//
-// // ingress read cnt is set at the end of each row
-// `SVTEST(clear_ingress_read_cnt_before_releasing_row_0)
-//   step(full_row);
-//
-//   expectIngressReadCnt(0);
-// `SVTEST_END
-//
-// `SVTEST(set_ingress_read_cnt_to_release_row_0)
-//   step(full_row + 1);
-//
-//   expectIngressReadCnt(LINE_WIDTH);
-// `SVTEST_END
-//
-// `SVTEST(clear_ingress_read_cnt_after_releasing_row_0)
-//   step(full_row + 2);
-//
-//   expectIngressReadCnt(0);
-// `SVTEST_END
-//
-// `SVTEST(set_ingress_read_cnt_to_release_row_1)
-//   step(2 * full_row + 1);
-//
-//   expectIngressReadCnt(LINE_WIDTH);
-// `SVTEST_END
-//
-// `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
-//   step(full_frame);
-//
-//   step();
-//
-//   expectIngressReadCnt(3 * LINE_WIDTH);
-// `SVTEST_END
-//
-//
-//
-//
-// // stalling with the ingress not ready
-// `SVTEST(stall_from_reset)
-//   setIngressNotRdy();
-//   step(41); // arbitrary stall time
-//
-//   expectRaddr(0);
-// `SVTEST_END
-//
-// `SVTEST(next_raddr_when_ingress_rdy_asserted)
-//   setIngressNotRdy();
-//   step(17); // arbitrary stall time
-//   setIngressRdy();
-//   step(3);
-//
-//   expectRaddr(4);
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// `SVTEST(hold_raddr_when_ingress_rdy_deasserted)
-//   step(3);
-//
-//   setIngressNotRdy();
-//   step();
-//
-//   expectRaddr(4);
-// `SVTEST_END
-//
-// `SVTEST(strobe_is_single_cycle_regardless_of_ingress_rdy)
-//   step(3);
-//
-//   setIngressNotRdy();
-//   step();
-//
-//   expectNoStrobe();
-// `SVTEST_END
-//
-// `SVTEST(strobe_row_column_markers_not_affected_by_ingress_rdy)
-//   step(3);
-//
-//   setIngressNotRdy();
-//   step(13);
-//
-//   setIngressRdy();
-//   step(3);
-//
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
+  // strobes are asserted after every group is pulled from memory
+  `SVTEST(no_strobe_before_end_of_group)
+    step(2);
+ 
+    expectNoStrobe();
+  `SVTEST_END
+ 
+  `SVTEST(strobe_for_end_of_first_group)
+    step(3);
+ 
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  `SVTEST(no_strobe_after_end_of_group)
+    step(4);
+    expectNoStrobe();
+  `SVTEST_END
+ 
+  `SVTEST(strobe_for_end_of_2nd_group)
+    step(6);
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  // fast forward to the 2nd last group of the first row
+  `SVTEST(strobe_before_end_of_first_row)
+    step(full_row - full_group);
+ 
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  `SVTEST(strobe_at_end_of_first_row)
+    step(full_row);
+ 
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+  `SVTEST_END
+ 
+ 
+ 
+  // strobes for beginning and end of last row
+  `SVTEST(strobe_at_last_row_first_column)
+    step(full_frame - full_row + full_group);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  `SVTEST(strobe_at_last_row_last_column)
+    step(full_frame);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+  `SVTEST_END
+ 
+ 
+ 
+ 
+  // ingress read cnt is set at the end of each row
+  `SVTEST(clear_ingress_read_cnt_before_releasing_row_0)
+    step(full_row);
+ 
+    expectIngressReadCnt(0);
+  `SVTEST_END
+ 
+  `SVTEST(set_ingress_read_cnt_to_release_row_0)
+    step(full_row + 1);
+ 
+    expectIngressReadCnt(LINE_WIDTH);
+  `SVTEST_END
+ 
+  `SVTEST(clear_ingress_read_cnt_after_releasing_row_0)
+    step(full_row + 2);
+ 
+    expectIngressReadCnt(0);
+  `SVTEST_END
+ 
+  `SVTEST(set_ingress_read_cnt_to_release_row_1)
+    step(2 * full_row + 1);
+ 
+    expectIngressReadCnt(LINE_WIDTH);
+  `SVTEST_END
+ 
+  `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
+    step(full_frame);
+ 
+    step();
+ 
+    expectIngressReadCnt(3 * LINE_WIDTH);
+  `SVTEST_END
+ 
+ 
+ 
+ 
+  // stalling with the ingress not ready
+  `SVTEST(stall_from_reset)
+    setIngressNotRdy();
+    step(41); // arbitrary stall time
+ 
+    expectRaddr(0);
+  `SVTEST_END
+ 
+  `SVTEST(next_raddr_when_ingress_rdy_asserted)
+    setIngressNotRdy();
+    step(17); // arbitrary stall time
+    setIngressRdy();
+    step(3);
+ 
+    expectRaddr(1);
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  `SVTEST(hold_raddr_when_ingress_rdy_deasserted)
+    step(3);
+ 
+    setIngressNotRdy();
+    step();
+ 
+    expectRaddr(1);
+  `SVTEST_END
+ 
+  `SVTEST(strobe_is_single_cycle_regardless_of_ingress_rdy)
+    step(3);
+ 
+    setIngressNotRdy();
+    step();
+ 
+    expectNoStrobe();
+  `SVTEST_END
+ 
+  `SVTEST(strobe_row_column_markers_not_affected_by_ingress_rdy)
+    step(3);
+ 
+    setIngressNotRdy();
+    step(13);
+ 
+    setIngressRdy();
+    step(3);
+ 
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
