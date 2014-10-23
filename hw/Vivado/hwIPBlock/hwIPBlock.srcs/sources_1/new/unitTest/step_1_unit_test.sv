@@ -41,8 +41,11 @@ module step_1_unit_test;
   wire [29:0] rdata;
   wire [P0_ADDR_WIDTH-1:0] raddr;
 
+  wire [P0_ADDR_WIDTH-1:0] ingress_read_cnt;
   wire         egress_read_cnt;
   wire ingress_rdy;
+
+  assign ingress_read_cnt = egress_read_cnt;
 
   `CLK_RESET_FIXTURE(10,1)
 
@@ -89,7 +92,7 @@ module step_1_unit_test;
     .ingress_cnt(),
     .ingress_thresh(INGRESS_THRESH),
     .ingress_full(INGRESS_FULL),
-    .ingress_read_cnt({ 8'h0 , egress_read_cnt }),
+    .ingress_read_cnt(ingress_read_cnt), //{ 8'h0 , egress_read_cnt }),
     .ingress_new_pixel(),
 
     .egress_rdy(ingress_rdy),
