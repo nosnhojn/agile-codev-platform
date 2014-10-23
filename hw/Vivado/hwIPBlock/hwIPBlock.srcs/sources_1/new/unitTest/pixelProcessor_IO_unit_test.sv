@@ -173,7 +173,7 @@ module pixelProcessor_IO_unit_test;
   //--------------------------------------
   `SVTEST(ingress_write_idle)
     stallTheIngressPath();
-    step();
+    //step();
  
     expectIdleWritePort();
   `SVTEST_END
