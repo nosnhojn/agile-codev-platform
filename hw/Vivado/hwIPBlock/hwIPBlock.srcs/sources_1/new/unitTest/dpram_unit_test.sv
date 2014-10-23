@@ -7,7 +7,7 @@ module dpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
   parameter DEPTH = 256;
-  parameter PORT0_WIDTH = 32;
+  parameter PORT0_WIDTH = 30;
   parameter PORT0_ADDR_WIDTH = 8;
   parameter PORT1_WIDTH = 4 * PORT0_WIDTH;
   parameter PORT1_ADDR_WIDTH = 6;
@@ -146,7 +146,7 @@ module dpram_unit_test;
     `SVTEST(port0_to_port1)
       testData = 'hccddeeff_8899aabb_44556677_00112233;
       for (int i=0; i<4; i+=1) begin
-        writePort(0, i, testData >> 32*i);
+        writePort(0, i, testData >> PORT0_WIDTH*i);
         step();
       end
 
@@ -164,7 +164,7 @@ module dpram_unit_test;
       for (int i=0; i<4; i+=1) begin
         readPort(0, DEPTH-1-i);
         step();
-        expectReadData(0, testData >> 32*(4-1-i));
+        expectReadData(0, testData >> PORT0_WIDTH*(4-1-i));
       end
     `SVTEST_END
 
