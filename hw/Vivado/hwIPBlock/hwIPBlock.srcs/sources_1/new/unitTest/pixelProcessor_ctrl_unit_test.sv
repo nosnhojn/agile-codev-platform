@@ -107,11 +107,12 @@ module pixelProcessor_ctrl_unit_test;
     expectRaddr(LINE_WIDTH);
   `SVTEST_END
  
-  `SVTEST(raddr_is_0_after_releasing_full_frame)
-    step(full_frame);
- 
-    expectRaddr(0);
-  `SVTEST_END
+  // combined with other tests in refactored_test_for_last_row_and_end_of_frame_signals for speed
+  // `SVTEST(raddr_is_0_after_releasing_full_frame)
+  //   step(full_frame);
+  //
+  //   expectRaddr(0);
+  // `SVTEST_END
  
  
  
@@ -155,18 +156,38 @@ module pixelProcessor_ctrl_unit_test;
  
  
   // strobes for beginning and end of last row
-  `SVTEST(strobe_at_last_row_first_column)
+  // combined with other tests in refactored_test_for_last_row_and_end_of_frame_signals for speed
+  // `SVTEST(strobe_at_last_row_first_column)
+  //   step(full_frame - full_row + full_group + 1);
+  //
+  //   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+  // `SVTEST_END
+
+  // combined with other tests in refactored_test_for_last_row_and_end_of_frame_signals for speed
+  // `SVTEST(strobe_at_last_row_last_column)
+  //   step(full_frame + 1);
+  //
+  //   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+  // `SVTEST_END
+
+  
+  `SVTEST(refactored_test_for_last_row_and_end_of_frame_signals)
+    // from `SVTEST(strobe_at_last_row_first_column)
     step(full_frame - full_row + full_group + 1);
- 
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-  `SVTEST_END
- 
-  `SVTEST(strobe_at_last_row_last_column)
-    step(full_frame + 1);
- 
+
+    // from `SVTEST(raddr_is_0_after_releasing_full_frame)
+    step(full_row - (full_group + 1));
+    expectRaddr(0);
+
+    // from `SVTEST(strobe_at_last_row_last_column)
+    step(1);
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+
+    // from `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
+    step(1);
+    expectIngressUsedCnt(3 * LINE_WIDTH);
   `SVTEST_END
- 
  
  
  
@@ -195,13 +216,14 @@ module pixelProcessor_ctrl_unit_test;
     expectIngressUsedCnt(LINE_WIDTH);
   `SVTEST_END
  
-  `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
-    step(full_frame);
- 
-    step(2);
- 
-    expectIngressUsedCnt(3 * LINE_WIDTH);
-  `SVTEST_END
+  // combined with other tests in refactored_test_for_last_row_and_end_of_frame_signals for speed
+  // `SVTEST(set_ingress_read_cnt_to_release_bottom_row)
+  //   step(full_frame);
+  //
+  //   step(2);
+  //
+  //   expectIngressUsedCnt(3 * LINE_WIDTH);
+  // `SVTEST_END
  
  
  

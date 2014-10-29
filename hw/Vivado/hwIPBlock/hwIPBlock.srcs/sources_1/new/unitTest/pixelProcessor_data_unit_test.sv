@@ -72,9 +72,20 @@ always @(posedge clk) begin
   $display("%t: next:0x%0x rdata:0x%0x raddr:%0x strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, calc_strobe);
 end
 
-  task expectGroupEq(bit [119:0] slot0,
-                     bit [119:0] slot1,
-                     bit [119:0] slot2);
+  task expectGroupEq(int row,
+                     int column);
+    bit [119:0] slot0;
+    bit [119:0] slot1;
+    bit [119:0] slot2;
+
+    int _1st_line = row*LINE_WIDTH*4 + column;
+    int _2nd_line = _1st_line + LINE_WIDTH*4;
+    int _3rd_line = _2nd_line + LINE_WIDTH*4;
+
+    for (int i=_1st_line+33; i>=_1st_line; i-=1) slot0 = { slot0 , i[29:0] };
+    for (int i=_2nd_line+3; i>=_2nd_line; i-=1) slot1 = { slot1 , i[29:0] };
+    for (int i=_3rd_line+3; i>=_3rd_line; i-=1) slot2 = { slot2 , i[29:0] };
+
     nextSamplePoint();
     `FAIL_IF(group_slot0 !== slot0);
     `FAIL_IF(group_slot1 !== slot1);
@@ -97,14 +108,10 @@ end
   */
 
   `SVTEST(top_left)
-    bit[29:0] FULL_LINE_WIDTH = LINE_WIDTH*4;
-    bit[29:0] FULL_LINE_WIDTH2 = 2*LINE_WIDTH*4;
     step(4);
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectGroupEq({ 30'h3 ,                30'h2 ,                30'h1 ,                30'h0              },
-                  { FULL_LINE_WIDTH[29:0]+30'h3 ,   FULL_LINE_WIDTH[29:0]+30'h2 ,   FULL_LINE_WIDTH[29:0]+30'h1 ,   FULL_LINE_WIDTH[29:0]   },
-                  { FULL_LINE_WIDTH2[29:0]+30'h3 , FULL_LINE_WIDTH2[29:0]+30'h2 , FULL_LINE_WIDTH2[29:0]+30'h1 , FULL_LINE_WIDTH2[29:0] });
+    expectGroupEq(0, 0);
   `SVTEST_END
 
 // `SVTEST(top_right)
