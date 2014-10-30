@@ -13,7 +13,7 @@ module pixelProcessor
   output logic [31:0]  waddr,
   output logic         wr,
   input        [119:0] rdata,
-  output wire  [31:0]  raddr,
+  output logic [31:0]  raddr,
 
   input        [31:0]  ingress_rdy_thresh,
   output logic [31:0]  ingress_used_cnt,
@@ -54,6 +54,10 @@ logic next_last_column_flag;
 logic [119:0] group_slot0_h;
 logic [119:0] group_slot1_h;
 
+logic [31:0]  raddr_line0;
+logic [31:0]  raddr_line1;
+logic [31:0]  raddr_line2;
+
 always @* begin
   next_rptr_line_cnt = rptr_line_cnt;
 
@@ -61,6 +65,12 @@ always @* begin
     if (rptr_line_cnt >= 2) next_rptr_line_cnt = 0;
     else next_rptr_line_cnt = rptr_line_cnt + 1;
   end
+
+  case (rptr_line_cnt)
+    'b00 : raddr = raddr_line0;
+    'b01 : raddr = raddr_line1;
+    'b10 : raddr = raddr_line2;
+  endcase
 end
 
 always @(negedge rst_n or posedge clk) begin
@@ -81,6 +91,10 @@ always @(negedge rst_n or posedge clk) begin
     group_slot1   <= 0;
     group_slot1_h <= 0;
     group_slot2   <= 0;
+
+    raddr_line0   <= 0;
+    raddr_line1   <= EFFECTIVE_WIDTH;
+    raddr_line2   <= EFFECTIVE_WIDTH << 1;
   end
 
   else begin
@@ -120,8 +134,14 @@ always @(negedge rst_n or posedge clk) begin
         if (at_end_of_frame) rptr <= 0;
         else rptr <= rptr + 1;
 
-        //group_slot0 <= group_slot0_h;
-        //group_slot1 <= group_slot1_h;
+        if (raddr_line0 >= 8*EFFECTIVE_WIDTH-1) raddr_line0 <= 0;
+        else                                    raddr_line0   <= raddr_line0 + 1;
+
+        if (raddr_line1 >= 8*EFFECTIVE_WIDTH-1) raddr_line1 <= 0;
+        else                                    raddr_line1   <= raddr_line1 + 1;
+
+        if (raddr_line2 >= 8*EFFECTIVE_WIDTH-1) raddr_line2 <= 0;
+        else                                    raddr_line2   <= raddr_line2 + 1;
 
         next_calc_strobe <= 1;
         next_first_column_flag <= at_start_of_line;
@@ -136,7 +156,7 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign raddr = rptr + rptr_line_cnt * EFFECTIVE_WIDTH;
+//assign raddr = rptr + rptr_line_cnt * EFFECTIVE_WIDTH;
 assign at_end_of_line = (rptr % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH - 1);
 assign at_start_of_line = (rptr % (EFFECTIVE_WIDTH) == 0);
 assign on_first_row = (rptr < EFFECTIVE_WIDTH);

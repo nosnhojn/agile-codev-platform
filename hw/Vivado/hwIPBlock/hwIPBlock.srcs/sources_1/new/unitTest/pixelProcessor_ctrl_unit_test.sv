@@ -108,7 +108,7 @@ module pixelProcessor_ctrl_unit_test;
   `SVTEST_END
  
    `SVTEST(raddr_is_0_after_releasing_full_frame)
-     step(full_frame);
+     step(8*full_row);
    
      expectRaddr(0);
    `SVTEST_END
