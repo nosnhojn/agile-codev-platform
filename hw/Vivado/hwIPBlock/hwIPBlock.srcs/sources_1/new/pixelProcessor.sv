@@ -131,17 +131,31 @@ always @(negedge rst_n or posedge clk) begin
 
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
-        if (at_end_of_frame) rptr <= 0;
-        else rptr <= rptr + 1;
+        if (at_end_of_frame) begin
+          rptr <= 0;
 
-        if (raddr_line0 >= 8*EFFECTIVE_WIDTH-1) raddr_line0 <= 0;
-        else                                    raddr_line0   <= raddr_line0 + 1;
+          if (raddr_line0 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line0 <= raddr_line0 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
+          else raddr_line0 <= raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
 
-        if (raddr_line1 >= 8*EFFECTIVE_WIDTH-1) raddr_line1 <= 0;
-        else                                    raddr_line1   <= raddr_line1 + 1;
+          if (raddr_line1 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line1 <= raddr_line1 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
+          else raddr_line1 <= raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
 
-        if (raddr_line2 >= 8*EFFECTIVE_WIDTH-1) raddr_line2 <= 0;
-        else                                    raddr_line2   <= raddr_line2 + 1;
+          if (raddr_line2 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line2 <= raddr_line2 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
+          else raddr_line2 <= raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
+        end
+
+        else begin
+          rptr <= rptr + 1;
+
+          if (raddr_line0 >= 8*EFFECTIVE_WIDTH-1) raddr_line0 <= 0;
+          else                                    raddr_line0   <= raddr_line0 + 1;
+
+          if (raddr_line1 >= 8*EFFECTIVE_WIDTH-1) raddr_line1 <= 0;
+          else                                    raddr_line1   <= raddr_line1 + 1;
+
+          if (raddr_line2 >= 8*EFFECTIVE_WIDTH-1) raddr_line2 <= 0;
+          else                                    raddr_line2   <= raddr_line2 + 1;
+        end
 
         next_calc_strobe <= 1;
         next_first_column_flag <= at_start_of_line;
