@@ -45,7 +45,7 @@ module pixelProcessor_data_unit_test;
   endfunction
 
   function void loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*NUM_LINES; i+=1) my_dpram.mem[i%(LINE_WIDTH*8)] = i;
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_dpram.mem[i] = i+15360;
   endfunction
 
 
@@ -75,7 +75,7 @@ module pixelProcessor_data_unit_test;
 
 // always @(posedge clk) begin
 //   #0.1;
-//   if (uut.next_rptr_line_cnt == 1) $display("%t: next:0x%0x rdata:0x%0x raddr:%0x (0x%0x) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr[11:0], calc_strobe);
+//   $display("%t: next:0x%0x rdata:0x%0x raddr:%0x (0x%0x) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr[11:0], calc_strobe);
 // end
 
   task automatic expectGroupEq(int row,
@@ -139,6 +139,7 @@ module pixelProcessor_data_unit_test;
   `SVTEST_END
 
 
+
   `SVTEST(inside_top_left)
     step(full_row + 2 * full_group + 1);
  
@@ -152,6 +153,8 @@ module pixelProcessor_data_unit_test;
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     expectGroupEq(1, LINE_WIDTH_BY4-2);
   `SVTEST_END
+
+
  
   `SVTEST(bottom_left)
     loadEndOfFrame();
@@ -161,21 +164,27 @@ module pixelProcessor_data_unit_test;
     expectGroupEq(NUM_LINES-3, 0);
   `SVTEST_END
  
-// `SVTEST(bottom_right)
-//   step(full_frame);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
-// `SVTEST_END
-//
-//
-//
-//
-// `SVTEST(inside_bottom_left)
-//   step(full_frame - 2*full_row + 2*full_group);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
+  `SVTEST(bottom_right)
+    loadEndOfFrame();
+//my_dpram.verbose = 1;
+    step(full_frame+1);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+$display("0:0x%0x", my_dpram.mem['h0]);
+$display("F00:0x%0x", my_dpram.mem['hf00]);
+    expectGroupEq(NUM_LINES-3, LINE_WIDTH_BY4-1);
+  `SVTEST_END
+
+
+
+  `SVTEST(inside_bottom_left)
+    loadEndOfFrame();
+    step(full_frame - 2*full_row + 2*full_group + 1);
+  
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectGroupEq(NUM_LINES-4, 1);
+  `SVTEST_END
+  
 // `SVTEST(inside_bottom_right)
 //   step(full_frame - full_row - full_group);
 //
