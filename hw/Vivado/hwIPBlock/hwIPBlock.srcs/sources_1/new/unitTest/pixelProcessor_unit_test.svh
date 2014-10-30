@@ -39,7 +39,14 @@
 
   `CLK_RESET_FIXTURE(10,1)
 
-  pixelProcessor uut(
+  pixelProcessor
+    #(
+      .PIXEL_WIDTH(LINE_WIDTH),
+      .PIXEL_HEIGHT(NUM_ROWS),
+      .PIXELS_PER_READ(4)
+    )
+    uut
+    (
     .clk(clk),
     .rst_n(rst_n),
 
@@ -69,7 +76,7 @@
 
   dpram
   #(
-    .DPRAM_DEPTH(6*LINE_WIDTH*4),
+    .DPRAM_DEPTH(6*LINE_WIDTH),
     .DPRAM_PORT0_WIDTH(30),
     .DPRAM_PORT1_WIDTH(120),
     .DPRAM_PORT0_ADDR_WIDTH(32),
