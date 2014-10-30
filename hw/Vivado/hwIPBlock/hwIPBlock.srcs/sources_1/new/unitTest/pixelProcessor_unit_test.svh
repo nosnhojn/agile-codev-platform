@@ -1,5 +1,5 @@
   parameter LINE_WIDTH = 1920;
-  parameter NUM_ROWS = 1080;
+  parameter NUM_ROWS = 12;
 
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;
