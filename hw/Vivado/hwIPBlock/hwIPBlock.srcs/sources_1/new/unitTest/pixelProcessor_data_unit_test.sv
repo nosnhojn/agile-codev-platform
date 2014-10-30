@@ -1,5 +1,4 @@
 `include "svunit_defines.svh"
-`include "pixelProcessor.v"
 
 `include "test_defines.svh"
 
