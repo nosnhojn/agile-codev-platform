@@ -35,12 +35,18 @@ module pixelProcessor_data_unit_test;
     setIngressRdy();
     ingress_new_pixel = 0;
 
-    for (int r=0; r<1080; r+=1)
-      for (int c=0; c<1920; c+=1)
-        my_dpram.mem[r*1920+c] = r*1920+c;
+    loadStartOfFrame();
 
     reset();
   endtask
+
+  function void loadStartOfFrame();
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_dpram.mem[i] = i;
+  endfunction
+
+  function void loadEndOfFrame();
+    for (int i=0; i<LINE_WIDTH*NUM_LINES; i+=1) my_dpram.mem[i%(LINE_WIDTH*8)] = i;
+  endfunction
 
 
   //===================================
@@ -67,28 +73,39 @@ module pixelProcessor_data_unit_test;
   //   `SVTEST_END
   //===================================
 
-//always @(posedge clk) begin
-  //#0.1;
-  //$display("%t: next:0x%0x rdata:0x%0x raddr:%0x (%0d) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr, calc_strobe);
-//end
+// always @(posedge clk) begin
+//   #0.1;
+//   if (uut.next_rptr_line_cnt == 1) $display("%t: next:0x%0x rdata:0x%0x raddr:%0x (0x%0x) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr[11:0], calc_strobe);
+// end
 
-  task expectGroupEq(int row,
-                     int column);
+  task automatic expectGroupEq(int row,
+                               int column);
     bit [119:0] slot0;
     bit [119:0] slot1;
     bit [119:0] slot2;
 
-    int _1st_line = row*LINE_WIDTH*4 + column;
-    int _2nd_line = _1st_line + LINE_WIDTH*4;
-    int _3rd_line = _2nd_line + LINE_WIDTH*4;
+
+    int _1st_line;
+    int _2nd_line;
+    int _3rd_line;
+
+    _1st_line = row*LINE_WIDTH + column*4;
+    if (_1st_line > LINE_WIDTH*8) _1st_line -= 1024;
+    _2nd_line = _1st_line + LINE_WIDTH;
+    _3rd_line = _2nd_line + LINE_WIDTH;
+
+    $display("first:0x%0x 2nd:0x%0x 3rd:0x%0x", _1st_line, _2nd_line, _3rd_line);
 
     for (int i=_1st_line+3; i>=_1st_line; i-=1) slot0 = { slot0 , i[29:0] };
     for (int i=_2nd_line+3; i>=_2nd_line; i-=1) slot1 = { slot1 , i[29:0] };
     for (int i=_3rd_line+3; i>=_3rd_line; i-=1) slot2 = { slot2 , i[29:0] };
 
     nextSamplePoint();
+    $display("group_slot0:x%0x slot0:x%0x", group_slot0, slot0);
     `FAIL_IF(group_slot0 !== slot0);
+    $display("group_slot1:x%0x slot1:x%0x", group_slot1, slot1);
     `FAIL_IF(group_slot1 !== slot1);
+    $display("group_slot2:x%0x slot2:x%0x", group_slot2, slot2);
     `FAIL_IF(group_slot2 !== slot2);
   endtask
 
@@ -118,15 +135,32 @@ module pixelProcessor_data_unit_test;
     step(full_row+1);
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
-    expectGroupEq(0, LINE_WIDTH-1);
+    expectGroupEq(0, LINE_WIDTH_BY4-1);
+  `SVTEST_END
+
+
+  `SVTEST(inside_top_left)
+    step(full_row + 2 * full_group + 1);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectGroupEq(1, 1);
   `SVTEST_END
  
-// `SVTEST(bottom_left)
-//   step(full_frame - full_row + full_group);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
+  `SVTEST(inside_top_right)
+    step(2*full_row - full_group + 1);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectGroupEq(1, LINE_WIDTH_BY4-2);
+  `SVTEST_END
+ 
+  `SVTEST(bottom_left)
+    loadEndOfFrame();
+    step(full_frame - full_row + full_group + 1);
+ 
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    expectGroupEq(NUM_LINES-3, 0);
+  `SVTEST_END
+ 
 // `SVTEST(bottom_right)
 //   step(full_frame);
 //
@@ -135,17 +169,6 @@ module pixelProcessor_data_unit_test;
 //
 //
 //
-// `SVTEST(inside_top_left)
-//   step(full_row + 2 * full_group);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
-//
-// `SVTEST(inside_top_right)
-//   step(2*full_row - full_group);
-//
-//   expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-// `SVTEST_END
 //
 // `SVTEST(inside_bottom_left)
 //   step(full_frame - 2*full_row + 2*full_group);

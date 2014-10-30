@@ -1,5 +1,6 @@
   parameter LINE_WIDTH = 1920;
-  parameter NUM_ROWS = 12;
+  parameter LINE_WIDTH_BY4 = LINE_WIDTH / 4;
+  parameter NUM_LINES = 12;
 
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;
@@ -33,16 +34,16 @@
 
   const int mem_reads_per_group = 3;
   const int full_group = mem_reads_per_group;
-  const int mem_reads_per_row = mem_reads_per_group * (LINE_WIDTH/4);
+  const int mem_reads_per_row = mem_reads_per_group * (LINE_WIDTH_BY4);
   const int full_row = mem_reads_per_row;
-  const int full_frame = (NUM_ROWS-2) * full_row;
+  const int full_frame = (NUM_LINES-2) * full_row;
 
   `CLK_RESET_FIXTURE(10,1)
 
   pixelProcessor
     #(
       .PIXEL_WIDTH(LINE_WIDTH),
-      .PIXEL_HEIGHT(NUM_ROWS),
+      .PIXEL_HEIGHT(NUM_LINES),
       .PIXELS_PER_READ(4)
     )
     uut
@@ -76,11 +77,11 @@
 
   dpram
   #(
-    .DPRAM_DEPTH(6*LINE_WIDTH),
+    .DPRAM_DEPTH(8*LINE_WIDTH),
     .DPRAM_PORT0_WIDTH(30),
     .DPRAM_PORT1_WIDTH(120),
-    .DPRAM_PORT0_ADDR_WIDTH(32),
-    .DPRAM_PORT1_ADDR_WIDTH(32)
+    .DPRAM_PORT0_ADDR_WIDTH(14),
+    .DPRAM_PORT1_ADDR_WIDTH(12)
   )
   my_dpram
   (

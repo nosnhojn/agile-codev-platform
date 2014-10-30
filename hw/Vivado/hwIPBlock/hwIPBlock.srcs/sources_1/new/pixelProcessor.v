@@ -33,6 +33,8 @@ module pixelProcessor
   output logic [119:0] group_slot2
 );
 
+parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
+
 wire ingress_rdy;
 wire at_end_of_frame;
 wire at_start_of_line;
@@ -116,7 +118,7 @@ always @(negedge rst_n or posedge clk) begin
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
         if (at_end_of_frame) rptr <= 0;
-        else rptr <= rptr + PIXELS_PER_READ;
+        else rptr <= rptr + 1;
 
         //group_slot0 <= group_slot0_h;
         //group_slot1 <= group_slot1_h;
@@ -134,11 +136,11 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign raddr = rptr + rptr_line_cnt * PIXEL_WIDTH;
-assign at_end_of_line = (rptr % (PIXEL_WIDTH) == PIXEL_WIDTH - PIXELS_PER_READ);
-assign at_start_of_line = (rptr % (PIXEL_WIDTH) == 0);
-assign on_first_row = (rptr < PIXEL_WIDTH);
-assign on_last_row = (rptr >= ((PIXEL_HEIGHT - 3) * PIXEL_WIDTH));
+assign raddr = rptr + rptr_line_cnt * EFFECTIVE_WIDTH;
+assign at_end_of_line = (rptr % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH - 1);
+assign at_start_of_line = (rptr % (EFFECTIVE_WIDTH) == 0);
+assign on_first_row = (rptr < EFFECTIVE_WIDTH);
+assign on_last_row = (rptr >= ((PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH));
 assign at_end_of_frame = (on_last_row && at_end_of_line);
 
 endmodule

@@ -72,39 +72,39 @@ module pixelProcessor_ctrl_unit_test;
   `SVTEST(raddr_1st_group_second_read)
     step();
 
-    expectRaddr(LINE_WIDTH);
+    expectRaddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
   `SVTEST(raddr_1st_group_third_read)
     step(2);
  
-    expectRaddr(2*LINE_WIDTH);
+    expectRaddr(2*LINE_WIDTH_BY4);
   `SVTEST_END
  
   // roll over to the next set of 3 groups of 4 pixels
   `SVTEST(raddr_2nd_group_first_read)
     step(3);
  
-    expectRaddr(4);
+    expectRaddr(1);
   `SVTEST_END
 
   `SVTEST(raddr_2nd_group_second_read)
     step(4);
  
-    expectRaddr(LINE_WIDTH + 4);
+    expectRaddr(LINE_WIDTH_BY4 + 1);
   `SVTEST_END
  
   // fast forward to the last group of the first row
   `SVTEST(raddr_end_of_row_third_read)
     step(full_row - 1);
  
-    expectRaddr(LINE_WIDTH*3 - 4);
+    expectRaddr(LINE_WIDTH_BY4*3 - 1);
   `SVTEST_END
  
   `SVTEST(raddr_is_LINE_WIDTH_after_releasing_row_0)
     step(full_row);
  
-    expectRaddr(LINE_WIDTH);
+    expectRaddr(LINE_WIDTH_BY4);
   `SVTEST_END
  
    `SVTEST(raddr_is_0_after_releasing_full_frame)
@@ -218,7 +218,7 @@ module pixelProcessor_ctrl_unit_test;
     setIngressRdy();
     step(3);
  
-    expectRaddr(4);
+    expectRaddr(1);
     step(1);
     expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   `SVTEST_END
@@ -229,7 +229,7 @@ module pixelProcessor_ctrl_unit_test;
     setIngressNotRdy();
     step();
  
-    expectRaddr(4);
+    expectRaddr(1);
   `SVTEST_END
  
   `SVTEST(strobe_is_single_cycle_regardless_of_ingress_rdy)
@@ -284,7 +284,7 @@ module pixelProcessor_ctrl_unit_test;
     setNewIngressPixel();
     step(42);
  
-    expectRaddr(LINE_WIDTH);
+    expectRaddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
   `SVTEST(ingress_available_cnt_dec_at_end_of_line)
@@ -300,10 +300,10 @@ module pixelProcessor_ctrl_unit_test;
   `SVTEST_END
 
   `SVTEST(ingress_available_cnt_dec_at_end_of_frame)
-    setIngressRdyThresh(NUM_ROWS*LINE_WIDTH);
+    setIngressRdyThresh(NUM_LINES*LINE_WIDTH);
     setNewIngressPixel();
 
-    step(NUM_ROWS*LINE_WIDTH); // hit the threshold here so the pixelproc starts
+    step(NUM_LINES*LINE_WIDTH); // hit the threshold here so the pixelproc starts
 
     setIngressRdyThresh(0);
     setNoNewIngressPixel();
