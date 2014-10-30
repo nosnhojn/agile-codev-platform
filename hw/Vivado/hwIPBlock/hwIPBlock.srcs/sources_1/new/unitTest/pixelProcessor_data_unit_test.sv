@@ -35,8 +35,6 @@ module pixelProcessor_data_unit_test;
     setIngressRdy();
     ingress_new_pixel = 0;
 
-    loadStartOfFrame();
-
     reset();
   endtask
 
@@ -45,7 +43,7 @@ module pixelProcessor_data_unit_test;
   endfunction
 
   function void loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_dpram.mem[i] = i+15360;
+    for (int i=0; i<LINE_WIDTH*4; i+=1) my_dpram.mem[i] = i+15360;
   endfunction
 
 
@@ -77,35 +75,29 @@ module pixelProcessor_data_unit_test;
 //   #0.1;
 //   $display("%t: next:0x%0x rdata:0x%0x raddr:%0x (0x%0x) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr[11:0], calc_strobe);
 // end
-
-  task automatic expectGroupEq(int row,
-                               int column);
     bit [119:0] slot0;
     bit [119:0] slot1;
     bit [119:0] slot2;
-
-
     int _1st_line;
     int _2nd_line;
     int _3rd_line;
 
+  task automatic expectGroupEq(int row,
+                               int column);
+
+
+
     _1st_line = row*LINE_WIDTH + column*4;
-    if (_1st_line > LINE_WIDTH*8) _1st_line -= 1024;
     _2nd_line = _1st_line + LINE_WIDTH;
     _3rd_line = _2nd_line + LINE_WIDTH;
-
-    $display("first:0x%0x 2nd:0x%0x 3rd:0x%0x", _1st_line, _2nd_line, _3rd_line);
 
     for (int i=_1st_line+3; i>=_1st_line; i-=1) slot0 = { slot0 , i[29:0] };
     for (int i=_2nd_line+3; i>=_2nd_line; i-=1) slot1 = { slot1 , i[29:0] };
     for (int i=_3rd_line+3; i>=_3rd_line; i-=1) slot2 = { slot2 , i[29:0] };
 
     nextSamplePoint();
-    $display("group_slot0:x%0x slot0:x%0x", group_slot0, slot0);
     `FAIL_IF(group_slot0 !== slot0);
-    $display("group_slot1:x%0x slot1:x%0x", group_slot1, slot1);
     `FAIL_IF(group_slot1 !== slot1);
-    $display("group_slot2:x%0x slot2:x%0x", group_slot2, slot2);
     `FAIL_IF(group_slot2 !== slot2);
   endtask
 
@@ -125,6 +117,7 @@ module pixelProcessor_data_unit_test;
   */
 
   `SVTEST(top_left)
+    loadStartOfFrame();
     step(full_group+1); // 4 is 3 clks for mem reads and 1 for flopped output
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -132,6 +125,7 @@ module pixelProcessor_data_unit_test;
   `SVTEST_END
 
   `SVTEST(top_right)
+    loadStartOfFrame();
     step(full_row+1);
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
@@ -141,6 +135,7 @@ module pixelProcessor_data_unit_test;
 
 
   `SVTEST(inside_top_left)
+    loadStartOfFrame();
     step(full_row + 2 * full_group + 1);
  
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -148,6 +143,7 @@ module pixelProcessor_data_unit_test;
   `SVTEST_END
  
   `SVTEST(inside_top_right)
+    loadStartOfFrame();
     step(2*full_row - full_group + 1);
  
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -166,12 +162,9 @@ module pixelProcessor_data_unit_test;
  
   `SVTEST(bottom_right)
     loadEndOfFrame();
-//my_dpram.verbose = 1;
     step(full_frame+1);
  
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
-$display("0:0x%0x", my_dpram.mem['h0]);
-$display("F00:0x%0x", my_dpram.mem['hf00]);
     expectGroupEq(NUM_LINES-3, LINE_WIDTH_BY4-1);
   `SVTEST_END
 
