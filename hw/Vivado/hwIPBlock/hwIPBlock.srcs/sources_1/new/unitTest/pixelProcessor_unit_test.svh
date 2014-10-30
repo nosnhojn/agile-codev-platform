@@ -1,4 +1,4 @@
-  parameter LINE_WIDTH = 1920/4;
+  parameter LINE_WIDTH = 1920;
   parameter NUM_ROWS = 1080;
 
   parameter FIRST_ROW = 1;
@@ -33,7 +33,7 @@
 
   const int mem_reads_per_group = 3;
   const int full_group = mem_reads_per_group;
-  const int mem_reads_per_row = mem_reads_per_group * (LINE_WIDTH);
+  const int mem_reads_per_row = mem_reads_per_group * (LINE_WIDTH/4);
   const int full_row = mem_reads_per_row;
   const int full_frame = (NUM_ROWS-2) * full_row;
 

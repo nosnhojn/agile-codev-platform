@@ -67,10 +67,10 @@ module pixelProcessor_data_unit_test;
   //   `SVTEST_END
   //===================================
 
-always @(posedge clk) begin
-  #0.1;
-  $display("%t: next:0x%0x rdata:0x%0x raddr:%0x strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, calc_strobe);
-end
+//always @(posedge clk) begin
+  //#0.1;
+  //$display("%t: next:0x%0x rdata:0x%0x raddr:%0x (%0d) strobe:%0x", $time, uut.next_rptr_line_cnt, rdata, raddr, raddr, calc_strobe);
+//end
 
   task expectGroupEq(int row,
                      int column);
@@ -82,7 +82,7 @@ end
     int _2nd_line = _1st_line + LINE_WIDTH*4;
     int _3rd_line = _2nd_line + LINE_WIDTH*4;
 
-    for (int i=_1st_line+33; i>=_1st_line; i-=1) slot0 = { slot0 , i[29:0] };
+    for (int i=_1st_line+3; i>=_1st_line; i-=1) slot0 = { slot0 , i[29:0] };
     for (int i=_2nd_line+3; i>=_2nd_line; i-=1) slot1 = { slot1 , i[29:0] };
     for (int i=_3rd_line+3; i>=_3rd_line; i-=1) slot2 = { slot2 , i[29:0] };
 
@@ -108,18 +108,19 @@ end
   */
 
   `SVTEST(top_left)
-    step(4);
+    step(full_group+1); // 4 is 3 clks for mem reads and 1 for flopped output
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     expectGroupEq(0, 0);
   `SVTEST_END
 
-// `SVTEST(top_right)
-//   step(full_row);
-//
-//   expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
-// `SVTEST_END
-//
+  `SVTEST(top_right)
+    step(full_row+1);
+ 
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+    expectGroupEq(0, LINE_WIDTH-1);
+  `SVTEST_END
+ 
 // `SVTEST(bottom_left)
 //   step(full_frame - full_row + full_group);
 //

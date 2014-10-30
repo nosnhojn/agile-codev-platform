@@ -99,11 +99,11 @@ always @(negedge rst_n or posedge clk) begin
 
     ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
     if (last_row_flag && last_column_flag) begin
-      ingress_used_cnt <= 3 * LINE_WIDTH;
+      ingress_used_cnt <= 3 * LINE_WIDTH * 4;
       ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - 3*LINE_WIDTH*4;
     end
     else if (last_column_flag) begin
-      ingress_used_cnt <= LINE_WIDTH;
+      ingress_used_cnt <= LINE_WIDTH * 4;
       ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel - LINE_WIDTH*4;
     end
 
@@ -116,7 +116,7 @@ always @(negedge rst_n or posedge clk) begin
     if (ingress_rdy) begin
       if (rptr_line_cnt >= 2) begin
         if (at_end_of_frame) rptr <= 0;
-        else rptr <= rptr + 1;
+        else rptr <= rptr + 4;
 
         //group_slot0 <= group_slot0_h;
         //group_slot1 <= group_slot1_h;
@@ -134,11 +134,11 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign raddr = rptr + rptr_line_cnt * LINE_WIDTH;
-assign at_end_of_line = (rptr % LINE_WIDTH == LINE_WIDTH-1);
-assign at_start_of_line = (rptr % LINE_WIDTH == 0);
-assign on_first_row = (rptr < LINE_WIDTH);
-assign on_last_row = (rptr >= (1077 * LINE_WIDTH));
+assign raddr = rptr + rptr_line_cnt * LINE_WIDTH*4;
+assign at_end_of_line = (rptr % (LINE_WIDTH*4) == LINE_WIDTH*4-4);
+assign at_start_of_line = (rptr % (LINE_WIDTH*4) == 0);
+assign on_first_row = (rptr < LINE_WIDTH*4);
+assign on_last_row = (rptr >= (1077 * LINE_WIDTH* 4));
 assign at_end_of_frame = (on_last_row && at_end_of_line);
 
 endmodule
