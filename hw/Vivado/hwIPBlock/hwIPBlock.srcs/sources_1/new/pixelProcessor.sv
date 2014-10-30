@@ -54,9 +54,23 @@ logic next_last_column_flag;
 logic [119:0] group_slot0_h;
 logic [119:0] group_slot1_h;
 
-logic [31:0]  raddr_line0;
-logic [31:0]  raddr_line1;
-logic [31:0]  raddr_line2;
+logic [31:0] raddr_line0;
+logic [31:0] raddr_line1;
+logic [31:0] raddr_line2;
+
+wire [31:0]  next_raddr_line0_for_wrap;
+wire [31:0]  next_raddr_line1_for_wrap;
+wire [31:0]  next_raddr_line2_for_wrap;
+
+wire [31:0]  next_raddr_line0_for_eof;
+wire [31:0]  next_raddr_line1_for_eof;
+wire [31:0]  next_raddr_line2_for_eof;
+
+wire reset_raddr_line0_at_end_of_buffer;
+wire reset_raddr_line1_at_end_of_buffer;
+wire reset_raddr_line2_at_end_of_buffer;
+
+wire raddr_wraps_at_eof;
 
 always @* begin
   next_rptr_line_cnt = rptr_line_cnt;
@@ -134,27 +148,29 @@ always @(negedge rst_n or posedge clk) begin
         if (at_end_of_frame) begin
           rptr <= 0;
 
-          if (raddr_line0 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line0 <= raddr_line0 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
-          else raddr_line0 <= raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
-
-          if (raddr_line1 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line1 <= raddr_line1 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
-          else raddr_line1 <= raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
-
-          if (raddr_line2 + 2*EFFECTIVE_WIDTH + 1 > 8*EFFECTIVE_WIDTH-1) raddr_line2 <= raddr_line2 + 2*EFFECTIVE_WIDTH + 1 - 8*EFFECTIVE_WIDTH;
-          else raddr_line2 <= raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
+          if (raddr_wraps_at_eof) begin
+            raddr_line0 <= next_raddr_line0_for_wrap;
+            raddr_line1 <= next_raddr_line1_for_wrap;
+            raddr_line2 <= next_raddr_line2_for_wrap;
+          end
+          else begin
+            raddr_line0 <= next_raddr_line0_for_eof;
+            raddr_line1 <= next_raddr_line1_for_eof;
+            raddr_line2 <= next_raddr_line2_for_eof;
+          end
         end
 
         else begin
           rptr <= rptr + 1;
 
-          if (raddr_line0 >= 8*EFFECTIVE_WIDTH-1) raddr_line0 <= 0;
-          else                                    raddr_line0   <= raddr_line0 + 1;
+          if (reset_raddr_line0_at_end_of_buffer) raddr_line0 <= 0;
+          else                                    raddr_line0 <= raddr_line0 + 1;
 
-          if (raddr_line1 >= 8*EFFECTIVE_WIDTH-1) raddr_line1 <= 0;
-          else                                    raddr_line1   <= raddr_line1 + 1;
+          if (reset_raddr_line1_at_end_of_buffer) raddr_line1 <= 0;
+          else                                    raddr_line1 <= raddr_line1 + 1;
 
-          if (raddr_line2 >= 8*EFFECTIVE_WIDTH-1) raddr_line2 <= 0;
-          else                                    raddr_line2   <= raddr_line2 + 1;
+          if (reset_raddr_line2_at_end_of_buffer) raddr_line2 <= 0;
+          else                                    raddr_line2 <= raddr_line2 + 1;
         end
 
         next_calc_strobe <= 1;
@@ -170,11 +186,21 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-//assign raddr = rptr + rptr_line_cnt * EFFECTIVE_WIDTH;
 assign at_end_of_line = (rptr % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH - 1);
 assign at_start_of_line = (rptr % (EFFECTIVE_WIDTH) == 0);
 assign on_first_row = (rptr < EFFECTIVE_WIDTH);
 assign on_last_row = (rptr >= ((PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH));
 assign at_end_of_frame = (on_last_row && at_end_of_line);
+
+assign next_raddr_line0_for_wrap = raddr_line0 - 6*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line1_for_wrap = raddr_line1 - 6*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line2_for_wrap = raddr_line2 - 6*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line0_for_eof = raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line1_for_eof = raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line2_for_eof = raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
+assign reset_raddr_line0_at_end_of_buffer = (raddr_line0 >= 8*EFFECTIVE_WIDTH-1);
+assign reset_raddr_line1_at_end_of_buffer = (raddr_line1 >= 8*EFFECTIVE_WIDTH-1);
+assign reset_raddr_line2_at_end_of_buffer = (raddr_line2 >= 8*EFFECTIVE_WIDTH-1);
+assign raddr_wraps_at_eof = (raddr_line0 > 6*EFFECTIVE_WIDTH-2);
 
 endmodule

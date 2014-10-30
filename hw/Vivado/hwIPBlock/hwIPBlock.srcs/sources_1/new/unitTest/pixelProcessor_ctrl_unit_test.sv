@@ -114,14 +114,24 @@ module pixelProcessor_ctrl_unit_test;
  
    `SVTEST(raddr_jumps_at_end_of_frame)
      step(full_frame);
-   
      expectRaddr('h780);
+
+     step(1);
+     expectRaddr('h780 + LINE_WIDTH_BY4);
+
+     step(1);
+     expectRaddr('h780 + LINE_WIDTH_BY4*2);
    `SVTEST_END
  
    `SVTEST(raddr_jumps_at_end_of_frame_2nd_frame)
      step(full_frame*2);
-  
      expectRaddr(0);
+
+     step(1);
+     expectRaddr(LINE_WIDTH_BY4);
+
+     step(1);
+     expectRaddr(LINE_WIDTH_BY4*2);
    `SVTEST_END
  
  
