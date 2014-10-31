@@ -20,7 +20,6 @@
   wire  [31:0] ingress_available_cnt;
   logic [31:0] ingress_rdy_thresh;
   logic        ingress_new_pixel;
-  wire         egress_rdy;
 
   wire calc_strobe;
   wire first_row_flag;
@@ -61,8 +60,6 @@
     .ingress_available_cnt(ingress_available_cnt),
     .ingress_rdy_thresh(ingress_rdy_thresh),
     .ingress_new_pixel(ingress_new_pixel),
-
-    .egress_rdy(egress_rdy),
 
     .calc_strobe(calc_strobe),
     .first_row_flag(first_row_flag),

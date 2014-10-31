@@ -20,7 +20,7 @@ module pixelProcessor
   output logic [31:0]  ingress_available_cnt,
   input                ingress_new_pixel,
 
-  output logic         egress_rdy,
+  input                calc_rdy,
 
   output logic         calc_strobe,
   output logic         first_row_flag,
