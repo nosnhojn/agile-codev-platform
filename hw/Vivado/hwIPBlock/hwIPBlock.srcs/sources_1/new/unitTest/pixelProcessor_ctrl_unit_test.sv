@@ -31,6 +31,7 @@ module pixelProcessor_ctrl_unit_test;
   task setup();
     svunit_ut.setup();
 
+    setCalcRdy();
     setIngressRdy();
     ingress_new_pixel = 0;
 
@@ -148,6 +149,24 @@ module pixelProcessor_ctrl_unit_test;
     step(4);
  
     expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+  `SVTEST_END
+ 
+  `SVTEST(no_strobe_unless_calc_rdy)
+    setCalcRdy();
+    step(2);
+
+    setNoCalcRdy();
+    step(40); // long random delay
+ 
+    expectNoStrobe();
+    setCalcRdy();
+    step(2);
+
+    expectStrobeWithRowColumnMarkers(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    setNoCalcRdy();
+    step(1);
+
+    expectNoStrobe();
   `SVTEST_END
  
   `SVTEST(no_strobe_after_end_of_group)

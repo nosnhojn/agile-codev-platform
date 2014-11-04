@@ -31,6 +31,7 @@ module pixelProcessor_data_unit_test;
   task setup();
     svunit_ut.setup();
 
+    setCalcRdy();
     setIngressRdy();
     ingress_new_pixel = 0;
 

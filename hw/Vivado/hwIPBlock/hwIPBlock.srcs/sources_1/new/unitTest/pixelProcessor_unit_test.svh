@@ -21,11 +21,12 @@
   logic [31:0] ingress_rdy_thresh;
   logic        ingress_new_pixel;
 
-  wire calc_strobe;
-  wire first_row_flag;
-  wire first_column_flag;
-  wire last_row_flag;
-  wire last_column_flag;
+  logic calc_rdy;
+  wire  calc_strobe;
+  wire  first_row_flag;
+  wire  first_column_flag;
+  wire  last_row_flag;
+  wire  last_column_flag;
 
   wire [119:0] group_slot0;
   wire [119:0] group_slot1;
@@ -60,6 +61,8 @@
     .ingress_available_cnt(ingress_available_cnt),
     .ingress_rdy_thresh(ingress_rdy_thresh),
     .ingress_new_pixel(ingress_new_pixel),
+
+    .calc_rdy(calc_rdy),
 
     .calc_strobe(calc_strobe),
     .first_row_flag(first_row_flag),
@@ -157,3 +160,12 @@
     `FAIL_UNLESS(ingress_available_cnt === cnt);
   endtask
 
+  task setCalcRdy();
+    nextSamplePoint();
+    calc_rdy = 1;
+  endtask
+
+  task setNoCalcRdy();
+    nextSamplePoint();
+    calc_rdy = 0;
+  endtask
