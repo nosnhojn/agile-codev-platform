@@ -40,9 +40,10 @@ module step_2_unit_test;
   wire [29:0] rdata_io;
   wire [P0_ADDR_WIDTH-1:0] raddr_io;
 
-  wire [119:0] wdata_proc;
-  wire [P1_ADDR_WIDTH-1:0] waddr_proc;
-  wire        wr_proc;
+  wire [119:0] wdata_calc;
+  wire [P1_ADDR_WIDTH-1:0] waddr_calc;
+  wire        wr_calc;
+
   wire [119:0] rdata_proc;
   wire [P1_ADDR_WIDTH-1:0] raddr_proc;
 
@@ -132,9 +133,9 @@ module step_2_unit_test;
     .rdata_0(rdata_io),
     .raddr_0(raddr_io),
 
-    .wdata_1(wdata_proc),
-    .waddr_1(waddr_proc),
-    .wr_1(wr_proc),
+    .wdata_1(wdata_calc),
+    .waddr_1(waddr_calc),
+    .wr_1(wr_calc),
 
     .rdata_1(rdata_proc),
     .raddr_1(raddr_proc)
@@ -152,9 +153,6 @@ module step_2_unit_test;
     .clk(clk),
     .rst_n(rst_n),
 
-    .wdata(wdata_proc),
-    .waddr(waddr_proc),
-    .wr(wr_proc),
     .rdata(rdata_proc),
     .raddr(raddr_proc),
 
@@ -162,6 +160,8 @@ module step_2_unit_test;
     .ingress_available_cnt(),
     .ingress_rdy_thresh(3*1920),
     .ingress_new_pixel(ingress_new_pixel),
+
+    .calc_rdy(calc_rdy),
 
     .calc_strobe(calc_strobe),
     .first_row_flag(first_row_flag),
@@ -171,9 +171,7 @@ module step_2_unit_test;
 
     .group_slot0(slot0),
     .group_slot1(slot1),
-    .group_slot2(slot2),
-
-    .calc_rdy(calc_rdy)
+    .group_slot2(slot2)
   );
 
   pixelProcessor_calc calc(
@@ -188,6 +186,10 @@ module step_2_unit_test;
     .group_slot0(slot0),
     .group_slot1(slot1),
     .group_slot2(slot2),
+
+    .wdata(wdata_calc),
+    .waddr(waddr_calc),
+    .wr(wr_calc),
 
     .egress_rdy(egress_rdy),
     .egress_read_cnt(egress_read_cnt)

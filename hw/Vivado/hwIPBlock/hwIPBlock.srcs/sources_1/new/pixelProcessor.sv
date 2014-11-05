@@ -9,9 +9,6 @@ module pixelProcessor
   input rst_n,
 
   // ram port
-  output logic [119:0] wdata,
-  output logic [31:0]  waddr,
-  output logic         wr,
   input        [119:0] rdata,
   output logic [31:0]  raddr,
 

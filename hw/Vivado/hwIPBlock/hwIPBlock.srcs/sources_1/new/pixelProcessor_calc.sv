@@ -11,6 +11,10 @@ module pixelProcessor_calc (
   input [119:0] group_slot1,
   input [119:0] group_slot2,
 
+  output logic [119:0] wdata,
+  output logic [31:0]  waddr,
+  output logic         wr,
+
   input         egress_read_cnt,
   output logic  egress_rdy
 );

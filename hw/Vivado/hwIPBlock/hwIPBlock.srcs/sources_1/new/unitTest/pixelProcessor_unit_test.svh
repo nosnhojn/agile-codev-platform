@@ -51,9 +51,6 @@
     .clk(clk),
     .rst_n(rst_n),
 
-    .wdata(wdata),
-    .waddr(waddr),
-    .wr(wr),
     .rdata(rdata),
     .raddr(raddr),
 
