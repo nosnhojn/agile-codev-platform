@@ -10,6 +10,8 @@ module step_1_unit_test;
 
   // uut params
   parameter MEM_DEPTH = 321;
+  parameter P0_WIDTH = 30;
+  parameter P1_WIDTH = 120;
   parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
   parameter P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4);
   parameter INGRESS_THRESH = 3;
@@ -98,6 +100,7 @@ module step_1_unit_test;
     .egress_read_cnt(egress_read_cnt)
   );
 
+  wire [P1_WIDTH-1:0] wdata_1;
   wire [P1_ADDR_WIDTH-1:0] waddr_1;
   wire [P1_ADDR_WIDTH-1:0] raddr_1;
   wire [119:0] rdata_no_connect;
@@ -105,8 +108,8 @@ module step_1_unit_test;
   dpram
   #(
     .DPRAM_DEPTH(MEM_DEPTH),
-    .DPRAM_PORT0_WIDTH(30),
-    .DPRAM_PORT1_WIDTH(120),
+    .DPRAM_PORT0_WIDTH(P0_WIDTH),
+    .DPRAM_PORT1_WIDTH(P1_WIDTH),
     .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
     .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
@@ -122,7 +125,7 @@ module step_1_unit_test;
     .rdata_0(rdata),
     .raddr_0(raddr),
 
-    .wdata_1(120'h0),
+    .wdata_1(wdata_1),
     .waddr_1(waddr_1),
     .wr_1(1'b0),
 

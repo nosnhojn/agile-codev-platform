@@ -6,11 +6,11 @@
 module dpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
-  parameter DEPTH = 256;
-  parameter PORT0_WIDTH = 30;
-  parameter PORT0_ADDR_WIDTH = 8;
-  parameter PORT1_WIDTH = 4 * PORT0_WIDTH;
-  parameter PORT1_ADDR_WIDTH = 6;
+  parameter MEM_DEPTH = 256;
+  parameter P0_WIDTH = 30;
+  parameter P1_WIDTH = 4 * P0_WIDTH;
+  parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
+  parameter P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4);
 
   string name = "dpram_ut";
   svunit_testcase svunit_ut;
@@ -20,21 +20,21 @@ module dpram_unit_test;
 
   `CLK_RESET_FIXTURE(10,1)
 
-  logic [PORT0_WIDTH-1:0] wdata_0;
-  logic [PORT0_ADDR_WIDTH-1:0] waddr_0;
+  logic [P0_WIDTH-1:0] wdata_0;
+  logic [P0_ADDR_WIDTH-1:0] waddr_0;
   logic        wr_0;
 
-  wire  [PORT0_WIDTH-1:0] rdata_0;
-  logic [PORT0_ADDR_WIDTH-1:0] raddr_0;
+  wire  [P0_WIDTH-1:0] rdata_0;
+  logic [P0_ADDR_WIDTH-1:0] raddr_0;
 
-  logic [PORT1_WIDTH-1:0] wdata_1;
-  logic [PORT1_ADDR_WIDTH-1:0] waddr_1;
+  logic [P1_WIDTH-1:0] wdata_1;
+  logic [P1_ADDR_WIDTH-1:0] waddr_1;
   logic        wr_1;
 
-  wire  [PORT1_WIDTH-1:0] rdata_1;
-  logic [PORT1_ADDR_WIDTH-1:0] raddr_1;
+  wire  [P1_WIDTH-1:0] rdata_1;
+  logic [P1_ADDR_WIDTH-1:0] raddr_1;
 
-  logic [PORT1_WIDTH-1:0] testData;
+  logic [P1_WIDTH-1:0] testData;
 
 
   //===================================
@@ -43,11 +43,11 @@ module dpram_unit_test;
   //===================================
   dpram
   #(
-    .DPRAM_DEPTH(DEPTH),
-    .DPRAM_PORT0_WIDTH(PORT0_WIDTH),
-    .DPRAM_PORT1_WIDTH(PORT1_WIDTH),
-    .DPRAM_PORT0_ADDR_WIDTH(PORT0_ADDR_WIDTH),
-    .DPRAM_PORT1_ADDR_WIDTH(PORT1_ADDR_WIDTH)
+    .DPRAM_DEPTH(MEM_DEPTH),
+    .DPRAM_PORT0_WIDTH(P0_WIDTH),
+    .DPRAM_PORT1_WIDTH(P1_WIDTH),
+    .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
+    .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
   my_dpram
   (
@@ -97,7 +97,7 @@ module dpram_unit_test;
     raddr_1 = 0;
 
     // clear the memory contents
-    for (int i=0; i<DEPTH; i+=1) begin
+    for (int i=0; i<MEM_DEPTH; i+=1) begin
       my_dpram.mem[i] = 'hx;
     end
 
@@ -146,7 +146,7 @@ module dpram_unit_test;
     `SVTEST(port0_to_port1)
       testData = 120'hddeeff_8899aabb_44556677_00112233;
       for (int i=0; i<4; i+=1) begin
-        writePort(0, i, testData >> PORT0_WIDTH*i);
+        writePort(0, i, testData >> P0_WIDTH*i);
         step();
       end
 
@@ -158,13 +158,13 @@ module dpram_unit_test;
     // 1 write to 4 reads
     `SVTEST(port1_to_port0)
       testData = 120'hddeeff_8899aabb_44556677_00112233;
-      writePort(1, (DEPTH-4)>>2, testData);
+      writePort(1, (MEM_DEPTH-4)>>2, testData);
       step();
  
       for (int i=0; i<4; i+=1) begin
-        readPort(0, DEPTH-1-i);
+        readPort(0, MEM_DEPTH-1-i);
         step();
-        expectReadData(0, testData >> PORT0_WIDTH*(4-1-i));
+        expectReadData(0, testData >> P0_WIDTH*(4-1-i));
       end
     `SVTEST_END
 
@@ -175,13 +175,13 @@ module dpram_unit_test;
   // helper tasks/functions
   //------------------------
 
-  task expectReadData(int port, logic [PORT1_WIDTH-1:0] exp);
+  task expectReadData(int port, logic [P1_WIDTH-1:0] exp);
     nextSamplePoint();
-    if (port == 0) `FAIL_UNLESS(rdata_0 === exp[PORT0_WIDTH-1:0]);
-    if (port == 1) `FAIL_UNLESS(rdata_1 === exp[PORT1_WIDTH-1:0]);
+    if (port == 0) `FAIL_UNLESS(rdata_0 === exp[P0_WIDTH-1:0]);
+    if (port == 1) `FAIL_UNLESS(rdata_1 === exp[P1_WIDTH-1:0]);
   endtask
 
-  task writePort(int port, bit [31:0] addr, bit [PORT1_WIDTH-1:0] data);
+  task writePort(int port, bit [31:0] addr, bit [P1_WIDTH-1:0] data);
     nextSamplePoint();
     if (port == 0) begin
       wr_0 = 1;

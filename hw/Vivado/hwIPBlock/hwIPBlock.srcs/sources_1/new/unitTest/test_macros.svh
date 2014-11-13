@@ -44,11 +44,11 @@
 
 `define write_read_full_range(PORT) \
 `SVTEST(write_read_port_``PORT``_full_range) \
-  for (int i=0; i<DEPTH; i++) begin \
+  for (int i=0; i<MEM_DEPTH; i++) begin \
     writePort(PORT, i, i); \
     step(); \
   end \
-  for (int i=0; i<DEPTH; i++) begin \
+  for (int i=0; i<MEM_DEPTH; i++) begin \
     readPort(PORT, i); \
     step(); \
     expectReadData(PORT, i); \
