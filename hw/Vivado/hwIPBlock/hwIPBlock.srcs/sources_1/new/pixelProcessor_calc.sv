@@ -22,65 +22,44 @@ module pixelProcessor_calc (
   output logic  egress_rdy
 );
 
-wire strobe_for_all_but_first_column;
-logic second_strobe_for_first_row;
+// the single strobe for all strobes when !first_column_flag
+wire  strobe_normal;
 
-logic second_strobe_for_last_row;
+// second strobe for strobes on the top and bottom row
+logic strobe_2_of_2;
 
-logic second_strobe_for_last_column;
-
-logic second_strobe_for_first_row_last_column;
-logic third_strobe_for_first_row_last_column;
-logic fourth_strobe_for_first_row_last_column;
-
-logic second_strobe_for_last_row_last_column;
-logic third_strobe_for_last_row_last_column;
-logic fourth_strobe_for_last_row_last_column;
+// 2nd/3rd/4th strobe for strobes at the top right and bottom right corners
+logic strobe_2_of_4;
+logic strobe_3_of_4;
+logic strobe_4_of_4;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    second_strobe_for_first_row <= 0;
+    strobe_2_of_2 <= 0;
 
-    second_strobe_for_last_row <= 0;
-
-    second_strobe_for_last_column <= 0;
-
-    second_strobe_for_first_row_last_column <= 0;
-    third_strobe_for_first_row_last_column <= 0;
-    fourth_strobe_for_first_row_last_column <= 0;
-
-    second_strobe_for_last_row_last_column <= 0;
-    third_strobe_for_last_row_last_column <= 0;
-    fourth_strobe_for_last_row_last_column <= 0;
+    strobe_2_of_4 <= 0;
+    strobe_3_of_4 <= 0;
+    strobe_4_of_4 <= 0;
   end
 
   else begin
-    second_strobe_for_first_row <= calc_strobe && first_row_flag && !first_column_flag;
+    strobe_2_of_2 <= calc_strobe && first_row_flag && !first_column_flag ||
+                     calc_strobe && last_row_flag && !first_column_flag  ||
+                     calc_strobe && last_column_flag;
 
-    second_strobe_for_last_row <= calc_strobe && last_row_flag && !first_column_flag;
-
-    second_strobe_for_last_column <= calc_strobe && last_column_flag;
-
-    second_strobe_for_first_row_last_column <= calc_strobe && first_row_flag && last_column_flag;
-    third_strobe_for_first_row_last_column <= second_strobe_for_first_row_last_column;
-    fourth_strobe_for_first_row_last_column <= third_strobe_for_first_row_last_column;
-
-    second_strobe_for_last_row_last_column <= calc_strobe && last_row_flag && last_column_flag;
-    third_strobe_for_last_row_last_column <= second_strobe_for_last_row_last_column;
-    fourth_strobe_for_last_row_last_column <= third_strobe_for_last_row_last_column;
+    strobe_2_of_4 <= calc_strobe && first_row_flag && last_column_flag ||
+                     calc_strobe && last_row_flag && last_column_flag;
+    strobe_3_of_4 <= strobe_2_of_4;
+    strobe_4_of_4 <= strobe_3_of_4;
   end
 end
 
-assign wr = strobe_for_all_but_first_column ||
-            second_strobe_for_last_column ||
-            second_strobe_for_last_row ||
-            second_strobe_for_first_row ||
-            second_strobe_for_first_row_last_column ||
-            third_strobe_for_first_row_last_column ||
-            fourth_strobe_for_first_row_last_column ||
-            second_strobe_for_last_row_last_column ||
-            third_strobe_for_last_row_last_column ||
-            fourth_strobe_for_last_row_last_column;
-assign strobe_for_all_but_first_column = (calc_strobe & !first_column_flag);
+assign wr = strobe_normal ||
+            strobe_2_of_2 ||
+            strobe_2_of_4 ||
+            strobe_3_of_4 ||
+            strobe_4_of_4;
+
+assign strobe_normal = (calc_strobe & !first_column_flag);
 
 endmodule
