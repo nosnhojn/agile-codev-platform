@@ -9,7 +9,7 @@ module step_2_unit_test;
   svunit_testcase svunit_ut;
 
   // uut params
-  parameter MEM_DEPTH = 321;
+  parameter MEM_DEPTH = 6*1920;
   parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
   parameter P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4);
   parameter INGRESS_THRESH = 3;
@@ -103,8 +103,8 @@ module step_2_unit_test;
     // control signals
     .ingress_rdy(), // no connect
     .ingress_cnt(), // no connect
-    .ingress_thresh(INGRESS_THRESH),
-    .ingress_full(INGRESS_FULL),
+    .ingress_thresh(INGRESS_THRESH[P0_ADDR_WIDTH-1:0]),
+    .ingress_full(INGRESS_FULL[P0_ADDR_WIDTH-1:0]),
     .ingress_read_cnt(ingress_read_cnt), // connected to egress_read_cnt
     .ingress_new_pixel(ingress_new_pixel),
 

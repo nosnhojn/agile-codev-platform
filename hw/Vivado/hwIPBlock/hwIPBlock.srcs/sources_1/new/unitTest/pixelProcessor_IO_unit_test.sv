@@ -88,14 +88,15 @@ module pixelProcessor_IO_unit_test;
     // control signals
     .ingress_rdy(ingress_rdy),
     .ingress_cnt(ingress_cnt),
-    .ingress_thresh(INGRESS_THRESH),
-    .ingress_full(INGRESS_FULL),
+    .ingress_thresh(INGRESS_THRESH[13:0]),
+    .ingress_full(INGRESS_FULL[13:0]),
     .ingress_read_cnt(ingress_read_cnt),
     .ingress_new_pixel(ingress_new_pixel),
 
     .egress_rdy(egress_rdy),
     .egress_read_cnt(egress_read_cnt)
   );
+  wire [119:0] rdata_no_connect;
 
   dpram
   #(
@@ -115,7 +116,14 @@ module pixelProcessor_IO_unit_test;
     .wr_0(wr),
 
     .rdata_0(rdata),
-    .raddr_0(raddr)
+    .raddr_0(raddr),
+
+    .wdata_1(120'h0),
+    .waddr_1(12'h0),
+    .wr_1(1'h0),
+
+    .raddr_1(12'h0),
+    .rdata_1(rdata_no_connect)
   );
 
 

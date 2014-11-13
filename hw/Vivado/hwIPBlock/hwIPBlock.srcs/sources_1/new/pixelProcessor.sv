@@ -10,7 +10,7 @@ module pixelProcessor
 
   // ram port
   input        [119:0] rdata,
-  output logic [31:0]  raddr,
+  output logic [11:0]  raddr,
 
   input        [31:0]  ingress_rdy_thresh,
   output logic [31:0]  ingress_used_cnt,

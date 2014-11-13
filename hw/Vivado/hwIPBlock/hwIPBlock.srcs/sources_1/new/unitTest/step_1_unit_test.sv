@@ -89,14 +89,18 @@ module step_1_unit_test;
     // control signals
     .ingress_rdy(ingress_rdy),
     .ingress_cnt(),
-    .ingress_thresh(INGRESS_THRESH),
-    .ingress_full(INGRESS_FULL),
+    .ingress_thresh(INGRESS_THRESH[P0_ADDR_WIDTH-1:0]),
+    .ingress_full(INGRESS_FULL[P0_ADDR_WIDTH-1:0]),
     .ingress_read_cnt(ingress_read_cnt), //{ 8'h0 , egress_read_cnt }),
     .ingress_new_pixel(),
 
     .egress_rdy(ingress_rdy),
     .egress_read_cnt(egress_read_cnt)
   );
+
+  wire [P1_ADDR_WIDTH-1:0] waddr_1;
+  wire [P1_ADDR_WIDTH-1:0] raddr_1;
+  wire [119:0] rdata_no_connect;
 
   dpram
   #(
@@ -116,7 +120,14 @@ module step_1_unit_test;
     .wr_0(wr),
 
     .rdata_0(rdata),
-    .raddr_0(raddr)
+    .raddr_0(raddr),
+
+    .wdata_1(120'h0),
+    .waddr_1(waddr_1),
+    .wr_1(1'b0),
+
+    .raddr_1(raddr_1),
+    .rdata_1(rdata_no_connect)
   );
 
 

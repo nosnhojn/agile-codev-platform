@@ -24,8 +24,10 @@ module agileHWBlock_unit_test;
     wire        oTVALID;
     wire        oTLAST;
     reg         iTREADY;    	
-  agileHWBlock my_agileHWBlock(.iTDATA(iTDATA),
-			       .iTUSER(iTUSER),
+  agileHWBlock my_agileHWBlock(.clk(1'b0),
+                               .rst(1'b0),
+                               .iTDATA(iTDATA),
+			                         .iTUSER(iTUSER),
                                .iTKEEP(iTKEEP),
                                .iTVALID(iTVALID),
                                .iTLAST(iTLAST),

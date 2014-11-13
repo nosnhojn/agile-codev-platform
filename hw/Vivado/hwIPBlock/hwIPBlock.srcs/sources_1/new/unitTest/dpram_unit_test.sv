@@ -21,18 +21,18 @@ module dpram_unit_test;
   `CLK_RESET_FIXTURE(10,1)
 
   logic [PORT0_WIDTH-1:0] wdata_0;
-  logic [31:0] waddr_0;
+  logic [PORT0_ADDR_WIDTH-1:0] waddr_0;
   logic        wr_0;
 
   wire  [PORT0_WIDTH-1:0] rdata_0;
-  logic [31:0] raddr_0;
+  logic [PORT0_ADDR_WIDTH-1:0] raddr_0;
 
   logic [PORT1_WIDTH-1:0] wdata_1;
-  logic [31:0] waddr_1;
+  logic [PORT1_ADDR_WIDTH-1:0] waddr_1;
   logic        wr_1;
 
   wire  [PORT1_WIDTH-1:0] rdata_1;
-  logic [31:0] raddr_1;
+  logic [PORT1_ADDR_WIDTH-1:0] raddr_1;
 
   logic [PORT1_WIDTH-1:0] testData;
 
@@ -144,7 +144,7 @@ module dpram_unit_test;
 
     // 4 writes to 1 read
     `SVTEST(port0_to_port1)
-      testData = 'hccddeeff_8899aabb_44556677_00112233;
+      testData = 120'hddeeff_8899aabb_44556677_00112233;
       for (int i=0; i<4; i+=1) begin
         writePort(0, i, testData >> PORT0_WIDTH*i);
         step();
@@ -157,7 +157,7 @@ module dpram_unit_test;
 
     // 1 write to 4 reads
     `SVTEST(port1_to_port0)
-      testData = 'hccddeeff_8899aabb_44556677_00112233;
+      testData = 120'hddeeff_8899aabb_44556677_00112233;
       writePort(1, (DEPTH-4)>>2, testData);
       step();
  

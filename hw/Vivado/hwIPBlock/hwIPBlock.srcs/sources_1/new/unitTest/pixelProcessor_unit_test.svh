@@ -12,10 +12,10 @@
   parameter NOT_LAST_COLUMN = 0;
 
   wire  [119:0] wdata;
-  wire  [31:0] waddr;
-  wire         wr;
+  wire  [11:0]  waddr;
+  wire          wr;
   logic [119:0] rdata;
-  wire  [31:0] raddr;
+  wire  [11:0] raddr;
   wire  [31:0] ingress_used_cnt;
   wire  [31:0] ingress_available_cnt;
   logic [31:0] ingress_rdy_thresh;
@@ -72,6 +72,7 @@
     .group_slot2(group_slot2)
   );
 
+  wire [29:0] rdata_no_connect;
   dpram
   #(
     .DPRAM_DEPTH(8*LINE_WIDTH),
@@ -90,7 +91,14 @@
     .wr_1(wr),
 
     .rdata_1(rdata),
-    .raddr_1(raddr)
+    .raddr_1(raddr),
+
+    .wdata_0(30'h0),
+    .waddr_0(14'h0),
+    .wr_0(1'b0),
+
+    .raddr_0(14'h0),
+    .rdata_0(rdata_no_connect)
   );
 
 

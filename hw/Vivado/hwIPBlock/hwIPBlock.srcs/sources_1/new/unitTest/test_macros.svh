@@ -23,13 +23,13 @@
 `define no_write_N_in_reset(PORT) \
 `SVTEST(no_write_``PORT``_in_reset) \
   rst_n = 0; \
-  writePort(PORT, PORT*3, 'h112233441122334412345678); \
+  writePort(PORT, PORT*3, 120'h1122_3344_1122_3344_1234_5678); \
   step(); \
   readPort(PORT, PORT*3); \
   rst_n = 1; \
   step(); \
   nextSamplePoint(); \
-  `FAIL_IF(rdata_``PORT == 'h12345678); \
+  `FAIL_IF(rdata_``PORT == 30'h12345678); \
 `SVTEST_END
 
 `define no_read_N_in_reset(PORT) \
