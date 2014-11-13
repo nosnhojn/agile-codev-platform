@@ -18,6 +18,7 @@ task automatic waitStep(int size = 1); \
 endtask \
 task nextSamplePoint(); \
   if ($time%clkPeriod == 0) #1; \
+  else repeat (2) #0; \
 endtask \
 task reset(); \
   rst_n = 0; \

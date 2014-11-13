@@ -437,13 +437,13 @@ module pixelProcessor_IO_unit_test;
     step();
  
     for (int e=0; e<10; e+=1) begin
-      deassertoTREADY();
       expectEgressPixel(e);
+      deassertoTREADY();
       step();
 
-      assertoTREADY();
       expectNoEgressPixelRead();
       expectEgressPixel(e);
+      assertoTREADY();
       step();
 
       expectEgressPixelRead();

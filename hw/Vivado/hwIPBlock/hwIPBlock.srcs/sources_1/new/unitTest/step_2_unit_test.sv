@@ -175,6 +175,9 @@ module step_2_unit_test;
   );
 
   pixelProcessor_calc calc(
+    .clk(clk),
+    .rst_n(rst_n),
+
     .calc_rdy(calc_rdy),
 
     .calc_strobe(calc_strobe),
