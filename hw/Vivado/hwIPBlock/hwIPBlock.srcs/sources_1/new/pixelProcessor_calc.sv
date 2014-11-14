@@ -1,4 +1,10 @@
-module pixelProcessor_calc (
+module pixelProcessor_calc
+#(
+  PIXEL_WIDTH = 1920,
+  PIXEL_HEIGHT = 1080,
+  PIXELS_PER_READ = 4
+)
+(
   input         clk,
   input         rst_n,
 
@@ -15,12 +21,14 @@ module pixelProcessor_calc (
   input [119:0] group_slot2,
 
   output wire [119:0] wdata,
-  output wire [11:0]  waddr,
+  output logic [11:0] waddr,
   output wire         wr,
 
   input         egress_read_cnt,
   output logic  egress_rdy
 );
+
+parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
 
 // the single strobe for all strobes when !first_column_flag
 wire  strobe_normal;
@@ -40,6 +48,8 @@ always @(negedge rst_n or posedge clk) begin
     strobe_2_of_4 <= 0;
     strobe_3_of_4 <= 0;
     strobe_4_of_4 <= 0;
+
+    waddr <= 0;
   end
 
   else begin
@@ -51,6 +61,13 @@ always @(negedge rst_n or posedge clk) begin
                      calc_strobe && last_row_flag && last_column_flag;
     strobe_3_of_4 <= strobe_2_of_4;
     strobe_4_of_4 <= strobe_3_of_4;
+
+    if (calc_strobe && first_row_flag && !first_column_flag) begin
+      waddr <= waddr + EFFECTIVE_WIDTH;
+    end
+    else if (wr && !calc_strobe) begin
+      waddr <= (waddr - EFFECTIVE_WIDTH) + 1;
+    end
   end
 end
 

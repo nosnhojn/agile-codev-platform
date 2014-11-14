@@ -1,6 +1,7 @@
 `include "svunit_defines.svh"
 
 `include "test_defines.svh"
+`include "test_constants.svh"
 
 module pixelProcessor_calc_unit_test;
   import svunit_pkg::svunit_testcase;
@@ -117,15 +118,14 @@ module pixelProcessor_calc_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
+  // write output tests
   `SVTEST(no_write_on_1st_column)
     strobeFlags(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
   `SVTEST_END
 
   `SVTEST(no_delayed_write_on_1st_column)
     strobeFlags(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
 
     step();
@@ -135,13 +135,11 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_on_middle_columns)
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
   `SVTEST_END
 
   `SVTEST(write_twice_on_last_column)
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
 
     step();
@@ -151,13 +149,11 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(no_write_on_1st_column_1st_row)
     strobeFlags(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
   `SVTEST_END
 
   `SVTEST(no_delayed_write_on_1st_column_1st_row)
     strobeFlags(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
 
     step();
@@ -167,7 +163,6 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_twice_on_first_row)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
 
     step();
@@ -177,7 +172,6 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_four_on_first_row_last_column)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
 
     repeat (3) begin
@@ -189,13 +183,11 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(no_write_on_1st_column_last_row)
     strobeFlags(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
   `SVTEST_END
 
   `SVTEST(no_delayed_write_on_1st_column_last_row)
     strobeFlags(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectNoWrite();
 
     step();
@@ -205,7 +197,6 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_twice_on_last_row)
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
  
     step();
@@ -215,7 +206,6 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_four_on_last_row_last_column)
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
-    strobeData(BG, BG, BG);
     expectWrite();
 
     repeat (3) begin
@@ -225,12 +215,69 @@ module pixelProcessor_calc_unit_test;
     end
   `SVTEST_END
 
+
+  `SVTEST(write_addr_for_row_0_column_0)
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectWriteAddr(0);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_row_1_column_0)
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    step();
+    clearStrobe();
+    expectWriteAddr(LINE_WIDTH_BY4);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_row_0_column_1)
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    step();
+    clearStrobe();
+
+    step();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectWriteAddr(1);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_row_1_column_1)
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    step();
+    clearStrobe();
+
+    step();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    step();
+    clearStrobe();
+    expectWriteAddr(LINE_WIDTH_BY4 + 1);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_row_0_column_2)
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    step();
+    clearStrobe();
+
+    step();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    step();
+    clearStrobe();
+
+    step();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectWriteAddr(2);
+  `SVTEST_END
+
   `SVUNIT_TESTS_END
 
   task strobeFlags(bit f_row, bit f_column,
                    bit l_row, bit l_column);
     nextSamplePoint();
 
+    calc_strobe = 1;
     first_row_flag = f_row;
     first_column_flag = f_column;
     last_row_flag = l_row;
@@ -240,7 +287,6 @@ module pixelProcessor_calc_unit_test;
   task strobeData(bit[29:0] s0, bit[29:0] s1, bit[29:0] s2);
     nextSamplePoint();
 
-    calc_strobe = 1;
     slot0 = s0;
     slot1 = s1;
     slot2 = s2;
@@ -266,6 +312,12 @@ module pixelProcessor_calc_unit_test;
   task expectWrite();
     nextSamplePoint();
     `FAIL_IF(wr_calc !== 1);
+  endtask
+
+  task expectWriteAddr(bit [11:0] addr);
+    nextSamplePoint();
+    expectWrite();
+    `FAIL_IF(waddr_calc !== addr);
   endtask
 
 endmodule
