@@ -218,7 +218,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_addr_for_row_0_column_0)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectWriteAddr(0);
+    expectWriteAddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
   `SVTEST(write_addr_for_row_1_column_0)
@@ -226,7 +226,7 @@ module pixelProcessor_calc_unit_test;
  
     step();
     clearStrobe();
-    expectWriteAddr(LINE_WIDTH_BY4);
+    expectWriteAddr(0);
   `SVTEST_END
 
   `SVTEST(write_addr_for_row_0_column_1)
@@ -234,44 +234,80 @@ module pixelProcessor_calc_unit_test;
  
     step();
     clearStrobe();
-
+ 
     step();
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectWriteAddr(1);
+    expectWriteAddr(LINE_WIDTH_BY4 + 1);
   `SVTEST_END
-
+ 
   `SVTEST(write_addr_for_row_1_column_1)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
     step();
     clearStrobe();
-
+ 
     step();
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-
+ 
     step();
     clearStrobe();
-    expectWriteAddr(LINE_WIDTH_BY4 + 1);
+    expectWriteAddr(1);
   `SVTEST_END
-
+ 
   `SVTEST(write_addr_for_row_0_column_2)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
     step();
     clearStrobe();
-
+ 
     step();
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    step();
+    clearStrobe();
+ 
+    step();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    expectWriteAddr(LINE_WIDTH_BY4+2);
+  `SVTEST_END
 
+  `SVTEST(write_addr_for_first_of_4_writes_at_end_of_row_0)
+    goto_last_strobe_for_first_row();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    expectWriteAddr(2*LINE_WIDTH_BY4-2);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_last_3_of_4_writes_at_end_of_row_0)
+    goto_last_strobe_for_first_row();
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
     step();
     clearStrobe();
 
+    expectWriteAddr(LINE_WIDTH_BY4-2);
+
     step();
-    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectWriteAddr(2);
+    expectWriteAddr(2*LINE_WIDTH_BY4-1);
+
+    step();
+    expectWriteAddr(LINE_WIDTH_BY4-1);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
+
+  task goto_last_strobe_for_first_row();
+    strobeFlags(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    step();
+    clearStrobe();
+    step(2);
+
+    repeat (LINE_WIDTH_BY4-2) begin
+      strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+      step();
+      clearStrobe();
+      step(2);
+    end
+  endtask
 
   task strobeFlags(bit f_row, bit f_column,
                    bit l_row, bit l_column);

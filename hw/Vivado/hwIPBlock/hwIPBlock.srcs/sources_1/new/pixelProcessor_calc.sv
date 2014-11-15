@@ -49,7 +49,7 @@ always @(negedge rst_n or posedge clk) begin
     strobe_3_of_4 <= 0;
     strobe_4_of_4 <= 0;
 
-    waddr <= 0;
+    waddr <= EFFECTIVE_WIDTH;
   end
 
   else begin
@@ -62,11 +62,11 @@ always @(negedge rst_n or posedge clk) begin
     strobe_3_of_4 <= strobe_2_of_4;
     strobe_4_of_4 <= strobe_3_of_4;
 
-    if (calc_strobe && first_row_flag && !first_column_flag) begin
-      waddr <= waddr + EFFECTIVE_WIDTH;
+    if (calc_strobe && first_row_flag && !first_column_flag || strobe_3_of_4) begin
+      waddr <= waddr - EFFECTIVE_WIDTH;
     end
-    else if (wr && !calc_strobe) begin
-      waddr <= (waddr - EFFECTIVE_WIDTH) + 1;
+    else if (wr && !calc_strobe || strobe_2_of_4) begin
+      waddr <= waddr + EFFECTIVE_WIDTH + 1;
     end
   end
 end
