@@ -1,9 +1,0 @@
-//
-// File created by:  irun
-// Do not modify this file
-//
--l
-run.log
--f
-.svunit.f
-+define+SVUNIT_VERSION="\"SVUnit v3.6\""
