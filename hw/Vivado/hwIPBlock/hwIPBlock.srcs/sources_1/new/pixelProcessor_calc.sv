@@ -65,8 +65,11 @@ always @(negedge rst_n or posedge clk) begin
     if (calc_strobe && first_row_flag && !first_column_flag || strobe_3_of_4) begin
       waddr <= waddr - EFFECTIVE_WIDTH;
     end
-    else if (wr && !calc_strobe || strobe_2_of_4) begin
+    else if (wr && !calc_strobe || strobe_2_of_4 || strobe_4_of_4) begin
       waddr <= waddr + EFFECTIVE_WIDTH + 1;
+    end
+    else if (wr) begin
+      waddr <= waddr + 1;
     end
   end
 end
