@@ -221,24 +221,33 @@ module pixelProcessor_calc_unit_test;
   //
   // order of row 0, 1 and 2 addresses being written
   //
-  //        col 0  col 1  col 2  col 3  ... col 479
-  //       ,---------------------------------------.
-  // row 0 |  2      4      6      8         959   |
-  //       |                                       |
-  // row 1 |  1      3      5      7         958   |
-  //       |                                       |
-  // row 2 | 960    961    962 ...                 |
-  //       |                                       |
+  //           col 0  col 1  col 2  col 3  ... col 479
+  //          ,----------------------------------------.
+  // row 0    |  2      4      6      8          959   |
+  //          |                                        |
+  // row 1    |  1      3      5      7          958   |
+  //          |                                        |
+  // row 2    | 960    961    962 ...                  |
+  //          |                                        |
+  //          | ...................................... |
+  //          |                                        |
+  // row 1078 |  2      4      6      8          959   |
+  //          |                                        |
+  // row 1079 |  1      3      5      7          958   |
+  //          |                                        |
+  //          `----------------------------------------'
   //
 
   // rows 0 and 1
 
   `SVTEST(write_addr_for_row_0_column_0)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     expectWriteAddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
   `SVTEST(write_addr_for_row_1_column_0)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
     step();
@@ -247,6 +256,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
 
   `SVTEST(write_addr_for_row_0_column_1)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -254,6 +264,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
  
   `SVTEST(write_addr_for_row_1_column_1)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -264,6 +275,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
  
   `SVTEST(write_addr_for_row_0_column_2)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     repeat (2) strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -271,14 +283,14 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
 
   `SVTEST(write_addr_for_first_of_4_writes_at_end_of_row_0)
-    goto_last_strobe_for_first_row();
+    strobe_first_row_to_last_column();
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     expectWriteAddr(2*LINE_WIDTH_BY4-2);
   `SVTEST_END
 
   `SVTEST(write_addr_for_last_3_of_4_writes_at_end_of_row_0)
-    goto_last_strobe_for_first_row();
+    strobe_first_row_to_last_column();
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
     step();
@@ -360,6 +372,69 @@ module pixelProcessor_calc_unit_test;
     expectWriteAddr(0);
   `SVTEST_END
 
+  // last and 2nd last row
+
+  `SVTEST(write_addr_for_row_1079_col_0)
+    strobe_first_row();
+    repeat(1076) strobe_next_row();
+ 
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+ 
+    expectWriteAddr(5 * LINE_WIDTH_BY4);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_row_1078_col_0)
+    strobe_first_row();
+    repeat(1076) strobe_next_row();
+ 
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    step();
+    clearStrobe();
+ 
+    expectWriteAddr(4 * LINE_WIDTH_BY4);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_first_of_4_writes_at_end_of_row_1078)
+    strobe_first_row();
+    repeat(1076) strobe_next_row();
+    strobe_last_row_to_last_column();
+
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+
+    expectWriteAddr(6*LINE_WIDTH_BY4-2);
+  `SVTEST_END
+
+  `SVTEST(write_addr_for_last_3_of_4_writes_at_end_of_row_1078)
+    strobe_first_row();
+    repeat(1076) strobe_next_row();
+    strobe_last_row_to_last_column();
+
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+
+    step();
+    clearStrobe();
+ 
+    expectWriteAddr(5*LINE_WIDTH_BY4-2);
+ 
+    step();
+    expectWriteAddr(6*LINE_WIDTH_BY4-1);
+ 
+    step();
+    expectWriteAddr(5*LINE_WIDTH_BY4-1);
+  `SVTEST_END
+
+  // row 0 of 2nd frame
+  `SVTEST(write_addr_for_row_0_col_0_2nd_frame)
+    strobe_first_row();
+
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    expectWriteAddr(LINE_WIDTH_BY4);
+  `SVTEST_END
+
   `SVUNIT_TESTS_END
 
 
@@ -370,20 +445,31 @@ module pixelProcessor_calc_unit_test;
   //----------------//
   //----------------//
 
-  task goto_last_strobe_for_first_row();
+  task strobe_first_row_to_last_column();
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     repeat (LINE_WIDTH_BY4-2) strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   endtask
 
   task strobe_first_row();
-    goto_last_strobe_for_first_row();
+    strobe_first_row_to_last_column();
 
     strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
   endtask
 
+  task strobe_last_row_to_last_column();
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    repeat (LINE_WIDTH_BY4 - 2) strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+  endtask
+
+  task strobe_last_row();
+    strobe_last_row_to_last_column();
+
+    strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+  endtask
+
   task strobe_next_row_to_last_column();
-    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     repeat (LINE_WIDTH_BY4 - 2) strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
   endtask
 
@@ -445,7 +531,6 @@ module pixelProcessor_calc_unit_test;
   task expectWriteAddr(bit [11:0] addr);
     nextSamplePoint();
     expectWrite();
-//$display("waddr_calc:%0d addr:%0d", waddr_calc, addr);
     `FAIL_IF(waddr_calc !== addr);
   endtask
 
