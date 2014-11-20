@@ -1,3 +1,20 @@
+`define FIRST       29:0
+`define FIRST_P     23:0
+`define FIRST_I    29:24
+
+`define SECOND     59:30
+`define SECOND_P   53:30
+`define SECOND_I   59:54
+
+`define THIRD      89:60
+`define THIRD_P    83:60
+`define THIRD_I    89:84
+
+`define FOURTH    119:90
+`define FOURTH_P  113:90
+`define FOURTH_I 119:114
+
+
 module pixelProcessor_calc
 #(
   PIXEL_WIDTH = 1920,
@@ -111,236 +128,107 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
-`define FIRST       29:0
-`define FIRST_P     23:0
-`define FIRST_I    29:24
-
-`define SECOND     59:30
-`define SECOND_P   53:30
-`define SECOND_I   59:54
-
-`define THIRD      89:60
-`define THIRD_P    83:60
-`define THIRD_I    89:84
-
-`define FOURTH    119:90
-`define FOURTH_P  113:90
-`define FOURTH_I 119:114
-
 always @* begin
   wdata = 0;
 
   // 1st strobe
   if (calc_strobe) begin
-    if (upper_slot1[`FIRST_P] == BG) begin
-      if (upper_slot0[`FIRST_P] == FG ||
-          upper_slot0[`SECOND_P] == FG ||
-          upper_slot1[`SECOND_P] == FG ||
-          upper_slot2[`FIRST_P] == FG ||
-          upper_slot2[`SECOND_P] == FG) begin
-        wdata[`FIRST] = { upper_slot1[`FIRST_I] , SH };
-      end
-      else begin
-        wdata[`FIRST] = upper_slot1[`FIRST];
-      end
-    end
-    else begin
-      wdata[`FIRST] = upper_slot1[`FIRST];
+    wdata[`FIRST] = upper_slot1[`FIRST];
+    if (upper_slot1[`FIRST_P] == BG &&
+        upper_slot0[`FIRST_P] == FG ||
+        upper_slot0[`SECOND_P] == FG ||
+        upper_slot1[`SECOND_P] == FG ||
+        upper_slot2[`FIRST_P] == FG ||
+        upper_slot2[`SECOND_P] == FG)
+    begin
+      wdata[`FIRST] = { upper_slot1[`FIRST_I] , SH };
     end
 
-    if (upper_slot1[`SECOND_P] == BG) begin
-      if (upper_slot0[`FIRST_P] == FG ||
-          upper_slot0[`SECOND_P] == FG ||
-          upper_slot0[`THIRD_P] == FG ||
-          upper_slot1[`FIRST_P] == FG ||
-          upper_slot1[`THIRD_P] == FG ||
-          upper_slot2[`FIRST_P] == FG ||
-          upper_slot2[`SECOND_P] == FG ||
-          upper_slot2[`THIRD_P] == FG) begin
-        wdata[`SECOND] = { upper_slot1[`SECOND_I] , SH };
-      end
-      else begin
-        wdata[`SECOND] = upper_slot1[`SECOND];
-      end
-    end
-    else begin
-      wdata[`SECOND] = upper_slot1[`SECOND];
+    wdata[`SECOND] = upper_slot1[`SECOND];
+    if (upper_slot1[`SECOND_P] == BG &&
+        upper_slot0[`FIRST_P] == FG ||
+        upper_slot0[`SECOND_P] == FG ||
+        upper_slot0[`THIRD_P] == FG ||
+        upper_slot1[`FIRST_P] == FG ||
+        upper_slot1[`THIRD_P] == FG ||
+        upper_slot2[`FIRST_P] == FG ||
+        upper_slot2[`SECOND_P] == FG ||
+        upper_slot2[`THIRD_P] == FG)
+    begin
+      wdata[`SECOND] = { upper_slot1[`SECOND_I] , SH };
     end
 
-    if (upper_slot1[`THIRD_P] == BG) begin
-      if (upper_slot0[`SECOND_P] == FG ||
-          upper_slot0[`THIRD_P] == FG  ||
-          upper_slot0[`FOURTH_P] == FG ||
-          upper_slot1[`SECOND_P] == FG ||
-          upper_slot1[`FOURTH_P] == FG ||
-          upper_slot2[`SECOND_P] == FG ||
-          upper_slot2[`THIRD_P] == FG  ||
-          upper_slot2[`FOURTH_P] == FG) begin
-        wdata[`THIRD] = { upper_slot1[`THIRD_I] , SH };
-      end
-      else begin
-        wdata[`THIRD] = upper_slot1[`THIRD];
-      end
-    end
-    else begin
-      wdata[`THIRD] = upper_slot1[`THIRD];
+    wdata[`THIRD] = upper_slot1[`THIRD];
+    if (upper_slot1[`THIRD_P] == BG &&
+        upper_slot0[`SECOND_P] == FG ||
+        upper_slot0[`THIRD_P] == FG  ||
+        upper_slot0[`FOURTH_P] == FG ||
+        upper_slot1[`SECOND_P] == FG ||
+        upper_slot1[`FOURTH_P] == FG ||
+        upper_slot2[`SECOND_P] == FG ||
+        upper_slot2[`THIRD_P] == FG  ||
+        upper_slot2[`FOURTH_P] == FG)
+    begin
+      wdata[`THIRD] = { upper_slot1[`THIRD_I] , SH };
     end
 
-    if (upper_slot1[`FOURTH_P] == BG) begin
-      if (upper_slot0[`THIRD_P] == FG ||
-          upper_slot0[`FOURTH_P] == FG ||
-          group_slot0[`FIRST_P] == FG ||
-          upper_slot1[`THIRD_P] == FG ||
-          group_slot1[`FIRST_P] == FG ||
-          upper_slot2[`THIRD_P] == FG  ||
-          upper_slot2[`FOURTH_P] == FG ||
-          group_slot2[`FIRST_P] == FG) begin
-        wdata[`FOURTH] = { upper_slot1[`FOURTH_I] , SH };
-      end
-      else begin
-        wdata[`FOURTH] = upper_slot1[`FOURTH];
-      end
-    end
-    else begin
-      wdata[`FOURTH] = upper_slot1[`FOURTH];
-    end
-    if (upper_slot1[`FIRST_P] == BG) begin
-      if (upper_slot0[`FIRST_P] == FG ||
-          upper_slot0[`SECOND_P] == FG ||
-          upper_slot1[`SECOND_P] == FG ||
-          upper_slot2[`FIRST_P] == FG ||
-          upper_slot2[`SECOND_P] == FG) begin
-        wdata[`FIRST] = { upper_slot1[`FIRST_I] , SH };
-      end
-      else begin
-        wdata[`FIRST] = upper_slot1[`FIRST];
-      end
-    end
-    else begin
-      wdata[`FIRST] = upper_slot1[`FIRST];
-    end
-
-    if (upper_slot1[`SECOND_P] == BG) begin
-      if (upper_slot0[`FIRST_P] == FG ||
-          upper_slot0[`SECOND_P] == FG ||
-          upper_slot0[`THIRD_P] == FG ||
-          upper_slot1[`FIRST_P] == FG ||
-          upper_slot1[`THIRD_P] == FG ||
-          upper_slot2[`FIRST_P] == FG ||
-          upper_slot2[`SECOND_P] == FG ||
-          upper_slot2[`THIRD_P] == FG) begin
-        wdata[`SECOND] = { upper_slot1[`SECOND_I] , SH };
-      end
-      else begin
-        wdata[`SECOND] = upper_slot1[`SECOND];
-      end
-    end
-    else begin
-      wdata[`SECOND] = upper_slot1[`SECOND];
-    end
-
-    if (upper_slot1[`THIRD_P] == BG) begin
-      if (upper_slot0[`SECOND_P] == FG ||
-          upper_slot0[`THIRD_P] == FG  ||
-          upper_slot0[`FOURTH_P] == FG ||
-          upper_slot1[`SECOND_P] == FG ||
-          upper_slot1[`FOURTH_P] == FG ||
-          upper_slot2[`SECOND_P] == FG ||
-          upper_slot2[`THIRD_P] == FG  ||
-          upper_slot2[`FOURTH_P] == FG) begin
-        wdata[`THIRD] = { upper_slot1[`THIRD_I] , SH };
-      end
-      else begin
-        wdata[`THIRD] = upper_slot1[`THIRD];
-      end
-    end
-    else begin
-      wdata[`THIRD] = upper_slot1[`THIRD];
-    end
-
-    if (upper_slot1[`FOURTH_P] == BG) begin
-      if (upper_slot0[`THIRD_P] == FG ||
-          upper_slot0[`FOURTH_P] == FG ||
-          group_slot0[`FIRST_P] == FG ||
-          upper_slot1[`THIRD_P] == FG ||
-          group_slot1[`FIRST_P] == FG ||
-          upper_slot2[`THIRD_P] == FG  ||
-          upper_slot2[`FOURTH_P] == FG ||
-          group_slot2[`FIRST_P] == FG) begin
-        wdata[`FOURTH] = { upper_slot1[`FOURTH_I] , SH };
-      end
-      else begin
-        wdata[`FOURTH] = upper_slot1[`FOURTH];
-      end
-    end
-    else begin
-      wdata[`FOURTH] = upper_slot1[`FOURTH];
+    wdata[`FOURTH] = upper_slot1[`FOURTH];
+    if (upper_slot1[`FOURTH_P] == BG &&
+        upper_slot0[`THIRD_P] == FG ||
+        upper_slot0[`FOURTH_P] == FG ||
+        group_slot0[`FIRST_P] == FG ||
+        upper_slot1[`THIRD_P] == FG ||
+        group_slot1[`FIRST_P] == FG ||
+        upper_slot2[`THIRD_P] == FG  ||
+        upper_slot2[`FOURTH_P] == FG ||
+        group_slot2[`FIRST_P] == FG)
+    begin
+      wdata[`FOURTH] = { upper_slot1[`FOURTH_I] , SH };
     end
   end
 
-
   // 2nd strobe
   else begin
-    if (lower_slot0[`FIRST_P] == BG) begin
-      if (lower_slot0[`SECOND_P] == FG ||
-          lower_slot1[`FIRST_P] == FG ||
-          lower_slot1[`SECOND_P] == FG) begin
-        wdata[`FIRST] = { lower_slot0[`FIRST_I] , SH };
-      end
-      else begin
-        wdata[`FIRST] = lower_slot0[`FIRST];
-      end
-    end
-    else begin
-      wdata[`FIRST] = lower_slot0[`FIRST];
+    wdata[`FIRST] = lower_slot0[`FIRST];
+    if (lower_slot0[`FIRST_P] == BG &&
+        lower_slot0[`SECOND_P] == FG ||
+        lower_slot1[`FIRST_P] == FG ||
+        lower_slot1[`SECOND_P] == FG)
+    begin
+      wdata[`FIRST] = { lower_slot0[`FIRST_I] , SH };
     end
 
-    if (lower_slot0[`SECOND_P] == BG) begin
-      if (lower_slot0[`FIRST_P] == FG ||
-          lower_slot0[`THIRD_P] == FG ||
-          lower_slot1[`FIRST_P] == FG ||
-          lower_slot1[`SECOND_P] == FG ||
-          lower_slot1[`THIRD_P] == FG) begin
-        wdata[`SECOND] = { lower_slot0[`SECOND_I] , SH };
-      end
-      else begin
-        wdata[`SECOND] = lower_slot0[`SECOND];
-      end
-    end
-    else begin
-      wdata[`SECOND] = lower_slot0[`SECOND];
+    wdata[`SECOND] = lower_slot0[`SECOND];
+    if (lower_slot0[`SECOND_P] == BG &&
+        lower_slot0[`FIRST_P] == FG ||
+        lower_slot0[`THIRD_P] == FG ||
+        lower_slot1[`FIRST_P] == FG ||
+        lower_slot1[`SECOND_P] == FG ||
+        lower_slot1[`THIRD_P] == FG)
+    begin
+      wdata[`SECOND] = { lower_slot0[`SECOND_I] , SH };
     end
 
-    if (lower_slot0[`THIRD_P] == BG) begin
-      if (lower_slot0[`SECOND_P] == FG ||
-          lower_slot0[`FOURTH_P] == FG ||
-          lower_slot1[`SECOND_P] == FG ||
-          lower_slot1[`THIRD_P] == FG  ||
-          lower_slot1[`FOURTH_P] == FG) begin
-        wdata[`THIRD] = { lower_slot0[`THIRD_I] , SH };
-      end
-      else begin
-        wdata[`THIRD] = lower_slot0[`THIRD];
-      end
-    end
-    else begin
-      wdata[`THIRD] = lower_slot0[`THIRD];
+    wdata[`THIRD] = lower_slot0[`THIRD];
+    if (lower_slot0[`THIRD_P] == BG &&
+        lower_slot0[`SECOND_P] == FG ||
+        lower_slot0[`FOURTH_P] == FG ||
+        lower_slot1[`SECOND_P] == FG ||
+        lower_slot1[`THIRD_P] == FG  ||
+        lower_slot1[`FOURTH_P] == FG)
+    begin
+      wdata[`THIRD] = { lower_slot0[`THIRD_I] , SH };
     end
 
-    if (lower_slot0[`FOURTH_P] == BG) begin
-      if (lower_slot0[`THIRD_P] == FG ||
-          upper_slot0[`FIRST_P] == FG ||
-          lower_slot1[`THIRD_P] == FG  ||
-          lower_slot1[`FOURTH_P] == FG ||
-          upper_slot1[`FIRST_P] == FG) begin
-        wdata[`FOURTH] = { lower_slot0[`FOURTH_I] , SH };
-      end
-      else begin
-        wdata[`FOURTH] = lower_slot0[`FOURTH];
-      end
-    end
-    else begin
-      wdata[`FOURTH] = lower_slot0[`FOURTH];
+    wdata[`FOURTH] = lower_slot0[`FOURTH];
+    if (lower_slot0[`FOURTH_P] == BG &&
+        lower_slot0[`THIRD_P] == FG ||
+        upper_slot0[`FIRST_P] == FG ||
+        lower_slot1[`THIRD_P] == FG  ||
+        lower_slot1[`FOURTH_P] == FG ||
+        upper_slot1[`FIRST_P] == FG)
+    begin
+      wdata[`FOURTH] = { lower_slot0[`FOURTH_I] , SH };
     end
   end
 end
