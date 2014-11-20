@@ -1,0 +1,16 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+-INCDIR
+/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest
+-INCDIR
+/tools/xeda/svunit/3.6/svunit_base
+-INCDIR
+/tools/xeda/svunit/3.6/svunit_base/uvm-mock
+-INCDIR
+..
+-INCDIR
+/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/.
+-DEFINE
+SVUNIT_VERSION="\"SVUnit v3.6\""

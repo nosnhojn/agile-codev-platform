@@ -231,6 +231,8 @@ module pixelProcessor_calc_unit_test;
   //       |                                       |
   //
 
+  // rows 0 and 1
+
   `SVTEST(write_addr_for_row_0_column_0)
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     expectWriteAddr(LINE_WIDTH_BY4);
@@ -291,6 +293,8 @@ module pixelProcessor_calc_unit_test;
     expectWriteAddr(LINE_WIDTH_BY4-1);
   `SVTEST_END
 
+  // row 3
+
   `SVTEST(write_addr_for_row_2_column_0)
     strobe_first_row();
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -321,6 +325,8 @@ module pixelProcessor_calc_unit_test;
     expectWriteAddr(3 * LINE_WIDTH_BY4 - 1);
   `SVTEST_END
 
+  // row 3
+
   `SVTEST(write_addr_for_row_3_column_0)
     strobe_first_row();
     strobe_next_row();
@@ -328,6 +334,30 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     expectWriteAddr(3 * LINE_WIDTH_BY4);
+  `SVTEST_END
+
+  // row 6
+
+  `SVTEST(write_addr_wraps_after_6_rows)
+    strobe_first_row();
+    repeat(4) strobe_next_row();
+ 
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    expectWriteAddr(0);
+  `SVTEST_END
+
+  // row 12
+
+  `SVTEST(write_addr_wraps_again_after_12_rows)
+    strobe_first_row();
+    repeat(10) strobe_next_row();
+ 
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    expectWriteAddr(0);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -359,7 +389,7 @@ module pixelProcessor_calc_unit_test;
 
   task strobe_next_row();
     strobe_next_row_to_last_column();
-    strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+    strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
   endtask
 
 
@@ -415,7 +445,7 @@ module pixelProcessor_calc_unit_test;
   task expectWriteAddr(bit [11:0] addr);
     nextSamplePoint();
     expectWrite();
-    $display("waddr_calc:%0d addr:%0d", waddr_calc, addr);
+//$display("waddr_calc:%0d addr:%0d", waddr_calc, addr);
     `FAIL_IF(waddr_calc !== addr);
   endtask
 

@@ -1,0 +1,428 @@
+irun: 12.10-s008: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	irun	12.10-s008: Started on Nov 20, 2014 at 00:09:54 EST
+irun
+	-l run.log
+	-f .svunit.f
+		+incdir+/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest
+		+incdir+/tools/xeda/svunit/3.6/svunit_base
+		+incdir+/tools/xeda/svunit/3.6/svunit_base/uvm-mock
+		/tools/xeda/svunit/3.6/svunit_base/svunit_pkg.sv
+		-f /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./svunit.f
+			+incdir+..
+			/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor.sv
+			/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv
+			/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_calc.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./agileHWBlock_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./dpram_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_calc_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_ctrl_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_data_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_IO_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./step_1_unit_test.sv
+		/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./step_2_unit_test.sv
+		+incdir+/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/.
+		.__testsuite.sv
+		.testrunner.sv
+	+define+SVUNIT_VERSION="SVUnit v3.6"
+file: /tools/xeda/svunit/3.6/svunit_base/svunit_pkg.sv
+	package worklib.svunit_pkg:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor.sv
+	module worklib.pixelProcessor:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv
+	module worklib.pixelProcessor_IO:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_calc.sv
+	module worklib.pixelProcessor_calc:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./agileHWBlock_unit_test.sv
+	module worklib.agileHWBlock:v
+		errors: 0, warnings: 0
+	module worklib.agileHWBlock_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./dpram_unit_test.sv
+	module worklib.dpram:v
+		errors: 0, warnings: 0
+	module worklib.dpram_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_calc_unit_test.sv
+	module worklib.pixelProcessor_calc_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_ctrl_unit_test.sv
+	module worklib.pixelProcessor_ctrl_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_data_unit_test.sv
+	module worklib.pixelProcessor_data_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./pixelProcessor_IO_unit_test.sv
+	module worklib.pixelProcessor_IO_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./step_1_unit_test.sv
+	module worklib.step_1_unit_test:sv
+		errors: 0, warnings: 0
+file: /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/unitTest/./step_2_unit_test.sv
+	module worklib.step_2_unit_test:sv
+		errors: 0, warnings: 0
+file: .__testsuite.sv
+	module worklib.__testsuite:sv
+		errors: 0, warnings: 0
+file: .testrunner.sv
+	module worklib.testrunner:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x306e1840
+		svunit_pkg
+		testrunner
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.__testsuite:sv <0x157f238c>
+			streams:   3, words:  3529
+		worklib.agileHWBlock:v <0x1dadb47c>
+			streams:   2, words:   304
+		worklib.agileHWBlock_unit_test:sv <0x01c94808>
+			streams:  15, words: 46177
+		worklib.dpram:v <0x10a297c6>
+			streams:   7, words:  5113
+		worklib.dpram:v <0x210668ac>
+			streams:   8, words:  5432
+		worklib.dpram:v <0x3be4a76b>
+			streams:   8, words:  4527
+		worklib.dpram:v <0x414c8058>
+			streams:   7, words:  4801
+		worklib.dpram:v <0x4bde178a>
+			streams:   7, words:  4807
+		worklib.dpram:v <0x7d491d27>
+			streams:   7, words:  4233
+		worklib.dpram_unit_test:sv <0x678c1689>
+			streams:  73, words: 172035
+		worklib.pixelProcessor:sv <0x40256463>
+			streams:  18, words:  8024
+		worklib.pixelProcessor:sv <0x5e44cdbf>
+			streams:  21, words: 10995
+		worklib.pixelProcessor:sv <0x666b93a1>
+			streams:  18, words:  7440
+		worklib.pixelProcessor_IO:sv <0x23cb1850>
+			streams:  17, words:  4677
+		worklib.pixelProcessor_IO:sv <0x29efaee0>
+			streams:  16, words:  4322
+		worklib.pixelProcessor_IO:sv <0x7564c4e9>
+			streams:  17, words:  4561
+		worklib.pixelProcessor_IO_unit_test:sv <0x0636d802>
+			streams: 190, words: 443381
+		worklib.pixelProcessor_calc:sv <0x29f8c749>
+			streams:   5, words:  2452
+		worklib.pixelProcessor_calc:sv <0x606e0372>
+			streams:   5, words:  2446
+		worklib.pixelProcessor_calc_unit_test:sv <0x0c2756ee>
+			streams: 146, words: 344700
+		worklib.pixelProcessor_ctrl_unit_test:sv <0x46af38c7>
+			streams: 212, words: 472508
+		worklib.pixelProcessor_data_unit_test:sv <0x4fbc9d21>
+			streams:  95, words: 169629
+		worklib.step_1_unit_test:sv <0x788a5183>
+			streams:  24, words: 32261
+		worklib.step_2_unit_test:sv <0x0f398db8>
+			streams:  15, words: 10651
+		worklib.svunit_pkg:sv <0x19db2b5b>
+			streams:  16, words: 14679
+		worklib.svunit_pkg:sv <0x311ef207>
+			streams:   8, words: 11560
+		worklib.svunit_pkg:sv <0x326025b4>
+			streams:  10, words:  6845
+		worklib.svunit_pkg:sv <0x4126d4ac>
+			streams:   7, words:  9829
+		worklib.svunit_pkg:sv <0x4deebf46>
+			streams:   1, words:   469
+		worklib.testrunner:sv <0x7a2a4464>
+			streams:   4, words:  1604
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                     Instances  Unique
+		Modules:                    25      15
+		Verilog packages:            1       1
+		Registers:                 867     770
+		Scalar wires:              170       -
+		Vectored wires:            118       -
+		Named events:                1       1
+		Always blocks:              25       8
+		Initial blocks:             29      29
+		Parallel blocks:           233     233
+		Cont. assignments:          44      44
+		Pseudo assignments:         23      23
+		Compilation units:           1       1
+		SV Class declarations:       4       4
+		SV Class specializations:    4       4
+	Writing initial simulation snapshot: worklib.testrunner:sv
+Loading snapshot worklib.testrunner:sv .................... Done
+ncsim> source /tools/cds_iscape/12.1/tools/inca/files/ncsimrc
+ncsim> run
+INFO:  [0][__ts]: Registering Unit Test Case agileHWBlock_ut
+INFO:  [0][__ts]: Registering Unit Test Case dpram_ut
+INFO:  [0][__ts]: Registering Unit Test Case pixelProcessor_calc_ut
+INFO:  [0][__ts]: Registering Unit Test Case pixelProcessor_ctrl_ut
+INFO:  [0][__ts]: Registering Unit Test Case pixelProcessor_data_ut
+INFO:  [0][__ts]: Registering Unit Test Case pixelProcessor_IO_ut
+INFO:  [0][__ts]: Registering Unit Test Case step_1_ut
+INFO:  [0][__ts]: Registering Unit Test Case step_2_ut
+INFO:  [0][testrunner]: Registering Test Suite __ts
+INFO:  [0][__ts]: RUNNING
+INFO:  [0][agileHWBlock_ut]: RUNNING
+INFO:  [0][agileHWBlock_ut]: iotest::RUNNING
+INFO:  [2][agileHWBlock_ut]: iotest::PASSED
+INFO:  [2][agileHWBlock_ut]: colortest::RUNNING
+INFO:  [4][agileHWBlock_ut]: colortest::PASSED
+INFO:  [4][dpram_ut]: RUNNING
+INFO:  [4][dpram_ut]: write_read_port_0::RUNNING
+INFO:  [31][dpram_ut]: write_read_port_0::PASSED
+INFO:  [31][dpram_ut]: write_read_port_1::RUNNING
+INFO:  [61][dpram_ut]: write_read_port_1::PASSED
+INFO:  [61][dpram_ut]: rdata_0_is_registered::RUNNING
+INFO:  [81][dpram_ut]: rdata_0_is_registered::PASSED
+INFO:  [81][dpram_ut]: rdata_1_is_registered::RUNNING
+INFO:  [101][dpram_ut]: rdata_1_is_registered::PASSED
+INFO:  [101][dpram_ut]: no_write_0_in_reset::RUNNING
+INFO:  [131][dpram_ut]: no_write_0_in_reset::PASSED
+INFO:  [131][dpram_ut]: no_write_1_in_reset::RUNNING
+INFO:  [161][dpram_ut]: no_write_1_in_reset::PASSED
+INFO:  [161][dpram_ut]: no_read_0_in_reset::RUNNING
+INFO:  [191][dpram_ut]: no_read_0_in_reset::PASSED
+INFO:  [191][dpram_ut]: no_read_1_in_reset::RUNNING
+INFO:  [221][dpram_ut]: no_read_1_in_reset::PASSED
+INFO:  [221][dpram_ut]: write_read_port_0_full_range::RUNNING
+INFO:  [5351][dpram_ut]: write_read_port_0_full_range::PASSED
+INFO:  [5351][dpram_ut]: port0_to_port1::RUNNING
+INFO:  [5411][dpram_ut]: port0_to_port1::PASSED
+INFO:  [5411][dpram_ut]: port1_to_port0::RUNNING
+INFO:  [5471][dpram_ut]: port1_to_port0::PASSED
+INFO:  [5471][pixelProcessor_calc_ut]: RUNNING
+INFO:  [5471][pixelProcessor_calc_ut]: no_write_on_1st_column::RUNNING
+INFO:  [5482][pixelProcessor_calc_ut]: no_write_on_1st_column::PASSED
+INFO:  [5482][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column::RUNNING
+INFO:  [5502][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column::PASSED
+INFO:  [5502][pixelProcessor_calc_ut]: write_on_middle_columns::RUNNING
+INFO:  [5512][pixelProcessor_calc_ut]: write_on_middle_columns::PASSED
+INFO:  [5512][pixelProcessor_calc_ut]: write_twice_on_last_column::RUNNING
+INFO:  [5532][pixelProcessor_calc_ut]: write_twice_on_last_column::PASSED
+INFO:  [5532][pixelProcessor_calc_ut]: no_write_on_1st_column_1st_row::RUNNING
+INFO:  [5542][pixelProcessor_calc_ut]: no_write_on_1st_column_1st_row::PASSED
+INFO:  [5542][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column_1st_row::RUNNING
+INFO:  [5562][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column_1st_row::PASSED
+INFO:  [5562][pixelProcessor_calc_ut]: write_twice_on_first_row::RUNNING
+INFO:  [5582][pixelProcessor_calc_ut]: write_twice_on_first_row::PASSED
+INFO:  [5582][pixelProcessor_calc_ut]: write_four_on_first_row_last_column::RUNNING
+INFO:  [5622][pixelProcessor_calc_ut]: write_four_on_first_row_last_column::PASSED
+INFO:  [5622][pixelProcessor_calc_ut]: no_write_on_1st_column_last_row::RUNNING
+INFO:  [5632][pixelProcessor_calc_ut]: no_write_on_1st_column_last_row::PASSED
+INFO:  [5632][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column_last_row::RUNNING
+INFO:  [5652][pixelProcessor_calc_ut]: no_delayed_write_on_1st_column_last_row::PASSED
+INFO:  [5652][pixelProcessor_calc_ut]: write_twice_on_last_row::RUNNING
+INFO:  [5672][pixelProcessor_calc_ut]: write_twice_on_last_row::PASSED
+INFO:  [5672][pixelProcessor_calc_ut]: write_four_on_last_row_last_column::RUNNING
+INFO:  [5712][pixelProcessor_calc_ut]: write_four_on_last_row_last_column::PASSED
+INFO:  [5712][pixelProcessor_calc_ut]: write_addr_for_row_0_column_0::RUNNING
+INFO:  [5722][pixelProcessor_calc_ut]: write_addr_for_row_0_column_0::PASSED
+INFO:  [5722][pixelProcessor_calc_ut]: write_addr_for_row_1_column_0::RUNNING
+INFO:  [5742][pixelProcessor_calc_ut]: write_addr_for_row_1_column_0::PASSED
+INFO:  [5742][pixelProcessor_calc_ut]: write_addr_for_row_0_column_1::RUNNING
+INFO:  [5782][pixelProcessor_calc_ut]: write_addr_for_row_0_column_1::PASSED
+INFO:  [5782][pixelProcessor_calc_ut]: write_addr_for_row_1_column_1::RUNNING
+INFO:  [5832][pixelProcessor_calc_ut]: write_addr_for_row_1_column_1::PASSED
+INFO:  [5832][pixelProcessor_calc_ut]: write_addr_for_row_0_column_2::RUNNING
+INFO:  [5902][pixelProcessor_calc_ut]: write_addr_for_row_0_column_2::PASSED
+INFO:  [5902][pixelProcessor_calc_ut]: write_addr_for_first_of_4_writes_at_end_of_row_0::RUNNING
+INFO:  [20282][pixelProcessor_calc_ut]: write_addr_for_first_of_4_writes_at_end_of_row_0::PASSED
+INFO:  [20282][pixelProcessor_calc_ut]: write_addr_for_last_3_of_4_writes_at_end_of_row_0::RUNNING
+INFO:  [34692][pixelProcessor_calc_ut]: write_addr_for_last_3_of_4_writes_at_end_of_row_0::PASSED
+INFO:  [34692][pixelProcessor_calc_ut]: write_addr_for_row_2_column_0::RUNNING
+INFO:  [49132][pixelProcessor_calc_ut]: write_addr_for_row_2_column_0::PASSED
+INFO:  [49132][pixelProcessor_calc_ut]: write_addr_for_row_2_column_1::RUNNING
+INFO:  [63602][pixelProcessor_calc_ut]: write_addr_for_row_2_column_1::PASSED
+INFO:  [63602][pixelProcessor_calc_ut]: write_addr_for_2_writes_at_end_of_row_2::RUNNING
+INFO:  [92392][pixelProcessor_calc_ut]: write_addr_for_2_writes_at_end_of_row_2::PASSED
+INFO:  [92392][pixelProcessor_calc_ut]: write_addr_for_row_3_column_0::RUNNING
+INFO:  [121232][pixelProcessor_calc_ut]: write_addr_for_row_3_column_0::PASSED
+INFO:  [121232][pixelProcessor_calc_ut]: write_addr_wraps_after_6_rows::RUNNING
+INFO:  [193272][pixelProcessor_calc_ut]: write_addr_wraps_after_6_rows::PASSED
+INFO:  [193272][pixelProcessor_calc_ut]: write_addr_wraps_again_after_12_rows::RUNNING
+INFO:  [351712][pixelProcessor_calc_ut]: write_addr_wraps_again_after_12_rows::PASSED
+INFO:  [351712][pixelProcessor_ctrl_ut]: RUNNING
+INFO:  [351712][pixelProcessor_ctrl_ut]: raddr_1st_group_first_read::RUNNING
+INFO:  [351721][pixelProcessor_ctrl_ut]: raddr_1st_group_first_read::PASSED
+INFO:  [351721][pixelProcessor_ctrl_ut]: raddr_1st_group_second_read::RUNNING
+INFO:  [351741][pixelProcessor_ctrl_ut]: raddr_1st_group_second_read::PASSED
+INFO:  [351741][pixelProcessor_ctrl_ut]: raddr_1st_group_third_read::RUNNING
+INFO:  [351771][pixelProcessor_ctrl_ut]: raddr_1st_group_third_read::PASSED
+INFO:  [351771][pixelProcessor_ctrl_ut]: raddr_2nd_group_first_read::RUNNING
+INFO:  [351811][pixelProcessor_ctrl_ut]: raddr_2nd_group_first_read::PASSED
+INFO:  [351811][pixelProcessor_ctrl_ut]: raddr_2nd_group_second_read::RUNNING
+INFO:  [351861][pixelProcessor_ctrl_ut]: raddr_2nd_group_second_read::PASSED
+INFO:  [351861][pixelProcessor_ctrl_ut]: raddr_end_of_row_third_read::RUNNING
+INFO:  [366261][pixelProcessor_ctrl_ut]: raddr_end_of_row_third_read::PASSED
+INFO:  [366261][pixelProcessor_ctrl_ut]: raddr_is_LINE_WIDTH_after_releasing_row_0::RUNNING
+INFO:  [380671][pixelProcessor_ctrl_ut]: raddr_is_LINE_WIDTH_after_releasing_row_0::PASSED
+INFO:  [380671][pixelProcessor_ctrl_ut]: raddr_wraps_at_mem_depth::RUNNING
+INFO:  [495881][pixelProcessor_ctrl_ut]: raddr_wraps_at_mem_depth::PASSED
+INFO:  [495881][pixelProcessor_ctrl_ut]: raddr_jumps_at_end_of_frame::RUNNING
+INFO:  [639911][pixelProcessor_ctrl_ut]: raddr_jumps_at_end_of_frame::PASSED
+INFO:  [639911][pixelProcessor_ctrl_ut]: raddr_jumps_at_end_of_frame_2nd_frame::RUNNING
+INFO:  [927941][pixelProcessor_ctrl_ut]: raddr_jumps_at_end_of_frame_2nd_frame::PASSED
+INFO:  [927941][pixelProcessor_ctrl_ut]: no_strobe_before_end_of_group::RUNNING
+INFO:  [927981][pixelProcessor_ctrl_ut]: no_strobe_before_end_of_group::PASSED
+INFO:  [927981][pixelProcessor_ctrl_ut]: strobe_for_end_of_first_group::RUNNING
+INFO:  [928031][pixelProcessor_ctrl_ut]: strobe_for_end_of_first_group::PASSED
+INFO:  [928031][pixelProcessor_ctrl_ut]: no_strobe_unless_calc_rdy::RUNNING
+INFO:  [928491][pixelProcessor_ctrl_ut]: no_strobe_unless_calc_rdy::PASSED
+INFO:  [928491][pixelProcessor_ctrl_ut]: no_strobe_after_end_of_group::RUNNING
+INFO:  [928551][pixelProcessor_ctrl_ut]: no_strobe_after_end_of_group::PASSED
+INFO:  [928551][pixelProcessor_ctrl_ut]: strobe_for_end_of_2nd_group::RUNNING
+INFO:  [928631][pixelProcessor_ctrl_ut]: strobe_for_end_of_2nd_group::PASSED
+INFO:  [928631][pixelProcessor_ctrl_ut]: strobe_before_end_of_first_row::RUNNING
+INFO:  [943021][pixelProcessor_ctrl_ut]: strobe_before_end_of_first_row::PASSED
+INFO:  [943021][pixelProcessor_ctrl_ut]: strobe_at_end_of_first_row::RUNNING
+INFO:  [957441][pixelProcessor_ctrl_ut]: strobe_at_end_of_first_row::PASSED
+INFO:  [957441][pixelProcessor_ctrl_ut]: strobe_at_last_row_first_column::RUNNING
+INFO:  [1087091][pixelProcessor_ctrl_ut]: strobe_at_last_row_first_column::PASSED
+INFO:  [1087091][pixelProcessor_ctrl_ut]: strobe_at_last_row_last_column::RUNNING
+INFO:  [1231111][pixelProcessor_ctrl_ut]: strobe_at_last_row_last_column::PASSED
+INFO:  [1231111][pixelProcessor_ctrl_ut]: clear_ingress_read_cnt_before_releasing_row_0::RUNNING
+INFO:  [1245521][pixelProcessor_ctrl_ut]: clear_ingress_read_cnt_before_releasing_row_0::PASSED
+INFO:  [1245521][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_row_0::RUNNING
+INFO:  [1259951][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_row_0::PASSED
+INFO:  [1259951][pixelProcessor_ctrl_ut]: clear_ingress_read_cnt_after_releasing_row_0::RUNNING
+INFO:  [1274391][pixelProcessor_ctrl_ut]: clear_ingress_read_cnt_after_releasing_row_0::PASSED
+INFO:  [1274391][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_row_1::RUNNING
+INFO:  [1303221][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_row_1::PASSED
+INFO:  [1303221][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_bottom_row::RUNNING
+INFO:  [1447251][pixelProcessor_ctrl_ut]: set_ingress_read_cnt_to_release_bottom_row::PASSED
+INFO:  [1447251][pixelProcessor_ctrl_ut]: stall_from_reset::RUNNING
+INFO:  [1447671][pixelProcessor_ctrl_ut]: stall_from_reset::PASSED
+INFO:  [1447671][pixelProcessor_ctrl_ut]: next_raddr_when_ingress_rdy_asserted::RUNNING
+INFO:  [1447891][pixelProcessor_ctrl_ut]: next_raddr_when_ingress_rdy_asserted::PASSED
+INFO:  [1447891][pixelProcessor_ctrl_ut]: hold_raddr_when_ingress_rdy_deasserted::RUNNING
+INFO:  [1447941][pixelProcessor_ctrl_ut]: hold_raddr_when_ingress_rdy_deasserted::PASSED
+INFO:  [1447941][pixelProcessor_ctrl_ut]: strobe_is_single_cycle_regardless_of_ingress_rdy::RUNNING
+INFO:  [1448001][pixelProcessor_ctrl_ut]: strobe_is_single_cycle_regardless_of_ingress_rdy::PASSED
+INFO:  [1448001][pixelProcessor_ctrl_ut]: strobe_row_column_markers_not_affected_by_ingress_rdy::RUNNING
+INFO:  [1448211][pixelProcessor_ctrl_ut]: strobe_row_column_markers_not_affected_by_ingress_rdy::PASSED
+INFO:  [1448211][pixelProcessor_ctrl_ut]: ingress_available_cnt_resets_to_0::RUNNING
+INFO:  [1448221][pixelProcessor_ctrl_ut]: ingress_available_cnt_resets_to_0::PASSED
+INFO:  [1448221][pixelProcessor_ctrl_ut]: ingress_available_cnt_inc_by_1::RUNNING
+INFO:  [1448241][pixelProcessor_ctrl_ut]: ingress_available_cnt_inc_by_1::PASSED
+INFO:  [1448241][pixelProcessor_ctrl_ut]: ingress_available_cnt_inc_by_N::RUNNING
+INFO:  [1448751][pixelProcessor_ctrl_ut]: ingress_available_cnt_inc_by_N::PASSED
+INFO:  [1448751][pixelProcessor_ctrl_ut]: stall_before_ingress_availble_ge_thresh::RUNNING
+INFO:  [1449171][pixelProcessor_ctrl_ut]: stall_before_ingress_availble_ge_thresh::PASSED
+INFO:  [1449171][pixelProcessor_ctrl_ut]: ready_when_ingress_availble_ge_thresh::RUNNING
+INFO:  [1449601][pixelProcessor_ctrl_ut]: ready_when_ingress_availble_ge_thresh::PASSED
+INFO:  [1449601][pixelProcessor_ctrl_ut]: ingress_available_cnt_dec_at_end_of_line::RUNNING
+INFO:  [1483231][pixelProcessor_ctrl_ut]: ingress_available_cnt_dec_at_end_of_line::PASSED
+INFO:  [1483231][pixelProcessor_ctrl_ut]: ingress_available_cnt_dec_at_end_of_frame::RUNNING
+INFO:  [1857661][pixelProcessor_ctrl_ut]: ingress_available_cnt_dec_at_end_of_frame::PASSED
+INFO:  [1857661][pixelProcessor_data_ut]: RUNNING
+INFO:  [1857661][pixelProcessor_data_ut]: top_left::RUNNING
+INFO:  [1857711][pixelProcessor_data_ut]: top_left::PASSED
+INFO:  [1857711][pixelProcessor_data_ut]: top_right::RUNNING
+INFO:  [1872131][pixelProcessor_data_ut]: top_right::PASSED
+INFO:  [1872131][pixelProcessor_data_ut]: inside_top_left::RUNNING
+INFO:  [1886611][pixelProcessor_data_ut]: inside_top_left::PASSED
+INFO:  [1886611][pixelProcessor_data_ut]: inside_top_right::RUNNING
+INFO:  [1915401][pixelProcessor_data_ut]: inside_top_right::PASSED
+INFO:  [1915401][pixelProcessor_data_ut]: bottom_left::RUNNING
+INFO:  [2045051][pixelProcessor_data_ut]: bottom_left::PASSED
+INFO:  [2045051][pixelProcessor_data_ut]: bottom_right::RUNNING
+INFO:  [2189071][pixelProcessor_data_ut]: bottom_right::PASSED
+INFO:  [2189071][pixelProcessor_data_ut]: inside_bottom_left::RUNNING
+INFO:  [2304351][pixelProcessor_data_ut]: inside_bottom_left::PASSED
+INFO:  [2304351][pixelProcessor_data_ut]: inside_bottom_right::RUNNING
+INFO:  [2433941][pixelProcessor_data_ut]: inside_bottom_right::PASSED
+INFO:  [2433941][pixelProcessor_data_ut]: before_8line_boundary::RUNNING
+INFO:  [2534791][pixelProcessor_data_ut]: before_8line_boundary::PASSED
+INFO:  [2534791][pixelProcessor_data_ut]: after_8line_boundary::RUNNING
+INFO:  [2650041][pixelProcessor_data_ut]: after_8line_boundary::PASSED
+INFO:  [2650041][pixelProcessor_data_ut]: next_frame::RUNNING
+INFO:  [2794091][pixelProcessor_data_ut]: next_frame::PASSED
+INFO:  [2794091][pixelProcessor_IO_ut]: RUNNING
+INFO:  [2794091][pixelProcessor_IO_ut]: ingress_write_idle::RUNNING
+INFO:  [2794101][pixelProcessor_IO_ut]: ingress_write_idle::PASSED
+INFO:  [2794101][pixelProcessor_IO_ut]: ingress_write_1_pixel::RUNNING
+INFO:  [2794121][pixelProcessor_IO_ut]: ingress_write_1_pixel::PASSED
+INFO:  [2794121][pixelProcessor_IO_ut]: ingress_write_2_pixels::RUNNING
+INFO:  [2794151][pixelProcessor_IO_ut]: ingress_write_2_pixels::PASSED
+INFO:  [2794151][pixelProcessor_IO_ut]: ingress_write_full_mem::RUNNING
+INFO:  [2947761][pixelProcessor_IO_ut]: ingress_write_full_mem::PASSED
+INFO:  [2947761][pixelProcessor_IO_ut]: ingress_write_wrap::RUNNING
+INFO:  [3101381][pixelProcessor_IO_ut]: ingress_write_wrap::PASSED
+INFO:  [3101381][pixelProcessor_IO_ut]: pixel_cnt_resets_to_0::RUNNING
+INFO:  [3101391][pixelProcessor_IO_ut]: pixel_cnt_resets_to_0::PASSED
+INFO:  [3101391][pixelProcessor_IO_ut]: pixel_cnt_inc_by_1::RUNNING
+INFO:  [3101411][pixelProcessor_IO_ut]: pixel_cnt_inc_by_1::PASSED
+INFO:  [3101411][pixelProcessor_IO_ut]: ingress_ready_below_threshold::RUNNING
+INFO:  [3101721][pixelProcessor_IO_ut]: ingress_ready_below_threshold::PASSED
+INFO:  [3101721][pixelProcessor_IO_ut]: ingress_ready_at_threshold::RUNNING
+INFO:  [3102041][pixelProcessor_IO_ut]: ingress_ready_at_threshold::PASSED
+INFO:  [3102041][pixelProcessor_IO_ut]: ingress_ready_stable_when_pixels_consumed::RUNNING
+INFO:  [3102371][pixelProcessor_IO_ut]: ingress_ready_stable_when_pixels_consumed::PASSED
+INFO:  [3102371][pixelProcessor_IO_ut]: ingress_not_ready_when_pixels_consumed::RUNNING
+INFO:  [3102701][pixelProcessor_IO_ut]: ingress_not_ready_when_pixels_consumed::PASSED
+INFO:  [3102701][pixelProcessor_IO_ut]: no_new_pixel_without_ingress_pixel::RUNNING
+INFO:  [3102711][pixelProcessor_IO_ut]: no_new_pixel_without_ingress_pixel::PASSED
+INFO:  [3102711][pixelProcessor_IO_ut]: new_pixel_with_ingress_pixel::RUNNING
+INFO:  [3102731][pixelProcessor_IO_ut]: new_pixel_with_ingress_pixel::PASSED
+INFO:  [3102731][pixelProcessor_IO_ut]: ingress_full_cnt::RUNNING
+INFO:  [3256291][pixelProcessor_IO_ut]: ingress_full_cnt::PASSED
+INFO:  [3256291][pixelProcessor_IO_ut]: not_otready_when_full::RUNNING
+INFO:  [3409851][pixelProcessor_IO_ut]: not_otready_when_full::PASSED
+INFO:  [3409851][pixelProcessor_IO_ut]: otready_when_not_full::RUNNING
+INFO:  [3563401][pixelProcessor_IO_ut]: otready_when_not_full::PASSED
+INFO:  [3563401][pixelProcessor_IO_ut]: otready_reasserted_at_full_to_not_full::RUNNING
+INFO:  [3716971][pixelProcessor_IO_ut]: otready_reasserted_at_full_to_not_full::PASSED
+INFO:  [3716971][pixelProcessor_IO_ut]: ingress_wrap_cnt::RUNNING
+INFO:  [3870541][pixelProcessor_IO_ut]: ingress_wrap_cnt::PASSED
+INFO:  [3870541][pixelProcessor_IO_ut]: ingress_write_stall::RUNNING
+INFO:  [3870571][pixelProcessor_IO_ut]: ingress_write_stall::PASSED
+INFO:  [3870571][pixelProcessor_IO_ut]: ingress_no_write_when_not_ready::RUNNING
+INFO:  [4024141][pixelProcessor_IO_ut]: ingress_no_write_when_not_ready::PASSED
+INFO:  [4024141][pixelProcessor_IO_ut]: ingress_write_resume_when_ready::RUNNING
+INFO:  [4177811][pixelProcessor_IO_ut]: ingress_write_resume_when_ready::PASSED
+INFO:  [4177811][pixelProcessor_IO_ut]: ingress_read_N_pixels::RUNNING
+INFO:  [4331391][pixelProcessor_IO_ut]: ingress_read_N_pixels::PASSED
+INFO:  [4331391][pixelProcessor_IO_ut]: egress_first_pixel::RUNNING
+INFO:  [4484961][pixelProcessor_IO_ut]: egress_first_pixel::PASSED
+INFO:  [4484961][pixelProcessor_IO_ut]: egress_N_pixels::RUNNING
+INFO:  [4638630][pixelProcessor_IO_ut]: egress_N_pixels::PASSED
+INFO:  [4638630][pixelProcessor_IO_ut]: egress_no_pixels_when_not_egress_rdy::RUNNING
+INFO:  [4638651][pixelProcessor_IO_ut]: egress_no_pixels_when_not_egress_rdy::PASSED
+INFO:  [4638651][pixelProcessor_IO_ut]: egress_N_pixels_w_stall::RUNNING
+INFO:  [4792421][pixelProcessor_IO_ut]: egress_N_pixels_w_stall::PASSED
+INFO:  [4792421][pixelProcessor_IO_ut]: egress_read_wrap::RUNNING
+INFO:  [4946021][pixelProcessor_IO_ut]: egress_read_wrap::PASSED
+INFO:  [4946021][pixelProcessor_IO_ut]: egress_read_wrap_continue::RUNNING
+INFO:  [5099631][pixelProcessor_IO_ut]: egress_read_wrap_continue::PASSED
+INFO:  [5099631][pixelProcessor_IO_ut]: egress_nothing_when_empty::RUNNING
+INFO:  [5099661][pixelProcessor_IO_ut]: egress_nothing_when_empty::PASSED
+INFO:  [5099661][pixelProcessor_IO_ut]: egress_resumes_after_empty::RUNNING
+INFO:  [5253251][pixelProcessor_IO_ut]: egress_resumes_after_empty::PASSED
+INFO:  [5253251][step_1_ut]: RUNNING
+INFO:  [5253251][step_1_ut]: streaming_data::RUNNING
+INFO:  [5259690][step_1_ut]: streaming_data::PASSED
+INFO:  [5259690][step_2_ut]: RUNNING
+INFO:  [5259690][agileHWBlock_ut]: PASSED (2 of 2 tests passing)
+INFO:  [5259690][dpram_ut]: PASSED (11 of 11 tests passing)
+INFO:  [5259690][pixelProcessor_calc_ut]: PASSED (25 of 25 tests passing)
+INFO:  [5259690][pixelProcessor_ctrl_ut]: PASSED (36 of 36 tests passing)
+INFO:  [5259690][pixelProcessor_data_ut]: PASSED (11 of 11 tests passing)
+INFO:  [5259690][pixelProcessor_IO_ut]: PASSED (30 of 30 tests passing)
+INFO:  [5259690][step_1_ut]: PASSED (1 of 1 tests passing)
+INFO:  [5259690][step_2_ut]: PASSED (0 of 0 tests passing)
+
+INFO:  [5259690][__ts]: PASSED (8 of 8 testcases passing)
+
+INFO:  [5259690][testrunner]: PASSED (1 of 1 suites passing) [SVUnit v3.6]
+Simulation complete via $finish(1) at time 5259690 NS + 0
+./.testrunner.sv:40     $finish();
+ncsim> exit
+TOOL:	irun	12.10-s008: Exiting on Nov 20, 2014 at 00:09:56 EST  (total: 00:00:02)
