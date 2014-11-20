@@ -9,8 +9,9 @@ module pixelProcessor_calc_unit_test;
   string name = "pixelProcessor_calc_ut";
   svunit_testcase svunit_ut;
 
-  parameter BG = 'hffffff;
-  parameter FG = 'h000000;
+  parameter BG = 30'h25_ffffff;
+  parameter FG = 30'h25_000000;
+  parameter SH = 30'h25_e0e0e0;
 
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;
@@ -20,6 +21,11 @@ module pixelProcessor_calc_unit_test;
   parameter LAST_COLUMN = 1;
   parameter NOT_LAST_ROW = 0;
   parameter NOT_LAST_COLUMN = 0;
+
+  //parameter FULL_FRAME = 1080;
+  parameter FULL_FRAME = 42; // shorten up the frames for test purposes
+                             // any number divisible by 6 and larger than 12
+                             // will work
 
   `CLK_RESET_FIXTURE(10,1)
 
@@ -376,7 +382,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_addr_for_row_1079_col_0)
     strobe_first_row();
-    repeat(1076) strobe_next_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
  
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
@@ -386,7 +392,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_addr_for_row_1078_col_0)
     strobe_first_row();
-    repeat(1076) strobe_next_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
  
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
@@ -398,7 +404,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_addr_for_first_of_4_writes_at_end_of_row_1078)
     strobe_first_row();
-    repeat(1076) strobe_next_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
     strobe_last_row_to_last_column();
 
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
@@ -408,7 +414,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_addr_for_last_3_of_4_writes_at_end_of_row_1078)
     strobe_first_row();
-    repeat(1076) strobe_next_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
     strobe_last_row_to_last_column();
 
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
@@ -433,6 +439,39 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     expectWriteAddr(LINE_WIDTH_BY4);
+  `SVTEST_END
+
+
+  // pixel math...
+  `SVTEST(write_data_for_row_1_column_0)
+    strobeData({ FG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { FG , BG , BG , BG },
+               { BG , BG , BG , FG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    expectWriteData({ SH , SH , BG , BG });
+  `SVTEST_END
+
+  `SVTEST(write_data_for_row_0_column_0)
+    strobeData({ FG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { FG , BG , BG , BG },
+               { BG , BG , BG , FG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    
+    step();
+    clearStrobe();
+
+    expectWriteData({ FG , SH , BG , BG });
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -498,7 +537,7 @@ module pixelProcessor_calc_unit_test;
     step(2);
   endtask
 
-  task strobeData(bit[29:0] s0, bit[29:0] s1, bit[29:0] s2);
+  task strobeData(bit[119:0] s0, bit[119:0] s1, bit[119:0] s2);
     nextSamplePoint();
 
     slot0 = s0;
@@ -532,6 +571,13 @@ module pixelProcessor_calc_unit_test;
     nextSamplePoint();
     expectWrite();
     `FAIL_IF(waddr_calc !== addr);
+  endtask
+
+  task expectWriteData(bit [119:0] data);
+    nextSamplePoint();
+    expectWrite();
+$display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
+    `FAIL_IF(wdata_calc !== data);
   endtask
 
 endmodule
