@@ -186,6 +186,7 @@ always @* begin
       slot1 = slot1 >> (30 * (10 - 3 - i));
       slot2 = slot2 >> (30 * (10 - 3 - i));
 
+      // find the FG pixels
       above_left =  (slot0[`THIRD_P] == FG);
       above =       (slot0[`SECOND_P] == FG);
       above_right = (slot0[`FIRST_P] == FG);
@@ -201,64 +202,41 @@ always @* begin
       any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
 
       if (center_is_BG && any_surrounding_is_FG) wdata |= { slot1[`SECOND_I] , SH } << (3-i) * 30;
-      else                                       wdata |= slot1[`SECOND]            << (3-i) * 30;
+      else                                       wdata |=   slot1[`SECOND]          << (3-i) * 30;
     end
   end
 
-  //----------------------------------------------------
-  // calculations for the 2nd strobe (first row strobe)
-  //----------------------------------------------------
   else begin
-    wdata[`FIRST] = middle_slot0[`FIRST];
-    if (middle_slot0[`FIRST_P] == BG &&
-        lower_slot0[`FOURTH_P] == FG ||
-        middle_slot0[`SECOND_P] == FG ||
-        lower_slot1[`FOURTH_P] == FG ||
-        middle_slot1[`FIRST_P] == FG ||
-        middle_slot1[`SECOND_P] == FG)
-    begin
-      wdata[`FIRST] = { middle_slot0[`FIRST_I] , SH };
-    end
+    for (int i=0; i<4; i++) begin
+      // concatenate everything
+      slot0 = { group_slot0[29:0] , upper_slot0 , middle_slot0 , lower_slot0 };
+      slot1 = { group_slot1[29:0] , upper_slot1 , middle_slot1 , lower_slot1 };
+      slot2 = { group_slot2[29:0] , upper_slot2 , middle_slot2 , lower_slot2 };
 
-    wdata[`SECOND] = middle_slot0[`SECOND];
-    if (middle_slot0[`SECOND_P] == BG &&
-        middle_slot0[`FIRST_P] == FG ||
-        middle_slot0[`THIRD_P] == FG ||
-        middle_slot1[`FIRST_P] == FG ||
-        middle_slot1[`SECOND_P] == FG ||
-        middle_slot1[`THIRD_P] == FG)
-    begin
-      wdata[`SECOND] = { middle_slot0[`SECOND_I] , SH };
-    end
+      // shift out the lsbs
+      slot0 = slot0 >> (30 * (10 - 7 - i));
+      slot1 = slot1 >> (30 * (10 - 7 - i));
+      slot2 = slot2 >> (30 * (10 - 7 - i));
 
-    wdata[`THIRD] = middle_slot0[`THIRD];
-    if (middle_slot0[`THIRD_P] == BG &&
-        middle_slot0[`SECOND_P] == FG ||
-        middle_slot0[`FOURTH_P] == FG ||
-        middle_slot1[`SECOND_P] == FG ||
-        middle_slot1[`THIRD_P] == FG  ||
-        middle_slot1[`FOURTH_P] == FG)
-    begin
-      wdata[`THIRD] = { middle_slot0[`THIRD_I] , SH };
-    end
+      // find the FG pixels
+      above_left =  0; //(slot0[`THIRD_P] == FG);
+      above =       0; //(slot0[`SECOND_P] == FG);
+      above_right = 0; //(slot0[`FIRST_P] == FG);
 
-    wdata[`FOURTH] = middle_slot0[`FOURTH];
-    if (middle_slot0[`FOURTH_P] == BG &&
-        middle_slot0[`THIRD_P] == FG ||
-        upper_slot0[`FIRST_P] == FG ||
-        middle_slot1[`THIRD_P] == FG  ||
-        middle_slot1[`FOURTH_P] == FG ||
-        upper_slot1[`FIRST_P] == FG)
-    begin
-      wdata[`FOURTH] = { middle_slot0[`FOURTH_I] , SH };
+      left =        (slot0[`THIRD_P] == FG);
+      center_is_BG = (slot0[`SECOND_P] == BG);
+      right =       (slot0[`FIRST_P] == FG);
+
+      below_left =  (slot1[`THIRD_P] == FG);
+      below =       (slot1[`SECOND_P] == FG);
+      below_right = (slot1[`FIRST_P] == FG);
+
+      any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
+
+      if (center_is_BG && any_surrounding_is_FG) wdata |= { slot0[`SECOND_I] , SH } << (3-i) * 30;
+      else                                       wdata |=   slot0[`SECOND]          << (3-i) * 30;
     end
   end
-
-  //--------------------------------------------------------------
-  // as upper_slots are shifted to middle_slots, we need to carry
-  // over the lower[`FOURTH] so it doesn't get shifted out before
-  // it's used
-  //--------------------------------------------------------------
 end
 
 assign wr = strobe_normal        ||
