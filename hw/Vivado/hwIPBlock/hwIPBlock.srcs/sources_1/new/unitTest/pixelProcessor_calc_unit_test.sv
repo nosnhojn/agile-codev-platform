@@ -690,6 +690,9 @@ module pixelProcessor_calc_unit_test;
     nextSamplePoint();
     expectWrite();
 $display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
+//$display("slot0:0x%60x", calc.slot0);
+//$display("slot1:0x%60x", calc.slot1);
+//$display("slot2:0x%60x", calc.slot2);
     `FAIL_IF(wdata_calc !== data);
   endtask
 
