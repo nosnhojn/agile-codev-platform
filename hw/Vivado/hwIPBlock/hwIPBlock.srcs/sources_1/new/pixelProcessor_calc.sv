@@ -175,80 +175,33 @@ always @* begin
   // calculations for the 1st (normal) strobe
   //------------------------------------------
   if (calc_strobe) begin
-    // concatenate everything
-    slot0 = { group_slot0[29:0] , upper_slot0 , middle_slot0 , lower_slot0 };
-    slot1 = { group_slot1[29:0] , upper_slot1 , middle_slot1 , lower_slot1 };
-    slot2 = { group_slot2[29:0] , upper_slot2 , middle_slot2 , lower_slot2 };
+    for (int i=0; i<4; i++) begin
+      // concatenate everything
+      slot0 = { group_slot0[29:0] , upper_slot0 , middle_slot0 , lower_slot0 };
+      slot1 = { group_slot1[29:0] , upper_slot1 , middle_slot1 , lower_slot1 };
+      slot2 = { group_slot2[29:0] , upper_slot2 , middle_slot2 , lower_slot2 };
 
-    // shift out the msbs
-    slot0 = slot0 << (30 * 0);
-    slot1 = slot1 << (30 * 0);
-    slot2 = slot2 << (30 * 0);
+      // shift out the lsbs
+      slot0 = slot0 >> (30 * (10 - 3 - i));
+      slot1 = slot1 >> (30 * (10 - 3 - i));
+      slot2 = slot2 >> (30 * (10 - 3 - i));
 
-    // shift out the lsbs
-    slot0 = slot0 >> (30 * 7);
-    slot1 = slot1 >> (30 * 7);
-    slot2 = slot2 >> (30 * 7);
+      above_left =  (slot0[`THIRD_P] == FG);
+      above =       (slot0[`SECOND_P] == FG);
+      above_right = (slot0[`FIRST_P] == FG);
 
-    above_left =  (slot0[`THIRD_P] == FG);
-    above =       (slot0[`SECOND_P] == FG);
-    above_right = (slot0[`FIRST_P] == FG);
+      left =        (slot1[`THIRD_P] == FG);
+      center_is_BG = (slot1[`SECOND_P] == BG);
+      right =       (slot1[`FIRST_P] == FG);
 
-    left =        (slot1[`THIRD_P] == FG);
-    center_is_BG = (slot1[`SECOND_P] == BG);
-    right =       (slot1[`FIRST_P] == FG);
+      below_left =  (slot2[`THIRD_P] == FG);
+      below =       (slot2[`SECOND_P] == FG);
+      below_right = (slot2[`FIRST_P] == FG);
 
-    below_left =  (slot2[`THIRD_P] == FG);
-    below =       (slot2[`SECOND_P] == FG);
-    below_right = (slot2[`FIRST_P] == FG);
+      any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
 
-    any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
-
-    if (center_is_BG && any_surrounding_is_FG) wdata |= { slot1[`SECOND_I] , SH } << 3 * 30;
-    else                                       wdata |= slot1[`SECOND]            << 3 * 30;
-
-    wdata[`THIRD] = upper_slot1[`THIRD];
-    if (upper_slot1[`THIRD_P] == BG &&
-        upper_slot0[`SECOND_P] == FG ||
-        upper_slot0[`THIRD_P] == FG  ||
-        upper_slot0[`FOURTH_P] == FG ||
-        upper_slot1[`SECOND_P] == FG ||
-        upper_slot1[`FOURTH_P] == FG ||
-        upper_slot2[`SECOND_P] == FG ||
-        upper_slot2[`THIRD_P] == FG  ||
-        upper_slot2[`FOURTH_P] == FG)
-    begin
-      wdata[`THIRD] = { upper_slot1[`THIRD_I] , SH };
-    end
-
-    wdata[`SECOND] = upper_slot1[`SECOND];
-    if (upper_slot1[`SECOND_P] == BG &&
-        upper_slot0[`FIRST_P] == FG ||
-        upper_slot0[`SECOND_P] == FG ||
-        upper_slot0[`THIRD_P] == FG ||
-        upper_slot1[`FIRST_P] == FG ||
-        upper_slot1[`THIRD_P] == FG ||
-        upper_slot2[`FIRST_P] == FG ||
-        upper_slot2[`SECOND_P] == FG ||
-        upper_slot2[`THIRD_P] == FG)
-    begin
-      wdata[`SECOND] = { upper_slot1[`SECOND_I] , SH };
-    end
-
-    wdata[`FIRST] = upper_slot1[`FIRST];
-    if (upper_slot1[`FIRST_P] == BG &&
-      middle_slot2[`FOURTH_P] == FG ||
-      upper_slot2[`FIRST_P] == FG ||
-      upper_slot2[`SECOND_P] == FG ||
-
-      middle_slot1[`FOURTH_P] == FG ||
-      upper_slot1[`SECOND_P] == FG ||
-
-      middle_slot0[`FOURTH_P] == FG ||
-      upper_slot0[`FIRST_P] == FG ||
-      upper_slot0[`SECOND_P] == FG)
-    begin
-      wdata[`FIRST] = { upper_slot1[`FIRST_I] , SH };
+      if (center_is_BG && any_surrounding_is_FG) wdata |= { slot1[`SECOND_I] , SH } << (3-i) * 30;
+      else                                       wdata |= slot1[`SECOND]            << (3-i) * 30;
     end
   end
 
