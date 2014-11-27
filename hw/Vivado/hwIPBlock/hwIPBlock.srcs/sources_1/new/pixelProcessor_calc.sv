@@ -71,6 +71,10 @@ logic [119:0] lower_slot0;
 logic [119:0] lower_slot1;
 logic [119:0] lower_slot2;
 
+logic [119:0] next_lower_slot0;
+logic [119:0] next_lower_slot1;
+logic [119:0] next_lower_slot2;
+
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     strobe_end_of_column <= 0;
@@ -82,6 +86,14 @@ always @(negedge rst_n or posedge clk) begin
     strobe_4_of_4 <= 0;
 
     waddr <= 0;
+
+    lower_slot0 <= { 4 { 6'h0 , BG } };
+    lower_slot1 <= { 4 { 6'h0 , BG } };
+    lower_slot2 <= { 4 { 6'h0 , BG } };
+                                    
+    upper_slot0 <= { 4 { 6'h0 , BG } };
+    upper_slot1 <= { 4 { 6'h0 , BG } };
+    upper_slot2 <= { 4 { 6'h0 , BG } };
   end
 
   else begin
@@ -90,9 +102,9 @@ always @(negedge rst_n or posedge clk) begin
       upper_slot1 <= group_slot1;
       upper_slot2 <= group_slot2;
 
-      lower_slot0 <= upper_slot0;
-      lower_slot1 <= upper_slot1;
-      lower_slot2 <= upper_slot2;
+      lower_slot0 <= next_lower_slot0;
+      lower_slot1 <= next_lower_slot1;
+      lower_slot2 <= next_lower_slot2;
     end
 
     strobe_end_of_column <= calc_strobe && last_column_flag;
@@ -131,13 +143,21 @@ end
 always @* begin
   wdata = 0;
 
-  // 1st strobe
+  //------------------------------------------
+  // calculations for the 1st (normal) strobe
+  //------------------------------------------
   if (calc_strobe) begin
     wdata[`FIRST] = upper_slot1[`FIRST];
     if (upper_slot1[`FIRST_P] == BG &&
+
+        lower_slot0[`FOURTH_P] == FG ||
         upper_slot0[`FIRST_P] == FG ||
         upper_slot0[`SECOND_P] == FG ||
+
+        //lower_slot1[`FOURTH_P] == FG ||
         upper_slot1[`SECOND_P] == FG ||
+
+        //lower_slot2[`FOURTH_P] == FG ||
         upper_slot2[`FIRST_P] == FG ||
         upper_slot2[`SECOND_P] == FG)
     begin
@@ -187,7 +207,9 @@ always @* begin
     end
   end
 
-  // 2nd strobe
+  //----------------------------------------------------
+  // calculations for the 2nd strobe (first row strobe)
+  //----------------------------------------------------
   else begin
     wdata[`FIRST] = lower_slot0[`FIRST];
     if (lower_slot0[`FIRST_P] == BG &&
@@ -231,6 +253,19 @@ always @* begin
       wdata[`FOURTH] = { lower_slot0[`FOURTH_I] , SH };
     end
   end
+
+  //--------------------------------------------------------------
+  // as upper_slots are shifted to lower_slots, we need to carry
+  // over the lower[`FOURTH] so it doesn't get shifted out before
+  // it's used
+  //--------------------------------------------------------------
+  next_lower_slot0[`FIRST] = (lower_slot0[`FOURTH_P] == FG) ? { upper_slot0[`FIRST_I] , SH } : upper_slot0[`FIRST];
+  next_lower_slot1[`FIRST] = (lower_slot1[`FOURTH_P] == FG) ? { upper_slot1[`FIRST_I] , SH } : upper_slot1[`FIRST];
+  next_lower_slot2[`FIRST] = (lower_slot2[`FOURTH_P] == FG) ? { upper_slot2[`FIRST_I] , SH } : upper_slot2[`FIRST];
+
+  next_lower_slot0[119:30] = upper_slot0[119:30];
+  next_lower_slot1[119:30] = upper_slot1[119:30];
+  next_lower_slot2[119:30] = upper_slot2[119:30];
 end
 
 assign wr = strobe_normal        ||

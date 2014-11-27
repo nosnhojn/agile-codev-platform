@@ -450,8 +450,8 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     strobeData({ BG , BG , BG , BG },
-               { FG , BG , BG , BG },
-               { BG , BG , BG , FG });
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     expectWriteData({ SH , SH , BG , BG });
@@ -462,7 +462,7 @@ module pixelProcessor_calc_unit_test;
                { BG , BG , BG , BG },
                { BG , BG , BG , BG });
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-
+ 
     strobeData({ BG , BG , BG , BG },
                { FG , BG , BG , BG },
                { BG , BG , BG , FG });
@@ -470,8 +470,49 @@ module pixelProcessor_calc_unit_test;
     
     step();
     clearStrobe();
-
+ 
     expectWriteData({ FG , SH , BG , BG });
+  `SVTEST_END
+ 
+  `SVTEST(write_data_for_row_1_column_1)
+    strobeData({ FG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , FG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    expectWriteData({ SH , BG , BG , SH });
+  `SVTEST_END
+ 
+  `SVTEST(write_data_for_row_0_column_1)
+    strobeData({ FG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    
+    step();
+    clearStrobe();
+ 
+    expectWriteData({ BG , BG , BG , SH });
   `SVTEST_END
 
   `SVUNIT_TESTS_END
@@ -576,7 +617,7 @@ module pixelProcessor_calc_unit_test;
   task expectWriteData(bit [119:0] data);
     nextSamplePoint();
     expectWrite();
-$display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
+//$display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
     `FAIL_IF(wdata_calc !== data);
   endtask
 
