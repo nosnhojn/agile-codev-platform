@@ -1,20 +1,3 @@
-`define FIRST       29:0
-`define FIRST_P     23:0
-`define FIRST_I    29:24
-
-`define SECOND     59:30
-`define SECOND_P   53:30
-`define SECOND_I   59:54
-
-`define THIRD      89:60
-`define THIRD_P    83:60
-`define THIRD_I    89:84
-
-`define FOURTH    119:90
-`define FOURTH_P  113:90
-`define FOURTH_I 119:114
-
-
 module pixelProcessor_calc
 #(
   PIXEL_WIDTH = 1920,
@@ -22,7 +5,8 @@ module pixelProcessor_calc
   PIXELS_PER_READ = 4,
   BG = 24'hffffff,
   FG = 24'h000000,
-  SH = 24'he0e0e0
+  SH = 24'he0e0e0,
+  EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ
 )
 (
   input         clk,
@@ -48,49 +32,22 @@ module pixelProcessor_calc
   output logic  egress_rdy
 );
 
-parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
 
-// the single strobe for all strobes when !first_column_flag
+
+
+//----------------------------------------------------
+//----------------------------------------------------
+// calculate 1, 2 or 4 wr strobe pulses to the memory
+// depending on the row/column flags received
+//----------------------------------------------------
+//----------------------------------------------------
+
 wire  strobe_normal;
-
 logic strobe_end_of_column;
-
-// second strobe for strobes on the top and bottom row
 logic strobe_2_of_2;
-
-// 2nd/3rd/4th strobe for strobes at the top right and bottom right corners
 logic strobe_2_of_4;
 logic strobe_3_of_4;
 logic strobe_4_of_4;
-
-logic [119:0] upper_slot0;
-logic [119:0] upper_slot1;
-logic [119:0] upper_slot2;
-
-logic [119:0] middle_slot0;
-logic [119:0] middle_slot1;
-logic [119:0] middle_slot2;
-
-logic [119:90] lower_slot0;
-logic [119:90] lower_slot1;
-logic [119:90] lower_slot2;
-
-logic above_left;
-logic above;
-logic above_right;
-
-logic left;
-logic right;
-
-logic below_left;
-logic below;
-logic below_right;
-
-logic any_surrounding_is_FG;
-
-logic [(2*120+30+30)-1:0] slot0;
-logic [(2*120+30+30)-1:0] slot1;
-logic [(2*120+30+30)-1:0] slot2;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
@@ -101,37 +58,9 @@ always @(negedge rst_n or posedge clk) begin
     strobe_2_of_4 <= 0;
     strobe_3_of_4 <= 0;
     strobe_4_of_4 <= 0;
-
-    waddr <= 0;
-                                    
-    upper_slot0 <= { 4 { 6'h0 , BG } };
-    upper_slot1 <= { 4 { 6'h0 , BG } };
-    upper_slot2 <= { 4 { 6'h0 , BG } };
-
-    middle_slot0 <= { 4 { 6'h0 , BG } };
-    middle_slot1 <= { 4 { 6'h0 , BG } };
-    middle_slot2 <= { 4 { 6'h0 , BG } };
-
-    lower_slot0 <= { 6'h0 , BG };
-    lower_slot1 <= { 6'h0 , BG };
-    lower_slot2 <= { 6'h0 , BG };
   end
 
   else begin
-    if (calc_strobe) begin
-      upper_slot0 <= group_slot0;
-      upper_slot1 <= group_slot1;
-      upper_slot2 <= group_slot2;
-
-      middle_slot0 <= upper_slot0;
-      middle_slot1 <= upper_slot1;
-      middle_slot2 <= upper_slot2;
-
-      lower_slot0 <= middle_slot0[`FOURTH];
-      lower_slot1 <= middle_slot1[`FOURTH];
-      lower_slot2 <= middle_slot2[`FOURTH];
-    end
-
     strobe_end_of_column <= calc_strobe && last_column_flag;
 
     strobe_2_of_2 <= calc_strobe && first_row_flag && !first_column_flag ||
@@ -143,7 +72,23 @@ always @(negedge rst_n or posedge clk) begin
     strobe_3_of_4 <= strobe_2_of_4;
 
     strobe_4_of_4 <= strobe_3_of_4;
+  end
+end
 
+
+//------------------------------------------------
+//------------------------------------------------
+// calculate the waddr to the memory based on the
+// frame position flags
+//------------------------------------------------
+//------------------------------------------------
+
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    waddr <= 0;
+  end
+
+  else begin
     if (calc_strobe && first_row_flag && first_column_flag) begin
       waddr <= EFFECTIVE_WIDTH;
     end
@@ -165,79 +110,103 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
+
+//---------------------------------------------------
+//---------------------------------------------------
+// cycle through each of the 4 memory locations that
+// are being recalculated on a given cycle and
+// populate the wdata vector to get written back to
+// the memory
+//---------------------------------------------------
+//---------------------------------------------------
+
+logic [(9*30)-1:0] slot0;
+logic [(9*30)-1:0] slot1;
+logic [(9*30)-1:0] slot2;
+
+logic [(2*120+30+30)-1:0] tmp_slot0;
+logic [(2*120+30+30)-1:0] tmp_slot1;
+logic [(2*120+30+30)-1:0] tmp_slot2;
+
+wire [2:0] shift_4_fewer_without_calc_strobe;
+
+logic above_left;
+logic above;
+logic above_right;
+logic left;
+logic right;
+logic below_left;
+logic below;
+logic below_right;
 logic center_is_BG;
+logic any_surrounding_is_FG;
 
 always @* begin
-
   wdata = 0;
 
-  //------------------------------------------
-  // calculations for the 1st (normal) strobe
-  //------------------------------------------
-  if (calc_strobe) begin
-    for (int i=0; i<4; i++) begin
-      // concatenate everything
-      slot0 = { group_slot0[29:0] , upper_slot0 , middle_slot0 , lower_slot0 };
-      slot1 = { group_slot1[29:0] , upper_slot1 , middle_slot1 , lower_slot1 };
-      slot2 = { group_slot2[29:0] , upper_slot2 , middle_slot2 , lower_slot2 };
-
-      // shift out the lsbs
-      slot0 = slot0 >> (30 * (10 - 3 - i));
-      slot1 = slot1 >> (30 * (10 - 3 - i));
-      slot2 = slot2 >> (30 * (10 - 3 - i));
-
-      // find the FG pixels
-      above_left =  (slot0[`THIRD_P] == FG);
-      above =       (slot0[`SECOND_P] == FG);
-      above_right = (slot0[`FIRST_P] == FG);
-
-      left =        (slot1[`THIRD_P] == FG);
-      center_is_BG = (slot1[`SECOND_P] == BG);
-      right =       (slot1[`FIRST_P] == FG);
-
-      below_left =  (slot2[`THIRD_P] == FG);
-      below =       (slot2[`SECOND_P] == FG);
-      below_right = (slot2[`FIRST_P] == FG);
-
-      any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
-
-      if (center_is_BG && any_surrounding_is_FG) wdata |= { slot1[`SECOND_I] , SH } << (3-i) * 30;
-      else                                       wdata |=   slot1[`SECOND]          << (3-i) * 30;
+  for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
+    // take a snapshot of the group slot history
+    // (depends on the calc_strobe)
+    if (calc_strobe) begin
+      tmp_slot0 = { group_slot0[29:0] , slot0 };
+      tmp_slot1 = { group_slot1[29:0] , slot1 };
+      tmp_slot2 = { group_slot2[29:0] , slot2 };
+    end else begin
+      tmp_slot0 = { 10 { 6'h0 , BG } };
+      tmp_slot1 = { group_slot0[29:0] , slot0 };
+      tmp_slot2 = { group_slot1[29:0] , slot1 };
     end
+
+    // shift out the lsbs
+    tmp_slot0 = tmp_slot0 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
+    tmp_slot1 = tmp_slot1 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
+    tmp_slot2 = tmp_slot2 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
+
+    // find the FG pixels
+    above_left =   (tmp_slot0[83:60] == FG);
+    above =        (tmp_slot0[53:30] == FG);
+    above_right =  (tmp_slot0[23:0] == FG);
+
+    left =         (tmp_slot1[83:60] == FG);
+    center_is_BG = (tmp_slot1[53:30] == BG);
+    right =        (tmp_slot1[23:0] == FG);
+
+    below_left =   (tmp_slot2[83:60] == FG);
+    below =        (tmp_slot2[53:30] == FG);
+    below_right =  (tmp_slot2[23:0] == FG);
+
+    any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
+
+    if (center_is_BG && any_surrounding_is_FG) wdata |= { tmp_slot1[59:54] , SH } << (3-pixel_idx) * 30;
+    else                                       wdata |=   tmp_slot1[59:30]          << (3-pixel_idx) * 30;
+  end
+end
+
+
+//---------------------------------------
+// shift buffer for the group_slot input
+//---------------------------------------
+
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    slot0 <= { 9 { 6'h0 , BG } };
+    slot1 <= { 9 { 6'h0 , BG } };
+    slot2 <= { 9 { 6'h0 , BG } };
   end
 
   else begin
-    for (int i=0; i<4; i++) begin
-      // concatenate everything
-      slot0 = { group_slot0[29:0] , upper_slot0 , middle_slot0 , lower_slot0 };
-      slot1 = { group_slot1[29:0] , upper_slot1 , middle_slot1 , lower_slot1 };
-      slot2 = { group_slot2[29:0] , upper_slot2 , middle_slot2 , lower_slot2 };
-
-      // shift out the lsbs
-      slot0 = slot0 >> (30 * (10 - 7 - i));
-      slot1 = slot1 >> (30 * (10 - 7 - i));
-      slot2 = slot2 >> (30 * (10 - 7 - i));
-
-      // find the FG pixels
-      above_left =  0; //(slot0[`THIRD_P] == FG);
-      above =       0; //(slot0[`SECOND_P] == FG);
-      above_right = 0; //(slot0[`FIRST_P] == FG);
-
-      left =        (slot0[`THIRD_P] == FG);
-      center_is_BG = (slot0[`SECOND_P] == BG);
-      right =       (slot0[`FIRST_P] == FG);
-
-      below_left =  (slot1[`THIRD_P] == FG);
-      below =       (slot1[`SECOND_P] == FG);
-      below_right = (slot1[`FIRST_P] == FG);
-
-      any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
-
-      if (center_is_BG && any_surrounding_is_FG) wdata |= { slot0[`SECOND_I] , SH } << (3-i) * 30;
-      else                                       wdata |=   slot0[`SECOND]          << (3-i) * 30;
+    if (calc_strobe) begin
+      slot0 = { group_slot0 , slot0[(9*30)-1:(4*30)] };
+      slot1 = { group_slot1 , slot1[(9*30)-1:(4*30)] };
+      slot2 = { group_slot2 , slot2[(9*30)-1:(4*30)] };
     end
   end
 end
+
+
+//--------------------------
+// misc combinational logic
+//--------------------------
 
 assign wr = strobe_normal        ||
             strobe_end_of_column ||
@@ -247,5 +216,6 @@ assign wr = strobe_normal        ||
             strobe_4_of_4;
 
 assign strobe_normal = (calc_strobe & !first_column_flag);
+assign shift_4_fewer_without_calc_strobe = !calc_strobe<<2;
 
 endmodule
