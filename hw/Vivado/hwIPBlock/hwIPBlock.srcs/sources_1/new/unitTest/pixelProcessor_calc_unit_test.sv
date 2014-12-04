@@ -723,6 +723,65 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
 
 
+  // start of last row
+  `SVTEST(write_data_for_last_rows_first_column)
+    strobe_first_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
+
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , FG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    
+    expectWriteData({ BG , SH , SH , SH });
+    step();
+    clearStrobe();
+    expectWriteData({ BG , SH , FG , SH });
+  `SVTEST_END
+
+
+  // end of last row
+  `SVTEST(write_data_for_last_rows_last_column)
+    strobe_first_row();
+    repeat(FULL_FRAME-4) strobe_next_row();
+
+    strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+
+    repeat (LINE_WIDTH_BY4-4) strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , FG , BG },
+               { BG , FG , BG , BG });
+    strobeFlagsAndClear(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , FG , BG , BG },
+               { FG , BG , BG , BG });
+    strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
+    
+    expectWriteData({ SH , FG , SH , SH });
+    step();
+    clearStrobe();
+    expectWriteData({ SH , SH , FG , SH });
+
+    step();
+    expectWriteData({ FG , SH , SH , BG });
+
+    step();
+    expectWriteData({ SH , FG , SH , BG });
+  `SVTEST_END
+
+
  
   `SVUNIT_TESTS_END
 

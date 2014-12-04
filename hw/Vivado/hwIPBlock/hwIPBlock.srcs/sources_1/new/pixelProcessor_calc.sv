@@ -45,34 +45,58 @@ module pixelProcessor_calc
 
 wire  strobe_normal;
 logic strobe_last_column;
-logic strobe_2_of_2;
-logic strobe_2_of_4;
-logic strobe_3_of_4;
-logic strobe_4_of_4;
+wire strobe_2_of_2;
+logic strobe_2_of_2_first_row;
+logic strobe_2_of_2_last_row;
+wire strobe_2_of_4;
+logic strobe_2_of_4_first_row;
+logic strobe_2_of_4_last_row;
+wire strobe_3_of_4;
+logic strobe_3_of_4_first_row;
+logic strobe_3_of_4_last_row;
+wire strobe_4_of_4;
+logic strobe_4_of_4_first_row;
+logic strobe_4_of_4_last_row;
+
+assign strobe_2_of_2 = strobe_2_of_2_first_row ||
+                       strobe_2_of_2_last_row;
+assign strobe_2_of_4 = strobe_2_of_4_first_row ||
+                       strobe_2_of_4_last_row;
+assign strobe_3_of_4 = strobe_3_of_4_first_row ||
+                       strobe_3_of_4_last_row;
+assign strobe_4_of_4 = strobe_4_of_4_first_row ||
+                       strobe_4_of_4_last_row;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     strobe_last_column <= 0;
 
-    strobe_2_of_2 <= 0;
+    strobe_2_of_2_first_row <= 0;
+    strobe_2_of_2_last_row <= 0;
 
-    strobe_2_of_4 <= 0;
-    strobe_3_of_4 <= 0;
-    strobe_4_of_4 <= 0;
+    strobe_2_of_4_first_row <= 0;
+    strobe_3_of_4_first_row <= 0;
+    strobe_4_of_4_first_row <= 0;
+
+    strobe_2_of_4_last_row <= 0;
+    strobe_3_of_4_last_row <= 0;
+    strobe_4_of_4_last_row <= 0;
   end
 
   else begin
     strobe_last_column <= calc_strobe && last_column_flag;
 
-    strobe_2_of_2 <= calc_strobe && first_row_flag && !first_column_flag ||
-                     calc_strobe && last_row_flag && !first_column_flag;
+    strobe_2_of_2_first_row <= calc_strobe && first_row_flag && !first_column_flag;
+    strobe_2_of_2_last_row <= calc_strobe && last_row_flag && !first_column_flag;
 
-    strobe_2_of_4 <= calc_strobe && first_row_flag && last_column_flag ||
-                     calc_strobe && last_row_flag && last_column_flag;
+    strobe_2_of_4_first_row <= calc_strobe && first_row_flag && last_column_flag;
+    strobe_2_of_4_last_row <= calc_strobe && last_row_flag && last_column_flag;
 
-    strobe_3_of_4 <= strobe_2_of_4;
+    strobe_3_of_4_first_row <= strobe_2_of_4_first_row;
+    strobe_3_of_4_last_row <= strobe_2_of_4_last_row;
 
-    strobe_4_of_4 <= strobe_3_of_4;
+    strobe_4_of_4_first_row <= strobe_3_of_4_first_row;
+    strobe_4_of_4_last_row <= strobe_3_of_4_last_row;
   end
 end
 
@@ -148,7 +172,16 @@ always @* begin
   for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
     // take a snapshot of the group slot history
     // (depends on the calc_strobe)
-    if (calc_strobe) begin
+    if (calc_strobe && last_row_flag) begin
+      tmp_slot0 = { group_slot1[29:0] , slot1 };
+      tmp_slot1 = { group_slot2[29:0] , slot2 };
+      tmp_slot2 = BLANK_SLOT;
+
+      tmp_slot0 = tmp_slot0 >> (30 * (7 - pixel_idx));
+      tmp_slot1 = tmp_slot1 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = tmp_slot2 >> (30 * (7 - pixel_idx));
+
+    end else if (calc_strobe) begin
       tmp_slot0 = { group_slot0[29:0] , slot0 };
       tmp_slot1 = { group_slot1[29:0] , slot1 };
       tmp_slot2 = { group_slot2[29:0] , slot2 };
@@ -157,20 +190,35 @@ always @* begin
       tmp_slot1 = tmp_slot1 >> (30 * (7 - pixel_idx));
       tmp_slot2 = tmp_slot2 >> (30 * (7 - pixel_idx));
 
-    end else if (strobe_2_of_2 || strobe_2_of_4) begin
+    end else if (strobe_2_of_2_first_row || strobe_2_of_4_first_row) begin
       tmp_slot0 = BLANK_SLOT >> (30 * (3 - pixel_idx));
       tmp_slot1 = slot0 >> (30 * (3 - pixel_idx));
       tmp_slot2 = slot1 >> (30 * (3 - pixel_idx));
 
-    end else if (strobe_3_of_4 || strobe_last_column) begin
+    end else if (strobe_2_of_2_last_row || strobe_2_of_4_last_row) begin
+      tmp_slot0 = slot0 >> (30 * (3 - pixel_idx));
+      tmp_slot1 = slot1 >> (30 * (3 - pixel_idx));
+      tmp_slot2 = slot2 >> (30 * (3 - pixel_idx));
+
+    end else if (strobe_3_of_4_first_row || strobe_last_column) begin
       tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
       tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
       tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
 
-    end else if (strobe_4_of_4) begin
+    end else if (strobe_3_of_4_last_row) begin
+      tmp_slot0 = slot1 >> (30 * (7 - pixel_idx));
+      tmp_slot1 = slot2 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = BLANK_SLOT;
+
+    end else if (strobe_4_of_4_first_row) begin
       tmp_slot0 = BLANK_SLOT >> (30 * (7 - pixel_idx));
       tmp_slot1 = slot0 >> (30 * (7 - pixel_idx));
       tmp_slot2 = slot1 >> (30 * (7 - pixel_idx));
+
+    end else if (strobe_4_of_4_last_row) begin
+      tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
+      tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
     end
 
     // find the FG pixels
