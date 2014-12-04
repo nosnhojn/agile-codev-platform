@@ -195,7 +195,7 @@ module step_2_unit_test;
     .wr(wr_calc),
 
     .egress_rdy(egress_rdy),
-    .egress_read_cnt(egress_read_cnt)
+    .egress_dec(egress_read_cnt)
   );
 
 

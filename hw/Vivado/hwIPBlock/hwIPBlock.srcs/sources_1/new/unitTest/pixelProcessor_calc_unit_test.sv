@@ -42,7 +42,8 @@ module pixelProcessor_calc_unit_test;
   logic [119:0] slot1;
   logic [119:0] slot2;
 
-  wire         egress_read_cnt;
+  wire [31:0]  egress_avail;
+  logic        egress_dec;
   wire         egress_rdy;
 
   wire [119:0] wdata_calc;
@@ -69,8 +70,9 @@ module pixelProcessor_calc_unit_test;
     .waddr(waddr_calc),
     .wr(wr_calc),
 
+    .egress_avail(egress_avail),
     .egress_rdy(egress_rdy),
-    .egress_read_cnt(egress_read_cnt)
+    .egress_dec(egress_dec)
   );
 
 
@@ -89,6 +91,7 @@ module pixelProcessor_calc_unit_test;
     svunit_ut.setup();
     /* Place Setup Code Here */
 
+    deAssertEgressDec();
     clearStrobe();
 
     reset();
@@ -782,6 +785,85 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
 
 
+  // flow control
+  `SVTEST(egress_avail_increments_at_end_of_1_line)
+    strobe_first_row();
+    `FAIL_IF(egress_avail !== LINE_WIDTH);
+  `SVTEST_END
+
+  `SVTEST(egress_avail_increments_at_end_of_2_lines)
+    strobe_first_row();
+    strobe_next_row();
+    `FAIL_IF(egress_avail !== 2*LINE_WIDTH);
+  `SVTEST_END
+
+  `SVTEST(egress_avail_increments_by_1_entire_frame)
+    strobe_first_row();
+    repeat (FULL_FRAME-4) strobe_next_row();
+    strobe_last_row();
+    `FAIL_IF(egress_avail !== FULL_FRAME*LINE_WIDTH);
+  `SVTEST_END
+
+  `SVTEST(egress_avail_decrements)
+    strobe_first_row();
+    assertEgressDec();
+    step(31);
+    deAssertEgressDec();
+    step();
+    `FAIL_IF(egress_avail !== LINE_WIDTH-31);
+  `SVTEST_END
+
+  `SVTEST(egress_rdy_when_avail_gt_4)
+    strobe_first_row();
+    `FAIL_UNLESS(egress_rdy === 1);
+  `SVTEST_END
+
+  `SVTEST(egress_not_rdy_when_avail_le_4)
+    strobe_first_row();
+    assertEgressDec();
+    step(LINE_WIDTH-4);
+    deAssertEgressDec();
+    step();
+    `FAIL_UNLESS(egress_rdy === 0);
+  `SVTEST_END
+
+  `SVTEST(calc_rdy_at_reset)
+    `FAIL_UNLESS(calc_rdy === 1);
+  `SVTEST_END
+
+  `SVTEST(calc_rdy_deasserted_at_avail_le_LINE_WIDTH)
+    strobe_first_row();
+    repeat (4) strobe_next_row();
+    `FAIL_UNLESS(calc_rdy === 0);
+  `SVTEST_END
+
+  `SVTEST(calc_rdy_deasserted_at_avail_eq_LINE_WIDTH_plus12)
+    strobe_first_row();
+    repeat (4) strobe_next_row();
+    assertEgressDec();
+    step(12);
+    deAssertEgressDec();
+    `FAIL_UNLESS(calc_rdy === 0);
+  `SVTEST_END
+
+  `SVTEST(calc_rdy_asserted_at_avail_eq_LINE_WIDTH_plus13)
+    strobe_first_row();
+    repeat (4) strobe_next_row();
+    assertEgressDec();
+    step(13);
+    deAssertEgressDec();
+    `FAIL_UNLESS(calc_rdy === 1);
+  `SVTEST_END
+
+  `SVTEST(calc_rdy_desserted_near_full)
+    strobe_first_row();
+    repeat (4) strobe_next_row();
+    assertEgressDec();
+    step(13);
+    deAssertEgressDec();
+    strobe_next_row();
+    `FAIL_UNLESS(calc_rdy === 0);
+  `SVTEST_END
  
   `SVUNIT_TESTS_END
 
@@ -866,6 +948,16 @@ module pixelProcessor_calc_unit_test;
     last_column_flag = 0;
   endtask
 
+  task assertEgressDec();
+    nextSamplePoint();
+    egress_dec = 1;
+  endtask
+
+  task deAssertEgressDec();
+    nextSamplePoint();
+    egress_dec = 0;
+  endtask
+
   task expectNoWrite();
     nextSamplePoint();
     `FAIL_IF(wr_calc !== 0);
@@ -885,7 +977,7 @@ module pixelProcessor_calc_unit_test;
   task expectWriteData(bit [119:0] data);
     nextSamplePoint();
     expectWrite();
-$display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
+//$display("wdata_calc:0x%0x data:0x%0x", wdata_calc, data);
 //$display("slot0:0x%60x", calc.slot0);
 //$display("slot1:0x%60x", calc.slot1);
 //$display("slot2:0x%60x", calc.slot2);

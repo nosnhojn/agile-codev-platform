@@ -13,7 +13,7 @@ module pixelProcessor_calc
   input         clk,
   input         rst_n,
 
-  output logic  calc_rdy,
+  output wire   calc_rdy,
 
   input         calc_strobe,
   input         first_row_flag,
@@ -29,8 +29,9 @@ module pixelProcessor_calc
   output logic [11:0] waddr,
   output wire         wr,
 
-  input         egress_read_cnt,
-  output logic  egress_rdy
+  output logic [31:0] egress_avail,
+  input               egress_dec,
+  output wire         egress_rdy
 );
 
 
@@ -149,11 +150,9 @@ logic [(9*30)-1:0] slot0;
 logic [(9*30)-1:0] slot1;
 logic [(9*30)-1:0] slot2;
 
-logic [(2*120+30+30)-1:0] tmp_slot0;
-logic [(2*120+30+30)-1:0] tmp_slot1;
-logic [(2*120+30+30)-1:0] tmp_slot2;
-
-wire [2:0] shift_4_fewer_without_calc_strobe;
+logic [(10*30)-1:0] tmp_slot0;
+logic [(10*30)-1:0] tmp_slot1;
+logic [(10*30)-1:0] tmp_slot2;
 
 logic above_left;
 logic above;
@@ -167,9 +166,13 @@ logic center_is_BG;
 logic any_surrounding_is_FG;
 
 always @* begin
+  int short_shift, long_shift;
   wdata = 0;
 
   for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
+    short_shift = (30 * (3 - pixel_idx));
+    long_shift = (30 * (7 - pixel_idx));
+
     // take a snapshot of the group slot history
     // (depends on the calc_strobe)
     if (calc_strobe && last_row_flag) begin
@@ -177,48 +180,43 @@ always @* begin
       tmp_slot1 = { group_slot2[29:0] , slot2 };
       tmp_slot2 = BLANK_SLOT;
 
-      tmp_slot0 = tmp_slot0 >> (30 * (7 - pixel_idx));
-      tmp_slot1 = tmp_slot1 >> (30 * (7 - pixel_idx));
-      tmp_slot2 = tmp_slot2 >> (30 * (7 - pixel_idx));
+      tmp_slot0 = tmp_slot0 >> long_shift;
+      tmp_slot1 = tmp_slot1 >> long_shift;
+      tmp_slot2 = tmp_slot2 >> long_shift;
 
     end else if (calc_strobe) begin
       tmp_slot0 = { group_slot0[29:0] , slot0 };
       tmp_slot1 = { group_slot1[29:0] , slot1 };
       tmp_slot2 = { group_slot2[29:0] , slot2 };
 
-      tmp_slot0 = tmp_slot0 >> (30 * (7 - pixel_idx));
-      tmp_slot1 = tmp_slot1 >> (30 * (7 - pixel_idx));
-      tmp_slot2 = tmp_slot2 >> (30 * (7 - pixel_idx));
+      tmp_slot0 = tmp_slot0 >> long_shift;
+      tmp_slot1 = tmp_slot1 >> long_shift;
+      tmp_slot2 = tmp_slot2 >> long_shift;
 
     end else if (strobe_2_of_2_first_row || strobe_2_of_4_first_row) begin
-      tmp_slot0 = BLANK_SLOT >> (30 * (3 - pixel_idx));
-      tmp_slot1 = slot0 >> (30 * (3 - pixel_idx));
-      tmp_slot2 = slot1 >> (30 * (3 - pixel_idx));
+      tmp_slot0 = BLANK_SLOT;
+      tmp_slot1 = slot0 >> short_shift;
+      tmp_slot2 = slot1 >> short_shift;
 
     end else if (strobe_2_of_2_last_row || strobe_2_of_4_last_row) begin
-      tmp_slot0 = slot0 >> (30 * (3 - pixel_idx));
-      tmp_slot1 = slot1 >> (30 * (3 - pixel_idx));
-      tmp_slot2 = slot2 >> (30 * (3 - pixel_idx));
+      tmp_slot0 = slot0 >> short_shift;
+      tmp_slot1 = slot1 >> short_shift;
+      tmp_slot2 = slot2 >> short_shift;
 
-    end else if (strobe_3_of_4_first_row || strobe_last_column) begin
-      tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
-      tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
-      tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
+    end else if (strobe_3_of_4_first_row || strobe_4_of_4_last_row || strobe_last_column) begin
+      tmp_slot0 = slot0 >> long_shift;
+      tmp_slot1 = slot1 >> long_shift;
+      tmp_slot2 = slot2 >> long_shift;
 
     end else if (strobe_3_of_4_last_row) begin
-      tmp_slot0 = slot1 >> (30 * (7 - pixel_idx));
-      tmp_slot1 = slot2 >> (30 * (7 - pixel_idx));
+      tmp_slot0 = slot1 >> long_shift;
+      tmp_slot1 = slot2 >> long_shift;
       tmp_slot2 = BLANK_SLOT;
 
     end else if (strobe_4_of_4_first_row) begin
-      tmp_slot0 = BLANK_SLOT >> (30 * (7 - pixel_idx));
-      tmp_slot1 = slot0 >> (30 * (7 - pixel_idx));
-      tmp_slot2 = slot1 >> (30 * (7 - pixel_idx));
-
-    end else if (strobe_4_of_4_last_row) begin
-      tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
-      tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
-      tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
+      tmp_slot0 = BLANK_SLOT;
+      tmp_slot1 = slot0 >> long_shift;
+      tmp_slot2 = slot1 >> long_shift;
     end
 
     // find the FG pixels
@@ -237,7 +235,7 @@ always @* begin
     any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
 
     if (center_is_BG && any_surrounding_is_FG) wdata |= { tmp_slot1[59:54] , SH } << (3-pixel_idx) * 30;
-    else                                       wdata |=   tmp_slot1[59:30]          << (3-pixel_idx) * 30;
+    else                                       wdata |=   tmp_slot1[59:30]        << (3-pixel_idx) * 30;
   end
 end
 
@@ -268,6 +266,25 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
+//--------------
+// flow control
+//--------------
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    egress_avail = 0;
+  end
+
+  else begin
+    egress_avail = egress_avail
+                   + PIXEL_WIDTH * (calc_strobe && last_column_flag)
+                   + PIXEL_WIDTH * 2 * (calc_strobe && last_column_flag && last_row_flag)
+                   - egress_dec;
+  end
+end
+
+assign egress_rdy = (egress_avail > 4);
+assign calc_rdy = (egress_avail < (5 * PIXEL_WIDTH - 12));
+
 
 //--------------------------
 // misc combinational logic
@@ -281,6 +298,5 @@ assign wr = strobe_normal        ||
             strobe_4_of_4;
 
 assign strobe_normal = (calc_strobe & !first_column_flag);
-assign shift_4_fewer_without_calc_strobe = !calc_strobe<<2;
 
 endmodule
