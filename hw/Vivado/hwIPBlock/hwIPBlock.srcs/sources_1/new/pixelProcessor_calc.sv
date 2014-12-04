@@ -6,7 +6,8 @@ module pixelProcessor_calc
   BG = 24'hffffff,
   FG = 24'h000000,
   SH = 24'he0e0e0,
-  EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ
+  EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ,
+  BLANK_SLOT = { 10 { 6'h0 , BG } }
 )
 (
   input         clk,
@@ -151,16 +152,26 @@ always @* begin
       tmp_slot0 = { group_slot0[29:0] , slot0 };
       tmp_slot1 = { group_slot1[29:0] , slot1 };
       tmp_slot2 = { group_slot2[29:0] , slot2 };
-    end else begin
-      tmp_slot0 = { 10 { 6'h0 , BG } };
-      tmp_slot1 = { group_slot0[29:0] , slot0 };
-      tmp_slot2 = { group_slot1[29:0] , slot1 };
-    end
 
-    // shift out the lsbs
-    tmp_slot0 = tmp_slot0 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
-    tmp_slot1 = tmp_slot1 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
-    tmp_slot2 = tmp_slot2 >> (30 * (10 - 3 - shift_4_fewer_without_calc_strobe - pixel_idx));
+      tmp_slot0 = tmp_slot0 >> (30 * (7 - pixel_idx));
+      tmp_slot1 = tmp_slot1 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = tmp_slot2 >> (30 * (7 - pixel_idx));
+
+    end else if (strobe_2_of_2 || strobe_2_of_4) begin
+      tmp_slot0 = BLANK_SLOT >> (30 * (3 - pixel_idx));
+      tmp_slot1 = slot0 >> (30 * (3 - pixel_idx));
+      tmp_slot2 = slot1 >> (30 * (3 - pixel_idx));
+
+    end else if (strobe_3_of_4) begin
+      tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
+      tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
+
+    end else if (strobe_4_of_4) begin
+      tmp_slot0 = BLANK_SLOT >> (30 * (7 - pixel_idx));
+      tmp_slot1 = slot0 >> (30 * (7 - pixel_idx));
+      tmp_slot2 = slot1 >> (30 * (7 - pixel_idx));
+    end
 
     // find the FG pixels
     above_left =   (tmp_slot0[83:60] == FG);
@@ -189,9 +200,9 @@ end
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    slot0 <= { 9 { 6'h0 , BG } };
-    slot1 <= { 9 { 6'h0 , BG } };
-    slot2 <= { 9 { 6'h0 , BG } };
+    slot0 <= BLANK_SLOT;
+    slot1 <= BLANK_SLOT;
+    slot2 <= BLANK_SLOT;
   end
 
   else begin

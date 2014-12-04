@@ -520,9 +520,9 @@ module pixelProcessor_calc_unit_test;
   `SVTEST_END
 
 
-  // carry forward FG to make sure they shifted out and lost 
+  // carry forward FG
   `SVTEST(write_data_for_column_1_carry_forward_FG_row_0)
-    strobeData({ FG , BG , BG , BG },  // <- carry forward here
+    strobeData({ FG , BG , BG , BG },  // <- carry forward here in position [3]
                { BG , BG , BG , BG },
                { BG , BG , BG , BG });
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
@@ -545,7 +545,7 @@ module pixelProcessor_calc_unit_test;
 
   `SVTEST(write_data_for_column_1_carry_forward_FG_row_1)
     strobeData({ BG , BG , BG , BG },
-               { FG , BG , BG , BG },  // <- carry forward here
+               { FG , BG , BG , BG },  // <- carry forward here in position [3]
                { BG , BG , BG , BG });
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
@@ -568,7 +568,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST(write_data_for_column_1_carry_forward_FG_row_2)
     strobeData({ BG , BG , BG , BG },
                { BG , BG , BG , BG },
-               { FG , BG , BG , BG }); // <- carry forward here
+               { FG , BG , BG , BG }); // <- carry forward here in position [3]
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
     strobeData({ BG , BG , BG , BG },
@@ -587,6 +587,93 @@ module pixelProcessor_calc_unit_test;
     expectWriteData({ BG , BG , BG , BG });
   `SVTEST_END
 
+
+  // carry back FG
+  `SVTEST(write_data_for_column_1_carry_back_FG_row_0)
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , FG },  // <- carry back here in position [0]
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    
+    expectWriteData({ SH , BG , BG , BG });
+    step();
+    clearStrobe();
+    expectWriteData({ SH , BG , BG , BG });
+  `SVTEST_END
+
+  `SVTEST(write_data_for_column_1_carry_back_FG_row_1)
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , FG },  // <- carry back here in position [0]
+               { BG , BG , BG , BG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    
+    expectWriteData({ SH , BG , BG , BG });
+    step();
+    clearStrobe();
+    expectWriteData({ SH , BG , BG , BG });
+  `SVTEST_END
+
+  `SVTEST(write_data_for_column_1_carry_back_FG_row_2)
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , FG });  // <- carry back here in position [0]
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+    
+    expectWriteData({ SH , BG , BG , BG });
+    step();
+    clearStrobe();
+    expectWriteData({ BG , BG , BG , BG });
+  `SVTEST_END
+
+
+  // end of first row
+  `SVTEST(write_data_for_row_0_last_column)
+    strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    repeat (LINE_WIDTH_BY4-4) strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+
+    strobeData({ BG , BG , FG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlagsAndClear(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
+ 
+    strobeData({ BG , FG , BG , BG },
+               { BG , BG , BG , BG },
+               { BG , BG , BG , BG });
+    strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
+    
+    expectWriteData({ BG , SH , SH , SH });
+    step();
+    clearStrobe();
+    expectWriteData({ BG , SH , FG , SH });
+
+    step();
+    expectWriteData({ SH , SH , SH , BG });
+ 
+    step();
+    expectWriteData({ SH , FG , SH , BG });
+  `SVTEST_END
+ 
   `SVUNIT_TESTS_END
 
 
