@@ -44,7 +44,7 @@ module pixelProcessor_calc
 //----------------------------------------------------
 
 wire  strobe_normal;
-logic strobe_end_of_column;
+logic strobe_last_column;
 logic strobe_2_of_2;
 logic strobe_2_of_4;
 logic strobe_3_of_4;
@@ -52,7 +52,7 @@ logic strobe_4_of_4;
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    strobe_end_of_column <= 0;
+    strobe_last_column <= 0;
 
     strobe_2_of_2 <= 0;
 
@@ -62,7 +62,7 @@ always @(negedge rst_n or posedge clk) begin
   end
 
   else begin
-    strobe_end_of_column <= calc_strobe && last_column_flag;
+    strobe_last_column <= calc_strobe && last_column_flag;
 
     strobe_2_of_2 <= calc_strobe && first_row_flag && !first_column_flag ||
                      calc_strobe && last_row_flag && !first_column_flag;
@@ -162,7 +162,7 @@ always @* begin
       tmp_slot1 = slot0 >> (30 * (3 - pixel_idx));
       tmp_slot2 = slot1 >> (30 * (3 - pixel_idx));
 
-    end else if (strobe_3_of_4) begin
+    end else if (strobe_3_of_4 || strobe_last_column) begin
       tmp_slot0 = slot0 >> (30 * (7 - pixel_idx));
       tmp_slot1 = slot1 >> (30 * (7 - pixel_idx));
       tmp_slot2 = slot2 >> (30 * (7 - pixel_idx));
@@ -207,9 +207,15 @@ always @(negedge rst_n or posedge clk) begin
 
   else begin
     if (calc_strobe) begin
-      slot0 = { group_slot0 , slot0[(9*30)-1:(4*30)] };
-      slot1 = { group_slot1 , slot1[(9*30)-1:(4*30)] };
-      slot2 = { group_slot2 , slot2[(9*30)-1:(4*30)] };
+      if (first_column_flag) begin
+        slot0 = { group_slot0 , { 5 { 6'h0 , BG } } };
+        slot1 = { group_slot1 , { 5 { 6'h0 , BG } } };
+        slot2 = { group_slot2 , { 5 { 6'h0 , BG } } };
+      end else begin
+        slot0 = { group_slot0 , slot0[(9*30)-1:(4*30)] };
+        slot1 = { group_slot1 , slot1[(9*30)-1:(4*30)] };
+        slot2 = { group_slot2 , slot2[(9*30)-1:(4*30)] };
+      end
     end
   end
 end
@@ -220,7 +226,7 @@ end
 //--------------------------
 
 assign wr = strobe_normal        ||
-            strobe_end_of_column ||
+            strobe_last_column ||
             strobe_2_of_2        ||
             strobe_2_of_4        ||
             strobe_3_of_4        ||
