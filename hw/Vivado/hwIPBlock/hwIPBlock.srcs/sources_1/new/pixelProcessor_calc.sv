@@ -204,19 +204,31 @@ always @* begin
       tmp_slot2 = slot2 >> short_shift;
 
     end else if (strobe_3_of_4_first_row || strobe_4_of_4_last_row || strobe_last_column) begin
-      tmp_slot0 = slot0 >> long_shift;
-      tmp_slot1 = slot1 >> long_shift;
-      tmp_slot2 = slot2 >> long_shift;
+      tmp_slot0 = { { 6'h0 , BG }, slot0 };
+      tmp_slot1 = { { 6'h0 , BG }, slot1 };
+      tmp_slot2 = { { 6'h0 , BG }, slot2 };
+
+      tmp_slot0 = tmp_slot0 >> long_shift;
+      tmp_slot1 = tmp_slot1 >> long_shift;
+      tmp_slot2 = tmp_slot2 >> long_shift;
 
     end else if (strobe_3_of_4_last_row) begin
-      tmp_slot0 = slot1 >> long_shift;
-      tmp_slot1 = slot2 >> long_shift;
+      tmp_slot0 = { { 6'h0 , BG }, slot0 };
+      tmp_slot1 = { { 6'h0 , BG }, slot1 };
+      tmp_slot2 = { { 6'h0 , BG }, slot2 };
+
+      tmp_slot0 = tmp_slot1 >> long_shift;
+      tmp_slot1 = tmp_slot2 >> long_shift;
       tmp_slot2 = BLANK_SLOT;
 
     end else if (strobe_4_of_4_first_row) begin
+      tmp_slot0 = { { 6'h0 , BG }, slot0 };
+      tmp_slot1 = { { 6'h0 , BG }, slot1 };
+      tmp_slot2 = { { 6'h0 , BG }, slot2 };
+
+      tmp_slot2 = tmp_slot1 >> long_shift;
+      tmp_slot1 = tmp_slot0 >> long_shift;
       tmp_slot0 = BLANK_SLOT;
-      tmp_slot1 = slot0 >> long_shift;
-      tmp_slot2 = slot1 >> long_shift;
     end
 
     // find the FG pixels

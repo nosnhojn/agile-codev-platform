@@ -1,6 +1,7 @@
 `include "svunit_defines.svh"
 
 `include "test_defines.svh"
+`include "test_constants.svh"
 
 module step_2_unit_test;
   import svunit_pkg::svunit_testcase;
@@ -245,39 +246,20 @@ module step_2_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
-  `SVTEST(streaming_data)
-    step();
-    fork
-      for (int i=0; i<24*MEM_DEPTH; i+=1) begin
-        setIngressPixel('h55, i[0], i[3:0], i[4]);
-        step();
-      end
-    join_none
+  `SVTEST(scenario_0_streaming_data)
+    driveTestScenario(0);
+    checkTestScenario(0);
+  `SVTEST_END
 
-    while (!oTVALID) begin
-      waitStep();
-      nextSamplePoint();
-    end
-
-    begin
-      int j=0;
-      while (j<20*MEM_DEPTH) begin
-        nextSamplePoint();
-        if (oTVALID) begin
-          expectEgressPixel('h55, j[0], j[3:0], j[4]);
-          j += 1;
-          waitStep();
-        end else begin
-          waitStep();
-        end
-      end
-    end
+  `SVTEST(scenario_1_test)
+    driveTestScenario(1);
+    checkTestScenario(1);
   `SVTEST_END
 
   `SVUNIT_TESTS_END
 
 
-  task setIngressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task setIngressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     iTVALID = 1;
     iTDATA = data;
@@ -286,13 +268,75 @@ module step_2_unit_test;
     iTLAST = last;
   endtask
 
-  task expectEgressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);
     `FAIL_UNLESS(oTKEEP === keep);
     `FAIL_UNLESS(oTLAST === last);
+  endtask
+
+  bit[23:0] ingressScenario[2][];
+  bit[23:0] egressScenario[2][];
+
+  initial begin
+    //--------------------------
+    // scenario 0 is a constant
+    //--------------------------
+    ingressScenario[0] = new [24*MEM_DEPTH];
+    for (int i=0; i<24*MEM_DEPTH; i+=1) ingressScenario[0][i] = 'h55;
+
+    egressScenario[0] = new [20*MEM_DEPTH];
+    for (int i=0; i<20*MEM_DEPTH; i+=1) egressScenario[0][i] = 'h55;
+
+
+    //---------------------------------
+    // scenario 1 is a single fg pixel
+    //---------------------------------
+    ingressScenario[1] = new [8*LINE_WIDTH];
+    for (int i=0; i<ingressScenario[1].size(); i+=1) ingressScenario[1][i] = 'hffffff;
+    ingressScenario[1][0] = 24'h0;
+
+    egressScenario[1] = new [2*LINE_WIDTH];
+    for (int i=0; i<egressScenario[1].size(); i+=1) egressScenario[1][i] = 'hffffff;
+    egressScenario[1][0] = 24'h0;
+    egressScenario[1][1] = 24'he0e0e0;
+    egressScenario[1][LINE_WIDTH] = 'he0e0e0;
+    egressScenario[1][LINE_WIDTH+1] = 'he0e0e0;
+  end
+
+  task driveTestScenario(int idx);
+    step();
+    fork
+      for (int i=0; i<ingressScenario[idx].size(); i+=1) begin
+        setIngressPixel(ingressScenario[idx][i], i[0], i[3:0], i[4]);
+        step();
+      end
+    join_none
+  endtask
+
+  task checkTestScenario(int idx);
+    int j;
+
+    while (!oTVALID) begin
+      waitStep();
+      nextSamplePoint();
+    end
+
+    begin
+      j = 0;
+      while (j<egressScenario[idx].size()) begin
+        nextSamplePoint();
+        if (oTVALID) begin
+          expectEgressPixel(egressScenario[idx][j], j[0], j[3:0], j[4]);
+          j += 1;
+          waitStep();
+        end else begin
+          waitStep();
+        end
+      end
+    end
   endtask
 
 endmodule

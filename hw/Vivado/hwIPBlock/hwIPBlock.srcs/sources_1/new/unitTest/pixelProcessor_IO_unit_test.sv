@@ -524,7 +524,7 @@ module pixelProcessor_IO_unit_test;
     step(10);
   endtask
 
-  task setIngressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task setIngressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     iTVALID = 1;
     iTDATA = data;
@@ -539,7 +539,7 @@ module pixelProcessor_IO_unit_test;
     `FAIL_UNLESS(egress_read_cnt === 0);
   endtask
 
-  task expectEgressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
     `FAIL_UNLESS(oTDATA === data);
@@ -597,9 +597,9 @@ module pixelProcessor_IO_unit_test;
     `FAIL_UNLESS(oTREADY === 0);
   endtask
 
-  task expectRamWrite(bit[P0_ADDR_WIDTH-1:0] addr, bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task expectRamWrite(bit[P0_ADDR_WIDTH-1:0] addr, bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
-    `FAIL_UNLESS(wdata === { data , user , keep , last });
+    `FAIL_UNLESS(wdata === { user , keep , last , data });
     `FAIL_UNLESS(waddr == addr);
     `FAIL_UNLESS(wr === 1);
   endtask

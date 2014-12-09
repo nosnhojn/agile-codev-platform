@@ -60,10 +60,10 @@ wire hold_oTVALID_until_iTREADY;
 
 wire wrap_egress_read_address;
 
-assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-1:6];
-assign oTUSER = concatenated_rdata[5];
-assign oTKEEP = concatenated_rdata[4:1];
-assign oTLAST = concatenated_rdata[0];
+assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-7:0];
+assign oTUSER = concatenated_rdata[RAM_DATA_WIDTH-1];
+assign oTKEEP = concatenated_rdata[RAM_DATA_WIDTH-2:RAM_DATA_WIDTH-5];
+assign oTLAST = concatenated_rdata[RAM_DATA_WIDTH-6];
 
 assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read_cnt);
 
@@ -121,7 +121,7 @@ end
 assign ingress_pixel_ready = iTVALID && oTREADY;
 assign ingress_new_pixel = ingress_pixel_ready;
 assign wrap_ingress_ptr = (ingress_ptr >= max_ram_address);
-assign concatenated_wdata = { iTDATA , iTUSER , iTKEEP , iTLAST };
+assign concatenated_wdata = { iTUSER , iTKEEP , iTLAST , iTDATA };
 assign ingress_rdy = (ingress_cnt >= ingress_thresh);
 
 assign egress_bus_idle = !oTVALID;
