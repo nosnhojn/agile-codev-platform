@@ -256,6 +256,16 @@ module step_2_unit_test;
     checkTestScenario(1);
   `SVTEST_END
 
+  `SVTEST(scenario_2_test)
+    driveTestScenario(2);
+    checkTestScenario(2);
+  `SVTEST_END
+
+  `SVTEST(scenario_3_test)
+    driveTestScenario(3);
+    checkTestScenario(3);
+  `SVTEST_END
+
   `SVUNIT_TESTS_END
 
 
@@ -277,8 +287,8 @@ module step_2_unit_test;
     `FAIL_UNLESS(oTLAST === last);
   endtask
 
-  bit[23:0] ingressScenario[2][];
-  bit[23:0] egressScenario[2][];
+  bit[23:0] ingressScenario[4][];
+  bit[23:0] egressScenario[4][];
 
   initial begin
     //--------------------------
@@ -304,6 +314,60 @@ module step_2_unit_test;
     egressScenario[1][1] = 24'he0e0e0;
     egressScenario[1][LINE_WIDTH] = 'he0e0e0;
     egressScenario[1][LINE_WIDTH+1] = 'he0e0e0;
+
+    //------------------------------------
+    // scenario 2 is a block of fg pixels
+    //------------------------------------
+    ingressScenario[2] = new [8*LINE_WIDTH];
+    for (int i=0; i<ingressScenario[2].size(); i+=1) ingressScenario[2][i] = 'hffffff;
+    ingressScenario[2][1] = 24'h0;
+    ingressScenario[2][2] = 24'h0;
+
+    egressScenario[2] = new [2*LINE_WIDTH];
+    for (int i=0; i<egressScenario[2].size(); i+=1) egressScenario[2][i] = 'hffffff;
+    egressScenario[2][0] = 24'he0e0e0;
+    egressScenario[2][1] = 24'h0;
+    egressScenario[2][2] = 24'h0;
+    egressScenario[2][3] = 24'he0e0e0;
+    egressScenario[2][LINE_WIDTH] = 'he0e0e0;
+    egressScenario[2][LINE_WIDTH+1] = 'he0e0e0;
+    egressScenario[2][LINE_WIDTH+2] = 'he0e0e0;
+    egressScenario[2][LINE_WIDTH+3] = 'he0e0e0;
+
+    //----------------------------------------------------
+    // scenario 3 is a block of fg pixels at end of row 0
+    //----------------------------------------------------
+    ingressScenario[3] = new [8*LINE_WIDTH];
+    for (int i=0; i<ingressScenario[3].size(); i+=1) ingressScenario[3][i] = 'hffffff;
+    ingressScenario[3][1918] = 24'h0;
+    ingressScenario[3][1919] = 24'h0;
+
+    egressScenario[3] = new [2*LINE_WIDTH];
+    for (int i=0; i<egressScenario[3].size(); i+=1) egressScenario[3][i] = 'hffffff;
+    egressScenario[3][1917] = 24'he0e0e0;
+    egressScenario[3][1918] = 24'h0;
+    egressScenario[3][1919] = 24'h0;
+    egressScenario[3][LINE_WIDTH+1917] = 'he0e0e0;
+    egressScenario[3][LINE_WIDTH+1918] = 'he0e0e0;
+    egressScenario[3][LINE_WIDTH+1919] = 'he0e0e0;
+
+    //-------------------------------------------------------
+    // scenario 4 is a block of fg pixels at end of row 1079
+    //-------------------------------------------------------
+//   ingressScenario[4] = new [1088*LINE_WIDTH];
+//   for (int i=0; i<ingressScenario[4].size(); i+=1) ingressScenario[4][i] = 'hffffff;
+//   ingressScenario[4][1918] = 24'h0;
+//   ingressScenario[4][1919] = 24'h0;
+//
+//   egressScenario[4] = new [2*LINE_WIDTH];
+//   for (int i=0; i<egressScenario[4].size(); i+=1) egressScenario[4][i] = 'hffffff;
+//   egressScenario[4][1917] = 24'he0e0e0;
+//   egressScenario[4][1918] = 24'h0;
+//   egressScenario[4][1919] = 24'h0;
+//   egressScenario[4][LINE_WIDTH+1917] = 'he0e0e0;
+//   egressScenario[4][LINE_WIDTH+1918] = 'he0e0e0;
+//   egressScenario[4][LINE_WIDTH+1919] = 'he0e0e0;
+
   end
 
   task driveTestScenario(int idx);
