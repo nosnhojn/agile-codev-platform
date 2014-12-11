@@ -10,28 +10,34 @@ int main()
 
   d.init();
  
-  d.initialCell(10,10);
-  d.initialCell(10,11);
-  d.initialCell(10,12);
-  d.initialCell(9,12);
-  d.initialCell(8,11);
+  d.initialCell(30,40);
+  d.initialCell(30,41);
+  d.initialCell(30,42);
+  d.initialCell(30,44);
+  d.initialCell(31,40);
+  d.initialCell(32,43);
+  d.initialCell(32,44);
+  d.initialCell(33,41);
+  d.initialCell(33,42);
+  d.initialCell(33,44);
+  d.initialCell(34,40);
+  d.initialCell(34,42);
+  d.initialCell(34,44);
 
-  d.initialCell(20,20);
-  d.initialCell(20,21);
-  d.initialCell(20,22);
-  d.initialCell(19,22);
-  d.initialCell(18,21);
+  d.initialCell(44,44);
+  d.initialCell(44,45);
+  d.initialCell(43,44);
+  d.initialCell(43,45);
 
-  d.initialCell(40,40);
-  d.initialCell(41,40);
-  d.initialCell(42,40);
-  d.initialCell(42,39);
-  d.initialCell(41,38);
+  d.initialCell(14,44);
+  d.initialCell(14,45);
+  d.initialCell(13,44);
+  d.initialCell(13,45);
 
-  d.initialCell(30,30);
-  d.initialCell(30,31);
-  d.initialCell(29,30);
-  d.initialCell(29,31);
+  d.initialCell(14,24);
+  d.initialCell(14,25);
+  d.initialCell(13,24);
+  d.initialCell(13,25);
  
-  d.play(200);
+  d.play(5000);
 }
