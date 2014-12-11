@@ -9,8 +9,8 @@ end \
 task automatic step(int size = 1); \
   repeat (size) begin \
     int step_size = clkPeriod/2 - $time % (clkPeriod/2); \
-    #(step_size) clk = ~clk; \
-    #(clkPeriod/2) clk = ~clk; \
+    #(step_size) clk <= ~clk; \
+    #(clkPeriod/2) clk <= ~clk; \
   end \
 endtask \
 task automatic waitStep(int size = 1); \

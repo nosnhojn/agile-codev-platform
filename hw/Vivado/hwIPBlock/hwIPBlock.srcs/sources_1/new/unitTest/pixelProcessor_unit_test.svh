@@ -27,7 +27,7 @@
   const int full_row = mem_reads_per_row;
   const int full_frame = (NUM_LINES-2) * full_row;
 
-  `CLK_RESET_FIXTURE(10,5)
+  `CLK_RESET_FIXTURE(12,5)
 
   pixelProcessor
     #(

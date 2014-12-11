@@ -52,16 +52,18 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 logic read_cycle;
-always @(negedge rst_n or posedge clk) begin
-  if (!rst_n) begin
+always @(negedge rst_i_n or posedge clk_i) begin
+  if (!rst_i_n) begin
     read_cycle <= 1;
   end
 
   else begin
     read_cycle <= ~read_cycle;
 
-    rdata_0 <= mem[raddr_0];
-    rdata_1 <= next_rdata_1;
+    if (!read_cycle) begin
+      rdata_0 <= mem[raddr_0];
+      rdata_1 <= next_rdata_1;
+    end
 
     if (wr_0) begin
       mem[waddr_0] <= wdata_0;
