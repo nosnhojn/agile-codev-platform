@@ -31,11 +31,13 @@ module pixelProcessor_ctrl_unit_test;
   task setup();
     svunit_ut.setup();
 
-    setCalcRdy();
-    setIngressRdy();
+    setNoCalcRdy();
+    setIngressNotRdy();
     ingress_new_pixel = 0;
 
     reset();
+    setIngressRdy();
+    setCalcRdy();
   endtask
 
 
@@ -101,17 +103,40 @@ module pixelProcessor_ctrl_unit_test;
     expectRaddr(LINE_WIDTH_BY4*3 - 1);
   `SVTEST_END
  
-  `SVTEST(raddr_is_LINE_WIDTH_after_releasing_row_0)
-    step(full_row);
- 
-    expectRaddr(LINE_WIDTH_BY4);
-  `SVTEST_END
- 
    `SVTEST(raddr_wraps_at_mem_depth)
-     step(8*full_row);
-   
+     repeat (8) step(full_row);
+
      expectRaddr(0);
    `SVTEST_END
+ 
+  `SVTEST(raddr_is_LINE_WIDTH_after_releasing_row_0)
+    repeat (8) step(full_row);
+
+//    step(full_row);
+// 
+//   expectRaddr(LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(2*LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(3*LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(4*LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(5*LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(6*LINE_WIDTH_BY4);
+//   step(full_row);
+//
+//   expectRaddr(7*LINE_WIDTH_BY4);
+//   step(full_row);
+ 
+    expectRaddr(0);
+  `SVTEST_END
  
    `SVTEST(raddr_jumps_at_end_of_frame)
      step(full_frame);

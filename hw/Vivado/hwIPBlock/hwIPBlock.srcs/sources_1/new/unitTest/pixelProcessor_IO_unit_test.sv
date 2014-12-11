@@ -543,6 +543,7 @@ module pixelProcessor_IO_unit_test;
 
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
+//$display("oTDATA:0x%0x", oTDATA);
     `FAIL_UNLESS(oTVALID === 1);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);

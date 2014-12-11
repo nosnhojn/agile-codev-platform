@@ -32,10 +32,11 @@ module pixelProcessor_data_unit_test;
     svunit_ut.setup();
 
     setCalcRdy();
-    setIngressRdy();
+    setIngressNotRdy();
     ingress_new_pixel = 0;
 
     reset();
+    setIngressRdy();
   endtask
 
   function void loadStartOfFrame();

@@ -35,6 +35,7 @@
 
 `define write_read_full_range(PORT) \
 `SVTEST(write_read_port_``PORT``_full_range) \
+  readPort(PORT, 58); \
   for (int i=0; i<MEM_DEPTH; i++) begin \
     writePort(PORT, i, i); \
     step(); \
