@@ -230,6 +230,11 @@ module step_2_unit_test;
     svunit_ut.teardown();
   endtask
 
+  int ingressScenarioCnt = 0;
+  bit[23:0] ingressScenario[int][];
+  int egressScenarioCnt = 0;
+  bit[23:0] egressScenario[int][];
+
 
   //===================================
   // All tests are defined between the
@@ -266,6 +271,11 @@ module step_2_unit_test;
     checkTestScenario(3);
   `SVTEST_END
 
+// `SVTEST(scenario_4_test)
+//   driveTestScenario(4);
+//   checkTestScenario(4);
+// `SVTEST_END
+
   `SVUNIT_TESTS_END
 
 
@@ -287,86 +297,100 @@ module step_2_unit_test;
     `FAIL_UNLESS(oTLAST === last);
   endtask
 
-  bit[23:0] ingressScenario[4][];
-  bit[23:0] egressScenario[4][];
+  function newIngressScenario(int length, initialPixel = 'hffffff);
+    ingressScenario[ingressScenarioCnt] = new [length];
+    for (int i=0; i<length; i+=1) ingressScenario[ingressScenarioCnt][i] = initialPixel;
+    ingressScenarioCnt += 1;
+  endfunction
+
+
+  function newEgressScenario(int length, initialPixel = 'hffffff);
+    egressScenario[egressScenarioCnt] = new [length];
+    for (int i=0; i<length; i+=1) egressScenario[egressScenarioCnt][i] = initialPixel;
+    egressScenarioCnt += 1;
+  endfunction
+
+  function setIngressFgCell(int row, int col);
+    ingressScenario[ingressScenarioCnt-1][row * 1920 + col] = 24'h0;
+  endfunction
+
+  function setEgressFgCell(int row, int col);
+    egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'h0;
+  endfunction
+
+  function setEgressShCell(int row, int col);
+    egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'he0e0e0;
+  endfunction
 
   initial begin
     //--------------------------
     // scenario 0 is a constant
     //--------------------------
-    ingressScenario[0] = new [24*MEM_DEPTH];
-    for (int i=0; i<24*MEM_DEPTH; i+=1) ingressScenario[0][i] = 'h55;
-
-    egressScenario[0] = new [20*MEM_DEPTH];
-    for (int i=0; i<20*MEM_DEPTH; i+=1) egressScenario[0][i] = 'h55;
+    newIngressScenario(24*MEM_DEPTH, 'h55);
+    newEgressScenario(20*MEM_DEPTH, 'h55);
 
 
     //---------------------------------
     // scenario 1 is a single fg pixel
     //---------------------------------
-    ingressScenario[1] = new [8*LINE_WIDTH];
-    for (int i=0; i<ingressScenario[1].size(); i+=1) ingressScenario[1][i] = 'hffffff;
-    ingressScenario[1][0] = 24'h0;
+    newIngressScenario(8*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(0, 0);
 
-    egressScenario[1] = new [2*LINE_WIDTH];
-    for (int i=0; i<egressScenario[1].size(); i+=1) egressScenario[1][i] = 'hffffff;
-    egressScenario[1][0] = 24'h0;
-    egressScenario[1][1] = 24'he0e0e0;
-    egressScenario[1][LINE_WIDTH] = 'he0e0e0;
-    egressScenario[1][LINE_WIDTH+1] = 'he0e0e0;
+    newEgressScenario(2*LINE_WIDTH, 'hffffff);
+    setEgressFgCell(0, 0);
+    setEgressShCell(0, 1);
+    setEgressShCell(1, 0);
+    setEgressShCell(1, 1);
+
 
     //------------------------------------
     // scenario 2 is a block of fg pixels
     //------------------------------------
-    ingressScenario[2] = new [8*LINE_WIDTH];
-    for (int i=0; i<ingressScenario[2].size(); i+=1) ingressScenario[2][i] = 'hffffff;
-    ingressScenario[2][1] = 24'h0;
-    ingressScenario[2][2] = 24'h0;
+    newIngressScenario(8*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(0, 1);
+    setIngressFgCell(0, 2);
 
-    egressScenario[2] = new [2*LINE_WIDTH];
-    for (int i=0; i<egressScenario[2].size(); i+=1) egressScenario[2][i] = 'hffffff;
-    egressScenario[2][0] = 24'he0e0e0;
-    egressScenario[2][1] = 24'h0;
-    egressScenario[2][2] = 24'h0;
-    egressScenario[2][3] = 24'he0e0e0;
-    egressScenario[2][LINE_WIDTH] = 'he0e0e0;
-    egressScenario[2][LINE_WIDTH+1] = 'he0e0e0;
-    egressScenario[2][LINE_WIDTH+2] = 'he0e0e0;
-    egressScenario[2][LINE_WIDTH+3] = 'he0e0e0;
+    newEgressScenario(2*LINE_WIDTH, 'hffffff);
+    setEgressShCell(0, 0);
+    setEgressFgCell(0, 1);
+    setEgressFgCell(0, 2);
+    setEgressShCell(0, 3);
+    setEgressShCell(1, 0);
+    setEgressShCell(1, 1);
+    setEgressShCell(1, 2);
+    setEgressShCell(1, 3);
+
 
     //----------------------------------------------------
     // scenario 3 is a block of fg pixels at end of row 0
     //----------------------------------------------------
-    ingressScenario[3] = new [8*LINE_WIDTH];
-    for (int i=0; i<ingressScenario[3].size(); i+=1) ingressScenario[3][i] = 'hffffff;
-    ingressScenario[3][1918] = 24'h0;
-    ingressScenario[3][1919] = 24'h0;
+    newIngressScenario(8*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(0, 1918);
+    setIngressFgCell(0, 1919);
 
-    egressScenario[3] = new [2*LINE_WIDTH];
-    for (int i=0; i<egressScenario[3].size(); i+=1) egressScenario[3][i] = 'hffffff;
-    egressScenario[3][1917] = 24'he0e0e0;
-    egressScenario[3][1918] = 24'h0;
-    egressScenario[3][1919] = 24'h0;
-    egressScenario[3][LINE_WIDTH+1917] = 'he0e0e0;
-    egressScenario[3][LINE_WIDTH+1918] = 'he0e0e0;
-    egressScenario[3][LINE_WIDTH+1919] = 'he0e0e0;
+    newEgressScenario(2*LINE_WIDTH, 'hffffff);
+    setEgressShCell(0, 1917);
+    setEgressFgCell(0, 1918);
+    setEgressFgCell(0, 1919);
+    setEgressShCell(1, 1917);
+    setEgressShCell(1, 1918);
+    setEgressShCell(1, 1919);
+
 
     //-------------------------------------------------------
     // scenario 4 is a block of fg pixels at end of row 1079
     //-------------------------------------------------------
-//   ingressScenario[4] = new [1088*LINE_WIDTH];
-//   for (int i=0; i<ingressScenario[4].size(); i+=1) ingressScenario[4][i] = 'hffffff;
-//   ingressScenario[4][1918] = 24'h0;
-//   ingressScenario[4][1919] = 24'h0;
-//
-//   egressScenario[4] = new [2*LINE_WIDTH];
-//   for (int i=0; i<egressScenario[4].size(); i+=1) egressScenario[4][i] = 'hffffff;
-//   egressScenario[4][1917] = 24'he0e0e0;
-//   egressScenario[4][1918] = 24'h0;
-//   egressScenario[4][1919] = 24'h0;
-//   egressScenario[4][LINE_WIDTH+1917] = 'he0e0e0;
-//   egressScenario[4][LINE_WIDTH+1918] = 'he0e0e0;
-//   egressScenario[4][LINE_WIDTH+1919] = 'he0e0e0;
+    newIngressScenario(1088*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(1079, 1918);
+    setIngressFgCell(1079, 1919);
+
+    newEgressScenario(1080*LINE_WIDTH, 'hffffff);
+    setEgressShCell(1078, 1917);
+    setEgressShCell(1078, 1918);
+    setEgressShCell(1078, 1919);
+    setEgressShCell(1079, 1917);
+    setEgressFgCell(1079, 1918);
+    setEgressFgCell(1079, 1919);
 
   end
 
@@ -393,6 +417,7 @@ module step_2_unit_test;
       while (j<egressScenario[idx].size()) begin
         nextSamplePoint();
         if (oTVALID) begin
+//$display("J:%0d", j);
           expectEgressPixel(egressScenario[idx][j], j[0], j[3:0], j[4]);
           j += 1;
           waitStep();
