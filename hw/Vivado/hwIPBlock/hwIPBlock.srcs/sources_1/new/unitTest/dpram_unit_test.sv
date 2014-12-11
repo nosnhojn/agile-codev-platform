@@ -17,7 +17,7 @@ module qpram_unit_test;
   `define PORT0 0
   `define PORT1 1
 
-  `CLK_RESET_FIXTURE(12,5)
+  `CLK_RESET_FIXTURE(24,5)
 
   logic [P0_WIDTH-1:0] wdata_0;
   logic [P0_ADDR_WIDTH-1:0] waddr_0;

@@ -65,13 +65,15 @@ always @(negedge rst_i_n or posedge clk_i) begin
       rdata_1 <= next_rdata_1;
     end
 
-    if (wr_0) begin
-      mem[waddr_0] <= wdata_0;
-    end
+    else begin
+      if (wr_0) begin
+        mem[waddr_0] <= wdata_0;
+      end
 
-    if (wr_1) begin
-      for (int i=0; i<QPRAM_PORT1_WIDTH/QPRAM_PORT0_WIDTH; i+=1) begin
-        mem[(waddr_1<<2)+i] <= wdata_1 >> QPRAM_PORT0_WIDTH*i;
+      if (wr_1) begin
+        for (int i=0; i<QPRAM_PORT1_WIDTH/QPRAM_PORT0_WIDTH; i+=1) begin
+          mem[(waddr_1<<2)+i] <= wdata_1 >> QPRAM_PORT0_WIDTH*i;
+        end
       end
     end
   end
