@@ -1,9 +1,8 @@
 `include "svunit_defines.svh"
-`include "dpram.v"
 `include "test_defines.svh"
 `include "test_macros.svh"
 
-module dpram_unit_test;
+module qpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
   parameter MEM_DEPTH = 256;
@@ -12,7 +11,7 @@ module dpram_unit_test;
   parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
   parameter P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4);
 
-  string name = "dpram_ut";
+  string name = "qpram_ut";
   svunit_testcase svunit_ut;
 
   `define PORT0 0
@@ -41,15 +40,15 @@ module dpram_unit_test;
   // This is the UUT that we're 
   // running the Unit Tests on
   //===================================
-  dpram
+  qpram
   #(
-    .DPRAM_DEPTH(MEM_DEPTH),
-    .DPRAM_PORT0_WIDTH(P0_WIDTH),
-    .DPRAM_PORT1_WIDTH(P1_WIDTH),
-    .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-    .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
+    .QPRAM_DEPTH(MEM_DEPTH),
+    .QPRAM_PORT0_WIDTH(P0_WIDTH),
+    .QPRAM_PORT1_WIDTH(P1_WIDTH),
+    .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
+    .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
-  my_dpram
+  my_qpram
   (
     .clk(clk),
     .rst_n(rst_n),
@@ -98,7 +97,7 @@ module dpram_unit_test;
 
     // clear the memory contents
     for (int i=0; i<MEM_DEPTH; i+=1) begin
-      my_dpram.mem[i] = 'hx;
+      my_qpram.mem[i] = 'hx;
     end
 
     // flex the reset

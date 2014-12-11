@@ -39,17 +39,17 @@ module pixelProcessor_data_unit_test;
   endtask
 
   function void loadStartOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_dpram.mem[i] = i;
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.mem[i] = i;
   endfunction
 
   function void loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_dpram.mem[i] = i;
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_dpram.mem[i] = i+15360;
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.mem[i] = i;
+    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.mem[i] = i+15360;
   endfunction
 
   function void loadStartOfSecondFrame();
     loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_dpram.mem[i+LINE_WIDTH*4] = i;
+    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.mem[i+LINE_WIDTH*4] = i;
   endfunction
 
 //always @(posedge clk) begin

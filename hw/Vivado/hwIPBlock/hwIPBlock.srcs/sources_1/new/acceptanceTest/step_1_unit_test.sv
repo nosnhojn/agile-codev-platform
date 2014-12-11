@@ -1,7 +1,6 @@
 `include "svunit_defines.svh"
 
 `include "test_defines.svh"
-`include "dpram.v"
 
 module step_1_unit_test;
   import svunit_pkg::svunit_testcase;
@@ -106,15 +105,15 @@ module step_1_unit_test;
   wire [P1_ADDR_WIDTH-1:0] raddr_1;
   wire [119:0] rdata_no_connect;
 
-  dpram
+  qpram
   #(
-    .DPRAM_DEPTH(MEM_DEPTH),
-    .DPRAM_PORT0_WIDTH(P0_WIDTH),
-    .DPRAM_PORT1_WIDTH(P1_WIDTH),
-    .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-    .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
+    .QPRAM_DEPTH(MEM_DEPTH),
+    .QPRAM_PORT0_WIDTH(P0_WIDTH),
+    .QPRAM_PORT1_WIDTH(P1_WIDTH),
+    .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
+    .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
-  my_dpram
+  my_qpram
   (
     .clk(clk),
     .rst_n(rst_n),

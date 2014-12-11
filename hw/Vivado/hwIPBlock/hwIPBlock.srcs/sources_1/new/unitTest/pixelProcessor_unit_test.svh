@@ -62,15 +62,15 @@
   );
 
   wire [29:0] rdata_no_connect;
-  dpram
+  qpram
   #(
-    .DPRAM_DEPTH(8*LINE_WIDTH),
-    .DPRAM_PORT0_WIDTH(30),
-    .DPRAM_PORT1_WIDTH(120),
-    .DPRAM_PORT0_ADDR_WIDTH(14),
-    .DPRAM_PORT1_ADDR_WIDTH(12)
+    .QPRAM_DEPTH(8*LINE_WIDTH),
+    .QPRAM_PORT0_WIDTH(30),
+    .QPRAM_PORT1_WIDTH(120),
+    .QPRAM_PORT0_ADDR_WIDTH(14),
+    .QPRAM_PORT1_ADDR_WIDTH(12)
   )
-  my_dpram
+  my_qpram
   (
     .clk(clk),
     .rst_n(rst_n),

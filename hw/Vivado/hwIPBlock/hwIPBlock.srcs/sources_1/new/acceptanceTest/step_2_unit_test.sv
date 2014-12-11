@@ -114,15 +114,15 @@ module step_2_unit_test;
   );
 
 
-  dpram
+  qpram
   #(
-    .DPRAM_DEPTH(MEM_DEPTH),
-    .DPRAM_PORT0_WIDTH(30),
-    .DPRAM_PORT1_WIDTH(120),
-    .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-    .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
+    .QPRAM_DEPTH(MEM_DEPTH),
+    .QPRAM_PORT0_WIDTH(30),
+    .QPRAM_PORT1_WIDTH(120),
+    .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
+    .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
-  my_dpram
+  my_qpram
   (
     .clk(clk),
     .rst_n(rst_n),
@@ -297,28 +297,28 @@ module step_2_unit_test;
     `FAIL_UNLESS(oTLAST === last);
   endtask
 
-  function newIngressScenario(int length, initialPixel = 'hffffff);
+  function void newIngressScenario(int length, initialPixel = 'hffffff);
     ingressScenario[ingressScenarioCnt] = new [length];
     for (int i=0; i<length; i+=1) ingressScenario[ingressScenarioCnt][i] = initialPixel;
     ingressScenarioCnt += 1;
   endfunction
 
 
-  function newEgressScenario(int length, initialPixel = 'hffffff);
+  function void newEgressScenario(int length, initialPixel = 'hffffff);
     egressScenario[egressScenarioCnt] = new [length];
     for (int i=0; i<length; i+=1) egressScenario[egressScenarioCnt][i] = initialPixel;
     egressScenarioCnt += 1;
   endfunction
 
-  function setIngressFgCell(int row, int col);
+  function void setIngressFgCell(int row, int col);
     ingressScenario[ingressScenarioCnt-1][row * 1920 + col] = 24'h0;
   endfunction
 
-  function setEgressFgCell(int row, int col);
+  function void setEgressFgCell(int row, int col);
     egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'h0;
   endfunction
 
-  function setEgressShCell(int row, int col);
+  function void setEgressShCell(int row, int col);
     egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'he0e0e0;
   endfunction
 

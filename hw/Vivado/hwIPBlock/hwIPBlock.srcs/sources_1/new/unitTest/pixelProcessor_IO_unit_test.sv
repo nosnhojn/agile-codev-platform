@@ -98,15 +98,15 @@ module pixelProcessor_IO_unit_test;
   );
   wire [119:0] rdata_no_connect;
 
-  dpram
+  qpram
   #(
-    .DPRAM_DEPTH(MEM_DEPTH),
-    .DPRAM_PORT0_WIDTH(30),
-    .DPRAM_PORT1_WIDTH(120),
-    .DPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-    .DPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
+    .QPRAM_DEPTH(MEM_DEPTH),
+    .QPRAM_PORT0_WIDTH(30),
+    .QPRAM_PORT1_WIDTH(120),
+    .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
+    .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
   )
-  my_dpram
+  my_qpram
   (
     .clk(clk),
     .rst_n(rst_n),
