@@ -27,7 +27,7 @@ module pixelProcessor_calc_unit_test;
                              // any number divisible by 6 and larger than 12
                              // will work
 
-  `CLK_RESET_FIXTURE(10,1)
+  `CLK_RESET_FIXTURE(10,5)
 
   //===================================
   // This is the UUT that we're 

@@ -25,21 +25,12 @@
   rst_n = 0; \
   writePort(PORT, PORT*3, 120'h1122_3344_1122_3344_1234_5678); \
   step(); \
+  noWritePort(PORT); \
   readPort(PORT, PORT*3); \
   rst_n = 1; \
   step(); \
   nextSamplePoint(); \
   `FAIL_IF(rdata_``PORT == 30'h12345678); \
-`SVTEST_END
-
-`define no_read_N_in_reset(PORT) \
-`SVTEST(no_read_``PORT``_in_reset) \
-  writePort(PORT, 'h0, 'haabbccdd); \
-  step(); \
-  readPort(PORT, 'h0); \
-  rst_n = 0; \
-  step(); \
-  expectReadData(PORT, 'hx); \
 `SVTEST_END
 
 `define write_read_full_range(PORT) \

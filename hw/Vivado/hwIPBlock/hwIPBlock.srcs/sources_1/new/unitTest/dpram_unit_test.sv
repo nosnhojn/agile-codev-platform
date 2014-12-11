@@ -17,7 +17,7 @@ module qpram_unit_test;
   `define PORT0 0
   `define PORT1 1
 
-  `CLK_RESET_FIXTURE(10,1)
+  `CLK_RESET_FIXTURE(10,5)
 
   logic [P0_WIDTH-1:0] wdata_0;
   logic [P0_ADDR_WIDTH-1:0] waddr_0;
@@ -136,9 +136,6 @@ module qpram_unit_test;
     `no_write_N_in_reset(`PORT0)
     `no_write_N_in_reset(`PORT1)
 
-    `no_read_N_in_reset(`PORT0)
-    `no_read_N_in_reset(`PORT1)
-
     `write_read_full_range(`PORT0)
 
     // 4 writes to 1 read
@@ -178,6 +175,16 @@ module qpram_unit_test;
     nextSamplePoint();
     if (port == 0) `FAIL_UNLESS(rdata_0 === exp[P0_WIDTH-1:0]);
     if (port == 1) `FAIL_UNLESS(rdata_1 === exp[P1_WIDTH-1:0]);
+  endtask
+
+  task noWritePort(int port);
+    nextSamplePoint();
+    if (port == 0) begin
+      wr_0 = 0;
+    end
+    else begin
+      wr_1 = 0;
+    end
   endtask
 
   task writePort(int port, bit [31:0] addr, bit [P1_WIDTH-1:0] data);

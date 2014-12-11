@@ -25,6 +25,13 @@ module qpram
   input        [QPRAM_PORT1_ADDR_WIDTH-1:0] raddr_1
 );
 
+wire clk_i;
+logic rst_i_n;
+
+logic [QPRAM_PORT0_ADDR_WIDTH-1:0] raddr_i_0;
+
+clk_wiz_0_clk_wiz clk2 (clk, clk_i, rst_n);
+
 logic [QPRAM_PORT0_WIDTH-1:0] mem [QPRAM_DEPTH-1:0];
 
 logic [QPRAM_PORT1_WIDTH-1:0] next_rdata_1;
@@ -38,10 +45,23 @@ end
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
+    rst_i_n <= 0;
+    raddr_i_0 <= 0;
   end
 
   else begin
-    rdata_0 <= mem[raddr_0];
+    rst_i_n <= 1;
+    raddr_i_0 <= raddr_0;
+  end
+end
+
+
+always @(negedge rst_i_n or posedge clk_i) begin
+  if (!rst_n) begin
+  end
+
+  else begin
+    rdata_0 <= mem[raddr_i_0];
     rdata_1 <= next_rdata_1;
 
     if (wr_0) begin

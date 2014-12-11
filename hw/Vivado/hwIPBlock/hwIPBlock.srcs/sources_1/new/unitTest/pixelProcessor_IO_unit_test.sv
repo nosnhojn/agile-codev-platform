@@ -45,7 +45,7 @@ module pixelProcessor_IO_unit_test;
   wire [29:0] rdata;
   wire [P0_ADDR_WIDTH-1:0] raddr;
 
-  `CLK_RESET_FIXTURE(10,1)
+  `CLK_RESET_FIXTURE(10,5)
 
  //always @(negedge clk) begin
 //   $display("%t: oTDATA:0x%0x oTVALID:%0x iTREADY:%0x", $time, oTDATA, oTVALID, iTREADY);
@@ -141,11 +141,13 @@ module pixelProcessor_IO_unit_test;
   task setup();
     svunit_ut.setup();
 
-    iTREADY = 1;
+    deassertoTREADY();
+    iTVALID = 0;
     ingress_read_cnt = 0;
     setEgressNotRdy();
 
     reset();
+    assertoTREADY();
   endtask
 
 
@@ -406,7 +408,7 @@ module pixelProcessor_IO_unit_test;
     fillRamWithIncrementalData();
     setEgressRdy();
     step();
-  
+ 
     expectEgressPixel(0);
     expectEgressPixelRead();
   `SVTEST_END

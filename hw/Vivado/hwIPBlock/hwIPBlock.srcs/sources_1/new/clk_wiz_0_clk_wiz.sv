@@ -10,6 +10,7 @@ time t1, t2;
 initial begin
   clk_out1 = 1;
 
+  @(posedge clk_in1);
   @(posedge clk_in1) t1 = $time;
   @(posedge clk_in1) t2 = $time;
 

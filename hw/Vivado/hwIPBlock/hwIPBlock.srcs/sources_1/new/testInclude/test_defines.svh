@@ -25,4 +25,5 @@ task reset(); \
   step(RST_PERIOD); \
   #1; \
   rst_n = 1; \
+  step(2); \
 endtask
