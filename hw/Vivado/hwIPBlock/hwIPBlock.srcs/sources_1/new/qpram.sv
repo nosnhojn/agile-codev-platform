@@ -25,6 +25,9 @@ module qpram
   input        [QPRAM_PORT1_ADDR_WIDTH-1:0] raddr_1
 );
 
+wire [QPRAM_PORT0_WIDTH-1:0] rdata_0_i;
+wire [QPRAM_PORT1_WIDTH-1:0] rdata_1_i;
+
 wire clk_i;
 logic rst_i_n;
 
@@ -44,10 +47,14 @@ end
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     rst_i_n <= 0;
+    rdata_0 <= 0;
+    rdata_1 <= 0;
   end
 
   else begin
     rst_i_n <= 1;
+    rdata_0 <= rdata_0_i;
+    rdata_1 <= rdata_1_i;
   end
 end
 
@@ -59,24 +66,58 @@ always @(negedge rst_i_n or posedge clk_i) begin
 
   else begin
     read_cycle <= ~read_cycle;
-
-    if (!read_cycle) begin
-      rdata_0 <= mem[raddr_0];
-      rdata_1 <= next_rdata_1;
-    end
-
-    else begin
-      if (wr_0) begin
-        mem[waddr_0] <= wdata_0;
-      end
-
-      if (wr_1) begin
-        for (int i=0; i<QPRAM_PORT1_WIDTH/QPRAM_PORT0_WIDTH; i+=1) begin
-          mem[(waddr_1<<2)+i] <= wdata_1 >> QPRAM_PORT0_WIDTH*i;
-        end
-      end
-    end
   end
 end
+
+
+wire        wea;
+wire [QPRAM_PORT0_ADDR_WIDTH-1:0] addra;
+wire        web;
+wire [QPRAM_PORT1_ADDR_WIDTH-1:0]  addrb;
+
+assign wea = (read_cycle) ? 1'b0 : wr_0;
+assign addra = (read_cycle) ? raddr_0 : waddr_0;
+
+assign web = (read_cycle) ? 1'b0 : wr_1;
+assign addrb = (read_cycle) ? raddr_1 : waddr_1;
+
+blk_mem_gen_v8_0
+#(
+  .C_WRITE_WIDTH_A           (QPRAM_PORT0_WIDTH),
+  .C_READ_WIDTH_A            (QPRAM_PORT0_WIDTH),
+  .C_WRITE_DEPTH_A           (QPRAM_DEPTH),
+  .C_READ_DEPTH_A            (QPRAM_DEPTH),
+  .C_ADDRA_WIDTH             (QPRAM_PORT0_ADDR_WIDTH),
+  .C_WRITE_MODE_A            ("NO_CHANGE"),
+  .C_WRITE_WIDTH_B           (QPRAM_PORT1_WIDTH),
+  .C_READ_WIDTH_B            (QPRAM_PORT1_WIDTH),
+  .C_WRITE_DEPTH_B           (QPRAM_DEPTH/4),
+  .C_READ_DEPTH_B            (QPRAM_DEPTH/4),
+  .C_ADDRB_WIDTH             (QPRAM_PORT1_ADDR_WIDTH),
+  .C_WRITE_MODE_B            ("NO_CHANGE"),
+  .C_HAS_MEM_OUTPUT_REGS_A   (0),
+  .C_HAS_MEM_OUTPUT_REGS_B   (0)
+)
+  blk_mem
+(
+ .clka(clk_i),
+ .rsta(~rst_n),
+ .ena(1'b1),
+ .regcea(1'b1),
+ .wea(wea),
+ .addra(addra),
+ .dina(wdata_0),
+ .douta(rdata_0_i),
+
+ .clkb(clk_i),
+ .rstb(~rst_n),
+ .enb(1'b1),
+ .regceb(1'b1),
+ .web(web),
+ .addrb(addrb),
+ .dinb(wdata_1),
+ .doutb(rdata_1_i)
+);
+
 
 endmodule

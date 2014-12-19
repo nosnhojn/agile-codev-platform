@@ -130,8 +130,8 @@ module qpram_unit_test;
     `write_read_port_N_test(`PORT0)
     `write_read_port_N_test(`PORT1)
 
-    `rdata_N_is_registered_test(`PORT0)
-    `rdata_N_is_registered_test(`PORT1)
+    //`rdata_N_is_registered_test(`PORT0)
+    //`rdata_N_is_registered_test(`PORT1)
 
     `no_write_N_in_reset(`PORT0)
     `no_write_N_in_reset(`PORT1)
@@ -173,8 +173,14 @@ module qpram_unit_test;
 
   task expectReadData(int port, logic [P1_WIDTH-1:0] exp);
     nextSamplePoint();
-    if (port == 0) `FAIL_UNLESS(rdata_0 === exp[P0_WIDTH-1:0]);
-    if (port == 1) `FAIL_UNLESS(rdata_1 === exp[P1_WIDTH-1:0]);
+    if (port == 0) begin 
+//$display("rdata_0:0x%0x exp:0x%0x", rdata_0, exp[P0_WIDTH-1:0]);
+      `FAIL_UNLESS(rdata_0 === exp[P0_WIDTH-1:0]);
+    end
+    if (port == 1) begin 
+//$display("rdata_1:0x%0x exp:0x%0x", rdata_1, exp[P1_WIDTH-1:0]);
+      `FAIL_UNLESS(rdata_1 === exp[P1_WIDTH-1:0]);
+    end
   endtask
 
   task noWritePort(int port);

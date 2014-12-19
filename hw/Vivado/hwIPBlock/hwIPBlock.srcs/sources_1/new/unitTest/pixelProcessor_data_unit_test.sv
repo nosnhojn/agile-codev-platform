@@ -39,19 +39,19 @@ module pixelProcessor_data_unit_test;
     setIngressRdy();
   endtask
 
-  function void loadStartOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.mem[i] = i;
-  endfunction
+  task loadStartOfFrame();
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+  endtask
 
-  function void loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.mem[i] = i;
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.mem[i] = i+15360;
-  endfunction
+  task loadEndOfFrame();
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i+15360, 0, 0);
+  endtask
 
-  function void loadStartOfSecondFrame();
-    loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.mem[i+LINE_WIDTH*4] = i;
-  endfunction
+  task loadStartOfSecondFrame();
+     loadEndOfFrame();
+     for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i+4*LINE_WIDTH, 'b1, i, 0, 0);
+  endtask
 
 //always @(posedge clk) begin
 //  #0.1;
@@ -82,12 +82,12 @@ module pixelProcessor_data_unit_test;
   //   `SVTEST_END
   //===================================
 
-    logic [119:0] slot0;
-    logic [119:0] slot1;
-    logic [119:0] slot2;
-    int _1st_line;
-    int _2nd_line;
-    int _3rd_line;
+  logic [119:0] slot0;
+  logic [119:0] slot1;
+  logic [119:0] slot2;
+  int _1st_line;
+  int _2nd_line;
+  int _3rd_line;
 
   task automatic expectGroupEq(int row,
                                int column);
