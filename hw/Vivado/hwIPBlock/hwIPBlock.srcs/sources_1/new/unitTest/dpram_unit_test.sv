@@ -133,8 +133,8 @@ module qpram_unit_test;
     //`rdata_N_is_registered_test(`PORT0)
     //`rdata_N_is_registered_test(`PORT1)
 
-    `no_write_N_in_reset(`PORT0)
-    `no_write_N_in_reset(`PORT1)
+//   `no_write_N_in_reset(`PORT0)
+//   `no_write_N_in_reset(`PORT1)
 
     `write_read_full_range(`PORT0)
 

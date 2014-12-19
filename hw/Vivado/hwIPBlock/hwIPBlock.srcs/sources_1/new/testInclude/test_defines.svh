@@ -21,9 +21,15 @@ task nextSamplePoint(); \
   else repeat (2) #0; \
 endtask \
 task reset(); \
-  rst_n = 0; \
-  step(RST_PERIOD); \
-  #1; \
-  rst_n = 1; \
-  step(9); \
+  fork \
+    begin \
+      rst_n = 0; \
+      #(RST_PERIOD * clkPeriod); \
+      #23; \
+      rst_n = 1; \
+    end \
+    begin \
+      step(RST_PERIOD+8); \
+    end \
+  join \
 endtask
