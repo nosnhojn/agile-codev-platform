@@ -61,7 +61,7 @@ module step_2_unit_test;
   wire         egress_read_cnt;
   assign ingress_read_cnt = egress_read_cnt;
 
-  `CLK_RESET_FIXTURE(10,1)
+  `CLK_RESET_FIXTURE(24,5)
 
  always @(posedge clk) begin
    #1;
