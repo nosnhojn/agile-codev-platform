@@ -34,31 +34,11 @@ module step_1_unit_test;
   wire        oTVALID;
   reg         iTREADY;
 
-  wire  [P0_ADDR_WIDTH-1:0] ingress_cnt;
-
-  wire [29:0] wdata;
-  wire [P0_ADDR_WIDTH-1:0] waddr;
-  wire        wr;
-  wire [29:0] rdata;
-  wire [P0_ADDR_WIDTH-1:0] raddr;
-
-  wire [P0_ADDR_WIDTH-1:0] ingress_read_cnt;
-  wire         egress_read_cnt;
-  wire ingress_rdy;
-
-  assign ingress_read_cnt = egress_read_cnt;
-
   `CLK_RESET_FIXTURE(24,5)
 
- always @(posedge clk) begin
-   #1;
-   //$display("%t: wr:0x%0x wdata:0x%0x waddr:%0x", $time, wr, wdata, waddr);
-   //$display("%t: rdata:0x%0x raddr:%0x", $time, rdata, raddr);
- end
-
-  pixelProcessor_IO
+  pixelProcessor_s1
   #(
-    .MEM_DEPTH(MEM_DEPTH)
+    .MEM_DEPTH(321)
   )
   uut
   (
@@ -79,60 +59,8 @@ module step_1_unit_test;
     .oTKEEP(oTKEEP),
     .oTLAST(oTLAST),
     .oTVALID(oTVALID),
-    .iTREADY(iTREADY),
-
-    // ram port
-    .wdata(wdata),
-    .waddr(waddr),
-    .wr(wr),
-    .rdata(rdata),
-    .raddr(raddr),
-
-    // control signals
-    .ingress_rdy(ingress_rdy),
-    .ingress_cnt(),
-    .ingress_thresh(INGRESS_THRESH[P0_ADDR_WIDTH-1:0]),
-    .ingress_full(INGRESS_FULL[P0_ADDR_WIDTH-1:0]),
-    .ingress_read_cnt(ingress_read_cnt), //{ 8'h0 , egress_read_cnt }),
-    .ingress_new_pixel(),
-
-    .egress_rdy(ingress_rdy),
-    .egress_read_cnt(egress_read_cnt)
+    .iTREADY(iTREADY)
   );
-
-  wire [P1_WIDTH-1:0] wdata_1;
-  wire [P1_ADDR_WIDTH-1:0] waddr_1;
-  wire [P1_ADDR_WIDTH-1:0] raddr_1;
-  wire [119:0] rdata_no_connect;
-
-  qpram
-  #(
-    .QPRAM_DEPTH(MEM_DEPTH),
-    .QPRAM_PORT0_WIDTH(P0_WIDTH),
-    .QPRAM_PORT1_WIDTH(P1_WIDTH),
-    .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-    .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
-  )
-  my_qpram
-  (
-    .clk(clk),
-    .rst_n(rst_n),
-
-    .wdata_0(wdata),
-    .waddr_0(waddr),
-    .wr_0(wr),
-
-    .rdata_0(rdata),
-    .raddr_0(raddr),
-
-    .wdata_1(wdata_1),
-    .waddr_1(waddr_1),
-    .wr_1(1'b0),
-
-    .raddr_1(raddr_1),
-    .rdata_1(rdata_no_connect)
-  );
-
 
   //===================================
   // Build
