@@ -10,12 +10,7 @@ module step_1_unit_test;
 
   // uut params
   parameter MEM_DEPTH = 321;
-  parameter P0_WIDTH = 30;
-  parameter P1_WIDTH = 120;
-  parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
-  parameter P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4);
   parameter INGRESS_THRESH = 3;
-  parameter INGRESS_FULL = 10;
 
   //===================================
   // This is the UUT that we're 
@@ -139,7 +134,7 @@ module step_1_unit_test;
     iTLAST = last;
   endtask
 
-  task expectEgressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
+  task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
     `FAIL_UNLESS(oTDATA === data);

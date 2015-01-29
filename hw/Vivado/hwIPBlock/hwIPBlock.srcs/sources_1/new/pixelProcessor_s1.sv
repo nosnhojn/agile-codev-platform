@@ -13,7 +13,7 @@ module pixelProcessor_s1
   input rst_n,
 
   // axi4 ingress
-  input [P0_WIDTH-1:0]  iTDATA,
+  input [P0_WIDTH-7:0]  iTDATA,
   input                 iTUSER,
   input [3:0]           iTKEEP,
   input                 iTLAST,
@@ -21,7 +21,7 @@ module pixelProcessor_s1
   output wire           oTREADY,
 
   // axi4 ingress
-  output wire [P0_WIDTH-1:0] oTDATA,
+  output wire [P0_WIDTH-7:0] oTDATA,
   output wire                oTUSER,
   output wire [3:0]          oTKEEP,
   output wire                oTLAST,
@@ -31,10 +31,10 @@ module pixelProcessor_s1
 
 wire  [P0_ADDR_WIDTH-1:0] ingress_cnt;
 
-wire [29:0] wdata;
+wire [P0_WIDTH-1:0] wdata;
 wire [P0_ADDR_WIDTH-1:0] waddr;
 wire        wr;
-wire [29:0] rdata;
+wire [P0_WIDTH-1:0] rdata;
 wire [P0_ADDR_WIDTH-1:0] raddr;
 
 wire [P0_ADDR_WIDTH-1:0] ingress_read_cnt;
@@ -90,7 +90,7 @@ uut
 wire [P1_WIDTH-1:0] wdata_1;
 wire [P1_ADDR_WIDTH-1:0] waddr_1;
 wire [P1_ADDR_WIDTH-1:0] raddr_1;
-wire [119:0] rdata_no_connect;
+wire [P1_WIDTH-1:0] rdata_no_connect;
 
 qpram
 #(
