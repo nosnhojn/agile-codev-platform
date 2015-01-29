@@ -29,7 +29,7 @@
 
   `CLK_RESET_FIXTURE(24,5)
 
-  pixelProcessor
+  pixelProcessor_pull
     #(
       .PIXEL_WIDTH(LINE_WIDTH),
       .PIXEL_HEIGHT(NUM_LINES),

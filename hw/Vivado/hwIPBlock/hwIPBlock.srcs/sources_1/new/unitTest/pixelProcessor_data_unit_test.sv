@@ -14,7 +14,7 @@ module pixelProcessor_data_unit_test;
   //===================================
 
   // instance and connectivity are in this include file
-  `include "pixelProcessor_unit_test.svh"
+  `include "pixelProcessor_pull_unit_test.svh"
 
 
   //===================================

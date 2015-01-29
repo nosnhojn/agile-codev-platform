@@ -1,4 +1,4 @@
-module pixelProcessor
+module pixelProcessor_pull
 #(
   PIXEL_WIDTH = 1920,
   PIXEL_HEIGHT = 1080,
