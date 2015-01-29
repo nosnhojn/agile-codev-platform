@@ -1,6 +1,9 @@
+-v93
+
 +incdir+..
 +incdir+../testInclude
 
+/home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/blk_mem_gen_0.v
 /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/blk_mem_gen_v8_0.v
 /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/clk_wiz_0_clk_wiz.sv
 /home/njohnson/sandbox/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv

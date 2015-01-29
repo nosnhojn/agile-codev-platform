@@ -47,7 +47,7 @@ pixelProcessor_IO
 #(
   .MEM_DEPTH(MEM_DEPTH)
 )
-uut
+my_pixelProcessor_IO
 (
   .clk(clk),
   .rst_n(rst_n),

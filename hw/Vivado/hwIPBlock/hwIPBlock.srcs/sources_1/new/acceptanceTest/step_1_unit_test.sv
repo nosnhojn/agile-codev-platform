@@ -9,7 +9,7 @@ module step_1_unit_test;
   svunit_testcase svunit_ut;
 
   // uut params
-  parameter MEM_DEPTH = 321;
+  parameter MEM_DEPTH = 15360;
   parameter INGRESS_THRESH = 3;
 
   //===================================
@@ -33,7 +33,7 @@ module step_1_unit_test;
 
   pixelProcessor_s1
   #(
-    .MEM_DEPTH(321)
+    .MEM_DEPTH(MEM_DEPTH)
   )
   uut
   (

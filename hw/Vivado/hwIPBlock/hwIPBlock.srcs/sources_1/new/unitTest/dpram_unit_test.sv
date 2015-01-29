@@ -5,7 +5,7 @@
 module qpram_unit_test;
   import svunit_pkg::svunit_testcase;
 
-  parameter MEM_DEPTH = 256;
+  parameter MEM_DEPTH = 8*1920;
   parameter P0_WIDTH = 30;
   parameter P1_WIDTH = 4 * P0_WIDTH;
   parameter P0_ADDR_WIDTH = $clog2(MEM_DEPTH);
