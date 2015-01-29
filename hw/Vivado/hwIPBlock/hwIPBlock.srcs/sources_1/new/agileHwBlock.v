@@ -1,24 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 07/02/2014 09:58:00 PM
-// Design Name: 
-// Module Name: agileHWBlock
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module agileHWBlock(
     input [31:0]  iTDATA,
     input         iTUSER,
@@ -35,11 +14,32 @@ module agileHWBlock(
     input clk,
     input rst
     );
+
+pixelProcessor_s1
+#(
+  .MEM_DEPTH(321)
+)
+uut
+(
+  .clk(clk),
+  .rst_n(rst_n),
+
+  // ingress port
+  .iTDATA(iTDATA),
+  .iTUSER(iTUSER),
+  .iTKEEP(iTKEEP),
+  .iTLAST(iTLAST),
+  .iTVALID(iTVALID),
+  .oTREADY(oTREADY),
+
+  // egress port
+  .oTDATA(oTDATA),
+  .oTUSER(oTUSER),
+  .oTKEEP(oTKEEP),
+  .oTLAST(oTLAST),
+  .oTVALID(oTVALID),
+  .iTREADY(iTREADY)
+);
+
     
-    assign oTDATA = (iTDATA == 'h00000000) ? 'h00055ff : iTDATA;
-    assign oTUSER = iTUSER;
-    assign oTKEEP = iTKEEP;
-    assign oTVALID = iTVALID;
-    assign oTLAST = iTLAST;
-    assign oTREADY = iTREADY;
 endmodule
