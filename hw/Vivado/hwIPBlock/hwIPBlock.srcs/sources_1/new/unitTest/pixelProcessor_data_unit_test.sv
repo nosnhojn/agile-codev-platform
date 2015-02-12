@@ -40,17 +40,17 @@ module pixelProcessor_data_unit_test;
   endtask
 
   task loadStartOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
   endtask
 
   task loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i+15360, 0, 0);
+    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i+15360, 0, 0);
   endtask
 
   task loadStartOfSecondFrame();
      loadEndOfFrame();
-     for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i+4*LINE_WIDTH, 'b1, i, 0, 0);
+     for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i+4*LINE_WIDTH, 'b1, i, 0, 0);
   endtask
 
 //always @(posedge clk) begin

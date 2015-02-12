@@ -19,7 +19,7 @@ pixelProcessor_s1
 #(
   .MEM_DEPTH(321)
 )
-uut
+s1
 (
   .clk(clk),
   .rst_n(rst_n),

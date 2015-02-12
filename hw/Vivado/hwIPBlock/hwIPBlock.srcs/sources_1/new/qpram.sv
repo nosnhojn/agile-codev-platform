@@ -81,38 +81,15 @@ assign addra = (read_cycle) ? raddr_0 : waddr_0;
 assign web = (read_cycle) ? 1'b0 : wr_1;
 assign addrb = (read_cycle) ? raddr_1 : waddr_1;
 
-blk_mem_gen_v8_0
-#(
-  .C_WRITE_WIDTH_A           (QPRAM_PORT0_WIDTH),
-  .C_READ_WIDTH_A            (QPRAM_PORT0_WIDTH),
-  .C_WRITE_DEPTH_A           (QPRAM_DEPTH),
-  .C_READ_DEPTH_A            (QPRAM_DEPTH),
-  .C_ADDRA_WIDTH             (QPRAM_PORT0_ADDR_WIDTH),
-  .C_WRITE_MODE_A            ("NO_CHANGE"),
-  .C_WRITE_WIDTH_B           (QPRAM_PORT1_WIDTH),
-  .C_READ_WIDTH_B            (QPRAM_PORT1_WIDTH),
-  .C_WRITE_DEPTH_B           (QPRAM_DEPTH/4),
-  .C_READ_DEPTH_B            (QPRAM_DEPTH/4),
-  .C_ADDRB_WIDTH             (QPRAM_PORT1_ADDR_WIDTH),
-  .C_WRITE_MODE_B            ("NO_CHANGE"),
-  .C_HAS_MEM_OUTPUT_REGS_A   (0),
-  .C_HAS_MEM_OUTPUT_REGS_B   (0)
-)
-  blk_mem
+blk_mem_gen_0 blk_mem
 (
  .clka(clk_i),
- .rsta(~rst_n),
- .ena(1'b1),
- .regcea(1'b1),
  .wea(wea),
  .addra(addra),
  .dina(wdata_0),
  .douta(rdata_0_i),
 
  .clkb(clk_i),
- .rstb(~rst_n),
- .enb(1'b1),
- .regceb(1'b1),
  .web(web),
  .addrb(addrb),
  .dinb(wdata_1),
