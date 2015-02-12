@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 // pre-commands:
-ISETouchFile( "init_design", "begin" );
+ISETouchFile( "write_bitstream", "begin" );
 ISEStep( "vivado",
          "-log FinalDesign_wrapper.rdi -applog -m32 -messageDb vivado.pb -mode batch -source FinalDesign_wrapper.tcl -notrace" );
 

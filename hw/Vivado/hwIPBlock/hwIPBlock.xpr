@@ -4,6 +4,8 @@
 	<FileSet Dir="sources_1" File="fileset.xml"/>
 	<FileSet Dir="constrs_1" File="fileset.xml"/>
 	<FileSet Dir="sim_1" File="fileset.xml"/>
+	<FileSet Dir="clk_wiz_0" File="fileset.xml"/>
+	<RunSet Dir="runs" File="runs.xml"/>
 	<DefaultLaunch Dir="$PRUNDIR"/>
 	<Config>
 		<Option Name="Id" Val="7e876fcbc63d4545bd4e528550caa283"/>

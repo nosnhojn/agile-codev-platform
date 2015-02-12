@@ -2,8 +2,8 @@
 # Vivado v2013.3
 # SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
 # IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
-# Start of session at: Thu Jul 24 19:10:55 2014
-# Process ID: 8384
+# Start of session at: Wed Feb 11 21:24:23 2015
+# Process ID: 15002
 # Log file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/FinalDesign_wrapper.rds
 # Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
@@ -55,8 +55,8 @@ add_files: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 5
 # set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_ooc.xdc]
 # set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc]
 # set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/FinalDesign_xbar_3_ooc.xdc]
-# set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9_ooc.xdc]
-# set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10_ooc.xdc]
+# set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11_ooc.xdc]
+# set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12_ooc.xdc]
 # set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign_ooc.xdc]
 # set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
 # set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign.bd]
@@ -75,7 +75,7 @@ Starting synthesis...
 
 INFO: [Common 17-347] Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
-Starting RTL Elaboration : Time (s): cpu = 00:02:13 ; elapsed = 00:02:18 . Memory (MB): peak = 537.332 ; gain = 139.941
+Starting RTL Elaboration : Time (s): cpu = 00:02:36 ; elapsed = 00:02:44 . Memory (MB): peak = 539.332 ; gain = 141.941
 WARNING: [Synth 8-2048] function gpo_bit_used does not always return a value [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/iic_pkg.vhd:208]
 INFO: [Synth 8-638] synthesizing module 'FinalDesign_wrapper' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign_wrapper.v:3]
 INFO: [Synth 8-638] synthesizing module 'FinalDesign' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:4]
@@ -227,7 +227,7 @@ INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_180AW1Y' (19#1) [
 INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_WNEIF9' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1568]
 INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_WNEIF9' (20#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1568]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_156Q4UY' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1693]
-INFO: [Synth 8-638] synthesizing module 'FinalDesign_auto_pc_9' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/synth/FinalDesign_auto_pc_9.v:57]
+INFO: [Synth 8-638] synthesizing module 'FinalDesign_auto_pc_11' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/synth/FinalDesign_auto_pc_11.v:57]
 INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_axi_protocol_converter' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v:62]
 INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_b2s' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_b2s.v:39]
 INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_axi_register_slice' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axi_register_slice.v:64]
@@ -288,7 +288,7 @@ INFO: [Synth 8-256] done synthesizing module 'axi_infrastructure_v1_1_vector2axi
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_axi_register_slice__parameterized0' (34#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axi_register_slice.v:64]
 INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_b2s' (35#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_b2s.v:39]
 INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_axi_protocol_converter' (36#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v:62]
-INFO: [Synth 8-256] done synthesizing module 'FinalDesign_auto_pc_9' (37#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/synth/FinalDesign_auto_pc_9.v:57]
+INFO: [Synth 8-256] done synthesizing module 'FinalDesign_auto_pc_11' (37#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/synth/FinalDesign_auto_pc_11.v:57]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_156Q4UY' (38#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1693]
 INFO: [Synth 8-638] synthesizing module 'FinalDesign_xbar_3' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/synth/FinalDesign_xbar_3.v:57]
 INFO: [Synth 8-638] synthesizing module 'axi_crossbar_v2_1_axi_crossbar' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_crossbar_v2_1/hdl/verilog/axi_crossbar_v2_1_axi_crossbar.v:54]
@@ -334,7 +334,7 @@ INFO: [Synth 8-256] done synthesizing module 'agileHWBlock' (50#1) [/home/agileh
 INFO: [Synth 8-256] done synthesizing module 'FinalDesign_agileHWBlock_0_1' (51#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_agileHWBlock_0_1/synth/FinalDesign_agileHWBlock_0_1.v:56]
 INFO: [Synth 8-638] synthesizing module 'FinalDesign_axi_mem_intercon_2' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:452]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1NO65A2' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1998]
-INFO: [Synth 8-638] synthesizing module 'FinalDesign_auto_pc_10' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/synth/FinalDesign_auto_pc_10.v:57]
+INFO: [Synth 8-638] synthesizing module 'FinalDesign_auto_pc_12' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/synth/FinalDesign_auto_pc_12.v:57]
 INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_axi_protocol_converter__parameterized0' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v:62]
 INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_axi3_conv' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi3_conv.v:69]
 INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_a_axi3_conv' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_a_axi3_conv.v:62]
@@ -391,7 +391,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_r_axi3_conv
 INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_r_axi3_conv' (72#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_r_axi3_conv.v:61]
 INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_axi3_conv' (73#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi3_conv.v:69]
 INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_axi_protocol_converter__parameterized0' (73#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v:62]
-INFO: [Synth 8-256] done synthesizing module 'FinalDesign_auto_pc_10' (74#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/synth/FinalDesign_auto_pc_10.v:57]
+INFO: [Synth 8-256] done synthesizing module 'FinalDesign_auto_pc_12' (74#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/synth/FinalDesign_auto_pc_12.v:57]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1NO65A2' (75#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:1998]
 INFO: [Synth 8-256] done synthesizing module 'FinalDesign_axi_mem_intercon_2' (76#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v:452]
 INFO: [Synth 8-638] synthesizing module 'FinalDesign_axi_vdma_0_0' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/synth/FinalDesign_axi_vdma_0_0.vhd:105]
@@ -1147,8 +1147,8 @@ INFO: [Synth 8-256] done synthesizing module 'FinalDesign' (228#1) [/home/agileh
 INFO: [Synth 8-638] synthesizing module 'IOBUF' [/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v:8199]
 INFO: [Synth 8-256] done synthesizing module 'IOBUF' (229#1) [/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v:8199]
 INFO: [Synth 8-256] done synthesizing module 'FinalDesign_wrapper' (230#1) [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign_wrapper.v:3]
-Finished RTL Elaboration : Time (s): cpu = 00:05:35 ; elapsed = 00:05:42 . Memory (MB): peak = 713.352 ; gain = 315.961
-Start RTL Optimization : Time (s): cpu = 00:05:35 ; elapsed = 00:05:42 . Memory (MB): peak = 713.352 ; gain = 315.961
+Finished RTL Elaboration : Time (s): cpu = 00:05:58 ; elapsed = 00:06:08 . Memory (MB): peak = 715.352 ; gain = 317.961
+Start RTL Optimization : Time (s): cpu = 00:05:58 ; elapsed = 00:06:08 . Memory (MB): peak = 715.352 ; gain = 317.961
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
@@ -1740,7 +1740,7 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM64X1S => RAM64X1S (RAMS64E): 1 instances
   SRL16 => SRL16E: 2 instances
 
-Start RTL Optimization : Time (s): cpu = 00:06:15 ; elapsed = 00:06:23 . Memory (MB): peak = 845.672 ; gain = 448.281
+Start RTL Optimization : Time (s): cpu = 00:06:37 ; elapsed = 00:06:47 . Memory (MB): peak = 848.672 ; gain = 451.281
 
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -1777,11 +1777,11 @@ Applied set_property DONT_TOUCH = true. (constraint file  /home/agilehw/agile-co
 Applied set_property DONT_TOUCH = true. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/dont_touch.xdc, line 124).
 Applied set_property DONT_TOUCH = true. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/dont_touch.xdc, line 129).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:16 ; elapsed = 00:06:24 . Memory (MB): peak = 845.676 ; gain = 448.285
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:39 ; elapsed = 00:06:49 . Memory (MB): peak = 848.676 ; gain = 451.285
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
-Finished RTL Optimization : Time (s): cpu = 00:06:16 ; elapsed = 00:06:24 . Memory (MB): peak = 845.676 ; gain = 448.285
+Finished RTL Optimization : Time (s): cpu = 00:06:39 ; elapsed = 00:06:49 . Memory (MB): peak = 848.676 ; gain = 451.285
 ---------------------------------------------------------------------------------
 
 INFO: [Synth 8-4471] merging register 'seq_cnt_en_reg' into 'from_sys_reg' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_1/proc_sys_reset_v5_0/hdl/src/vhdl/sequence.vhd:222]
@@ -1843,7 +1843,7 @@ Part Resources:
 DSPs: 220 (col length:60)
 BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:06:43 ; elapsed = 00:06:53 . Memory (MB): peak = 845.676 ; gain = 448.285
+Finished Loading Part and Timing Information : Time (s): cpu = 00:07:06 ; elapsed = 00:07:16 . Memory (MB): peak = 848.676 ; gain = 451.285
 ---------------------------------------------------------------------------------
 
 
@@ -1892,82 +1892,82 @@ INFO: [Synth 8-3332] Sequential element (\mem1/GenerateDoutWriteFirstA.t_qa_reg[
 INFO: [Synth 8-3332] Sequential element (\mem1/GenerateDoutWriteFirstA.t_qa_reg[2] ) is unused and will be removed from module v_rgb2ycrcb_v7_1_synch_fifo.
 INFO: [Synth 8-3332] Sequential element (\mem1/GenerateDoutWriteFirstA.t_qa_reg[1] ) is unused and will be removed from module v_rgb2ycrcb_v7_1_synch_fifo.
 INFO: [Synth 8-3332] Sequential element (\mem1/GenerateDoutWriteFirstA.t_qa_reg[0] ) is unused and will be removed from module v_rgb2ycrcb_v7_1_synch_fifo.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
 WARNING: [Synth 8-3936] Found unconnected internal register 'inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg' and it is trimmed from '66' to '62' bits. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axic_register_slice.v:121]
 WARNING: [Synth 8-3936] Found unconnected internal register 'inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg' and it is trimmed from '66' to '62' bits. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axic_register_slice.v:121]
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_9.
-INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_9.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] ) is unused and will be removed from module FinalDesign_auto_pc_11.
+INFO: [Synth 8-3332] Sequential element (\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] ) is unused and will be removed from module FinalDesign_auto_pc_11.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 WARNING: [Synth 8-3936] Found unconnected internal register 'inst/gen_sasd.crossbar_sasd_0/reg_slice_r/m_payload_i_reg' and it is trimmed from '36' to '35' bits. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axic_register_slice.v:121]
 INFO: [Synth 8-4471] merging register 'GEN_RESET_FOR_MM2S.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.INPUT_FLOP.p_level_in_d1_cdc_from_reg' into 'GEN_RESET_FOR_MM2S.RESET_I/GEN_MIN_FOR_ASYNC.LITE_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.INPUT_FLOP.p_level_in_d1_cdc_from_reg' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd:288]
@@ -1985,7 +1985,7 @@ INFO: [Synth 8-4471] merging register 'MASTER_MODE_FRAME_CNT.valid_frame_sync_re
 INFO: [Synth 8-4471] merging register 'MASTER_MODE_FRAME_CNT.tstvect_fsync_d1_reg' into 'I_SM/frame_sync_d1_reg' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_mngr.vhd:1718]
 INFO: [Synth 8-4471] merging register 'MASTER_MODE_FRAME_CNT.tstvect_fsync_d2_reg' into 'I_SM/frame_sync_d2_reg' [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_mngr.vhd:1719]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:06:49 ; elapsed = 00:06:59 . Memory (MB): peak = 849.680 ; gain = 452.289
+Finished Cross Boundary Optimization : Time (s): cpu = 00:07:12 ; elapsed = 00:07:22 . Memory (MB): peak = 849.680 ; gain = 452.289
 ---------------------------------------------------------------------------------
 
 
@@ -1993,7 +1993,7 @@ Finished Cross Boundary Optimization : Time (s): cpu = 00:06:49 ; elapsed = 00:0
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:07:07 ; elapsed = 00:07:17 . Memory (MB): peak = 888.367 ; gain = 490.977
+Finished Area Optimization : Time (s): cpu = 00:07:30 ; elapsed = 00:07:41 . Memory (MB): peak = 889.359 ; gain = 491.969
 ---------------------------------------------------------------------------------
 
 
@@ -2006,11 +2006,11 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 INFO: Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:07:16 ; elapsed = 00:07:26 . Memory (MB): peak = 1018.367 ; gain = 620.977
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:07:39 ; elapsed = 00:07:50 . Memory (MB): peak = 1019.359 ; gain = 621.969
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:07:20 ; elapsed = 00:07:30 . Memory (MB): peak = 1043.383 ; gain = 645.992
+Finished Timing Optimization : Time (s): cpu = 00:07:43 ; elapsed = 00:07:54 . Memory (MB): peak = 1044.375 ; gain = 646.984
 ---------------------------------------------------------------------------------
 
 
@@ -2019,7 +2019,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-4480] The timing for the instance \out_coupler_i/bridge_async_fifo_2_i/fifo_ram_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:07:35 ; elapsed = 00:07:45 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Finished Technology Mapping : Time (s): cpu = 00:07:58 ; elapsed = 00:08:10 . Memory (MB): peak = 1055.727 ; gain = 658.336
 ---------------------------------------------------------------------------------
 
 
@@ -2038,7 +2038,7 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-design FinalDesign_auto_pc_9 has 5 max_fanout violations cannot be satisfied
+design FinalDesign_auto_pc_11 has 5 max_fanout violations cannot be satisfied
 design v_tc has 1 max_fanout violations cannot be satisfied
 INFO: [Synth 8-4163] Replicating register \U0/hdmi_de_o_reg  to handle IOB=TRUE attribute
 INFO: [Synth 8-4163] Replicating register \U0/hdmi_hsync_o_reg  to handle IOB=TRUE attribute
@@ -2065,7 +2065,7 @@ INFO: [Synth 8-4163] Replicating register \U0/hdmi_spdif_o_reg  to handle IOB=TR
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:07:38 ; elapsed = 00:07:49 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Finished IO Insertion : Time (s): cpu = 00:08:01 ; elapsed = 00:08:13 . Memory (MB): peak = 1055.727 ; gain = 658.336
 ---------------------------------------------------------------------------------
 
 
@@ -2080,7 +2080,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:07:38 ; elapsed = 00:07:49 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Finished Renaming Generated Instances : Time (s): cpu = 00:08:01 ; elapsed = 00:08:13 . Memory (MB): peak = 1055.727 ; gain = 658.336
 ---------------------------------------------------------------------------------
 
 
@@ -2088,7 +2088,7 @@ Finished Renaming Generated Instances : Time (s): cpu = 00:07:38 ; elapsed = 00:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:07:40 ; elapsed = 00:07:50 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:08:03 ; elapsed = 00:08:15 . Memory (MB): peak = 1055.727 ; gain = 658.336
 ---------------------------------------------------------------------------------
 
 
@@ -2148,11 +2148,11 @@ Report Cell Usage:
 |40    |OBUFT      |    21|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:07:41 ; elapsed = 00:07:52 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Finished Writing Synthesis Report : Time (s): cpu = 00:08:04 ; elapsed = 00:08:16 . Memory (MB): peak = 1055.727 ; gain = 658.336
 ---------------------------------------------------------------------------------
 
 Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Complete : Time (s): cpu = 00:07:41 ; elapsed = 00:07:52 . Memory (MB): peak = 1054.758 ; gain = 657.367
+Synthesis Optimization Complete : Time (s): cpu = 00:08:04 ; elapsed = 00:08:16 . Memory (MB): peak = 1055.727 ; gain = 658.336
 INFO: [Netlist 29-17] Analyzing 80 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. FinalDesign_i/clk_wiz_0/inst/clkin1_ibufg 
@@ -2176,10 +2176,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 1363 Infos, 120 Warnings, 100 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:07:54 ; elapsed = 00:08:06 . Memory (MB): peak = 1208.758 ; gain = 708.426
+synth_design: Time (s): cpu = 00:08:16 ; elapsed = 00:08:30 . Memory (MB): peak = 1208.727 ; gain = 708.395
 # write_checkpoint FinalDesign_wrapper.dcp
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 1208.762 ; gain = 0.004
+write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 1208.730 ; gain = 0.004
 # report_utilization -file FinalDesign_wrapper_utilization_synth.rpt -pb FinalDesign_wrapper_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.45 ; elapsed = 00:00:02 . Memory (MB): peak = 1208.762 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Jul 24 19:19:28 2014...
+report_utilization: Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:02 . Memory (MB): peak = 1208.730 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 11 21:33:21 2015...

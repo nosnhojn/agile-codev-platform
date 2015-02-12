@@ -7,140 +7,140 @@
     <Generation Name="SIMULATION" State="STALE"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250366" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250580" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_axi_iic_0_1/FinalDesign_axi_iic_0_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250368" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250583" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_processing_system7_0_axi_periph_1/FinalDesign_processing_system7_0_axi_periph_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250377" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250557" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_proc_sys_reset_1/FinalDesign_proc_sys_reset_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250369" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250584" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250369" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250587" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_axi_mem_intercon_2/FinalDesign_axi_mem_intercon_2.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250377" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250557" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_axi_vdma_0_0/FinalDesign_axi_vdma_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250370" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250589" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_axis_subset_converter_0_0/FinalDesign_axis_subset_converter_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250371" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250590" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_gnd_0/FinalDesign_gnd_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250371" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250590" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_proc_sys_reset_2/FinalDesign_proc_sys_reset_2.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250371" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250591" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_v_axi4s_vid_out_0_0/FinalDesign_v_axi4s_vid_out_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250371" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250592" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_v_cresample_0_0/FinalDesign_v_cresample_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250372" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250609" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_v_rgb2ycrcb_0_0/FinalDesign_v_rgb2ycrcb_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250373" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250625" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250373" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250641" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_vcc_1/FinalDesign_vcc_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250374" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250641" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_zed_hdmi_out_0_0/FinalDesign_zed_hdmi_out_0_0.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250374" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250641" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_xbar_3/FinalDesign_xbar_3.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250375" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250644" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_agileHWBlock_0_1/FinalDesign_agileHWBlock_0_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250376" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250645" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250646" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="false" Timestamp="1406250647" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -148,6 +148,20 @@
       </File>
       <File Name="hdl/FinalDesign.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false"/>
+        <Library Name="work"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11.xci" Type="IP">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
+        <Library Name="work"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12.xci" Type="IP">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>

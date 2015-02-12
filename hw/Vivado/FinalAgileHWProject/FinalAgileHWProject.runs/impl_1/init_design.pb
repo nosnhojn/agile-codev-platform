@@ -1780,14 +1780,14 @@ $Parsing XDC File [%s] for cell '%s'
 847*designutils2¿
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc2default:default2<
 (FinalDesign_i/zed_hdmi_display/v_tc_0/U02default:defaultZ20-847
-è
+é
 Parsing XDC File [%s]
-179*designutils2±
-œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-8499-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
-ñ
+179*designutils2²
+/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15218-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
+ò
 Finished Parsing XDC File [%s]
-178*designutils2±
-œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-8499-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
+178*designutils2²
+/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15218-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
 ›
 }Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
 663*designutilsZ20-663
@@ -1808,8 +1808,8 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2!
 link_design: 2default:default2
 00:00:492default:default2
-00:00:492default:default2
-871.4342default:default2
+00:00:502default:default2
+871.4382default:default2
 411.4802default:defaultZ17-268
 
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Thu Jul 24 19:25:20 2014'>
+<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Wed Feb 11 21:55:08 2015'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="FALSE" description="" />
   <keyValuePair key="build_version" value="329390" description="" />
-  <keyValuePair key="date_generated" value="Thu Jul 24 19:25:20 2014" description="" />
+  <keyValuePair key="date_generated" value="Wed Feb 11 21:55:08 2015" description="" />
   <keyValuePair key="os_platform" value="LIN32" description="" />
   <keyValuePair key="product_version" value="Vivado v2013.3" description="" />
-  <keyValuePair key="project_id" value="ece931e407a04e268e0dd39269ea2078" description="" />
-  <keyValuePair key="project_iteration" value="3" description="" />
+  <keyValuePair key="project_id" value="00586207155c4c4590edec21e2db5521" description="" />
+  <keyValuePair key="project_iteration" value="1" description="" />
   <keyValuePair key="random_id" value="a65a4e1ff4eb528aadbe1410028763aa" description="" />
   <keyValuePair key="registration_id" value="" description="" />
   <keyValuePair key="route_design" value="TRUE" description="" />
@@ -105,17 +105,17 @@
    <keyValuePair key="c_axi_aruser_width" value="1" description="" />
    <keyValuePair key="c_axi_awuser_width" value="1" description="" />
    <keyValuePair key="c_axi_buser_width" value="1" description="" />
-   <keyValuePair key="c_axi_data_width" value="64" description="" />
-   <keyValuePair key="c_axi_id_width" value="1" description="" />
+   <keyValuePair key="c_axi_data_width" value="32" description="" />
+   <keyValuePair key="c_axi_id_width" value="12" description="" />
    <keyValuePair key="c_axi_ruser_width" value="1" description="" />
    <keyValuePair key="c_axi_supports_read" value="1" description="" />
    <keyValuePair key="c_axi_supports_user_signals" value="0" description="" />
-   <keyValuePair key="c_axi_supports_write" value="0" description="" />
+   <keyValuePair key="c_axi_supports_write" value="1" description="" />
    <keyValuePair key="c_axi_wuser_width" value="1" description="" />
    <keyValuePair key="c_family" value="zynq" description="" />
-   <keyValuePair key="c_ignore_id" value="1" description="" />
-   <keyValuePair key="c_m_axi_protocol" value="1" description="" />
-   <keyValuePair key="c_s_axi_protocol" value="0" description="" />
+   <keyValuePair key="c_ignore_id" value="0" description="" />
+   <keyValuePair key="c_m_axi_protocol" value="2" description="" />
+   <keyValuePair key="c_s_axi_protocol" value="1" description="" />
    <keyValuePair key="c_translation_mode" value="2" description="" />
    <keyValuePair key="iptotal" value="1" description="" />
    <keyValuePair key="x_ipcorerevision" value="0" description="" />
@@ -131,17 +131,17 @@
    <keyValuePair key="c_axi_aruser_width" value="1" description="" />
    <keyValuePair key="c_axi_awuser_width" value="1" description="" />
    <keyValuePair key="c_axi_buser_width" value="1" description="" />
-   <keyValuePair key="c_axi_data_width" value="32" description="" />
-   <keyValuePair key="c_axi_id_width" value="12" description="" />
+   <keyValuePair key="c_axi_data_width" value="64" description="" />
+   <keyValuePair key="c_axi_id_width" value="1" description="" />
    <keyValuePair key="c_axi_ruser_width" value="1" description="" />
    <keyValuePair key="c_axi_supports_read" value="1" description="" />
    <keyValuePair key="c_axi_supports_user_signals" value="0" description="" />
-   <keyValuePair key="c_axi_supports_write" value="1" description="" />
+   <keyValuePair key="c_axi_supports_write" value="0" description="" />
    <keyValuePair key="c_axi_wuser_width" value="1" description="" />
    <keyValuePair key="c_family" value="zynq" description="" />
-   <keyValuePair key="c_ignore_id" value="0" description="" />
-   <keyValuePair key="c_m_axi_protocol" value="2" description="" />
-   <keyValuePair key="c_s_axi_protocol" value="1" description="" />
+   <keyValuePair key="c_ignore_id" value="1" description="" />
+   <keyValuePair key="c_m_axi_protocol" value="1" description="" />
+   <keyValuePair key="c_s_axi_protocol" value="0" description="" />
    <keyValuePair key="c_translation_mode" value="2" description="" />
    <keyValuePair key="iptotal" value="1" description="" />
    <keyValuePair key="x_ipcorerevision" value="0" description="" />
@@ -573,7 +573,7 @@
    <keyValuePair key="movable_instances" value="11224" description="" />
    <keyValuePair key="nets" value="12866" description="" />
    <keyValuePair key="pins" value="68868" description="" />
-   <keyValuePair key="placer_runtime" value="90.350000" description="" />
+   <keyValuePair key="placer_runtime" value="90.290000" description="" />
    <keyValuePair key="placer_timing_driven" value="1" description="" />
    <keyValuePair key="pll" value="0" description="" />
    <keyValuePair key="threads" value="2" description="" />
@@ -1095,42 +1095,13 @@
    <keyValuePair key="nets" value="12866" description="" />
    <keyValuePair key="pins" value="68868" description="" />
    <keyValuePair key="pll" value="0" description="" />
-   <keyValuePair key="router_runtime" value="73.860000" description="" />
+   <keyValuePair key="router_runtime" value="72.600000" description="" />
    <keyValuePair key="router_timing_driven" value="1" description="" />
    <keyValuePair key="threads" value="2" description="" />
    <keyValuePair key="timing_constraints_exist" value="1" description="" />
   </section>
  </section>
- <section name="synthesis" level="1" order="9" description="">
-  <section name="command_line_options" level="2" order="1" description="">
-   <keyValuePair key="-bufg" value="default::12" description="" />
-   <keyValuePair key="-constrset" value="default::[not_specified]" description="" />
-   <keyValuePair key="-control_set_opt_threshold" value="default::4" description="" />
-   <keyValuePair key="-directive" value="default::default" description="" />
-   <keyValuePair key="-fanout_limit" value="default::10000" description="" />
-   <keyValuePair key="-flatten_hierarchy" value="default::rebuilt" description="" />
-   <keyValuePair key="-fsm_extraction" value="default::auto" description="" />
-   <keyValuePair key="-gated_clock_conversion" value="default::off" description="" />
-   <keyValuePair key="-generic" value="default::[not_specified]" description="" />
-   <keyValuePair key="-include_dirs" value="default::[not_specified]" description="" />
-   <keyValuePair key="-keep_equivalent_registers" value="default::[not_specified]" description="" />
-   <keyValuePair key="-mode" value="default::default" description="" />
-   <keyValuePair key="-name" value="default::[not_specified]" description="" />
-   <keyValuePair key="-part" value="xc7z020clg484-1" description="" />
-   <keyValuePair key="-resource_sharing" value="default::auto" description="" />
-   <keyValuePair key="-rtl" value="default::[not_specified]" description="" />
-   <keyValuePair key="-seu_protect" value="default::none" description="" />
-   <keyValuePair key="-shreg_min_size" value="default::3" description="" />
-   <keyValuePair key="-top" value="FinalDesign_wrapper" description="" />
-   <keyValuePair key="-verilog_define" value="default::[not_specified]" description="" />
-  </section>
-  <section name="usage" level="2" order="2" description="">
-   <keyValuePair key="elapsed" value="00:07:27s" description="" />
-   <keyValuePair key="memory_gain" value="554.426MB" description="" />
-   <keyValuePair key="memory_peak" value="1054.758MB" description="" />
-  </section>
- </section>
- <section name="unisim_transformation" level="1" order="10" description="">
+ <section name="unisim_transformation" level="1" order="9" description="">
   <section name="post_unisim_transformation" level="2" order="1" description="">
    <keyValuePair key="bibuf" value="130" description="" />
    <keyValuePair key="bufg" value="5" description="" />
@@ -1196,26 +1167,23 @@
    <keyValuePair key="vcc" value="36" description="" />
   </section>
  </section>
- <section name="vivado_usage" level="1" order="11" description="">
-  <section name="other_data" level="2" order="1" description="">
-   <keyValuePair key="guimode" value="3" description="" />
-  </section>
-  <section name="project_data" level="2" order="2" description="">
+ <section name="vivado_usage" level="1" order="10" description="">
+  <section name="project_data" level="2" order="1" description="">
    <keyValuePair key="board" value="ZedBoard Zynq Evaluation and Development Kit" description="" />
-   <keyValuePair key="constraintsetcount" value="1" description="" />
+   <keyValuePair key="constraintsetcount" value="0" description="" />
    <keyValuePair key="currentimplrun" value="impl_1" description="" />
-   <keyValuePair key="currentsynthesisrun" value="synth_1" description="" />
-   <keyValuePair key="designmode" value="RTL" description="" />
+   <keyValuePair key="currentsynthesisrun" value="[unknown]" description="" />
+   <keyValuePair key="designmode" value="GateLvl" description="" />
    <keyValuePair key="hdproject" value="false" description="" />
    <keyValuePair key="implstrategy" value="Vivado Implementation Defaults" description="" />
    <keyValuePair key="partitioncount" value="0" description="" />
    <keyValuePair key="prproject" value="false" description="" />
    <keyValuePair key="reconfigmodulecount" value="0" description="" />
    <keyValuePair key="reconfigpartitioncount" value="0" description="" />
-   <keyValuePair key="srcsetcount" value="3" description="" />
-   <keyValuePair key="synthesisstrategy" value="Vivado Synthesis Defaults" description="" />
+   <keyValuePair key="srcsetcount" value="1" description="" />
+   <keyValuePair key="synthesisstrategy" value="[unknown]" description="" />
    <keyValuePair key="totalimplruns" value="1" description="" />
-   <keyValuePair key="totalsynthesisruns" value="1" description="" />
+   <keyValuePair key="totalsynthesisruns" value="0" description="" />
   </section>
  </section>
 </section>

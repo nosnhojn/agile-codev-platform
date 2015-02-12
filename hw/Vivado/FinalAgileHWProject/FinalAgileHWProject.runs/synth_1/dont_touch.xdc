@@ -60,11 +60,11 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_xba
 # IP: bd/FinalDesign/ip/FinalDesign_agileHWBlock_0_1/FinalDesign_agileHWBlock_0_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_agileHWBlock_0_1 || ORIG_REF_NAME==FinalDesign_agileHWBlock_0_1}]
 
-# IP: bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_auto_pc_9 || ORIG_REF_NAME==FinalDesign_auto_pc_9}]
+# IP: bd/FinalDesign/ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_auto_pc_11 || ORIG_REF_NAME==FinalDesign_auto_pc_11}]
 
-# IP: bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_auto_pc_10 || ORIG_REF_NAME==FinalDesign_auto_pc_10}]
+# IP: bd/FinalDesign/ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_auto_pc_12 || ORIG_REF_NAME==FinalDesign_auto_pc_12}]
 
 # XDC: bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FinalDesign_processing_system7_0_1 || ORIG_REF_NAME==FinalDesign_processing_system7_0_1}] {/inst }]/inst ]]
@@ -130,8 +130,8 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # XDC: bd/FinalDesign/ip/FinalDesign_xbar_3/FinalDesign_xbar_3_ooc.xdc
 
-# XDC: bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9_ooc.xdc
+# XDC: bd/FinalDesign/ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11_ooc.xdc
 
-# XDC: bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10_ooc.xdc
+# XDC: bd/FinalDesign/ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12_ooc.xdc
 
 # XDC: bd/FinalDesign/FinalDesign_ooc.xdc

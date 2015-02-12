@@ -63,7 +63,7 @@ Starting synthesis...
 xc7z0202default:defaultZ17-349
 ú
 %s*synth2å
-xStarting RTL Elaboration : Time (s): cpu = 00:02:13 ; elapsed = 00:02:18 . Memory (MB): peak = 537.332 ; gain = 139.941
+xStarting RTL Elaboration : Time (s): cpu = 00:02:36 ; elapsed = 00:02:44 . Memory (MB): peak = 539.332 ; gain = 141.941
 2default:default
 —
 *function %s does not always return a value2048*oasys2 
@@ -779,10 +779,10 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 s00_couplers_imp_156Q4UY2default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 16932default:default8@Z8-638
-Ω
-synthesizing module '%s'638*oasys2)
-FinalDesign_auto_pc_92default:default2¬
-´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/synth/FinalDesign_auto_pc_9.v2default:default2
+æ
+synthesizing module '%s'638*oasys2*
+FinalDesign_auto_pc_112default:default2¬
+´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/synth/FinalDesign_auto_pc_11.v2default:default2
 572default:default8@Z8-638
 ô
 synthesizing module '%s'638*oasys2F
@@ -1140,12 +1140,12 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 12default:default2Å
 Í/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v2default:default2
 622default:default8@Z8-256
-˘
-%done synthesizing module '%s' (%s#%s)256*oasys2)
-FinalDesign_auto_pc_92default:default2
+˙
+%done synthesizing module '%s' (%s#%s)256*oasys2*
+FinalDesign_auto_pc_112default:default2
 372default:default2
 12default:default2¬
-´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/synth/FinalDesign_auto_pc_9.v2default:default2
+´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/synth/FinalDesign_auto_pc_11.v2default:default2
 572default:default8@Z8-256
 ◊
 %done synthesizing module '%s' (%s#%s)256*oasys2,
@@ -1420,10 +1420,10 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 s00_couplers_imp_1NO65A22default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 19982default:default8@Z8-638
-¿
+æ
 synthesizing module '%s'638*oasys2*
-FinalDesign_auto_pc_102default:default2ƒ
-≠/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/synth/FinalDesign_auto_pc_10.v2default:default2
+FinalDesign_auto_pc_122default:default2¬
+´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/synth/FinalDesign_auto_pc_12.v2default:default2
 572default:default8@Z8-638
 ©
 synthesizing module '%s'638*oasys2V
@@ -1757,12 +1757,12 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 12default:default2Å
 Í/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v2default:default2
 622default:default8@Z8-256
-¸
+˙
 %done synthesizing module '%s' (%s#%s)256*oasys2*
-FinalDesign_auto_pc_102default:default2
+FinalDesign_auto_pc_122default:default2
 742default:default2
-12default:default2ƒ
-≠/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/synth/FinalDesign_auto_pc_10.v2default:default2
+12default:default2¬
+´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/synth/FinalDesign_auto_pc_12.v2default:default2
 572default:default8@Z8-256
 ◊
 %done synthesizing module '%s' (%s#%s)256*oasys2,
@@ -6590,11 +6590,11 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 32default:default8@Z8-256
 ú
 %s*synth2å
-xFinished RTL Elaboration : Time (s): cpu = 00:05:35 ; elapsed = 00:05:42 . Memory (MB): peak = 713.352 ; gain = 315.961
+xFinished RTL Elaboration : Time (s): cpu = 00:05:58 ; elapsed = 00:06:08 . Memory (MB): peak = 715.352 ; gain = 317.961
 2default:default
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:05:35 ; elapsed = 00:05:42 . Memory (MB): peak = 713.352 ; gain = 315.961
+vStart RTL Optimization : Time (s): cpu = 00:05:58 ; elapsed = 00:06:08 . Memory (MB): peak = 715.352 ; gain = 317.961
 2default:default
 ;
 %s*synth2,
@@ -8959,15 +8959,15 @@ MSuccessfully populated the BRAM INIT strings from the following elf files: %s
 2default:defaultZ1-111
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:06:15 ; elapsed = 00:06:23 . Memory (MB): peak = 845.672 ; gain = 448.281
+vStart RTL Optimization : Time (s): cpu = 00:06:37 ; elapsed = 00:06:47 . Memory (MB): peak = 848.672 ; gain = 451.281
 2default:default
 µ
 %s*synth2•
-êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:16 ; elapsed = 00:06:24 . Memory (MB): peak = 845.676 ; gain = 448.285
+êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:39 ; elapsed = 00:06:49 . Memory (MB): peak = 848.676 ; gain = 451.285
 2default:default
 ù
 %s*synth2ç
-yFinished RTL Optimization : Time (s): cpu = 00:06:16 ; elapsed = 00:06:24 . Memory (MB): peak = 845.676 ; gain = 448.285
+yFinished RTL Optimization : Time (s): cpu = 00:06:39 ; elapsed = 00:06:49 . Memory (MB): peak = 848.676 ; gain = 451.285
 2default:default
 ˜
 merging register '%s' into '%s'3619*oasys2"
@@ -9248,7 +9248,7 @@ BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 2default:default
 ±
 %s*synth2°
-åFinished Loading Part and Timing Information : Time (s): cpu = 00:06:43 ; elapsed = 00:06:53 . Memory (MB): peak = 845.676 ; gain = 448.285
+åFinished Loading Part and Timing Information : Time (s): cpu = 00:07:06 ; elapsed = 00:07:16 . Memory (MB): peak = 848.676 ; gain = 451.285
 2default:default
 –
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2?
@@ -9354,182 +9354,182 @@ ESequential element (%s) is unused and will be removed from module %s.3332*
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2>
 *\mem1/GenerateDoutWriteFirstA.t_qa_reg[0] 2default:default2/
 v_rgb2ycrcb_v7_1_synch_fifo2default:defaultZ8-3332
-Ì
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
 å
 RFound unconnected internal register '%s' and it is trimmed from '%s' to '%s' bits.3455*oasys2\
 Hinst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg2default:default2
@@ -9544,126 +9544,126 @@ Hinst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg2defau
 622default:default2Ò
 ⁄/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_register_slice_v2_1/hdl/verilog/axi_register_slice_v2_1_axic_register_slice.v2default:default2
 1212default:default8@Z8-3936
-Ì
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/m_payload_i_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/m_payload_i_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[48] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[43] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[42] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[41] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[40] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw_pipe/skid_buffer_reg[37] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[65] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[64] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[63] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
-Ì
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[62] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
+Ó
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2b
-N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] 2default:default2)
-FinalDesign_auto_pc_92default:defaultZ8-3332
+N\inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar_pipe/skid_buffer_reg[49] 2default:default2*
+FinalDesign_auto_pc_112default:defaultZ8-3332
 ‘
 ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
 14*common2 
@@ -9762,11 +9762,11 @@ KGEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/I_CMD_STATUS/I_CMD_FIFO/sig_init_reg2_reg2de
 17192default:default8@Z8-4471
 ©
 %s*synth2ô
-ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:06:49 ; elapsed = 00:06:59 . Memory (MB): peak = 849.680 ; gain = 452.289
+ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:07:12 ; elapsed = 00:07:22 . Memory (MB): peak = 849.680 ; gain = 452.289
 2default:default
 û
 %s*synth2é
-zFinished Area Optimization : Time (s): cpu = 00:07:07 ; elapsed = 00:07:17 . Memory (MB): peak = 888.367 ; gain = 490.977
+zFinished Area Optimization : Time (s): cpu = 00:07:30 ; elapsed = 00:07:41 . Memory (MB): peak = 889.359 ; gain = 491.969
 2default:default
 {
 %s*synth2l
@@ -9774,11 +9774,11 @@ XINFO: Moved 1 constraints on hierarchical pins to their respective driving/load
 2default:default
 Æ
 %s*synth2û
-âFinished Applying XDC Timing Constraints : Time (s): cpu = 00:07:16 ; elapsed = 00:07:26 . Memory (MB): peak = 1018.367 ; gain = 620.977
+âFinished Applying XDC Timing Constraints : Time (s): cpu = 00:07:39 ; elapsed = 00:07:50 . Memory (MB): peak = 1019.359 ; gain = 621.969
 2default:default
 °
 %s*synth2ë
-}Finished Timing Optimization : Time (s): cpu = 00:07:20 ; elapsed = 00:07:30 . Memory (MB): peak = 1043.383 ; gain = 645.992
+}Finished Timing Optimization : Time (s): cpu = 00:07:43 ; elapsed = 00:07:54 . Memory (MB): peak = 1044.375 ; gain = 646.984
 2default:default
 π
 ◊The timing for the instance %s (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
@@ -9786,11 +9786,11 @@ XINFO: Moved 1 constraints on hierarchical pins to their respective driving/load
 2\out_coupler_i/bridge_async_fifo_2_i/fifo_ram_reg 2default:defaultZ8-4480
 †
 %s*synth2ê
-|Finished Technology Mapping : Time (s): cpu = 00:07:35 ; elapsed = 00:07:45 . Memory (MB): peak = 1054.758 ; gain = 657.367
+|Finished Technology Mapping : Time (s): cpu = 00:07:58 ; elapsed = 00:08:10 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
-p
-%s*synth2a
-Mdesign FinalDesign_auto_pc_9 has 5 max_fanout violations cannot be satisfied
+q
+%s*synth2b
+Ndesign FinalDesign_auto_pc_11 has 5 max_fanout violations cannot be satisfied
 2default:default
 _
 %s*synth2P
@@ -9878,7 +9878,7 @@ _
 \U0/hdmi_spdif_o_reg 2default:defaultZ8-4163
 ö
 %s*synth2ä
-vFinished IO Insertion : Time (s): cpu = 00:07:38 ; elapsed = 00:07:49 . Memory (MB): peak = 1054.758 ; gain = 657.367
+vFinished IO Insertion : Time (s): cpu = 00:08:01 ; elapsed = 00:08:13 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
 ;
 %s*synth2,
@@ -9907,11 +9907,11 @@ I+------+------------------+-------+---------+-------+------------------+
 2default:default
 ´
 %s*synth2õ
-ÜFinished Renaming Generated Instances : Time (s): cpu = 00:07:38 ; elapsed = 00:07:49 . Memory (MB): peak = 1054.758 ; gain = 657.367
+ÜFinished Renaming Generated Instances : Time (s): cpu = 00:08:01 ; elapsed = 00:08:13 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
 ®
 %s*synth2ò
-ÉFinished Rebuilding User Hierarchy : Time (s): cpu = 00:07:40 ; elapsed = 00:07:50 . Memory (MB): peak = 1054.758 ; gain = 657.367
+ÉFinished Rebuilding User Hierarchy : Time (s): cpu = 00:08:03 ; elapsed = 00:08:15 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
 8
 %s*synth2)
@@ -10117,7 +10117,7 @@ Report Cell Usage:
 2default:default
 ß
 %s*synth2ó
-ÇFinished Writing Synthesis Report : Time (s): cpu = 00:07:41 ; elapsed = 00:07:52 . Memory (MB): peak = 1054.758 ; gain = 657.367
+ÇFinished Writing Synthesis Report : Time (s): cpu = 00:08:04 ; elapsed = 00:08:16 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
 i
 %s*synth2Z
@@ -10125,7 +10125,7 @@ FSynthesis finished with 0 errors, 0 critical warnings and 4 warnings.
 2default:default
 •
 %s*synth2ï
-ÄSynthesis Optimization Complete : Time (s): cpu = 00:07:41 ; elapsed = 00:07:52 . Memory (MB): peak = 1054.758 ; gain = 657.367
+ÄSynthesis Optimization Complete : Time (s): cpu = 00:08:04 ; elapsed = 00:08:16 . Memory (MB): peak = 1055.727 ; gain = 658.336
 2default:default
 ]
 -Analyzing %s Unisim elements for replacement
@@ -10185,10 +10185,10 @@ U
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2"
 synth_design: 2default:default2
-00:07:542default:default2
-00:08:062default:default2
-1208.7582default:default2
-708.4262default:defaultZ17-268
+00:08:162default:default2
+00:08:302default:default2
+1208.7272default:default2
+708.3952default:defaultZ17-268
 <
 %Done setting XDC timing constraints.
 35*timingZ38-35
@@ -10198,13 +10198,13 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 write_checkpoint: 2default:default2
 00:00:082default:default2
 00:00:062default:default2
-1208.7622default:default2
+1208.7302default:default2
 0.0042default:defaultZ17-268
 
-sreport_utilization: Time (s): cpu = 00:00:00.45 ; elapsed = 00:00:02 . Memory (MB): peak = 1208.762 ; gain = 0.000
+sreport_utilization: Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:02 . Memory (MB): peak = 1208.730 ; gain = 0.000
 *common
 w
 Exiting %s at %s...
 206*common2
 Vivado2default:default2,
-Thu Jul 24 19:19:28 20142default:defaultZ17-206
+Wed Feb 11 21:33:21 20152default:defaultZ17-206

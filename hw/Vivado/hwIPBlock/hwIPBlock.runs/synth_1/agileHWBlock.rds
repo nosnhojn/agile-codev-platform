@@ -1,0 +1,704 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Wed Feb 11 21:09:36 2015
+# Process ID: 14596
+# Log file: /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/agileHWBlock.rds
+# Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: Implementation
+INFO: [Common 17-81] Feature available: Implementation
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/Vivado/2013.3/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/Vivado/2013.3/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/Vivado/2013.3/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+source agileHWBlock.tcl
+# set_param gui.test TreeTableDev
+# set_msg_config -id {HDL 9-1061} -limit 100000
+# set_msg_config -id {HDL 9-1654} -limit 100000
+# create_project -in_memory -part xc7z020clg484-1
+# set_property target_language Verilog [current_project]
+# set_property board em.avnet.com:zynq:zed:d [current_project]
+# set_param project.compositeFile.enableAutoGeneration 0
+# set_property ip_repo_paths /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock [current_fileset]
+# add_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp
+# set_property used_in_implementation false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp]
+# set_property use_blackbox_stub false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp]
+# read_ip /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user repository '/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock'.
+INFO: [IP_Flow 19-2313] Loaded Vivado repository '/opt/Xilinx/Vivado/2013.3/data/ip'.
+read_ip: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 472.953 ; gain = 13.000
+# set_property used_in_implementation false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp]
+# set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
+# set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+# read_verilog -sv {
+#   /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv
+#   /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv
+#   /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv
+# }
+# read_verilog {
+#   /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v
+#   /home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0_stub.v
+# }
+# read_xdc dont_touch.xdc
+# set_property used_in_implementation false [get_files dont_touch.xdc]
+# read_xdc dont_buffer.xdc
+# set_property used_in_implementation false [get_files dont_buffer.xdc]
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.data/wt [current_project]
+# set_property parent.project_dir /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock [current_project]
+# synth_design -top agileHWBlock -part xc7z020clg484-1
+Command: synth_design -top agileHWBlock -part xc7z020clg484-1
+
+Starting synthesis...
+
+INFO: [IP_Flow 19-2162] IP 'blk_mem_gen_0' is locked. Locked reason: Property 'IS_LOCKED' is set to true by the system or user
+INFO: [Common 17-347] Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 496.949 ; gain = 99.562
+INFO: [Synth 8-638] synthesizing module 'agileHWBlock' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v:1]
+INFO: [Synth 8-638] synthesizing module 'pixelProcessor_s1' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv:1]
+	Parameter MEM_DEPTH bound to: 321 - type: integer 
+	Parameter P0_WIDTH bound to: 30 - type: integer 
+	Parameter P1_WIDTH bound to: 120 - type: integer 
+	Parameter P0_ADDR_WIDTH bound to: 9 - type: integer 
+	Parameter P1_ADDR_WIDTH bound to: 7 - type: integer 
+	Parameter INGRESS_THRESH bound to: 3 - type: integer 
+	Parameter INGRESS_FULL bound to: 10 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'pixelProcessor_IO' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv:1]
+	Parameter MEM_DEPTH bound to: 321 - type: integer 
+	Parameter DATA_WIDTH bound to: 24 - type: integer 
+	Parameter RAM_DATA_WIDTH bound to: 30 - type: integer 
+	Parameter RAM_ADDR_WIDTH bound to: 9 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'pixelProcessor_IO' (1#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv:1]
+INFO: [Synth 8-638] synthesizing module 'qpram' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:1]
+	Parameter QPRAM_DEPTH bound to: 321 - type: integer 
+	Parameter QPRAM_PORT0_WIDTH bound to: 30 - type: integer 
+	Parameter QPRAM_PORT1_WIDTH bound to: 120 - type: integer 
+	Parameter QPRAM_PORT0_ADDR_WIDTH bound to: 9 - type: integer 
+	Parameter QPRAM_PORT1_ADDR_WIDTH bound to: 7 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0_stub.v:16]
+WARNING: [Synth 8-350] instance 'clk2' of module 'clk_wiz_0' requires 4 connections, but only 3 given [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:34]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (2#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
+WARNING: [Synth 8-689] width (9) of port connection 'addra' does not match port width (14) of module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:88]
+WARNING: [Synth 8-689] width (7) of port connection 'addrb' does not match port width (12) of module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:94]
+INFO: [Synth 8-256] done synthesizing module 'qpram' (3#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'pixelProcessor_s1' (4#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv:1]
+WARNING: [Synth 8-689] width (32) of port connection 'iTDATA' does not match port width (24) of module 'pixelProcessor_s1' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v:28]
+WARNING: [Synth 8-689] width (32) of port connection 'oTDATA' does not match port width (24) of module 'pixelProcessor_s1' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v:36]
+INFO: [Synth 8-256] done synthesizing module 'agileHWBlock' (5#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v:1]
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[31] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[30] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[29] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[28] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[27] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[26] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[25] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[24] driven by constant 0
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[31]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[30]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[29]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[28]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[27]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[26]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[25]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[24]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port rst
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
+Start RTL Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[119] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[118] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[117] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[116] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[115] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[114] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[113] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[112] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[111] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[110] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[109] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[108] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[107] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[106] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[105] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[104] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[103] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[102] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[101] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[100] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[99] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[98] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[97] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[96] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[95] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[94] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[93] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[92] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[91] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[90] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[89] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[88] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[87] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[86] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[85] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[84] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[83] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[82] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[81] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[80] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[79] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[78] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[77] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[76] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[75] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[74] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[73] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[72] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[71] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[70] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[69] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[68] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[67] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[66] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[65] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[64] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[63] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[62] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[61] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[60] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[59] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[58] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[57] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[56] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[55] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[54] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[53] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[52] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[51] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[50] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[49] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[48] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[47] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[46] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[45] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[44] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[43] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[42] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[41] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[40] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[39] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[38] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[37] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[36] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[35] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[34] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[33] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[32] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin my_qpram:wdata_1[20] to constant 0
+INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+Loading clock regions from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/ClockBuffers.xml
+Loading clock placement rules from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/ClockPlacerRules.xml
+Loading package pin functions from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/PinFunctions.xml...
+Loading package from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/clg484/Package.xml
+Loading io standards from /opt/Xilinx/Vivado/2013.3/data/./parts/xilinx/zynq/IOStandards.xml
+INFO: [Common 17-78] Attempting to get a license: Internal_bitstream
+WARNING: [Common 17-301] Failed to get a license: Internal_bitstream
+
+Processing XDC Constraints
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 's1/my_qpram/clk2', returning the pins matched for query '[get_ports clk_out1]' of cell 's1/my_qpram/clk2'. [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc:2]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/agileHWBlock_propImpl.xdc].
+Resolution: To avoid this warning, exclude constraints listed in [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/agileHWBlock_propImpl.xdc] from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc]
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/agileHWBlock_propImpl.xdc].
+Resolution: To avoid this warning, exclude constraints listed in [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/agileHWBlock_propImpl.xdc] from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Memdata 28-143] Successfully populated the BRAM INIT strings from the following elf files: 
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Start RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.129 ; gain = 276.742
+
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished RTL Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+---------------------------------------------------------------------------------
+
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 2     
+	   4 Input      9 Bit       Adders := 1     
++---Registers : 
+	              120 Bit    Registers := 1     
+	               30 Bit    Registers := 3     
+	                9 Bit    Registers := 4     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module agileHWBlock 
+Detailed RTL Component Info : 
+Module qpram 
+Detailed RTL Component Info : 
++---Registers : 
+	              120 Bit    Registers := 1     
+	               30 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+Module pixelProcessor_IO 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 2     
+	   4 Input      9 Bit       Adders := 1     
++---Registers : 
+	               30 Bit    Registers := 2     
+	                9 Bit    Registers := 4     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module pixelProcessor_s1 
+Detailed RTL Component Info : 
+
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[119] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[118] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[117] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[116] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[115] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[114] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[113] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[112] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[111] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[110] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[109] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[108] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[107] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[106] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[105] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[104] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[103] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[102] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[101] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[100] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[99] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[98] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[97] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[96] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[95] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[94] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[93] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[92] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[91] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[90] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[89] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[88] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[87] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[86] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[85] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[84] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[83] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[82] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[81] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[80] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[79] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[78] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[77] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[76] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[75] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[74] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[73] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[72] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[71] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[70] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[69] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[68] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[67] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[66] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[65] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[64] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[63] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[62] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[61] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[60] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[59] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[58] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[57] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[56] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[55] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[54] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[53] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[52] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[51] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[50] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[49] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[48] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[47] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[46] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[45] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[44] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[43] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[42] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[41] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[40] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[39] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[38] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[37] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[36] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[35] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[34] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[33] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[32] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[31] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[30] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[29] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[28] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[27] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[26] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[25] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[24] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[23] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[22] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[21] ) is unused and will be removed from module agileHWBlock.
+WARNING: [Synth 8-3332] Sequential element (\s1/my_qpram/rdata_1_reg[20] ) is unused and will be removed from module agileHWBlock.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[31] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[30] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[29] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[28] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[27] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[26] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[25] driven by constant 0
+WARNING: [Synth 8-3917] design agileHWBlock has port oTDATA[24] driven by constant 0
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[31]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[30]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[29]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[28]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[27]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[26]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[25]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[24]
+WARNING: [Synth 8-3331] design agileHWBlock has unconnected port rst
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_ptr_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rst_i_n_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wdata_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/waddr_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wr_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/concatenated_rdata_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/oTVALID_reg )
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: Moved 1 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
+|2     |blk_mem_gen_0 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |blk_mem_gen_0  |     1|
+|2     |clk_wiz_0_bbox |     1|
+|3     |OBUF           |    32|
++------+---------------+------+
+
+Report Instance Areas: 
++------+-------------+------------------+------+
+|      |Instance     |Module            |Cells |
++------+-------------+------------------+------+
+|1     |top          |                  |   184|
+|2     |  s1         |pixelProcessor_s1 |   152|
+|3     |    my_qpram |qpram             |   152|
++------+-------------+------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+---------------------------------------------------------------------------------
+
+Synthesis finished with 0 errors, 0 critical warnings and 267 warnings.
+Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 741.191 ; gain = 343.805
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+INFO: [Memdata 28-143] Successfully populated the BRAM INIT strings from the following elf files: 
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+118 Infos, 240 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:02 . Memory (MB): peak = 914.184 ; gain = 441.230
+# write_checkpoint agileHWBlock.dcp
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+# report_utilization -file agileHWBlock_utilization_synth.rpt -pb agileHWBlock_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.18 . Memory (MB): peak = 914.188 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 11 21:10:52 2015...

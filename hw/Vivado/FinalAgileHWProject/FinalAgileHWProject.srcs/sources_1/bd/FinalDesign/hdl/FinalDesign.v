@@ -1933,7 +1933,7 @@ module s00_couplers_imp_156Q4UY
   assign s00_couplers_to_auto_pc_WVALID = S_AXI_wvalid;
   assign s_aclk_1 = S_ACLK;
   assign s_aresetn_1 = S_ARESETN[0];
-FinalDesign_auto_pc_9 auto_pc
+FinalDesign_auto_pc_11 auto_pc
        (.aclk(s_aclk_1),
         .aresetn(s_aresetn_1),
         .m_axi_araddr(auto_pc_to_s00_couplers_ARADDR),
@@ -2125,7 +2125,7 @@ module s00_couplers_imp_1NO65A2
   assign s_aresetn_1 = S_ARESETN[0];
 GND GND
        (.G(GND_1));
-FinalDesign_auto_pc_10 auto_pc
+FinalDesign_auto_pc_12 auto_pc
        (.aclk(s_aclk_1),
         .aresetn(s_aresetn_1),
         .m_axi_araddr(auto_pc_to_s00_couplers_ARADDR),
