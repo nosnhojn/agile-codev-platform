@@ -31,7 +31,7 @@ wire [QPRAM_PORT1_WIDTH-1:0] rdata_1_i;
 wire clk_i;
 logic rst_i_n;
 
-clk_wiz_0_clk_wiz clk2 (clk, clk_i, rst_n);
+clk_wiz_0 clk2 (clk, clk_i, rst_n);
 
 logic [QPRAM_PORT0_WIDTH-1:0] mem [QPRAM_DEPTH-1:0];
 

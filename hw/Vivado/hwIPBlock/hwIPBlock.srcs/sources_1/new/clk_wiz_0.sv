@@ -1,4 +1,4 @@
-module clk_wiz_0_clk_wiz (
+module clk_wiz_0 (
   input  clk_in1,
   output logic clk_out1,
   input reset,
