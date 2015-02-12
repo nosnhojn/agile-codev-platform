@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--Product Version: Vivado v2013.3-->
+<Project Version="6" Minor="13" Path="/home/agilehw/agile-codev-platform/hw/Vivado/sdpram/managed_ip_project/managed_ip_project.xpr">
+	<FileSet Dir="sources_1" File="fileset.xml"/>
+	<FileSet Dir="constrs_1" File="fileset.xml"/>
+	<FileSet Dir="sim_1" File="fileset.xml"/>
+	<FileSet Dir="sdpram30x15360" File="fileset.xml"/>
+	<RunSet Dir="runs" File="runs.xml"/>
+	<DefaultLaunch Dir="$PRUNDIR"/>
+	<Config>
+		<Option Name="Id" Val="4bd275d42880485e9ce0c61081d2cf0e"/>
+		<Option Name="Part" Val="xc7vx485tffg1157-1"/>
+		<Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
+		<Option Name="Board" Val=""/>
+		<Option Name="SourceMgmtMode" Val="None"/>
+		<Option Name="ActiveSimSet" Val="sim_1"/>
+		<Option Name="ManageIP" Val="TRUE"/>
+	</Config>
+</Project>
+

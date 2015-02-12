@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Thu Feb 12 16:30:26 2015
+# Process ID: 26689
+# Log file: /home/agilehw/agile-codev-platform/hw/Vivado/sdpram/managed_ip_project/managed_ip_project.runs/sdpram30x15360_synth_1/sdpram30x15360.rds
+# Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/sdpram/managed_ip_project/managed_ip_project.runs/sdpram30x15360_synth_1/vivado.jou
+#-----------------------------------------------------------
+source sdpram30x15360.tcl
