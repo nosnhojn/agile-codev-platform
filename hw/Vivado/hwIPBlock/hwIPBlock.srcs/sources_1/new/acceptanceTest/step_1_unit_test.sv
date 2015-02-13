@@ -10,7 +10,7 @@ module step_1_unit_test;
 
   // uut params
   parameter MEM_DEPTH = 15360;
-  parameter INGRESS_THRESH = 3;
+  parameter INGRESS_THRESH = 4;
 
   //===================================
   // This is the UUT that we're 
@@ -110,29 +110,29 @@ module step_1_unit_test;
         step();
       end
     join_none
-
+ 
     while (!oTVALID) begin
       waitStep();
       nextSamplePoint();
     end
-
+ 
     for (int i=0; i<2*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
       expectEgressPixel(i, i[0], i[3:0], i[4]);
       waitStep();
     end
   `SVTEST_END
-
+ 
   `SVTEST(streaming_data_with_backpressure)
     step();
     fork
-      for (int i=0; i<2*50; i+=1) begin
+      for (int i=0; i<10*MEM_DEPTH; i+=1) begin
         setIngressPixel(i, i[0], i[3:0], i[4]);
         @(posedge clk);
         while (!oTREADY) begin
           @(posedge clk);
         end
       end
-
+ 
       forever begin
         int unsigned pause;
         nextSamplePoint();
@@ -141,7 +141,7 @@ module step_1_unit_test;
         for (int i=0; i<pause; i+=1) begin
           step(pause);
         end
-
+ 
         nextSamplePoint();
         iTREADY = 0;
         pause = unsigned'($random) % 4;
@@ -150,8 +150,8 @@ module step_1_unit_test;
         end
       end
     join_none
-
-    for (int i=0; i<2*50-INGRESS_THRESH-1; i+=1) begin
+ 
+    for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
       @(negedge clk);
       while (!(oTVALID && iTREADY)) begin
         @(negedge clk);
@@ -162,7 +162,7 @@ module step_1_unit_test;
 
   `SVTEST(streaming_data_near_empty)
     fork
-      for (int i=0; i<2*50; i+=1) begin
+      for (int i=0; i<10*MEM_DEPTH; i+=1) begin
         int unsigned pause;
         nextSamplePoint();
         pause = unsigned'($random) % 4;
@@ -176,9 +176,9 @@ module step_1_unit_test;
       end
     join_none
 
-    for (int i=0; i<2*50-INGRESS_THRESH-1; i+=1) begin
+    for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
       @(negedge clk);
-      while (!(oTVALID && iTREADY)) begin
+      while (!oTVALID) begin
         @(negedge clk);
       end
       expectEgressPixel(i, i[0], i[3:0], i[4]);
@@ -186,6 +186,12 @@ module step_1_unit_test;
   `SVTEST_END
  
   `SVUNIT_TESTS_END
+
+//always @(negedge clk) begin
+//  $display("%t iTDATA:0x%0x iTVALID:0x%0x oTREADY:0x%0x waddr:0x%0x", $time, iTDATA, iTVALID, oTREADY, uut.waddr);
+//  $display("%t oTDATA:0x%0x oTVALID:0x%0x iTREADY:0x%0x raddr:0x%0x", $time, oTDATA, oTVALID, iTREADY, uut.raddr);
+//  $display("-------------------");
+//end
 
 
   task setIngressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
