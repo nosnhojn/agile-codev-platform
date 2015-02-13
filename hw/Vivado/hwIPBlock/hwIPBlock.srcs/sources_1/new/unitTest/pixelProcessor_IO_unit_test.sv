@@ -142,13 +142,13 @@ module pixelProcessor_IO_unit_test;
   task setup();
     svunit_ut.setup();
 
-    deassertoTREADY();
+    deassertiTREADY();
     iTVALID = 0;
     ingress_read_cnt = 0;
     setEgressNotRdy();
 
     reset();
-    assertoTREADY();
+    assertiTREADY();
   endtask
 
 
@@ -431,21 +431,45 @@ module pixelProcessor_IO_unit_test;
     expectNoEgressPixel();
     expectNoEgressPixelRead();
   `SVTEST_END
+
+  `SVTEST(egress_hold_w_not_ready)
+    deassertiTREADY();
+    fillRamWithIncrementalData();
+    setEgressRdy();
+
+    repeat (2) begin
+      step();
+      expectEgressPixel(0);
+    end
+  `SVTEST_END
+
+  `SVTEST(egress_simultaneous_valid_not_ready_transition)
+    fillRamWithIncrementalData();
+    setEgressRdy();
+
+    step();
+    deassertiTREADY();
+
+    repeat (2) begin
+      step();
+      expectEgressPixel(0);
+    end
+  `SVTEST_END
  
   `SVTEST(egress_N_pixels_w_stall)
-    deassertoTREADY();
+    deassertiTREADY();
     fillRamWithIncrementalData();
     setEgressRdy();
     step();
  
     for (int e=0; e<10; e+=1) begin
       expectEgressPixel(e);
-      deassertoTREADY();
+      deassertiTREADY();
       step();
 
       expectNoEgressPixelRead();
       expectEgressPixel(e);
-      assertoTREADY();
+      assertiTREADY();
       step();
 
       expectEgressPixelRead();
@@ -562,7 +586,7 @@ module pixelProcessor_IO_unit_test;
   endtask
 
   task egressPixel();
-    assertoTREADY();
+    assertiTREADY();
   endtask
 
   task stallTheIngressPath();
@@ -627,12 +651,12 @@ module pixelProcessor_IO_unit_test;
     `FAIL_UNLESS(ingress_new_pixel === 0);
   endtask
 
-  task assertoTREADY();
+  task assertiTREADY();
     nextSamplePoint();
     iTREADY = 1;
   endtask
 
-  task deassertoTREADY();
+  task deassertiTREADY();
     nextSamplePoint();
     iTREADY = 0;
   endtask

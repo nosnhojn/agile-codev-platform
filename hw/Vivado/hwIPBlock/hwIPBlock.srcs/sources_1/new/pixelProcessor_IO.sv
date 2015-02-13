@@ -60,10 +60,10 @@ wire hold_oTVALID_until_iTREADY;
 
 wire wrap_egress_read_address;
 
-assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-7:0];
 assign oTUSER = concatenated_rdata[RAM_DATA_WIDTH-1];
 assign oTKEEP = concatenated_rdata[RAM_DATA_WIDTH-2:RAM_DATA_WIDTH-5];
 assign oTLAST = concatenated_rdata[RAM_DATA_WIDTH-6];
+assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-7:0];
 
 assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read_cnt);
 

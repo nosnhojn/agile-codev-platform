@@ -29,7 +29,7 @@ module step_1_unit_test;
   wire        oTVALID;
   reg         iTREADY;
 
-  `CLK_RESET_FIXTURE(24,5)
+  `CLK_RESET_FIXTURE(30,5)
 
   pixelProcessor_s1
   #(
@@ -40,7 +40,7 @@ module step_1_unit_test;
     .clk(clk),
     .rst_n(rst_n),
 
-    // ingress port
+// ingress port
     .iTDATA(iTDATA),
     .iTUSER(iTUSER),
     .iTKEEP(iTKEEP),
@@ -119,6 +119,69 @@ module step_1_unit_test;
     for (int i=0; i<2*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
       expectEgressPixel(i, i[0], i[3:0], i[4]);
       waitStep();
+    end
+  `SVTEST_END
+
+  `SVTEST(streaming_data_with_backpressure)
+    step();
+    fork
+      for (int i=0; i<2*50; i+=1) begin
+        setIngressPixel(i, i[0], i[3:0], i[4]);
+        @(posedge clk);
+        while (!oTREADY) begin
+          @(posedge clk);
+        end
+      end
+
+      forever begin
+        int unsigned pause;
+        nextSamplePoint();
+        iTREADY = 1;
+        pause = unsigned'($random) % 2;
+        for (int i=0; i<pause; i+=1) begin
+          step(pause);
+        end
+
+        nextSamplePoint();
+        iTREADY = 0;
+        pause = unsigned'($random) % 4;
+        for (int i=0; i<pause; i+=1) begin
+          step(pause);
+        end
+      end
+    join_none
+
+    for (int i=0; i<2*50-INGRESS_THRESH-1; i+=1) begin
+      @(negedge clk);
+      while (!(oTVALID && iTREADY)) begin
+        @(negedge clk);
+      end
+      expectEgressPixel(i, i[0], i[3:0], i[4]);
+    end
+  `SVTEST_END
+
+  `SVTEST(streaming_data_near_empty)
+    fork
+      for (int i=0; i<2*50; i+=1) begin
+        int unsigned pause;
+        nextSamplePoint();
+        pause = unsigned'($random) % 4;
+        for (int i=0; i<pause; i+=1) begin
+          iTVALID = 0;
+          step(pause);
+        end
+
+        setIngressPixel(i, i[0], i[3:0], i[4]);
+        step();
+      end
+    join_none
+
+    for (int i=0; i<2*50-INGRESS_THRESH-1; i+=1) begin
+      @(negedge clk);
+      while (!(oTVALID && iTREADY)) begin
+        @(negedge clk);
+      end
+      expectEgressPixel(i, i[0], i[3:0], i[4]);
     end
   `SVTEST_END
  
