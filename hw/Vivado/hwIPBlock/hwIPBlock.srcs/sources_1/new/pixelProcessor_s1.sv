@@ -92,32 +92,16 @@ wire [P1_ADDR_WIDTH-1:0] waddr_1;
 wire [P1_ADDR_WIDTH-1:0] raddr_1;
 wire [P1_WIDTH-1:0] rdata_no_connect;
 
-qpram
-#(
-  .QPRAM_DEPTH(MEM_DEPTH),
-  .QPRAM_PORT0_WIDTH(P0_WIDTH),
-  .QPRAM_PORT1_WIDTH(P1_WIDTH),
-  .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-  .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
-)
-my_qpram
+sdpram30x15360 my_sdpram
 (
-  .clk(clk),
-  .rst_n(rst_n),
+  .clka(clk),
+  .dina(wdata),
+  .addra(waddr),
+  .wea(wr),
 
-  .wdata_0(wdata),
-  .waddr_0(waddr),
-  .wr_0(wr),
-
-  .rdata_0(rdata),
-  .raddr_0(raddr),
-
-  .wdata_1(wdata_1),
-  .waddr_1(waddr_1),
-  .wr_1(1'b0),
-
-  .raddr_1(raddr_1),
-  .rdata_1(rdata_no_connect)
+  .clkb(clk),
+  .doutb(rdata),
+  .addrb(raddr)
 );
 
 
