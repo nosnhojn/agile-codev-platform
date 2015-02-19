@@ -9,7 +9,7 @@ n
 ]
 -Analyzing %s Unisim elements for replacement
 17*netlist2
-402default:defaultZ29-17
+452default:defaultZ29-17
 a
 2Unisim Transformation completed in %s CPU seconds
 28*netlist2
@@ -57,15 +57,15 @@ _
 Ô
 Parsing XDC File [%s]
 179*designutils2∏
-£/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15368-agilehw-laptop/dcp/FinalDesign_wrapper_early.xdc2default:defaultZ20-179
+£/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11921-agilehw-laptop/dcp/FinalDesign_wrapper_early.xdc2default:defaultZ20-179
 ¯
 Finished Parsing XDC File [%s]
 178*designutils2∏
-£/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15368-agilehw-laptop/dcp/FinalDesign_wrapper_early.xdc2default:defaultZ20-178
+£/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11921-agilehw-laptop/dcp/FinalDesign_wrapper_early.xdc2default:defaultZ20-178
 È
 Parsing XDC File [%s]
 179*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15368-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11921-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
 «
 No ports matched '%s'.
 584*	planAhead2
@@ -1320,7 +1320,7 @@ aNo clocks found. Please use 'create_clock' or 'create_generated_clock' command 
 Ú
 Finished Parsing XDC File [%s]
 178*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15368-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11921-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
 õ
 }Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
 663*designutilsZ20-663
@@ -1334,9 +1334,9 @@ aNo clocks found. Please use 'create_clock' or 'create_generated_clock' command 
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2$
 Read XDEF File: 2default:default2
-00:00:00.882default:default2
-00:00:00.882default:default2
-877.1332default:default2
+00:00:00.892default:default2
+00:00:00.912default:default2
+878.2542default:default2
 3.0002default:defaultZ17-268
 3
 Restoring placement.
@@ -1344,10 +1344,10 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 ﬁ
 ORestored %s out of %s XDEF sites from archive | CPU: %s secs | Memory: %s MB |
 403*designutils2
-20502default:default2
-20502default:default2
-2.7300002default:default2
-	10.8598562default:defaultZ20-403
+21162default:default2
+21162default:default2
+2.8200002default:default2
+	11.0828252default:defaultZ20-403
 õ
 }Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
 663*designutilsZ20-663
@@ -1370,10 +1370,10 @@ $Checkpoint was created with build %s293*project2
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2%
 read_checkpoint: 2default:default2
-00:00:402default:default2
-00:00:402default:default2
-881.1332default:default2
-421.1952default:defaultZ17-268
+00:00:422default:default2
+00:00:422default:default2
+882.2542default:default2
+422.3202default:defaultZ17-268
 ö
 @Attempting to get a license for feature '%s' and/or device '%s'
 308*common2"
@@ -1431,7 +1431,7 @@ QWebTalk data collection is enabled (User setting is ON. Install Setting is ON.)
 Ü'%s' has been successfully sent to Xilinx on %s. For additional details about this file, please refer to the Webtalk help file at %s.
 186*common2ë
 }/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/usage_statistics_webtalk.xml2default:default2,
-Wed Feb 11 21:55:11 20152default:default2K
+Wed Feb 18 16:36:09 20152default:default2K
 7/opt/Xilinx/Vivado/2013.3/doc/webtalk_introduction.html2default:defaultZ17-186
 Q
 Releasing license: %s
@@ -1441,9 +1441,9 @@ Q
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2%
 write_bitstream: 2default:default2
-00:00:512default:default2
 00:00:522default:default2
-1124.9412default:default2
+00:00:532default:default2
+1126.0622default:default2
 243.8092default:defaultZ17-268
 
 

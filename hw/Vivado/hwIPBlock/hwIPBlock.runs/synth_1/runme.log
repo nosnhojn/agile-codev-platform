@@ -29,7 +29,6 @@ source agileHWBlock.tcl
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user repository '/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock'.
 INFO: [IP_Flow 19-2313] Loaded Vivado repository '/opt/Xilinx/Vivado/2013.3/data/ip'.
-read_ip: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 472.953 ; gain = 13.000
 # set_property used_in_implementation false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp]
 # set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
 # set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
@@ -57,7 +56,7 @@ Starting synthesis...
 INFO: [IP_Flow 19-2162] IP 'blk_mem_gen_0' is locked. Locked reason: Property 'IS_LOCKED' is set to true by the system or user
 INFO: [Common 17-347] Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
-Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 496.949 ; gain = 99.562
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 496.953 ; gain = 99.562
 INFO: [Synth 8-638] synthesizing module 'agileHWBlock' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v:1]
 INFO: [Synth 8-638] synthesizing module 'pixelProcessor_s1' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv:1]
 	Parameter MEM_DEPTH bound to: 321 - type: integer 
@@ -81,8 +80,8 @@ INFO: [Synth 8-638] synthesizing module 'qpram' [/home/agilehw/agile-codev-platf
 	Parameter QPRAM_PORT1_ADDR_WIDTH bound to: 7 - type: integer 
 INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0_stub.v:16]
 WARNING: [Synth 8-350] instance 'clk2' of module 'clk_wiz_0' requires 4 connections, but only 3 given [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:34]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (2#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (2#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/realtime/blk_mem_gen_0_stub.v:6]
 WARNING: [Synth 8-689] width (9) of port connection 'addra' does not match port width (14) of module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:88]
 WARNING: [Synth 8-689] width (7) of port connection 'addrb' does not match port width (12) of module 'blk_mem_gen_0' [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:94]
 INFO: [Synth 8-256] done synthesizing module 'qpram' (3#1) [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv:1]
@@ -107,8 +106,8 @@ WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[26]
 WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[25]
 WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[24]
 WARNING: [Synth 8-3331] design agileHWBlock has unconnected port rst
-Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
-Start RTL Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.773 ; gain = 124.383
+Start RTL Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.773 ; gain = 124.383
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
@@ -227,10 +226,10 @@ INFO: [Common 17-78] Attempting to get a license: Internal_bitstream
 WARNING: [Common 17-301] Failed to get a license: Internal_bitstream
 
 Processing XDC Constraints
-Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
-INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 's1/my_qpram/clk2', returning the pins matched for query '[get_ports clk_out1]' of cell 's1/my_qpram/clk2'. [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc:2]
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 's1/my_qpram/clk2', returning the pins matched for query '[get_ports clk_out1]' of cell 's1/my_qpram/clk2'. [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc:2]
 Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
-Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc] for cell 's1/my_qpram/clk2'
 Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/agileHWBlock_propImpl.xdc].
@@ -245,7 +244,7 @@ INFO: [Memdata 28-143] Successfully populated the BRAM INIT strings from the fol
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Start RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.129 ; gain = 276.742
+Start RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.742
 
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -261,11 +260,11 @@ Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-c
 Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
 Applied set_property BUFFER_TYPE = NONE. (constraint file  /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/dont_buffer.xdc, line 5).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.137 ; gain = 276.746
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
-Finished RTL Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+Finished RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.137 ; gain = 276.746
 ---------------------------------------------------------------------------------
 
 
@@ -283,7 +282,7 @@ Part Resources:
 DSPs: 220 (col length:60)
 BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 723.145 ; gain = 325.754
 ---------------------------------------------------------------------------------
 
 
@@ -292,6 +291,7 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input     24 Bit       Adders := 1     
 	   2 Input      9 Bit       Adders := 2     
 	   4 Input      9 Bit       Adders := 1     
 +---Registers : 
@@ -326,6 +326,7 @@ Detailed RTL Component Info :
 Module pixelProcessor_IO 
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input     24 Bit       Adders := 1     
 	   2 Input      9 Bit       Adders := 2     
 	   4 Input      9 Bit       Adders := 1     
 +---Registers : 
@@ -464,7 +465,7 @@ WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[25]
 WARNING: [Synth 8-3331] design agileHWBlock has unconnected port iTDATA[24]
 WARNING: [Synth 8-3331] design agileHWBlock has unconnected port rst
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 723.145 ; gain = 325.754
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
@@ -528,6 +529,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pi
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/egress_ptr_reg[8] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/waddr_reg[8] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/wr_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[9] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[24] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[25] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[26] )
@@ -543,7 +545,6 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qp
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[6] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[7] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[8] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[9] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[10] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[11] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_qpram/rdata_0_reg[12] )
@@ -570,7 +571,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pi
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/ingress_cnt_reg[5] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s1/my_pixelProcessor_IO/oTVALID_reg )
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 
@@ -583,11 +584,11 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 INFO: Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 
@@ -595,7 +596,7 @@ Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . M
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 
@@ -619,7 +620,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 
@@ -634,7 +635,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 
@@ -642,7 +643,7 @@ Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
@@ -682,11 +683,11 @@ Report Instance Areas:
 |3     |    my_qpram |qpram             |   152|
 +------+-------------+------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 ---------------------------------------------------------------------------------
 
 Synthesis finished with 0 errors, 0 critical warnings and 267 warnings.
-Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 741.191 ; gain = 343.805
+Synthesis Optimization Complete : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s).
@@ -697,9 +698,9 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 118 Infos, 240 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:02 . Memory (MB): peak = 914.184 ; gain = 441.230
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:02 . Memory (MB): peak = 914.188 ; gain = 441.230
 # write_checkpoint agileHWBlock.dcp
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 # report_utilization -file agileHWBlock_utilization_synth.rpt -pb agileHWBlock_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.18 . Memory (MB): peak = 914.188 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed Feb 11 21:10:52 2015...
+report_utilization: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:01 . Memory (MB): peak = 914.191 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 12 11:03:17 2015...

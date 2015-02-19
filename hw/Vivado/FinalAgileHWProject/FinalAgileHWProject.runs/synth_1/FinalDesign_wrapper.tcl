@@ -3,6 +3,7 @@
 # 
 
   set_param gui.test TreeTableDev
+set_msg_config -id {Common-41} -limit 4294967295
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 create_project -in_memory -part xc7z020clg484-1
@@ -13,6 +14,9 @@ set_property ip_repo_paths {
   /home/agilehw/Documents/AgileCodevProject/documentation/AVNET_ZED_HDMI/2013_3/avnet_zed_hdmi_core
   /home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock
 } [current_fileset]
+add_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/sdpram30x15360_synth_1/sdpram30x15360.dcp
+set_property used_in_implementation false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/sdpram30x15360_synth_1/sdpram30x15360.dcp]
+set_property use_blackbox_stub false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/sdpram30x15360_synth_1/sdpram30x15360.dcp]
 
 add_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign.bd
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc]
@@ -40,18 +44,25 @@ set_property used_in_implementation false [get_files -all /home/agilehw/agile-co
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/FinalDesign_xbar_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/FinalDesign_auto_pc_9_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_10_0/FinalDesign_auto_pc_10_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign_ooc.xdc]
 set_msg_config -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property is_locked true [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/FinalDesign.bd]
 
-read_verilog /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign_wrapper.v
+read_verilog {
+  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign_wrapper.v
+  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/sdpram30x15360/sdpram30x15360_stub.v
+}
 read_xdc /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc
 set_property used_in_implementation false [get_files /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
+read_xdc dont_buffer.xdc
+set_property used_in_implementation false [get_files dont_buffer.xdc]
 set_param synth.vivado.isSynthRun true
 set_property webtalk.parent_dir /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.data/wt [current_project]
 set_property parent.project_dir /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject [current_project]

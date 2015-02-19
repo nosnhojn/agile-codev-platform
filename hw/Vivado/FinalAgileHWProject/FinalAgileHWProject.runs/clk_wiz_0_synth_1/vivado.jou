@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Thu Feb 12 14:49:41 2015
+# Process ID: 24189
+# Log file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/clk_wiz_0_synth_1/clk_wiz_0.rds
+# Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/clk_wiz_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source clk_wiz_0.tcl

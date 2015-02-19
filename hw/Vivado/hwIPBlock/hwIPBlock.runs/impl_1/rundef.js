@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 // pre-commands:
-ISETouchFile( "write_bitstream", "begin" );
+ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
          "-log agileHWBlock.rdi -applog -m32 -messageDb vivado.pb -mode batch -source agileHWBlock.tcl -notrace" );
 

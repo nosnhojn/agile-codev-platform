@@ -2,7 +2,7 @@ module sdpram
 #(
   QPRAM_DEPTH = 1,
   QPRAM_PORT0_WIDTH = 1,
-  QPRAM_PORT0_ADDR_WIDTH = 32,
+  QPRAM_PORT0_ADDR_WIDTH = 32
 )
 (
   input clk,

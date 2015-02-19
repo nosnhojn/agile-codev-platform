@@ -126,7 +126,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_agileHWBlock_0_1/FinalDesign_agileHWBlock_0_1.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1406250645" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1423769994" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -154,14 +154,14 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_auto_pc_11/FinalDesign_auto_pc_11.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1423715055" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12.xci" Type="IP">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1423715056" IsTrackable="true"/>
         <Library Name="work"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>

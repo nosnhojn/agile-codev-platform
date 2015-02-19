@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date         : Wed Feb 11 21:48:24 2015
+| Date         : Wed Feb 18 16:32:16 2015
 | Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command      : report_clock_utilization -file FinalDesign_wrapper_clock_utilization_placed.rpt
 | Design       : FinalDesign_wrapper
@@ -51,9 +51,9 @@ Table of Contents
 +-------+---------------------------------------------------------------------------+-------------------------------------------------------------------+------+-------+--------+---------------+-----------+
 |     1 | FinalDesign_i/clk_wiz_0/inst/clkf_buf                                     | FinalDesign_i/clk_wiz_0/inst/clkfbout_buf_FinalDesign_clk_wiz_0_0 |    1 |     1 |     no |         1.878 |     0.094 |
 |     2 | FinalDesign_i/processing_system7_0/inst/buffer_fclk_clk_2.FCLK_CLK_2_BUFG | FinalDesign_i/processing_system7_0/inst/FCLK_CLK2                 |    1 |     1 |     no |         1.876 |     0.094 |
-|     3 | FinalDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0                 | 1491 |   491 |     no |         2.063 |     0.415 |
-|     4 | FinalDesign_i/clk_wiz_0/inst/clkout1_buf                                  | FinalDesign_i/clk_wiz_0/inst/clk_out1                             | 1858 |   561 |     no |         2.277 |     0.646 |
-|     5 | FinalDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1                 | 2579 |   749 |     no |         2.129 |     0.544 |
+|     3 | FinalDesign_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0                 | 1491 |   503 |     no |         2.048 |     0.406 |
+|     4 | FinalDesign_i/clk_wiz_0/inst/clkout1_buf                                  | FinalDesign_i/clk_wiz_0/inst/clk_out1                             | 1858 |   551 |     no |         2.277 |     0.646 |
+|     5 | FinalDesign_i/processing_system7_0/inst/buffer_fclk_clk_1.FCLK_CLK_1_BUFG | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1                 | 2674 |   797 |     no |         2.060 |     0.468 |
 +-------+---------------------------------------------------------------------------+-------------------------------------------------------------------+------+-------+--------+---------------+-----------+
 
 
@@ -87,12 +87,12 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
-| X0Y0              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   47 | 20000 |    2 |  4000 |    0 |   120 |    0 |    30 |    0 |    60 |
-| X1Y0              |    4 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |   20 |    50 |   21 | 25600 |    0 |  3400 |    0 |   120 |    0 |    30 |    0 |    40 |
-| X0Y1              |    3 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 2176 |  9600 |  207 |  1600 |    1 |    40 |    5 |    10 |    1 |    20 |
-| X1Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 1558 | 20800 |    9 |  3400 |    0 |   120 |    0 |    30 |    0 |    40 |
-| X0Y2              |    3 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 1015 |  9600 |  184 |  1600 |    0 |    36 |    1 |     9 |    6 |    20 |
-| X1Y2              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  625 | 20800 |   45 |  3400 |    0 |   108 |    1 |    27 |    0 |    40 |
+| X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  746 | 20000 |  179 |  4000 |    1 |   120 |    5 |    30 |    0 |    60 |
+| X1Y0              |    5 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |   20 |    50 |  521 | 25600 |   97 |  3400 |    0 |   120 |    1 |    30 |    0 |    40 |
+| X0Y1              |    3 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 2603 |  9600 |  131 |  1600 |    1 |    40 |    3 |    10 |    7 |    20 |
+| X1Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 1323 | 20800 |   13 |  3400 |    0 |   120 |    2 |    30 |    0 |    40 |
+| X0Y2              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |  318 |  9600 |   27 |  1600 |    0 |    36 |    0 |     9 |    0 |    20 |
+| X1Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   21 | 20800 |    0 |  3400 |    0 |   108 |    0 |    27 |    0 |    40 |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 * RAMB36 site can be used as two RAMB18/FIFO18 sites
 
@@ -103,8 +103,7 @@ Table of Contents
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 | Source Type | Locked | MMCM Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s | PLLs |                                    Clock Net Name |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
-| BUFG        |   no   |         0 |         0 |       0 |       0 |   6 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
-| BUFG        |   no   |         0 |         0 |       0 |       0 |  41 |     2 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
+| BUFG        |   no   |         0 |        12 |       0 |       0 | 746 |   179 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 
 
@@ -117,7 +116,8 @@ Table of Contents
 | BUFG        |   no   |         1 |         0 |       0 |       0 |   0 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clkfbout_buf_FinalDesign_clk_wiz_0_0 |
 | BUFG        |   no   |         1 |         0 |       0 |       0 |   0 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK2                 |
 | BUFG        |   no   |         0 |         0 |       0 |       0 |   4 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0                 |
-| BUFG        |   no   |         0 |         0 |       0 |      21 |  17 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1                             |
+| BUFG        |   no   |         0 |         1 |       0 |      21 | 127 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1                             |
+| BUFG        |   no   |         0 |         1 |       0 |       0 | 390 |    97 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1                 |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+-------------------------------------------------------------------+
 
 
@@ -127,9 +127,9 @@ Table of Contents
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
 | Source Type | Locked | MMCM Pins | BRAM Pins | ILOGICs | OLOGICs |  FFs | LUTMs | DSP48E1s | PLLs |                                    Clock Net Name |
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
-| BUFG        |   no   |         0 |         0 |       0 |       0 |  453 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
-| BUFG        |   no   |         0 |         0 |       0 |       0 |  541 |    55 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
-| BUFG        |   no   |         0 |        12 |       0 |       0 | 1182 |   152 |        1 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |  627 |     4 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |  875 |    54 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
+| BUFG        |   no   |         0 |         8 |       0 |       0 | 1101 |    73 |        7 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
 
 
@@ -139,9 +139,9 @@ Table of Contents
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
 | Source Type | Locked | MMCM Pins | BRAM Pins | ILOGICs | OLOGICs |  FFs | LUTMs | DSP48E1s | PLLs |                                    Clock Net Name |
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
-| BUFG        |   no   |         0 |         0 |       0 |       0 |   19 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
-| BUFG        |   no   |         0 |         0 |       0 |       0 |  292 |     2 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
-| BUFG        |   no   |         0 |         0 |       0 |       0 | 1247 |     7 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
+| BUFG        |   no   |         0 |         4 |       0 |       0 |   43 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |  205 |    10 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 | 1075 |     3 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
 +-------------+--------+-----------+-----------+---------+---------+------+-------+----------+------+---------------------------------------------------+
 
 
@@ -151,9 +151,8 @@ Table of Contents
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 | Source Type | Locked | MMCM Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s | PLLs |                                    Clock Net Name |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
-| BUFG        |   no   |         0 |         0 |       0 |       0 |   1 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
-| BUFG        |   no   |         0 |         0 |       0 |       0 | 237 |    17 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
-| BUFG        |   no   |         0 |         2 |       0 |       0 | 777 |   167 |        6 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |   7 |     1 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 | 311 |    26 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 
 
@@ -163,9 +162,8 @@ Table of Contents
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 | Source Type | Locked | MMCM Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s | PLLs |                                    Clock Net Name |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
-| BUFG        |   no   |         0 |         1 |       0 |       0 | 111 |     0 |        0 |    0 | FinalDesign_i/clk_wiz_0/inst/clk_out1             |
-| BUFG        |   no   |         0 |         1 |       0 |       0 | 194 |    29 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
-| BUFG        |   no   |         0 |         0 |       0 |       0 | 320 |    16 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |   5 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK0 |
+| BUFG        |   no   |         0 |         0 |       0 |       0 |  16 |     0 |        0 |    0 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1 |
 +-------------+--------+-----------+-----------+---------+---------+-----+-------+----------+------+---------------------------------------------------+
 
 

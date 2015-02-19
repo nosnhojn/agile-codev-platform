@@ -22,7 +22,7 @@ pixelProcessor_s1
 s1
 (
   .clk(clk),
-  .rst_n(rst_n),
+  .rst_n(rst),
 
   // ingress port
   .iTDATA(iTDATA),

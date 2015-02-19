@@ -30,14 +30,6 @@ r
 Loaded Vivado repository '%s'.
 1332*coregen25
 !/opt/Xilinx/Vivado/2013.3/data/ip2default:defaultZ19-2313
-ˆ
-I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
-268*common2
-	read_ip: 2default:default2
-00:00:052default:default2
-00:00:052default:default2
-472.9532default:default2
-13.0002default:defaultZ17-268
 p
 Command: %s
 53*	vivadotcl2H
@@ -64,7 +56,7 @@ Starting synthesis...
 xc7z0202default:defaultZ17-349
 õ
 %s*synth2ã
-wStarting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 496.949 ; gain = 99.562
+wStarting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 496.953 ; gain = 99.562
 2default:default
 Ë
 synthesizing module '%s'638*oasys2 
@@ -173,14 +165,14 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ï
 synthesizing module '%s'638*oasys2!
 blk_mem_gen_02default:default2£
-å/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
+å/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
 62default:default8@Z8-638
 –
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 blk_mem_gen_02default:default2
 22default:default2
 12default:default2£
-å/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
+å/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
 62default:default8@Z8-256
 Ê
 Pwidth (%s) of port connection '%s' does not match port width (%s) of module '%s'689*oasys2
@@ -329,11 +321,11 @@ u
 rst2default:defaultZ8-3331
 ú
 %s*synth2å
-xFinished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
+xFinished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.773 ; gain = 124.383
 2default:default
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.770 ; gain = 124.383
+vStart RTL Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 521.773 ; gain = 124.383
 2default:default
 ;
 %s*synth2,
@@ -904,7 +896,7 @@ Processing XDC Constraints
 ã
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2†
-ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2$
+ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2$
 s1/my_qpram/clk22default:defaultZ20-848
 ‘
 ~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
@@ -912,12 +904,12 @@ $Parsing XDC File [%s] for cell '%s'
 s1/my_qpram/clk22default:default2(
 [get_ports clk_out1]2default:default2$
 s1/my_qpram/clk22default:default2¢
-ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2
+ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2
 22default:default8@Z12-1399
 î
 -Finished Parsing XDC File [%s] for cell '%s'
 847*designutils2†
-ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-14596-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2$
+ã/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.runs/synth_1/.Xil/Vivado-18330-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2$
 s1/my_qpram/clk22default:defaultZ20-847
 ¶
 Parsing XDC File [%s]
@@ -959,15 +951,15 @@ u
 2default:defaultZ1-111
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.129 ; gain = 276.742
+vStart RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.742
 2default:default
 µ
 %s*synth2•
-êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.137 ; gain = 276.746
 2default:default
 ù
 %s*synth2ç
-yFinished RTL Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 674.133 ; gain = 276.746
+yFinished RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 674.137 ; gain = 276.746
 2default:default
 <
 %s*synth2-
@@ -998,7 +990,7 @@ BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 2default:default
 ±
 %s*synth2°
-åFinished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+åFinished Loading Part and Timing Information : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 723.145 ; gain = 325.754
 2default:default
 B
 %s*synth23
@@ -1007,6 +999,10 @@ B
 1
 %s*synth2"
 +---Adders : 
+2default:default
+Q
+%s*synth2B
+.	   2 Input     24 Bit       Adders := 1     
 2default:default
 Q
 %s*synth2B
@@ -1111,6 +1107,10 @@ B
 1
 %s*synth2"
 +---Adders : 
+2default:default
+Q
+%s*synth2B
+.	   2 Input     24 Bit       Adders := 1     
 2default:default
 Q
 %s*synth2B
@@ -1655,7 +1655,7 @@ u
 rst2default:defaultZ8-3331
 ©
 %s*synth2ô
-ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 723.141 ; gain = 325.754
+ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 723.145 ; gain = 325.754
 2default:default
 ¢
 %s*synth2í
@@ -1879,6 +1879,10 @@ R-------------------------------------------------------------------------------
 6propagating constant %s across sequential element (%s)3333*oasys2
 02default:default24
  \s1/my_pixelProcessor_IO/wr_reg 2default:defaultZ8-3333
+ò
+6propagating constant %s across sequential element (%s)3333*oasys2
+02default:default20
+\s1/my_qpram/rdata_0_reg[9] 2default:defaultZ8-3333
 ô
 6propagating constant %s across sequential element (%s)3333*oasys2
 02default:default21
@@ -1939,10 +1943,6 @@ R-------------------------------------------------------------------------------
 6propagating constant %s across sequential element (%s)3333*oasys2
 02default:default20
 \s1/my_qpram/rdata_0_reg[8] 2default:defaultZ8-3333
-ò
-6propagating constant %s across sequential element (%s)3333*oasys2
-02default:default20
-\s1/my_qpram/rdata_0_reg[9] 2default:defaultZ8-3333
 ô
 6propagating constant %s across sequential element (%s)3333*oasys2
 02default:default21
@@ -2045,7 +2045,7 @@ R-------------------------------------------------------------------------------
 %\s1/my_pixelProcessor_IO/oTVALID_reg 2default:defaultZ8-3333
 û
 %s*synth2é
-zFinished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+zFinished Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 {
 %s*synth2l
@@ -2053,19 +2053,19 @@ XINFO: Moved 1 constraints on hierarchical pins to their respective driving/load
 2default:default
 ≠
 %s*synth2ù
-àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 †
 %s*synth2ê
-|Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+|Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ü
 %s*synth2è
-{Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+{Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ô
 %s*synth2â
-uFinished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+uFinished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ;
 %s*synth2,
@@ -2094,11 +2094,11 @@ I+------+------------------+-------+---------+-------+------------------+
 2default:default
 ™
 %s*synth2ö
-ÖFinished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+ÖFinished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ß
 %s*synth2ó
-ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ¢
 %s*synth2í
@@ -2215,7 +2215,7 @@ T
 2default:default
 ¶
 %s*synth2ñ
-ÅFinished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:49 . Memory (MB): peak = 741.191 ; gain = 343.805
+ÅFinished Writing Synthesis Report : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 k
 %s*synth2\
@@ -2223,7 +2223,7 @@ HSynthesis finished with 0 errors, 0 critical warnings and 267 warnings.
 2default:default
 £
 %s*synth2ì
-Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 741.191 ; gain = 343.805
+Synthesis Optimization Complete : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 741.195 ; gain = 343.805
 2default:default
 ^
 1Inserted %s IBUFs to IO ports without IO buffers.100*opt2
@@ -2262,18 +2262,18 @@ U
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2"
 synth_design: 2default:default2
-00:01:022default:default2
+00:01:012default:default2
 00:01:022default:default2
-914.1842default:default2
+914.1882default:default2
 441.2302default:defaultZ17-268
 <
 %Done setting XDC timing constraints.
 35*timingZ38-35
-Å
-ureport_utilization: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.18 . Memory (MB): peak = 914.188 ; gain = 0.000
+~
+rreport_utilization: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:01 . Memory (MB): peak = 914.191 ; gain = 0.000
 *common
 w
 Exiting %s at %s...
 206*common2
 Vivado2default:default2,
-Wed Feb 11 21:10:52 20152default:defaultZ17-206
+Thu Feb 12 11:03:17 20152default:defaultZ17-206

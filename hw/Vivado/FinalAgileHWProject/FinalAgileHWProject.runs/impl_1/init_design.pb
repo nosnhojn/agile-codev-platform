@@ -7,10 +7,15 @@ a
 &Design is defaulting to constrset: %s
 434*	planAhead2
 	constrs_12default:defaultZ12-434
+∂
+-Reading design checkpoint '%s' for cell '%s'
+275*project2ò
+É/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/sdpram30x15360_synth_1/sdpram30x15360.dcp2default:default2S
+?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ1-454
 ]
 -Analyzing %s Unisim elements for replacement
 17*netlist2
-402default:defaultZ29-17
+552default:defaultZ29-17
 a
 2Unisim Transformation completed in %s CPU seconds
 28*netlist2
@@ -61,6 +66,16 @@ _
 Failed to get a license: %s
 295*common2&
 Internal_bitstream2default:defaultZ17-301
+œ
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2µ
+†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360_early.xdc2default:default2S
+?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-848
+ÿ
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2µ
+†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360_early.xdc2default:default2S
+?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-847
 ÷
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2‘
@@ -1783,11 +1798,21 @@ $Parsing XDC File [%s] for cell '%s'
 È
 Parsing XDC File [%s]
 179*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15218-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
 Ú
 Finished Parsing XDC File [%s]
 178*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-15218-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
+…
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2Ø
+ö/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360.xdc2default:default2S
+?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-848
+“
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2Ø
+ö/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360.xdc2default:default2S
+?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-847
 õ
 }Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
 663*designutilsZ20-663
@@ -1807,10 +1832,10 @@ MSuccessfully populated the BRAM INIT strings from the following elf files: %s
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2!
 link_design: 2default:default2
-00:00:492default:default2
-00:00:502default:default2
-871.4382default:default2
-411.4802default:defaultZ17-268
+00:00:502default:default2
+00:00:512default:default2
+872.7032default:default2
+412.7542default:defaultZ17-268
 
 
 End Record

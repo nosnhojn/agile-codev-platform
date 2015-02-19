@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date         : Wed Feb 11 21:11:43 2015
+| Date         : Thu Feb 12 11:06:14 2015
 | Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command      : report_clock_utilization -file agileHWBlock_clock_utilization_placed.rpt
 | Design       : agileHWBlock
