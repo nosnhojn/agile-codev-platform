@@ -113,11 +113,11 @@ my_qpram
   .rdata_0(rdata),
   .raddr_0(raddr),
 
-  //.wdata_1(0),
-  //.waddr_1(0),
+  //.wdata_1(wdata),
+  //.waddr_1(waddr),
   .wr_1(0),
 
-  //.rdata_1(rdata_1),
+  //.rdata_1(rdata),
   .raddr_1(0)
 );
 
