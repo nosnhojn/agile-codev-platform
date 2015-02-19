@@ -55,6 +55,10 @@ logic [31:0] raddr_line0;
 logic [31:0] raddr_line1;
 logic [31:0] raddr_line2;
 
+logic [31:0] next_raddr_line0;
+logic [31:0] next_raddr_line1;
+logic [31:0] next_raddr_line2;
+
 wire [31:0]  next_raddr_line0_for_wrap;
 wire [31:0]  next_raddr_line1_for_wrap;
 wire [31:0]  next_raddr_line2_for_wrap;
@@ -70,19 +74,48 @@ wire reset_raddr_line2_at_end_of_buffer;
 wire raddr_wraps_at_eof;
 
 always @* begin
-  raddr = 0;
   next_rptr_line_cnt = rptr_line_cnt;
 
   if (ingress_rdy) begin
     if (rptr_line_cnt >= 2) next_rptr_line_cnt = 0;
     else next_rptr_line_cnt = rptr_line_cnt + 1;
   end
+end
 
-  case (rptr_line_cnt)
-    'b00 : raddr = raddr_line0;
-    'b01 : raddr = raddr_line1;
-    'b10 : raddr = raddr_line2;
-  endcase
+always @* begin
+  next_raddr_line0 = raddr_line0;
+  next_raddr_line1 = raddr_line1;
+  next_raddr_line2 = raddr_line2;
+
+  if (calc_rdy) begin
+    if (ingress_rdy) begin
+      if (rptr_line_cnt >= 2) begin
+        if (at_end_of_frame) begin
+          if (raddr_wraps_at_eof) begin
+            next_raddr_line0 = next_raddr_line0_for_wrap;
+            next_raddr_line1 = next_raddr_line1_for_wrap;
+            next_raddr_line2 = next_raddr_line2_for_wrap;
+          end
+          else begin
+            next_raddr_line0 = next_raddr_line0_for_eof;
+            next_raddr_line1 = next_raddr_line1_for_eof;
+            next_raddr_line2 = next_raddr_line2_for_eof;
+          end
+        end
+
+        else begin
+          if (reset_raddr_line0_at_end_of_buffer) next_raddr_line0 = 0;
+          else                                    next_raddr_line0 = raddr_line0 + 1;
+
+          if (reset_raddr_line1_at_end_of_buffer) next_raddr_line1 = 0;
+          else                                    next_raddr_line1 = raddr_line1 + 1;
+
+          if (reset_raddr_line2_at_end_of_buffer) next_raddr_line2 = 0;
+          else                                    next_raddr_line2 = raddr_line2 + 1;
+        end
+      end
+    end
+  end
 end
 
 always @(negedge rst_n or posedge clk) begin
@@ -107,9 +140,21 @@ always @(negedge rst_n or posedge clk) begin
     raddr_line0   <= 0;
     raddr_line1   <= EFFECTIVE_WIDTH;
     raddr_line2   <= EFFECTIVE_WIDTH << 1;
+
+    raddr <= 0;
   end
 
   else begin
+    raddr_line0 <= next_raddr_line0;
+    raddr_line1 <= next_raddr_line1;
+    raddr_line2 <= next_raddr_line2;
+
+    case (next_rptr_line_cnt)
+      'b00 : raddr <= next_raddr_line0;
+      'b01 : raddr <= next_raddr_line1;
+      'b10 : raddr <= next_raddr_line2;
+    endcase
+
     ingress_used_cnt <= 0;
     ingress_available_cnt <= ingress_available_cnt + ingress_new_pixel;
     if (last_row_flag && last_column_flag) begin
@@ -144,30 +189,10 @@ always @(negedge rst_n or posedge clk) begin
         if (rptr_line_cnt >= 2) begin
           if (at_end_of_frame) begin
             rptr <= 0;
-
-            if (raddr_wraps_at_eof) begin
-              raddr_line0 <= next_raddr_line0_for_wrap;
-              raddr_line1 <= next_raddr_line1_for_wrap;
-              raddr_line2 <= next_raddr_line2_for_wrap;
-            end
-            else begin
-              raddr_line0 <= next_raddr_line0_for_eof;
-              raddr_line1 <= next_raddr_line1_for_eof;
-              raddr_line2 <= next_raddr_line2_for_eof;
-            end
           end
 
           else begin
             rptr <= rptr + 1;
-
-            if (reset_raddr_line0_at_end_of_buffer) raddr_line0 <= 0;
-            else                                    raddr_line0 <= raddr_line0 + 1;
-
-            if (reset_raddr_line1_at_end_of_buffer) raddr_line1 <= 0;
-            else                                    raddr_line1 <= raddr_line1 + 1;
-
-            if (reset_raddr_line2_at_end_of_buffer) raddr_line2 <= 0;
-            else                                    raddr_line2 <= raddr_line2 + 1;
           end
 
           next_calc_strobe <= 1;
