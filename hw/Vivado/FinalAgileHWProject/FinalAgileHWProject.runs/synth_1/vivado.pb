@@ -39,8 +39,8 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 add_files: 2default:default2
 00:00:132default:default2
-00:00:222default:default2
-500.3282default:default2
+00:00:142default:default2
+500.3242default:default2
 40.3752default:defaultZ17-268
 w
 Command: %s
@@ -51,6 +51,11 @@ w
 Starting synthesis...
 
 3*	vivadotclZ4-3
+≥
+%IP '%s' is locked. Locked reason: %s
+1260*coregen2!
+blk_mem_gen_02default:default2M
+9Property 'IS_LOCKED' is set to true by the system or user2default:defaultZ19-2162
 ï
 @Attempting to get a license for feature '%s' and/or device '%s'
 308*common2
@@ -63,7 +68,7 @@ Starting synthesis...
 xc7z0202default:defaultZ17-349
 ú
 %s*synth2å
-xStarting RTL Elaboration : Time (s): cpu = 00:02:37 ; elapsed = 00:02:52 . Memory (MB): peak = 539.328 ; gain = 141.941
+xStarting RTL Elaboration : Time (s): cpu = 00:02:57 ; elapsed = 00:03:09 . Memory (MB): peak = 540.324 ; gain = 142.941
 2default:default
 —
 *function %s does not always return a value2048*oasys2 
@@ -1413,31 +1418,63 @@ h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1
 12default:default2~
 h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_IO.sv2default:default2
 12default:default8@Z8-256
-ñ
-synthesizing module '%s'638*oasys2"
-sdpram30x153602default:default2¢
-ã/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/sdpram30x15360/sdpram30x15360_stub.v2default:default2
+€
+synthesizing module '%s'638*oasys2
+qpram2default:default2r
+\/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv2default:default2
+12default:default8@Z8-638
+â
+synthesizing module '%s'638*oasys2
+	clk_wiz_02default:default2ö
+É/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_stub.v2default:default2
 162default:default8@Z8-638
-¯
+©
+synthesizing module '%s'638*oasys2!
+blk_mem_gen_02default:default2∑
+†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
+62default:default8@Z8-638
+Â
+%done synthesizing module '%s' (%s#%s)256*oasys2!
+blk_mem_gen_02default:default2
+512default:default2
+12default:default2∑
+†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/realtime/blk_mem_gen_0_stub.v2default:default2
+62default:default8@Z8-256
+ó
+%done synthesizing module '%s' (%s#%s)256*oasys2
+qpram2default:default2
+522default:default2
+12default:default2r
+\/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/qpram.sv2default:default2
+12default:default8@Z8-256
+Ì
 Pwidth (%s) of port connection '%s' does not match port width (%s) of module '%s'689*oasys2
-92default:default2
-addra2default:default2
-142default:default2'
-sdpram30x15360_bbox2default:default2~
-h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv2default:default2
-992default:default8@Z8-689
-˘
-Pwidth (%s) of port connection '%s' does not match port width (%s) of module '%s'689*oasys2
-92default:default2
-addrb2default:default2
-142default:default2'
-sdpram30x15360_bbox2default:default2~
+92default:default2
+waddr_02default:default2
+142default:default2
+qpram2default:default2~
 h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv2default:default2
-1042default:default8@Z8-689
+1092default:default8@Z8-689
+Ì
+Pwidth (%s) of port connection '%s' does not match port width (%s) of module '%s'689*oasys2
+92default:default2
+raddr_02default:default2
+142default:default2
+qpram2default:default2~
+h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv2default:default2
+1132default:default8@Z8-689
+Â
+Ginstance '%s' of module '%s' requires %s connections, but only %s given350*oasys2
+my_qpram2default:default2
+qpram2default:default2
+122default:default2
+92default:default2~
+h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv2default:default2
+1032default:default8@Z8-350
 Ø
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 pixelProcessor_s12default:default2
-512default:default2
+532default:default2
 12default:default2~
 h/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/pixelProcessor_s1.sv2default:default2
 12default:default8@Z8-256
@@ -1460,14 +1497,14 @@ b/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1
 §
 %done synthesizing module '%s' (%s#%s)256*oasys2 
 agileHWBlock2default:default2
-522default:default2
+542default:default2
 12default:default2x
 b/home/agilehw/agile-codev-platform/hw/Vivado/hwIPBlock/hwIPBlock.srcs/sources_1/new/agileHwBlock.v2default:default2
 12default:default8@Z8-256
 å
 %done synthesizing module '%s' (%s#%s)256*oasys20
 FinalDesign_agileHWBlock_0_12default:default2
-532default:default2
+552default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_agileHWBlock_0_1/synth/FinalDesign_agileHWBlock_0_1.v2default:default2
 562default:default8@Z8-256
@@ -1575,7 +1612,7 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 reset_blk_ramfifo2default:default2
-542default:default2
+562default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/reset_blk_ramfifo.vhd2default:default2
 2172default:default8@Z8-256
@@ -1587,7 +1624,7 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ˙
 %done synthesizing module '%s' (%s#%s)256*oasys2
 	input_blk2default:default2
-552default:default2
+572default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/input_blk.vhd2default:default2
 2782default:default8@Z8-256
@@ -1610,14 +1647,14 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 Ò
 %done synthesizing module '%s' (%s#%s)256*oasys2
 dmem2default:default2
-562default:default2
+582default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/dmem.vhd2default:default2
 1652default:default8@Z8-256
 ı
 %done synthesizing module '%s' (%s#%s)256*oasys2
 memory2default:default2
-572default:default2
+592default:default2
 12default:default2Ã
 µ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/memory.vhd2default:default2
 2152default:default8@Z8-256
@@ -1634,7 +1671,7 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ˇ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 rd_bin_cntr2default:default2
-582default:default2
+602default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_bin_cntr.vhd2default:default2
 1512default:default8@Z8-256
@@ -1651,14 +1688,14 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2
 compare2default:default2
-592default:default2
+612default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/compare.vhd2default:default2
 1382default:default8@Z8-256
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 rd_status_flags_ss2default:default2
-602default:default2
+622default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_status_flags_ss.vhd2default:default2
 1742default:default8@Z8-256
@@ -1682,14 +1719,14 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2
 rd_fwft2default:default2
-612default:default2
+632default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_fwft.vhd2default:default2
 1542default:default8@Z8-256
 ˘
 %done synthesizing module '%s' (%s#%s)256*oasys2
 rd_logic2default:default2
-622default:default2
+642default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_logic.vhd2default:default2
 2382default:default8@Z8-256
@@ -1706,7 +1743,7 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ˇ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 wr_bin_cntr2default:default2
-632default:default2
+652default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_bin_cntr.vhd2default:default2
 1552default:default8@Z8-256
@@ -1718,14 +1755,14 @@ Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:de
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 wr_status_flags_ss2default:default2
-642default:default2
+662default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_status_flags_ss.vhd2default:default2
 1802default:default8@Z8-256
 ˘
 %done synthesizing module '%s' (%s#%s)256*oasys2
 wr_logic2default:default2
-652default:default2
+672default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_logic.vhd2default:default2
 2302default:default8@Z8-256
@@ -1739,56 +1776,56 @@ output_blk2default:default2œ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 output_blk2default:default2
-662default:default2
+682default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/output_blk.vhd2default:default2
 2682default:default8@Z8-256
 ï
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 fifo_generator_ramfifo2default:default2
-672default:default2
+692default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/fifo_generator_ramfifo.vhd2default:default2
 3062default:default8@Z8-256
 Ö
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 fifo_generator_top2default:default2
-682default:default2
+702default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_top.vhd2default:default2
 2692default:default8@Z8-256
 ï
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 fifo_generator_v11_0_synth2default:default2
-692default:default2
+712default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0_synth.vhd2default:default2
 6672default:default8@Z8-256
 â
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 fifo_generator_v11_02default:default2
-702default:default2
+722default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0.vhd2default:default2
 6492default:default8@Z8-256
 ô
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 axi_data_fifo_v2_1_fifo_gen2default:default2
-712default:default2
+732default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_data_fifo_v2_1/hdl/verilog/axi_data_fifo_v2_1_fifo_gen.v2default:default2
 602default:default8@Z8-256
 õ
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_data_fifo_v2_1_axic_fifo2default:default2
-722default:default2
+742default:default2
 12default:default2›
 ∆/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_xbar_3/axi_data_fifo_v2_1/hdl/verilog/axi_data_fifo_v2_1_axic_fifo.v2default:default2
 642default:default8@Z8-256
 ø
 %done synthesizing module '%s' (%s#%s)256*oasys2;
 'axi_protocol_converter_v2_1_a_axi3_conv2default:default2
-732default:default2
+752default:default2
 12default:default2ˆ
 ﬂ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_a_axi3_conv.v2default:default2
 622default:default8@Z8-256
@@ -1800,42 +1837,42 @@ output_blk2default:default2
 ø
 %done synthesizing module '%s' (%s#%s)256*oasys2;
 'axi_protocol_converter_v2_1_r_axi3_conv2default:default2
-742default:default2
+762default:default2
 12default:default2ˆ
 ﬂ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_r_axi3_conv.v2default:default2
 612default:default8@Z8-256
 ª
 %done synthesizing module '%s' (%s#%s)256*oasys29
 %axi_protocol_converter_v2_1_axi3_conv2default:default2
-752default:default2
+772default:default2
 12default:default2Ù
 ›/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi3_conv.v2default:default2
 692default:default8@Z8-256
 Â
 %done synthesizing module '%s' (%s#%s)256*oasys2V
 Baxi_protocol_converter_v2_1_axi_protocol_converter__parameterized02default:default2
-752default:default2
+772default:default2
 12default:default2Å
 Í/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_9_0/axi_protocol_converter_v2_1/hdl/verilog/axi_protocol_converter_v2_1_axi_protocol_converter.v2default:default2
 622default:default8@Z8-256
 ˙
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 FinalDesign_auto_pc_122default:default2
-762default:default2
+782default:default2
 12default:default2¬
 ´/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_auto_pc_12/synth/FinalDesign_auto_pc_12.v2default:default2
 572default:default8@Z8-256
 ◊
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 s00_couplers_imp_1NO65A22default:default2
-772default:default2
+792default:default2
 12default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 19982default:default8@Z8-256
 ‹
 %done synthesizing module '%s' (%s#%s)256*oasys22
 FinalDesign_axi_mem_intercon_22default:default2
-782default:default2
+802default:default2
 12default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 4522default:default8@Z8-256
@@ -1984,7 +2021,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ˙
 %done synthesizing module '%s' (%s#%s)256*oasys2
 cdc_sync2default:default2
-792default:default2
+812default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd2default:default2
 1042default:default8@Z8-256
@@ -2032,21 +2069,21 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 cdc_sync__parameterized02default:default2
-792default:default2
+812default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd2default:default2
 1042default:default8@Z8-256
 Ñ
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 axi_vdma_reset2default:default2
-802default:default2
+822default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_reset.vhd2default:default2
 1972default:default8@Z8-256
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 axi_vdma_rst_module2default:default2
-812default:default2
+832default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_rst_module.vhd2default:default2
 2592default:default8@Z8-256
@@ -2068,21 +2105,21 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 cdc_sync__parameterized12default:default2
-812default:default2
+832default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd2default:default2
 1042default:default8@Z8-256
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2$
 axi_vdma_lite_if2default:default2
-822default:default2
+842default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_lite_if.vhd2default:default2
 2482default:default8@Z8-256
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2#
 axi_vdma_reg_if2default:default2
-832default:default2
+852default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_reg_if.vhd2default:default2
 3282default:default8@Z8-256
@@ -2094,7 +2131,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2#
 axi_vdma_intrpt2default:default2
-842default:default2
+862default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_intrpt.vhd2default:default2
 2562default:default8@Z8-256
@@ -2111,7 +2148,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 axi_vdma_register2default:default2
-852default:default2
+872default:default2
 12default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_register.vhd2default:default2
 2942default:default8@Z8-256
@@ -2123,7 +2160,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 axi_vdma_regdirect2default:default2
-862default:default2
+882default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_regdirect.vhd2default:default2
 2642default:default8@Z8-256
@@ -2135,14 +2172,14 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2$
 axi_vdma_reg_mux2default:default2
-872default:default2
+892default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_reg_mux.vhd2default:default2
 2932default:default8@Z8-256
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 axi_vdma_reg_module2default:default2
-882default:default2
+902default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_reg_module.vhd2default:default2
 3502default:default8@Z8-256
@@ -2159,7 +2196,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ˛
 %done synthesizing module '%s' (%s#%s)256*oasys2
 axi_vdma_sm2default:default2
-892default:default2
+912default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_sm.vhd2default:default2
 2522default:default8@Z8-256
@@ -2171,7 +2208,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 axi_vdma_cmdsts_if2default:default2
-902default:default2
+922default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_cmdsts_if.vhd2default:default2
 2622default:default8@Z8-256
@@ -2183,7 +2220,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 axi_vdma_sts_mngr2default:default2
-912default:default2
+932default:default2
 12default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_sts_mngr.vhd2default:default2
 1802default:default8@Z8-256
@@ -2200,7 +2237,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 axi_vdma_vregister2default:default2
-922default:default2
+942default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_vregister.vhd2default:default2
 1902default:default8@Z8-256
@@ -2212,14 +2249,14 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2)
 axi_vdma_vaddrreg_mux2default:default2
-932default:default2
+952default:default2
 12default:default2⁄
 √/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_vaddrreg_mux.vhd2default:default2
 1752default:default8@Z8-256
 î
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 axi_vdma_vidreg_module2default:default2
-942default:default2
+962default:default2
 12default:default2€
 ƒ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_vidreg_module.vhd2default:default2
 2392default:default8@Z8-256
@@ -2236,21 +2273,21 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 axi_vdma_greycoder2default:default2
-952default:default2
+972default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_greycoder.vhd2default:default2
 1622default:default8@Z8-256
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2)
 axi_vdma_genlock_mngr2default:default2
-962default:default2
+982default:default2
 12default:default2⁄
 √/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_genlock_mngr.vhd2default:default2
 2022default:default8@Z8-256
 Ç
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 axi_vdma_mngr2default:default2
-972default:default2
+992default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_mngr.vhd2default:default2
 4322default:default8@Z8-256
@@ -2259,10 +2296,10 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 axi_vdma_fsync_gen2default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_fsync_gen.vhd2default:default2
 1982default:default8@Z8-638
-å
+ç
 %done synthesizing module '%s' (%s#%s)256*oasys2&
-axi_vdma_fsync_gen2default:default2
-982default:default2
+axi_vdma_fsync_gen2default:default2
+1002default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_fsync_gen.vhd2default:default2
 1982default:default8@Z8-256
@@ -2271,10 +2308,10 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 axi_vdma_vid_cdc2default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_vid_cdc.vhd2default:default2
 2072default:default8@Z8-638
-à
+â
 %done synthesizing module '%s' (%s#%s)256*oasys2$
-axi_vdma_vid_cdc2default:default2
-992default:default2
+axi_vdma_vid_cdc2default:default2
+1012default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_vid_cdc.vhd2default:default2
 2072default:default8@Z8-256
@@ -2286,7 +2323,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 â
 %done synthesizing module '%s' (%s#%s)256*oasys2$
 axi_vdma_sof_gen2default:default2
-1002default:default2
+1022default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_sof_gen.vhd2default:default2
 1592default:default8@Z8-256
@@ -2342,7 +2379,7 @@ $fifo_generator_v11_0__parameterized12default:default2“
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 input_blk__parameterized02default:default2
-1002default:default2
+1022default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/input_blk.vhd2default:default2
 2782default:default8@Z8-256
@@ -2390,7 +2427,7 @@ $fifo_generator_v11_0__parameterized12default:default2“
 Ñ
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 reset_builtin2default:default2
-1012default:default2
+1032default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/builtin/reset_builtin.vhd2default:default2
 1552default:default8@Z8-256
@@ -2447,21 +2484,21 @@ $fifo_generator_v11_0__parameterized12default:default2“
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2#
 builtin_prim_v62default:default2
-1022default:default2
+1042default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/builtin/builtin_prim_v6.vhd2default:default2
 1912default:default8@Z8-256
 ê
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 builtin_extdepth_v62default:default2
-1032default:default2
+1052default:default2
 12default:default2Ÿ
 ¬/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/builtin/builtin_extdepth_v6.vhd2default:default2
 2192default:default8@Z8-256
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 builtin_top_v62default:default2
-1042default:default2
+1062default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/builtin/builtin_top_v6.vhd2default:default2
 2442default:default8@Z8-256
@@ -2473,42 +2510,42 @@ $fifo_generator_v11_0__parameterized12default:default2“
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 output_blk__parameterized02default:default2
-1042default:default2
+1062default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/output_blk.vhd2default:default2
 2682default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys20
 fifo_generator_v11_0_builtin2default:default2
-1052default:default2
+1072default:default2
 12default:default2‚
 À/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/builtin/fifo_generator_v11_0_builtin.vhd2default:default2
 2502default:default8@Z8-256
 ñ
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "fifo_generator_top__parameterized02default:default2
-1052default:default2
+1072default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_top.vhd2default:default2
 2692default:default8@Z8-256
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys2>
 *fifo_generator_v11_0_synth__parameterized02default:default2
-1052default:default2
+1072default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0_synth.vhd2default:default2
 6672default:default8@Z8-256
 ö
 %done synthesizing module '%s' (%s#%s)256*oasys28
 $fifo_generator_v11_0__parameterized12default:default2
-1052default:default2
+1072default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0.vhd2default:default2
 6492default:default8@Z8-256
 ï
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 axi_vdma_afifo_builtin2default:default2
-1062default:default2
+1082default:default2
 12default:default2€
 ƒ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_afifo_builtin.vhd2default:default2
 1112default:default8@Z8-256
@@ -2544,7 +2581,7 @@ $fifo_generator_v11_0__parameterized12default:default2
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 axi_vdma_skid_buf2default:default2
-1072default:default2
+1092default:default2
 12default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_skid_buf.vhd2default:default2
 1752default:default8@Z8-256
@@ -2556,14 +2593,14 @@ $fifo_generator_v11_0__parameterized12default:default2
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 cdc_sync__parameterized22default:default2
-1072default:default2
+1092default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd2default:default2
 1042default:default8@Z8-256
 ì
 %done synthesizing module '%s' (%s#%s)256*oasys2)
 axi_vdma_mm2s_linebuf2default:default2
-1082default:default2
+1102default:default2
 12default:default2⁄
 √/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma_mm2s_linebuf.vhd2default:default2
 3042default:default8@Z8-256
@@ -2603,7 +2640,7 @@ $fifo_generator_v11_0__parameterized12default:default2
 î
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 axi_datamover_reset2default:default2
-1092default:default2
+1112default:default2
 12default:default2›
 ∆/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_reset.vhd2default:default2
 1712default:default8@Z8-256
@@ -2650,7 +2687,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ˘
 %done synthesizing module '%s' (%s#%s)256*oasys2
 MUXCY_L2default:default2
-1102default:default2
+1122default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 116182default:default8@Z8-256
@@ -2671,7 +2708,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2
 XORCY2default:default2
-1112default:default2
+1132default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 273912default:default8@Z8-256
@@ -2692,7 +2729,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 Ù
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FDS2default:default2
-1122default:default2
+1142default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 19142default:default8@Z8-256
@@ -2753,7 +2790,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ï
 %done synthesizing module '%s' (%s#%s)256*oasys2)
 cntr_incr_decr_addn_f2default:default2
-1132default:default2
+1152default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cntr_incr_decr_addn_f.vhd2default:default2
 1462default:default8@Z8-256
@@ -2780,7 +2817,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ˘
 %done synthesizing module '%s' (%s#%s)256*oasys2
 SRLC16E2default:default2
-1142default:default2
+1162default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 266052default:default8@Z8-256
@@ -3391,14 +3428,14 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 dynshreg_f2default:default2
-1152default:default2
+1172default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/dynshreg_f.vhd2default:default2
 1582default:default8@Z8-256
 á
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 srl_fifo_rbu_f2default:default2
-1162default:default2
+1182default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_rbu_f.vhd2default:default2
 1942default:default8@Z8-256
@@ -3406,14 +3443,14 @@ dynshreg_f2default:default2
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 srl_fifo_f2default:default2
-1172default:default2
+1192default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_f.vhd2default:default2
 1652default:default8@Z8-256
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2&
 axi_datamover_fifo2default:default2
-1182default:default2
+1202default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_fifo.vhd2default:default2
 1702default:default8@Z8-256
@@ -3512,35 +3549,35 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 dynshreg_f__parameterized02default:default2
-1182default:default2
+1202default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/dynshreg_f.vhd2default:default2
 1582default:default8@Z8-256
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys22
 srl_fifo_rbu_f__parameterized02default:default2
-1182default:default2
+1202default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_rbu_f.vhd2default:default2
 1942default:default8@Z8-256
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 srl_fifo_f__parameterized02default:default2
-1182default:default2
+1202default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_f.vhd2default:default2
 1652default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "axi_datamover_fifo__parameterized02default:default2
-1182default:default2
+1202default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_fifo.vhd2default:default2
 1702default:default8@Z8-256
 û
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 axi_datamover_cmd_status2default:default2
-1192default:default2
+1212default:default2
 12default:default2‚
 À/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_cmd_status.vhd2default:default2
 1972default:default8@Z8-256
@@ -3552,7 +3589,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_datamover_rd_status_cntl2default:default2
-1202default:default2
+1222default:default2
 12default:default2Ê
 œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_rd_status_cntl.vhd2default:default2
 2072default:default8@Z8-256
@@ -3569,7 +3606,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ú
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 axi_datamover_strb_gen22default:default2
-1212default:default2
+1232default:default2
 12default:default2·
  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_strb_gen2.vhd2default:default2
 1562default:default8@Z8-256
@@ -3581,7 +3618,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ¨
 %done synthesizing module '%s' (%s#%s)256*oasys2;
 'axi_datamover_strb_gen2__parameterized02default:default2
-1212default:default2
+1232default:default2
 12default:default2·
  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_strb_gen2.vhd2default:default2
 1562default:default8@Z8-256
@@ -3592,7 +3629,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 ê
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 axi_datamover_pcc2default:default2
-1222default:default2
+1242default:default2
 12default:default2€
 ƒ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_pcc.vhd2default:default2
 3652default:default8@Z8-256
@@ -3740,35 +3777,35 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 dynshreg_f__parameterized12default:default2
-1222default:default2
+1242default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/dynshreg_f.vhd2default:default2
 1582default:default8@Z8-256
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys22
 srl_fifo_rbu_f__parameterized12default:default2
-1222default:default2
+1242default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_rbu_f.vhd2default:default2
 1942default:default8@Z8-256
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 srl_fifo_f__parameterized12default:default2
-1222default:default2
+1242default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_f.vhd2default:default2
 1652default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "axi_datamover_fifo__parameterized12default:default2
-1222default:default2
+1242default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_fifo.vhd2default:default2
 1702default:default8@Z8-256
 ú
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 axi_datamover_addr_cntl2default:default2
-1232default:default2
+1252default:default2
 12default:default2·
  /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_addr_cntl.vhd2default:default2
 2922default:default8@Z8-256
@@ -3785,7 +3822,7 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 î
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 axi_datamover_rdmux2default:default2
-1242default:default2
+1262default:default2
 12default:default2›
 ∆/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_rdmux.vhd2default:default2
 1362default:default8@Z8-256
@@ -3812,35 +3849,35 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 dynshreg_f__parameterized22default:default2
-1242default:default2
+1262default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/dynshreg_f.vhd2default:default2
 1582default:default8@Z8-256
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys22
 srl_fifo_rbu_f__parameterized22default:default2
-1242default:default2
+1262default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_rbu_f.vhd2default:default2
 1942default:default8@Z8-256
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 srl_fifo_f__parameterized22default:default2
-1242default:default2
+1262default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_f.vhd2default:default2
 1652default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "axi_datamover_fifo__parameterized22default:default2
-1242default:default2
+1262default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_fifo.vhd2default:default2
 1702default:default8@Z8-256
 †
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 axi_datamover_rddata_cntl2default:default2
-1252default:default2
+1272default:default2
 12default:default2„
 Ã/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_rddata_cntl.vhd2default:default2
 3912default:default8@Z8-256
@@ -3872,28 +3909,28 @@ Hmodule '%s' declared at '%s:%s' bound to instance '%s' of component '%s'339
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 dynshreg_f__parameterized32default:default2
-1252default:default2
+1272default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/dynshreg_f.vhd2default:default2
 1582default:default8@Z8-256
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys22
 srl_fifo_rbu_f__parameterized32default:default2
-1252default:default2
+1272default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_rbu_f.vhd2default:default2
 1942default:default8@Z8-256
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 srl_fifo_f__parameterized32default:default2
-1252default:default2
+1272default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo_f.vhd2default:default2
 1652default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "axi_datamover_fifo__parameterized32default:default2
-1252default:default2
+1272default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_fifo.vhd2default:default2
 1702default:default8@Z8-256
@@ -3935,7 +3972,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ú
 %done synthesizing module '%s' (%s#%s)256*oasys25
 !reset_blk_ramfifo__parameterized02default:default2
-1252default:default2
+1272default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/reset_blk_ramfifo.vhd2default:default2
 2172default:default8@Z8-256
@@ -3947,7 +3984,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 input_blk__parameterized12default:default2
-1252default:default2
+1272default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/input_blk.vhd2default:default2
 2782default:default8@Z8-256
@@ -3979,7 +4016,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 Ñ
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 blk_mem_input_block2default:default2
-1262default:default2
+1282default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_input_block.vhd2default:default2
 3922default:default8@Z8-256
@@ -4011,14 +4048,14 @@ $fifo_generator_v11_0__parameterized32default:default2“
 î
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 blk_mem_gen_prim_wrapper_v62default:default2
-1272default:default2
+1292default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_prim_wrapper_v6.vhd2default:default2
 3852default:default8@Z8-256
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 blk_mem_gen_prim_width2default:default2
-1282default:default2
+1302default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_prim_width.vhd2default:default2
 3932default:default8@Z8-256
@@ -4045,21 +4082,21 @@ $fifo_generator_v11_0__parameterized32default:default2“
 §
 %done synthesizing module '%s' (%s#%s)256*oasys2?
 +blk_mem_gen_prim_wrapper_v6__parameterized02default:default2
-1282default:default2
+1302default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_prim_wrapper_v6.vhd2default:default2
 3852default:default8@Z8-256
 ö
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &blk_mem_gen_prim_width__parameterized02default:default2
-1282default:default2
+1302default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_prim_width.vhd2default:default2
 3932default:default8@Z8-256
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 blk_mem_gen_generic_cstr2default:default2
-1292default:default2
+1312default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_generic_cstr.vhd2default:default2
 4422default:default8@Z8-256
@@ -4071,35 +4108,35 @@ $fifo_generator_v11_0__parameterized32default:default2“
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 blk_mem_output_block2default:default2
-1302default:default2
+1322default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_output_block.vhd2default:default2
 2142default:default8@Z8-256
 ¸
 %done synthesizing module '%s' (%s#%s)256*oasys2#
 blk_mem_gen_top2default:default2
-1312default:default2
+1332default:default2
 12default:default2…
 ≤/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_top.vhd2default:default2
 4312default:default8@Z8-256
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 blk_mem_gen_v8_0_synth2default:default2
-1322default:default2
+1342default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_v8_0_synth.vhd2default:default2
 3112default:default8@Z8-256
 ˛
 %done synthesizing module '%s' (%s#%s)256*oasys2$
 blk_mem_gen_v8_02default:default2
-1332default:default2
+1352default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/blk_mem_gen_v8_0/blk_mem_gen_v8_0.vhd2default:default2
 2502default:default8@Z8-256
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 memory__parameterized02default:default2
-1332default:default2
+1352default:default2
 12default:default2Ã
 µ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/memory.vhd2default:default2
 2152default:default8@Z8-256
@@ -4116,7 +4153,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ê
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 rd_bin_cntr__parameterized02default:default2
-1332default:default2
+1352default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_bin_cntr.vhd2default:default2
 1512default:default8@Z8-256
@@ -4133,7 +4170,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 compare__parameterized02default:default2
-1332default:default2
+1352default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/compare.vhd2default:default2
 1382default:default8@Z8-256
@@ -4146,7 +4183,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 û
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "rd_status_flags_ss__parameterized02default:default2
-1332default:default2
+1352default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_status_flags_ss.vhd2default:default2
 1742default:default8@Z8-256
@@ -4163,14 +4200,14 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ¸
 %done synthesizing module '%s' (%s#%s)256*oasys2
 	updn_cntr2default:default2
-1342default:default2
+1362default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/updn_cntr.vhd2default:default2
 1482default:default8@Z8-256
 Ù
 %done synthesizing module '%s' (%s#%s)256*oasys2
 dc_ss2default:default2
-1352default:default2
+1372default:default2
 12default:default2À
 ¥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/dc_ss.vhd2default:default2
 1442default:default8@Z8-256
@@ -4182,7 +4219,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 rd_handshaking_flags2default:default2
-1362default:default2
+1382default:default2
 12default:default2⁄
 √/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_handshaking_flags.vhd2default:default2
 1552default:default8@Z8-256
@@ -4218,14 +4255,14 @@ $fifo_generator_v11_0__parameterized32default:default2“
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 rd_fwft__parameterized02default:default2
-1362default:default2
+1382default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_fwft.vhd2default:default2
 1542default:default8@Z8-256
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 rd_logic__parameterized02default:default2
-1362default:default2
+1382default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/rd_logic.vhd2default:default2
 2382default:default8@Z8-256
@@ -4242,7 +4279,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ê
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 wr_bin_cntr__parameterized02default:default2
-1362default:default2
+1382default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_bin_cntr.vhd2default:default2
 1552default:default8@Z8-256
@@ -4260,7 +4297,7 @@ $fifo_generator_v11_0__parameterized32default:default2“
 û
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "wr_status_flags_ss__parameterized02default:default2
-1362default:default2
+1382default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_status_flags_ss.vhd2default:default2
 1802default:default8@Z8-256
@@ -4272,14 +4309,14 @@ $fifo_generator_v11_0__parameterized32default:default2“
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 wr_handshaking_flags2default:default2
-1372default:default2
+1392default:default2
 12default:default2⁄
 √/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_handshaking_flags.vhd2default:default2
 1522default:default8@Z8-256
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 wr_logic__parameterized02default:default2
-1372default:default2
+1392default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/wr_logic.vhd2default:default2
 2302default:default8@Z8-256
@@ -4291,56 +4328,56 @@ $fifo_generator_v11_0__parameterized32default:default2“
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 output_blk__parameterized12default:default2
-1372default:default2
+1392default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/common/output_blk.vhd2default:default2
 2682default:default8@Z8-256
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &fifo_generator_ramfifo__parameterized02default:default2
-1372default:default2
+1392default:default2
 12default:default2‹
 ≈/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/ramfifo/fifo_generator_ramfifo.vhd2default:default2
 3062default:default8@Z8-256
 ñ
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "fifo_generator_top__parameterized12default:default2
-1372default:default2
+1392default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_top.vhd2default:default2
 2692default:default8@Z8-256
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys2>
 *fifo_generator_v11_0_synth__parameterized12default:default2
-1372default:default2
+1392default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0_synth.vhd2default:default2
 6672default:default8@Z8-256
 ö
 %done synthesizing module '%s' (%s#%s)256*oasys28
 $fifo_generator_v11_0__parameterized32default:default2
-1372default:default2
+1392default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/fifo_generator_v11_0/fifo_generator_v11_0.vhd2default:default2
 6492default:default8@Z8-256
 É
 %done synthesizing module '%s' (%s#%s)256*oasys2 
 sync_fifo_fg2default:default2
-1382default:default2
+1402default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/sync_fifo_fg.vhd2default:default2
 2422default:default8@Z8-256
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 axi_datamover_sfifo_autord2default:default2
-1392default:default2
+1412default:default2
 12default:default2‰
 Õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_sfifo_autord.vhd2default:default2
 1582default:default8@Z8-256
 î
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 axi_datamover_rd_sf2default:default2
-1402default:default2
+1422default:default2
 12default:default2›
 ∆/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_rd_sf.vhd2default:default2
 3072default:default8@Z8-256
@@ -4365,7 +4402,7 @@ $fifo_generator_v11_0__parameterized32default:default2
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_datamover_dre_mux2_1_x_n2default:default2
-1412default:default2
+1432default:default2
 12default:default2Ê
 œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_dre_mux2_1_x_n.vhd2default:default2
 1192default:default8@Z8-256
@@ -4381,7 +4418,7 @@ $fifo_generator_v11_0__parameterized32default:default2
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_datamover_dre_mux4_1_x_n2default:default2
-1422default:default2
+1442default:default2
 12default:default2Ê
 œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_dre_mux4_1_x_n.vhd2default:default2
 1222default:default8@Z8-256
@@ -4400,14 +4437,14 @@ $fifo_generator_v11_0__parameterized32default:default2
 ö
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 axi_datamover_mm2s_dre2default:default2
-1432default:default2
+1452default:default2
 12default:default2‡
 …/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_mm2s_dre.vhd2default:default2
 1582default:default8@Z8-256
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_datamover_mm2s_full_wrap2default:default2
-1442default:default2
+1462default:default2
 12default:default2Ê
 œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_mm2s_full_wrap.vhd2default:default2
 3602default:default8@Z8-256
@@ -4419,28 +4456,28 @@ $fifo_generator_v11_0__parameterized32default:default2
 ¶
 %done synthesizing module '%s' (%s#%s)256*oasys20
 axi_datamover_s2mm_omit_wrap2default:default2
-1452default:default2
+1472default:default2
 12default:default2Ê
 œ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover_s2mm_omit_wrap.vhd2default:default2
 3202default:default8@Z8-256
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 axi_datamover2default:default2
-1462default:default2
+1482default:default2
 12default:default2◊
 ¿/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_datamover_v5_1/hdl/src/vhdl/axi_datamover.vhd2default:default2
 5702default:default8@Z8-256
 ˘
 %done synthesizing module '%s' (%s#%s)256*oasys2
 axi_vdma2default:default2
-1472default:default2
+1492default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/axi_vdma_v6_1/hdl/src/vhdl/axi_vdma.vhd2default:default2
 5912default:default8@Z8-256
 Ñ
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 FinalDesign_axi_vdma_0_02default:default2
-1482default:default2
+1502default:default2
 12default:default2»
 ±/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/synth/FinalDesign_axi_vdma_0_0.vhd2default:default2
 1052default:default8@Z8-256
@@ -4471,7 +4508,7 @@ Vaxis_subset_converter_v1_1_axis_subset_converter_FinalDesign_axis_subset_conver
 Ω
 %done synthesizing module '%s' (%s#%s)256*oasys23
 axis_subset_converter_v1_1_core2default:default2
-1492default:default2
+1512default:default2
 12default:default2˚
 ‰/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axis_subset_converter_0_0/axis_subset_converter_v1_1/hdl/verilog/axis_subset_converter_v1_1_core.v2default:default2
 622default:default8@Z8-256
@@ -4483,7 +4520,7 @@ Laxis_subset_converter_v1_1_tdata_remap_FinalDesign_axis_subset_converter_0_02d
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys2`
 Laxis_subset_converter_v1_1_tdata_remap_FinalDesign_axis_subset_converter_0_02default:default2
-1502default:default2
+1522default:default2
 12default:default2®
 ë/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axis_subset_converter_0_0/axis_subset_converter_v1_1/hdl/verilog/axis_subset_converter_v1_1_tdata_remap_FinalDesign_axis_subset_converter_0_0.v2default:default2
 482default:default8@Z8-256
@@ -4495,21 +4532,21 @@ Laxis_subset_converter_v1_1_tuser_remap_FinalDesign_axis_subset_converter_0_02d
 ó
 %done synthesizing module '%s' (%s#%s)256*oasys2`
 Laxis_subset_converter_v1_1_tuser_remap_FinalDesign_axis_subset_converter_0_02default:default2
-1512default:default2
+1532default:default2
 12default:default2®
 ë/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axis_subset_converter_0_0/axis_subset_converter_v1_1/hdl/verilog/axis_subset_converter_v1_1_tuser_remap_FinalDesign_axis_subset_converter_0_0.v2default:default2
 482default:default8@Z8-256
 ´
 %done synthesizing module '%s' (%s#%s)256*oasys2j
 Vaxis_subset_converter_v1_1_axis_subset_converter_FinalDesign_axis_subset_converter_0_02default:default2
-1522default:default2
+1542default:default2
 12default:default2≤
 õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axis_subset_converter_0_0/axis_subset_converter_v1_1/hdl/verilog/axis_subset_converter_v1_1_axis_subset_converter_FinalDesign_axis_subset_converter_0_0.v2default:default2
 702default:default8@Z8-256
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys29
 %FinalDesign_axis_subset_converter_0_02default:default2
-1532default:default2
+1552default:default2
 12default:default2‡
 …/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axis_subset_converter_0_0/synth/FinalDesign_axis_subset_converter_0_0.v2default:default2
 572default:default8@Z8-256
@@ -4536,14 +4573,14 @@ xlconstant2default:default2∞
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 xlconstant2default:default2
-1542default:default2
+1562default:default2
 12default:default2∞
 ô/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_gnd_0/work/xlconstant.v2default:default2
 232default:default8@Z8-256
 Ï
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 FinalDesign_gnd_02default:default2
-1552default:default2
+1572default:default2
 12default:default2∏
 °/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_gnd_0/synth/FinalDesign_gnd_0.v2default:default2
 572default:default8@Z8-256
@@ -4555,7 +4592,7 @@ xlconstant2default:default2
 è
 %done synthesizing module '%s' (%s#%s)256*oasys20
 FinalDesign_proc_sys_reset_22default:default2
-1562default:default2
+1582default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_2/synth/FinalDesign_proc_sys_reset_2.vhd2default:default2
 712default:default8@Z8-256
@@ -4686,14 +4723,14 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 √
 %done synthesizing module '%s' (%s#%s)256*oasys2<
 (v_axi4s_vid_out_v3_0_bridge_async_fifo_22default:default2
-1572default:default2
+1592default:default2
 12default:default2¯
 ·/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/v_axi4s_vid_out_v3_0/hdl/verilog/v_axi4s_vid_out_v3_0_bridge_async_fifo_2.v2default:default2
 672default:default8@Z8-256
 ≥
 %done synthesizing module '%s' (%s#%s)256*oasys24
  v_axi4s_vid_out_v3_0_out_coupler2default:default2
-1582default:default2
+1602default:default2
 12default:default2
 Ÿ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/v_axi4s_vid_out_v3_0/hdl/verilog/v_axi4s_vid_out_v3_0_out_coupler.v2default:default2
 682default:default8@Z8-256
@@ -4705,7 +4742,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ≠
 %done synthesizing module '%s' (%s#%s)256*oasys21
 v_axi4s_vid_out_v3_0_out_sync2default:default2
-1592default:default2
+1612default:default2
 12default:default2Ì
 ÷/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/v_axi4s_vid_out_v3_0/hdl/verilog/v_axi4s_vid_out_v3_0_out_sync.v2default:default2
 992default:default8@Z8-256
@@ -4717,21 +4754,21 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ø
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &v_axi4s_vid_out_v3_0_vid_out_formatter2default:default2
-1602default:default2
+1622default:default2
 12default:default2ˆ
 ﬂ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/v_axi4s_vid_out_v3_0/hdl/verilog/v_axi4s_vid_out_v3_0_vid_out_formatter.v2default:default2
 642default:default8@Z8-256
 ø
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &v_axi4s_vid_out_v3_0_axi4s_vid_out_top2default:default2
-1612default:default2
+1632default:default2
 12default:default2ˆ
 ﬂ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/v_axi4s_vid_out_v3_0/hdl/verilog/v_axi4s_vid_out_v3_0_axi4s_vid_out_top.v2default:default2
 612default:default8@Z8-256
 ñ
 %done synthesizing module '%s' (%s#%s)256*oasys23
 FinalDesign_v_axi4s_vid_out_0_02default:default2
-1622default:default2
+1642default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/synth/FinalDesign_v_axi4s_vid_out_0_0.v2default:default2
 572default:default8@Z8-256
@@ -4779,7 +4816,7 @@ video_ctrl2default:default2 
 Ò
 %done synthesizing module '%s' (%s#%s)256*oasys2
 hwt2default:default2
-1632default:default2
+1652default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 1712default:default8@Z8-256
@@ -4787,7 +4824,7 @@ video_ctrl2default:default2 
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 video_ctrl2default:default2
-1642default:default2
+1662default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 6572default:default8@Z8-256
@@ -4814,21 +4851,21 @@ video_ctrl2default:default2
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 v_cresample_v4_0_dp_ram2default:default2
-1652default:default2
+1672default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/MemXLib_arch.vhd2default:default2
 2082default:default8@Z8-256
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 v_cresample_v4_0_synch_fifo2default:default2
-1662default:default2
+1682default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/MemXLib_arch.vhd2default:default2
 6972default:default8@Z8-256
 û
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "v_cresample_v4_0_axis_input_buffer2default:default2
-1672default:default2
+1692default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/axis_input_buffer.vhd2default:default2
 1522default:default8@Z8-256
@@ -4840,7 +4877,7 @@ video_ctrl2default:default2
 ˛
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 axi4s_control2default:default2
-1682default:default2
+1702default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/axi4s_control.vhd2default:default2
 1652default:default8@Z8-256
@@ -4862,7 +4899,7 @@ video_ctrl2default:default2
 Ç
 %done synthesizing module '%s' (%s#%s)256*oasys2
 	mc_h_pipe2default:default2
-1692default:default2
+1712default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/ImageXlib_arch.vhd2default:default2
 6722default:default8@Z8-256
@@ -4874,21 +4911,21 @@ video_ctrl2default:default2
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 mc_h_pipe__parameterized02default:default2
-1692default:default2
+1712default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/ImageXlib_arch.vhd2default:default2
 6722default:default8@Z8-256
 â
 %done synthesizing module '%s' (%s#%s)256*oasys2#
 convert444to4222default:default2
-1702default:default2
+1722default:default2
 12default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/convert444to422.vhd2default:default2
 1492default:default8@Z8-256
 á
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 cresample_core2default:default2
-1712default:default2
+1732default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/cresample_core.vhd2default:default2
 2202default:default8@Z8-256
@@ -4910,7 +4947,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2”
 û
 %done synthesizing module '%s' (%s#%s)256*oasys2;
 'v_cresample_v4_0_dp_ram__parameterized02default:default2
-1712default:default2
+1732default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/MemXLib_arch.vhd2default:default2
 2082default:default8@Z8-256
@@ -4924,35 +4961,35 @@ RFound unconnected internal register '%s' and it is trimmed from '%s' to '%s' bi
 ú
 %done synthesizing module '%s' (%s#%s)256*oasys28
 $v_cresample_v4_0_synch_fifo_fallthru2default:default2
-1722default:default2
+1742default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/MemXLib_arch.vhd2default:default2
 28882default:default8@Z8-256
 †
 %done synthesizing module '%s' (%s#%s)256*oasys27
 #v_cresample_v4_0_axis_output_buffer2default:default2
-1732default:default2
+1752default:default2
 12default:default2Ÿ
 ¬/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/axis_output_buffer.vhd2default:default2
 1522default:default8@Z8-256
 Ö
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 cresample_top2default:default2
-1742default:default2
+1762default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/cresample_top.vhd2default:default2
 2562default:default8@Z8-256
 Å
 %done synthesizing module '%s' (%s#%s)256*oasys2
 v_cresample2default:default2
-1752default:default2
+1772default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_cresample_v4_0/hdl/vhdl/v_cresample.vhd2default:default2
 2562default:default8@Z8-256
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 FinalDesign_v_cresample_0_02default:default2
-1762default:default2
+1782default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/synth/FinalDesign_v_cresample_0_0.vhd2default:default2
 772default:default8@Z8-256
@@ -4974,7 +5011,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 video_ctrl__parameterized02default:default2
-1762default:default2
+1782default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 6572default:default8@Z8-256
@@ -5001,21 +5038,21 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 v_rgb2ycrcb_v7_1_dp_ram2default:default2
-1772default:default2
+1792default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/MemXLib_arch.vhd2default:default2
 2082default:default8@Z8-256
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 v_rgb2ycrcb_v7_1_synch_fifo2default:default2
-1782default:default2
+1802default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/MemXLib_arch.vhd2default:default2
 6982default:default8@Z8-256
 û
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "v_rgb2ycrcb_v7_1_axis_input_buffer2default:default2
-1792default:default2
+1812default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/axis_input_buffer.vhd2default:default2
 1522default:default8@Z8-256
@@ -5027,7 +5064,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 é
 %done synthesizing module '%s' (%s#%s)256*oasys21
 axi4s_control__parameterized02default:default2
-1792default:default2
+1812default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/axi4s_control.vhd2default:default2
 1652default:default8@Z8-256
@@ -5060,21 +5097,21 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 í
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 v_rgb2ycrcb_v7_1_delay_sclr2default:default2
-1802default:default2
+1822default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 2152default:default8@Z8-256
 ò
 %done synthesizing module '%s' (%s#%s)256*oasys25
 !v_rgb2ycrcb_v7_1_radd_sub_sclr_no2default:default2
-1812default:default2
+1832default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3412default:default8@Z8-256
 ï
 %done synthesizing module '%s' (%s#%s)256*oasys22
 v_rgb2ycrcb_v7_1_radd_sub_sclr2default:default2
-1822default:default2
+1842default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3952default:default8@Z8-256
@@ -5091,14 +5128,14 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys2?
 +v_rgb2ycrcb_v7_1_delay_sclr__parameterized02default:default2
-1822default:default2
+1842default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 2152default:default8@Z8-256
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2)
 v_rgb2ycrcb_v7_1_mult2default:default2
-1832default:default2
+1852default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 5922default:default8@Z8-256
@@ -5115,14 +5152,14 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ò
 %done synthesizing module '%s' (%s#%s)256*oasys25
 !v_rgb2ycrcb_v7_1_get_round_addend2default:default2
-1842default:default2
+1862default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 4652default:default8@Z8-256
 ˙
 %done synthesizing module '%s' (%s#%s)256*oasys2
 mac2default:default2
-1852default:default2
+1872default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 6472default:default8@Z8-256
@@ -5134,7 +5171,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 v_rgb2ycrcb_v7_1_delay2default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 1482default:default8@Z8-256
@@ -5156,21 +5193,21 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys2?
 +v_rgb2ycrcb_v7_1_delay_sclr__parameterized12default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 2152default:default8@Z8-256
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys2E
 1v_rgb2ycrcb_v7_1_radd_sub_sclr_no__parameterized02default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3412default:default8@Z8-256
 •
 %done synthesizing module '%s' (%s#%s)256*oasys2B
 .v_rgb2ycrcb_v7_1_radd_sub_sclr__parameterized02default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3952default:default8@Z8-256
@@ -5182,7 +5219,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ù
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &v_rgb2ycrcb_v7_1_delay__parameterized02default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 1482default:default8@Z8-256
@@ -5204,21 +5241,21 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ¢
 %done synthesizing module '%s' (%s#%s)256*oasys2?
 +v_rgb2ycrcb_v7_1_delay_sclr__parameterized22default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 2152default:default8@Z8-256
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys2E
 1v_rgb2ycrcb_v7_1_radd_sub_sclr_no__parameterized12default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3412default:default8@Z8-256
 •
 %done synthesizing module '%s' (%s#%s)256*oasys2B
 .v_rgb2ycrcb_v7_1_radd_sub_sclr__parameterized12default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3952default:default8@Z8-256
@@ -5235,14 +5272,14 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys2E
 1v_rgb2ycrcb_v7_1_get_round_addend__parameterized02default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 4652default:default8@Z8-256
 ä
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 mac__parameterized02default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 6472default:default8@Z8-256
@@ -5259,7 +5296,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys2E
 1v_rgb2ycrcb_v7_1_get_round_addend__parameterized12default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 4652default:default8@Z8-256
@@ -5276,21 +5313,21 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ®
 %done synthesizing module '%s' (%s#%s)256*oasys2E
 1v_rgb2ycrcb_v7_1_radd_sub_sclr_no__parameterized22default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3412default:default8@Z8-256
 •
 %done synthesizing module '%s' (%s#%s)256*oasys2B
 .v_rgb2ycrcb_v7_1_radd_sub_sclr__parameterized22default:default2
-1862default:default2
+1882default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 3952default:default8@Z8-256
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2*
 v_rgb2ycrcb_v7_1_round2default:default2
-1872default:default2
+1892default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 5312default:default8@Z8-256
@@ -5302,7 +5339,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 ù
 %done synthesizing module '%s' (%s#%s)256*oasys2:
 &v_rgb2ycrcb_v7_1_delay__parameterized12default:default2
-1872default:default2
+1892default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 1482default:default8@Z8-256
@@ -5314,7 +5351,7 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 v_rgb2ycrcb_v7_1_max_sat2default:default2
-1882default:default2
+1902default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 7362default:default8@Z8-256
@@ -5326,14 +5363,14 @@ $v_cresample_v4_0_synch_fifo_fallthru2default:default2
 è
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 v_rgb2ycrcb_v7_1_min_sat2default:default2
-1892default:default2
+1912default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/GenXlib_arch.vhd2default:default2
 7752default:default8@Z8-256
 á
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 rgb2ycrcb_core2default:default2
-1902default:default2
+1922default:default2
 12default:default2’
 æ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/rgb2ycrcb_core.vhd2default:default2
 1882default:default8@Z8-256
@@ -5357,35 +5394,35 @@ RFound unconnected internal register '%s' and it is trimmed from '%s' to '%s' bi
 ú
 %done synthesizing module '%s' (%s#%s)256*oasys28
 $v_rgb2ycrcb_v7_1_synch_fifo_fallthru2default:default2
-1912default:default2
+1932default:default2
 12default:default2”
 º/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/MemXLib_arch.vhd2default:default2
 28932default:default8@Z8-256
 †
 %done synthesizing module '%s' (%s#%s)256*oasys27
 #v_rgb2ycrcb_v7_1_axis_output_buffer2default:default2
-1922default:default2
+1942default:default2
 12default:default2Ÿ
 ¬/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/axis_output_buffer.vhd2default:default2
 1522default:default8@Z8-256
 Ö
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 rgb2ycrcb_top2default:default2
-1932default:default2
+1952default:default2
 12default:default2‘
 Ω/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/rgb2ycrcb_top.vhd2default:default2
 2032default:default8@Z8-256
 Å
 %done synthesizing module '%s' (%s#%s)256*oasys2
 v_rgb2ycrcb2default:default2
-1942default:default2
+1962default:default2
 12default:default2“
 ª/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/v_rgb2ycrcb_v7_1/hdl/vhdl/v_rgb2ycrcb.vhd2default:default2
 2772default:default8@Z8-256
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2/
 FinalDesign_v_rgb2ycrcb_0_02default:default2
-1952default:default2
+1972default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/synth/FinalDesign_v_rgb2ycrcb_0_0.vhd2default:default2
 772default:default8@Z8-256
@@ -5434,7 +5471,7 @@ max_fanout2default:default2
 ˝
 %done synthesizing module '%s' (%s#%s)256*oasys2
 	pselect_f2default:default2
-1962default:default2
+1982default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5446,14 +5483,14 @@ max_fanout2default:default2
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized02default:default2
-1962default:default2
+1982default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
 å
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 v_tc_v6_0_address_decoder2default:default2
-1972default:default2
+1992default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/address_decoder.vhd2default:default2
 2822default:default8@Z8-256
@@ -5464,14 +5501,14 @@ max_fanout2default:default2
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 v_tc_v6_0_slave_attachment2default:default2
-1982default:default2
+2002default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/slave_attachment.vhd2default:default2
 3372default:default8@Z8-256
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 v_tc_v6_0_axi_lite_ipif2default:default2
-1992default:default2
+2012default:default2
 12default:default2Õ
 ∂/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/axi_lite_ipif.vhd2default:default2
 3472default:default8@Z8-256
@@ -5489,7 +5526,7 @@ max_fanout2default:default2
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 video_clock_cross2default:default2
-2002default:default2
+2022default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_clock_cross.vhd2default:default2
 1372default:default8@Z8-256
@@ -5501,7 +5538,7 @@ max_fanout2default:default2
 ñ
 %done synthesizing module '%s' (%s#%s)256*oasys25
 !video_clock_cross__parameterized02default:default2
-2002default:default2
+2022default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_clock_cross.vhd2default:default2
 1372default:default8@Z8-256
@@ -5513,7 +5550,7 @@ max_fanout2default:default2
 ˆ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 mux_tree2default:default2
-2012default:default2
+2032default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 4002default:default8@Z8-256
@@ -5525,7 +5562,7 @@ max_fanout2default:default2
 Ü
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 mux_tree__parameterized02default:default2
-2012default:default2
+2032default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 4002default:default8@Z8-256
@@ -5546,7 +5583,7 @@ RFound unconnected internal register '%s' and it is trimmed from '%s' to '%s' bi
 à
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 video_ctrl__parameterized12default:default2
-2012default:default2
+2032default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/video_ctrl.vhd2default:default2
 6572default:default8@Z8-256
@@ -5563,28 +5600,28 @@ RFound unconnected internal register '%s' and it is trimmed from '%s' to '%s' bi
 ¸
 %done synthesizing module '%s' (%s#%s)256*oasys2 
 tc_generator2default:default2
-2022default:default2
+2042default:default2
 12default:default2Ã
 µ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/tc_generator.vhd2default:default2
 2882default:default8@Z8-256
 
 %done synthesizing module '%s' (%s#%s)256*oasys2
 tc_top2default:default2
-2032default:default2
+2052default:default2
 12default:default2∆
 Ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/tc_top.vhd2default:default2
 3412default:default8@Z8-256
 Ï
 %done synthesizing module '%s' (%s#%s)256*oasys2
 v_tc2default:default2
-2042default:default2
+2062default:default2
 12default:default2ƒ
 ≠/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/v_tc_v6_0/hdl/vhdl/v_tc.vhd2default:default2
 4972default:default8@Z8-256
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 FinalDesign_v_tc_0_02default:default2
-2052default:default2
+2072default:default2
 12default:default2¿
 ©/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/synth/FinalDesign_v_tc_0_0.vhd2default:default2
 962default:default8@Z8-256
@@ -5609,14 +5646,14 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 Ì
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 xlconstant__parameterized02default:default2
-2052default:default2
+2072default:default2
 12default:default2∞
 ô/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_gnd_0/work/xlconstant.v2default:default2
 232default:default8@Z8-256
 Ï
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 FinalDesign_vcc_12default:default2
-2062default:default2
+2082default:default2
 12default:default2∏
 °/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_vcc_1/synth/FinalDesign_vcc_1.v2default:default2
 572default:default8@Z8-256
@@ -5825,21 +5862,21 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2 
 zed_hdmi_out2default:default2
-2072default:default2
+2092default:default2
 12default:default2»
 ±/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_zed_hdmi_out_0_0/work/hdl/vhdl/zed_hdmi_out.vhd2default:default2
 842default:default8@Z8-256
 è
 %done synthesizing module '%s' (%s#%s)256*oasys20
 FinalDesign_zed_hdmi_out_0_02default:default2
-2082default:default2
+2102default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_zed_hdmi_out_0_0/synth/FinalDesign_zed_hdmi_out_0_0.vhd2default:default2
 772default:default8@Z8-256
 ‹
 %done synthesizing module '%s' (%s#%s)256*oasys20
 zed_hdmi_display_imp_1J8Q7B12default:default2
-2092default:default2
+2112default:default2
 12default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 21642default:default8@Z8-256
@@ -5886,7 +5923,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized12default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5898,7 +5935,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized22default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5910,7 +5947,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized32default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5922,7 +5959,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized42default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5934,7 +5971,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized52default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5946,7 +5983,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized62default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5958,7 +5995,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized72default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5970,7 +6007,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized82default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5982,7 +6019,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ç
 %done synthesizing module '%s' (%s#%s)256*oasys2-
 pselect_f__parameterized92default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -5994,7 +6031,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized102default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6006,7 +6043,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized112default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6018,7 +6055,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized122default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6030,7 +6067,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized132default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6042,7 +6079,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized142default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6054,7 +6091,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized152default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6066,7 +6103,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized162default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6078,7 +6115,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized172default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6090,7 +6127,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized182default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6102,7 +6139,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized192default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6114,7 +6151,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized202default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6126,7 +6163,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized212default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6138,7 +6175,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized222default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6150,7 +6187,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized232default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6162,7 +6199,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized242default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6174,7 +6211,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized252default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6186,7 +6223,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized262default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6198,7 +6235,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized272default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6210,7 +6247,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized282default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6222,7 +6259,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized292default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6234,7 +6271,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized302default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6246,7 +6283,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized312default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6258,7 +6295,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized322default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6270,7 +6307,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized332default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6282,7 +6319,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized342default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6294,7 +6331,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized352default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6306,7 +6343,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized362default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
@@ -6318,14 +6355,14 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 é
 %done synthesizing module '%s' (%s#%s)256*oasys2.
 pselect_f__parameterized372default:default2
-2092default:default2
+2112default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/pselect_f.vhd2default:default2
 1692default:default8@Z8-256
 û
 %done synthesizing module '%s' (%s#%s)256*oasys26
 "axi_lite_ipif_v2_0_address_decoder2default:default2
-2102default:default2
+2122default:default2
 12default:default2ÿ
 ¡/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_lite_ipif_v2_0/hdl/src/vhdl/address_decoder.vhd2default:default2
 1882default:default8@Z8-256
@@ -6336,14 +6373,14 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 †
 %done synthesizing module '%s' (%s#%s)256*oasys27
 #axi_lite_ipif_v2_0_slave_attachment2default:default2
-2112default:default2
+2132default:default2
 12default:default2Ÿ
 ¬/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_lite_ipif_v2_0/hdl/src/vhdl/slave_attachment.vhd2default:default2
 2432default:default8@Z8-256
 ö
 %done synthesizing module '%s' (%s#%s)256*oasys24
  axi_lite_ipif_v2_0_axi_lite_ipif2default:default2
-2122default:default2
+2142default:default2
 12default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_lite_ipif_v2_0/hdl/src/vhdl/axi_lite_ipif.vhd2default:default2
 2532default:default8@Z8-256
@@ -6355,7 +6392,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ì
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 interrupt_control2default:default2
-2132default:default2
+2152default:default2
 12default:default2ﬁ
 «/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/interrupt_control_v3_0/hdl/src/vhdl/interrupt_control.vhd2default:default2
 2602default:default8@Z8-256
@@ -6399,14 +6436,14 @@ soft_reset2default:default2—
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
 soft_reset2default:default2
-2142default:default2
+2162default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/soft_reset.vhd2default:default2
 1442default:default8@Z8-256
 Å
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 axi_ipif_ssp12default:default2
-2152default:default2
+2172default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/axi_ipif_ssp1.vhd2default:default2
 2132default:default8@Z8-256
@@ -6418,7 +6455,7 @@ soft_reset2default:default2
 Å
 %done synthesizing module '%s' (%s#%s)256*oasys2!
 reg_interface2default:default2
-2162default:default2
+2182default:default2
 12default:default2–
 π/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/reg_interface.vhd2default:default2
 2712default:default8@Z8-256
@@ -6445,14 +6482,14 @@ soft_reset2default:default2
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 cdc_sync__parameterized32default:default2
-2162default:default2
+2182default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/cdc_sync.vhd2default:default2
 1042default:default8@Z8-256
 ˜
 %done synthesizing module '%s' (%s#%s)256*oasys2
 debounce2default:default2
-2172default:default2
+2192default:default2
 12default:default2À
 ¥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/debounce.vhd2default:default2
 1412default:default8@Z8-256
@@ -6464,7 +6501,7 @@ soft_reset2default:default2
 Û
 %done synthesizing module '%s' (%s#%s)256*oasys2
 filter2default:default2
-2182default:default2
+2202default:default2
 12default:default2…
 ≤/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/filter.vhd2default:default2
 1342default:default8@Z8-256
@@ -6481,7 +6518,7 @@ soft_reset2default:default2
 Ç
 %done synthesizing module '%s' (%s#%s)256*oasys2(
 axi_iic_v2_0_upcnt_n2default:default2
-2192default:default2
+2212default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/upcnt_n.vhd2default:default2
 1272default:default8@Z8-256
@@ -6493,7 +6530,7 @@ soft_reset2default:default2
 Û
 %done synthesizing module '%s' (%s#%s)256*oasys2
 shift82default:default2
-2202default:default2
+2222default:default2
 12default:default2…
 ≤/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/shift8.vhd2default:default2
 1242default:default8@Z8-256
@@ -6505,14 +6542,14 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2 
 í
 %done synthesizing module '%s' (%s#%s)256*oasys28
 $axi_iic_v2_0_upcnt_n__parameterized02default:default2
-2202default:default2
+2222default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/upcnt_n.vhd2default:default2
 1272default:default8@Z8-256
 ˝
 %done synthesizing module '%s' (%s#%s)256*oasys2
 iic_control2default:default2
-2212default:default2
+2232default:default2
 12default:default2Œ
 ∑/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/iic_control.vhd2default:default2
 2162default:default8@Z8-256
@@ -6529,7 +6566,7 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2
 Ù
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FDR2default:default2
-2222default:default2
+2242default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 17782default:default8@Z8-256
@@ -6541,7 +6578,7 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2
 ı
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FDRE2default:default2
-2232default:default2
+2252default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 17912default:default8@Z8-256
@@ -6553,14 +6590,14 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2
 ¯
 %done synthesizing module '%s' (%s#%s)256*oasys2
 SRL16E2default:default2
-2242default:default2
+2262default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 265162default:default8@Z8-256
 ˚
 %done synthesizing module '%s' (%s#%s)256*oasys2
 SRL_FIFO2default:default2
-2252default:default2
+2272default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo.vhd2default:default2
 1352default:default8@Z8-256
@@ -6572,7 +6609,7 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2
 É
 %done synthesizing module '%s' (%s#%s)256*oasys2"
 dynamic_master2default:default2
-2262default:default2
+2282default:default2
 12default:default2—
 ∫/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/dynamic_master.vhd2default:default2
 1462default:default8@Z8-256
@@ -6590,28 +6627,28 @@ $axi_iic_v2_0_upcnt_n__parameterized02default:default2
 ã
 %done synthesizing module '%s' (%s#%s)256*oasys2,
 SRL_FIFO__parameterized02default:default2
-2262default:default2
+2282default:default2
 12default:default2œ
 ∏/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/proc_common_v4_0/hdl/src/vhdl/srl_fifo.vhd2default:default2
 1352default:default8@Z8-256
 Ì
 %done synthesizing module '%s' (%s#%s)256*oasys2
 iic2default:default2
-2272default:default2
+2292default:default2
 12default:default2∆
 Ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/iic.vhd2default:default2
 2222default:default8@Z8-256
 ı
 %done synthesizing module '%s' (%s#%s)256*oasys2
 axi_iic2default:default2
-2282default:default2
+2302default:default2
 12default:default2 
 ≥/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/axi_iic_v2_0/hdl/src/vhdl/axi_iic.vhd2default:default2
 2162default:default8@Z8-256
 Ä
 %done synthesizing module '%s' (%s#%s)256*oasys2+
 FinalDesign_axi_iic_0_12default:default2
-2292default:default2
+2312default:default2
 12default:default2∆
 Ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/synth/FinalDesign_axi_iic_0_1.vhd2default:default2
 912default:default8@Z8-256
@@ -6626,7 +6663,7 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 »
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FinalDesign2default:default2
-2302default:default2
+2322default:default2
 12default:default2õ
 Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign.v2default:default2
 42default:default8@Z8-256
@@ -6638,24 +6675,24 @@ Ginstance '%s' of module '%s' requires %s connections, but only %s given350*
 ˆ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 IOBUF2default:default2
-2312default:default2
+2332default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 81992default:default8@Z8-256
 ÿ
 %done synthesizing module '%s' (%s#%s)256*oasys2'
 FinalDesign_wrapper2default:default2
-2322default:default2
+2342default:default2
 12default:default2£
 å/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/hdl/FinalDesign_wrapper.v2default:default2
 32default:default8@Z8-256
 ú
 %s*synth2å
-xFinished RTL Elaboration : Time (s): cpu = 00:05:57 ; elapsed = 00:06:14 . Memory (MB): peak = 716.348 ; gain = 318.961
+xFinished RTL Elaboration : Time (s): cpu = 00:07:00 ; elapsed = 00:07:15 . Memory (MB): peak = 717.344 ; gain = 319.961
 2default:default
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:05:57 ; elapsed = 00:06:14 . Memory (MB): peak = 716.348 ; gain = 318.961
+vStart RTL Optimization : Time (s): cpu = 00:07:00 ; elapsed = 00:07:15 . Memory (MB): peak = 717.344 ; gain = 319.961
 2default:default
 ;
 %s*synth2,
@@ -6682,506 +6719,506 @@ l
 %s*synth2]
 I+------+------------------+-------+---------+-------+------------------+
 2default:default
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[71]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[70]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[69]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[68]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[67]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[62]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[61]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[60]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[59]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[53]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[52]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[51]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[50]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[44]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[43]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[42]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[41]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[35]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[34]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[33]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[32]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[26]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[25]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[24]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[23]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[17]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[16]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[15]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[14]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[8]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[7]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[6]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINA[5]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[71]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[70]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[69]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[68]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[67]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[62]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[61]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[60]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[59]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[53]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[52]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[51]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[50]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[44]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[43]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[42]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[41]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[35]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[34]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[33]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[32]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[26]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[25]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[24]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[23]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[17]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[16]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[15]2default:defaultZ8-3295
-É
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[14]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[8]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[7]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[6]2default:defaultZ8-3295
-Ç
-'tying undriven pin %s:%s to constant 0
-3295*oasys2#
-\v6_noinit.ram 2default:default2
-DINB[5]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[8]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[7]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[6]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[5]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[4]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[3]2default:defaultZ8-3295
-ê
-'tying undriven pin %s:%s to constant 0
-3295*oasys22
-\gextw[5].gnll_fifo.inst_extd 2default:default2
-DIN[2]2default:defaultZ8-3295
-~
-'tying undriven pin %s:%s to constant 0
-3295*oasys2
-olblk2default:default2!
-ALMOST_FULL_I2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[119]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[118]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[117]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[116]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[115]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[114]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[113]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[112]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[111]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[110]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[109]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[108]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[107]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[106]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[105]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[104]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[103]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[102]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[101]2default:defaultZ8-3295
+Ä
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2 
+wdata_1[100]2default:defaultZ8-3295
 
 'tying undriven pin %s:%s to constant 0
-3295*oasys2
-olblk2default:default2"
-ALMOST_EMPTY_I2default:defaultZ8-3295
-Ñ
+3295*oasys2
+my_qpram2default:default2
+wdata_1[99]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2%
-\v7_bi_fifo.fblk 2default:default2
-INT_CLK2default:defaultZ8-3295
-í
+3295*oasys2
+my_qpram2default:default2
+wdata_1[98]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2"
-det_htotal[11]2default:defaultZ8-3295
-í
+3295*oasys2
+my_qpram2default:default2
+wdata_1[97]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2"
-det_htotal[10]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[96]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[9]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[95]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[8]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[94]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[7]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[93]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[6]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[92]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[5]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[91]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[4]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[90]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[3]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[89]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[2]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[88]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[1]2default:defaultZ8-3295
-ë
+3295*oasys2
+my_qpram2default:default2
+wdata_1[87]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2!
-det_htotal[0]2default:defaultZ8-3295
-ï
+3295*oasys2
+my_qpram2default:default2
+wdata_1[86]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2%
-det_hfp_start[11]2default:defaultZ8-3295
-ï
+3295*oasys2
+my_qpram2default:default2
+wdata_1[85]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2%
-det_hfp_start[10]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[84]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[9]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[83]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[8]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[82]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[7]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[81]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[6]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[80]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[5]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[79]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[4]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[78]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[3]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[77]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[2]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[76]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[1]2default:defaultZ8-3295
-î
+3295*oasys2
+my_qpram2default:default2
+wdata_1[75]2default:defaultZ8-3295
+
 'tying undriven pin %s:%s to constant 0
-3295*oasys2,
-\GEN_GENERATOR.U_TC_GEN 2default:default2$
-det_hfp_start[0]2default:defaultZ8-3295
+3295*oasys2
+my_qpram2default:default2
+wdata_1[74]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[73]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[72]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[71]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[70]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[69]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[68]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[67]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[66]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[65]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[64]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[63]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[62]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[61]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[60]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[59]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[58]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[57]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[56]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[55]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[54]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[53]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[52]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[51]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[50]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[49]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[48]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[47]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[46]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[45]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[44]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[43]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[42]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[41]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[40]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[39]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[38]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[37]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[36]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[35]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[34]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[33]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[32]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[31]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[30]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[29]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[28]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[27]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[26]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[25]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[24]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[23]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[22]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[21]2default:defaultZ8-3295
+
+'tying undriven pin %s:%s to constant 0
+3295*oasys2
+my_qpram2default:default2
+wdata_1[20]2default:defaultZ8-3295
 ‘
 ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
 14*common2 
@@ -7240,6 +7277,32 @@ _
 
 Processing XDC Constraints
 244*projectZ1-262
+“
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2¥
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-848
+Õ
+~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
+1399*	planAhead2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2'
+[get_ports clk_in1]2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2∂
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2
+12default:default8@Z12-1399
+Œ
+~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
+1399*	planAhead2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2(
+[get_ports clk_out1]2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2∂
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2
+22default:default8@Z12-1399
+€
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2¥
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/synth_1/.Xil/Vivado-18195-agilehw-laptop/dcp/clk_wiz_0_in_context.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-847
 ÷
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2‘
@@ -8733,6 +8796,11 @@ iostandard2default:default2
 'FinalDesign_i/processing_system7_0/inst2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1822default:default8@Z12-1399
+÷
+ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
+14*common2"
+Vivado 12-13992default:default2
+1002default:defaultZ17-14
 õ
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2
@@ -8740,14 +8808,6 @@ XCannot set property '%s', because the property does not exist for objects of ty
 pin2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1822default:default8@Z29-69
-π
-~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
-1399*	planAhead2;
-'FinalDesign_i/processing_system7_0/inst2default:default2)
-[get_ports {MIO[29]}]2default:default2;
-'FinalDesign_i/processing_system7_0/inst2default:default2÷
-ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
-1832default:default8@Z12-1399
 ú
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2
@@ -8755,19 +8815,6 @@ XCannot set property '%s', because the property does not exist for objects of ty
 pin2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1832default:default8@Z29-69
-π
-~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
-1399*	planAhead2;
-'FinalDesign_i/processing_system7_0/inst2default:default2)
-[get_ports {MIO[29]}]2default:default2;
-'FinalDesign_i/processing_system7_0/inst2default:default2÷
-ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
-1842default:default8@Z12-1399
-÷
-ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
-14*common2"
-Vivado 12-13992default:default2
-1002default:defaultZ17-14
 §
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2!
@@ -9045,15 +9092,15 @@ MSuccessfully populated the BRAM INIT strings from the following elf files: %s
 2default:defaultZ1-111
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:06:37 ; elapsed = 00:06:54 . Memory (MB): peak = 849.715 ; gain = 452.328
+vStart RTL Optimization : Time (s): cpu = 00:07:47 ; elapsed = 00:08:03 . Memory (MB): peak = 852.281 ; gain = 454.898
 2default:default
 µ
 %s*synth2•
-êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:38 ; elapsed = 00:06:56 . Memory (MB): peak = 849.719 ; gain = 452.332
+êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:07:49 ; elapsed = 00:08:05 . Memory (MB): peak = 852.285 ; gain = 454.902
 2default:default
 ù
 %s*synth2ç
-yFinished RTL Optimization : Time (s): cpu = 00:06:38 ; elapsed = 00:06:56 . Memory (MB): peak = 849.719 ; gain = 452.332
+yFinished RTL Optimization : Time (s): cpu = 00:07:49 ; elapsed = 00:08:05 . Memory (MB): peak = 852.285 ; gain = 454.902
 2default:default
 ˜
 merging register '%s' into '%s'3619*oasys2"
@@ -9334,7 +9381,7 @@ BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 2default:default
 ±
 %s*synth2°
-åFinished Loading Part and Timing Information : Time (s): cpu = 00:07:06 ; elapsed = 00:07:24 . Memory (MB): peak = 849.719 ; gain = 452.332
+åFinished Loading Part and Timing Information : Time (s): cpu = 00:08:24 ; elapsed = 00:08:41 . Memory (MB): peak = 852.285 ; gain = 454.902
 2default:default
 –
 ESequential element (%s) is unused and will be removed from module %s.3332*oasys2?
@@ -9848,23 +9895,23 @@ KGEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/I_CMD_STATUS/I_CMD_FIFO/sig_init_reg2_reg2de
 17192default:default8@Z8-4471
 ©
 %s*synth2ô
-ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:07:11 ; elapsed = 00:07:30 . Memory (MB): peak = 853.723 ; gain = 456.336
+ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:08:32 ; elapsed = 00:08:49 . Memory (MB): peak = 854.297 ; gain = 456.914
 2default:default
 û
 %s*synth2é
-zFinished Area Optimization : Time (s): cpu = 00:07:30 ; elapsed = 00:07:48 . Memory (MB): peak = 891.402 ; gain = 494.016
+zFinished Area Optimization : Time (s): cpu = 00:08:57 ; elapsed = 00:09:14 . Memory (MB): peak = 892.984 ; gain = 495.602
 2default:default
 {
 %s*synth2l
-XINFO: Moved 1 constraints on hierarchical pins to their respective driving/loading pins
+XINFO: Moved 3 constraints on hierarchical pins to their respective driving/loading pins
 2default:default
 Æ
 %s*synth2û
-âFinished Applying XDC Timing Constraints : Time (s): cpu = 00:07:38 ; elapsed = 00:07:57 . Memory (MB): peak = 1020.402 ; gain = 623.016
+âFinished Applying XDC Timing Constraints : Time (s): cpu = 00:09:07 ; elapsed = 00:09:24 . Memory (MB): peak = 1021.984 ; gain = 624.602
 2default:default
 °
 %s*synth2ë
-}Finished Timing Optimization : Time (s): cpu = 00:07:43 ; elapsed = 00:08:02 . Memory (MB): peak = 1045.418 ; gain = 648.031
+}Finished Timing Optimization : Time (s): cpu = 00:09:12 ; elapsed = 00:09:29 . Memory (MB): peak = 1048.000 ; gain = 650.617
 2default:default
 π
 ◊The timing for the instance %s (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
@@ -9872,7 +9919,7 @@ XINFO: Moved 1 constraints on hierarchical pins to their respective driving/load
 2\out_coupler_i/bridge_async_fifo_2_i/fifo_ram_reg 2default:defaultZ8-4480
 †
 %s*synth2ê
-|Finished Technology Mapping : Time (s): cpu = 00:07:57 ; elapsed = 00:08:17 . Memory (MB): peak = 1057.801 ; gain = 660.414
+|Finished Technology Mapping : Time (s): cpu = 00:09:31 ; elapsed = 00:09:49 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 q
 %s*synth2b
@@ -9964,7 +10011,7 @@ _
 \U0/hdmi_spdif_o_reg 2default:defaultZ8-4163
 ö
 %s*synth2ä
-vFinished IO Insertion : Time (s): cpu = 00:08:01 ; elapsed = 00:08:20 . Memory (MB): peak = 1057.801 ; gain = 660.414
+vFinished IO Insertion : Time (s): cpu = 00:09:35 ; elapsed = 00:09:53 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 ;
 %s*synth2,
@@ -9993,225 +10040,233 @@ I+------+------------------+-------+---------+-------+------------------+
 2default:default
 ´
 %s*synth2õ
-ÜFinished Renaming Generated Instances : Time (s): cpu = 00:08:01 ; elapsed = 00:08:20 . Memory (MB): peak = 1057.801 ; gain = 660.414
+ÜFinished Renaming Generated Instances : Time (s): cpu = 00:09:35 ; elapsed = 00:09:53 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 ®
 %s*synth2ò
-ÉFinished Rebuilding User Hierarchy : Time (s): cpu = 00:08:02 ; elapsed = 00:08:22 . Memory (MB): peak = 1057.801 ; gain = 660.414
+ÉFinished Rebuilding User Hierarchy : Time (s): cpu = 00:09:37 ; elapsed = 00:09:55 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 8
 %s*synth2)
 
 Report BlackBoxes: 
 2default:default
-G
-%s*synth28
-$+------+---------------+----------+
+F
+%s*synth27
+#+------+--------------+----------+
 2default:default
-G
-%s*synth28
-$|      |BlackBox name  |Instances |
+F
+%s*synth27
+#|      |BlackBox name |Instances |
 2default:default
-G
-%s*synth28
-$+------+---------------+----------+
+F
+%s*synth27
+#+------+--------------+----------+
 2default:default
-G
-%s*synth28
-$|1     |sdpram30x15360 |         1|
+F
+%s*synth27
+#|1     |clk_wiz_0     |         1|
 2default:default
-G
-%s*synth28
-$+------+---------------+----------+
+F
+%s*synth27
+#|2     |blk_mem_gen_0 |         1|
+2default:default
+F
+%s*synth27
+#+------+--------------+----------+
 2default:default
 8
 %s*synth2)
 
 Report Cell Usage: 
 2default:default
-H
-%s*synth29
-%+------+--------------------+------+
+C
+%s*synth24
+ +------+---------------+------+
 2default:default
-H
-%s*synth29
-%|      |Cell                |Count |
+C
+%s*synth24
+ |      |Cell           |Count |
 2default:default
-H
-%s*synth29
-%+------+--------------------+------+
+C
+%s*synth24
+ +------+---------------+------+
 2default:default
-H
-%s*synth29
-%|1     |sdpram30x15360_bbox |     1|
+C
+%s*synth24
+ |1     |blk_mem_gen_0  |     1|
 2default:default
-H
-%s*synth29
-%|2     |BIBUF               |   130|
+C
+%s*synth24
+ |2     |clk_wiz_0_bbox |     1|
 2default:default
-H
-%s*synth29
-%|3     |BUFG                |     5|
+C
+%s*synth24
+ |3     |BIBUF          |   130|
 2default:default
-H
-%s*synth29
-%|4     |CARRY4              |   191|
+C
+%s*synth24
+ |4     |BUFG           |     5|
 2default:default
-H
-%s*synth29
-%|5     |DSP48E1_1           |     4|
+C
+%s*synth24
+ |5     |CARRY4         |   191|
 2default:default
-H
-%s*synth29
-%|6     |DSP48E1_2           |     3|
+C
+%s*synth24
+ |6     |DSP48E1_1      |     4|
 2default:default
-H
-%s*synth29
-%|7     |FIFO36E1_1          |     5|
+C
+%s*synth24
+ |7     |DSP48E1_2      |     3|
 2default:default
-H
-%s*synth29
-%|8     |GND                 |     3|
+C
+%s*synth24
+ |8     |FIFO36E1_1     |     5|
 2default:default
-H
-%s*synth29
-%|9     |LUT1                |   414|
+C
+%s*synth24
+ |9     |GND            |     3|
 2default:default
-H
-%s*synth29
-%|10    |LUT2                |   702|
+C
+%s*synth24
+ |10    |LUT1           |   415|
 2default:default
-H
-%s*synth29
-%|11    |LUT3                |   946|
+C
+%s*synth24
+ |11    |LUT2           |   704|
 2default:default
-H
-%s*synth29
-%|12    |LUT4                |   508|
+C
+%s*synth24
+ |12    |LUT3           |   953|
 2default:default
-H
-%s*synth29
-%|13    |LUT5                |   977|
+C
+%s*synth24
+ |13    |LUT4           |   510|
 2default:default
-H
-%s*synth29
-%|14    |LUT6                |  1701|
+C
+%s*synth24
+ |14    |LUT5           |   978|
 2default:default
-H
-%s*synth29
-%|15    |MMCME2_ADV          |     1|
+C
+%s*synth24
+ |15    |LUT6           |  1703|
 2default:default
-H
-%s*synth29
-%|16    |MUXCY_L             |    19|
+C
+%s*synth24
+ |16    |MMCME2_ADV     |     1|
 2default:default
-H
-%s*synth29
-%|17    |MUXF7               |    73|
+C
+%s*synth24
+ |17    |MUXCY_L        |    19|
 2default:default
-H
-%s*synth29
-%|18    |ODDR_1              |     2|
+C
+%s*synth24
+ |18    |MUXF7          |    73|
 2default:default
-H
-%s*synth29
-%|19    |PS7                 |     1|
+C
+%s*synth24
+ |19    |ODDR_1         |     2|
 2default:default
-H
-%s*synth29
-%|20    |RAM32M              |    18|
+C
+%s*synth24
+ |20    |PS7            |     1|
 2default:default
-H
-%s*synth29
-%|21    |RAM32X1D            |     1|
+C
+%s*synth24
+ |21    |RAM32M         |    18|
 2default:default
-H
-%s*synth29
-%|22    |RAM64X1S            |     1|
+C
+%s*synth24
+ |22    |RAM32X1D       |     1|
 2default:default
-H
-%s*synth29
-%|23    |RAMB18E1_1          |     1|
+C
+%s*synth24
+ |23    |RAM64X1S       |     1|
 2default:default
-H
-%s*synth29
-%|24    |RAMB36E1_1          |     1|
+C
+%s*synth24
+ |24    |RAMB18E1_1     |     1|
 2default:default
-H
-%s*synth29
-%|25    |RAMB36E1_2          |     1|
+C
+%s*synth24
+ |25    |RAMB36E1_1     |     1|
 2default:default
-H
-%s*synth29
-%|26    |SRL16               |     2|
+C
+%s*synth24
+ |26    |RAMB36E1_2     |     1|
 2default:default
-H
-%s*synth29
-%|27    |SRL16E              |   115|
+C
+%s*synth24
+ |27    |SRL16          |     2|
 2default:default
-H
-%s*synth29
-%|28    |SRLC16E             |   136|
+C
+%s*synth24
+ |28    |SRL16E         |   115|
 2default:default
-H
-%s*synth29
-%|29    |SRLC32E             |    47|
+C
+%s*synth24
+ |29    |SRLC16E        |   136|
 2default:default
-H
-%s*synth29
-%|30    |VCC                 |     2|
+C
+%s*synth24
+ |30    |SRLC32E        |    47|
 2default:default
-H
-%s*synth29
-%|31    |XORCY               |    27|
+C
+%s*synth24
+ |31    |VCC            |     2|
 2default:default
-H
-%s*synth29
-%|32    |FDCE                |    90|
+C
+%s*synth24
+ |32    |XORCY          |    27|
 2default:default
-H
-%s*synth29
-%|33    |FDPE                |    12|
+C
+%s*synth24
+ |33    |FDCE           |   121|
 2default:default
-H
-%s*synth29
-%|34    |FDR                 |     3|
+C
+%s*synth24
+ |34    |FDPE           |    13|
 2default:default
-H
-%s*synth29
-%|35    |FDRE                |  5389|
+C
+%s*synth24
+ |35    |FDR            |     3|
 2default:default
-H
-%s*synth29
-%|36    |FDS                 |    15|
+C
+%s*synth24
+ |36    |FDRE           |  5389|
 2default:default
-H
-%s*synth29
-%|37    |FDSE                |   212|
+C
+%s*synth24
+ |37    |FDS            |    15|
 2default:default
-H
-%s*synth29
-%|38    |IBUF                |     1|
+C
+%s*synth24
+ |38    |FDSE           |   212|
 2default:default
-H
-%s*synth29
-%|39    |IOBUF               |     2|
+C
+%s*synth24
+ |39    |IBUF           |     1|
 2default:default
-H
-%s*synth29
-%|40    |OBUF                |    21|
+C
+%s*synth24
+ |40    |IOBUF          |     2|
 2default:default
-H
-%s*synth29
-%|41    |OBUFT               |    21|
+C
+%s*synth24
+ |41    |OBUF           |    21|
 2default:default
-H
-%s*synth29
-%+------+--------------------+------+
+C
+%s*synth24
+ |42    |OBUFT          |    21|
+2default:default
+C
+%s*synth24
+ +------+---------------+------+
 2default:default
 ß
 %s*synth2ó
-ÇFinished Writing Synthesis Report : Time (s): cpu = 00:08:03 ; elapsed = 00:08:23 . Memory (MB): peak = 1057.801 ; gain = 660.414
+ÇFinished Writing Synthesis Report : Time (s): cpu = 00:09:39 ; elapsed = 00:09:57 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 i
 %s*synth2Z
@@ -10219,7 +10274,7 @@ FSynthesis finished with 0 errors, 0 critical warnings and 4 warnings.
 2default:default
 •
 %s*synth2ï
-ÄSynthesis Optimization Complete : Time (s): cpu = 00:08:04 ; elapsed = 00:08:23 . Memory (MB): peak = 1057.801 ; gain = 660.414
+ÄSynthesis Optimization Complete : Time (s): cpu = 00:09:39 ; elapsed = 00:09:57 . Memory (MB): peak = 1058.352 ; gain = 660.969
 2default:default
 ]
 -Analyzing %s Unisim elements for replacement
@@ -10267,8 +10322,8 @@ L
 √
 G%s Infos, %s Warnings, %s Critical Warnings and %s Errors encountered.
 28*	vivadotcl2
-13692default:default2
-1262default:default2
+12742default:default2
+2272default:default2
 1002default:default2
 02default:defaultZ4-41
 U
@@ -10279,10 +10334,10 @@ U
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2"
 synth_design: 2default:default2
-00:08:142default:default2
-00:08:242default:default2
-1211.8012default:default2
-711.4732default:defaultZ17-268
+00:09:532default:default2
+00:10:082default:default2
+1213.3522default:default2
+713.0272default:defaultZ17-268
 <
 %Done setting XDC timing constraints.
 35*timingZ38-35
@@ -10290,15 +10345,15 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2&
 write_checkpoint: 2default:default2
-00:00:082default:default2
-00:00:062default:default2
-1211.8052default:default2
+00:00:092default:default2
+00:00:092default:default2
+1213.3552default:default2
 0.0042default:defaultZ17-268
 Ç
-vreport_utilization: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.40 . Memory (MB): peak = 1211.805 ; gain = 0.000
+vreport_utilization: Time (s): cpu = 00:00:00.37 ; elapsed = 00:00:00.49 . Memory (MB): peak = 1213.355 ; gain = 0.000
 *common
 w
 Exiting %s at %s...
 206*common2
 Vivado2default:default2,
-Wed Feb 18 16:27:44 20152default:defaultZ17-206
+Wed Feb 18 23:59:49 20152default:defaultZ17-206

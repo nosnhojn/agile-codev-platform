@@ -39,7 +39,7 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 	read_ip: 2default:default2
 00:00:052default:default2
-00:00:052default:default2
+00:00:062default:default2
 471.9532default:default2
 12.0002default:defaultZ17-268
 Ç
@@ -68,17 +68,17 @@ Starting synthesis...
 xc7z0202default:defaultZ17-349
 ú
 %s*synth2å
-xStarting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 497.949 ; gain = 100.562
+xStarting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 497.949 ; gain = 100.562
 2default:default
-Å
+É
 synthesizing module '%s'638*oasys2
-	clk_wiz_02default:default2í
-|/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.v2default:default2
+	clk_wiz_02default:default2î
+~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.v2default:default2
 692default:default8@Z8-638
-í
+î
 synthesizing module '%s'638*oasys2%
-clk_wiz_0_clk_wiz2default:default2õ
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v2default:default2
+clk_wiz_0_clk_wiz2default:default2ù
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_clk_wiz.v2default:default2
 672default:default8@Z8-638
 ∏
 synthesizing module '%s'638*oasys2
@@ -236,7 +236,7 @@ _
 2default:default
 ^
 %s*synth2O
-;	Parameter CLKIN1_PERIOD bound to: 6.734000 - type: float 
+;	Parameter CLKIN1_PERIOD bound to: 6.667000 - type: float 
 2default:default
 ^
 %s*synth2O
@@ -330,27 +330,27 @@ MMCME2_ADV2default:default2
 12default:default2M
 7/opt/Xilinx/Vivado/2013.3/scripts/rt/data/unisim_comp.v2default:default2
 4342default:default8@Z8-256
-Õ
+œ
 %done synthesizing module '%s' (%s#%s)256*oasys2%
 clk_wiz_0_clk_wiz2default:default2
 42default:default2
-12default:default2õ
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v2default:default2
+12default:default2ù
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_clk_wiz.v2default:default2
 672default:default8@Z8-256
-º
+æ
 %done synthesizing module '%s' (%s#%s)256*oasys2
 	clk_wiz_02default:default2
 52default:default2
-12default:default2í
-|/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.v2default:default2
+12default:default2î
+~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.v2default:default2
 692default:default8@Z8-256
 ú
 %s*synth2å
-xFinished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 522.770 ; gain = 125.383
+xFinished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 522.770 ; gain = 125.383
 2default:default
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 522.770 ; gain = 125.383
+vStart RTL Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 522.770 ; gain = 125.383
 2default:default
 ;
 %s*synth2,
@@ -421,43 +421,43 @@ _
 
 Processing XDC Constraints
 244*projectZ1-262
-ˆ
-$Parsing XDC File [%s] for cell '%s'
-848*designutils2ó
-Ç/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_OOC.xdc2default:default2
-inst2default:defaultZ20-848
-ˇ
--Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2ó
-Ç/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_OOC.xdc2default:default2
-inst2default:defaultZ20-847
 ¯
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2ô
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc2default:default2
+Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_OOC.xdc2default:default2
 inst2default:defaultZ20-848
 Å
 -Finished Parsing XDC File [%s] for cell '%s'
 847*designutils2ô
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc2default:default2
+Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_OOC.xdc2default:default2
 inst2default:defaultZ20-847
-Ò
-$Parsing XDC File [%s] for cell '%s'
-848*designutils2í
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
-inst2default:defaultZ20-848
 ˙
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2õ
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_board.xdc2default:default2
+inst2default:defaultZ20-848
+É
 -Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2í
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
+847*designutils2õ
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_board.xdc2default:default2
+inst2default:defaultZ20-847
+Ù
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2ï
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+inst2default:defaultZ20-848
+˝
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2ï
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
 inst2default:defaultZ20-847
 /
 Deriving generated clocks
 2*timingZ38-2
-ß
+™
 ŸImplementation specific constraints were found while reading constraint file [%s]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [%s].
-233*project2í
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2ú
+233*project2ï
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2ú
 á/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/clk_wiz_0_synth_1/.Xil/clk_wiz_0_propImpl.xdc2default:defaultZ1-236
 ≈
 Parsing XDC File [%s]
@@ -483,15 +483,15 @@ u
 2default:defaultZ1-111
 ö
 %s*synth2ä
-vStart RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 672.129 ; gain = 274.742
+vStart RTL Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 672.129 ; gain = 274.742
 2default:default
 µ
 %s*synth2•
-êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 672.133 ; gain = 274.746
+êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 672.133 ; gain = 274.746
 2default:default
 ù
 %s*synth2ç
-yFinished RTL Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 672.133 ; gain = 274.746
+yFinished RTL Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 672.133 ; gain = 274.746
 2default:default
 <
 %s*synth2-
@@ -522,7 +522,7 @@ BRAMs: 280 (col length: RAMB8 0 RAMB16 0 RAMB18 60 RAMB36 30)
 2default:default
 ±
 %s*synth2°
-åFinished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 717.133 ; gain = 319.746
+åFinished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 723.133 ; gain = 325.746
 2default:default
 B
 %s*synth23
@@ -550,7 +550,7 @@ B
 2default:default
 ©
 %s*synth2ô
-ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 717.133 ; gain = 319.746
+ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 723.133 ; gain = 325.746
 2default:default
 ¢
 %s*synth2í
@@ -572,23 +572,23 @@ R-------------------------------------------------------------------------------
 2default:default
 û
 %s*synth2é
-zFinished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 718.129 ; gain = 320.742
+zFinished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ≠
 %s*synth2ù
-àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 718.129 ; gain = 320.742
+àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 †
 %s*synth2ê
-|Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 718.129 ; gain = 320.742
+|Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ü
 %s*synth2è
-{Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 724.145 ; gain = 326.758
+{Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ô
 %s*synth2â
-uFinished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 724.145 ; gain = 326.758
+uFinished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ;
 %s*synth2,
@@ -617,11 +617,11 @@ I+------+------------------+-------+---------+-------+------------------+
 2default:default
 ™
 %s*synth2ö
-ÖFinished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 724.145 ; gain = 326.758
+ÖFinished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ß
 %s*synth2ó
-ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 724.145 ; gain = 326.758
+ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 ¢
 %s*synth2í
@@ -685,11 +685,15 @@ Report Cell Usage:
 2default:default
 ?
 %s*synth20
-|2     |MMCME2_ADV |     1|
+|2     |LUT1       |     1|
 2default:default
 ?
 %s*synth20
-|3     |IBUF       |     1|
+|3     |MMCME2_ADV |     1|
+2default:default
+?
+%s*synth20
+|4     |IBUF       |     1|
 2default:default
 ?
 %s*synth20
@@ -714,11 +718,11 @@ P
 2default:default
 P
 %s*synth2A
--|1     |top      |                  |     4|
+-|1     |top      |                  |     5|
 2default:default
 P
 %s*synth2A
--|2     |  inst   |clk_wiz_0_clk_wiz |     4|
+-|2     |  inst   |clk_wiz_0_clk_wiz |     5|
 2default:default
 P
 %s*synth2A
@@ -726,7 +730,7 @@ P
 2default:default
 ¶
 %s*synth2ñ
-ÅFinished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 724.145 ; gain = 326.758
+ÅFinished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 i
 %s*synth2Z
@@ -734,7 +738,7 @@ FSynthesis finished with 0 errors, 0 critical warnings and 0 warnings.
 2default:default
 £
 %s*synth2ì
-Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 724.145 ; gain = 326.758
+Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 735.160 ; gain = 337.773
 2default:default
 \
 -Analyzing %s Unisim elements for replacement
@@ -748,45 +752,45 @@ C
 Pushed %s inverter(s).
 98*opt2
 02default:defaultZ31-138
-ˆ
-$Parsing XDC File [%s] for cell '%s'
-848*designutils2ó
-Ç/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_OOC.xdc2default:default2
-inst2default:defaultZ20-848
-ˇ
--Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2ó
-Ç/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_OOC.xdc2default:default2
-inst2default:defaultZ20-847
 ¯
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2ô
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc2default:default2
+Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_OOC.xdc2default:default2
 inst2default:defaultZ20-848
 Å
 -Finished Parsing XDC File [%s] for cell '%s'
 847*designutils2ô
-Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc2default:default2
+Ñ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_OOC.xdc2default:default2
 inst2default:defaultZ20-847
-Ò
-$Parsing XDC File [%s] for cell '%s'
-848*designutils2í
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
-inst2default:defaultZ20-848
-Ò
-%Done setting XDC timing constraints.
-35*timing2î
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
-562default:default8@Z38-35
-‰
-Deriving generated clocks
-2*timing2î
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
-562default:default8@Z38-2
 ˙
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2õ
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_board.xdc2default:default2
+inst2default:defaultZ20-848
+É
 -Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2í
-~/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc2default:default2
+847*designutils2õ
+Ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0_board.xdc2default:default2
+inst2default:defaultZ20-847
+Ù
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2ï
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+inst2default:defaultZ20-848
+Ù
+%Done setting XDC timing constraints.
+35*timing2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+562default:default8@Z38-35
+Á
+Deriving generated clocks
+2*timing2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+562default:default8@Z38-2
+˝
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2ï
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
 inst2default:defaultZ20-847
 u
 !Unisim Transformation Summary:
@@ -813,14 +817,14 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2"
 synth_design: 2default:default2
 00:01:012default:default2
-00:01:022default:default2
-903.1452default:default2
-431.1912default:defaultZ17-268
+00:01:062default:default2
+915.1602default:default2
+443.2072default:defaultZ17-268
 Å
-ureport_utilization: Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.17 . Memory (MB): peak = 903.148 ; gain = 0.000
+ureport_utilization: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.37 . Memory (MB): peak = 915.164 ; gain = 0.000
 *common
 w
 Exiting %s at %s...
 206*common2
 Vivado2default:default2,
-Thu Feb 12 14:51:00 20152default:defaultZ17-206
+Wed Feb 18 23:35:28 20152default:defaultZ17-206

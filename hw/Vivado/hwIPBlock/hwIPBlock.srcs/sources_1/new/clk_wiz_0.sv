@@ -1,7 +1,7 @@
 module clk_wiz_0 (
   input  clk_in1,
   output logic clk_out1,
-  input reset,
+  input resetn,
   output logic locked
 );
 

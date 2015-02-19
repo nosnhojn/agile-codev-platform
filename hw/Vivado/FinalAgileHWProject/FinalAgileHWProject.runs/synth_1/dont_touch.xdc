@@ -72,6 +72,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_aut
 # IP: bd/FinalDesign/ip/FinalDesign_auto_pc_12/FinalDesign_auto_pc_12.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FinalDesign_auto_pc_12 || ORIG_REF_NAME==FinalDesign_auto_pc_12}]
 
+# IP: ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==blk_mem_gen_0 || ORIG_REF_NAME==blk_mem_gen_0}]
+
 # XDC: bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FinalDesign_processing_system7_0_1 || ORIG_REF_NAME==FinalDesign_processing_system7_0_1}] {/inst }]/inst ]]
 

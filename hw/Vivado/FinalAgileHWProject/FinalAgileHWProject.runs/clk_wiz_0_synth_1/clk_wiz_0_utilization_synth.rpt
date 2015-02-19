@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date         : Thu Feb 12 14:50:59 2015
+| Date         : Wed Feb 18 23:35:27 2015
 | Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command      : report_utilization -file clk_wiz_0_utilization_synth.rpt -pb clk_wiz_0_utilization_synth.pb
 | Design       : clk_wiz_0
@@ -29,8 +29,8 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Loced | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |    0 |     0 |     53200 |  0.00 |
-|   LUT as Logic          |    0 |     0 |     53200 |  0.00 |
+| Slice LUTs*             |    1 |     0 |     53200 | <0.01 |
+|   LUT as Logic          |    1 |     0 |     53200 | <0.01 |
 |   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
 | Slice Registers         |    0 |     0 |    106400 |  0.00 |
 |   Register as Flip Flop |    0 |     0 |    106400 |  0.00 |
@@ -130,6 +130,7 @@ Table of Contents
 +------------+------+
 | BUFG       |    2 |
 | MMCME2_ADV |    1 |
+| LUT1       |    1 |
 | IBUF       |    1 |
 +------------+------+
 
