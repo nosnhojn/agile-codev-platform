@@ -61,17 +61,6 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
-logic read_cycle;
-always @(negedge rst_i_n or posedge clk_i) begin
-  if (!rst_i_n) begin
-    read_cycle <= 1;
-  end
-
-  else begin
-    read_cycle <= ~read_cycle;
-  end
-end
-
 logic wr_0_int;
 logic [QPRAM_PORT0_WIDTH-1:0] wdata_0_int;
 logic [QPRAM_PORT0_ADDR_WIDTH-1:0] waddr_0_int;
@@ -101,15 +90,33 @@ always @(negedge rst_n or posedge clk) begin
   end
 end
 
-wire        wea;
+logic        wea;
 wire [QPRAM_PORT0_ADDR_WIDTH-1:0] addra;
-wire        web;
+logic        web;
 wire [QPRAM_PORT1_ADDR_WIDTH-1:0]  addrb;
+logic read_cycle;
 
-assign wea = (read_cycle) ? 1'b0 : wr_0_int;
+always @(negedge rst_i_n or posedge clk_i) begin
+  if (!rst_i_n) begin
+    read_cycle <= 1;
+    wea <= 0;
+    web <= 0;
+  end
+
+  else begin
+    read_cycle <= ~read_cycle;
+    if (read_cycle) begin
+      wea <= wr_0_int;
+      web <= wr_1_int;
+    end
+    else begin
+      wea <= 0;
+      web <= 0;
+    end
+  end
+end
+
 assign addra = (read_cycle) ? raddr_0 : waddr_0_int;
-
-assign web = (read_cycle) ? 1'b0 : wr_1_int;
 assign addrb = (read_cycle) ? raddr_1 : waddr_1_int;
 
 blk_mem_gen_0 blk_mem
