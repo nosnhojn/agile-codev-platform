@@ -146,6 +146,7 @@ module qpram_unit_test;
         step();
       end
 
+      step();
       readPort(1, 0);
       step();
       expectReadData(1, testData);
@@ -155,7 +156,7 @@ module qpram_unit_test;
     `SVTEST(port1_to_port0)
       testData = 120'hddeeff_8899aabb_44556677_00112233;
       writePort(1, (MEM_DEPTH-4)>>2, testData);
-      step();
+      step(2);
  
       for (int i=0; i<4; i+=1) begin
         readPort(0, MEM_DEPTH-1-i);

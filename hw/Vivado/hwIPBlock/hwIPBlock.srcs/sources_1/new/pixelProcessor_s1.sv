@@ -1,11 +1,11 @@
 module pixelProcessor_s1
 #(
-  MEM_DEPTH = 321,
+  MEM_DEPTH = 15360,
   P0_WIDTH = 30,
   P1_WIDTH = 120,
   P0_ADDR_WIDTH = $clog2(MEM_DEPTH),
   P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4),
-  INGRESS_THRESH = 4,
+  INGRESS_THRESH = 5,
   INGRESS_FULL = 10
 )
 (
@@ -92,6 +92,36 @@ wire [P1_ADDR_WIDTH-1:0] waddr_1;
 wire [P1_ADDR_WIDTH-1:0] raddr_1;
 wire [P1_WIDTH-1:0] rdata_no_connect;
 
+
+qpram
+#(
+  .QPRAM_DEPTH(15360),
+  .QPRAM_PORT0_WIDTH(30),
+  .QPRAM_PORT1_WIDTH(120),
+  .QPRAM_PORT0_ADDR_WIDTH(14),
+  .QPRAM_PORT1_ADDR_WIDTH(12)
+)
+my_qpram
+(
+  .clk(clk),
+  .rst_n(rst_n),
+
+  .wdata_0(wdata),
+  .waddr_0(waddr),
+  .wr_0(wr),
+
+  .rdata_0(rdata),
+  .raddr_0(raddr),
+
+  //.wdata_1(0),
+  //.waddr_1(0),
+  .wr_1(0),
+
+  //.rdata_1(rdata_1),
+  .raddr_1(0)
+);
+
+/*
 sdpram30x15360 my_sdpram
 (
   .clka(clk),
@@ -103,6 +133,7 @@ sdpram30x15360 my_sdpram
   .doutb(rdata),
   .addrb(raddr)
 );
+*/
 
 
 endmodule

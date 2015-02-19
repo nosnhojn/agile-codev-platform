@@ -5,7 +5,7 @@ module pixelProcessor_s2
   P1_WIDTH = 120,
   P0_ADDR_WIDTH = $clog2(MEM_DEPTH),
   P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4),
-  INGRESS_THRESH = 3,
+  INGRESS_THRESH = 5,
   INGRESS_FULL = 7*1920
 )
 (

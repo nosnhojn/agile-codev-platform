@@ -5,7 +5,7 @@
 `define write_read_port_N_test(PORT) \
 `SVTEST(write_read_port_``PORT) \
   writePort(PORT, 'h0, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
-  step(); \
+  step(2); \
   readPort(PORT, 'h0); \
   step(); \
   expectReadData(PORT, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
@@ -14,7 +14,7 @@
 `define rdata_N_is_registered_test(PORT) \
 `SVTEST(rdata_``PORT``_is_registered) \
   writePort(PORT, 'h4, 'haabbccdd); \
-  step(); \
+  step(2); \
   readPort(PORT, 'h4); \
   expectReadData(PORT, 'hx); \
 `SVTEST_END

@@ -70,6 +70,7 @@ wire reset_raddr_line2_at_end_of_buffer;
 wire raddr_wraps_at_eof;
 
 always @* begin
+  raddr = 0;
   next_rptr_line_cnt = rptr_line_cnt;
 
   if (ingress_rdy) begin

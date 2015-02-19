@@ -10,7 +10,7 @@ module step_1_unit_test;
 
   // uut params
   parameter MEM_DEPTH = 15360;
-  parameter INGRESS_THRESH = 4;
+  parameter INGRESS_THRESH = 5;
 
   //===================================
   // This is the UUT that we're 
@@ -29,7 +29,7 @@ module step_1_unit_test;
   wire        oTVALID;
   reg         iTREADY;
 
-  `CLK_RESET_FIXTURE(30,5)
+  `CLK_RESET_FIXTURE(12,5)
 
   pixelProcessor_s1
   #(
@@ -187,11 +187,13 @@ module step_1_unit_test;
  
   `SVUNIT_TESTS_END
 
-//always @(negedge clk) begin
-//  $display("%t iTDATA:0x%0x iTVALID:0x%0x oTREADY:0x%0x waddr:0x%0x", $time, iTDATA, iTVALID, oTREADY, uut.waddr);
-//  $display("%t oTDATA:0x%0x oTVALID:0x%0x iTREADY:0x%0x raddr:0x%0x", $time, oTDATA, oTVALID, iTREADY, uut.raddr);
-//  $display("-------------------");
-//end
+/*
+always @(negedge clk) begin
+  $display("%t iTDATA:0x%0x iTVALID:0x%0x oTREADY:0x%0x waddr:0x%0x", $time, iTDATA, iTVALID, oTREADY, uut.waddr);
+  $display("%t oTDATA:0x%0x oTVALID:0x%0x iTREADY:0x%0x raddr:0x%0x", $time, oTDATA, oTVALID, iTREADY, uut.raddr);
+  $display("-------------------");
+end
+*/
 
 
   task setIngressPixel(bit [29:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
@@ -205,6 +207,7 @@ module step_1_unit_test;
 
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
+//$display("CHECK:0x%0x", oTDATA);
     `FAIL_UNLESS(oTVALID === 1);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);

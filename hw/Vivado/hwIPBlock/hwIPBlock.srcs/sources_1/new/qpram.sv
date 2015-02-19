@@ -69,30 +69,58 @@ always @(negedge rst_i_n or posedge clk_i) begin
   end
 end
 
+logic wr_0_int;
+logic [QPRAM_PORT0_WIDTH-1:0] wdata_0_int;
+logic [QPRAM_PORT0_ADDR_WIDTH-1:0] waddr_0_int;
+
+logic wr_1_int;
+logic [QPRAM_PORT1_WIDTH-1:0] wdata_1_int;
+logic [QPRAM_PORT1_ADDR_WIDTH-1:0] waddr_1_int;
+
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    wr_0_int <= 0;
+    waddr_0_int <= 0;
+    wdata_0_int <= 0;
+
+    wr_1_int <= 0;
+    waddr_1_int <= 0;
+    wdata_1_int <= 0;
+  end
+  else begin
+    wr_0_int <= wr_0;
+    waddr_0_int <= waddr_0;
+    wdata_0_int <= wdata_0;
+
+    wr_1_int <= wr_1;
+    waddr_1_int <= waddr_1;
+    wdata_1_int <= wdata_1;
+  end
+end
 
 wire        wea;
 wire [QPRAM_PORT0_ADDR_WIDTH-1:0] addra;
 wire        web;
 wire [QPRAM_PORT1_ADDR_WIDTH-1:0]  addrb;
 
-assign wea = (read_cycle) ? 1'b0 : wr_0;
-assign addra = (read_cycle) ? raddr_0 : waddr_0;
+assign wea = (read_cycle) ? 1'b0 : wr_0_int;
+assign addra = (read_cycle) ? raddr_0 : waddr_0_int;
 
-assign web = (read_cycle) ? 1'b0 : wr_1;
-assign addrb = (read_cycle) ? raddr_1 : waddr_1;
+assign web = (read_cycle) ? 1'b0 : wr_1_int;
+assign addrb = (read_cycle) ? raddr_1 : waddr_1_int;
 
 blk_mem_gen_0 blk_mem
 (
  .clka(clk_i),
  .wea(wea),
  .addra(addra),
- .dina(wdata_0),
+ .dina(wdata_0_int),
  .douta(rdata_0_i),
 
  .clkb(clk_i),
  .web(web),
  .addrb(addrb),
- .dinb(wdata_1),
+ .dinb(wdata_1_int),
  .doutb(rdata_1_i)
 );
 

@@ -168,6 +168,9 @@ logic any_surrounding_is_FG;
 always @* begin
   int short_shift, long_shift;
   wdata = 0;
+  tmp_slot0 = 0;
+  tmp_slot1 = 0;
+  tmp_slot2 = 0;
 
   for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
     short_shift = (30 * (3 - pixel_idx));
