@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------
 | Tool Version : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date         : Wed Feb 18 16:33:42 2015
+| Date         : Thu Feb 19 00:15:01 2015
 | Host         : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command      : report_drc
 -----------------------------------------------------------------------------------
@@ -120,10 +120,20 @@ REPORT SUMMARY
                      Delay constraint missing on IO port
                      PS7 block required
            Max violations: <unlimited>
-         Violations found: 31
+         Violations found: 35
 
 2. REPORT DETAILS
 -----------------
+REQP-1578#1 Error
+Required Pin  
+Unsupported must be driven by a clock capable IO. connectivity. The signal FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/clk_in1 on the FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/mmcm_adv_inst/CLKIN1 pin of FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/mmcm_adv_inst with COMPENSATION mode MMCME2_ADV ZHOLD
+Related violations: <none>
+
+AVAL-39#1 Warning
+V7_MMCM_SET_COMPENSATION4  
+Cell FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/mmcm_adv_inst of type 'MMCME2_ADV' has been detected to have a configuration that requires the COMPENSATION setting to be different than ZHOLD. The application, in most cases, can automatically set the COMPENSATION attribute provided that the original COMPENSATION attribute is left with its default value by the designer. If the COMPENSATION remains as default it means that the application could not set the COMPENSATION but the design still has errors.
+Related violations: <none>
+
 CFGBVS-1#1 Warning
 Missing CFGBVS and CONFIG_VOLTAGE Design Properties  
 Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
@@ -185,6 +195,16 @@ Related violations: <none>
 DPOP-1#7 Warning
 DSP output pipelining  
 DSP FinalDesign_i/zed_hdmi_display/v_rgb2ycrcb_0/U0/obsnirqfyybeiid4jtr52igusp4ehcbvgcheit4ehfl12maatp4egtcqwt5aezb/obsngaal2rcbc output P  is not pipelined. Pipelining DSP48 output will improve performance. Both multiplier/adder output can be pipelined.
+Related violations: <none>
+
+RBOR-1#1 Warning
+RAMB output registers  
+RAMB FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/U0/inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v6_noinit.ram/NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM18.ram output DOA (1) is connected to asynchronous registers, if you use synchronous controls you will get better results both in area and delay (RAMB has synchronous registers built in).
+Related violations: <none>
+
+RBOR-1#2 Warning
+RAMB output registers  
+RAMB FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/U0/inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v6_noinit.ram/NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram output DOA (2) is connected to asynchronous registers, if you use synchronous controls you will get better results both in area and delay (RAMB has synchronous registers built in).
 Related violations: <none>
 
 XDCB-1#1 Warning

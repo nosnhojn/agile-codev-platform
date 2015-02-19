@@ -1,7 +1,7 @@
 Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2013.3 (lin32) Build 329390 Wed Oct 16 18:28:36 MDT 2013
-| Date             : Wed Feb 18 16:34:07 2015
+| Date             : Thu Feb 19 00:15:25 2015
 | Host             : agilehw-laptop running 32-bit Ubuntu 10.04.4 LTS
 | Command          : report_power -file FinalDesign_wrapper_power_routed.rpt -pb FinalDesign_wrapper_power_summary_routed.pb
 | Design           : FinalDesign_wrapper
@@ -30,13 +30,13 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 1.664 |
-| Dynamic (W)              | 1.512 |
-| Device Static (W)        | 0.152 |
+| Total On-Chip Power (W)  | 1.814 |
+| Dynamic (W)              | 1.659 |
+| Device Static (W)        | 0.156 |
 | Total Off-Chip Power (W) | 0.121 |
 | Effective TJA (C/W)      | 11.5  |
-| Max Ambient (C)          | 65.8  |
-| Junction Temperature (C) | 44.2  |
+| Max Ambient (C)          | 64.1  |
+| Junction Temperature (C) | 45.9  |
 | Confidence Level         | Low   |
 | Setting File             | ---   |
 | Simulation Activity File | ---   |
@@ -50,23 +50,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.042 |        6 |       --- |             --- |
-| Slice Logic              |     0.008 |    11296 |       --- |             --- |
-|   LUT as Logic           |     0.007 |     4100 |     53200 |            7.71 |
-|   Register               |    <0.001 |     5532 |    106400 |            5.20 |
+| Clocks                   |     0.048 |        9 |       --- |             --- |
+| Slice Logic              |     0.009 |    11394 |       --- |             --- |
+|   LUT as Logic           |     0.008 |     4139 |     53200 |            7.78 |
+|   Register               |    <0.001 |     5562 |    106400 |            5.23 |
 |   CARRY4                 |    <0.001 |      189 |     13300 |            1.42 |
 |   LUT as Distributed RAM |    <0.001 |       75 |     17400 |            0.43 |
 |   LUT as Shift Register  |    <0.001 |      225 |     17400 |            1.29 |
 |   F7/F8 Muxes            |    <0.001 |       73 |     53200 |            0.14 |
-|   Others                 |     0.000 |      220 |       --- |             --- |
-| Signals                  |     0.013 |     7957 |       --- |             --- |
-| Block RAM                |     0.021 |       12 |       140 |            8.57 |
-| MMCM                     |     0.117 |        1 |         4 |           25.00 |
-| DSPs                     |     0.004 |        7 |       220 |            3.18 |
+|   Others                 |     0.000 |      246 |       --- |             --- |
+| Signals                  |     0.020 |     8067 |       --- |             --- |
+| Block RAM                |     0.031 |       21 |       140 |           15.00 |
+| MMCM                     |     0.117 |        2 |         4 |           50.00 |
+| DSPs                     |     0.002 |        7 |       220 |            3.18 |
 | I/O                      |    <0.001 |       23 |       200 |           11.50 |
 | PS7                      |     1.307 |        1 |       --- |             --- |
-| Static Power             |     0.152 |          |           |                 |
-| Total                    |     1.664 |          |           |                 |
+| Static Power             |     0.156 |          |           |                 |
+| Total                    |     1.814 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,8 +76,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.102 |       0.087 |      0.015 |
-| Vccaux    |       1.800 |     0.085 |       0.065 |      0.020 |
+| Vccint    |       1.000 |     0.125 |       0.109 |      0.016 |
+| Vccaux    |       1.800 |     0.154 |       0.133 |      0.021 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.001 |       0.000 |      0.001 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
@@ -85,11 +85,11 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.003 |       0.001 |      0.001 |
+| Vccbram   |       1.000 |     0.004 |       0.002 |      0.001 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.421 |       0.391 |      0.030 |
+| Vccpint   |       1.000 |     0.422 |       0.391 |      0.032 |
 | Vccpaux   |       1.800 |     0.045 |       0.034 |      0.010 |
 | Vccpll    |       1.800 |     0.116 |       0.113 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.511 |       0.509 |      0.002 |
@@ -136,16 +136,19 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------------------------------+----------------------------------------------------------------+-----------------+
-| Clock                                | Domain                                                         | Constraint (ns) |
-+--------------------------------------+----------------------------------------------------------------+-----------------+
-| clk_out1_FinalDesign_clk_wiz_0_0     | FinalDesign_i/clk_wiz_0/inst/clk_out1_FinalDesign_clk_wiz_0_0  |            10.0 |
-| clkfbout_FinalDesign_clk_wiz_0_0     | FinalDesign_i/clk_wiz_0/inst/clkfbout_FinalDesign_clk_wiz_0_0  |            10.0 |
-| FinalDesign_i/clk_wiz_0/inst/clk_in1 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK2              |            10.0 |
-| clk_fpga_0                           | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |             7.0 |
-| clk_fpga_1                           | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1] |             7.0 |
-| clk_fpga_2                           | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[2] |             7.0 |
-+--------------------------------------+----------------------------------------------------------------+-----------------+
++-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+-----------------+
+| Clock                                                                       | Domain                                                                                      | Constraint (ns) |
++-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+-----------------+
+| clk_out1_FinalDesign_clk_wiz_0_0                                            | FinalDesign_i/clk_wiz_0/inst/clk_out1_FinalDesign_clk_wiz_0_0                               |            10.0 |
+| clkfbout_FinalDesign_clk_wiz_0_0                                            | FinalDesign_i/clk_wiz_0/inst/clkfbout_FinalDesign_clk_wiz_0_0                               |            10.0 |
+| FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/clk_in1 | FinalDesign_i/processing_system7_0/inst/FCLK_CLK1                                           |             7.0 |
+| FinalDesign_i/clk_wiz_0/inst/clk_in1                                        | FinalDesign_i/processing_system7_0/inst/FCLK_CLK2                                           |            10.0 |
+| clk_fpga_0                                                                  | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]                              |             6.7 |
+| clk_fpga_1                                                                  | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]                              |             6.7 |
+| clk_fpga_2                                                                  | FinalDesign_i/processing_system7_0/inst/FCLK_CLK_unbuffered[2]                              |             6.7 |
+| clk_out1_clk_wiz_0_1                                                        | FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/clk_out1_clk_wiz_0 |             6.7 |
+| clkfbout_clk_wiz_0_1                                                        | FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/clkfbout_clk_wiz_0 |             6.7 |
++-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -157,46 +160,60 @@ Table of Contents
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
 | Name                                                                                                                                                                                                       | Power (W) |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
-| FinalDesign_wrapper                                                                                                                                                                                        |     1.512 |
-|   FinalDesign_i                                                                                                                                                                                            |     1.512 |
+| FinalDesign_wrapper                                                                                                                                                                                        |     1.659 |
+|   FinalDesign_i                                                                                                                                                                                            |     1.659 |
 |     clk_wiz_0                                                                                                                                                                                              |     0.117 |
 |       inst                                                                                                                                                                                                 |     0.117 |
 |     proc_sys_reset                                                                                                                                                                                         |    <0.001 |
 |       U0                                                                                                                                                                                                   |    <0.001 |
 |     processing_system7_0                                                                                                                                                                                   |     1.309 |
 |       inst                                                                                                                                                                                                 |     1.309 |
-|     processing_system7_0_axi_periph                                                                                                                                                                        |     0.005 |
+|     processing_system7_0_axi_periph                                                                                                                                                                        |     0.004 |
 |       s00_couplers/auto_pc                                                                                                                                                                                 |     0.004 |
 |       xbar                                                                                                                                                                                                 |    <0.001 |
-|     zed_hdmi_display                                                                                                                                                                                       |     0.079 |
-|       agileHWBlock_0                                                                                                                                                                                       |     0.016 |
-|         inst/s1/my_sdpram                                                                                                                                                                                  |     0.015 |
-|           U0                                                                                                                                                                                               |     0.015 |
-|             inst_blk_mem_gen                                                                                                                                                                               |     0.015 |
-|               gnativebmg.native_blk_mem_gen                                                                                                                                                                |     0.015 |
-|                 valid.cstr                                                                                                                                                                                 |     0.015 |
-|                   bindec_a.bindec_inst_a                                                                                                                                                                   |     0.000 |
-|                   bindec_b.bindec_inst_b                                                                                                                                                                   |     0.000 |
-|                   has_mux_b.B                                                                                                                                                                              |     0.000 |
-|                   ramloop[0].ram.r                                                                                                                                                                         |     0.002 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.002 |
-|                   ramloop[10].ram.r                                                                                                                                                                        |     0.003 |
+|     zed_hdmi_display                                                                                                                                                                                       |     0.227 |
+|       agileHWBlock_0                                                                                                                                                                                       |     0.162 |
+|         inst/s1/my_qpram/blk_mem                                                                                                                                                                           |     0.029 |
+|           U0                                                                                                                                                                                               |     0.029 |
+|             inst_blk_mem_gen                                                                                                                                                                               |     0.029 |
+|               gnativebmg.native_blk_mem_gen                                                                                                                                                                |     0.029 |
+|                 valid.cstr                                                                                                                                                                                 |     0.029 |
+|                   has_mux_a.A                                                                                                                                                                              |    <0.001 |
+|                   ramloop[0].ram.r                                                                                                                                                                         |     0.003 |
 |                     v6_noinit.ram                                                                                                                                                                          |     0.003 |
-|                   ramloop[11].ram.r                                                                                                                                                                        |     0.003 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.003 |
-|                   ramloop[1].ram.r                                                                                                                                                                         |     0.003 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.003 |
-|                   ramloop[3].ram.r                                                                                                                                                                         |     0.000 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.000 |
-|                   ramloop[6].ram.r                                                                                                                                                                         |     0.003 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.003 |
-|                   ramloop[8].ram.r                                                                                                                                                                         |     0.000 |
-|                     v6_noinit.ram                                                                                                                                                                          |     0.000 |
+|                   ramloop[10].ram.r                                                                                                                                                                        |     0.006 |
+|                     v6_noinit.ram                                                                                                                                                                          |     0.006 |
+|                   ramloop[11].ram.r                                                                                                                                                                        |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[12].ram.r                                                                                                                                                                        |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[13].ram.r                                                                                                                                                                        |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[1].ram.r                                                                                                                                                                         |     0.006 |
+|                     v6_noinit.ram                                                                                                                                                                          |     0.006 |
+|                   ramloop[2].ram.r                                                                                                                                                                         |     0.006 |
+|                     v6_noinit.ram                                                                                                                                                                          |     0.006 |
+|                   ramloop[3].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[4].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[5].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[6].ram.r                                                                                                                                                                         |     0.006 |
+|                     v6_noinit.ram                                                                                                                                                                          |     0.006 |
+|                   ramloop[7].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[8].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|                   ramloop[9].ram.r                                                                                                                                                                         |    <0.001 |
+|                     v6_noinit.ram                                                                                                                                                                          |    <0.001 |
+|         inst/s1/my_qpram/clk2                                                                                                                                                                              |     0.125 |
+|           inst                                                                                                                                                                                             |     0.125 |
 |       axi_mem_intercon                                                                                                                                                                                     |     0.002 |
 |         s00_couplers/auto_pc                                                                                                                                                                               |     0.002 |
 |           inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm/RAM_reg_0_31_0_0 |    <0.001 |
-|       axi_vdma_0                                                                                                                                                                                           |     0.020 |
-|         U0                                                                                                                                                                                                 |     0.020 |
+|       axi_vdma_0                                                                                                                                                                                           |     0.021 |
+|         U0                                                                                                                                                                                                 |     0.021 |
 |       axis_subset_converter_0                                                                                                                                                                              |     0.000 |
 |       gnd                                                                                                                                                                                                  |     0.000 |
 |       proc_sys_reset                                                                                                                                                                                       |    <0.001 |
@@ -214,8 +231,8 @@ Table of Contents
 |           obsn2pxgzhumx0nx0152iocfizz5cdi3mtn5yq2gbeseam                                                                                                                                                   |    <0.001 |
 |           obsnbeireagdzmj4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54nxhzxb                                                               |    <0.001 |
 |           obsnbeireagdzmj4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54ohxzy5                                                               |    <0.001 |
-|       v_rgb2ycrcb_0                                                                                                                                                                                        |     0.010 |
-|         U0                                                                                                                                                                                                 |     0.010 |
+|       v_rgb2ycrcb_0                                                                                                                                                                                        |     0.009 |
+|         U0                                                                                                                                                                                                 |     0.009 |
 |           obsairqfyybeiid4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54nxhzxb                                                               |    <0.001 |
 |           obsairqfyybeiid4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54ohxzy5                                                               |    <0.001 |
 |           obsairqfyybeiid4jtr52igusp4ehcbvgcheit4ehfl12maatr15cdjqac5auxm                                                                                                                                  |    <0.001 |
@@ -228,9 +245,9 @@ Table of Contents
 |           obsnirqfyybeiid4jtr52igusp4ehac2r4edpykictx2io2putxm1pw1zrtpvgzjzpyq2mcddp4ehkqq0eiqcmjhhfcpureeyssiiusoj5cdjqim5eiqn4nptn54npth                                                                 |    <0.001 |
 |           obsnirqfyybeiid4jtr52igusp4ehac2r4hfcp2febj14ehoglnh5jhozw5nxtdg5knsts5rbyyegg52iovbbuiraeysooke5jcijrfeqrje2t4egtaqz4ira1205g1521optob                                                          |    <0.001 |
 |           obsnirqfyybeiid4jtr52igusp4ehac2r4hfcp2febj14ehoglnh5jhozw5nxtdg5knsts5rbyyegg52iovbbuiraeysooke5jcijrfeqrje2t4egtaqz4ira1205g1521rptrn                                                          |    <0.001 |
-|           obsnirqfyybeiid4jtr52igusp4ehcbvgcheit4ehfl12maatp4egtcqwt5aezb                                                                                                                                  |     0.001 |
-|       v_tc_0                                                                                                                                                                                               |     0.018 |
-|         U0                                                                                                                                                                                                 |     0.018 |
+|           obsnirqfyybeiid4jtr52igusp4ehcbvgcheit4ehfl12maatp4egtcqwt5aezb                                                                                                                                  |    <0.001 |
+|       v_tc_0                                                                                                                                                                                               |     0.019 |
+|         U0                                                                                                                                                                                                 |     0.019 |
 |       vcc                                                                                                                                                                                                  |     0.000 |
 |       zed_hdmi_out_0                                                                                                                                                                                       |    <0.001 |
 |     zed_hdmi_iic_0                                                                                                                                                                                         |     0.002 |

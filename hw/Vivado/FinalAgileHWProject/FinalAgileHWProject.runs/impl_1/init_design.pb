@@ -7,15 +7,20 @@ a
 &Design is defaulting to constrset: %s
 434*	planAhead2
 	constrs_12default:defaultZ12-434
-∂
+¬
 -Reading design checkpoint '%s' for cell '%s'
-275*project2ò
-É/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/sdpram30x15360_synth_1/sdpram30x15360.dcp2default:default2S
-?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ1-454
+275*project2ù
+à/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.dcp2default:default2Z
+FFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem2default:defaultZ1-454
+Ø
+-Reading design checkpoint '%s' for cell '%s'
+275*project2ç
+y/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ1-454
 ]
 -Analyzing %s Unisim elements for replacement
 17*netlist2
-552default:defaultZ29-17
+562default:defaultZ29-17
 a
 2Unisim Transformation completed in %s CPU seconds
 28*netlist2
@@ -48,6 +53,10 @@ P/opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/clg484/Package.xm
 Loading io standards from %s
 15*device2V
 B/opt/Xilinx/Vivado/2013.3/data/./parts/xilinx/zynq/IOStandards.xml2default:defaultZ21-15
+Õ
+NRemoving redundant IBUF since it is not being driven by a top-level port. %s 
+32*opt2i
+UFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/clkin1_ibufg2default:defaultZ31-32
 ^
 1Inserted %s IBUFs to IO ports without IO buffers.100*opt2
 02default:defaultZ31-140
@@ -58,6 +67,15 @@ C
 Pushed %s inverter(s).
 98*opt2
 02default:defaultZ31-138
+Ã
+úCould not create '%s' constraint because net '%s' is not directly connected to top level port. '%s' is ignored by %s but preserved for implementation tool.
+528*constraints2 
+IBUF_LOW_PWR2default:default2a
+KFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/clk_in12default:default2 
+IBUF_LOW_PWR2default:default2
+Vivado2default:default2¨
+ï/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0.edf2default:default2
+3112default:default8@Z18-550
 _
  Attempting to get a license: %s
 78*common2&
@@ -66,16 +84,62 @@ _
 Failed to get a license: %s
 295*common2&
 Internal_bitstream2default:defaultZ17-301
-œ
+’
 $Parsing XDC File [%s] for cell '%s'
-848*designutils2µ
-†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360_early.xdc2default:default2S
-?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-848
-ÿ
+848*designutils2¥
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_2/blk_mem_gen_0_early.xdc2default:default2Z
+FFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem2default:defaultZ20-848
+ﬁ
 -Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2µ
-†/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360_early.xdc2default:default2S
-?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-847
+847*designutils2¥
+ü/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_2/blk_mem_gen_0_early.xdc2default:default2Z
+FFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem2default:defaultZ20-847
+Œ
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2∞
+õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0_board.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-848
+◊
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2∞
+õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0_board.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-847
+Œ
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2∞
+õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0_early.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-848
+Ø
+~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
+1399*	planAhead2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2'
+[get_ports clk_in1]2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+552default:default8@Z12-1399
+Ø
+~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
+1399*	planAhead2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2'
+[get_ports clk_in1]2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:default2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+562default:default8@Z12-1399
+Ù
+%Done setting XDC timing constraints.
+35*timing2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+562default:default8@Z38-35
+Á
+Deriving generated clocks
+2*timing2ó
+Ä/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xdc2default:default2
+562default:default8@Z38-2
+◊
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2∞
+õ/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0_early.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-847
 ÷
 $Parsing XDC File [%s] for cell '%s'
 848*designutils2‘
@@ -1564,6 +1628,11 @@ XCannot set property '%s', because the property does not exist for objects of ty
 'FinalDesign_i/processing_system7_0/inst2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1522default:default8@Z12-1399
+÷
+ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
+14*common2"
+Vivado 12-13992default:default2
+1002default:defaultZ17-14
 õ
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2
@@ -1571,14 +1640,6 @@ XCannot set property '%s', because the property does not exist for objects of ty
 pin2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1522default:default8@Z29-69
-π
-~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
-1399*	planAhead2;
-'FinalDesign_i/processing_system7_0/inst2default:default2)
-[get_ports {MIO[34]}]2default:default2;
-'FinalDesign_i/processing_system7_0/inst2default:default2÷
-ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
-1532default:default8@Z12-1399
 ú
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2
@@ -1586,19 +1647,6 @@ XCannot set property '%s', because the property does not exist for objects of ty
 pin2default:default2÷
 ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
 1532default:default8@Z29-69
-π
-~There are no top level ports directly connected to pins of cell '%s', returning the pins matched for query '%s' of cell '%s'.
-1399*	planAhead2;
-'FinalDesign_i/processing_system7_0/inst2default:default2)
-[get_ports {MIO[34]}]2default:default2;
-'FinalDesign_i/processing_system7_0/inst2default:default2÷
-ø/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc2default:default2
-1542default:default8@Z12-1399
-÷
-ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
-14*common2"
-Vivado 12-13992default:default2
-1002default:defaultZ17-14
 §
 XCannot set property '%s', because the property does not exist for objects of type '%s'.
 69*netlist2!
@@ -1661,11 +1709,6 @@ $Parsing XDC File [%s] for cell '%s'
 848*designutils2æ
 ©/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xdc2default:default20
 FinalDesign_i/clk_wiz_0/inst2default:defaultZ20-848
-ù
-%Done setting XDC timing constraints.
-35*timing2¿
-©/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xdc2default:default2
-562default:default8@Z38-35
 ê
 Deriving generated clocks
 2*timing2¿
@@ -1798,21 +1841,31 @@ $Parsing XDC File [%s] for cell '%s'
 È
 Parsing XDC File [%s]
 179*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-179
 Ú
 Finished Parsing XDC File [%s]
 178*designutils2≤
-ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
-…
+ù/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp/FinalDesign_wrapper.xdc2default:defaultZ20-178
+œ
 $Parsing XDC File [%s] for cell '%s'
-848*designutils2Ø
-ö/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360.xdc2default:default2S
-?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-848
-“
+848*designutils2Æ
+ô/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_2/blk_mem_gen_0.xdc2default:default2Z
+FFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem2default:defaultZ20-848
+ÿ
 -Finished Parsing XDC File [%s] for cell '%s'
-847*designutils2Ø
-ö/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-11786-agilehw-laptop/dcp_2/sdpram30x15360.xdc2default:default2S
-?FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_sdpram2default:defaultZ20-847
+847*designutils2Æ
+ô/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_2/blk_mem_gen_0.xdc2default:default2Z
+FFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem2default:defaultZ20-847
+»
+$Parsing XDC File [%s] for cell '%s'
+848*designutils2™
+ï/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-848
+—
+-Finished Parsing XDC File [%s] for cell '%s'
+847*designutils2™
+ï/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-18343-agilehw-laptop/dcp_3/clk_wiz_0.xdc2default:default2W
+CFinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk22default:defaultZ20-847
 õ
 }Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
 663*designutilsZ20-663
@@ -1833,9 +1886,9 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2!
 link_design: 2default:default2
 00:00:502default:default2
-00:00:512default:default2
-872.7032default:default2
-412.7542default:defaultZ17-268
+00:00:502default:default2
+874.7932default:default2
+414.8402default:defaultZ17-268
 
 
 End Record

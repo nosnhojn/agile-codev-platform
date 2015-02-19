@@ -1,0 +1,1109 @@
+#-----------------------------------------------------------
+# Vivado v2013.3
+# SW Build 329390 on Wed Oct 16 18:28:36 MDT 2013
+# IP Build 192953 on Wed Oct 16 08:44:02 MDT 2013
+# Start of session at: Wed Feb 18 22:28:39 2015
+# Process ID: 16930
+# Log file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/FinalDesign_wrapper.rdi
+# Journal file: /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: Implementation
+INFO: [Common 17-81] Feature available: Implementation
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/Vivado/2013.3/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/Vivado/2013.3/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/Vivado/2013.3/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+source FinalDesign_wrapper.tcl -notrace
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Project 1-454] Reading design checkpoint '/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.dcp' for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem'
+INFO: [Project 1-454] Reading design checkpoint '/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/ip/clk_wiz_0_0/clk_wiz_0.dcp' for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+INFO: [Netlist 29-17] Analyzing 56 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2013.3
+Loading clock regions from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/ClockBuffers.xml
+Loading clock placement rules from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/ClockPlacerRules.xml
+Loading package pin functions from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/PinFunctions.xml...
+Loading package from /opt/Xilinx/Vivado/2013.3/data/parts/xilinx/zynq/zynq/xc7z020/clg484/Package.xml
+Loading io standards from /opt/Xilinx/Vivado/2013.3/data/./parts/xilinx/zynq/IOStandards.xml
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/inst/clkin1_ibufg 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2/clk_in1' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored by Vivado but preserved for implementation tool. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0.edf:294]
+INFO: [Common 17-78] Attempting to get a license: Internal_bitstream
+WARNING: [Common 17-301] Failed to get a license: Internal_bitstream
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_2/blk_mem_gen_0_early.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_2/blk_mem_gen_0_early.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0_board.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0_board.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0_early.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2', returning the pins matched for query '[get_ports clk_in1]' of cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'. [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0.xdc:55]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2', returning the pins matched for query '[get_ports clk_in1]' of cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'. [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0.xdc:56]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0.xdc:56]
+INFO: [Timing 38-2] Deriving generated clocks [/home/agilehw/agile-codev-platform/hw/Vivado/clk_wiz/clk_wiz_0/clk_wiz_0.xdc:56]
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0_early.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc] for cell 'FinalDesign_i/processing_system7_0/inst'
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[53]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:36]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:36]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[53]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:37]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:37]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[53]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:38]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:38]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[53]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:39]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:39]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[53]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:40]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:40]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[52]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:42]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:42]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[52]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:43]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:43]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[52]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:44]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:44]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[52]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:45]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:45]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[52]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:46]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:46]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[51]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:48]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:48]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[51]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:49]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:49]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[51]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:50]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:50]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[51]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:51]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:51]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[51]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:52]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:52]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[50]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:54]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:54]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[50]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:55]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:55]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[50]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:56]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:56]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[50]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:57]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:57]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[50]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:58]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:58]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[49]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:60]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:60]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[49]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:61]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:61]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[49]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:62]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:62]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[49]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:63]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:63]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[49]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:64]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:64]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[48]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:66]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:66]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[48]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:67]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:67]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[48]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:68]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:68]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[48]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:69]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:69]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[48]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:70]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:70]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[47]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:72]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:72]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[47]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:73]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:73]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[47]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:74]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:74]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[47]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:75]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:75]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[47]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:76]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:76]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[46]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:78]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:78]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[46]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:79]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:79]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[46]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:80]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:80]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[46]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:81]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:81]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[46]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:82]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:82]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[45]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:84]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:84]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[45]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:85]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:85]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[45]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:86]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:86]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[45]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:87]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:87]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[45]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:88]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:88]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[44]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:90]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:90]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[44]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:91]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:91]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[44]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:92]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:92]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[44]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:93]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:93]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[44]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:94]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:94]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[43]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:96]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:96]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[43]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:97]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:97]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[43]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:98]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:98]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[43]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:99]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:99]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[43]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:100]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:100]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[42]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:102]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:102]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[42]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:103]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:103]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[42]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:104]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:104]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[42]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:105]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:105]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[42]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:106]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:106]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[41]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:108]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:108]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[41]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:109]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:109]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[41]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:110]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:110]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[41]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:111]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:111]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[41]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:112]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:112]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[40]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:114]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:114]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[40]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:115]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:115]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[40]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:116]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:116]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[40]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:117]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:117]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[40]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:118]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:118]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[39]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:120]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:120]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[39]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:121]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:121]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[39]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:122]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:122]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[39]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:123]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:123]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[39]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:124]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:124]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[38]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:126]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:126]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[38]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:127]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:127]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[38]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:128]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:128]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[38]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:129]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:129]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[38]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:130]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:130]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[37]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:132]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:132]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[37]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:133]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:133]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[37]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:134]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:134]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[37]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:135]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:135]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[37]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:136]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:136]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[36]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:138]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:138]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[36]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:139]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:139]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[36]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:140]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:140]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[36]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:141]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:141]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[36]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:142]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:142]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[35]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:144]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:144]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[35]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:145]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:145]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[35]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:146]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:146]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[35]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:147]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:147]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[35]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:148]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:148]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[34]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:150]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'iostandard', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:150]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[34]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:151]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PACKAGE_PIN', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:151]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Vivado 12-1399] There are no top level ports directly connected to pins of cell 'FinalDesign_i/processing_system7_0/inst', returning the pins matched for query '[get_ports {MIO[34]}]' of cell 'FinalDesign_i/processing_system7_0/inst'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:152]
+Resolution: The get_ports call is being converted to a get_pins call as there is no direct connection to a top level port. This could be due to the insertion of IO Buffers between the top level terminal and cell pin. If the goal is to apply constraints that will migrate to top level ports it is required that IO Buffers manually be instanced.
+INFO: [Common 17-14] Message 'Vivado 12-1399' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'slew', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:152]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'drive', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:153]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+CRITICAL WARNING: [Netlist 29-69] Cannot set property 'PIO_DIRECTION', because the property does not exist for objects of type 'pin'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc:154]
+Resolution: Modify .xdc or RTL to not set this property or move it to a cell that can accept this property
+INFO: [Common 17-14] Message 'Netlist 29-69' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_processing_system7_0_1/FinalDesign_processing_system7_0_1.xdc] for cell 'FinalDesign_i/processing_system7_0/inst'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/FinalDesign_axi_iic_0_1_board.xdc] for cell 'FinalDesign_i/zed_hdmi_iic_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_iic_0_1/FinalDesign_axi_iic_0_1_board.xdc] for cell 'FinalDesign_i/zed_hdmi_iic_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_1/FinalDesign_proc_sys_reset_1_board.xdc] for cell 'FinalDesign_i/proc_sys_reset/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_1/FinalDesign_proc_sys_reset_1_board.xdc] for cell 'FinalDesign_i/proc_sys_reset/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_1/FinalDesign_proc_sys_reset_1.xdc] for cell 'FinalDesign_i/proc_sys_reset/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_1/FinalDesign_proc_sys_reset_1.xdc] for cell 'FinalDesign_i/proc_sys_reset/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0_board.xdc] for cell 'FinalDesign_i/clk_wiz_0/inst'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0_board.xdc] for cell 'FinalDesign_i/clk_wiz_0/inst'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xdc] for cell 'FinalDesign_i/clk_wiz_0/inst'
+INFO: [Timing 38-2] Deriving generated clocks [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xdc:56]
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_clk_wiz_0_0/FinalDesign_clk_wiz_0_0.xdc] for cell 'FinalDesign_i/clk_wiz_0/inst'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/FinalDesign_axi_vdma_0_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/axi_vdma_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/FinalDesign_axi_vdma_0_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/axi_vdma_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_2/FinalDesign_proc_sys_reset_2_board.xdc] for cell 'FinalDesign_i/zed_hdmi_display/proc_sys_reset/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_2/FinalDesign_proc_sys_reset_2_board.xdc] for cell 'FinalDesign_i/zed_hdmi_display/proc_sys_reset/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_2/FinalDesign_proc_sys_reset_2.xdc] for cell 'FinalDesign_i/zed_hdmi_display/proc_sys_reset/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_proc_sys_reset_2/FinalDesign_proc_sys_reset_2.xdc] for cell 'FinalDesign_i/zed_hdmi_display/proc_sys_reset/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc]
+WARNING: [Vivado 12-508] No pins matched 'tutorial_i/clk_wiz_0/U0/mmcm_adv_inst/CLKOUT0'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc:101]
+CRITICAL WARNING: [Vivado 12-1387] No valid object(s) found for create_generated_clock constraint with option 'objects'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc:101]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object.
+WARNING: [Vivado 12-627] No clocks matched 'hdmio_clk'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc:107]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc:107]
+CRITICAL WARNING: [Vivado 12-1387] No valid object(s) found for set_clock_groups constraint with option 'group'. [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc:107]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object.
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/constrs_1/imports/constraints/zedboard_hdmi_display.xdc]
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/FinalDesign_axi_vdma_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/axi_vdma_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_axi_vdma_0_0/FinalDesign_axi_vdma_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/axi_vdma_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/FinalDesign_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_axi4s_vid_out_0_0/FinalDesign_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_axi4s_vid_out_0/inst'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/FinalDesign_v_cresample_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_cresample_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_cresample_0_0/FinalDesign_v_cresample_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_cresample_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/FinalDesign_v_rgb2ycrcb_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_rgb2ycrcb_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_rgb2ycrcb_0_0/FinalDesign_v_rgb2ycrcb_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_rgb2ycrcb_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_tc_0/U0'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.srcs/sources_1/bd/FinalDesign/ip/FinalDesign_v_tc_0_0/FinalDesign_v_tc_0_0_clocks.xdc] for cell 'FinalDesign_i/zed_hdmi_display/v_tc_0/U0'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp/FinalDesign_wrapper.xdc]
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp/FinalDesign_wrapper.xdc]
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_2/blk_mem_gen_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_2/blk_mem_gen_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem'
+Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+Finished Parsing XDC File [/home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/.Xil/Vivado-16930-agilehw-laptop/dcp_3/clk_wiz_0.xdc] for cell 'FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/clk2'
+INFO: [Designutils 20-663] Invalid constraints found, use command 'write_xdc -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Memdata 28-143] Successfully populated the BRAM INIT strings from the following elf files: 
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 22 instances were transformed.
+  IOBUF => IOBUF (OBUFT, IBUF): 2 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 18 instances
+  RAM32X1D => RAM32X1D (RAMD32, RAMD32): 1 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 1 instances
+
+link_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:55 . Memory (MB): peak = 874.797 ; gain = 414.840
+Command: opt_design
+INFO: [Common 17-347] Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [Drc 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:00.58 ; elapsed = 00:00:00.72 . Memory (MB): peak = 876.797 ; gain = 2.000
+
+Starting Logic Optimization Task
+Logic Optimization | Checksum: 4ccf7f8c
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: ecb6fe69
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 877.797 ; gain = 1.000
+
+Phase 2 Constant Propagation
+INFO: [Opt 31-138] Pushed 4 inverter(s).
+INFO: [Opt 31-10] Eliminated 321 cells.
+Phase 2 Constant Propagation | Checksum: 8c5bc8ed
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 877.797 ; gain = 1.000
+
+Phase 3 Sweep
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[0].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[100].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[101].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[102].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[103].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[104].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[105].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[106].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[107].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[108].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[109].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[10].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[110].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[111].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[112].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[113].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[114].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[115].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[116].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[117].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[118].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[119].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[11].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[12].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[13].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[14].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[15].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[16].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[17].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[18].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[19].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[1].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[20].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[21].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[22].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[23].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[24].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[25].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[26].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[27].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[28].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[29].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[2].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[30].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[31].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[32].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[33].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[34].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[35].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[36].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[37].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[38].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[39].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[3].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[40].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[41].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[42].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[43].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[44].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[45].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[46].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[47].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[48].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[49].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[4].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[50].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[51].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[52].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[53].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[54].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[55].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[56].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[57].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[58].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[59].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[5].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[60].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[61].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[62].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[63].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[64].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[65].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[66].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[67].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[68].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[69].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[6].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[70].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[71].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[72].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[73].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[74].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[75].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[76].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[77].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[78].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[79].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[7].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[80].
+WARNING: [Opt 31-6] Deleting driverless net: FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/dinb[81].
+INFO: [Common 17-14] Message 'Opt 31-6' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Opt 31-12] Eliminated 1854 unconnected nets.
+INFO: [Opt 31-11] Eliminated 459 unconnected cells.
+Phase 3 Sweep | Checksum: 25d8ab1f
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 877.797 ; gain = 1.000
+Ending Logic Optimization Task | Checksum: 25d8ab1f
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 877.797 ; gain = 1.000
+Implement Debug Cores | Checksum: 4ccf7f8c
+
+Starting Power Optimization Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 1 BRAM(s) out of a total of 17 was updated to NO_CHANGE to save power.
+    Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 5 Total Ports: 34
+Ending Power Optimization Task | Checksum: 843716ea
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 925.223 ; gain = 47.426
+INFO: [Common 17-83] Releasing license: Implementation
+134 Infos, 105 Warnings, 102 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:20 . Memory (MB): peak = 925.223 ; gain = 50.426
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.33 ; elapsed = 00:00:00.33 . Memory (MB): peak = 925.227 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 925.227 ; gain = 0.004
+Command: place_design
+INFO: [Common 17-347] Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command place_design
+INFO: [Drc 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.1 Mandatory Logic Optimization
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 925.227 ; gain = 0.000
+Phase 1.1 Mandatory Logic Optimization | Checksum: f2c40a60
+
+Time (s): cpu = 00:00:00.73 ; elapsed = 00:00:00.85 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.2 Build Super Logic Region (SLR) Database
+Phase 1.2 Build Super Logic Region (SLR) Database | Checksum: f2c40a60
+
+Time (s): cpu = 00:00:00.75 ; elapsed = 00:00:00.87 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.3 Add Constraints
+Phase 1.3 Add Constraints | Checksum: f2c40a60
+
+Time (s): cpu = 00:00:00.75 ; elapsed = 00:00:00.88 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.4 Build Macros
+Phase 1.4 Build Macros | Checksum: 1a16139eb
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.5 Routing Based Site Exclusion
+Phase 1.5 Routing Based Site Exclusion | Checksum: 1a16139eb
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.6 Implementation Feasibility check
+Phase 1.6 Implementation Feasibility check | Checksum: 1a16139eb
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.7 Pre-Place Cells
+Phase 1.7 Pre-Place Cells | Checksum: 1a16139eb
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 925.227 ; gain = 0.000
+
+Phase 1.8 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.8 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1a16139eb
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 933.227 ; gain = 8.000
+
+Phase 1.9 Build Placer Netlist Model
+
+Phase 1.9.1 Place Init Design
+
+Phase 1.9.1.1 Build Clock Data
+Phase 1.9.1.1 Build Clock Data | Checksum: 17a2cf370
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 933.227 ; gain = 8.000
+Phase 1.9.1 Place Init Design | Checksum: ae565cc5
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 933.227 ; gain = 8.000
+Phase 1.9 Build Placer Netlist Model | Checksum: ae565cc5
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 933.227 ; gain = 8.000
+
+Phase 1.10 Constrain Clocks/Macros
+
+Phase 1.10.1 Constrain Global/Regional Clocks
+Phase 1.10.1 Constrain Global/Regional Clocks | Checksum: 484f153e
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 933.227 ; gain = 8.000
+Phase 1.10 Constrain Clocks/Macros | Checksum: 484f153e
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 933.227 ; gain = 8.000
+Phase 1 Placer Initialization | Checksum: 484f153e
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 933.227 ; gain = 8.000
+
+Phase 2 Global Placement
+Phase 2 Global Placement | Checksum: 103cc34e3
+
+Time (s): cpu = 00:01:32 ; elapsed = 00:01:01 . Memory (MB): peak = 945.039 ; gain = 19.812
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 103cc34e3
+
+Time (s): cpu = 00:01:32 ; elapsed = 00:01:01 . Memory (MB): peak = 945.039 ; gain = 19.812
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1e082aa5d
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:01:06 . Memory (MB): peak = 949.047 ; gain = 23.820
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 1353bfc61
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:01:06 . Memory (MB): peak = 949.047 ; gain = 23.820
+
+Phase 3.4 Timing Path Optimizer
+Phase 3.4 Timing Path Optimizer | Checksum: 16d1f0ba6
+
+Time (s): cpu = 00:01:42 ; elapsed = 00:01:08 . Memory (MB): peak = 950.453 ; gain = 25.227
+
+Phase 3.5 Commit Small Macros & Core Logic
+Phase 3.5 Commit Small Macros & Core Logic | Checksum: 11b903946
+
+Time (s): cpu = 00:01:47 ; elapsed = 00:01:13 . Memory (MB): peak = 958.457 ; gain = 33.230
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 11b903946
+
+Time (s): cpu = 00:01:48 ; elapsed = 00:01:14 . Memory (MB): peak = 958.457 ; gain = 33.230
+Phase 3 Detail Placement | Checksum: 11b903946
+
+Time (s): cpu = 00:01:48 ; elapsed = 00:01:14 . Memory (MB): peak = 958.457 ; gain = 33.230
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Placement Timing Optimization
+
+Phase 4.1.1 Restore Best Placement
+Phase 4.1.1 Restore Best Placement | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:38 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.1.2 updateTiming after Restore Best Placement
+Phase 4.1.2 updateTiming after Restore Best Placement | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+Phase 4.1 Post Placement Timing Optimization | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Congestion Reporting
+Phase 4.3.1 Congestion Reporting | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.3.2 Dump Critical Paths 
+Phase 4.3.2 Dump Critical Paths  | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.3.3 Restore STA
+Phase 4.3.3 Restore STA | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:39 . Memory (MB): peak = 962.863 ; gain = 37.637
+
+Phase 4.3.4 Print Final WNS
+INFO: [Place 30-100] Post Placement Timing Summary | WNS=-5.732 | TNS=-1012.039|
+
+Phase 4.3.4 Print Final WNS | Checksum: 982a8d41
+
+Time (s): cpu = 00:03:24 ; elapsed = 00:02:45 . Memory (MB): peak = 967.270 ; gain = 42.043
+Phase 4.3 Placer Reporting | Checksum: 8e5d93ed
+
+Time (s): cpu = 00:03:25 ; elapsed = 00:02:46 . Memory (MB): peak = 967.270 ; gain = 42.043
+
+Phase 4.4 Final Placement Cleanup
+Phase 4.4 Final Placement Cleanup | Checksum: f2d4f34f
+
+Time (s): cpu = 00:03:25 ; elapsed = 00:02:46 . Memory (MB): peak = 967.270 ; gain = 42.043
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: f2d4f34f
+
+Time (s): cpu = 00:03:25 ; elapsed = 00:02:46 . Memory (MB): peak = 967.270 ; gain = 42.043
+Ending Placer Task | Checksum: a2be2901
+
+Time (s): cpu = 00:03:25 ; elapsed = 00:02:46 . Memory (MB): peak = 967.270 ; gain = 42.043
+INFO: [Common 17-83] Releasing license: Implementation
+145 Infos, 105 Warnings, 102 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:03:26 ; elapsed = 00:02:47 . Memory (MB): peak = 967.270 ; gain = 42.043
+INFO: [Timing 38-163] DEBUG : Generate clock report | CPU: 0.75 secs 
+
+report_utilization: Time (s): cpu = 00:00:00.34 ; elapsed = 00:00:00.39 . Memory (MB): peak = 969.270 ; gain = 0.000
+INFO: [Designutils 20-134] DEBUG : Generate Control Sets report | CPU: 0.21 secs 
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 970.676 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 970.680 ; gain = 1.410
+Command: route_design
+INFO: [Common 17-347] Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [Drc 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+
+Starting Route Task
+
+Phase 1 Build RT Design
+
+Phase 1.1 Build Netlist & NodeGraph (MT)
+Phase 1.1 Build Netlist & NodeGraph (MT) | Checksum: 108c57088
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:38 . Memory (MB): peak = 1058.809 ; gain = 88.129
+Phase 1 Build RT Design | Checksum: 9383b2f1
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:38 . Memory (MB): peak = 1058.809 ; gain = 88.129
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 9383b2f1
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:38 . Memory (MB): peak = 1058.812 ; gain = 88.133
+
+Phase 2.2 Restore Routing
+Phase 2.2 Restore Routing | Checksum: 9383b2f1
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:39 . Memory (MB): peak = 1062.809 ; gain = 92.129
+
+Phase 2.3 Special Net Routing
+ Number of Nodes with overlaps = 0
+Phase 2.3 Special Net Routing | Checksum: 1040788b7
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:40 . Memory (MB): peak = 1086.496 ; gain = 115.816
+
+Phase 2.4 Local Clock Net Routing
+Phase 2.4 Local Clock Net Routing | Checksum: 1040788b7
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:40 . Memory (MB): peak = 1086.496 ; gain = 115.816
+
+Phase 2.5 Update Timing
+
+Phase 2.5.1 Update timing with NCN CRPR
+
+Phase 2.5.1.1 Hold Budgeting
+Phase 2.5.1.1 Hold Budgeting | Checksum: 1040788b7
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:47 . Memory (MB): peak = 1086.496 ; gain = 115.816
+Phase 2.5.1 Update timing with NCN CRPR | Checksum: 1040788b7
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:47 . Memory (MB): peak = 1086.496 ; gain = 115.816
+Phase 2.5 Update Timing | Checksum: 1040788b7
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:47 . Memory (MB): peak = 1086.496 ; gain = 115.816
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-6.73  | TNS=-1.28e+03| WHS=-0.803 | THS=-203   |
+
+
+Phase 2.6 Budgeting
+Phase 2.6 Budgeting | Checksum: 1040788b7
+
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:53 . Memory (MB): peak = 1086.496 ; gain = 115.816
+Phase 2 Router Initialization | Checksum: 1040788b7
+
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:53 . Memory (MB): peak = 1086.496 ; gain = 115.816
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: e26382cd
+
+Time (s): cpu = 00:01:47 ; elapsed = 00:01:12 . Memory (MB): peak = 1100.496 ; gain = 129.816
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+
+Phase 4.1.1 Remove Overlaps
+ Number of Nodes with overlaps = 669
+ Number of Nodes with overlaps = 67
+ Number of Nodes with overlaps = 18
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+INFO: [Route 35-325] The following overlapped node exist in the design and there is low overall congestion. 
+Resolution: Check for routing resource conflicts on the identified nets or significant localized congestion using the Route Congestion Metrics in the Device View. 
+1. INT_L_X28Y121/IMUX_L36
+Overlapping nets: 2
+	FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/U0/inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v6_noinit.ram/DOADO[3]
+	FinalDesign_i/zed_hdmi_display/agileHWBlock_0/inst/s1/my_qpram/blk_mem/U0/inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v6_noinit.ram/DOADO[3]
+
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+Phase 4.1.1 Remove Overlaps | Checksum: f0a0dc27
+
+Time (s): cpu = 00:07:15 ; elapsed = 00:04:47 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 4.1.2 Update Timing
+Phase 4.1.2 Update Timing | Checksum: f0a0dc27
+
+Time (s): cpu = 00:07:18 ; elapsed = 00:04:48 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-8.24  | TNS=-1.71e+03| WHS=N/A    | THS=N/A    |
+
+
+Phase 4.1.3 collectNewHoldAndFix
+Phase 4.1.3 collectNewHoldAndFix | Checksum: 123ec9056
+
+Time (s): cpu = 00:07:18 ; elapsed = 00:04:49 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 4.1.4 GlobIterForTiming
+
+Phase 4.1.4.1 Update Timing
+Phase 4.1.4.1 Update Timing | Checksum: 98f8cf25
+
+Time (s): cpu = 00:07:20 ; elapsed = 00:04:51 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 4.1.4.2 Fast Budgeting
+Phase 4.1.4.2 Fast Budgeting | Checksum: 98f8cf25
+
+Time (s): cpu = 00:07:21 ; elapsed = 00:04:52 . Memory (MB): peak = 1115.496 ; gain = 144.816
+Phase 4.1.4 GlobIterForTiming | Checksum: 1aa07f770
+
+Time (s): cpu = 00:07:27 ; elapsed = 00:04:58 . Memory (MB): peak = 1115.496 ; gain = 144.816
+Phase 4.1 Global Iteration 0 | Checksum: 1aa07f770
+
+Time (s): cpu = 00:07:27 ; elapsed = 00:04:58 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 4.2 Global Iteration 1
+
+Phase 4.2.1 Remove Overlaps
+ Number of Nodes with overlaps = 16
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+Phase 4.2.1 Remove Overlaps | Checksum: 1166ce549
+
+Time (s): cpu = 00:07:40 ; elapsed = 00:05:10 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 4.2.2 Update Timing
+Phase 4.2.2 Update Timing | Checksum: 1166ce549
+
+Time (s): cpu = 00:07:40 ; elapsed = 00:05:11 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-8.54  | TNS=-1.74e+03| WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 12e9e2732
+
+Time (s): cpu = 00:07:40 ; elapsed = 00:05:11 . Memory (MB): peak = 1115.496 ; gain = 144.816
+Phase 4 Rip-up And Reroute | Checksum: 12e9e2732
+
+Time (s): cpu = 00:07:40 ; elapsed = 00:05:11 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 5 Delay CleanUp
+
+Phase 5.1 Update Timing
+Phase 5.1 Update Timing | Checksum: 12e9e2732
+
+Time (s): cpu = 00:07:43 ; elapsed = 00:05:12 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-8.24  | TNS=-1.7e+03| WHS=N/A    | THS=N/A    |
+
+Phase 5 Delay CleanUp | Checksum: 4f42e3ba
+
+Time (s): cpu = 00:07:51 ; elapsed = 00:05:17 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Full Hold Analysis
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 4f42e3ba
+
+Time (s): cpu = 00:07:56 ; elapsed = 00:05:20 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-8.24  | TNS=-1.66e+03| WHS=-0.752 | THS=-16.8  |
+
+Phase 6.1 Full Hold Analysis | Checksum: 4f42e3ba
+
+Time (s): cpu = 00:07:56 ; elapsed = 00:05:20 . Memory (MB): peak = 1115.496 ; gain = 144.816
+Phase 6 Post Hold Fix | Checksum: 14df725e6
+
+Time (s): cpu = 00:08:01 ; elapsed = 00:05:24 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Router Utilization Summary
+  Global Vertical Wire Utilization    = 2.34208 %
+  Global Horizontal Wire Utilization  = 2.19261 %
+  Total Num Pips                      = 117900
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 1x1 Area, Max Cong = 54.0541%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 54.0541%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 52.9412%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 60.2941%, No Congested Regions.
+
+Phase 7 Verifying routed nets
+
+ Verification completed successfully
+Phase 7 Verifying routed nets | Checksum: 14df725e6
+
+Time (s): cpu = 00:08:01 ; elapsed = 00:05:24 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 8 Depositing Routes
+Phase 8 Depositing Routes | Checksum: b64b2faa
+
+Time (s): cpu = 00:08:03 ; elapsed = 00:05:26 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Phase 9 Post Router Timing
+INFO: [Route 35-20] Post Routing Timing Summary | WNS=-8.237 | TNS=-1720.873| WHS=0.055  | THS=0.000  |
+
+CRITICAL WARNING: [Route 35-39] The design did not meet timing requirements. Please run report_timing_summary for detailed reports.
+Resolution: Verify that the timing was met or had small violations at all previous steps (synthesis, placement, power_opt, and phys_opt). Run report_timing_summary and analyze individual timing paths.
+INFO: [Route 35-253] TNS is the sum of the worst slack violation on every endpoint in the design. Review the paths with the biggest WNS violations in the timing reports and modify your constraints or your design to improve both WNS and TNS.
+Phase 9 Post Router Timing | Checksum: b64b2faa
+
+Time (s): cpu = 00:08:13 ; elapsed = 00:05:31 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Route 35-16] Router Completed Successfully
+Ending Route Task | Checksum: b64b2faa
+
+Time (s): cpu = 00:08:13 ; elapsed = 00:05:31 . Memory (MB): peak = 1115.496 ; gain = 144.816
+
+Routing Is Done.
+
+Time (s): cpu = 00:08:13 ; elapsed = 00:05:31 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Common 17-83] Releasing license: Implementation
+163 Infos, 105 Warnings, 103 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:08:14 ; elapsed = 00:05:32 . Memory (MB): peak = 1115.496 ; gain = 144.816
+INFO: [Drc 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/agilehw/agile-codev-platform/hw/Vivado/FinalAgileHWProject/FinalAgileHWProject.runs/impl_1/FinalDesign_wrapper_drc_routed.rpt.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+report_power: Time (s): cpu = 00:00:35 ; elapsed = 00:00:25 . Memory (MB): peak = 1115.496 ; gain = 0.000
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max, Constraints type: SDC.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1115.500 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 18 22:39:27 2015...

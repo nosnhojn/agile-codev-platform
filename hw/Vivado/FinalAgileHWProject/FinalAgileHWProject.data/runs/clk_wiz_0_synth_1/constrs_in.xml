@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DARoots Version="1" Minor="30">
   <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0">
-    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
+    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0_0/clk_wiz_0.xci">
       <FileInfo>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>

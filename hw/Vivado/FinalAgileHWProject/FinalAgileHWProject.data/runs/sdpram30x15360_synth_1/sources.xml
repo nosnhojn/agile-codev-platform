@@ -3,6 +3,7 @@
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/sdpram30x15360">
     <File Path="$PSRCDIR/sources_1/ip/sdpram30x15360/sdpram30x15360.xci">
       <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
