@@ -161,10 +161,11 @@ module qpram_unit_test;
       for (int i=0; i<4; i+=1) begin
         readPort(0, MEM_DEPTH-1-i);
         step();
+        halfStep();
         expectReadData(0, testData >> P0_WIDTH*(4-1-i));
+        halfStep();
       end
     `SVTEST_END
-
   `SVUNIT_TESTS_END
  
  

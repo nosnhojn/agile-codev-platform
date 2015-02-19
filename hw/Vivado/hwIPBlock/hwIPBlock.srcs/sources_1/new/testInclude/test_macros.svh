@@ -4,11 +4,13 @@
 
 `define write_read_port_N_test(PORT) \
 `SVTEST(write_read_port_``PORT) \
-  writePort(PORT, 'h0, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
+  writePort(PORT, 'h5, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
   step(2); \
-  readPort(PORT, 'h0); \
+  readPort(PORT, 'h5); \
   step(); \
+  halfStep(); \
   expectReadData(PORT, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
+  halfStep(); \
 `SVTEST_END
 
 `define rdata_N_is_registered_test(PORT) \
@@ -35,7 +37,6 @@
 
 `define write_read_full_range(PORT) \
 `SVTEST(write_read_port_``PORT``_full_range) \
-  readPort(PORT, 58); \
   for (int i=0; i<MEM_DEPTH; i++) begin \
     writePort(PORT, i, i); \
     step(); \
@@ -43,6 +44,8 @@
   for (int i=0; i<MEM_DEPTH; i++) begin \
     readPort(PORT, i); \
     step(); \
+    halfStep(); \
     expectReadData(PORT, i); \
+    halfStep(); \
   end \
 `SVTEST_END

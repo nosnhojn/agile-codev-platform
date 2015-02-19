@@ -50,14 +50,10 @@ end
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     rst_i_n <= 0;
-    rdata_0 <= 0;
-    rdata_1 <= 0;
   end
 
   else begin
     rst_i_n <= 1;
-    rdata_0 <= rdata_0_i;
-    rdata_1 <= rdata_1_i;
   end
 end
 
@@ -91,33 +87,42 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 logic        wea;
-wire [QPRAM_PORT0_ADDR_WIDTH-1:0] addra;
+logic [QPRAM_PORT0_ADDR_WIDTH-1:0] addra;
 logic        web;
-wire [QPRAM_PORT1_ADDR_WIDTH-1:0]  addrb;
+logic [QPRAM_PORT1_ADDR_WIDTH-1:0]  addrb;
 logic read_cycle;
 
 always @(negedge rst_i_n or posedge clk_i) begin
   if (!rst_i_n) begin
-    read_cycle <= 1;
+    read_cycle <= 0;
     wea <= 0;
     web <= 0;
+
+    rdata_0 <= 0;
+    rdata_1 <= 0;
   end
 
   else begin
     read_cycle <= ~read_cycle;
     if (read_cycle) begin
-      wea <= wr_0_int;
-      web <= wr_1_int;
+      wea <= wr_0;
+      addra <= waddr_0;
+
+      web <= wr_1;
+      addrb <= waddr_1;
     end
     else begin
       wea <= 0;
+      addra <= raddr_0;
+
       web <= 0;
+      addrb <= raddr_1;
     end
+
+    rdata_0 <= rdata_0_i;
+    rdata_1 <= rdata_1_i;
   end
 end
-
-assign addra = (read_cycle) ? raddr_0 : waddr_0_int;
-assign addrb = (read_cycle) ? raddr_1 : waddr_1_int;
 
 blk_mem_gen_0 blk_mem
 (

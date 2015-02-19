@@ -13,11 +13,15 @@ task automatic step(int size = 1); \
     #(clkPeriod/2) clk <= ~clk; \
   end \
 endtask \
+task automatic halfStep(); \
+  int step_size = clkPeriod/2 - $time % (clkPeriod/2); \
+  #(step_size) clk <= ~clk; \
+endtask \
 task automatic waitStep(int size = 1); \
   repeat (size) @(posedge clk); \
 endtask \
 task nextSamplePoint(); \
-  if ($time%clkPeriod == 0) #1; \
+  if ($time%(clkPeriod/2) == 0) #1; \
   else repeat (2) #0; \
 endtask \
 task reset(); \
