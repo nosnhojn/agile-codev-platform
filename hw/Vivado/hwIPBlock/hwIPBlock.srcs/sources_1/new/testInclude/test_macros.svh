@@ -4,8 +4,11 @@
 
 `define write_read_port_N_test(PORT) \
 `SVTEST(write_read_port_``PORT) \
+  readPort(PORT, 'd4000); \
   writePort(PORT, 'h5, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
-  step(2); \
+  step(1); \
+  writePort(PORT, 'd4000, { 32'h00112233 , 32'h778899aa , 32'hbbccddee }); \
+  step(1); \
   readPort(PORT, 'h5); \
   step(); \
   halfStep(); \
