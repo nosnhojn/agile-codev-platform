@@ -26,6 +26,14 @@ logic [29:0] dina_b0;
 logic [29:0] douta_b0;
 logic [13:0] addra_b0;
 
+logic next_wea_b0;
+logic [29:0] next_dina_b0;
+logic [13:0] next_addra_b0;
+
+logic _wea_b0;
+logic [29:0] _dina_b0;
+logic [13:0] _addra_b0;
+
 logic web_b0;
 logic [119:0] dinb_b0;
 logic [119:0] doutb_b0;
@@ -35,6 +43,14 @@ logic wea_b1;
 logic [29:0] dina_b1;
 logic [29:0] douta_b1;
 logic [13:0] addra_b1;
+
+logic next_wea_b1;
+logic [29:0] next_dina_b1;
+logic [13:0] next_addra_b1;
+
+logic _wea_b1;
+logic [29:0] _dina_b1;
+logic [13:0] _addra_b1;
 
 logic web_b1;
 logic [119:0] dinb_b1;
@@ -46,6 +62,14 @@ logic [29:0] dina_b2;
 logic [29:0] douta_b2;
 logic [13:0] addra_b2;
 
+logic next_wea_b2;
+logic [29:0] next_dina_b2;
+logic [13:0] next_addra_b2;
+
+logic _wea_b2;
+logic [29:0] _dina_b2;
+logic [13:0] _addra_b2;
+
 logic web_b2;
 logic [119:0] dinb_b2;
 logic [119:0] doutb_b2;
@@ -55,6 +79,14 @@ logic wea_b3;
 logic [29:0] dina_b3;
 logic [29:0] douta_b3;
 logic [13:0] addra_b3;
+
+logic next_wea_b3;
+logic [29:0] next_dina_b3;
+logic [13:0] next_addra_b3;
+
+logic _wea_b3;
+logic [29:0] _dina_b3;
+logic [13:0] _addra_b3;
 
 logic web_b3;
 logic [119:0] dinb_b3;
@@ -66,6 +98,14 @@ logic [29:0] dina_b4;
 logic [29:0] douta_b4;
 logic [13:0] addra_b4;
 
+logic next_wea_b4;
+logic [29:0] next_dina_b4;
+logic [13:0] next_addra_b4;
+
+logic _wea_b4;
+logic [29:0] _dina_b4;
+logic [13:0] _addra_b4;
+
 logic web_b4;
 logic [119:0] dinb_b4;
 logic [119:0] doutb_b4;
@@ -75,6 +115,14 @@ logic wea_b5;
 logic [29:0] dina_b5;
 logic [29:0] douta_b5;
 logic [13:0] addra_b5;
+
+logic next_wea_b5;
+logic [29:0] next_dina_b5;
+logic [13:0] next_addra_b5;
+
+logic _wea_b5;
+logic [29:0] _dina_b5;
+logic [13:0] _addra_b5;
 
 logic web_b5;
 logic [119:0] dinb_b5;
@@ -86,6 +134,14 @@ logic [29:0] dina_b6;
 logic [29:0] douta_b6;
 logic [13:0] addra_b6;
 
+logic next_wea_b6;
+logic [29:0] next_dina_b6;
+logic [13:0] next_addra_b6;
+
+logic _wea_b6;
+logic [29:0] _dina_b6;
+logic [13:0] _addra_b6;
+
 logic web_b6;
 logic [119:0] dinb_b6;
 logic [119:0] doutb_b6;
@@ -95,6 +151,14 @@ logic wea_b7;
 logic [29:0] dina_b7;
 logic [29:0] douta_b7;
 logic [13:0] addra_b7;
+
+logic next_wea_b7;
+logic [29:0] next_dina_b7;
+logic [13:0] next_addra_b7;
+
+logic _wea_b7;
+logic [29:0] _dina_b7;
+logic [13:0] _addra_b7;
 
 logic web_b7;
 logic [119:0] dinb_b7;
@@ -123,6 +187,10 @@ always @* begin
   dina_b0 = 0;
   addra_b0 = 0;
 
+  next_wea_b0 = 0;
+  next_dina_b0 = 0;
+  next_addra_b0 = 0;
+
   web_b0 = 0;
   dinb_b0 = 0;
   addrb_b0 = 0;
@@ -130,6 +198,10 @@ always @* begin
   wea_b1 = 0;
   dina_b1 = 0;
   addra_b1 = 0;
+
+  next_wea_b1 = 0;
+  next_dina_b1 = 0;
+  next_addra_b1 = 0;
 
   web_b1 = 0;
   dinb_b1 = 0;
@@ -139,6 +211,10 @@ always @* begin
   dina_b2 = 0;
   addra_b2 = 0;
 
+  next_wea_b2 = 0;
+  next_dina_b2 = 0;
+  next_addra_b2 = 0;
+
   web_b2 = 0;
   dinb_b2 = 0;
   addrb_b2 = 0;
@@ -146,6 +222,10 @@ always @* begin
   wea_b3 = 0;
   dina_b3 = 0;
   addra_b3 = 0;
+
+  next_wea_b3 = 0;
+  next_dina_b3 = 0;
+  next_addra_b3 = 0;
 
   web_b3 = 0;
   dinb_b3 = 0;
@@ -155,6 +235,10 @@ always @* begin
   dina_b4 = 0;
   addra_b4 = 0;
 
+  next_wea_b4 = 0;
+  next_dina_b4 = 0;
+  next_addra_b4 = 0;
+
   web_b4 = 0;
   dinb_b4 = 0;
   addrb_b4 = 0;
@@ -162,6 +246,10 @@ always @* begin
   wea_b5 = 0;
   dina_b5 = 0;
   addra_b5 = 0;
+
+  next_wea_b5 = 0;
+  next_dina_b5 = 0;
+  next_addra_b5 = 0;
 
   web_b5 = 0;
   dinb_b5 = 0;
@@ -171,6 +259,10 @@ always @* begin
   dina_b6 = 0;
   addra_b6 = 0;
 
+  next_wea_b6 = 0;
+  next_dina_b6 = 0;
+  next_addra_b6 = 0;
+
   web_b6 = 0;
   dinb_b6 = 0;
   addrb_b6 = 0;
@@ -178,6 +270,10 @@ always @* begin
   wea_b7 = 0;
   dina_b7 = 0;
   addra_b7 = 0;
+
+  next_wea_b7 = 0;
+  next_dina_b7 = 0;
+  next_addra_b7 = 0;
 
   web_b7 = 0;
   dinb_b7 = 0;
@@ -207,49 +303,6 @@ always @* begin
     6 : rdata_1 = doutb_b6;
     7 : rdata_1 = doutb_b7;
   endcase
-
-  if (wr_0) begin
-    if (waddr_0 < BANK_SIZE_A) begin
-      wea_b0 = 1;
-      dina_b0 = wdata_0;
-      addra_b0 = waddr_0;
-    end
-    else if (waddr_0 < 2*BANK_SIZE_A) begin
-      wea_b1 = 1;
-      dina_b1 = wdata_0;
-      addra_b1 = waddr_0 - BANK_SIZE_A;
-    end
-    else if (waddr_0 < 3*BANK_SIZE_A) begin
-      wea_b2 = 1;
-      dina_b2 = wdata_0;
-      addra_b2 = waddr_0 - 2*BANK_SIZE_A;
-    end
-    else if (waddr_0 < 4*BANK_SIZE_A) begin
-      wea_b3 = 1;
-      dina_b3 = wdata_0;
-      addra_b3 = waddr_0 - 3*BANK_SIZE_A;
-    end
-    else if (waddr_0 < 5*BANK_SIZE_A) begin
-      wea_b4 = 1;
-      dina_b4 = wdata_0;
-      addra_b4 = waddr_0 - 4*BANK_SIZE_A;
-    end
-    else if (waddr_0 < 6*BANK_SIZE_A) begin
-      wea_b5 = 1;
-      dina_b5 = wdata_0;
-      addra_b5 = waddr_0 - 5*BANK_SIZE_A;
-    end
-    else if (waddr_0 < 7*BANK_SIZE_A) begin
-      wea_b6 = 1;
-      dina_b6 = wdata_0;
-      addra_b6 = waddr_0 - 6*BANK_SIZE_A;
-    end
-    else begin
-      wea_b7 = 1;
-      dina_b7 = wdata_0;
-      addra_b7 = waddr_0 - 7*BANK_SIZE_A;
-    end
-  end
 
   if (raddr_0 < BANK_SIZE_A) begin
     addra_b0 = raddr_0;
@@ -282,6 +335,146 @@ always @* begin
   else begin
     addra_b7 = raddr_0 - 7*BANK_SIZE_A;
     next_read_banka_select = 7;
+  end
+
+  if (wr_0) begin
+    if (waddr_0 < BANK_SIZE_A) begin
+      if (next_read_banka_select != 0) begin
+        wea_b0 = 1;
+        dina_b0 = wdata_0;
+        addra_b0 = waddr_0;
+      end
+      else begin
+        next_wea_b0 = 1;
+        next_dina_b0 = wdata_0;
+        next_addra_b0 = waddr_0;
+      end
+    end
+    else if (waddr_0 < 2*BANK_SIZE_A) begin
+      if (next_read_banka_select != 1) begin
+        wea_b1 = 1;
+        dina_b1 = wdata_0;
+        addra_b1 = waddr_0 - BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b1 = 1;
+        next_dina_b1 = wdata_0;
+        next_addra_b1 = waddr_0 - BANK_SIZE_A;
+      end
+    end
+    else if (waddr_0 < 3*BANK_SIZE_A) begin
+      if (next_read_banka_select != 2) begin
+        wea_b2 = 1;
+        dina_b2 = wdata_0;
+        addra_b2 = waddr_0 - 2*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b2 = 1;
+        next_dina_b2 = wdata_0;
+        next_addra_b2 = waddr_0 - 2*BANK_SIZE_A;
+      end
+    end
+    else if (waddr_0 < 4*BANK_SIZE_A) begin
+      if (next_read_banka_select != 3) begin
+        wea_b3 = 1;
+        dina_b3 = wdata_0;
+        addra_b3 = waddr_0 - 3*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b3 = 1;
+        next_dina_b3 = wdata_0;
+        next_addra_b3 = waddr_0 - 3*BANK_SIZE_A;
+      end
+    end
+    else if (waddr_0 < 5*BANK_SIZE_A) begin
+      if (next_read_banka_select != 4) begin
+        wea_b4 = 1;
+        dina_b4 = wdata_0;
+        addra_b4 = waddr_0 - 4*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b4 = 1;
+        next_dina_b4 = wdata_0;
+        next_addra_b4 = waddr_0 - 4*BANK_SIZE_A;
+      end
+    end
+    else if (waddr_0 < 6*BANK_SIZE_A) begin
+      if (next_read_banka_select != 5) begin
+        wea_b5 = 1;
+        dina_b5 = wdata_0;
+        addra_b5 = waddr_0 - 5*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b5 = 1;
+        next_dina_b5 = wdata_0;
+        next_addra_b5 = waddr_0 - 5*BANK_SIZE_A;
+      end
+    end
+    else if (waddr_0 < 7*BANK_SIZE_A) begin
+      if (next_read_banka_select != 6) begin
+        wea_b6 = 1;
+        dina_b6 = wdata_0;
+        addra_b6 = waddr_0 - 6*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b6 = 1;
+        next_dina_b6 = wdata_0;
+        next_addra_b6 = waddr_0 - 6*BANK_SIZE_A;
+      end
+    end
+    else begin
+      if (next_read_banka_select != 7) begin
+        wea_b7 = 1;
+        dina_b7 = wdata_0;
+        addra_b7 = waddr_0 - 7*BANK_SIZE_A;
+      end
+      else begin
+        next_wea_b7 = 1;
+        next_dina_b7 = wdata_0;
+        next_addra_b7 = waddr_0 - 7*BANK_SIZE_A;
+      end
+    end
+  end
+
+  if (_wea_b0) begin
+    wea_b0 = 1;
+    dina_b0 = _dina_b0;
+    addra_b0 = _addra_b0;
+  end
+  if (_wea_b1) begin
+    wea_b1 = 1;
+    dina_b1 = _dina_b1;
+    addra_b1 = _addra_b1;
+  end
+  if (_wea_b2) begin
+    wea_b2 = 1;
+    dina_b2 = _dina_b2;
+    addra_b2 = _addra_b2;
+  end
+  if (_wea_b3) begin
+    wea_b3 = 1;
+    dina_b3 = _dina_b3;
+    addra_b3 = _addra_b3;
+  end
+  if (_wea_b4) begin
+    wea_b4 = 1;
+    dina_b4 = _dina_b4;
+    addra_b4 = _addra_b4;
+  end
+  if (_wea_b5) begin
+    wea_b5 = 1;
+    dina_b5 = _dina_b5;
+    addra_b5 = _addra_b5;
+  end
+  if (_wea_b6) begin
+    wea_b6 = 1;
+    dina_b6 = _dina_b6;
+    addra_b6 = _addra_b6;
+  end
+  if (_wea_b7) begin
+    wea_b7 = 1;
+    dina_b7 = _dina_b7;
+    addra_b7 = _addra_b7;
   end
 
   if (wr_1) begin
@@ -358,6 +551,75 @@ always @* begin
   else begin
     addrb_b7 = raddr_1 - 7*BANK_SIZE_B;
     next_read_bankb_select = 7;
+  end
+end
+
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    _wea_b0 <= 0;
+    _dina_b0 <= 0;
+    _addra_b0 <= 0;
+
+    _wea_b1 <= 0;
+    _dina_b1 <= 0;
+    _addra_b1 <= 0;
+
+    _wea_b2 <= 0;
+    _dina_b2 <= 0;
+    _addra_b2 <= 0;
+
+    _wea_b3 <= 0;
+    _dina_b3 <= 0;
+    _addra_b3 <= 0;
+
+    _wea_b4 <= 0;
+    _dina_b4 <= 0;
+    _addra_b4 <= 0;
+
+    _wea_b5 <= 0;
+    _dina_b5 <= 0;
+    _addra_b5 <= 0;
+
+    _wea_b6 <= 0;
+    _dina_b6 <= 0;
+    _addra_b6 <= 0;
+
+    _wea_b7 <= 0;
+    _dina_b7 <= 0;
+    _addra_b7 <= 0;
+  end else begin
+    _wea_b0 <= next_wea_b0;
+    _dina_b0 <= next_dina_b0;
+    _addra_b0 <= next_addra_b0;
+
+    _wea_b1 <= next_wea_b1;
+    _dina_b1 <= next_dina_b1;
+    _addra_b1 <= next_addra_b1;
+
+    _wea_b2 <= next_wea_b2;
+    _dina_b2 <= next_dina_b2;
+    _addra_b2 <= next_addra_b2;
+
+    _wea_b3 <= next_wea_b3;
+    _dina_b3 <= next_dina_b3;
+    _addra_b3 <= next_addra_b3;
+
+    _wea_b4 <= next_wea_b4;
+    _dina_b4 <= next_dina_b4;
+    _addra_b4 <= next_addra_b4;
+
+    _wea_b5 <= next_wea_b5;
+    _dina_b5 <= next_dina_b5;
+    _addra_b5 <= next_addra_b5;
+
+    _wea_b6 <= next_wea_b6;
+    _dina_b6 <= next_dina_b6;
+    _addra_b6 <= next_addra_b6;
+
+    _wea_b7 <= next_wea_b7;
+    _dina_b7 <= next_dina_b7;
+    _addra_b7 <= next_addra_b7;
+
   end
 end
 

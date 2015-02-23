@@ -116,48 +116,70 @@ module pqpram_unit_test;
   //===================================
 
   `SVUNIT_TESTS_BEGIN
-    `SVTEST(write_read_port_0_bank0)
-      readPort(0, 'hf00);
-      writePort(0, 'h5, 32'hbbccddee);
-      step();
-      noWritePort(0);
-      step();
-      readPort(0, 'h5);
-      step();
-      expectReadData(0, 32'hbbccddee);
+    `SVTEST(write_read_port_0_bankn)
+       begin
+         int addr = 0;
+         int data = 30'hbbccddee;
+         for (int i=0; i<8; i+=1) begin
+           readPort(0, addr-1);
+           writePort(0, addr, data);
+           step();
+           noWritePort(0);
+           step();
+           readPort(0, addr);
+           step();
+           expectReadData(0, data);
+      
+           addr += 1920;
+           data -= 51;
+         end
+       end
     `SVTEST_END
 
-    `SVTEST(write_read_port_1_bank0)
-      readPort(1, 'hf00);
-      writePort(1, 'h5, { 30'h33221100, 30'h22ffee44, 30'h0055aabb, 30'h1bccddee });
-      step();
-      noWritePort(1);
-      step();
-      readPort(1, 'h5);
-      step();
-      expectReadData(1, { 30'h33221100, 30'h22ffee44, 30'h0055aabb, 30'h1bccddee });
+    `SVTEST(write_read_port_1_bankn)
+       begin
+         int addr = 0;
+         int data = { 30'h15456767 , 30'h0 , 30'h0 , 30'hbbccddee };
+         for (int i=0; i<8; i+=1) begin
+           readPort(1, addr-1);
+           writePort(1, addr, data);
+           step();
+           noWritePort(1);
+           step();
+           readPort(1, addr);
+           step();
+           expectReadData(1, data);
+      
+           addr += 1920/4;
+           data -= 51;
+         end
+       end
     `SVTEST_END
 
-    `SVTEST(write_read_port_0_bank1)
-      readPort(0, 0);
-      writePort(0, 3840, 32'hbbccdd66);
-      step();
-      noWritePort(0);
-      step();
-      readPort(0, 3840);
-      step();
-      expectReadData(0, 32'hbbccdd66);
-    `SVTEST_END
+    `SVTEST(simultaneous_write_read_port_0_bankn)
+       begin
+         int addr = 0;
+         int data = 30'h332211ff;
+         for (int i=0; i<8; i+=1) begin
+                                      readPort(0, addr-1);                         
+           writePort(0, addr+1, 'h77);                                             
+                                                                   step(1);      
+           noWritePort(0);                                                       
+                                                                   step(1);      
+                                      readPort(0, addr+1);                         
+           writePort(0, addr, data);                                             
+                                                                   step(1);      
+           noWritePort(0);                                                       
+                                      expectReadData(0, 'h77);                   
+                                                                   step(2);
+                                      readPort(0, addr);                         
+                                                                   step(1);      
+                                      expectReadData(0, data);                   
 
-    `SVTEST(write_read_port_1_bank1)
-      readPort(1, 'hf00);
-      writePort(1, 3840, { 30'h332211ff, 30'h22ffee44, 30'h0055aabb, 30'h1bccddee });
-      step();
-      noWritePort(1);
-      step();
-      readPort(1, 3840);
-      step();
-      expectReadData(1, { 30'h332211ff, 30'h22ffee44, 30'h0055aabb, 30'h1bccddee });
+           addr += 1920;
+           data -= 51;
+         end
+       end
     `SVTEST_END
 
   `SVUNIT_TESTS_END
