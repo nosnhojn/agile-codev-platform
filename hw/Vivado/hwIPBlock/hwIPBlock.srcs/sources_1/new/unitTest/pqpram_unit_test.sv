@@ -148,7 +148,6 @@ module pqpram_unit_test;
            step();
            readPort(1, addr);
            step();
-$display("GUNS");
            expectReadData(1, data);
       
            addr += 1920/4;

@@ -31,7 +31,7 @@ module pixelProcessor_calc
 
   output logic [31:0] egress_avail,
   input               egress_dec,
-  output wire         egress_rdy
+  output logic        egress_rdy
 );
 
 
@@ -286,18 +286,19 @@ end
 //--------------
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    egress_avail = 0;
+    egress_avail <= 0;
+    egress_rdy <= 0;
   end
 
   else begin
-    egress_avail = egress_avail
+    egress_avail <= egress_avail
                    + PIXEL_WIDTH * (calc_strobe && last_column_flag)
                    + PIXEL_WIDTH * 2 * (calc_strobe && last_column_flag && last_row_flag)
                    - egress_dec;
+    egress_rdy <= (egress_avail > 10);
   end
 end
 
-assign egress_rdy = (egress_avail > 4);
 assign calc_rdy = (egress_avail < (5 * PIXEL_WIDTH - 12));
 
 
