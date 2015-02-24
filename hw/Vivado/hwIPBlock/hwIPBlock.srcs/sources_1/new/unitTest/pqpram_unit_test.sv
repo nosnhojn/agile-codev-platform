@@ -139,7 +139,7 @@ module pqpram_unit_test;
     `SVTEST(write_read_port_1_bankn)
        begin
          int addr = 0;
-         int data = { 30'h15456767 , 30'h0 , 30'h0 , 30'hbbccddee };
+         bit[119:0] data = { 30'h15456767 , 30'h0 , 30'h0 , 30'hbbccddee };
          for (int i=0; i<8; i+=1) begin
            readPort(1, addr-1);
            writePort(1, addr, data);
@@ -148,6 +148,7 @@ module pqpram_unit_test;
            step();
            readPort(1, addr);
            step();
+$display("GUNS");
            expectReadData(1, data);
       
            addr += 1920/4;
@@ -175,6 +176,32 @@ module pqpram_unit_test;
                                       readPort(0, addr);                         
                                                                    step(1);      
                                       expectReadData(0, data);                   
+
+           addr += 1920;
+           data -= 51;
+         end
+       end
+    `SVTEST_END
+
+    `SVTEST(simultaneous_write_read_port_1_bankn)
+       begin
+         int addr = 0;
+         bit[119:0] data = { 30'h15456767 , 30'h0 , 30'h0 , 30'hbbccddee };
+         for (int i=0; i<8; i+=1) begin
+                                      readPort(1, addr-1);                         
+           writePort(1, addr+1, 'h77);                                             
+                                                                   step(1);      
+           noWritePort(1);                                                       
+                                                                   step(1);      
+                                      readPort(1, addr+1);                         
+           writePort(1, addr, data);                                             
+                                                                   step(1);      
+           noWritePort(1);                                                       
+                                      expectReadData(1, 'h77);                   
+                                                                   step(2);
+                                      readPort(1, addr);                         
+                                                                   step(1);      
+                                      expectReadData(1, data);                   
 
            addr += 1920;
            data -= 51;
