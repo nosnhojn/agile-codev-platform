@@ -144,6 +144,8 @@ module step_2_unit_test;
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
+ //if (oTDATA !== data) $display("data:0x%0x oTDATA:0x%0x", data, oTDATA);
+ //if (oTKEEP !== keep) $display("keep:0x%0x oTKEEP:0x%0x", keep, oTKEEP);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);
     `FAIL_UNLESS(oTKEEP === keep);

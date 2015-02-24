@@ -50,6 +50,7 @@ logic [RAM_ADDR_WIDTH-1:0] ingress_ptr;
 logic [RAM_ADDR_WIDTH-1:0] egress_ptr;
 wire  [RAM_ADDR_WIDTH-1:0] max_ram_address = MEM_DEPTH - 1;
 
+wire ingress_almost_rdy;
 wire ingress_pixel_ready;
 wire wrap_ingress_ptr;
 
@@ -123,6 +124,7 @@ assign ingress_new_pixel = ingress_pixel_ready;
 assign wrap_ingress_ptr = (ingress_ptr >= max_ram_address);
 assign concatenated_wdata = { iTUSER , iTKEEP , iTLAST , iTDATA };
 assign ingress_rdy = (ingress_cnt >= ingress_thresh);
+assign ingress_almost_rdy = (ingress_cnt >= ingress_thresh-1);
 
 assign egress_bus_idle = !oTVALID;
 assign egress_pixel_accepted = oTVALID && iTREADY;
@@ -131,6 +133,7 @@ assign hold_oTVALID_until_iTREADY = oTVALID && ~iTREADY;
 assign egress_read_cnt = egress_pixel_accepted;
 
 assign wrap_egress_read_address = (egress_ptr + egress_pixel_ready) > max_ram_address;
-assign raddr = wrap_egress_read_address ? 0 : egress_ptr + egress_pixel_ready;
+assign raddr = !ingress_almost_rdy ? -1 :
+                wrap_egress_read_address ? 0 : egress_ptr + egress_pixel_ready;
 
 endmodule

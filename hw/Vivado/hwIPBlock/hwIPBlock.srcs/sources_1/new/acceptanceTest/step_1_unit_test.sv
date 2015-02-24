@@ -10,7 +10,7 @@ module step_1_unit_test;
 
   // uut params
   parameter MEM_DEPTH = 15360;
-  parameter INGRESS_THRESH = 5;
+  parameter INGRESS_THRESH = 1925;
 
   //===================================
   // This is the UUT that we're 
@@ -207,8 +207,8 @@ end
 
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
-//$display("CHECK:0x%0x", oTDATA);
     `FAIL_UNLESS(oTVALID === 1);
+if (oTDATA != data) $display("CHECK:0x%0x", oTDATA);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);
     `FAIL_UNLESS(oTKEEP === keep);
