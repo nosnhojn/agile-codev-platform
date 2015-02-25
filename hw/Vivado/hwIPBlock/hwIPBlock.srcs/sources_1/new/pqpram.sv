@@ -247,7 +247,6 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 always @* begin
-
   case (read_banka_select)
     0 : rdata_0 = douta_b0;
     1 : rdata_0 = douta_b1;
@@ -337,120 +336,88 @@ always @* begin
   next_addra_b7 = 0;
 
   next_read_banka_select = 0;
-
   if (raddr_0 < BANK_SIZE_A) begin
     addra_b0 = raddr_0;
     next_read_banka_select = 0;
   end
-  else if (raddr_0 < 2*BANK_SIZE_A) begin
+  if (raddr_0 >= BANK_SIZE_A && raddr_0 < 2*BANK_SIZE_A) begin
     addra_b1 = raddr_0 - BANK_SIZE_A;
     next_read_banka_select = 1;
   end
-  else if (raddr_0 < 3*BANK_SIZE_A) begin
+  if (raddr_0 >= 2*BANK_SIZE_A && raddr_0 < 3*BANK_SIZE_A) begin
     addra_b2 = raddr_0 - 2*BANK_SIZE_A;
     next_read_banka_select = 2;
   end
-  else if (raddr_0 < 4*BANK_SIZE_A) begin
+  if (raddr_0 >= 3*BANK_SIZE_A && raddr_0 < 4*BANK_SIZE_A) begin
     addra_b3 = raddr_0 - 3*BANK_SIZE_A;
     next_read_banka_select = 3;
   end
-  else if (raddr_0 < 5*BANK_SIZE_A) begin
+  if (raddr_0 >= 4*BANK_SIZE_A && raddr_0 < 5*BANK_SIZE_A) begin
     addra_b4 = raddr_0 - 4*BANK_SIZE_A;
     next_read_banka_select = 4;
   end
-  else if (raddr_0 < 6*BANK_SIZE_A) begin
+  if (raddr_0 >= 5*BANK_SIZE_A && raddr_0 < 6*BANK_SIZE_A) begin
     addra_b5 = raddr_0 - 5*BANK_SIZE_A;
     next_read_banka_select = 5;
   end
-  else if (raddr_0 < 7*BANK_SIZE_A) begin
+  if (raddr_0 >= 6*BANK_SIZE_A && raddr_0 < 7*BANK_SIZE_A) begin
     addra_b6 = raddr_0 - 6*BANK_SIZE_A;
     next_read_banka_select = 6;
   end
-  else begin
+  if (raddr_0 >= 7*BANK_SIZE_A) begin
     addra_b7 = raddr_0 - 7*BANK_SIZE_A;
     next_read_banka_select = 7;
   end
 
-  if (waddr_0 < BANK_SIZE_A) begin
-    if (next_read_banka_select != 0) begin
-      dina_b0 = wdata_0;
-      addra_b0 = waddr_0;
-    end
-    else begin
-      next_dina_b0 = wdata_0;
-      next_addra_b0 = waddr_0;
-    end
+  if (next_read_banka_select != 0) begin
+    dina_b0 = wdata_0;
+    addra_b0 = waddr_0;
   end
-  else if (waddr_0 < 2*BANK_SIZE_A) begin
-    if (next_read_banka_select != 1) begin
-      dina_b1 = wdata_0;
-      addra_b1 = waddr_0 - BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b1 = wdata_0;
-      next_addra_b1 = waddr_0 - BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 1) begin
+    dina_b1 = wdata_0;
+    addra_b1 = waddr_0 - BANK_SIZE_A;
   end
-  else if (waddr_0 < 3*BANK_SIZE_A) begin
-    if (next_read_banka_select != 2) begin
-      dina_b2 = wdata_0;
-      addra_b2 = waddr_0 - 2*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b2 = wdata_0;
-      next_addra_b2 = waddr_0 - 2*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 2) begin
+    dina_b2 = wdata_0;
+    addra_b2 = waddr_0 - 2*BANK_SIZE_A;
   end
-  else if (waddr_0 < 4*BANK_SIZE_A) begin
-    if (next_read_banka_select != 3) begin
-      dina_b3 = wdata_0;
-      addra_b3 = waddr_0 - 3*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b3 = wdata_0;
-      next_addra_b3 = waddr_0 - 3*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 3) begin
+    dina_b3 = wdata_0;
+    addra_b3 = waddr_0 - 3*BANK_SIZE_A;
   end
-  else if (waddr_0 < 5*BANK_SIZE_A) begin
-    if (next_read_banka_select != 4) begin
-      dina_b4 = wdata_0;
-      addra_b4 = waddr_0 - 4*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b4 = wdata_0;
-      next_addra_b4 = waddr_0 - 4*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 4) begin
+    dina_b4 = wdata_0;
+    addra_b4 = waddr_0 - 4*BANK_SIZE_A;
   end
-  else if (waddr_0 < 6*BANK_SIZE_A) begin
-    if (next_read_banka_select != 5) begin
-      dina_b5 = wdata_0;
-      addra_b5 = waddr_0 - 5*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b5 = wdata_0;
-      next_addra_b5 = waddr_0 - 5*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 5) begin
+    dina_b5 = wdata_0;
+    addra_b5 = waddr_0 - 5*BANK_SIZE_A;
   end
-  else if (waddr_0 < 7*BANK_SIZE_A) begin
-    if (next_read_banka_select != 6) begin
-      dina_b6 = wdata_0;
-      addra_b6 = waddr_0 - 6*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b6 = wdata_0;
-      next_addra_b6 = waddr_0 - 6*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 6) begin
+    dina_b6 = wdata_0;
+    addra_b6 = waddr_0 - 6*BANK_SIZE_A;
   end
-  else begin
-    if (next_read_banka_select != 7) begin
-      dina_b7 = wdata_0;
-      addra_b7 = waddr_0 - 7*BANK_SIZE_A;
-    end
-    else begin
-      next_dina_b7 = wdata_0;
-      next_addra_b7 = waddr_0 - 7*BANK_SIZE_A;
-    end
+  if (next_read_banka_select != 7) begin
+    dina_b7 = wdata_0;
+    addra_b7 = waddr_0 - 7*BANK_SIZE_A;
   end
+
+  next_dina_b0 = wdata_0;
+  next_addra_b0 = waddr_0;
+  next_dina_b1 = wdata_0;
+  next_addra_b1 = waddr_0 - BANK_SIZE_A;
+  next_dina_b2 = wdata_0;
+  next_addra_b2 = waddr_0 - 2*BANK_SIZE_A;
+  next_dina_b3 = wdata_0;
+  next_addra_b3 = waddr_0 - 3*BANK_SIZE_A;
+  next_dina_b4 = wdata_0;
+  next_addra_b4 = waddr_0 - 4*BANK_SIZE_A;
+  next_dina_b5 = wdata_0;
+  next_addra_b5 = waddr_0 - 5*BANK_SIZE_A;
+  next_dina_b6 = wdata_0;
+  next_addra_b6 = waddr_0 - 6*BANK_SIZE_A;
+  next_dina_b7 = wdata_0;
+  next_addra_b7 = waddr_0 - 7*BANK_SIZE_A;
 
   if (wr_0) begin
     if (waddr_0 < BANK_SIZE_A) begin
