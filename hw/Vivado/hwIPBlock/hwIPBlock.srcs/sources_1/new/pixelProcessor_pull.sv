@@ -31,13 +31,17 @@ module pixelProcessor_pull
 );
 
 parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
+parameter EFFECTIVE_WIDTH_MINUS1 = EFFECTIVE_WIDTH-1;
+parameter LAST_ROW_MARKER = (PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH;
 
 wire ingress_rdy;
 wire at_end_of_frame;
 wire at_start_of_line;
-wire at_end_of_line;
+//wire at_end_of_line;
+logic at_end_of_line;
 wire on_first_row;
-wire on_last_row;
+//wire on_last_row;
+logic on_last_row;
 logic [31:0] rptr;
 logic [1:0] rptr_line_cnt;
 logic [1:0] next_rptr_line_cnt;
@@ -142,6 +146,9 @@ always @(negedge rst_n or posedge clk) begin
     raddr_line2   <= EFFECTIVE_WIDTH << 1;
 
     raddr <= 0;
+
+    at_end_of_line <= 0;
+    on_last_row <= 0;
   end
 
   else begin
@@ -187,12 +194,20 @@ always @(negedge rst_n or posedge clk) begin
 
       if (ingress_rdy) begin
         if (rptr_line_cnt >= 2) begin
+          at_end_of_line <= 0;
+          on_last_row <= 0;
           if (at_end_of_frame) begin
             rptr <= 0;
           end
 
           else begin
             rptr <= rptr + 1;
+            if ((rptr+1) % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH_MINUS1) begin
+              at_end_of_line <= 1;
+            end
+            if ((rptr+1) >= LAST_ROW_MARKER) begin
+              on_last_row <= 1;
+            end
           end
 
           next_calc_strobe <= 1;
@@ -209,10 +224,8 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign at_end_of_line = (rptr % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH - 1);
 assign at_start_of_line = (rptr % (EFFECTIVE_WIDTH) == 0);
 assign on_first_row = (rptr < EFFECTIVE_WIDTH);
-assign on_last_row = (rptr >= ((PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH));
 assign at_end_of_frame = (on_last_row && at_end_of_line);
 
 assign next_raddr_line0_for_wrap = raddr_line0 - 6*EFFECTIVE_WIDTH + 1;
