@@ -207,147 +207,59 @@ always @* begin
 end
 
 always @* begin
+  addra_b0 = raddr_0;
+  addra_b1 = raddr_0 - BANK_SIZE_A;
+  addra_b2 = raddr_0 - 2*BANK_SIZE_A;
+  addra_b3 = raddr_0 - 3*BANK_SIZE_A;
+  addra_b4 = raddr_0 - 4*BANK_SIZE_A;
+  addra_b5 = raddr_0 - 5*BANK_SIZE_A;
+  addra_b6 = raddr_0 - 6*BANK_SIZE_A;
+  addra_b7 = raddr_0 - 7*BANK_SIZE_A;
+
+  if      (waddr_0 < BANK_SIZE_A)   addra_b0 = waddr_0;
+  else if (waddr_0 < 2*BANK_SIZE_A) addra_b1 = waddr_0 - BANK_SIZE_A;
+  else if (waddr_0 < 3*BANK_SIZE_A) addra_b2 = waddr_0 - 2*BANK_SIZE_A;
+  else if (waddr_0 < 4*BANK_SIZE_A) addra_b3 = waddr_0 - 3*BANK_SIZE_A;
+  else if (waddr_0 < 5*BANK_SIZE_A) addra_b4 = waddr_0 - 4*BANK_SIZE_A;
+  else if (waddr_0 < 6*BANK_SIZE_A) addra_b5 = waddr_0 - 5*BANK_SIZE_A;
+  else if (waddr_0 < 7*BANK_SIZE_A) addra_b6 = waddr_0 - 6*BANK_SIZE_A;
+  else                              addra_b7 = waddr_0 - 7*BANK_SIZE_A;
+
   wea_b0 = 0;
-  dina_b0 = 0;
-  addra_b0 = 0;
-
   wea_b1 = 0;
-  dina_b1 = 0;
-  addra_b1 = 0;
-
   wea_b2 = 0;
-  dina_b2 = 0;
-  addra_b2 = 0;
-
   wea_b3 = 0;
-  dina_b3 = 0;
-  addra_b3 = 0;
-
   wea_b4 = 0;
-  dina_b4 = 0;
-  addra_b4 = 0;
-
   wea_b5 = 0;
-  dina_b5 = 0;
-  addra_b5 = 0;
-
   wea_b6 = 0;
-  dina_b6 = 0;
-  addra_b6 = 0;
-
   wea_b7 = 0;
-  dina_b7 = 0;
-  addra_b7 = 0;
+  if      (waddr_0 < BANK_SIZE_A)   wea_b0 = wr_0;
+  else if (waddr_0 < 2*BANK_SIZE_A) wea_b1 = wr_0;
+  else if (waddr_0 < 3*BANK_SIZE_A) wea_b2 = wr_0;
+  else if (waddr_0 < 4*BANK_SIZE_A) wea_b3 = wr_0;
+  else if (waddr_0 < 5*BANK_SIZE_A) wea_b4 = wr_0;
+  else if (waddr_0 < 6*BANK_SIZE_A) wea_b5 = wr_0;
+  else if (waddr_0 < 7*BANK_SIZE_A) wea_b6 = wr_0;
+  else                              wea_b7 = wr_0;
+
+  dina_b0 = wdata_0;
+  dina_b1 = wdata_0;
+  dina_b2 = wdata_0;
+  dina_b3 = wdata_0;
+  dina_b4 = wdata_0;
+  dina_b5 = wdata_0;
+  dina_b6 = wdata_0;
+  dina_b7 = wdata_0;
 
   next_read_banka_select = 0;
-  if (raddr_0 < BANK_SIZE_A) begin
-    addra_b0 = raddr_0;
-    next_read_banka_select = 0;
-  end
-  if (raddr_0 >= BANK_SIZE_A && raddr_0 < 2*BANK_SIZE_A) begin
-    addra_b1 = raddr_0 - BANK_SIZE_A;
-    next_read_banka_select = 1;
-  end
-  if (raddr_0 >= 2*BANK_SIZE_A && raddr_0 < 3*BANK_SIZE_A) begin
-    addra_b2 = raddr_0 - 2*BANK_SIZE_A;
-    next_read_banka_select = 2;
-  end
-  if (raddr_0 >= 3*BANK_SIZE_A && raddr_0 < 4*BANK_SIZE_A) begin
-    addra_b3 = raddr_0 - 3*BANK_SIZE_A;
-    next_read_banka_select = 3;
-  end
-  if (raddr_0 >= 4*BANK_SIZE_A && raddr_0 < 5*BANK_SIZE_A) begin
-    addra_b4 = raddr_0 - 4*BANK_SIZE_A;
-    next_read_banka_select = 4;
-  end
-  if (raddr_0 >= 5*BANK_SIZE_A && raddr_0 < 6*BANK_SIZE_A) begin
-    addra_b5 = raddr_0 - 5*BANK_SIZE_A;
-    next_read_banka_select = 5;
-  end
-  if (raddr_0 >= 6*BANK_SIZE_A && raddr_0 < 7*BANK_SIZE_A) begin
-    addra_b6 = raddr_0 - 6*BANK_SIZE_A;
-    next_read_banka_select = 6;
-  end
-  if (raddr_0 >= 7*BANK_SIZE_A) begin
-    addra_b7 = raddr_0 - 7*BANK_SIZE_A;
-    next_read_banka_select = 7;
-  end
-
-  if (next_read_banka_select != 0) begin
-    dina_b0 = wdata_0;
-    addra_b0 = waddr_0;
-  end
-  if (next_read_banka_select != 1) begin
-    dina_b1 = wdata_0;
-    addra_b1 = waddr_0 - BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 2) begin
-    dina_b2 = wdata_0;
-    addra_b2 = waddr_0 - 2*BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 3) begin
-    dina_b3 = wdata_0;
-    addra_b3 = waddr_0 - 3*BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 4) begin
-    dina_b4 = wdata_0;
-    addra_b4 = waddr_0 - 4*BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 5) begin
-    dina_b5 = wdata_0;
-    addra_b5 = waddr_0 - 5*BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 6) begin
-    dina_b6 = wdata_0;
-    addra_b6 = waddr_0 - 6*BANK_SIZE_A;
-  end
-  if (next_read_banka_select != 7) begin
-    dina_b7 = wdata_0;
-    addra_b7 = waddr_0 - 7*BANK_SIZE_A;
-  end
-
-  if (wr_0) begin
-    if (waddr_0 < BANK_SIZE_A) begin
-      if (next_read_banka_select != 0) begin
-        wea_b0 = 1;
-      end
-    end
-    else if (waddr_0 < 2*BANK_SIZE_A) begin
-      if (next_read_banka_select != 1) begin
-        wea_b1 = 1;
-      end
-    end
-    else if (waddr_0 < 3*BANK_SIZE_A) begin
-      if (next_read_banka_select != 2) begin
-        wea_b2 = 1;
-      end
-    end
-    else if (waddr_0 < 4*BANK_SIZE_A) begin
-      if (next_read_banka_select != 3) begin
-        wea_b3 = 1;
-      end
-    end
-    else if (waddr_0 < 5*BANK_SIZE_A) begin
-      if (next_read_banka_select != 4) begin
-        wea_b4 = 1;
-      end
-    end
-    else if (waddr_0 < 6*BANK_SIZE_A) begin
-      if (next_read_banka_select != 5) begin
-        wea_b5 = 1;
-      end
-    end
-    else if (waddr_0 < 7*BANK_SIZE_A) begin
-      if (next_read_banka_select != 6) begin
-        wea_b6 = 1;
-      end
-    end
-    else begin
-      if (next_read_banka_select != 7) begin
-        wea_b7 = 1;
-      end
-    end
-  end
+  if      (raddr_0 < BANK_SIZE_A)   next_read_banka_select = 0;
+  else if (raddr_0 < 2*BANK_SIZE_A) next_read_banka_select = 1;
+  else if (raddr_0 < 3*BANK_SIZE_A) next_read_banka_select = 2;
+  else if (raddr_0 < 4*BANK_SIZE_A) next_read_banka_select = 3;
+  else if (raddr_0 < 5*BANK_SIZE_A) next_read_banka_select = 4;
+  else if (raddr_0 < 6*BANK_SIZE_A) next_read_banka_select = 5;
+  else if (raddr_0 < 7*BANK_SIZE_A) next_read_banka_select = 6;
+  else                              next_read_banka_select = 7;
 end
 
 always @* begin
