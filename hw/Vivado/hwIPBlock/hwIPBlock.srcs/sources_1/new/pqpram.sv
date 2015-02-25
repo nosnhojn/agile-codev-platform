@@ -265,7 +265,6 @@ end
 always @* begin
   web_b0 = 0;
   dinb_b0 = 0;
-  addrb_b0 = 0;
 
   next_web_b0 = 0;
   next_dinb_b0 = 0;
@@ -273,7 +272,6 @@ always @* begin
 
   web_b1 = 0;
   dinb_b1 = 0;
-  addrb_b1 = 0;
 
   next_web_b1 = 0;
   next_dinb_b1 = 0;
@@ -281,7 +279,6 @@ always @* begin
 
   web_b2 = 0;
   dinb_b2 = 0;
-  addrb_b2 = 0;
 
   next_web_b2 = 0;
   next_dinb_b2 = 0;
@@ -289,7 +286,6 @@ always @* begin
 
   web_b3 = 0;
   dinb_b3 = 0;
-  addrb_b3 = 0;
 
   next_web_b3 = 0;
   next_dinb_b3 = 0;
@@ -297,7 +293,6 @@ always @* begin
 
   web_b4 = 0;
   dinb_b4 = 0;
-  addrb_b4 = 0;
 
   next_web_b4 = 0;
   next_dinb_b4 = 0;
@@ -305,7 +300,6 @@ always @* begin
 
   web_b5 = 0;
   dinb_b5 = 0;
-  addrb_b5 = 0;
 
   next_web_b5 = 0;
   next_dinb_b5 = 0;
@@ -313,7 +307,6 @@ always @* begin
 
   web_b6 = 0;
   dinb_b6 = 0;
-  addrb_b6 = 0;
 
   next_web_b6 = 0;
   next_dinb_b6 = 0;
@@ -321,14 +314,21 @@ always @* begin
 
   web_b7 = 0;
   dinb_b7 = 0;
-  addrb_b7 = 0;
 
   next_web_b7 = 0;
   next_dinb_b7 = 0;
   next_addrb_b7 = 0;
 
-  next_read_bankb_select = 0;
+  addrb_b0 = waddr_1;
+  addrb_b1 = waddr_1 - BANK_SIZE_B;
+  addrb_b2 = waddr_1 - 2*BANK_SIZE_B;
+  addrb_b3 = waddr_1 - 3*BANK_SIZE_B;
+  addrb_b4 = waddr_1 - 4*BANK_SIZE_B;
+  addrb_b5 = waddr_1 - 5*BANK_SIZE_B;
+  addrb_b6 = waddr_1 - 6*BANK_SIZE_B;
+  addrb_b7 = waddr_1 - 7*BANK_SIZE_B;
 
+  next_read_bankb_select = 0;
   if (raddr_1 < BANK_SIZE_B) begin
     addrb_b0 = raddr_1;
     next_read_bankb_select = 0;
@@ -366,8 +366,6 @@ always @* begin
     if (waddr_1 < BANK_SIZE_B) begin
       if (next_read_bankb_select != 0) begin
         web_b0 = 1;
-        dinb_b0 = wdata_1;
-        addrb_b0 = waddr_1;
       end
       else begin
         next_web_b0 = 1;
@@ -378,8 +376,6 @@ always @* begin
     else if (waddr_1 < 2*BANK_SIZE_B) begin
       if (next_read_bankb_select != 1) begin
         web_b1 = 1;
-        dinb_b1 = wdata_1;
-        addrb_b1 = waddr_1 - BANK_SIZE_B;
       end
       else begin
         next_web_b1 = 1;
@@ -390,8 +386,6 @@ always @* begin
     else if (waddr_1 < 3*BANK_SIZE_B) begin
       if (next_read_bankb_select != 2) begin
         web_b2 = 1;
-        dinb_b2 = wdata_1;
-        addrb_b2 = waddr_1 - 2*BANK_SIZE_B;
       end
       else begin
         next_web_b2 = 1;
@@ -402,8 +396,6 @@ always @* begin
     else if (waddr_1 < 4*BANK_SIZE_B) begin
       if (next_read_bankb_select != 3) begin
         web_b3 = 1;
-        dinb_b3 = wdata_1;
-        addrb_b3 = waddr_1 - 3*BANK_SIZE_B;
       end
       else begin
         next_web_b3 = 1;
@@ -414,8 +406,6 @@ always @* begin
     else if (waddr_1 < 5*BANK_SIZE_B) begin
       if (next_read_bankb_select != 4) begin
         web_b4 = 1;
-        dinb_b4 = wdata_1;
-        addrb_b4 = waddr_1 - 4*BANK_SIZE_B;
       end
       else begin
         next_web_b4 = 1;
@@ -426,8 +416,6 @@ always @* begin
     else if (waddr_1 < 6*BANK_SIZE_B) begin
       if (next_read_bankb_select != 5) begin
         web_b5 = 1;
-        dinb_b5 = wdata_1;
-        addrb_b5 = waddr_1 - 5*BANK_SIZE_B;
       end
       else begin
         next_web_b5 = 1;
@@ -438,8 +426,6 @@ always @* begin
     else if (waddr_1 < 7*BANK_SIZE_B) begin
       if (next_read_bankb_select != 6) begin
         web_b6 = 1;
-        dinb_b6 = wdata_1;
-        addrb_b6 = waddr_1 - 6*BANK_SIZE_B;
       end
       else begin
         next_web_b6 = 1;
@@ -450,8 +436,6 @@ always @* begin
     else begin
       if (next_read_bankb_select != 7) begin
         web_b7 = 1;
-        dinb_b7 = wdata_1;
-        addrb_b7 = waddr_1 - 7*BANK_SIZE_B;
       end
       else begin
         next_web_b7 = 1;
@@ -461,6 +445,14 @@ always @* begin
     end
   end
 
+  dinb_b0 = wdata_1;
+  dinb_b1 = wdata_1;
+  dinb_b2 = wdata_1;
+  dinb_b3 = wdata_1;
+  dinb_b4 = wdata_1;
+  dinb_b5 = wdata_1;
+  dinb_b6 = wdata_1;
+  dinb_b7 = wdata_1;
   if (_web_b0) begin
     web_b0 = 1;
     dinb_b0 = _dinb_b0;
