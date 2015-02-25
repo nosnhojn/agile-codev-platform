@@ -26,8 +26,8 @@ module pixelProcessor_calc
   input [119:0] group_slot2,
 
   output logic [119:0] wdata,
-  output logic [11:0] waddr,
-  output wire         wr,
+  output logic [11:0]  waddr,
+  output logic         wr,
 
   output logic [31:0] egress_avail,
   input               egress_dec,
@@ -35,6 +35,9 @@ module pixelProcessor_calc
 );
 
 
+logic [119:0] next_wdata;
+logic [11:0]  next_waddr;
+wire          next_wr;
 
 
 //----------------------------------------------------
@@ -82,6 +85,10 @@ always @(negedge rst_n or posedge clk) begin
     strobe_2_of_4_last_row <= 0;
     strobe_3_of_4_last_row <= 0;
     strobe_4_of_4_last_row <= 0;
+
+    wdata <= 0;
+    waddr <= 0;
+    wr <= 0;
   end
 
   else begin
@@ -98,6 +105,10 @@ always @(negedge rst_n or posedge clk) begin
 
     strobe_4_of_4_first_row <= strobe_3_of_4_first_row;
     strobe_4_of_4_last_row <= strobe_3_of_4_last_row;
+
+    wdata <= next_wdata;
+    waddr <= next_waddr;
+    wr <= next_wr;
   end
 end
 
@@ -111,27 +122,27 @@ end
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    waddr <= 0;
+    next_waddr <= 0;
   end
 
   else begin
     if (calc_strobe && first_row_flag && first_column_flag) begin
-      waddr <= EFFECTIVE_WIDTH;
+      next_waddr <= EFFECTIVE_WIDTH;
     end
     else if (calc_strobe && last_row_flag && first_column_flag) begin
-      waddr <= waddr + EFFECTIVE_WIDTH;
+      next_waddr <= next_waddr + EFFECTIVE_WIDTH;
     end
     else if (calc_strobe && first_row_flag && !first_column_flag ||
              calc_strobe && last_row_flag && !first_column_flag ||
              strobe_3_of_4) begin
-      waddr <= waddr - EFFECTIVE_WIDTH;
+      next_waddr <= next_waddr - EFFECTIVE_WIDTH;
     end
     else if (strobe_2_of_2 || strobe_2_of_4 || strobe_4_of_4) begin
-      waddr <= waddr + EFFECTIVE_WIDTH + 1;
+      next_waddr <= next_waddr + EFFECTIVE_WIDTH + 1;
     end
-    else if (wr) begin
-      if (waddr < 6 * EFFECTIVE_WIDTH-1) waddr <= waddr + 1;
-      else                               waddr <= 0;
+    else if (next_wr) begin
+      if (next_waddr < 6 * EFFECTIVE_WIDTH-1) next_waddr <= next_waddr + 1;
+      else                                    next_waddr <= 0;
     end
   end
 end
@@ -167,7 +178,7 @@ logic any_surrounding_is_FG;
 
 always @* begin
   int short_shift, long_shift;
-  wdata = 0;
+  next_wdata = 0;
   tmp_slot0 = 0;
   tmp_slot1 = 0;
   tmp_slot2 = 0;
@@ -249,8 +260,8 @@ always @* begin
 
     any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
 
-    if (center_is_BG && any_surrounding_is_FG) wdata |= { tmp_slot1[59:54] , SH } << (3-pixel_idx) * 30;
-    else                                       wdata |=   tmp_slot1[59:30]        << (3-pixel_idx) * 30;
+    if (center_is_BG && any_surrounding_is_FG) next_wdata |= { tmp_slot1[59:54] , SH } << (3-pixel_idx) * 30;
+    else                                       next_wdata |=   tmp_slot1[59:30]        << (3-pixel_idx) * 30;
   end
 end
 
@@ -306,12 +317,12 @@ assign calc_rdy = (egress_avail < (5 * PIXEL_WIDTH - 12));
 // misc combinational logic
 //--------------------------
 
-assign wr = strobe_normal        ||
-            strobe_last_column ||
-            strobe_2_of_2        ||
-            strobe_2_of_4        ||
-            strobe_3_of_4        ||
-            strobe_4_of_4;
+assign next_wr = strobe_normal        ||
+                 strobe_last_column ||
+                 strobe_2_of_2        ||
+                 strobe_2_of_4        ||
+                 strobe_3_of_4        ||
+                 strobe_4_of_4;
 
 assign strobe_normal = (calc_strobe & !first_column_flag);
 
