@@ -156,32 +156,6 @@ module pqpram_unit_test;
        end
     `SVTEST_END
 
-    `SVTEST(simultaneous_write_read_port_0_bankn)
-       begin
-         int addr = 0;
-         int data = 30'h332211ff;
-         for (int i=0; i<8; i+=1) begin
-                                      readPort(0, addr-1);                         
-           writePort(0, addr+1, 'h77);                                             
-                                                                   step(1);      
-           noWritePort(0);                                                       
-                                                                   step(1);      
-                                      readPort(0, addr+1);                         
-           writePort(0, addr, data);                                             
-                                                                   step(1);      
-           noWritePort(0);                                                       
-                                      expectReadData(0, 'h77);                   
-                                                                   step(2);
-                                      readPort(0, addr);                         
-                                                                   step(1);      
-                                      expectReadData(0, data);                   
-
-           addr += 1920;
-           data -= 51;
-         end
-       end
-    `SVTEST_END
-
     `SVTEST(simultaneous_write_read_port_1_bankn)
        begin
          int addr = 0;
