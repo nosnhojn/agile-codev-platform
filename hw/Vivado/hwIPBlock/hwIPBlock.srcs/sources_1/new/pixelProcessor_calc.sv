@@ -39,6 +39,9 @@ logic [119:0] next_wdata;
 logic [11:0]  next_waddr;
 wire          next_wr;
 
+logic [11:0]  waddr_hold;
+logic         wr_hold;
+
 
 //----------------------------------------------------
 //----------------------------------------------------
@@ -94,7 +97,9 @@ always @(negedge rst_n or posedge clk) begin
     strobe_4_of_4_last_row <= 0;
 
     wdata <= 0;
+    waddr_hold <= 0;
     waddr <= 0;
+    wr_hold <= 0;
     wr <= 0;
   end
 
@@ -118,8 +123,11 @@ always @(negedge rst_n or posedge clk) begin
     strobe_4_of_4_last_row <= strobe_3_of_4_last_row;
 
     wdata <= next_wdata;
-    waddr <= next_waddr;
-    wr <= next_wr;
+
+    waddr_hold <= next_waddr;
+    waddr <= waddr_hold;
+    wr_hold <= next_wr;
+    wr <= wr_hold;
   end
 end
 
@@ -172,9 +180,13 @@ logic [(9*30)-1:0] slot0;
 logic [(9*30)-1:0] slot1;
 logic [(9*30)-1:0] slot2;
 
-logic [(10*30)-1:0] tmp_slot0;
-logic [(10*30)-1:0] tmp_slot1;
-logic [(10*30)-1:0] tmp_slot2;
+logic [(10*30)-1:0] next_tmp_slot0[4];
+logic [(10*30)-1:0] next_tmp_slot1[4];
+logic [(10*30)-1:0] next_tmp_slot2[4];
+
+logic [(10*30)-1:0] tmp_slot0[4];
+logic [(10*30)-1:0] tmp_slot1[4];
+logic [(10*30)-1:0] tmp_slot2[4];
 
 logic above_left;
 logic above;
@@ -201,11 +213,11 @@ assign strobe_vector = {
 always @* begin
   int short_shift, long_shift;
   next_wdata = 0;
-  tmp_slot0 = 0;
-  tmp_slot1 = 0;
-  tmp_slot2 = 0;
 
   for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
+    next_tmp_slot0[pixel_idx] = 0;
+    next_tmp_slot1[pixel_idx] = 0;
+    next_tmp_slot2[pixel_idx] = 0;
     short_shift = (30 * (3 - pixel_idx));
     long_shift = (30 * (7 - pixel_idx));
 
@@ -213,85 +225,102 @@ always @* begin
     // (depends on the calc_strobe)
     case (strobe_vector)
       'b100000 : begin
-        tmp_slot0 = { group_slot1[29:0] , slot1 };
-        tmp_slot1 = { group_slot2[29:0] , slot2 };
-        tmp_slot2 = BLANK_SLOT;
+        next_tmp_slot0[pixel_idx] = { group_slot1[29:0] , slot1 };
+        next_tmp_slot1[pixel_idx] = { group_slot2[29:0] , slot2 };
+        next_tmp_slot2[pixel_idx] = BLANK_SLOT;
    
-        tmp_slot0 = tmp_slot0 >> long_shift;
-        tmp_slot1 = tmp_slot1 >> long_shift;
-        tmp_slot2 = tmp_slot2 >> long_shift;
+        next_tmp_slot0[pixel_idx] = next_tmp_slot0[pixel_idx] >> long_shift;
+        next_tmp_slot1[pixel_idx] = next_tmp_slot1[pixel_idx] >> long_shift;
+        next_tmp_slot2[pixel_idx] = next_tmp_slot2[pixel_idx] >> long_shift;
       end
    
       'b010000 : begin
-        tmp_slot0 = BLANK_SLOT;
-        tmp_slot1 = slot0 >> short_shift;
-        tmp_slot2 = slot1 >> short_shift;
+        next_tmp_slot0[pixel_idx] = BLANK_SLOT;
+        next_tmp_slot1[pixel_idx] = slot0 >> short_shift;
+        next_tmp_slot2[pixel_idx] = slot1 >> short_shift;
       end
    
       'b001000 : begin
-        tmp_slot0 = slot0 >> short_shift;
-        tmp_slot1 = slot1 >> short_shift;
-        tmp_slot2 = slot2 >> short_shift;
+        next_tmp_slot0[pixel_idx] = slot0 >> short_shift;
+        next_tmp_slot1[pixel_idx] = slot1 >> short_shift;
+        next_tmp_slot2[pixel_idx] = slot2 >> short_shift;
       end
    
       'b000100 : begin
-        tmp_slot0 = { { 6'h0 , BG }, slot0 };
-        tmp_slot1 = { { 6'h0 , BG }, slot1 };
-        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+        next_tmp_slot0[pixel_idx] = { { 6'h0 , BG }, slot0 };
+        next_tmp_slot1[pixel_idx] = { { 6'h0 , BG }, slot1 };
+        next_tmp_slot2[pixel_idx] = { { 6'h0 , BG }, slot2 };
    
-        tmp_slot0 = tmp_slot0 >> long_shift;
-        tmp_slot1 = tmp_slot1 >> long_shift;
-        tmp_slot2 = tmp_slot2 >> long_shift;
+        next_tmp_slot0[pixel_idx] = next_tmp_slot0[pixel_idx] >> long_shift;
+        next_tmp_slot1[pixel_idx] = next_tmp_slot1[pixel_idx] >> long_shift;
+        next_tmp_slot2[pixel_idx] = next_tmp_slot2[pixel_idx] >> long_shift;
       end
    
       'b000010 : begin
-        tmp_slot0 = { { 6'h0 , BG }, slot0 };
-        tmp_slot1 = { { 6'h0 , BG }, slot1 };
-        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+        next_tmp_slot0[pixel_idx] = { { 6'h0 , BG }, slot0 };
+        next_tmp_slot1[pixel_idx] = { { 6'h0 , BG }, slot1 };
+        next_tmp_slot2[pixel_idx] = { { 6'h0 , BG }, slot2 };
    
-        tmp_slot0 = tmp_slot1 >> long_shift;
-        tmp_slot1 = tmp_slot2 >> long_shift;
-        tmp_slot2 = BLANK_SLOT;
+        next_tmp_slot0[pixel_idx] = next_tmp_slot1[pixel_idx] >> long_shift;
+        next_tmp_slot1[pixel_idx] = next_tmp_slot2[pixel_idx] >> long_shift;
+        next_tmp_slot2[pixel_idx] = BLANK_SLOT;
       end
    
       'b000001 : begin
-        tmp_slot0 = { { 6'h0 , BG }, slot0 };
-        tmp_slot1 = { { 6'h0 , BG }, slot1 };
-        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+        next_tmp_slot0[pixel_idx] = { { 6'h0 , BG }, slot0 };
+        next_tmp_slot1[pixel_idx] = { { 6'h0 , BG }, slot1 };
+        next_tmp_slot2[pixel_idx] = { { 6'h0 , BG }, slot2 };
    
-        tmp_slot2 = tmp_slot1 >> long_shift;
-        tmp_slot1 = tmp_slot0 >> long_shift;
-        tmp_slot0 = BLANK_SLOT;
+        next_tmp_slot2[pixel_idx] = next_tmp_slot1[pixel_idx] >> long_shift;
+        next_tmp_slot1[pixel_idx] = next_tmp_slot0[pixel_idx] >> long_shift;
+        next_tmp_slot0[pixel_idx] = BLANK_SLOT;
       end
    
       'b000000 : begin
-        tmp_slot0 = { group_slot0[29:0] , slot0 };
-        tmp_slot1 = { group_slot1[29:0] , slot1 };
-        tmp_slot2 = { group_slot2[29:0] , slot2 };
+        next_tmp_slot0[pixel_idx] = { group_slot0[29:0] , slot0 };
+        next_tmp_slot1[pixel_idx] = { group_slot1[29:0] , slot1 };
+        next_tmp_slot2[pixel_idx] = { group_slot2[29:0] , slot2 };
    
-        tmp_slot0 = tmp_slot0 >> long_shift;
-        tmp_slot1 = tmp_slot1 >> long_shift;
-        tmp_slot2 = tmp_slot2 >> long_shift;
+        next_tmp_slot0[pixel_idx] = next_tmp_slot0[pixel_idx] >> long_shift;
+        next_tmp_slot1[pixel_idx] = next_tmp_slot1[pixel_idx] >> long_shift;
+        next_tmp_slot2[pixel_idx] = next_tmp_slot2[pixel_idx] >> long_shift;
       end
     endcase
 
     // find the FG pixels
-    above_left =   (tmp_slot0[83:60] == FG);
-    above =        (tmp_slot0[53:30] == FG);
-    above_right =  (tmp_slot0[23:0] == FG);
+    above_left =   (tmp_slot0[pixel_idx][83:60] == FG);
+    above =        (tmp_slot0[pixel_idx][53:30] == FG);
+    above_right =  (tmp_slot0[pixel_idx][23:0] == FG);
 
-    left =         (tmp_slot1[83:60] == FG);
-    center_is_BG = (tmp_slot1[53:30] == BG);
-    right =        (tmp_slot1[23:0] == FG);
+    left =         (tmp_slot1[pixel_idx][83:60] == FG);
+    center_is_BG = (tmp_slot1[pixel_idx][53:30] == BG);
+    right =        (tmp_slot1[pixel_idx][23:0] == FG);
 
-    below_left =   (tmp_slot2[83:60] == FG);
-    below =        (tmp_slot2[53:30] == FG);
-    below_right =  (tmp_slot2[23:0] == FG);
+    below_left =   (tmp_slot2[pixel_idx][83:60] == FG);
+    below =        (tmp_slot2[pixel_idx][53:30] == FG);
+    below_right =  (tmp_slot2[pixel_idx][23:0] == FG);
 
     any_surrounding_is_FG = (above_left || above || above_right || left || right || below_left || below || below_right);
 
-    if (center_is_BG && any_surrounding_is_FG) next_wdata |= { tmp_slot1[59:54] , SH } << (3-pixel_idx) * 30;
-    else                                       next_wdata |=   tmp_slot1[59:30]        << (3-pixel_idx) * 30;
+    if (center_is_BG && any_surrounding_is_FG) next_wdata |= { tmp_slot1[pixel_idx][59:54] , SH } << (3-pixel_idx) * 30;
+    else                                       next_wdata |=   tmp_slot1[pixel_idx][59:30]        << (3-pixel_idx) * 30;
+  end
+end
+
+
+always @(negedge rst_n or posedge clk) begin
+  if (!rst_n) begin
+    for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
+      tmp_slot0[pixel_idx] <= 0;
+      tmp_slot1[pixel_idx] <= 0;
+      tmp_slot2[pixel_idx] <= 0;
+    end
+  end else begin
+    for (int pixel_idx=0; pixel_idx<4; pixel_idx++) begin
+      tmp_slot0[pixel_idx] <= next_tmp_slot0[pixel_idx];
+      tmp_slot1[pixel_idx] <= next_tmp_slot1[pixel_idx];
+      tmp_slot2[pixel_idx] <= next_tmp_slot2[pixel_idx];
+    end
   end
 end
 
@@ -310,13 +339,13 @@ always @(negedge rst_n or posedge clk) begin
   else begin
     if (calc_strobe) begin
       if (first_column_flag) begin
-        slot0 = { group_slot0 , { 5 { 6'h0 , BG } } };
-        slot1 = { group_slot1 , { 5 { 6'h0 , BG } } };
-        slot2 = { group_slot2 , { 5 { 6'h0 , BG } } };
+        slot0 <= { group_slot0 , { 5 { 6'h0 , BG } } };
+        slot1 <= { group_slot1 , { 5 { 6'h0 , BG } } };
+        slot2 <= { group_slot2 , { 5 { 6'h0 , BG } } };
       end else begin
-        slot0 = { group_slot0 , slot0[(9*30)-1:(4*30)] };
-        slot1 = { group_slot1 , slot1[(9*30)-1:(4*30)] };
-        slot2 = { group_slot2 , slot2[(9*30)-1:(4*30)] };
+        slot0 <= { group_slot0 , slot0[(9*30)-1:(4*30)] };
+        slot1 <= { group_slot1 , slot1[(9*30)-1:(4*30)] };
+        slot2 <= { group_slot2 , slot2[(9*30)-1:(4*30)] };
       end
     end
   end
