@@ -1,12 +1,12 @@
 module pixelProcessor_s1
 #(
-  MEM_DEPTH = 15360,
+  MEM_DEPTH = 11520,
   P0_WIDTH = 30,
   P1_WIDTH = 120,
   P0_ADDR_WIDTH = $clog2(MEM_DEPTH),
   P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4),
   INGRESS_THRESH = 1925,
-  INGRESS_FULL = 6*INGRESS_THRESH
+  INGRESS_FULL = 5*INGRESS_THRESH
 )
 (
   input clk,
@@ -95,7 +95,7 @@ wire [P1_WIDTH-1:0] rdata_no_connect;
 
 pqpram
 #(
-  .QPRAM_DEPTH(15360),
+  .QPRAM_DEPTH(11520),
   .QPRAM_PORT0_WIDTH(30),
   .QPRAM_PORT1_WIDTH(120),
   .QPRAM_PORT0_ADDR_WIDTH(14),

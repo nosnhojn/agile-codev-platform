@@ -64,7 +64,7 @@
   wire [29:0] rdata_no_connect;
   qpram
   #(
-    .QPRAM_DEPTH(8*LINE_WIDTH),
+    .QPRAM_DEPTH(6*LINE_WIDTH),
     .QPRAM_PORT0_WIDTH(30),
     .QPRAM_PORT1_WIDTH(120),
     .QPRAM_PORT0_ADDR_WIDTH(14),

@@ -5,7 +5,7 @@ module pixelProcessor_calc
   PIXELS_PER_READ = 4,
   BG = 24'hffffff,
   FG = 24'h000000,
-  SH = 24'he0e0e0,
+  SH = 24'h1417ed,
   EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ,
   BLANK_SLOT = { 10 { 6'h0 , BG } }
 )

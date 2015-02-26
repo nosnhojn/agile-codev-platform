@@ -1,6 +1,6 @@
   parameter LINE_WIDTH = 1920;
   parameter LINE_WIDTH_BY4 = LINE_WIDTH / 4;
-  parameter NUM_LINES = 12;
+  parameter NUM_LINES = 9;
 
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;

@@ -18,7 +18,7 @@ module pqpram
   input        [11:0] raddr_1
 );
 
-parameter BANK_SIZE_A = 15360/8;
+parameter BANK_SIZE_A = 11520/6;
 parameter BANK_SIZE_B = BANK_SIZE_A / 4;
 
 logic wea_b0;
@@ -50,16 +50,6 @@ logic wea_b5;
 logic [29:0] dina_b5;
 logic [29:0] douta_b5;
 logic [13:0] addra_b5;
-
-logic wea_b6;
-logic [29:0] dina_b6;
-logic [29:0] douta_b6;
-logic [13:0] addra_b6;
-
-logic wea_b7;
-logic [29:0] dina_b7;
-logic [29:0] douta_b7;
-logic [13:0] addra_b7;
 
 logic web_b0;
 logic [119:0] dinb_b0;
@@ -139,33 +129,6 @@ logic _web_b5;
 logic [119:0] _dinb_b5;
 logic [11:0] _addrb_b5;
 
-logic web_b6;
-logic [119:0] dinb_b6;
-logic [119:0] doutb_b6;
-logic [11:0] addrb_b6;
-
-logic next_web_b6;
-logic [119:0] next_dinb_b6;
-logic [11:0] next_addrb_b6;
-
-logic _web_b6;
-logic [119:0] _dinb_b6;
-logic [11:0] _addrb_b6;
-
-logic web_b7;
-logic [119:0] dinb_b7;
-logic [119:0] doutb_b7;
-logic [11:0] addrb_b7;
-
-logic next_web_b7;
-logic [119:0] next_dinb_b7;
-logic [11:0] next_addrb_b7;
-
-logic _web_b7;
-logic [119:0] _dinb_b7;
-logic [11:0] _addrb_b7;
-
-
 logic [2:0] next_read_banka_select;
 logic [2:0] read_banka_select;
 logic [2:0] next_read_bankb_select;
@@ -190,8 +153,6 @@ always @* begin
     3 : rdata_0 = douta_b3;
     4 : rdata_0 = douta_b4;
     5 : rdata_0 = douta_b5;
-    6 : rdata_0 = douta_b6;
-    7 : rdata_0 = douta_b7;
   endcase
 
   case (read_bankb_select)
@@ -201,8 +162,6 @@ always @* begin
     3 : rdata_1 = doutb_b3;
     4 : rdata_1 = doutb_b4;
     5 : rdata_1 = doutb_b5;
-    6 : rdata_1 = doutb_b6;
-    7 : rdata_1 = doutb_b7;
   endcase
 end
 
@@ -213,17 +172,13 @@ always @* begin
   addra_b3 = raddr_0 - 3*BANK_SIZE_A;
   addra_b4 = raddr_0 - 4*BANK_SIZE_A;
   addra_b5 = raddr_0 - 5*BANK_SIZE_A;
-  addra_b6 = raddr_0 - 6*BANK_SIZE_A;
-  addra_b7 = raddr_0 - 7*BANK_SIZE_A;
 
   if      (waddr_0 < BANK_SIZE_A)   addra_b0 = waddr_0;
   else if (waddr_0 < 2*BANK_SIZE_A) addra_b1 = waddr_0 - BANK_SIZE_A;
   else if (waddr_0 < 3*BANK_SIZE_A) addra_b2 = waddr_0 - 2*BANK_SIZE_A;
   else if (waddr_0 < 4*BANK_SIZE_A) addra_b3 = waddr_0 - 3*BANK_SIZE_A;
   else if (waddr_0 < 5*BANK_SIZE_A) addra_b4 = waddr_0 - 4*BANK_SIZE_A;
-  else if (waddr_0 < 6*BANK_SIZE_A) addra_b5 = waddr_0 - 5*BANK_SIZE_A;
-  else if (waddr_0 < 7*BANK_SIZE_A) addra_b6 = waddr_0 - 6*BANK_SIZE_A;
-  else                              addra_b7 = waddr_0 - 7*BANK_SIZE_A;
+  else                              addra_b5 = waddr_0 - 5*BANK_SIZE_A;
 
   wea_b0 = 0;
   wea_b1 = 0;
@@ -231,16 +186,12 @@ always @* begin
   wea_b3 = 0;
   wea_b4 = 0;
   wea_b5 = 0;
-  wea_b6 = 0;
-  wea_b7 = 0;
   if      (waddr_0 < BANK_SIZE_A)   wea_b0 = wr_0;
   else if (waddr_0 < 2*BANK_SIZE_A) wea_b1 = wr_0;
   else if (waddr_0 < 3*BANK_SIZE_A) wea_b2 = wr_0;
   else if (waddr_0 < 4*BANK_SIZE_A) wea_b3 = wr_0;
   else if (waddr_0 < 5*BANK_SIZE_A) wea_b4 = wr_0;
-  else if (waddr_0 < 6*BANK_SIZE_A) wea_b5 = wr_0;
-  else if (waddr_0 < 7*BANK_SIZE_A) wea_b6 = wr_0;
-  else                              wea_b7 = wr_0;
+  else                              wea_b5 = wr_0;
 
   dina_b0 = wdata_0;
   dina_b1 = wdata_0;
@@ -248,8 +199,6 @@ always @* begin
   dina_b3 = wdata_0;
   dina_b4 = wdata_0;
   dina_b5 = wdata_0;
-  dina_b6 = wdata_0;
-  dina_b7 = wdata_0;
 
   next_read_banka_select = 0;
   if      (raddr_0 < BANK_SIZE_A)   next_read_banka_select = 0;
@@ -257,9 +206,7 @@ always @* begin
   else if (raddr_0 < 3*BANK_SIZE_A) next_read_banka_select = 2;
   else if (raddr_0 < 4*BANK_SIZE_A) next_read_banka_select = 3;
   else if (raddr_0 < 5*BANK_SIZE_A) next_read_banka_select = 4;
-  else if (raddr_0 < 6*BANK_SIZE_A) next_read_banka_select = 5;
-  else if (raddr_0 < 7*BANK_SIZE_A) next_read_banka_select = 6;
-  else                              next_read_banka_select = 7;
+  else                              next_read_banka_select = 5;
 end
 
 always @* begin
@@ -305,28 +252,12 @@ always @* begin
   next_dinb_b5 = 0;
   next_addrb_b5 = 0;
 
-  web_b6 = 0;
-  dinb_b6 = 0;
-
-  next_web_b6 = 0;
-  next_dinb_b6 = 0;
-  next_addrb_b6 = 0;
-
-  web_b7 = 0;
-  dinb_b7 = 0;
-
-  next_web_b7 = 0;
-  next_dinb_b7 = 0;
-  next_addrb_b7 = 0;
-
   addrb_b0 = waddr_1;
   addrb_b1 = waddr_1 - BANK_SIZE_B;
   addrb_b2 = waddr_1 - 2*BANK_SIZE_B;
   addrb_b3 = waddr_1 - 3*BANK_SIZE_B;
   addrb_b4 = waddr_1 - 4*BANK_SIZE_B;
   addrb_b5 = waddr_1 - 5*BANK_SIZE_B;
-  addrb_b6 = waddr_1 - 6*BANK_SIZE_B;
-  addrb_b7 = waddr_1 - 7*BANK_SIZE_B;
 
   next_read_bankb_select = 0;
   if (raddr_1 < BANK_SIZE_B) begin
@@ -349,17 +280,9 @@ always @* begin
     addrb_b4 = raddr_1 - 4*BANK_SIZE_B;
     next_read_bankb_select = 4;
   end
-  else if (raddr_1 < 6*BANK_SIZE_B) begin
+  else begin
     addrb_b5 = raddr_1 - 5*BANK_SIZE_B;
     next_read_bankb_select = 5;
-  end
-  else if (raddr_1 < 7*BANK_SIZE_B) begin
-    addrb_b6 = raddr_1 - 6*BANK_SIZE_B;
-    next_read_bankb_select = 6;
-  end
-  else begin
-    addrb_b7 = raddr_1 - 7*BANK_SIZE_B;
-    next_read_bankb_select = 7;
   end
 
   if (wr_1) begin
@@ -413,7 +336,7 @@ always @* begin
         next_addrb_b4 = waddr_1 - 4*BANK_SIZE_B;
       end
     end
-    else if (waddr_1 < 6*BANK_SIZE_B) begin
+    else begin
       if (next_read_bankb_select != 5) begin
         web_b5 = 1;
       end
@@ -421,26 +344,6 @@ always @* begin
         next_web_b5 = 1;
         next_dinb_b5 = wdata_1;
         next_addrb_b5 = waddr_1 - 5*BANK_SIZE_B;
-      end
-    end
-    else if (waddr_1 < 7*BANK_SIZE_B) begin
-      if (next_read_bankb_select != 6) begin
-        web_b6 = 1;
-      end
-      else begin
-        next_web_b6 = 1;
-        next_dinb_b6 = wdata_1;
-        next_addrb_b6 = waddr_1 - 6*BANK_SIZE_B;
-      end
-    end
-    else begin
-      if (next_read_bankb_select != 7) begin
-        web_b7 = 1;
-      end
-      else begin
-        next_web_b7 = 1;
-        next_dinb_b7 = wdata_1;
-        next_addrb_b7 = waddr_1 - 7*BANK_SIZE_B;
       end
     end
   end
@@ -451,8 +354,6 @@ always @* begin
   dinb_b3 = wdata_1;
   dinb_b4 = wdata_1;
   dinb_b5 = wdata_1;
-  dinb_b6 = wdata_1;
-  dinb_b7 = wdata_1;
   if (_web_b0) begin
     web_b0 = 1;
     dinb_b0 = _dinb_b0;
@@ -483,16 +384,6 @@ always @* begin
     dinb_b5 = _dinb_b5;
     addrb_b5 = _addrb_b5;
   end
-  if (_web_b6) begin
-    web_b6 = 1;
-    dinb_b6 = _dinb_b6;
-    addrb_b6 = _addrb_b6;
-  end
-  if (_web_b7) begin
-    web_b7 = 1;
-    dinb_b7 = _dinb_b7;
-    addrb_b7 = _addrb_b7;
-  end
 end
 
 always @(negedge rst_n or posedge clk) begin
@@ -520,48 +411,78 @@ always @(negedge rst_n or posedge clk) begin
     _web_b5 <= 0;
     _dinb_b5 <= 0;
     _addrb_b5 <= 0;
-
-    _web_b6 <= 0;
-    _dinb_b6 <= 0;
-    _addrb_b6 <= 0;
-
-    _web_b7 <= 0;
-    _dinb_b7 <= 0;
-    _addrb_b7 <= 0;
   end else begin
+fork
+begin
+#1;
+if (_web_b0) #1 $display("%t - DELAYED WRITE BANK0 (waddr:%0d raddr:%0d)", $time, _addrb_b0, raddr_1);
+end
+join_none
     _web_b0 <= next_web_b0;
     _dinb_b0 <= next_dinb_b0;
     _addrb_b0 <= next_addrb_b0;
 
+fork
+begin
+#1;
+if (_web_b1) #1 $display("%t - DELAYED WRITE BANK1 (waddr:%0d raddr:%0d)", $time, _addrb_b1, raddr_1);
+end
+join_none
     _web_b1 <= next_web_b1;
     _dinb_b1 <= next_dinb_b1;
     _addrb_b1 <= next_addrb_b1;
 
+fork
+begin
+#1;
+if (_web_b2) #1 $display("%t - DELAYED WRITE BANK2 (waddr:%0d raddr:%0d)", $time, _addrb_b2, raddr_1);
+end
+join_none
     _web_b2 <= next_web_b2;
     _dinb_b2 <= next_dinb_b2;
     _addrb_b2 <= next_addrb_b2;
 
+fork
+begin
+#1;
+if (_web_b3) #1 $display("%t - DELAYED WRITE BANK3 (waddr:%0d raddr:%0d)", $time, _addrb_b3, raddr_1);
+end
+join_none
     _web_b3 <= next_web_b3;
     _dinb_b3 <= next_dinb_b3;
     _addrb_b3 <= next_addrb_b3;
 
+fork
+begin
+#1;
+if (_web_b4) #1 $display("%t - DELAYED WRITE BANK4 (waddr:%0d raddr:%0d)", $time, _addrb_b4, raddr_1);
+end
+join_none
     _web_b4 <= next_web_b4;
     _dinb_b4 <= next_dinb_b4;
     _addrb_b4 <= next_addrb_b4;
 
+fork
+begin
+#1;
+if (_web_b5) #1 $display("%t - DELAYED WRITE BANK5 (waddr:%0d raddr:%0d)", $time, _addrb_b5, raddr_1);
+end
+join_none
     _web_b5 <= next_web_b5;
     _dinb_b5 <= next_dinb_b5;
     _addrb_b5 <= next_addrb_b5;
-
-    _web_b6 <= next_web_b6;
-    _dinb_b6 <= next_dinb_b6;
-    _addrb_b6 <= next_addrb_b6;
-
-    _web_b7 <= next_web_b7;
-    _dinb_b7 <= next_dinb_b7;
-    _addrb_b7 <= next_addrb_b7;
   end
 end
+
+
+always @(negedge clk) begin
+  if (wr_1) $display("%t - WRITE (waddr:%0d wdata:0x%0x)", $time, waddr_1, wdata_1);
+end
+
+always @(negedge clk) begin
+  $display("%t - READ (raddr:%0d rdata:0x%0x)", $time, raddr_1, rdata_1);
+end
+
 
 
 blk_mem_gen_0 bank0
@@ -652,36 +573,6 @@ blk_mem_gen_0 bank5
  .addrb(addrb_b5),
  .dinb(dinb_b5),
  .doutb(doutb_b5)
-);
-
-blk_mem_gen_0 bank6
-(
- .clka(clk),
- .wea(wea_b6),
- .addra(addra_b6),
- .dina(dina_b6),
- .douta(douta_b6),
-
- .clkb(clk),
- .web(web_b6),
- .addrb(addrb_b6),
- .dinb(dinb_b6),
- .doutb(doutb_b6)
-);
-
-blk_mem_gen_0 bank7
-(
- .clka(clk),
- .wea(wea_b7),
- .addra(addra_b7),
- .dina(dina_b7),
- .douta(douta_b7),
-
- .clkb(clk),
- .web(web_b7),
- .addrb(addrb_b7),
- .dinb(dinb_b7),
- .doutb(doutb_b7)
 );
 
 endmodule

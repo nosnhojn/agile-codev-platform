@@ -6,7 +6,7 @@ module pixelProcessor_s2
   P0_ADDR_WIDTH = $clog2(MEM_DEPTH),
   P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4),
   INGRESS_THRESH = 1925,
-  INGRESS_FULL = 6*1920
+  INGRESS_FULL = 5*1920
 )
 (
   input clk,
@@ -106,15 +106,7 @@ IO
 
 
 
-pqpram
-#(
-  .QPRAM_DEPTH(MEM_DEPTH),
-  .QPRAM_PORT0_WIDTH(P0_WIDTH),
-  .QPRAM_PORT1_WIDTH(P1_WIDTH),
-  .QPRAM_PORT0_ADDR_WIDTH(P0_ADDR_WIDTH),
-  .QPRAM_PORT1_ADDR_WIDTH(P1_ADDR_WIDTH)
-)
-my_pqpram
+pqpram my_pqpram
 (
   .clk(clk),
   .rst_n(rst_n),

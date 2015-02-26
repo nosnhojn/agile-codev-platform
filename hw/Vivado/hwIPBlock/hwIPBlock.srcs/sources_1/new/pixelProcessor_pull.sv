@@ -31,8 +31,8 @@ module pixelProcessor_pull
 );
 
 parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
-parameter EFFECTIVE_WIDTH_TIMES8_MINUS1 = 8*EFFECTIVE_WIDTH-1;
-parameter EFFECTIVE_WIDTH_TIMES6_MINUS2 = 6*EFFECTIVE_WIDTH-2;
+parameter EFFECTIVE_WIDTH_TIMES6_MINUS1 = 6*EFFECTIVE_WIDTH-1;
+parameter EFFECTIVE_WIDTH_TIMES4_MINUS2 = 4*EFFECTIVE_WIDTH-2;
 parameter EFFECTIVE_WIDTH_MINUS1 = EFFECTIVE_WIDTH-1;
 parameter LAST_ROW_MARKER = (PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH;
 
@@ -248,12 +248,12 @@ assign at_end_of_frame = (on_last_row && at_end_of_line);
 assign next_raddr_line0_for_wrap = 0; //raddr_line0 - 6*EFFECTIVE_WIDTH + 1;
 assign next_raddr_line1_for_wrap = 480; //raddr_line1 - 6*EFFECTIVE_WIDTH + 1;
 assign next_raddr_line2_for_wrap = 960; //raddr_line2 - 6*EFFECTIVE_WIDTH + 1;
-assign next_raddr_line0_for_eof = 1920; //raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
-assign next_raddr_line1_for_eof = 2400; //raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
-assign next_raddr_line2_for_eof = 2880; //raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
-assign reset_raddr_line0_at_end_of_buffer = (raddr_line0 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
-assign reset_raddr_line1_at_end_of_buffer = (raddr_line1 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
-assign reset_raddr_line2_at_end_of_buffer = (raddr_line2 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
-assign raddr_wraps_at_eof = (raddr_line0 > EFFECTIVE_WIDTH_TIMES6_MINUS2);
+assign next_raddr_line0_for_eof = 1440; //raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line1_for_eof = 1920; //raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
+assign next_raddr_line2_for_eof = 2400; //raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
+assign reset_raddr_line0_at_end_of_buffer = (raddr_line0 >= EFFECTIVE_WIDTH_TIMES6_MINUS1);
+assign reset_raddr_line1_at_end_of_buffer = (raddr_line1 >= EFFECTIVE_WIDTH_TIMES6_MINUS1);
+assign reset_raddr_line2_at_end_of_buffer = (raddr_line2 >= EFFECTIVE_WIDTH_TIMES6_MINUS1);
+assign raddr_wraps_at_eof = (raddr_line0 > EFFECTIVE_WIDTH_TIMES4_MINUS2);
 
 endmodule

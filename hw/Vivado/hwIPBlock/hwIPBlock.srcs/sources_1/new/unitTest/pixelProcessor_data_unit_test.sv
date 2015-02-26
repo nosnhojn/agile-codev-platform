@@ -40,17 +40,17 @@ module pixelProcessor_data_unit_test;
   endtask
 
   task loadStartOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+    for (int i=0; i<LINE_WIDTH*6; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
   endtask
 
   task loadEndOfFrame();
-    for (int i=0; i<LINE_WIDTH*8; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
-    for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i+15360, 0, 0);
+    for (int i=0; i<LINE_WIDTH*6; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i, 0, 0);
+    for (int i=0; i<LINE_WIDTH*3; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i, 'b1, i+11520, 0, 0);
   endtask
 
   task loadStartOfSecondFrame();
-     loadEndOfFrame();
-     for (int i=0; i<LINE_WIDTH*4; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i+4*LINE_WIDTH, 'b1, i, 0, 0);
+    loadEndOfFrame();
+    for (int i=0; i<LINE_WIDTH*3; i+=1) my_qpram.blk_mem.inst.native_mem_module.blk_mem_gen_v8_0_inst.write_a(i+3*LINE_WIDTH, 'b1, i, 0, 0);
   endtask
 
 //always @(posedge clk) begin
@@ -103,6 +103,8 @@ module pixelProcessor_data_unit_test;
     for (int i=_3rd_line+3; i>=_3rd_line; i-=1) slot2 = { slot2 , i[29:0] };
 
     nextSamplePoint();
+ if (group_slot0 != slot0) $display("group_slot0:{ 0x%0x 0x%0x 0x%0x 0x%0x }  slot0: { 0x%0x 0x%0x 0x%0x 0x%0x }", group_slot0[119:90], group_slot0[89:60], group_slot0[59:30], group_slot0[29:0],
+                                                                                                                         slot0[119:90],       slot0[89:60],       slot0[59:30],       slot0[29:0]);
     `FAIL_IF(group_slot0 != slot0);
     `FAIL_IF(group_slot1 != slot1);
     `FAIL_IF(group_slot2 != slot2);
@@ -195,20 +197,20 @@ module pixelProcessor_data_unit_test;
 
 
 
-  `SVTEST(before_8line_boundary)
+  `SVTEST(before_6line_boundary)
     loadEndOfFrame();
-    step(7*full_row + full_group + 1);
+    step(5*full_row + full_group + 1);
   
     expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectGroupEq(7, 0);
+    expectGroupEq(5, 0);
   `SVTEST_END
 
-  `SVTEST(after_8line_boundary)
+  `SVTEST(after_6line_boundary)
     loadEndOfFrame();
-    step(8*full_row + full_group + 1);
+    step(6*full_row + full_group + 1);
   
-    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
-    expectGroupEq(8, 0);
+    expectStrobeWithRowColumnMarkers(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+    expectGroupEq(6, 0);
   `SVTEST_END
 
 

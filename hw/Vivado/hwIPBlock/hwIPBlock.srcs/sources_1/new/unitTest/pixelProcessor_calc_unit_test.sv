@@ -11,7 +11,7 @@ module pixelProcessor_calc_unit_test;
 
   parameter BG = 30'h25_ffffff;
   parameter FG = 30'h25_000000;
-  parameter SH = 30'h25_e0e0e0;
+  parameter SH = 30'h25_1417ed;
 
   parameter FIRST_ROW = 1;
   parameter FIRST_COLUMN = 1;
@@ -23,9 +23,9 @@ module pixelProcessor_calc_unit_test;
   parameter NOT_LAST_COLUMN = 0;
 
   //parameter FULL_FRAME = 1080;
-  parameter FULL_FRAME = 42; // shorten up the frames for test purposes
-                             // any number divisible by 6 and larger than 12
-                             // will work
+  parameter FULL_FRAME = 120; // shorten up the frames for test purposes
+                              // any number divisible by 6 and larger than 12
+                              // will work
 
   `CLK_RESET_FIXTURE(24,5)
 
