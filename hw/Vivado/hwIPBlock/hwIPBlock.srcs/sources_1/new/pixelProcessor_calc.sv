@@ -307,6 +307,13 @@ always @* begin
   end
 end
 
+/*
+always @(negedge clk) begin
+      $display("group_slot0:0x%0x", group_slot0);
+      $display("group_slot1:0x%0x", group_slot1);
+      $display("group_slot2:0x%0x", group_slot2);
+end*/
+
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin

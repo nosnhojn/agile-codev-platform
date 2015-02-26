@@ -1,12 +1,12 @@
 module pixelProcessor_s2
 #(
-  MEM_DEPTH = 8*1920,
+  MEM_DEPTH = 6*1920,
   P0_WIDTH = 30,
   P1_WIDTH = 120,
   P0_ADDR_WIDTH = $clog2(MEM_DEPTH),
   P1_ADDR_WIDTH = $clog2(MEM_DEPTH/4),
   INGRESS_THRESH = 1925,
-  INGRESS_FULL = 5*1920
+  INGRESS_FULL = 6*1920-10
 )
 (
   input clk,

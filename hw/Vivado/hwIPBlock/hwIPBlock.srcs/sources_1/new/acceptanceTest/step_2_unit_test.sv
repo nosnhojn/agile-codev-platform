@@ -10,7 +10,7 @@ module step_2_unit_test;
   svunit_testcase svunit_ut;
 
   // uut params
-  parameter MEM_DEPTH = 8*1920;
+  parameter MEM_DEPTH = 6*1920;
 
   //===================================
   // This is the UUT that we're 
@@ -105,29 +105,34 @@ module step_2_unit_test;
   `SVUNIT_TESTS_BEGIN
 
   `SVTEST(scenario_0_streaming_data)
-    driveTestScenario(0);
+    driveNonBlockingTestScenario(0);
     checkTestScenario(0);
   `SVTEST_END
-
+  
   `SVTEST(scenario_1_test)
-    driveTestScenario(1);
+    driveNonBlockingTestScenario(1);
     checkTestScenario(1);
   `SVTEST_END
-
+  
   `SVTEST(scenario_2_test)
-    driveTestScenario(2);
+    driveNonBlockingTestScenario(2);
     checkTestScenario(2);
   `SVTEST_END
-
+ 
   `SVTEST(scenario_3_test)
-    driveTestScenario(3);
+    driveNonBlockingTestScenario(3);
     checkTestScenario(3);
   `SVTEST_END
-
-// `SVTEST(scenario_4_test)
-//   driveTestScenario(4);
-//   checkTestScenario(4);
-// `SVTEST_END
+  
+  `SVTEST(scenario_4_test)
+    driveNonBlockingTestScenario(4);
+    checkTestScenario(4);
+  `SVTEST_END
+ 
+  `SVTEST(scenario_5_test)
+    driveNonBlockingTestScenario(5);
+    checkTestScenario(5);
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
@@ -144,7 +149,7 @@ module step_2_unit_test;
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
-//if (oTDATA !== data) $display("data:0x%0x oTDATA:0x%0x", data, oTDATA);
+if (oTDATA !== data) $display("data:0x%0x oTDATA:0x%0x", data, oTDATA);
 //if (oTKEEP !== keep) $display("keep:0x%0x oTKEEP:0x%0x", keep, oTKEEP);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);
@@ -174,33 +179,33 @@ module step_2_unit_test;
   endfunction
 
   function void setEgressShCell(int row, int col);
-    egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'he0e0e0;
+    egressScenario[egressScenarioCnt-1][row * 1920 + col] = 24'h1417ed;
   endfunction
 
   initial begin
     //--------------------------
     // scenario 0 is a constant
     //--------------------------
-    newIngressScenario(24*MEM_DEPTH, 'hffffff);
-    newEgressScenario(20*MEM_DEPTH, 'hffffff);
+    newIngressScenario(10*MEM_DEPTH, 'hffffff);
+    newEgressScenario(9*MEM_DEPTH, 'hffffff);
 
 
-    //---------------------------------
-    // scenario 1 is a single fg pixel
-    //---------------------------------
+    //--------------------------------------------------------
+    // scenario 1 is a single fg pixel in the top left corner
+    //--------------------------------------------------------
     newIngressScenario(8*LINE_WIDTH, 'hffffff);
     setIngressFgCell(0, 0);
 
-    newEgressScenario(2*LINE_WIDTH, 'hffffff);
+    newEgressScenario(3*LINE_WIDTH+1, 'hffffff);
     setEgressFgCell(0, 0);
     setEgressShCell(0, 1);
     setEgressShCell(1, 0);
     setEgressShCell(1, 1);
 
 
-    //------------------------------------
-    // scenario 2 is a block of fg pixels
-    //------------------------------------
+    //-----------------------------------------------
+    // scenario 2 is a block of fg pixels on top row
+    //-----------------------------------------------
     newIngressScenario(8*LINE_WIDTH, 'hffffff);
     setIngressFgCell(0, 1);
     setIngressFgCell(0, 2);
@@ -232,14 +237,32 @@ module step_2_unit_test;
     setEgressShCell(1, 1919);
 
 
+    //----------------------------------------------------------
+    // scenario 4 is a single fg pixel near the top left corner
+    //----------------------------------------------------------
+    newIngressScenario(8*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(1, 1);
+
+    newEgressScenario(3*LINE_WIDTH+1, 'hffffff);
+    setEgressShCell(0, 0);
+    setEgressShCell(0, 1);
+    setEgressShCell(0, 2);
+    setEgressShCell(1, 0);
+    setEgressFgCell(1, 1);
+    setEgressShCell(1, 2);
+    setEgressShCell(2, 0);
+    setEgressShCell(2, 1);
+    setEgressShCell(2, 2);
+
+
     //-------------------------------------------------------
-    // scenario 4 is a block of fg pixels at end of row 1079
+    // scenario 5 is a block of fg pixels at end of row 1079
     //-------------------------------------------------------
     newIngressScenario(1088*LINE_WIDTH, 'hffffff);
     setIngressFgCell(1079, 1918);
     setIngressFgCell(1079, 1919);
 
-    newEgressScenario(1080*LINE_WIDTH, 'hffffff);
+    newEgressScenario(1081*LINE_WIDTH, 'hffffff);
     setEgressShCell(1078, 1917);
     setEgressShCell(1078, 1918);
     setEgressShCell(1078, 1919);
@@ -247,9 +270,19 @@ module step_2_unit_test;
     setEgressFgCell(1079, 1918);
     setEgressFgCell(1079, 1919);
 
+
   end
 
-  task driveTestScenario(int idx);
+  task driveBlockingTestScenario(int idx);
+    step();
+
+    for (int i=0; i<ingressScenario[idx].size(); i+=1) begin
+      setIngressPixel(ingressScenario[idx][i], i[0], i[3:0], i[4]);
+      step();
+    end
+  endtask
+
+  task driveNonBlockingTestScenario(int idx);
     step();
     fork
       for (int i=0; i<ingressScenario[idx].size(); i+=1) begin
@@ -272,6 +305,7 @@ module step_2_unit_test;
       while (j<egressScenario[idx].size()) begin
         nextSamplePoint();
         if (oTVALID) begin
+if (oTDATA !== egressScenario[idx][j]) $display("data[%0d]:0x%0x oTDATA:0x%0x", j, egressScenario[idx][j], oTDATA);
           expectEgressPixel(egressScenario[idx][j], j[0], j[3:0], j[4]);
           j += 1;
           waitStep();

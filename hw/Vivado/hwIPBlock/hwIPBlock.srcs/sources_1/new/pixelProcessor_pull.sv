@@ -192,13 +192,13 @@ always @(negedge rst_n or posedge clk) begin
     next_last_column_flag <= 0;
 
     if (calc_rdy) begin
-      case (next_pixel_ptr_line_cnt[1:0])
-        2'b01 : group_slot2 <= rdata;
-        2'b10 : group_slot0 <= rdata;
-        2'b00 : group_slot1 <= rdata;
-      endcase
-
       if (ingress_rdy) begin
+        case (next_pixel_ptr_line_cnt[1:0])
+          2'b01 : group_slot2 <= rdata;
+          2'b10 : group_slot0 <= rdata;
+          2'b00 : group_slot1 <= rdata;
+        endcase
+
         if (pixel_ptr_line_cnt >= 2) begin
           at_end_of_line <= 0;
           on_last_row <= 0;

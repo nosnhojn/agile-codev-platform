@@ -9,7 +9,7 @@ module step_1_unit_test;
   svunit_testcase svunit_ut;
 
   // uut params
-  parameter MEM_DEPTH = 15360;
+  parameter MEM_DEPTH = 11520;
   parameter INGRESS_THRESH = 1925;
 
   //===================================
@@ -159,7 +159,7 @@ module step_1_unit_test;
       expectEgressPixel(i, i[0], i[3:0], i[4]);
     end
   `SVTEST_END
-
+ 
   `SVTEST(streaming_data_near_empty)
     fork
       for (int i=0; i<10*MEM_DEPTH; i+=1) begin
@@ -170,12 +170,12 @@ module step_1_unit_test;
           iTVALID = 0;
           step(pause);
         end
-
+ 
         setIngressPixel(i, i[0], i[3:0], i[4]);
         step();
       end
     join_none
-
+ 
     for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
       @(negedge clk);
       while (!oTVALID) begin
@@ -184,7 +184,7 @@ module step_1_unit_test;
       expectEgressPixel(i, i[0], i[3:0], i[4]);
     end
   `SVTEST_END
- 
+
   `SVUNIT_TESTS_END
 
 /*
@@ -208,7 +208,7 @@ end
   task expectEgressPixel(bit [23:0] data, bit user = 1, bit[3:0] keep = 'hb, bit last = 0);
     nextSamplePoint();
     `FAIL_UNLESS(oTVALID === 1);
-if (oTDATA != data) $display("CHECK:0x%0x", oTDATA);
+if (oTDATA != data) $display("CHECK:0x%0x 0x%0x", oTDATA, data);
     `FAIL_UNLESS(oTDATA === data);
     `FAIL_UNLESS(oTUSER === user);
     `FAIL_UNLESS(oTKEEP === keep);

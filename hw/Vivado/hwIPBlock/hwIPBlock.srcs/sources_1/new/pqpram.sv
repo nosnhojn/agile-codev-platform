@@ -412,76 +412,44 @@ always @(negedge rst_n or posedge clk) begin
     _dinb_b5 <= 0;
     _addrb_b5 <= 0;
   end else begin
-fork
-begin
-#1;
-if (_web_b0) #1 $display("%t - DELAYED WRITE BANK0 (waddr:%0d raddr:%0d)", $time, _addrb_b0, raddr_1);
-end
-join_none
     _web_b0 <= next_web_b0;
     _dinb_b0 <= next_dinb_b0;
     _addrb_b0 <= next_addrb_b0;
 
-fork
-begin
-#1;
-if (_web_b1) #1 $display("%t - DELAYED WRITE BANK1 (waddr:%0d raddr:%0d)", $time, _addrb_b1, raddr_1);
-end
-join_none
     _web_b1 <= next_web_b1;
     _dinb_b1 <= next_dinb_b1;
     _addrb_b1 <= next_addrb_b1;
 
-fork
-begin
-#1;
-if (_web_b2) #1 $display("%t - DELAYED WRITE BANK2 (waddr:%0d raddr:%0d)", $time, _addrb_b2, raddr_1);
-end
-join_none
     _web_b2 <= next_web_b2;
     _dinb_b2 <= next_dinb_b2;
     _addrb_b2 <= next_addrb_b2;
 
-fork
-begin
-#1;
-if (_web_b3) #1 $display("%t - DELAYED WRITE BANK3 (waddr:%0d raddr:%0d)", $time, _addrb_b3, raddr_1);
-end
-join_none
     _web_b3 <= next_web_b3;
     _dinb_b3 <= next_dinb_b3;
     _addrb_b3 <= next_addrb_b3;
 
-fork
-begin
-#1;
-if (_web_b4) #1 $display("%t - DELAYED WRITE BANK4 (waddr:%0d raddr:%0d)", $time, _addrb_b4, raddr_1);
-end
-join_none
     _web_b4 <= next_web_b4;
     _dinb_b4 <= next_dinb_b4;
     _addrb_b4 <= next_addrb_b4;
 
-fork
-begin
-#1;
-if (_web_b5) #1 $display("%t - DELAYED WRITE BANK5 (waddr:%0d raddr:%0d)", $time, _addrb_b5, raddr_1);
-end
-join_none
     _web_b5 <= next_web_b5;
     _dinb_b5 <= next_dinb_b5;
     _addrb_b5 <= next_addrb_b5;
   end
 end
 
-
+/*
 always @(negedge clk) begin
-  if (wr_1) $display("%t - WRITE (waddr:%0d wdata:0x%0x)", $time, waddr_1, wdata_1);
+  if (wr_1) $display("%t - WRITE1 (waddr:%0d wdata:0x%0x)", $time, waddr_1, wdata_1);
 end
-
+always @(negedge clk) begin
+  if (wr_0) $display("%t - WRITE0 (waddr:%0d wdata:0x%0x)", $time, waddr_0, wdata_0);
+end
 always @(negedge clk) begin
   $display("%t - READ (raddr:%0d rdata:0x%0x)", $time, raddr_1, rdata_1);
 end
+*/
+
 
 
 
