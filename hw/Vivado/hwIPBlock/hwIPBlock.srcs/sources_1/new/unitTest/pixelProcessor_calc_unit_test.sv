@@ -147,7 +147,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST(write_on_middle_columns)
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWrite();
   `SVTEST_END
 
@@ -155,8 +155,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
 
     step();
-    expectWrite();
     clearStrobe();
+
+    step();
+    expectWrite();
 
     step();
     expectWrite();
@@ -165,7 +167,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST(no_write_on_1st_column_1st_row)
     strobeFlags(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectNoWrite();
   `SVTEST_END
 
@@ -176,7 +178,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
 
-    step();
+    step(2);
     expectNoWrite();
   `SVTEST_END
 
@@ -184,8 +186,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
     step();
-    expectWrite();
     clearStrobe();
+
+    step();
+    expectWrite();
 
     step();
     expectWrite();
@@ -196,6 +200,8 @@ module pixelProcessor_calc_unit_test;
 
     step();
     clearStrobe();
+
+    step();
     expectWrite();
 
     repeat (3) begin
@@ -207,7 +213,7 @@ module pixelProcessor_calc_unit_test;
   `SVTEST(no_write_on_1st_column_last_row)
     strobeFlags(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectNoWrite();
   `SVTEST_END
 
@@ -216,6 +222,8 @@ module pixelProcessor_calc_unit_test;
 
     step();
     expectNoWrite();
+
+    step();
     clearStrobe();
 
     step();
@@ -227,6 +235,8 @@ module pixelProcessor_calc_unit_test;
  
     step();
     clearStrobe();
+
+    step();
     expectWrite();
 
     step();
@@ -237,8 +247,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
 
     step();
-    expectWrite();
     clearStrobe();
+
+    step();
+    expectWrite();
 
     repeat (3) begin
       step();
@@ -273,7 +285,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -284,7 +296,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
 
-    step();
+    step(2);
     expectWriteAddr(0);
   `SVTEST_END
 
@@ -294,7 +306,7 @@ module pixelProcessor_calc_unit_test;
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(LINE_WIDTH_BY4 + 1);
   `SVTEST_END
  
@@ -307,7 +319,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
 
-    step();
+    step(2);
     expectWriteAddr(1);
   `SVTEST_END
  
@@ -317,7 +329,7 @@ module pixelProcessor_calc_unit_test;
 
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(LINE_WIDTH_BY4+2);
   `SVTEST_END
 
@@ -325,7 +337,7 @@ module pixelProcessor_calc_unit_test;
     strobe_first_row_to_last_column();
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(2*LINE_WIDTH_BY4-2);
   `SVTEST_END
 
@@ -336,7 +348,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
 
-    step();
+    step(2);
     expectWriteAddr(LINE_WIDTH_BY4-2);
 
     step();
@@ -353,7 +365,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(2 * LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -365,7 +377,7 @@ module pixelProcessor_calc_unit_test;
 
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(2 * LINE_WIDTH_BY4 + 1);
   `SVTEST_END
 
@@ -377,6 +389,8 @@ module pixelProcessor_calc_unit_test;
 
     step();
     clearStrobe();
+
+    step();
     expectWriteAddr(3 * LINE_WIDTH_BY4 - 2);
 
     step();
@@ -391,7 +405,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(3 * LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -404,7 +418,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
-    step();
+    step(2);
     expectWriteAddr(0);
   `SVTEST_END
 
@@ -417,7 +431,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
-    step();
+    step(2);
     expectWriteAddr(0);
   `SVTEST_END
 
@@ -430,7 +444,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
  
-    step();
+    step(2);
     expectWriteAddr(5 * LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -440,10 +454,11 @@ module pixelProcessor_calc_unit_test;
  
     strobeFlagsAndClear(NOT_FIRST_ROW, FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
+
     step();
     clearStrobe();
  
-    step();
+    step(2);
     expectWriteAddr(4 * LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -454,7 +469,7 @@ module pixelProcessor_calc_unit_test;
 
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(6*LINE_WIDTH_BY4-2);
   `SVTEST_END
 
@@ -468,7 +483,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
  
-    step();
+    step(2);
     expectWriteAddr(5*LINE_WIDTH_BY4-2);
  
     step();
@@ -485,7 +500,7 @@ module pixelProcessor_calc_unit_test;
     strobeFlagsAndClear(FIRST_ROW, FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteAddr(LINE_WIDTH_BY4);
   `SVTEST_END
 
@@ -506,6 +521,8 @@ module pixelProcessor_calc_unit_test;
 
     step();
     clearStrobe();
+
+    step();
     expectWriteData({ BG , BG , SH , SH });
     
     step();
@@ -523,7 +540,7 @@ module pixelProcessor_calc_unit_test;
                { BG , BG , BG , BG });
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteData({ SH , SH , BG , BG });
   `SVTEST_END
 
@@ -541,7 +558,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
  
-    step();
+    step(2);
     expectWriteData({ FG , SH , BG , BG });
   `SVTEST_END
 
@@ -563,7 +580,7 @@ module pixelProcessor_calc_unit_test;
                { BG , BG , BG , BG });
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
  
-    step();
+    step(2);
     expectWriteData({ BG , SH , FG , SH });
   `SVTEST_END
  
@@ -586,7 +603,7 @@ module pixelProcessor_calc_unit_test;
     step();
     clearStrobe();
  
-    step();
+    step(2);
     expectWriteData({ BG , SH , SH , SH });
   `SVTEST_END
 
@@ -610,6 +627,8 @@ module pixelProcessor_calc_unit_test;
     
     step();
     clearStrobe();
+
+    step();
     expectWriteData({ BG , BG , BG , SH });
 
     step();
@@ -633,8 +652,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     
     step();
-    expectWriteData({ BG , BG , BG , SH });
     clearStrobe();
+
+    step();
+    expectWriteData({ BG , BG , BG , SH });
 
     step();
     expectWriteData({ BG , BG , BG , SH });
@@ -657,8 +678,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     
     step();
-    expectWriteData({ BG , BG , BG , SH });
     clearStrobe();
+    
+    step();
+    expectWriteData({ BG , BG , BG , SH });
 
     step();
     expectWriteData({ BG , BG , BG , BG });
@@ -678,8 +701,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
     
     step();
-    expectWriteData({ SH , BG , BG , BG });
     clearStrobe();
+    
+    step();
+    expectWriteData({ SH , BG , BG , BG });
 
     step();
     expectWriteData({ SH , BG , BG , BG });
@@ -698,6 +723,8 @@ module pixelProcessor_calc_unit_test;
     
     step();
     clearStrobe();
+    
+    step();
     expectWriteData({ SH , BG , BG , BG });
 
     step();
@@ -717,6 +744,8 @@ module pixelProcessor_calc_unit_test;
     
     step();
     clearStrobe();
+    
+    step();
     expectWriteData({ SH , BG , BG , BG });
 
     step();
@@ -746,8 +775,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
     
     step();
-    expectWriteData({ SH , SH , SH , BG });
     clearStrobe();
+
+    step();
+    expectWriteData({ SH , SH , SH , BG });
 
     step();
     expectWriteData({ SH , FG , SH , BG });
@@ -774,7 +805,7 @@ module pixelProcessor_calc_unit_test;
                { BG , BG , BG , BG });
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, NOT_LAST_COLUMN);
 
-    step();
+    step(2);
     expectWriteData({ SH , SH , BG , BG });
   `SVTEST_END
 
@@ -803,8 +834,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, NOT_LAST_ROW, LAST_COLUMN);
     
     step();
-    expectWriteData({ BG , SH , SH , SH });
     clearStrobe();
+    
+    step();
+    expectWriteData({ BG , SH , SH , SH });
 
     step();
     expectWriteData({ SH , SH , SH , BG });
@@ -827,8 +860,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, NOT_LAST_COLUMN);
     
     step();
-    expectWriteData({ BG , SH , SH , SH });
     clearStrobe();
+    
+    step();
+    expectWriteData({ BG , SH , SH , SH });
 
     step();
     expectWriteData({ BG , SH , FG , SH });
@@ -860,8 +895,10 @@ module pixelProcessor_calc_unit_test;
     strobeFlags(NOT_FIRST_ROW, NOT_FIRST_COLUMN, LAST_ROW, LAST_COLUMN);
     
     step();
-    expectWriteData({ SH , FG , SH , SH });
     clearStrobe();
+    
+    step();
+    expectWriteData({ SH , FG , SH , SH });
 
     step();
     expectWriteData({ SH , SH , FG , SH });

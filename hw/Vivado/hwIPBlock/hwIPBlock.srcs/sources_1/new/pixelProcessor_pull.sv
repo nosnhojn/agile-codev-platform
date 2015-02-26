@@ -44,11 +44,11 @@ logic at_end_of_line;
 wire on_first_row;
 //wire on_last_row;
 logic on_last_row;
-logic [31:0] line_ptr;
-logic [31:0] rptr;
-logic [1:0] rptr_line_cnt;
-logic       rptr_line_cnt_flag;
-logic [1:0] next_rptr_line_cnt;
+logic [31:0] column_ptr;
+logic [31:0] pixel_ptr;
+logic [1:0] pixel_ptr_line_cnt;
+logic       pixel_ptr_line_cnt_flag;
+logic [1:0] next_pixel_ptr_line_cnt;
 
 logic next_calc_strobe;
 logic next_first_row_flag;
@@ -82,11 +82,11 @@ wire reset_raddr_line2_at_end_of_buffer;
 wire raddr_wraps_at_eof;
 
 always @* begin
-  next_rptr_line_cnt = rptr_line_cnt;
+  next_pixel_ptr_line_cnt = pixel_ptr_line_cnt;
 
   if (ingress_rdy) begin
-    if (rptr_line_cnt >= 2) next_rptr_line_cnt = 0;
-    else next_rptr_line_cnt = rptr_line_cnt + 1;
+    if (pixel_ptr_line_cnt >= 2) next_pixel_ptr_line_cnt = 0;
+    else next_pixel_ptr_line_cnt = pixel_ptr_line_cnt + 1;
   end
 end
 
@@ -97,7 +97,7 @@ always @* begin
 
   if (calc_rdy) begin
     if (ingress_rdy) begin
-      if (rptr_line_cnt_flag) begin
+      if (pixel_ptr_line_cnt_flag) begin
         if (at_end_of_frame) begin
           if (raddr_wraps_at_eof) begin
             next_raddr_line0 = next_raddr_line0_for_wrap;
@@ -128,10 +128,10 @@ end
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
-    line_ptr <= 0;
-    rptr <= 0;
-    rptr_line_cnt <= 0;
-    rptr_line_cnt_flag <= 0;
+    column_ptr <= 0;
+    pixel_ptr <= 0;
+    pixel_ptr_line_cnt <= 0;
+    pixel_ptr_line_cnt_flag <= 0;
     calc_strobe <= 0;
     next_calc_strobe <= 0;
     first_row_flag <= 0;
@@ -162,7 +162,7 @@ always @(negedge rst_n or posedge clk) begin
     raddr_line1 <= next_raddr_line1;
     raddr_line2 <= next_raddr_line2;
 
-    case (next_rptr_line_cnt)
+    case (next_pixel_ptr_line_cnt)
       'b00 : raddr <= next_raddr_line0;
       'b01 : raddr <= next_raddr_line1;
       'b10 : raddr <= next_raddr_line2;
@@ -192,34 +192,36 @@ always @(negedge rst_n or posedge clk) begin
     next_last_column_flag <= 0;
 
     if (calc_rdy) begin
-      case (next_rptr_line_cnt[1:0])
+      case (next_pixel_ptr_line_cnt[1:0])
         2'b01 : group_slot2 <= rdata;
         2'b10 : group_slot0 <= rdata;
         2'b00 : group_slot1 <= rdata;
       endcase
 
       if (ingress_rdy) begin
-        if (rptr_line_cnt >= 2) begin
+        if (pixel_ptr_line_cnt >= 2) begin
           at_end_of_line <= 0;
           on_last_row <= 0;
 
-          if (line_ptr >= EFFECTIVE_WIDTH-1) begin
-            line_ptr <= 0;
+          if (column_ptr >= EFFECTIVE_WIDTH-1) begin
+            column_ptr <= 0;
           end
           else begin;
-            line_ptr <= line_ptr + 1;
+            column_ptr <= column_ptr + 1;
           end
 
           if (at_end_of_frame) begin
-            rptr <= 0;
+            pixel_ptr <= 0;
           end
 
           else begin
-            rptr <= rptr + 1;
-            if ((rptr+1) % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH_MINUS1) begin
+            pixel_ptr <= pixel_ptr + 1;
+            //if ((pixel_ptr+1) % (EFFECTIVE_WIDTH) == EFFECTIVE_WIDTH_MINUS1) begin
+            if (column_ptr == EFFECTIVE_WIDTH-2) begin
               at_end_of_line <= 1;
             end
-            if ((rptr+1) >= LAST_ROW_MARKER) begin
+
+            if ((pixel_ptr+1) >= LAST_ROW_MARKER) begin
               on_last_row <= 1;
             end
           end
@@ -232,15 +234,15 @@ always @(negedge rst_n or posedge clk) begin
         end
       end
 
-      rptr_line_cnt <= next_rptr_line_cnt;
-      rptr_line_cnt_flag <= (next_rptr_line_cnt >= 2);
+      pixel_ptr_line_cnt <= next_pixel_ptr_line_cnt;
+      pixel_ptr_line_cnt_flag <= (next_pixel_ptr_line_cnt >= 2);
     end
   end
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign at_start_of_line = (line_ptr == 0);
-assign on_first_row = (rptr < EFFECTIVE_WIDTH);
+assign at_start_of_line = (column_ptr == 0);
+assign on_first_row = (pixel_ptr < EFFECTIVE_WIDTH);
 assign at_end_of_frame = (on_last_row && at_end_of_line);
 
 assign next_raddr_line0_for_wrap = 0; //raddr_line0 - 6*EFFECTIVE_WIDTH + 1;
