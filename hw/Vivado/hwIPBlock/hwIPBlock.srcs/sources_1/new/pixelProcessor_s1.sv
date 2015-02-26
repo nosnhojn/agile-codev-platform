@@ -93,15 +93,7 @@ wire [P1_ADDR_WIDTH-1:0] raddr_1;
 wire [P1_WIDTH-1:0] rdata_no_connect;
 
 
-pqpram
-#(
-  .QPRAM_DEPTH(11520),
-  .QPRAM_PORT0_WIDTH(30),
-  .QPRAM_PORT1_WIDTH(120),
-  .QPRAM_PORT0_ADDR_WIDTH(14),
-  .QPRAM_PORT1_ADDR_WIDTH(12)
-)
-my_pqpram
+pqpram my_pqpram
 (
   .clk(clk),
   .rst_n(rst_n),
