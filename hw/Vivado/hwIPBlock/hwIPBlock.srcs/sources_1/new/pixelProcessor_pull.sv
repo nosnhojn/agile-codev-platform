@@ -31,6 +31,8 @@ module pixelProcessor_pull
 );
 
 parameter EFFECTIVE_WIDTH = PIXEL_WIDTH/PIXELS_PER_READ;
+parameter EFFECTIVE_WIDTH_TIMES8_MINUS1 = 8*EFFECTIVE_WIDTH-1;
+parameter EFFECTIVE_WIDTH_TIMES6_MINUS2 = 6*EFFECTIVE_WIDTH-2;
 parameter EFFECTIVE_WIDTH_MINUS1 = EFFECTIVE_WIDTH-1;
 parameter LAST_ROW_MARKER = (PIXEL_HEIGHT - 3) * EFFECTIVE_WIDTH;
 
@@ -42,8 +44,10 @@ logic at_end_of_line;
 wire on_first_row;
 //wire on_last_row;
 logic on_last_row;
+logic [31:0] line_ptr;
 logic [31:0] rptr;
 logic [1:0] rptr_line_cnt;
+logic       rptr_line_cnt_flag;
 logic [1:0] next_rptr_line_cnt;
 
 logic next_calc_strobe;
@@ -93,7 +97,7 @@ always @* begin
 
   if (calc_rdy) begin
     if (ingress_rdy) begin
-      if (rptr_line_cnt >= 2) begin
+      if (rptr_line_cnt_flag) begin
         if (at_end_of_frame) begin
           if (raddr_wraps_at_eof) begin
             next_raddr_line0 = next_raddr_line0_for_wrap;
@@ -124,8 +128,10 @@ end
 
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
+    line_ptr <= 0;
     rptr <= 0;
     rptr_line_cnt <= 0;
+    rptr_line_cnt_flag <= 0;
     calc_strobe <= 0;
     next_calc_strobe <= 0;
     first_row_flag <= 0;
@@ -196,6 +202,14 @@ always @(negedge rst_n or posedge clk) begin
         if (rptr_line_cnt >= 2) begin
           at_end_of_line <= 0;
           on_last_row <= 0;
+
+          if (line_ptr >= EFFECTIVE_WIDTH-1) begin
+            line_ptr <= 0;
+          end
+          else begin;
+            line_ptr <= line_ptr + 1;
+          end
+
           if (at_end_of_frame) begin
             rptr <= 0;
           end
@@ -219,12 +233,13 @@ always @(negedge rst_n or posedge clk) begin
       end
 
       rptr_line_cnt <= next_rptr_line_cnt;
+      rptr_line_cnt_flag <= (next_rptr_line_cnt >= 2);
     end
   end
 end
 
 assign ingress_rdy = ingress_available_cnt >= ingress_rdy_thresh;
-assign at_start_of_line = (rptr % (EFFECTIVE_WIDTH) == 0);
+assign at_start_of_line = (line_ptr == 0);
 assign on_first_row = (rptr < EFFECTIVE_WIDTH);
 assign at_end_of_frame = (on_last_row && at_end_of_line);
 
@@ -234,9 +249,9 @@ assign next_raddr_line2_for_wrap = 960; //raddr_line2 - 6*EFFECTIVE_WIDTH + 1;
 assign next_raddr_line0_for_eof = 1920; //raddr_line0 + 2*EFFECTIVE_WIDTH + 1;
 assign next_raddr_line1_for_eof = 2400; //raddr_line1 + 2*EFFECTIVE_WIDTH + 1;
 assign next_raddr_line2_for_eof = 2880; //raddr_line2 + 2*EFFECTIVE_WIDTH + 1;
-assign reset_raddr_line0_at_end_of_buffer = (raddr_line0 >= 8*EFFECTIVE_WIDTH-1);
-assign reset_raddr_line1_at_end_of_buffer = (raddr_line1 >= 8*EFFECTIVE_WIDTH-1);
-assign reset_raddr_line2_at_end_of_buffer = (raddr_line2 >= 8*EFFECTIVE_WIDTH-1);
-assign raddr_wraps_at_eof = (raddr_line0 > 6*EFFECTIVE_WIDTH-2);
+assign reset_raddr_line0_at_end_of_buffer = (raddr_line0 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
+assign reset_raddr_line1_at_end_of_buffer = (raddr_line1 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
+assign reset_raddr_line2_at_end_of_buffer = (raddr_line2 >= EFFECTIVE_WIDTH_TIMES8_MINUS1);
+assign raddr_wraps_at_eof = (raddr_line0 > EFFECTIVE_WIDTH_TIMES6_MINUS2);
 
 endmodule
