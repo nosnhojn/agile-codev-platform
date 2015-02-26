@@ -50,6 +50,9 @@ wire          next_wr;
 wire  strobe_normal;
 logic strobe_last_column;
 wire strobe_2_of_2;
+logic strobe_2_first_row;
+logic strobe_2_last_row;
+logic strobe_3first_4last;
 logic strobe_2_of_2_first_row;
 logic strobe_2_of_2_last_row;
 wire strobe_2_of_4;
@@ -75,6 +78,10 @@ always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     strobe_last_column <= 0;
 
+    strobe_2_first_row <= 0;
+    strobe_2_last_row <= 0;
+    strobe_3first_4last <= 0;
+
     strobe_2_of_2_first_row <= 0;
     strobe_2_of_2_last_row <= 0;
 
@@ -93,6 +100,10 @@ always @(negedge rst_n or posedge clk) begin
 
   else begin
     strobe_last_column <= calc_strobe && last_column_flag;
+
+    strobe_2_first_row <= calc_strobe && first_row_flag && (!first_column_flag || last_column_flag);
+    strobe_2_last_row <= calc_strobe && last_row_flag && (!first_column_flag || last_column_flag);
+    strobe_3first_4last <= strobe_2_of_4_first_row || strobe_3_of_4_last_row;
 
     strobe_2_of_2_first_row <= calc_strobe && first_row_flag && !first_column_flag;
     strobe_2_of_2_last_row <= calc_strobe && last_row_flag && !first_column_flag;
@@ -176,6 +187,17 @@ logic below_right;
 logic center_is_BG;
 logic any_surrounding_is_FG;
 
+wire [5:0] strobe_vector;
+
+assign strobe_vector = {
+                        last_row_flag,
+                        strobe_2_first_row,
+                        strobe_2_last_row,
+                        strobe_3first_4last,
+                        strobe_3_of_4_last_row,
+                        strobe_4_of_4_first_row
+                       };
+
 always @* begin
   int short_shift, long_shift;
   next_wdata = 0;
@@ -189,61 +211,69 @@ always @* begin
 
     // take a snapshot of the group slot history
     // (depends on the calc_strobe)
-    if (calc_strobe && last_row_flag) begin
-      tmp_slot0 = { group_slot1[29:0] , slot1 };
-      tmp_slot1 = { group_slot2[29:0] , slot2 };
-      tmp_slot2 = BLANK_SLOT;
-
-      tmp_slot0 = tmp_slot0 >> long_shift;
-      tmp_slot1 = tmp_slot1 >> long_shift;
-      tmp_slot2 = tmp_slot2 >> long_shift;
-
-    end else if (calc_strobe) begin
-      tmp_slot0 = { group_slot0[29:0] , slot0 };
-      tmp_slot1 = { group_slot1[29:0] , slot1 };
-      tmp_slot2 = { group_slot2[29:0] , slot2 };
-
-      tmp_slot0 = tmp_slot0 >> long_shift;
-      tmp_slot1 = tmp_slot1 >> long_shift;
-      tmp_slot2 = tmp_slot2 >> long_shift;
-
-    end else if (strobe_2_of_2_first_row || strobe_2_of_4_first_row) begin
-      tmp_slot0 = BLANK_SLOT;
-      tmp_slot1 = slot0 >> short_shift;
-      tmp_slot2 = slot1 >> short_shift;
-
-    end else if (strobe_2_of_2_last_row || strobe_2_of_4_last_row) begin
-      tmp_slot0 = slot0 >> short_shift;
-      tmp_slot1 = slot1 >> short_shift;
-      tmp_slot2 = slot2 >> short_shift;
-
-    end else if (strobe_3_of_4_first_row || strobe_4_of_4_last_row || strobe_last_column) begin
-      tmp_slot0 = { { 6'h0 , BG }, slot0 };
-      tmp_slot1 = { { 6'h0 , BG }, slot1 };
-      tmp_slot2 = { { 6'h0 , BG }, slot2 };
-
-      tmp_slot0 = tmp_slot0 >> long_shift;
-      tmp_slot1 = tmp_slot1 >> long_shift;
-      tmp_slot2 = tmp_slot2 >> long_shift;
-
-    end else if (strobe_3_of_4_last_row) begin
-      tmp_slot0 = { { 6'h0 , BG }, slot0 };
-      tmp_slot1 = { { 6'h0 , BG }, slot1 };
-      tmp_slot2 = { { 6'h0 , BG }, slot2 };
-
-      tmp_slot0 = tmp_slot1 >> long_shift;
-      tmp_slot1 = tmp_slot2 >> long_shift;
-      tmp_slot2 = BLANK_SLOT;
-
-    end else if (strobe_4_of_4_first_row) begin
-      tmp_slot0 = { { 6'h0 , BG }, slot0 };
-      tmp_slot1 = { { 6'h0 , BG }, slot1 };
-      tmp_slot2 = { { 6'h0 , BG }, slot2 };
-
-      tmp_slot2 = tmp_slot1 >> long_shift;
-      tmp_slot1 = tmp_slot0 >> long_shift;
-      tmp_slot0 = BLANK_SLOT;
-    end
+    case (strobe_vector)
+      'b100000 : begin
+        tmp_slot0 = { group_slot1[29:0] , slot1 };
+        tmp_slot1 = { group_slot2[29:0] , slot2 };
+        tmp_slot2 = BLANK_SLOT;
+   
+        tmp_slot0 = tmp_slot0 >> long_shift;
+        tmp_slot1 = tmp_slot1 >> long_shift;
+        tmp_slot2 = tmp_slot2 >> long_shift;
+      end
+   
+      'b010000 : begin
+        tmp_slot0 = BLANK_SLOT;
+        tmp_slot1 = slot0 >> short_shift;
+        tmp_slot2 = slot1 >> short_shift;
+      end
+   
+      'b001000 : begin
+        tmp_slot0 = slot0 >> short_shift;
+        tmp_slot1 = slot1 >> short_shift;
+        tmp_slot2 = slot2 >> short_shift;
+      end
+   
+      'b000100 : begin
+        tmp_slot0 = { { 6'h0 , BG }, slot0 };
+        tmp_slot1 = { { 6'h0 , BG }, slot1 };
+        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+   
+        tmp_slot0 = tmp_slot0 >> long_shift;
+        tmp_slot1 = tmp_slot1 >> long_shift;
+        tmp_slot2 = tmp_slot2 >> long_shift;
+      end
+   
+      'b000010 : begin
+        tmp_slot0 = { { 6'h0 , BG }, slot0 };
+        tmp_slot1 = { { 6'h0 , BG }, slot1 };
+        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+   
+        tmp_slot0 = tmp_slot1 >> long_shift;
+        tmp_slot1 = tmp_slot2 >> long_shift;
+        tmp_slot2 = BLANK_SLOT;
+      end
+   
+      'b000001 : begin
+        tmp_slot0 = { { 6'h0 , BG }, slot0 };
+        tmp_slot1 = { { 6'h0 , BG }, slot1 };
+        tmp_slot2 = { { 6'h0 , BG }, slot2 };
+   
+        tmp_slot2 = tmp_slot1 >> long_shift;
+        tmp_slot1 = tmp_slot0 >> long_shift;
+        tmp_slot0 = BLANK_SLOT;
+      end
+   
+      'b000000 : begin
+        tmp_slot0 = { group_slot0[29:0] , slot0 };
+        tmp_slot1 = { group_slot1[29:0] , slot1 };
+        tmp_slot2 = { group_slot2[29:0] , slot2 };
+   
+        tmp_slot0 = tmp_slot0 >> long_shift;
+        tmp_slot1 = tmp_slot1 >> long_shift;
+        tmp_slot2 = tmp_slot2 >> long_shift;
+      end
+    endcase
 
     // find the FG pixels
     above_left =   (tmp_slot0[83:60] == FG);
