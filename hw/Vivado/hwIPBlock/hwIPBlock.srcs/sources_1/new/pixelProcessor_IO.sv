@@ -73,6 +73,13 @@ assign oTDATA = concatenated_rdata[RAM_DATA_WIDTH-7:0];
 
 assign oTREADY = (ingress_cnt < ingress_full) || |(ingress_read_cnt);
 
+/*
+always @(posedge clk) begin
+  if (ingress_read_cnt == 0) $display("%t - ingress_cnt:%0d ingress_pixel_ready:%0d ingress_read_cnt:%0d", $time, ingress_cnt, ingress_pixel_ready, ingress_read_cnt);
+  if (oTREADY == 0) $display("%t - oTREADY:0b%0b ingress_cnt:%0d ingress_pixel_ready:%0d ingress_read_cnt:%0d", $time, oTREADY, ingress_cnt, ingress_pixel_ready, ingress_read_cnt);
+end
+*/
+
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     wr <= 0;

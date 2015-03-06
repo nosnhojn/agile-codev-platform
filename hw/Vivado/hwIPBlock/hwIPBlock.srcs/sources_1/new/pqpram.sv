@@ -146,6 +146,7 @@ always @(negedge rst_n or posedge clk) begin
 end
 
 always @* begin
+  rdata_0 = 0;
   case (read_banka_select)
     0 : rdata_0 = douta_b0;
     1 : rdata_0 = douta_b1;
@@ -155,6 +156,7 @@ always @* begin
     5 : rdata_0 = douta_b5;
   endcase
 
+  rdata_1 = 0;
   case (read_bankb_select)
     0 : rdata_1 = doutb_b0;
     1 : rdata_1 = doutb_b1;

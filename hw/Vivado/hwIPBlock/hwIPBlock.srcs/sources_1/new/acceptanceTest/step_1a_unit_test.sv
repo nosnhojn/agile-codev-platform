@@ -2,15 +2,15 @@
 
 `include "test_defines.svh"
 
-module step_1_unit_test;
+module step_1a_unit_test;
   import svunit_pkg::svunit_testcase;
 
-  string name = "step_1_ut";
+  string name = "step_1a_ut";
   svunit_testcase svunit_ut;
 
   // uut params
   parameter MEM_DEPTH = 11520;
-  parameter INGRESS_THRESH = 1925;
+  parameter INGRESS_THRESH = 1930;
 
   //===================================
   // This is the UUT that we're 
@@ -31,7 +31,7 @@ module step_1_unit_test;
 
   `CLK_RESET_FIXTURE(12,5)
 
-  pixelProcessor_s1
+  pixelProcessor_s1a
   #(
     .MEM_DEPTH(MEM_DEPTH)
   )
@@ -102,88 +102,88 @@ module step_1_unit_test;
   //===================================
   `SVUNIT_TESTS_BEGIN
 
-// `SVTEST(streaming_data)
-//   step();
-//   fork
-//     for (int i=0; i<2*MEM_DEPTH; i+=1) begin
-//       setIngressPixel(i, i[0], i[3:0], i[4]);
-//       step();
-//     end
-//   join_none
-//
-//   while (!oTVALID) begin
-//     waitStep();
-//     nextSamplePoint();
-//   end
-//
-//   for (int i=0; i<2*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
-//     expectEgressPixel(i, i[0], i[3:0], i[4]);
-//     waitStep();
-//   end
-// `SVTEST_END
-//
-// `SVTEST(streaming_data_with_backpressure)
-//   step();
-//   fork
-//     for (int i=0; i<10*MEM_DEPTH; i+=1) begin
-//       setIngressPixel(i, i[0], i[3:0], i[4]);
-//       @(posedge clk);
-//       while (!oTREADY) begin
-//         @(posedge clk);
-//       end
-//     end
-//
-//     forever begin
-//       int unsigned pause;
-//       nextSamplePoint();
-//       iTREADY = 1;
-//       pause = unsigned'($random) % 2;
-//       for (int i=0; i<pause; i+=1) begin
-//         step(pause);
-//       end
-//
-//       nextSamplePoint();
-//       iTREADY = 0;
-//       pause = unsigned'($random) % 4;
-//       for (int i=0; i<pause; i+=1) begin
-//         step(pause);
-//       end
-//     end
-//   join_none
-//
-//   for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
-//     @(negedge clk);
-//     while (!(oTVALID && iTREADY)) begin
-//       @(negedge clk);
-//     end
-//     expectEgressPixel(i, i[0], i[3:0], i[4]);
-//   end
-// `SVTEST_END
-//
-// `SVTEST(streaming_data_near_empty)
-//   fork
-//     for (int i=0; i<10*MEM_DEPTH; i+=1) begin
-//       int unsigned pause;
-//       nextSamplePoint();
-//       pause = unsigned'($random) % 4;
-//       for (int i=0; i<pause; i+=1) begin
-//         iTVALID = 0;
-//         step(pause);
-//       end
-//
-//       setIngressPixel(i, i[0], i[3:0], i[4]);
-//       step();
-//     end
-//   join_none
-//
-//   for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
-//     @(negedge clk);
-//     while (!oTVALID) begin
-//       @(negedge clk);
-//     end
-//     expectEgressPixel(i, i[0], i[3:0], i[4]);
-//   end
-// `SVTEST_END
+  `SVTEST(streaming_data)
+    step();
+    fork
+      for (int i=0; i<2*MEM_DEPTH; i+=1) begin
+        setIngressPixel(i, i[0], i[3:0], i[4]);
+        step();
+      end
+    join_none
+ 
+    while (!oTVALID) begin
+      waitStep();
+      nextSamplePoint();
+    end
+ 
+    for (int i=0; i<2*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
+      expectEgressPixel(i, i[0], i[3:0], i[4]);
+      waitStep();
+    end
+  `SVTEST_END
+ 
+  `SVTEST(streaming_data_with_backpressure)
+    step();
+    fork
+      for (int i=0; i<10*MEM_DEPTH; i+=1) begin
+        setIngressPixel(i, i[0], i[3:0], i[4]);
+        @(posedge clk);
+        while (!oTREADY) begin
+          @(posedge clk);
+        end
+      end
+ 
+      forever begin
+        int unsigned pause;
+        nextSamplePoint();
+        iTREADY = 1;
+        pause = unsigned'($random) % 2;
+        for (int i=0; i<pause; i+=1) begin
+          step(pause);
+        end
+ 
+        nextSamplePoint();
+        iTREADY = 0;
+        pause = unsigned'($random) % 4;
+        for (int i=0; i<pause; i+=1) begin
+          step(pause);
+        end
+      end
+    join_none
+ 
+    for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
+      @(negedge clk);
+      while (!(oTVALID && iTREADY)) begin
+        @(negedge clk);
+      end
+      expectEgressPixel(i, i[0], i[3:0], i[4]);
+    end
+  `SVTEST_END
+ 
+  `SVTEST(streaming_data_near_empty)
+    fork
+      for (int i=0; i<10*MEM_DEPTH; i+=1) begin
+        int unsigned pause;
+        nextSamplePoint();
+        pause = unsigned'($random) % 4;
+        for (int i=0; i<pause; i+=1) begin
+          iTVALID = 0;
+          step(pause);
+        end
+ 
+        setIngressPixel(i, i[0], i[3:0], i[4]);
+        step();
+      end
+    join_none
+ 
+    for (int i=0; i<10*MEM_DEPTH-INGRESS_THRESH-1; i+=1) begin
+      @(negedge clk);
+      while (!oTVALID) begin
+        @(negedge clk);
+      end
+      expectEgressPixel(i, i[0], i[3:0], i[4]);
+    end
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 

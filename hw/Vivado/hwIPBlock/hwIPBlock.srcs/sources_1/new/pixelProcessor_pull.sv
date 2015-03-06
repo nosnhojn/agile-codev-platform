@@ -193,7 +193,7 @@ always @(negedge rst_n or posedge clk) begin
 
     if (calc_rdy) begin
       if (ingress_rdy) begin
-        case (next_pixel_ptr_line_cnt[1:0])
+        case (next_pixel_ptr_line_cnt[1:0]) // Fixed a BUG here (used to be above the calc_rdy and didn't hold on !rdy
           2'b01 : group_slot2 <= rdata;
           2'b10 : group_slot0 <= rdata;
           2'b00 : group_slot1 <= rdata;

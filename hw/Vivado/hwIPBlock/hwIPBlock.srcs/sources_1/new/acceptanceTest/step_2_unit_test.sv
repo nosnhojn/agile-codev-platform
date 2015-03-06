@@ -133,6 +133,11 @@ module step_2_unit_test;
     driveNonBlockingTestScenario(5);
     checkTestScenario(5);
   `SVTEST_END
+ 
+  `SVTEST(scenario_6_test)
+    driveNonBlockingTestScenario(6);
+    checkTestScenario(6);
+  `SVTEST_END
 
   `SVUNIT_TESTS_END
 
@@ -263,6 +268,22 @@ if (oTDATA !== data) $display("data:0x%0x oTDATA:0x%0x", data, oTDATA);
     setIngressFgCell(1079, 1919);
 
     newEgressScenario(1081*LINE_WIDTH, 'hffffff);
+    setEgressShCell(1078, 1917);
+    setEgressShCell(1078, 1918);
+    setEgressShCell(1078, 1919);
+    setEgressShCell(1079, 1917);
+    setEgressFgCell(1079, 1918);
+    setEgressFgCell(1079, 1919);
+
+
+    //------------------------------
+    // scenario 6 is several frames
+    //------------------------------
+    newIngressScenario(20*1088*LINE_WIDTH, 'hffffff);
+    setIngressFgCell(1079, 1918);
+    setIngressFgCell(1079, 1919);
+
+    newEgressScenario(19*1088*LINE_WIDTH + 1081*LINE_WIDTH, 'hffffff);
     setEgressShCell(1078, 1917);
     setEgressShCell(1078, 1918);
     setEgressShCell(1078, 1919);

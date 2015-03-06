@@ -361,6 +361,12 @@ end
 //--------------
 // flow control
 //--------------
+/*
+always @(negedge clk) begin
+  if (!calc_rdy) $display("%t - egress_avail:%0d calc_rdy:0b%0b", $time, egress_avail, calc_rdy);
+end
+*/
+
 always @(negedge rst_n or posedge clk) begin
   if (!rst_n) begin
     egress_avail <= 0;
